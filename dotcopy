@@ -19,3 +19,5 @@ cp -r $XDG_CONFIG_HOME/zathura/         .
 cp -r $XDG_CONFIG_HOME/xfce4/           .
 cp -r $XDG_CONFIG_HOME/zsh/             .
 
+cp    $HOME/.gvimrc                     .
+
