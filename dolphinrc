@@ -1,0 +1,50 @@
+MenuBar=Disabled
+
+[CompactMode]
+FontWeight=50
+IconSize=22
+PreviewSize=22
+
+[DetailsMode]
+FontWeight=50
+IconSize=22
+PreviewSize=22
+UseShortRelativeDates=false
+
+[General]
+EditableUrl=true
+ShowFullPath=true
+Version=201
+ViewPropsTimestamp=2022,4,19,22,49,37.911
+
+[IconsMode]
+FontWeight=50
+PreviewSize=32
+
+[KPropertiesDialog]
+eDP Height 1920x1080=594
+eDP Width 1920x1080=510
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+eDP Height 1920x1080=1046
+eDP Width 1920x1080=1920
+eDP XPosition 1920x1080=0
+eDP YPosition 1920x1080=34
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+
+[Open-with settings]
+CompletionMode=1
+History=gvi,neovi,gvim
+
+[PreviewSettings]
+Plugins=comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail
+
+[Search]
+Location=Everywhere
+
+[Toolbar mainToolBar]
+IconSize=16

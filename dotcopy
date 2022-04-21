@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+cp    $XDG_CONFIG_HOME/Trolltech.conf   .
+cp -r $XDG_CONFIG_HOME/alacritty/       .
+cp -r $XDG_CONFIG_HOME/awesome/         .
+cp -r $XDG_CONFIG_HOME/broot/           .
+cp    $XDG_CONFIG_HOME/dolphinrc        .
+cp -r $XDG_CONFIG_HOME/gtk-3.0/         .
+cp -r $XDG_CONFIG_HOME/htop/            .
+cp    $XDG_CONFIG_HOME/kdeglobals       .
+cp    $XDG_CONFIG_HOME/mimeapps.list    .
+cp -r $XDG_CONFIG_HOME/nvim/            .
+cp    $XDG_CONFIG_HOME/plasmarc         .
+cp -r $XDG_CONFIG_HOME/qimgv/           .
+cp -r $XDG_CONFIG_HOME/qt5ct/           .
+cp -r $XDG_CONFIG_HOME/rofi/            .
+cp -r $XDG_CONFIG_HOME/zathura/         .
+cp -r $XDG_CONFIG_HOME/xfce4/           .
+cp -r $XDG_CONFIG_HOME/zsh/             .
+
