@@ -22,16 +22,16 @@ FontWeight=50
 PreviewSize=32
 
 [KPropertiesDialog]
-eDP Height 1920x1080=594
-eDP Width 1920x1080=510
+eDP Height 1920x1080=382
+eDP Width 1920x1080=461
 
 [MainWindow]
 MenuBar=Disabled
 ToolBarsMovable=Disabled
-eDP Height 1920x1080=1046
-eDP Width 1920x1080=1920
-eDP XPosition 1920x1080=0
-eDP YPosition 1920x1080=34
+eDP Height 1920x1080=759
+eDP Width 1920x1080=1387
+eDP XPosition 1920x1080=258
+eDP YPosition 1920x1080=206
 
 [MainWindow][Toolbar mainToolBar]
 IconSize=16

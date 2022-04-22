@@ -2,6 +2,7 @@
 application/pdf=firefox.desktop;
 application/x-osu-beatmap-archive=wine-extension-osk.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;wine-extension-vbs.desktop;
+application/zip=wine-extension-osk.desktop;
 
 [Default Applications]
 application/pdf=firefox.desktop;
