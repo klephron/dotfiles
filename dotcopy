@@ -17,6 +17,8 @@ cp -r $XDG_CONFIG_HOME/rofi/            .
 cp -r $XDG_CONFIG_HOME/zathura/         .
 cp -r $XDG_CONFIG_HOME/xfce4/           .
 cp -r $XDG_CONFIG_HOME/zsh/             .
+cp    $XDG_CONFIG_HOME/mimeapps.list    .
 
 cp    $HOME/.gvimrc                     .
+
 

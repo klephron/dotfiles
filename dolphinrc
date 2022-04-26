@@ -28,17 +28,18 @@ eDP Width 1920x1080=461
 [MainWindow]
 MenuBar=Disabled
 ToolBarsMovable=Disabled
-eDP Height 1920x1080=759
-eDP Width 1920x1080=1387
-eDP XPosition 1920x1080=258
-eDP YPosition 1920x1080=206
+eDP Height 1920x1080=513
+eDP Width 1920x1080=958
+eDP Window-Maximized 1920x1080=true
+eDP XPosition 1920x1080=961
+eDP YPosition 1920x1080=566
 
 [MainWindow][Toolbar mainToolBar]
 IconSize=16
 
 [Open-with settings]
 CompletionMode=1
-History=gvi,neovi,gvim
+History=libreoff,gvi,neovi,gvim
 
 [PreviewSettings]
 Plugins=comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail
