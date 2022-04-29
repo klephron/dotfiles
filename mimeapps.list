@@ -1,16 +1,17 @@
 [Added Associations]
+video/x-matroska=vlc.desktop;
 
 [Default Applications]
-application/x-osu-beatmap-archive=wine-extension-osk.desktop;
 application/octet-stream=gvim.desktop;
 application/pdf=firefox.desktop;
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-startcenter.desktop
+application/x-osu-beatmap-archive=wine-extension-osk.desktop;
 application/x-shellscript=gvim.desktop;
 image/jpeg=qimgv.desktop;
 image/png=qimgv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
 inode/directory=dolphin.desktop;
 text/plain=gvim.desktop;
+video/x-matroska=vlc.desktop;
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_home_nikit_Apps_stm_.desktop
 x-scheme-handler/msteams=teams.desktop;
-

@@ -17,3 +17,6 @@ source /home/nikit/.config/broot/launcher/bash/br
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
+# plugins
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+

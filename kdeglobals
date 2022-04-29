@@ -9,3 +9,7 @@ Dialog Size=600,480
 
 [PreviewSettings]
 MaximumRemoteSize=0
+
+[General]
+TerminalApplication=alacritty
+

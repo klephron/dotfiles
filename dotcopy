@@ -4,7 +4,7 @@ cp -r $XDG_CONFIG_HOME/alacritty/       .
 mkdir -p awesome/
 cp    $XDG_CONFIG_HOME/awesome/rc.lua   awesome/
 cp -r $XDG_CONFIG_HOME/broot/           .
-cp    $XDG_CONFIG_HOME/dolphinrc        .
+#cp    $XDG_CONFIG_HOME/dolphinrc        .
 cp -r $XDG_CONFIG_HOME/gtk-3.0/         .
 cp -r $XDG_CONFIG_HOME/htop/            .
 cp    $XDG_CONFIG_HOME/kdeglobals       .

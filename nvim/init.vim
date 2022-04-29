@@ -18,6 +18,7 @@ if !1 | finish | endif
 "set fileencodings=utf-8,sjis,euc-jp,latin
 set fileencodings=utf-8
 set encoding=utf-8
+"" set langmenu=en_US.UTF-8
 " set backup while while being written
 set nobackup
 set writebackup
@@ -48,6 +49,11 @@ set lazyredraw
 set textwidth=100
 set nowrap
 
+set noshowmode
+set shortmess+=c
+set showcmd
+set wildmenu "graphical auto complete menu
+
 "}}}
 
 
@@ -62,7 +68,9 @@ set mouse=nv
 
 " Searching "{{{
 " -----------------------------------------------------------------------------
-set hlsearch
+set noshowmatch
+set incsearch "search as characters are entered
+set hlsearch "highlights matching searches
 " ignore case when searching
 set ignorecase
 " finding files - search down into subfolders
@@ -84,7 +92,7 @@ set cursorline
 "}}}
 
 
-" Syntax, theme "{{{
+" Syntax, theme"{{{
 " -----------------------------------------------------------------------------
 syntax enable 
 set background=dark
@@ -152,12 +160,11 @@ set expandtab
 " use shiftwidth and tabstop
 set smarttab
 set tabstop=2
+set softtabstop=2
 " used with >> and <<
 set shiftwidth=2
 " when a bracket is inserted, NOT briefly jump to the matching one
-set noshowmatch
 set backspace=start,eol,indent
-
 "}}}
 
 
