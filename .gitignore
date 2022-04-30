@@ -1,6 +1,5 @@
-zsh/.zcompcache
-zsh/.zcompdump
-broot/launcher
-qimgv/savedState.conf
-nvim/lib/base16-vim
+.config/zsh/.zcompcache
+.config/zsh/.zcompdump
+.config/broot/launcher
+.config/qimgv/savedState.conf
 
