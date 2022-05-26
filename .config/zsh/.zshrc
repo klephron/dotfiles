@@ -1,36 +1,44 @@
-#!/usr/bin/env zsh
-
-# history
+# HISTORY
 setopt appendhistory
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
-# configuration
+
+# CONFIGURATION
 autoload -U compinit promptinit
 compinit
 promptinit; prompt gentoo
 zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*:sudo:*' environ PATH="$SUDO_PATH:$PATH"
 eval "$(mcfly init zsh)"
 
-# zsh internal features
-setopt correctall
+
+# ZSH INTERNAL FEATURES
+# setopt correctall
 setopt autocd
 
-# aliases
+
+# ALIASES
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
-alias sysupdate="su -c\"emaint sync -A && emerge -aDNuv @world\""
 
+alias sysupdate="sudo emaint sync -A && sudo emerge -aDNuv @world --exclude=\"\`awk 'END{print RS}\$0=\$0' ORS=\" \" /etc/portage/package.exclude_desktop\`\""
+alias sysupdateall="sudo emaint sync -A && sudo emerge -aDNuv @world"
 # source /home/nikit/.profile
 source /home/nikit/.config/broot/launcher/bash/br
 
-# keybinds
+
+# KEYBINDS
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
-# plugins
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 
+# PLUGINS
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh/site-functions/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+
+# OTHERS
 # alacritty window name
 precmd() 
 {

@@ -1,6 +1,12 @@
-env:
-  TERM: xterm-256color
+#env:
+  #TERM: -256color
 
+shell:
+   program: /bin/zsh
+     # args:
+     #   - -l
+     #   - -c
+     #   - "tmux attach || tmux"
 
 window:
   dimensions:
@@ -13,7 +19,7 @@ window:
 
   decorations: full
 
-  title: "Alacritty"
+  title: Alacritty
 
   dynamic_title: true
 
@@ -47,12 +53,12 @@ draw_bold_text_with_bright_colors: false
 
 
 colors:
-  # Default colors
+     # Default colors
   primary:
-    background: '0x1e282d'
-    foreground: '0xc4c7d1'
-
-  # Normal colors
+     background: '0x1e282d'
+     foreground: '0xc4c7d1'
+   
+     # Normal colors
   normal:
     black:   '0x666666'
     red:     '0xeb606b'
@@ -62,8 +68,8 @@ colors:
     magenta: '0xff2f90'
     cyan:    '0xaeddff'
     white:   '0xffffff'
-
-  # Bright colors
+ 
+      # Bright colors
   bright:
     black:   '0xff262b'
     red:     '0xeb606b'

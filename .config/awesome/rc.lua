@@ -303,7 +303,7 @@ globalkeys = mytable.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    --[[ awful.key({ modkey,           }, "Tab",
         function ()
             if cycle_prev then
                 awful.client.focus.history.previous()
@@ -315,6 +315,26 @@ globalkeys = mytable.join(
             end
         end,
         {description = "cycle with previous/go back", group = "client"}),
+	--]]
+    awful.key({ modkey,           }, "Tab",
+	function ()
+	    -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end,
+        {description = "cycle with next", group = "client"}),
+
+    awful.key({ modkey, "Shift"   }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(-1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end,
+        {description = "cycle with previous", group = "client"}),
 
     -- Show/hide wibox
     awful.key({ modkey }, "b", function ()
@@ -390,13 +410,6 @@ globalkeys = mytable.join(
     awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
               {description = "show weather", group = "widgets"}),
 
-    -- Screen brightness
---[[
-    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
-              {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
-              {description = "-10%", group = "hotkeys"}),
---]]
     -- ALSA volume control
 --[[
     awful.key({ altkey }, "Up",
@@ -523,8 +536,11 @@ globalkeys = mytable.join(
       {description = "rofi -show window", group = "rofi"}),
     awful.key({modkey}, "d", function () 
       awful.util.spawn_with_shell("dolphin", false) end, 
-      {description = "open dolphin", group = "dolphin"})
-    
+      {description = "open dolphin", group = "dolphin"}),
+    -- greenclip
+    awful.key({modkey}, "p", function () 
+      awful.util.spawn_with_shell("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'", false) end, 
+      {description = "open greenclip clipboard manager", group = "rofi"})
 )
 
 clientkeys = mytable.join(

@@ -1,19 +1,18 @@
 #!/bin/bash
 
-# config
-rm -r .config 2> /dev/null
+rm -rf .config 2> /dev/null
 mkdir -p .config
 
 cp -r $XDG_CONFIG_HOME/alacritty/       .config
 mkdir -p .config/awesome/
 cp    $XDG_CONFIG_HOME/awesome/rc.lua   .config/awesome/
 cp -r $XDG_CONFIG_HOME/broot/           .config/
-#cp    $XDG_CONFIG_HOME/dolphinrc        .
+
 cp -r $XDG_CONFIG_HOME/gtk-3.0/         .config/
 cp -r $XDG_CONFIG_HOME/htop/            .config/
 cp    $XDG_CONFIG_HOME/kdeglobals       .config/
 cp    $XDG_CONFIG_HOME/mimeapps.list    .config/
-cp -r $XDG_CONFIG_HOME/nvim/            .config/
+cp -r $XDG_CONFIG_HOME/nvim/            .config/  2> /dev/null
 cp    $XDG_CONFIG_HOME/plasmarc         .config/
 cp -r $XDG_CONFIG_HOME/qimgv/           .config/
 cp -r $XDG_CONFIG_HOME/qt5ct/           .config/
@@ -23,8 +22,6 @@ cp -r $XDG_CONFIG_HOME/xfce4/           .config/
 cp -r $XDG_CONFIG_HOME/zsh/             .config/
 cp    $XDG_CONFIG_HOME/mimeapps.list    .config/
 
-# home
-rm .gvimrc 2> /dev/null
 cp    $HOME/.gvimrc                     .
-
+cp    $HOME/.tmux.conf                  .
 

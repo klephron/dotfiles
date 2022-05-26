@@ -1,4 +1,7 @@
 [Added Associations]
+application/octet-stream=gvim.desktop;
+application/xml=gvim.desktop;
+application/zip=org.kde.dolphin.desktop;
 video/x-matroska=vlc.desktop;
 
 [Default Applications]
@@ -7,6 +10,7 @@ application/pdf=firefox.desktop;
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-startcenter.desktop
 application/x-osu-beatmap-archive=wine-extension-osk.desktop;
 application/x-shellscript=gvim.desktop;
+application/xml=gvim.desktop;
 image/jpeg=qimgv.desktop;
 image/png=qimgv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
