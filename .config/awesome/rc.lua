@@ -781,6 +781,20 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
+    -- Only show titlebar when floating
+    if not c.floating then
+        awful.titlebar.hide(c)
+    end
+
+end)
+
+-- Only show titlebar when floating
+client.connect_signal("property::floating", function(c)
+    if c.floating then
+        awful.titlebar.show(c)
+    else
+        awful.titlebar.hide(c)
+    end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.

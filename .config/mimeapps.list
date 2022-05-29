@@ -3,6 +3,7 @@ application/octet-stream=gvim.desktop;
 application/xml=gvim.desktop;
 application/zip=org.kde.dolphin.desktop;
 video/x-matroska=vlc.desktop;
+application/x-zip=wine-extension-osr.desktop;wine-extension-osk.desktop;
 
 [Default Applications]
 application/octet-stream=gvim.desktop;
