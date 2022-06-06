@@ -792,8 +792,10 @@ end)
 client.connect_signal("property::floating", function(c)
     if c.floating then
         awful.titlebar.show(c)
+        c:relative_move(0,0,0,-16)
     else
         awful.titlebar.hide(c)
+        c:relative_move(0,0,0,16)
     end
 end)
 
