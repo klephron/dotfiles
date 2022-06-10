@@ -248,6 +248,7 @@ globalkeys = mytable.join(
     awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end,
               {description = "view  previous nonempty", group = "tag"}),
 
+--[[
     -- Default client focus
     awful.key({ altkey,           }, "j",
         function ()
@@ -261,7 +262,7 @@ globalkeys = mytable.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-
+--]]
     -- By-direction client focus
     awful.key({ modkey }, "j",
         function()

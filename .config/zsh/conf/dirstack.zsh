@@ -1,4 +1,4 @@
-DIRSTACKSIZE=40
+DIRSTACKSIZE=30
 DIRSTACKFILE=~/.cache/zsh/dirstack
 
 # The load dirs into stack from given file.
