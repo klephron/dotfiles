@@ -18,7 +18,6 @@ cp -r $XDG_CONFIG_HOME/qimgv/           .config/
 cp -r $XDG_CONFIG_HOME/qt5ct/           .config/
 cp -r $XDG_CONFIG_HOME/rofi/            .config/
 cp -r $XDG_CONFIG_HOME/zathura/         .config/
-cp -r $XDG_CONFIG_HOME/xfce4/           .config/
 cp -r $XDG_CONFIG_HOME/zsh/             .config/
 cp    $XDG_CONFIG_HOME/mimeapps.list    .config/
 
