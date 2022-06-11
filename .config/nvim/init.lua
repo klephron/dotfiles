@@ -1,6 +1,7 @@
 -- basic
-require "user/basic"
+require "user/options"
 require "user/keymaps"
+require "user/colorscheme"
 -- plugins
 require "user/plugins"
 require "user/nvim-tree"
