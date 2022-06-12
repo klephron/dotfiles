@@ -20,9 +20,10 @@ local header = {
 local buttons = {
   type = "group",
   val = {
-    theme.button("e", "New file", "<cmd>ene <cr>"),
+    theme.button("e", "New file", "<cmd>ene<cr>"),
     theme.button("c", "Edit config", "<cmd>e $MYVIMRC<cr>"),
     theme.button("q", "Quit nvim", "<cmd>qa<cr>"),
+    theme.button("t", "Open nvim-tree in the current directory", "<cmd>ene<cr><cmd>NvimTreeOpen<cr>"),
   },
   opts = {
     spacing = 1,
