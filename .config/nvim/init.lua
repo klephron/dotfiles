@@ -6,5 +6,6 @@ require "user/colorscheme"
 require "user/plugins"
 require "user/nvim-tree"
 require "user/treesitter"
+require "user/alpha"
 require "user/lsp"
 

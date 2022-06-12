@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/home/nikit/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/nikit/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
