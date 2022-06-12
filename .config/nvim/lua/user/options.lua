@@ -41,7 +41,7 @@ for k, v in pairs(options) do
 end
 
 vim.opt.shortmess:append("c")
-vim.opt.whichwrap:prepend("<,>,[,],h,l")
+vim.opt.whichwrap:prepend("<,>,[,]")
 vim.opt.fillchars.eob=" "
 
 vim.g.loaded_netrw = 1
