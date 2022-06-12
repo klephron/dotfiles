@@ -86,7 +86,7 @@ set cursorline
 " -----------------------------------------------------------------------------
 syntax enable 
 set background=dark
-colorscheme desert
+colorscheme base16-nord_custom
 
 " File types, Groups "{{{
 " -----------------------------------------------------------------------------
