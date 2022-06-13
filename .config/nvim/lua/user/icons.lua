@@ -1,6 +1,6 @@
 -- Nerd Font Icons
 -- codicons (vscode)
-return {
+local type_1 = {
   kind = {
     Text = "",
     -- Method = "m",
@@ -65,7 +65,6 @@ return {
     BigCircle = "",
     BigUnfilledCircle = "",
     Close = "",
-    NewFile = "",
     Search = "",
     Lightbulb = "",
     Project = "",
@@ -105,9 +104,9 @@ return {
     Watch = "",
   },
 }
-else
+
 --   פּ ﯟ   蘒練 some other good icons
-return {
+local type_2 = {
   kind = {
     Text = " ",
     Method = " ",
@@ -166,9 +165,9 @@ return {
     BigCircle = " ",
     BigUnfilledCircle = " ",
     Close = " ",
-    NewFile = " ",
     Search = " ",
     Lightbulb = " ",
+    NewFile = " ",
     Project = " ",
     Dashboard = " ",
     History = " ",
@@ -207,3 +206,10 @@ return {
   },
 }
 
+return {
+  File = "",
+  NewFile = " ",
+  Settings = " ",
+  Close = " ",
+  Folder = " ",
+}

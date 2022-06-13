@@ -5,6 +5,7 @@ end
 
 -- imports
 local theme = require("alpha.themes.dashboard")
+local icons = require("user/icons")
 
 -- header
 local header = {
@@ -20,10 +21,10 @@ local header = {
 local buttons = {
   type = "group",
   val = {
-    theme.button("e", "New file", "<cmd>ene<cr>"),
-    theme.button("c", "Edit config", "<cmd>e $MYVIMRC<cr>"),
-    theme.button("q", "Quit nvim", "<cmd>qa<cr>"),
-    theme.button("t", "Open nvim-tree in the current directory", "<cmd>ene<cr><cmd>NvimTreeOpen<cr>"),
+    theme.button("e", icons.NewFile .. " New file", "<cmd>ene<cr>"),
+    theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr>"),
+    theme.button("q", icons.Close .. " Quit nvim", "<cmd>qa<cr>"),
+    theme.button("t", icons.Folder .. " Open nvim-tree in the current directory", "<cmd>ene<cr><cmd>NvimTreeOpen<cr>"),
   },
   opts = {
     spacing = 1,
