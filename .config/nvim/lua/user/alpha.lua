@@ -5,7 +5,7 @@ end
 
 -- imports
 local theme = require("alpha.themes.dashboard")
-local icons = require("user/icons")
+local icons = require("user.icons")
 
 -- header
 local header = {
