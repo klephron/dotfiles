@@ -1,13 +1,11 @@
-set recolor
+# set recolor
 set recolor-lightcolor \#2E3440
 set recolor-darkcolor \#E6EAF0
 set default-bg \#3B4252
 set recolor-keephue
 
-# copy selection to system clipboard
 set selection-clipboard clipboard
 
-# enable incremental search
 set incremental-search true
 
 
