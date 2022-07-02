@@ -7,15 +7,9 @@ local servers = {
   "ccls",
 }
 
+-- nvim-lsp-installer-default-settings
 lsp_installer.setup {
   ensure_installed = servers,
-  -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
-  -- This setting has no relation with the `ensure_installed` setting.
-  -- Can either be:
-  --   - false: Servers are not automatically installed.
-  --   - true: All servers set up via lspconfig are automatically installed.
-  --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
-  --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
   automatic_installation = false,
   icons = {
       server_installed = "◍",
@@ -45,3 +39,9 @@ if not lspconfig_status_ok then
   return
 end
 
+local opts = {}
+
+for _, server in ipairs(servers) do
+  lspconfig[server].setup(opts)
+  ::continue::
+end
