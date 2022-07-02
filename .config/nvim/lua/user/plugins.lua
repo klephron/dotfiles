@@ -49,8 +49,9 @@ return packer.startup(function()
        run = ':TSUpdate'
   }
 
-  -- LSP
+  --LSP
   use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
 
   -- sync configuration after cloning packer.nvim
   if packer_bootstrap then

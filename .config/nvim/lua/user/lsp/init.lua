@@ -4,3 +4,4 @@ if not status_ok then
 end
 
 require "user/lsp/lsp-installer"
+
