@@ -73,7 +73,7 @@ return packer.startup(function()
     config = [[
       vim.g.tex_conceal='abdmg'
       vim.opt.conceallevel=2
-    ]]
+    ]],
   }
     
   use { --currently used only for LaTeX
@@ -84,8 +84,17 @@ return packer.startup(function()
       vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
       vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
       vim.g.UltiSnipsSnippetDirectories= {'ultisnippets'}
-    ]]
+    ]],
   }
+ use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    config = [[
+      vim.g.mkdp_theme = 'dark'
+    ]],
+  }
+
   -- sync configuration after cloning packer.nvim
   if packer_bootstrap then
     packer.sync()
