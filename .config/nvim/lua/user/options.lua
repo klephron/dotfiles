@@ -8,6 +8,7 @@ local options =  {
   hidden = true,
 
   termguicolors = true,
+  background ="dark",
   cursorline = true,
   title = true,
   number = true,
