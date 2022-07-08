@@ -38,9 +38,9 @@ packer.init {
 
 -- install plugins
 return packer.startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'kyazdani42/nvim-web-devicons'
-  use "goolord/alpha-nvim"
+  use {'wbthomason/packer.nvim'}
+  use {'kyazdani42/nvim-web-devicons'}
+  use {"goolord/alpha-nvim"}
 
   use { 'kyazdani42/nvim-tree.lua' }
 
@@ -50,9 +50,42 @@ return packer.startup(function()
   }
 
   --LSP
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use {'neovim/nvim-lspconfig'}
+  use {'williamboman/nvim-lsp-installer'}
 
+  --Latex
+  use {
+    'lervag/vimtex',
+    ft = "tex",
+    config =  [[
+      vim.g.tex_flavor='latex'
+      vim.g.vimtex_view_method='zathura'
+      vim.g.vimtex_indent_on_ampersands=0
+      vim.g.vimtex_quickfix_mode=0
+      vim.g.vimtex_compiler_latexmk = {
+        build_dir = 'build',
+      }
+    ]]
+  }
+  use { 
+    'KeitaNakamura/tex-conceal.vim',
+    requires = { 'lervag/vimtex' },
+    config = [[
+      vim.g.tex_conceal='abdmg'
+      vim.opt.conceallevel=2
+    ]]
+  }
+    
+  use { --currently used only for LaTeX
+    'sirver/ultisnips',
+    ft = "tex",
+    config = [[
+      vim.g.UltiSnipsExpandTrigger = '<Tab>'
+      vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
+      vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+      vim.g.UltiSnipsSnippetDirectories= {'ultisnippets'}
+    ]]
+  }
   -- sync configuration after cloning packer.nvim
   if packer_bootstrap then
     packer.sync()

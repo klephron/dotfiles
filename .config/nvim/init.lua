@@ -8,4 +8,5 @@ require "user.nvim-tree"
 require "user.treesitter"
 require "user.alpha"
 require "user.lsp"
-
+-- autocommands
+require "user.autocommands"
