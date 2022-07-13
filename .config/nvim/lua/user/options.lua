@@ -18,6 +18,7 @@ local options =  {
   laststatus = 3,
   wrap = false,
   showmode = false,
+  conceallevel = 2,
     
   scrolloff = 4,
   sidescrolloff = 6,

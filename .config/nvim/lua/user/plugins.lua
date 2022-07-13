@@ -72,17 +72,8 @@ return packer.startup(function()
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
   -- Snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   use "L3MON4D3/LuaSnip" --snippet engine
-  use { --currently used only for LaTeX
-    'sirver/ultisnips',
-    ft = "tex",
-    config = [[
-      vim.g.UltiSnipsExpandTrigger = '<Tab>'
-      vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
-      vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-      vim.g.UltiSnipsSnippetDirectories= {'ultisnippets'}
-    ]],
-  }
 
   -- Markdown/Latex
   use {
@@ -96,25 +87,17 @@ return packer.startup(function()
       vim.g.vimtex_compiler_latexmk = {
         build_dir = 'build',
       }
+      vim.cmd("hi clear Conceal")
     ]]
   }
-  use { 
-    'KeitaNakamura/tex-conceal.vim',
-    requires = { {'lervag/vimtex'} },
-    ft = "tex",
-    config = [[
-      vim.g.tex_conceal='abdmg'
-      vim.opt.conceallevel=2
-    ]],
-  }
- use {
+  use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     cmd = "MarkdownPreview",
     config = [[
       vim.g.mkdp_theme = 'dark'
     ]],
-  }
+   }
 
   -- sync configuration after cloning packer.nvim
   if packer_bootstrap then
