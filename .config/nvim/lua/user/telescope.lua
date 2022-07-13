@@ -8,6 +8,7 @@ local icons = require("user.icons")
 require('telescope').setup{
   defaults = {
     prompt_prefix = icons.Telescope .. "",
+    path_display = {"smart"},
     file_ignore_patterns = {
       "target/",
       "%.lock",

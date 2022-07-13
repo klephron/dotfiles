@@ -25,6 +25,7 @@ local buttons = {
     theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr>"),
     theme.button("q", icons.Close .. " Quit nvim", "<cmd>qa<cr>"),
     theme.button("t", icons.Folder .. " Open nvim-tree in the current directory", "<cmd>ene<cr><cmd>NvimTreeOpen<cr>"),
+    theme.button("s", icons.Telescope .. " Search files using Telescope", "<cmd>Telescope find_files<cr>"),
   },
   opts = {
     spacing = 1,

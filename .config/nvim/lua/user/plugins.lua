@@ -48,6 +48,10 @@ return packer.startup(function()
   use {'kyazdani42/nvim-tree.lua' }
   use {'norcalli/nvim-colorizer.lua'}
 
+  --LSP
+  use {'neovim/nvim-lspconfig'}
+  use {'williamboman/nvim-lsp-installer'}
+
   -- Treesitter
   use {
        'nvim-treesitter/nvim-treesitter',
@@ -60,9 +64,25 @@ return packer.startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  --LSP
-  use {'neovim/nvim-lspconfig'}
-  use {'williamboman/nvim-lsp-installer'}
+  -- Cmp 
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+  -- Snippet engine
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use { --currently used only for LaTeX
+    'sirver/ultisnips',
+    ft = "tex",
+    config = [[
+      vim.g.UltiSnipsExpandTrigger = '<Tab>'
+      vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
+      vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+      vim.g.UltiSnipsSnippetDirectories= {'ultisnippets'}
+    ]],
+  }
 
   -- Markdown/Latex
   use {
@@ -85,16 +105,6 @@ return packer.startup(function()
     config = [[
       vim.g.tex_conceal='abdmg'
       vim.opt.conceallevel=2
-    ]],
-  }
-  use { --currently used only for LaTeX
-    'sirver/ultisnips',
-    ft = "tex",
-    config = [[
-      vim.g.UltiSnipsExpandTrigger = '<Tab>'
-      vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
-      vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-      vim.g.UltiSnipsSnippetDirectories= {'ultisnippets'}
     ]],
   }
  use {

@@ -10,5 +10,6 @@ require "user.treesitter"
 require "user.telescope"
 require "user.alpha"
 require "user.lsp"
+require "user.cmp"
 -- autocommands
 require "user.autocommands"
