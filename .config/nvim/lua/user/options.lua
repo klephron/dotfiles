@@ -45,8 +45,19 @@ end
 
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:prepend("<,>,[,]")
-vim.opt.fillchars.eob=" "
+--vim.opt.fillchars.eob=" "
 
-vim.g.loaded_netrw = 1
+vim.g.os = vim.loop.os_uname().sysname
+vim.g.open_command = vim.g.os == 'Darwin' and 'open' or 'xdg-open'
+vim.g.vim_dir = vim.cmd('echo $XDG_CONFIG_HOME') or (vim.cmd('echo $HOME') ..'/.config') .. '/nvim'
+
+-- Stop loading built in plugins
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_gzip = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
