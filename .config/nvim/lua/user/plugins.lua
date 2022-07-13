@@ -36,24 +36,35 @@ packer.init {
   },
 }
 
--- install plugins
 return packer.startup(function()
   use {'wbthomason/packer.nvim'}
+  use {'nvim-lua/plenary.nvim'} -- useful functions
   use {'kyazdani42/nvim-web-devicons'}
+
+  -- Colorschemes
+  use {"lunarvim/darkplus.nvim"}
+  -- UI
   use {"goolord/alpha-nvim"}
+  use {'kyazdani42/nvim-tree.lua' }
+  use {'norcalli/nvim-colorizer.lua'}
 
-  use { 'kyazdani42/nvim-tree.lua' }
-
+  -- Treesitter
   use {
        'nvim-treesitter/nvim-treesitter',
        run = ':TSUpdate'
+  }
+
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   --LSP
   use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
 
-  --Latex
+  -- Markdown/Latex
   use {
     'lervag/vimtex',
     ft = "tex",
@@ -69,13 +80,13 @@ return packer.startup(function()
   }
   use { 
     'KeitaNakamura/tex-conceal.vim',
-    requires = { 'lervag/vimtex' },
+    requires = { {'lervag/vimtex'} },
+    ft = "tex",
     config = [[
       vim.g.tex_conceal='abdmg'
       vim.opt.conceallevel=2
     ]],
   }
-    
   use { --currently used only for LaTeX
     'sirver/ultisnips',
     ft = "tex",
@@ -89,7 +100,7 @@ return packer.startup(function()
  use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
-    ft = "markdown",
+    cmd = "MarkdownPreview",
     config = [[
       vim.g.mkdp_theme = 'dark'
     ]],

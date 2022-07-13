@@ -174,7 +174,6 @@ local type_2 = {
     Comment = " ",
     Bug = " ",
     Code = " ",
-    Telescope = " ",
     Gear = " ",
     Package = " ",
     List = " ",
@@ -212,4 +211,5 @@ return {
   Settings = " ",
   Close = " ",
   Folder = " ",
+  Telescope = " ",
 }
