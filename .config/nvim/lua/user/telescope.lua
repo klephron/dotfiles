@@ -5,7 +5,7 @@ end
 
 local icons = require("user.icons")
 
-require('telescope').setup{
+telescope.setup{
   defaults = {
     prompt_prefix = icons.Telescope .. "",
     path_display = {"smart"},

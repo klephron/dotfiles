@@ -12,14 +12,15 @@ local options =  {
   cursorline = true,
   title = true,
   number = true,
-  rnu = true,
+  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+  -- rnu = true,
   cmdheight = 1,
   showcmd = false,
   laststatus = 3,
   wrap = false,
   showmode = false,
   conceallevel = 2,
-    
+
   scrolloff = 4,
   sidescrolloff = 6,
   clipboard = "unnamedplus",

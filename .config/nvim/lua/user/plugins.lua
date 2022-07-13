@@ -52,6 +52,18 @@ return packer.startup(function()
   use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
 
+  -- Snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  use "L3MON4D3/LuaSnip" --snippet engine
+
+  -- Cmp 
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+
   -- Treesitter
   use {
        'nvim-treesitter/nvim-treesitter',
@@ -64,16 +76,6 @@ return packer.startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Cmp 
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-
-  -- Snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-  use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Markdown/Latex
   use {

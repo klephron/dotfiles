@@ -10,6 +10,6 @@ colorizer.setup(
   'lua',
   html = { mode = 'background' }
 },
-{ 
+{
   mode = 'background'
 })

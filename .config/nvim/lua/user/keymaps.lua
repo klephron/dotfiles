@@ -3,7 +3,6 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent=true }
 local term_opts = { silent = true }
 
-
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -46,6 +45,6 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv", opts)
 
 -- Terminal
-keymap('t', '<C-[>', '<C-\\><C-n>', opts)
-keymap('t', '<Esc>', '<C-\\><C-n>', opts)
+keymap('t', '<C-[>', '<C-\\><C-n>', term_opts)
+keymap('t', '<Esc>', '<C-\\><C-n>', term_opts)
 
