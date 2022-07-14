@@ -50,5 +50,4 @@ vim.opt.whichwrap:prepend("<,>,[,]")
 vim.g.os = vim.loop.os_uname().sysname
 vim.g.open_command = vim.g.os == 'Darwin' and 'open' or 'xdg-open'
 
-
 -- vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
