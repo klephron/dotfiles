@@ -19,10 +19,10 @@ end
 
 for _, server in pairs(servers) do
   local opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = require("user.plugins.lsp.handlers").on_attach,
+    capabilities = require("user.plugins.lsp.handlers").capabilities,
   }
-  local ok, custom_opts = pcall(require, "user.lsp.servers." .. server)
+  local ok, custom_opts = pcall(require, "user.plugins.lsp.servers." .. server)
   if ok then
     opts = vim.tbl_deep_extend("force", opts, custom_opts)
   end

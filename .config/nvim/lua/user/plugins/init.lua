@@ -28,7 +28,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost */user/plugins/*.lua source <afile> | PackerCompile
   augroup end
 ]]
 
@@ -57,15 +57,15 @@ packer.startup(function()
   -- UI
   use {
     "goolord/alpha-nvim",
-    config = function () require("user.alpha") end,
+    config = function () require("user.plugins.alpha") end,
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function () require("user.nvim-tree") end,
+    config = function () require("user.plugins.nvim-tree") end,
   }
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function () require("user.colorizer") end,
+    config = function () require("user.plugins.colorizer") end,
   }
 
   --LSP
@@ -73,7 +73,7 @@ packer.startup(function()
     requires = {
       {'williamboman/nvim-lsp-installer'},
     },
-    config = function() require("user.lsp") end,
+    config = function() require("user.plugins.lsp") end,
   }
   -- Snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
@@ -82,7 +82,7 @@ packer.startup(function()
   -- Cmp 
   use {
     "hrsh7th/nvim-cmp", -- The completion plugin
-    config = function () require("user.cmp") end,
+    config = function () require("user.plugins.cmp") end,
     requires = {
       {"hrsh7th/cmp-buffer"}, -- buffer completions
       {"hrsh7th/cmp-path"},   -- path completions
@@ -95,7 +95,7 @@ packer.startup(function()
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function () require("user.treesitter") end,
+    config = function () require("user.plugins.treesitter") end,
     run = ':TSUpdate',
   }
 
@@ -103,7 +103,7 @@ packer.startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
-    config = function() require("user.telescope") end,
+    config = function() require("user.plugins.telescope") end,
   }
 
   -- Markdown/Latex
