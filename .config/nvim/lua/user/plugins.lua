@@ -1,7 +1,18 @@
+-- Stop loading built in plugins
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_gzip = 1
+
+---------------------------------------------------------------------------------------------------
+-- PACKER
+---------------------------------------------------------------------------------------------------
 local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 -- automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system {
     'git',
@@ -29,6 +40,7 @@ end
 
 -- have packer use a popup window
 packer.init {
+  compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer.lua',
   display = {
     open_fn = function()
       return require("packer.util").float({border = "single"})
