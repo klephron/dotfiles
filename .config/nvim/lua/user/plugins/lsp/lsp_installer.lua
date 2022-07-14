@@ -3,7 +3,13 @@ if not status_ok then
   return
 end
 
-local servers = {"ccls", "sumneko_lua", "pyright", "bashls"}
+local servers = {
+  "ccls",
+  "sumneko_lua",
+  "pyright",
+  "bashls",
+  "cmake"
+}
 
 -- nvim-lsp-installer-default-settings
 lsp_installer.setup({
