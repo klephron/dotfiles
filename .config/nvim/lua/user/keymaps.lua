@@ -3,11 +3,16 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent=true }
 local term_opts = { silent = true }
 
--- Remap space as leader key
+----------------------------------------------------------------------------------------------------
+-- Remap leader key
+----------------------------------------------------------------------------------------------------
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+----------------------------------------------------------------------------------------------------
+-- Aliases
+----------------------------------------------------------------------------------------------------
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -33,7 +38,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Visual
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -48,3 +52,18 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv", opts)
 keymap('t', '<C-[>', '<C-\\><C-n>', term_opts)
 keymap('t', '<Esc>', '<C-\\><C-n>', term_opts)
 
+-- HLSEARCH
+keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
+
+-- WINDOWS
+--keymap("n", "<m-v>", "<cmd>vsplit<cr>", opts)
+--keymap("n", "<m-s>", "<cmd>split<cr>", opts)
+keymap("n", "<m-q>", "<cmd>q<cr>", opts)
+
+-- GOTO
+keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
+
+----------------------------------------------------------------------------------------------------
+-- Aliases
+----------------------------------------------------------------------------------------------------
+vim.cmd("cnoreabbrev hs split")
