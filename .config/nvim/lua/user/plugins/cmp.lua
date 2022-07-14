@@ -115,6 +115,7 @@ cmp.setup {
   window = {
   -- completion = cmp.config.window.bordered(),
   -- documentation = cmp.config.window.bordered(),
+    
   },
   experimental = {
     ghost_text = false,
@@ -132,7 +133,7 @@ cmp.setup {
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-    completion = { autocomplete = false, },
+    --completion = { autocomplete = true, },
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'path' }
