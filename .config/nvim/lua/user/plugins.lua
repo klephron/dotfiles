@@ -14,7 +14,7 @@ local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 -- automatically install packer
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system {
+  PACKER_BOOTSTRAP = fn.system {
     'git',
     'clone',
     '--depth',
@@ -31,7 +31,6 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]]
-
 
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -90,6 +89,7 @@ packer.startup(function()
       {"hrsh7th/cmp-cmdline"}, -- cmdline completions
       {"saadparwaiz1/cmp_luasnip"}, -- snippet completions
       {"hrsh7th/cmp-nvim-lsp"},
+      {"hrsh7th/cmp-nvim-lua"}, -- nvim lua api
     }
   }
   -- Treesitter
@@ -131,7 +131,7 @@ packer.startup(function()
    }
 
   -- sync configuration after cloning packer.nvim
-  if packer_bootstrap then
+  if PACKER_BOOTSTRAP then
     packer.sync()
   end
 end)
