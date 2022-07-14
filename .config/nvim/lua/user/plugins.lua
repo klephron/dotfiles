@@ -28,7 +28,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]]
 
@@ -48,7 +48,7 @@ packer.init {
   },
 }
 
-return packer.startup(function()
+packer.startup(function()
   use {'wbthomason/packer.nvim'}
   use {'nvim-lua/plenary.nvim'} -- useful functions
   use {'kyazdani42/nvim-web-devicons'}
@@ -56,38 +56,55 @@ return packer.startup(function()
   -- Colorschemes
   use {"lunarvim/darkplus.nvim"}
   -- UI
-  use {"goolord/alpha-nvim"}
-  use {'kyazdani42/nvim-tree.lua' }
-  use {'norcalli/nvim-colorizer.lua'}
+  use {
+    "goolord/alpha-nvim",
+    config = function () require("user.alpha") end,
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function () require("user.nvim-tree") end,
+  }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function () require("user.colorizer") end,
+  }
 
   --LSP
-  use {'neovim/nvim-lspconfig'}
-  use {'williamboman/nvim-lsp-installer'}
-
+  use {'neovim/nvim-lspconfig',
+    requires = {
+      {'williamboman/nvim-lsp-installer'},
+    },
+    config = function() require("user.lsp") end,
+  }
   -- Snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Cmp 
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-
+  use {
+    "hrsh7th/nvim-cmp", -- The completion plugin
+    config = function () require("user.cmp") end,
+    requires = {
+      {"hrsh7th/cmp-buffer"}, -- buffer completions
+      {"hrsh7th/cmp-path"},   -- path completions
+      {"hrsh7th/cmp-cmdline"}, -- cmdline completions
+      {"saadparwaiz1/cmp_luasnip"}, -- snippet completions
+      {"hrsh7th/cmp-nvim-lsp"},
+    }
+  }
   -- Treesitter
   use {
-       'nvim-treesitter/nvim-treesitter',
-       run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    config = function () require("user.treesitter") end,
+    run = ':TSUpdate',
   }
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function() require("user.telescope") end,
   }
-
 
   -- Markdown/Latex
   use {
@@ -118,4 +135,3 @@ return packer.startup(function()
     packer.sync()
   end
 end)
-

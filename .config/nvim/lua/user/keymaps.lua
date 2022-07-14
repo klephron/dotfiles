@@ -37,7 +37,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-keymap("v", "p", '"_dP', opts) -- don't update with deleted text
+keymap("v", "p", '"_dp', opts) -- don't update with deleted text
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>", opts)
 keymap("v", "<A-k>", ":m .-2<CR>", opts)
