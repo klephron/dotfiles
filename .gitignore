@@ -4,3 +4,4 @@
 .config/qimgv/savedState.conf
 
 .config/nvim/plugin/packer_compiled.lua
+.vim/.netrwhist
