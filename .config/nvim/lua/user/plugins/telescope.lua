@@ -5,65 +5,117 @@ end
 
 local icons = require("user.icons")
 
+local ignore_patterns = {
+  '%.jpg',
+  '%.jpeg',
+  '%.png',
+  '%.otf',
+  '%.ttf',
+  '.git/',
+  '.idea/',
+}
+
+local actions = require("telescope.actions")
+local themes = require('telescope.themes')
+local builtins = require('telescope.builtin')
+
 telescope.setup{
   defaults = {
     prompt_prefix = icons.Telescope .. "",
     path_display = {"smart"},
-    file_ignore_patterns = {
-      "target/",
-      "%.lock",
-      "__pycache__/*",
-      "%.sqlite3",
-      "%.ipynb",
-      "node_modules/*",
-      "%.jpg",
-      "%.jpeg",
-      "%.png",
-      "%.svg",
-      "%.otf",
-      "%.ttf",
-      "%.webp",
-      ".dart_tool/",
-      ".gradle/",
-      ".idea/",
-      ".settings/",
-      ".vscode/",
-      "__pycache__/",
-      "build/",
-      "node_modules/",
-      "%.pdb",
-      "%.dll",
-      "%.class",
-      "%.exe",
-      "%.cache",
-      "%.ico",
-      "%.pdf",
-      "%.dylib",
-      "%.jar",
-      "%.docx",
-      "%.met",
-      "smalljre_*/*",
-      ".vale/",
-      "%.burp",
-      "%.mp4",
-      "%.mkv",
-      "%.rar",
-      "%.zip",
-      "%.7z",
-      "%.tar",
-      "%.bz2",
-      "%.epub",
-      "%.flac",
-      "%.tar.gz",
+    file_ignore_patterns = ignore_patterns,
+    dynamic_preview_title = true,
+    layout_strategy = "flex",
+    layout_config = {
+      bottom_pane = {
+        height = 25,
+        preview_cutoff = 120,
+        prompt_position = "top"
+      },
+      center = {
+        height = 0.4,
+        preview_cutoff = 40,
+        prompt_position = "top",
+        width = 0.5
+      },
+      cursor = {
+        height = 0.9,
+        preview_cutoff = 40,
+        width = 0.8
+      },
+      horizontal = {
+        height = 0.9,
+        preview_cutoff = 120,
+        prompt_position = "bottom",
+        width = 0.8
+      },
+      vertical = {
+        height = 0.9,
+        preview_cutoff = 40,
+        prompt_position = "bottom",
+        width = 0.8
+      }
     },
+    winblend = 0,
     mappings = {
       i = {
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
+
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+
+        ["<C-c>"] = actions.close,
+
+        ["<CR>"] = actions.select_default,
+        ["<C-h>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-t>"] = actions.select_tab,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
+
+        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+        ["<C-/>"] = actions.which_key,
       },
       n = {
+        ["<esc>"] = actions.close,
+        ["<C-c>"] = actions.close,
+
+        ["<CR>"] = actions.select_default,
+        ["<C-x>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-t>"] = actions.select_tab,
+
+        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+        ["j"] = actions.move_selection_next,
+        ["k"] = actions.move_selection_previous,
+        ["H"] = actions.move_to_top,
+        ["M"] = actions.move_to_middle,
+        ["L"] = actions.move_to_bottom,
+
+        ["gg"] = actions.move_to_top,
+        ["G"] = actions.move_to_bottom,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
+
+        ["?"] = actions.which_key,
       }
     }
   },
   pickers = {
+    find_files = {
+      hidden = true,
+    }
   },
   extensions = {
   }

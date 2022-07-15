@@ -12,7 +12,7 @@ vim.opt.shortmess:append("c")
 -----------------------------------------------------------------------------//
 vim.opt.updatetime = 4000
 vim.opt.timeout = true
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 300
 vim.opt.ttimeoutlen = 50
 -----------------------------------------------------------------------------//
 -- Window splitting and buffers
