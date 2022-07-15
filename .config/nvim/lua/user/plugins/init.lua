@@ -52,6 +52,12 @@ packer.startup(function()
   use {'nvim-lua/plenary.nvim'} -- useful functions
   use {'kyazdani42/nvim-web-devicons'}
 
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("user.plugins.autopairs") end,
+  }
+
+
   -- Colorschemes
   use {"lunarvim/darkplus.nvim"}
   -- UI
