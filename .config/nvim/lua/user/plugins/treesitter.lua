@@ -8,11 +8,15 @@ configs.setup {
   ignore_install = { },
   highlight = {
     enable = true,
-    --additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = true,
   },
   incremental_selection = {},
   autopairs = { enable = true },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 }

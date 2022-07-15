@@ -52,11 +52,15 @@ packer.startup(function()
   use {'nvim-lua/plenary.nvim'} -- useful functions
   use {'kyazdani42/nvim-web-devicons'}
 
+  -- Utilities
   use {
     'windwp/nvim-autopairs',
     config = function() require("user.plugins.autopairs") end,
   }
-
+  use {
+    "numToStr/Comment.nvim",
+    config = function() require("user.plugins.comment") end,
+  }
 
   -- Colorschemes
   use {"lunarvim/darkplus.nvim"}
@@ -103,6 +107,9 @@ packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     config = function () require("user.plugins.treesitter") end,
     run = ':TSUpdate',
+    requires = {
+      {'JoosepAlviste/nvim-ts-context-commentstring'}
+    }
   }
 
   -- Telescope
