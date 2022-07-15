@@ -8,16 +8,12 @@ if not config_status_ok then return
 end
 
 nvim_tree.setup {
-  update_cwd = true,
-  view = {
-    mappings = {
-      list = {
-        -- user mappings go here
-      },
-    },
-  },
+  disable_netrw = true,
+  open_on_setup = false,
+  update_cwd = false,
   hijack_directories = {
-    enable = false,
+    enable = true,
+    auto_open = true,
   },
   update_focused_file = {
     enable = true,
@@ -34,6 +30,19 @@ nvim_tree.setup {
     },
   },
   git = {
+    enable = true,
     timeout = 1000,
   },
+  view = {
+    width = 30,
+    side = "left",
+    mappings = {
+      list = {
+        { key = "h", action = "split" },
+        { key = "v", action = "vsplit" },
+        { key = {"e", "<BS>", }, action = "close_node" },
+      },
+    },
+  },
 }
+
