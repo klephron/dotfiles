@@ -68,7 +68,30 @@ keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require
 keymap("n", "<leader>l", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Nvim-tree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+
+-- Bufferline
+function DeleteCurrentBuffer()
+  local cbn = vim.api.nvim_get_current_buf()
+  local buffers = vim.fn.getbufinfo({buflisted = true})
+  local size = 0
+  local idx = 0
+  for n, e in ipairs(buffers) do
+    size = size + 1
+    if e.bufnr == cbn then
+      idx = n
+    end
+  end
+  if idx == 0 then return end
+  if idx == size then
+    vim.cmd("bprevious")
+  else
+    vim.cmd("bnext")
+  end
+  vim.cmd("bdelete " .. cbn)
+end
+
+keymap("n", "<leader>d", "<cmd>lua DeleteCurrentBuffer()<cr>", opts)
 ----------------------------------------------------------------------------------------------------
 -- Aliases
 ----------------------------------------------------------------------------------------------------

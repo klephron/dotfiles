@@ -135,7 +135,8 @@ cmp.setup {
     --completion = { autocomplete = true, },
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = 'path' },
+      { name = 'nvim_lua'},
     }, {
       { name = 'cmdline' }
     })
