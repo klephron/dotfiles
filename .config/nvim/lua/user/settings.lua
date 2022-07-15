@@ -83,8 +83,8 @@ vim.opt.whichwrap:prepend("<,>,[,]")
 ----------------------------------------------------------------------------//
 -- Match and search
 -----------------------------------------------------------------------------//
-vim.opt.scrolloff = 4
-vim.opt.sidescrolloff = 6
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 2
 
 vim.opt.showmatch = false
 vim.opt.incsearch = true
