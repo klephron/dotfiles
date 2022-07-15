@@ -61,6 +61,10 @@ packer.startup(function()
     "numToStr/Comment.nvim",
     config = function() require("user.plugins.comment") end,
   }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require("user.plugins.gitsigns") end,
+  }
 
   -- Colorschemes
   use {"lunarvim/darkplus.nvim"}
