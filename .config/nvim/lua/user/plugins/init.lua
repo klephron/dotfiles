@@ -48,11 +48,11 @@ packer.init {
 }
 
 packer.startup(function()
+  -- Utilities
   use {'wbthomason/packer.nvim'}
   use {'nvim-lua/plenary.nvim'} -- useful functions
   use {'kyazdani42/nvim-web-devicons'}
 
-  -- Utilities
   use {
     'windwp/nvim-autopairs',
     config = function() require("user.plugins.autopairs") end,
@@ -68,6 +68,7 @@ packer.startup(function()
 
   -- Colorschemes
   use {"lunarvim/darkplus.nvim"}
+
   -- UI
   use {
     "goolord/alpha-nvim",
@@ -81,6 +82,10 @@ packer.startup(function()
     'norcalli/nvim-colorizer.lua',
     config = function () require("user.plugins.colorizer") end,
   }
+  use {
+    'akinsho/bufferline.nvim',
+    config = function () require("user.plugins.bufferline") end,
+  }
 
   --LSP
   use {'neovim/nvim-lspconfig',
@@ -89,6 +94,7 @@ packer.startup(function()
     },
     config = function() require("user.plugins.lsp") end,
   }
+
   -- Snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   use "L3MON4D3/LuaSnip" --snippet engine
