@@ -116,4 +116,4 @@ vim.opt.gdefault = true     -- /g in replace is enabled by default (reversed)
 vim.opt.confirm = true      -- make vim prompt me to save before doing destructive things
 vim.opt.virtualedit = 'block' -- allow cursor to move where there is no text in visual block mode
 
--- vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
+--vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
