@@ -1,3 +1,4 @@
+require "user.utils"
 require "user.settings"
 require "user.keymaps"
 require "user.colorscheme"

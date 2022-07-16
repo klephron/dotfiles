@@ -86,6 +86,10 @@ packer.startup(function()
     'akinsho/bufferline.nvim',
     config = function() require("user.plugins.bufferline") end,
   }
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function() require("user.plugins.lualine") end,
+  }
 
   --LSP
   use { 'neovim/nvim-lspconfig',

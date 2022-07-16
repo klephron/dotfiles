@@ -49,12 +49,12 @@ vim.opt.number = true
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 --vim.opt.rnu = true
 vim.opt.cmdheight = 1
-vim.opt.showcmd = false
+vim.opt.showcmd = true
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.conceallevel = 2
 vim.opt.pumheight = 15
-vim.opt.signcolumn = 'auto:1-3'
+vim.opt.signcolumn = 'yes:2'
 
 -- vim.opt.emoji = false
 -----------------------------------------------------------------------------//
