@@ -73,7 +73,7 @@ local type_1 = {
     Comment = "",
     Bug = "",
     Code = "",
-    Telescope = "",
+    Telescope = "",
     Gear = "",
     Package = "",
     List = "",
@@ -206,10 +206,16 @@ local type_2 = {
 }
 
 return {
-  File = "",
-  NewFile = " ",
-  Settings = " ",
+  alpha = {
+    File = "",
+    FindFile = "",
+    Folder = "",
+    Settings = "",
+    RecentlyUsed = "",
+    Quit = "",
+    Text = "",
+    Telescope = "",
+  },
   Close = " ",
-  Folder = " ",
   Telescope = " ",
 }

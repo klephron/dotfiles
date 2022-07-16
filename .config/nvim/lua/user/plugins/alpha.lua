@@ -5,7 +5,7 @@ end
 
 -- imports
 local theme = require("alpha.themes.dashboard")
-local icons = require("user.icons")
+local icons = require("user.icons").alpha
 
 -- header
 local header = {
@@ -21,11 +21,14 @@ local header = {
 local buttons = {
   type = "group",
   val = {
-    theme.button("e", icons.NewFile .. " New file", "<cmd>ene<cr>"),
+    theme.button("f", icons.FindFile .. " Find file", "<cmd>Telescope find_files <CR>"),
+    theme.button("e", icons.File .. " New file", "<cmd>ene<BAR>startinsert<cr>"),
+    theme.button("r", icons.RecentlyUsed .. " Recently used files", "<cmd>Telescope oldfiles <CR>"),
     theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr>"),
-    theme.button("q", icons.Close .. " Quit nvim", "<cmd>qa<cr>"),
-    theme.button("t", icons.Folder .. " Open nvim-tree in the current directory", "<cmd>ene<cr><cmd>NvimTreeOpen<cr>"),
-    theme.button("s", icons.Telescope .. " Search files using Telescope", "<cmd>Telescope find_files<cr>"),
+    theme.button("p", icons.Folder .. " Find project", "<cmd>Telescope projects <CR>"),
+    theme.button("t", icons.Text .. " Find text", "<cmd>Telescope live_grep<CR>"),
+    theme.button("l", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
+    theme.button("q", icons.Quit .. " Quit nvim", "<cmd>qa<cr>"),
   },
   opts = {
     spacing = 1,
