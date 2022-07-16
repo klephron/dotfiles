@@ -99,7 +99,7 @@ end
 keymap("n", "<leader>d", "<cmd>lua DeleteCurrentBuffer()<cr>", opts)
 
 -- Formatting
-keymap("n", "<leader>m", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
+keymap("n", "<leader>m", "<cmd>write<cr><cmd>lua vim.lsp.buf.formatting()<cr>", opts)
 ----------------------------------------------------------------------------------------------------
 -- Aliases
 ----------------------------------------------------------------------------------------------------

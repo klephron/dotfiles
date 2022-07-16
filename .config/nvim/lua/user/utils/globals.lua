@@ -1,10 +1,14 @@
 local fmt = string.format
 
 
-_G.as = {}
+_G.us = {
+  prefix = {
+    plugins = "user.plugins"
+  }
+}
 
 
-function as.safe_require(module, opts)
+function us.safe_require(module, opts)
   opts = opts or { silent = false }
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
@@ -13,7 +17,8 @@ function as.safe_require(module, opts)
   return ok, result
 end
 
-function as.dump_lua_table(table)
-  local _, pretty = as.safe_require("pl.pretty")
+function us.dump_lua_table(table)
+  local _, pretty = us.safe_require("pl.pretty")
   return pretty.dump(table)
 end
+

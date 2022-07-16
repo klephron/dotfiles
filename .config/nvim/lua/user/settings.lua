@@ -54,7 +54,7 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.conceallevel = 2
 vim.opt.pumheight = 15
-vim.opt.signcolumn = 'yes:2'
+vim.opt.signcolumn = 'yes:1'
 
 -- vim.opt.emoji = false
 -----------------------------------------------------------------------------//
