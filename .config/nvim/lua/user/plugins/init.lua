@@ -89,10 +89,11 @@ packer.startup(function()
 
   --LSP
   use {'neovim/nvim-lspconfig',
+    config = function() require("user.plugins.lsp") end,
     requires = {
       {'williamboman/nvim-lsp-installer'},
+      {'jose-elias-alvarez/null-ls.nvim'},
     },
-    config = function() require("user.plugins.lsp") end,
   }
 
   -- Snippet engine
@@ -125,8 +126,8 @@ packer.startup(function()
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
     config = function() require("user.plugins.telescope") end,
+    requires = { {'nvim-lua/plenary.nvim'} },
   }
 
   -- Markdown/Latex
