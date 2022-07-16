@@ -64,10 +64,13 @@ keymap("n", "<m-q>", "<cmd>q<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 
 -- Telescope
-keymap("n", "<leader>f",
+keymap(
+  "n",
+  "<leader>f",
   "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
   opts)
 keymap("n", "<leader>l", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", opts)
 
 -- Nvim-tree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
@@ -96,7 +99,7 @@ end
 keymap("n", "<leader>d", "<cmd>lua DeleteCurrentBuffer()<cr>", opts)
 
 -- Formatting
-keymap("n", "<leader>m", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
+keymap("n", "<leader>m", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
 ----------------------------------------------------------------------------------------------------
 -- Aliases
 ----------------------------------------------------------------------------------------------------

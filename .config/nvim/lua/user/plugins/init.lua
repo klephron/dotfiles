@@ -131,7 +131,12 @@ packer.startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     config = function() require("user.plugins.telescope") end,
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    requires = {
+      {
+        "ahmedkhalf/project.nvim",
+        config = function() require("user.plugins.project") end,
+      }
+    },
   }
 
   -- Markdown/Latex

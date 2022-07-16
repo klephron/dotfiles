@@ -10,6 +10,7 @@ end
 nvim_tree.setup {
   disable_netrw = true,
   open_on_setup = false,
+  respect_buf_cwd = false,
   update_cwd = true,
   hijack_directories = {
     enable = true,
