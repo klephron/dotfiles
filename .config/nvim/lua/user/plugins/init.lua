@@ -10,7 +10,7 @@ vim.g.loaded_gzip = 1
 -- PACKER
 ---------------------------------------------------------------------------------------------------
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 -- automatically install packer
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -24,7 +24,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   }
 end
 
--- reload neovim when file plugins.lua is saved 
+-- reload neovim when file plugins.lua is saved
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -42,16 +42,16 @@ packer.init {
   compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer.lua',
   display = {
     open_fn = function()
-      return require("packer.util").float({border = "single"})
+      return require("packer.util").float({ border = "single" })
     end,
   },
 }
 
 packer.startup(function()
   -- Utilities
-  use {'wbthomason/packer.nvim'}
-  use {'nvim-lua/plenary.nvim'} -- useful functions
-  use {'kyazdani42/nvim-web-devicons'}
+  use { 'wbthomason/packer.nvim' }
+  use { 'nvim-lua/plenary.nvim' } -- useful functions
+  use { 'kyazdani42/nvim-web-devicons' }
 
   use {
     'windwp/nvim-autopairs',
@@ -67,32 +67,32 @@ packer.startup(function()
   }
 
   -- Colorschemes
-  use {"lunarvim/darkplus.nvim"}
+  use { "lunarvim/darkplus.nvim" }
 
   -- UI
   use {
     "goolord/alpha-nvim",
-    config = function () require("user.plugins.alpha") end,
+    config = function() require("user.plugins.alpha") end,
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function () require("user.plugins.nvim-tree") end,
+    config = function() require("user.plugins.nvim-tree") end,
   }
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function () require("user.plugins.colorizer") end,
+    config = function() require("user.plugins.colorizer") end,
   }
   use {
     'akinsho/bufferline.nvim',
-    config = function () require("user.plugins.bufferline") end,
+    config = function() require("user.plugins.bufferline") end,
   }
 
   --LSP
-  use {'neovim/nvim-lspconfig',
+  use { 'neovim/nvim-lspconfig',
     config = function() require("user.plugins.lsp") end,
     requires = {
-      {'williamboman/nvim-lsp-installer'},
-      {'jose-elias-alvarez/null-ls.nvim'},
+      { 'williamboman/nvim-lsp-installer' },
+      { 'jose-elias-alvarez/null-ls.nvim' },
     },
   }
 
@@ -100,26 +100,26 @@ packer.startup(function()
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   use "L3MON4D3/LuaSnip" --snippet engine
 
-  -- Cmp 
+  -- Cmp
   use {
     "hrsh7th/nvim-cmp", -- The completion plugin
-    config = function () require("user.plugins.cmp") end,
+    config = function() require("user.plugins.cmp") end,
     requires = {
-      {"hrsh7th/cmp-buffer"}, -- buffer completions
-      {"hrsh7th/cmp-path"},   -- path completions
-      {"hrsh7th/cmp-cmdline"}, -- cmdline completions
-      {"saadparwaiz1/cmp_luasnip"}, -- snippet completions
-      {"hrsh7th/cmp-nvim-lsp"},
-      {"hrsh7th/cmp-nvim-lua"}, -- nvim lua api
+      { "hrsh7th/cmp-buffer" }, -- buffer completions
+      { "hrsh7th/cmp-path" }, -- path completions
+      { "hrsh7th/cmp-cmdline" }, -- cmdline completions
+      { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" }, -- nvim lua api
     }
   }
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function () require("user.plugins.treesitter") end,
+    config = function() require("user.plugins.treesitter") end,
     run = ':TSUpdate',
     requires = {
-      {'JoosepAlviste/nvim-ts-context-commentstring'}
+      { 'JoosepAlviste/nvim-ts-context-commentstring' }
     }
   }
 
@@ -127,14 +127,14 @@ packer.startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     config = function() require("user.plugins.telescope") end,
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = { { 'nvim-lua/plenary.nvim' } },
   }
 
   -- Markdown/Latex
   use {
     'lervag/vimtex',
     ft = "tex",
-    config =  [[
+    config = [[
       vim.g.tex_flavor='latex'
       vim.g.vimtex_view_method='zathura'
       vim.g.vimtex_indent_on_ampersands=0
@@ -152,7 +152,7 @@ packer.startup(function()
     config = [[
       vim.g.mkdp_theme = 'dark'
     ]],
-   }
+  }
 
   -- sync configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

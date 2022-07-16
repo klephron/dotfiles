@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd( {"User", "VimtexEventInitPost"}, {
     command = "call vimtex#compiler#start()"
 })
 --]]
-vim.cmd[[
+vim.cmd [[
 augroup vimtex
     autocmd!
     au User VimtexEventInitPost call vimtex#compiler#start()

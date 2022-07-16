@@ -15,7 +15,7 @@ local servers = {
 lsp_installer.setup({
   ensure_installed = servers,
   install_root_dir = require("nvim-lsp-installer.core.path")
-                            .concat({ vim.fn.stdpath("data"), "lsp_servers" }),
+      .concat({ vim.fn.stdpath("data"), "lsp_servers" }),
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -34,4 +34,3 @@ for _, server in pairs(servers) do
   end
   lspconfig[server].setup(opts)
 end
-

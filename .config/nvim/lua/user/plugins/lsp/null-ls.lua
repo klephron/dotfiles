@@ -15,4 +15,3 @@ null_ls.setup({
   diagnostics_format = "[#{c}] #{m} (#{s})",
   sources = sources,
 })
-

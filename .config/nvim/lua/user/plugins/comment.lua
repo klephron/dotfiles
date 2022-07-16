@@ -7,22 +7,22 @@ comment.setup {
   padding = true,
   sticky = true,
   toggler = {
-      line = 'gcc',
-      block = 'gbc',
+    line = 'gcc',
+    block = 'gbc',
   },
   opleader = {
-      line = 'gc',
-      block = 'gb',
+    line = 'gc',
+    block = 'gb',
   },
   extra = {
-      above = 'gcO',
-      below = 'gco',
-      eol = 'gcA',
+    above = 'gcO',
+    below = 'gco',
+    eol = 'gcA',
   },
   mappings = {
-      basic = true,
-      extra = true,
-      extended = false,
+    basic = true,
+    extra = true,
+    extended = false,
   },
 
   pre_hook = function(ctx)

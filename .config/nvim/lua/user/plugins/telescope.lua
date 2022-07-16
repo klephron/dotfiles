@@ -19,10 +19,10 @@ local actions = require("telescope.actions")
 local themes = require('telescope.themes')
 local builtins = require('telescope.builtin')
 
-telescope.setup{
+telescope.setup {
   defaults = {
     prompt_prefix = icons.Telescope .. "",
-    path_display = {"smart"},
+    path_display = { "smart" },
     file_ignore_patterns = ignore_patterns,
     dynamic_preview_title = true,
     layout_strategy = "flex",
@@ -120,4 +120,3 @@ telescope.setup{
   extensions = {
   }
 }
-

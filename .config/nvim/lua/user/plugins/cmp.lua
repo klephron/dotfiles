@@ -72,10 +72,10 @@ cmp.setup {
     end,
   },
   mapping = {
-    ["<Tab>"] = cmp.mapping(tab, { "i", "s"}),
-    ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s"}),
+    ["<Tab>"] = cmp.mapping(tab, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s" }),
 
-		["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
 
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -89,7 +89,7 @@ cmp.setup {
       c = cmp.mapping.close(),
     },
   },
-  completion = { },
+  completion = {},
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -113,8 +113,8 @@ cmp.setup {
     { name = "path" },
   },
   window = {
-  -- completion = cmp.config.window.bordered(),
-  -- documentation = cmp.config.window.bordered(),
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
   },
   experimental = {
     ghost_text = false,
@@ -122,22 +122,22 @@ cmp.setup {
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-    completion = { autocomplete = false, },
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' }
-    }
-  })
+cmp.setup.cmdline('/', {
+  completion = { autocomplete = false, },
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    --completion = { autocomplete = true, },
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' },
-      { name = 'nvim_lua'},
-    }, {
-      { name = 'cmdline' }
-    })
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  --completion = { autocomplete = true, },
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+    { name = 'nvim_lua' },
+  }, {
+    { name = 'cmdline' }
   })
+})

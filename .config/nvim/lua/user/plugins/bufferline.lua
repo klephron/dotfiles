@@ -21,12 +21,12 @@ bufferline.setup {
     max_name_length = 25,
     max_prefix_length = 25, -- prefix used when a buffer is de-duplicated
     tab_size = 18,
-    separator_style = {"", ""},
+    separator_style = { "", "" },
 
     diagnostics = false,
     diagnostics_update_in_insert = false,
 
-    offsets = {{filetype = "NvimTree", text = "", text_align = "center", padding = 1}},
+    offsets = { { filetype = "NvimTree", text = "", text_align = "center", padding = 1 } },
 
     color_icons = true,
     show_buffer_icons = true,
@@ -40,8 +40,8 @@ bufferline.setup {
     always_show_bufferline = true,
   },
   highlights = {
-     fill = {
-       guibg = { attribute = "bg", highlight = "TabLine" },
+    fill = {
+      guibg = { attribute = "bg", highlight = "TabLine" },
     },
     tab = {
       guifg = { attribute = "fg", highlight = "TabLine" },
@@ -53,16 +53,16 @@ bufferline.setup {
       gui = "bold",
     },
     tab_close = {
-       guifg = { attribute = "fg", highlight = "TabLine" },
-       guibg = { attribute = "bg", highlight = "TabLine" },
+      guifg = { attribute = "fg", highlight = "TabLine" },
+      guibg = { attribute = "bg", highlight = "TabLine" },
     },
     separator = {
       guifg = { attribute = "bg", highlight = "TabLine" }, -- between tabs and buffers
       guibg = { attribute = "bg", highlight = "TabLine" }, -- border between tabs and buffers
     },
     separator_selected = {
-      guifg = { attribute = "bg", highlight = "TabLine" }, -- small border 
-      guibg = { attribute = "bg", highlight = "Normal" },-- close to tab
+      guifg = { attribute = "bg", highlight = "TabLine" }, -- small border
+      guibg = { attribute = "bg", highlight = "Normal" }, -- close to tab
     },
     buffer_selected = {
       guifg = { attribute = "fg", highlight = "Normal" },

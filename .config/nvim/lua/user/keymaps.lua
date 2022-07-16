@@ -1,6 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 
-local opts = { noremap = true, silent=true }
+local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 ----------------------------------------------------------------------------------------------------
@@ -64,7 +64,9 @@ keymap("n", "<m-q>", "<cmd>q<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>f",
+  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  opts)
 keymap("n", "<leader>l", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Nvim-tree
@@ -73,7 +75,7 @@ keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 -- Bufferline
 function DeleteCurrentBuffer()
   local cbn = vim.api.nvim_get_current_buf()
-  local buffers = vim.fn.getbufinfo({buflisted = true})
+  local buffers = vim.fn.getbufinfo({ buflisted = true })
   local size = 0
   local idx = 0
   for n, e in ipairs(buffers) do
@@ -92,6 +94,9 @@ function DeleteCurrentBuffer()
 end
 
 keymap("n", "<leader>d", "<cmd>lua DeleteCurrentBuffer()<cr>", opts)
+
+-- Formatting
+keymap("n", "<leader>m", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
 ----------------------------------------------------------------------------------------------------
 -- Aliases
 ----------------------------------------------------------------------------------------------------

@@ -63,11 +63,11 @@ local footer = {
 -- config
 local config = {
   layout = {
-    { type = "padding", val = 2},
+    { type = "padding", val = 2 },
     header,
-    { type = "padding", val = 2},
+    { type = "padding", val = 2 },
     buttons,
-    { type = "padding", val = 1},
+    { type = "padding", val = 1 },
     footer
   },
   opts = {
@@ -76,4 +76,3 @@ local config = {
 }
 
 alpha.setup(config)
-

@@ -40,9 +40,8 @@ nvim_tree.setup {
       list = {
         { key = "h", action = "split" },
         { key = "v", action = "vsplit" },
-        { key = {"e", "<BS>", }, action = "close_node" },
+        { key = { "e", "<BS>", }, action = "close_node" },
       },
     },
   },
 }
-
