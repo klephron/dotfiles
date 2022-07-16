@@ -37,6 +37,11 @@ if not status_ok then
   return
 end
 
+-- Load impatient
+local im_ok, impatient = as.safe_require("impatient")
+--if im_ok then impatient.enable_profile() end
+
+
 -- have packer use a popup window
 packer.init {
   compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer.lua',
@@ -52,6 +57,11 @@ packer.startup(function()
   use { 'wbthomason/packer.nvim' }
   use { 'nvim-lua/plenary.nvim' } -- useful functions
   use { 'kyazdani42/nvim-web-devicons' }
+
+  -- Load using cache
+  use {
+    "lewis6991/impatient.nvim"
+  }
 
   use {
     'windwp/nvim-autopairs',
