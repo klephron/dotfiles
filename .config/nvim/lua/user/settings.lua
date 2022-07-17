@@ -109,6 +109,12 @@ vim.opt.mousefocus = false
 -----------------------------------------------------------------------------//
 vim.opt.clipboard = "unnamedplus"
 ----------------------------------------------------------------------------//
+-- Keymaps
+-----------------------------------------------------------------------------//
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.cmd("cnoreabbrev hs split")
+----------------------------------------------------------------------------//
 -- Utilities
 -----------------------------------------------------------------------------//
 vim.opt.autowriteall = true -- automatically :write before running commands and changing files

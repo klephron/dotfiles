@@ -54,9 +54,8 @@ packer.startup({
     use { 'kyazdani42/nvim-web-devicons' }
 
     -- Load using cache
-    use {
-      "lewis6991/impatient.nvim"
-    }
+    use { "lewis6991/impatient.nvim" }
+
     use {
       'windwp/nvim-autopairs',
       config = conf("autopairs"),
@@ -72,6 +71,10 @@ packer.startup({
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = conf("indent-blankline"),
+    }
+    use {
+      'folke/which-key.nvim',
+      config = conf("which-key")
     }
 
     -- Colorschemes

@@ -27,7 +27,9 @@ return function()
       diagnostics = false,
       diagnostics_update_in_insert = false,
 
-      offsets = { { filetype = "NvimTree", text = "", text_align = "center", padding = 1 } },
+      offsets = {
+      --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
+      },
 
       color_icons = true,
       show_buffer_icons = true,
