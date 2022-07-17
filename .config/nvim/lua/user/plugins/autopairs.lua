@@ -1,6 +1,6 @@
 return function()
   -- Setup nvim-cmp.
-  local status_ok, autopairs =  us.safe_require("nvim-autopairs")
+  local status_ok, autopairs = us.safe_require("nvim-autopairs")
   if not status_ok then
     return
   end

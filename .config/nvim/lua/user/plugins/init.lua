@@ -131,7 +131,8 @@ packer.startup({
       config = conf("treesitter"),
       run = ':TSUpdate',
       requires = {
-        { 'JoosepAlviste/nvim-ts-context-commentstring' }
+        { 'JoosepAlviste/nvim-ts-context-commentstring' },
+        { 'nvim-treesitter/playground' },
       }
     }
 

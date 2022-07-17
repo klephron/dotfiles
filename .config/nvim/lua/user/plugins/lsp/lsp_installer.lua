@@ -1,4 +1,4 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, lsp_installer = us.safe_require("nvim-lsp-installer")
 if not status_ok then
   return
 end
@@ -18,7 +18,7 @@ lsp_installer.setup({
       .concat({ vim.fn.stdpath("data"), "lsp_servers" }),
 })
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+local lspconfig_status_ok, lspconfig = us.safe_require("lspconfig")
 if not lspconfig_status_ok then
   return
 end

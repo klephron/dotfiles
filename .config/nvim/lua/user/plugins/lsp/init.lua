@@ -1,5 +1,5 @@
 return function ()
-  local status_ok, _ = pcall(require, "lspconfig")
+  local status_ok, _ = us.safe_require("lspconfig")
   if not status_ok then
     return
   end
