@@ -1,5 +1,5 @@
 return function()
-  local status_ok, alpha = pcall(require, "alpha")
+  local status_ok, alpha = us.safe_require("alpha")
   if not status_ok then
     return
   end

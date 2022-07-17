@@ -1,10 +1,10 @@
 return function()
-  local cmp_status_ok, cmp = pcall(require, "cmp")
+  local cmp_status_ok, cmp = us.safe_require("cmp")
   if not cmp_status_ok then
     return
   end
 
-  local luasnip_status_ok, luasnip = pcall(require, "luasnip")
+  local luasnip_status_ok, luasnip = us.safe_require("luasnip")
   if not luasnip_status_ok then
     return
   end

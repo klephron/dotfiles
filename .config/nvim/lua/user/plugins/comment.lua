@@ -1,5 +1,5 @@
 return function()
-  local status_ok, comment = pcall(require, "Comment")
+  local status_ok, comment = us.safe_require("Comment")
   if not status_ok then
     return
   end
