@@ -9,7 +9,7 @@ done
 rm -rf $script_dir/.config 2> /dev/null
 mkdir -p $script_dir/.config
 
-for var in alacritty broot gtk-3.0 htop kdeglobals mimeapps.list nvim plasmarc qimgv qt5ct rofi zathura zsh; do
+for var in alacritty broot gtk-3.0 htop kdeglobals mimeapps.list nvim plasmarc qimgv qt5ct rofi zathura zsh fzfrc; do
   cp -r ~/.config/$var $script_dir/.config/
 done
 
