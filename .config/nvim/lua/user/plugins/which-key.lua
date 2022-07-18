@@ -116,6 +116,7 @@ return function()
       },
       l = { "<cmd>Telescope live_grep<cr>", "Telescope search pattern" },
       r = { "<cmd>Telescope oldfiles<cr>", "Telescope recent files" },
+      p = { "<cmd>Telescope projects<cr>", "Telescope projects"},
 
       e = { "<cmd>NvimTreeToggle<cr>", "Nvim-tree toggle" },
 

@@ -50,11 +50,11 @@ function lua_find_path(module)
   local fname = vim.fn.substitute(module, "\\.", sep, "g")
 
   local f
-  -- neovim modules
-  f = include_rtpaths(fname)
-  if f then return f end
   -- lua modules
   f = include_paths(fname)
+  if f then return f end
+  -- neovim modules
+  f = include_rtpaths(fname)
   if f then return f end
 end
 

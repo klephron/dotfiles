@@ -33,6 +33,7 @@ return function()
     },
     git = {
       enable = true,
+      ignore = true, -- Toggle on I
       timeout = 1000,
     },
     view = {

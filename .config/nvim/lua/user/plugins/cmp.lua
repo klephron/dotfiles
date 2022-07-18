@@ -75,6 +75,7 @@ return function()
     mapping = {
       ["<Tab>"] = cmp.mapping(tab, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s" }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -89,6 +90,7 @@ return function()
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
+
     },
     completion = {},
     formatting = {

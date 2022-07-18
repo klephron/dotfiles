@@ -26,6 +26,15 @@ return function()
       path_display = { "smart" },
       file_ignore_patterns = ignore_patterns,
       dynamic_preview_title = true,
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+      },
       layout_strategy = "flex",
       layout_config = {
         bottom_pane = {
@@ -116,6 +125,7 @@ return function()
     pickers = {
       find_files = {
         hidden = true,
+        no_ignore = true,
       }
     },
     extensions = {

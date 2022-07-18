@@ -22,7 +22,7 @@ return function()
     show_foldtext = true,
 
     filetype_exclude = {
-      'txt', 'log'
+      'txt', 'log', 'help'
     },
     buftype_exclude = {
       'terminal', 'nofile'
