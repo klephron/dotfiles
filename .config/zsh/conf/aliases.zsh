@@ -10,3 +10,6 @@ alias sysupdateall.emerge="sudo emerge -aDNuv @world"
 # Dirstack
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+# TMUX
+alias ta="tmux attach"
