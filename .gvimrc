@@ -87,7 +87,7 @@ set cursorline
 syntax enable 
 set background=dark
 colorscheme base16-nord_custom
-
+" colorscheme default
 " File types, Groups "{{{
 " -----------------------------------------------------------------------------
 filetype plugin indent on
