@@ -13,6 +13,7 @@ return function()
     open_on_setup = false,
     respect_buf_cwd = false,
     update_cwd = true,
+    sync_root_with_cwd = true,
     hijack_directories = {
       enable = true,
       auto_open = true,
@@ -35,6 +36,14 @@ return function()
       enable = true,
       ignore = true, -- Toggle on I
       timeout = 1000,
+    },
+    actions = {
+      use_system_clipboard = true,
+      change_dir = {
+        enable = true,
+        global = true,
+        restrict_above_cwd = false,
+      },
     },
     view = {
       width = 30,
