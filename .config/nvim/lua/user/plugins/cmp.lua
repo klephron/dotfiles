@@ -65,11 +65,10 @@ return function()
     end
   end
 
-
   cmp.setup {
-    enabled = function ()
-        return not us.table_contains({"TelescopePrompt"}, vim.bo.filetype)
-      end,
+    enabled = function()
+      return not us.table_contains({ "TelescopePrompt" }, vim.bo.filetype)
+    end,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -127,10 +126,11 @@ return function()
     }
   }
 
+  local cmdline_override = {}
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
     completion = { autocomplete = false, },
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline(cmdline_override),
     sources = {
       { name = 'buffer' }
     }
@@ -139,7 +139,7 @@ return function()
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     --completion = { autocomplete = true, },
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline(cmdline_override),
     sources = cmp.config.sources({
       { name = 'path' },
       { name = 'nvim_lua' },
