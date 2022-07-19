@@ -1,10 +1,10 @@
 return function()
-  local cmp_status_ok, cmp = us.safe_require("cmp")
+  local cmp_status_ok, cmp = safe_require("cmp")
   if not cmp_status_ok then
     return
   end
 
-  local luasnip_status_ok, luasnip = us.safe_require("luasnip")
+  local luasnip_status_ok, luasnip = safe_require("luasnip")
   if not luasnip_status_ok then
     return
   end
@@ -65,8 +65,11 @@ return function()
     end
   end
 
+
   cmp.setup {
-    enabled = true,
+    enabled = function ()
+        return not us.table_contains({"TelescopePrompt"}, vim.bo.filetype)
+      end,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -144,4 +147,6 @@ return function()
       { name = 'cmdline' }
     })
   })
+
+
 end

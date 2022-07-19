@@ -1,5 +1,5 @@
 return function()
-  local status_ok, telescope = us.safe_require("telescope")
+  local status_ok, telescope = safe_require("telescope")
   if not status_ok then
     return
   end

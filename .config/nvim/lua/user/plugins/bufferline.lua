@@ -1,5 +1,5 @@
 return function()
-  local status_ok, bufferline = us.safe_require("bufferline")
+  local status_ok, bufferline = safe_require("bufferline")
   if not status_ok then
     return
   end

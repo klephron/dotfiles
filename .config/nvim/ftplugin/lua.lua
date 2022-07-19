@@ -33,8 +33,8 @@ local function include_rtpaths(fname)
     local path1 = table.concat({path, ext, modfile}, sep)
     if vim.fn.filereadable(path1) == 1 then
       return path1
-    end
     -- for 'lua/*/init.lua' files
+    end
     local path2 = table.concat({path, ext, fname, initfile}, sep)
     if vim.fn.filereadable(path2) == 1 then
       return path2
@@ -49,11 +49,11 @@ function LuaFindPath(module)
   local fname = vim.fn.substitute(module, "\\.", sep, "g")
 
   local f
-  -- lua modules
-  f = include_paths(fname)
-  if f then return f end
   -- neovim modules
   f = include_rtpaths(fname)
+  if f then return f end
+  -- lua modules
+  f = include_paths(fname)
   if f then return f end
 end
 

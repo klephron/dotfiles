@@ -1,6 +1,11 @@
 local config = {
   settings = {
     Lua = {
+      runtime = {
+        special = {
+          ["safe_require"] = "require"
+        }
+      },
       diagnostics = {
       },
       completion = { keywordSnippet = 'Replace', callSnippet = 'Replace' },
@@ -9,7 +14,7 @@ local config = {
 }
 
 
-local ok, lua_dev = us.safe_require('lua-dev')
+local ok, lua_dev = safe_require('lua-dev')
 if not ok then
   return config
 end

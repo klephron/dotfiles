@@ -1,5 +1,5 @@
 return function()
-  local wk_ok, which_key = us.safe_require("which-key")
+  local wk_ok, which_key = safe_require("which-key")
   if not wk_ok then
     return
   end

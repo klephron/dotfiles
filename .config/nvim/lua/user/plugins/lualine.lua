@@ -1,5 +1,5 @@
 return function()
-  local status_ok, lualine = us.safe_require("lualine")
+  local status_ok, lualine = safe_require("lualine")
   if not status_ok then
     return
   end

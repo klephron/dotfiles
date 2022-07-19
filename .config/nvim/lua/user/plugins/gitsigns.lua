@@ -1,5 +1,5 @@
 return function()
-  local status_ok, gitsigns = us.safe_require("gitsigns")
+  local status_ok, gitsigns = safe_require("gitsigns")
   if not status_ok then
     return
   end

@@ -1,5 +1,5 @@
 return function()
-  local ib_ok, indentline = us.safe_require("indent_blankline")
+  local ib_ok, indentline = safe_require("indent_blankline")
   if not ib_ok then
     return
   end

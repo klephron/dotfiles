@@ -1,10 +1,10 @@
 return function()
-  local status_ok, nvim_tree = us.safe_require('nvim-tree')
+  local status_ok, nvim_tree = safe_require('nvim-tree')
   if not status_ok then
     return
   end
 
-  local config_status_ok, nvim_tree_config = us.safe_require("nvim-tree.config")
+  local config_status_ok, nvim_tree_config = safe_require("nvim-tree.config")
   if not config_status_ok then return
   end
 

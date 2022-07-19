@@ -1,5 +1,5 @@
 return function()
-  local status_ok, project = us.safe_require("project_nvim")
+  local status_ok, project = safe_require("project_nvim")
   if not status_ok then
     return
   end
@@ -41,7 +41,7 @@ return function()
     datapath = vim.fn.stdpath("data"),
   }
 
-  local telescope_status_ok, telescope = us.safe_require("telescope")
+  local telescope_status_ok, telescope = safe_require("telescope")
   if not telescope_status_ok then
     return
   end

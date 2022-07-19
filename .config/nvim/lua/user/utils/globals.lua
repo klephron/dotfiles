@@ -8,7 +8,7 @@ _G.us = {
 }
 
 
-function us.safe_require(module, opts)
+function _G.safe_require(module, opts)
   opts = opts or { silent = false }
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
@@ -40,4 +40,11 @@ function us.delete_current_buffer()
     vim.cmd("bnext")
   end
   vim.cmd("bdelete " .. cbn)
+end
+
+function us.table_contains(table, value)
+  for _, e in ipairs(table) do
+    if value == e then return true end
+  end
+  return false
 end

@@ -35,13 +35,13 @@ vim.cmd [[
   augroup end
 ]]
 
-local status_ok, packer = us.safe_require("packer")
+local status_ok, packer = safe_require("packer")
 if not status_ok then
   return
 end
 
 -- Load impatient
-local im_ok, impatient = us.safe_require("impatient")
+local im_ok, impatient = safe_require("impatient")
 --if im_ok then impatient.enable_profile() end
 
 -- NOTE packer cannot use local variables because upvalue

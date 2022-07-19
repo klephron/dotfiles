@@ -1,5 +1,5 @@
 return function()
-  local status_ok, configs = us.safe_require("nvim-treesitter.configs")
+  local status_ok, configs = safe_require("nvim-treesitter.configs")
   if not status_ok then
     return
   end
