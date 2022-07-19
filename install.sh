@@ -1,19 +1,15 @@
 #!/bin/bash
 
+pwd_dir=`pwd`
 script_dir=`dirname "$0"`
+config_dir=.config
 
 for var in .gvimrc .tmux.conf .vim; do
-  cp -r $HOME/$var $script_dir/
+  ln -sfn $pwd_dir/$script_dir/$var $HOME/$var
 done
 
-rm -rf $script_dir/.config 2> /dev/null
-mkdir -p $script_dir/.config
-
-for var in alacritty broot gtk-3.0 htop kdeglobals mimeapps.list nvim plasmarc qimgv qt5ct rofi zathura zsh fzfrc; do
-  cp -r ~/.config/$var $script_dir/.config/
+for var in alacritty broot gtk-3.0 htop kdeglobals mimeapps.list nvim plasmarc qimgv qt5ct rofi zathura zsh fzfrc awesome; do
+  ln -sfn $pwd_dir/$script_dir/$config_dir/$var $HOME/.config/$var
 done
-
-mkdir -p $script_dir/.config/awesome/
-cp     ~/.config/awesome/rc.lua   $script_dir/.config/awesome/
 
 echo "Installed."
