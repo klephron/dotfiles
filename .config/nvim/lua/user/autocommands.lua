@@ -41,4 +41,8 @@ vim.cmd [[
     au!
     au BufRead,BufNewFile *.inc,*.asm set filetype=nasm
   augroup end
+
+  augroup _focus
+    au BufLeave * silent! wall
+  augroup END
 ]]

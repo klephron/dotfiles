@@ -1,6 +1,5 @@
 local ext = "lua"
 
-
 local function dir_separator()
   if package.config then
     return package.config:match('^[^\n]')
@@ -44,7 +43,7 @@ local function include_rtpaths(fname)
 end
 
 -- main function
-function lua_find_path(module)
+function LuaFindPath(module)
   -- properly change '.' to separator
   local sep = dir_separator()
   local fname = vim.fn.substitute(module, "\\.", sep, "g")
@@ -58,6 +57,6 @@ function lua_find_path(module)
   if f then return f end
 end
 
-
+-- In case gd doesn't work
 vim.opt_local.include = [=[\v<((do|load)file|require)\s*\(?['"]\zs[^'"]+\ze['"]]=]
-vim.opt_local.includeexpr = "v:lua.lua_find_path(v:fname)"
+vim.opt_local.includeexpr = "v:lua.LuaFindPath(v:fname)"

@@ -108,6 +108,7 @@ packer.startup({
       requires = {
         { 'williamboman/nvim-lsp-installer' },
         { 'jose-elias-alvarez/null-ls.nvim' },
+        { 'folke/lua-dev.nvim' }
       },
     }
 
@@ -184,7 +185,7 @@ packer.startup({
   log = { level = 'info' },
   config = {
     max_jobs = 50,
-    compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer.lua',
+    compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer_compiled.lua',
     display = {
       open_fn = function()
         return require("packer.util").float({ border = "single" })

@@ -31,6 +31,8 @@ for _, server in pairs(servers) do
   local ok, custom_opts = pcall(require, "user.plugins.lsp.servers." .. server)
   if ok then
     opts = vim.tbl_deep_extend("force", opts, custom_opts)
+    -- opts = custom_opts
   end
+  -- print(us.dump_lua_table(opts))
   lspconfig[server].setup(opts)
 end
