@@ -34,6 +34,7 @@ return function()
         "--line-number",
         "--column",
         "--smart-case",
+        "--hidden",
       },
       layout_strategy = "flex",
       layout_config = {
@@ -126,7 +127,7 @@ return function()
       find_files = {
         hidden = true,
         no_ignore = true,
-      }
+      },
     },
     extensions = {
     }
