@@ -18,7 +18,7 @@ return function()
       map = '<M-e>',
       chars = { '{', '[', '(', '"', "'" },
       pattern = [=[[%'%"%)%>%]%)%}%,]]=],
-      end_key = '$',
+      end_key = 'L',
       keys = 'qwertyuiopzxcvbnmasdfghjkl',
       check_comma = true,
       highlight = 'Search',
@@ -32,22 +32,6 @@ return function()
   if not cmp_status_ok then
     return
   end
-  cmp.event:on(
-    "confirm_done",
-    cmp_autopairs.on_confirm_done({
-      filetypes = {
-        -- ["*"] = {
-        --   ["("] = {
-        --     kind = {
-        --       cmp.lsp.CompletionItemKind.Function,
-        --       cmp.lsp.CompletionItemKind.Method,
-        --     },
-        --   }
-        -- },
-        tex = false
-      }
-    })
-  )
   cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done()
