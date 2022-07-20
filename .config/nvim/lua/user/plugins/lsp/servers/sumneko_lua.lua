@@ -3,7 +3,8 @@ local config = {
     Lua = {
       runtime = {
         special = {
-          ["safe_require"] = "require"
+          ["safe_require"] = "require",
+          ["conf"] = "require"
         }
       },
       diagnostics = {
@@ -23,7 +24,7 @@ config = lua_dev.setup({
   lspconfig = config
 })
 -- register config path
-table.insert(config.settings.Lua.workspace.library, vim.fn.expand("$HOME/.config/nvim/lua"))
+-- table.insert(config.settings.Lua.workspace.library, vim.fn.expand("$HOME/.config/nvim/lua"))
 -- print(us.dump_lua_table(config))
 return config
 
