@@ -101,6 +101,10 @@ packer.startup({
       'nvim-lualine/lualine.nvim',
       config = conf("lualine"),
     }
+    use { -- cmdheight = 2 is bad
+      'rcarriga/nvim-notify',
+      config = conf("nvim-notify")
+    }
 
     --LSP
     use { 'neovim/nvim-lspconfig',
