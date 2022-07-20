@@ -290,7 +290,7 @@ local net = lain.widget.net({
   units = 1024,
   timeout = 2,
   settings = function()
-    widget:set_markup(markup.font(theme.font,
+    widget:set_markup(markup.font("Droid Sans Mono",
       markup("#7AC82E", " " .. string.format("%4.0f KB", net_now.received))
       .. " " ..
       markup("#46A8C3", " " .. string.format("%4.0f KB", net_now.sent) .. " ")))
