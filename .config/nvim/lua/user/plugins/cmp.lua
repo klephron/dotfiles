@@ -140,11 +140,24 @@ return function()
   cmp.setup.cmdline(':', {
     --completion = { autocomplete = true, },
     mapping = cmp.mapping.preset.cmdline(cmdline_override),
+    formatting = {
+      format = function(entry, vim_item)
+        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+        vim_item.menu = ({
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[LUA]",
+          path = "[Path]",
+          cmdline_history = "[Hist]",
+          cmdline = "[CMD]"
+        })[entry.source.name]
+        return vim_item
+      end,
+    },
     sources = cmp.config.sources({
       { name = 'path' },
+      { name = 'cmdline_history' },
       { name = 'nvim_lua' },
-    }, {
-      { name = 'cmdline' }
+      { name = 'cmdline' },
     })
   })
 

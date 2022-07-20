@@ -124,6 +124,7 @@ packer.startup({
         { "hrsh7th/cmp-buffer" }, -- buffer completions
         { "hrsh7th/cmp-path" }, -- path completions
         { "hrsh7th/cmp-cmdline" }, -- cmdline completions
+        { "dmitmel/cmp-cmdline-history" }, -- cmdline history
         { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-nvim-lua" }, -- nvim lua api
