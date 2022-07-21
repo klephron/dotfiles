@@ -9,7 +9,7 @@ return function()
     height = 10, -- height of the trouble list when position is top or bottom
     mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
     action_keys = { -- key mappings for actions in the trouble list
-      close = "q", -- close the list
+      close = "Q", -- close the list
       cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
       refresh = "r", -- manually refresh
       jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
@@ -41,4 +41,13 @@ return function()
     },
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
   }
+
+  -- return focus to previous window after trouble close
+  vim.cmd [[
+    augroup _trouble
+      au!
+      au FileType Trouble nnoremap <silent> <buffer> q <cmd>bp<cr><cmd>TroubleClose<cr>
+    augroup end
+  ]]
+
 end

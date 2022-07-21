@@ -15,6 +15,7 @@ vim.cmd [[
     au FileType gitcommit setlocal wrap
     au FileType gitcommit setlocal spell
   augroup end
+
   augroup _markdown
     au!
     au FileType markdown setlocal wrap
