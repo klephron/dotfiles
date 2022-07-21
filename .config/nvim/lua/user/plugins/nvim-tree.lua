@@ -4,8 +4,14 @@ return function()
     return
   end
 
-  local config_status_ok, nvim_tree_config = safe_require("nvim-tree.config")
-  if not config_status_ok then return
+  -- Custom functions
+  local dispatch = require("nvim-tree.actions.dispatch").dispatch
+
+  local function open_file_close_nvim_tree(node)
+    dispatch("open_file")
+    if not node.nodes then
+      vim.cmd("NvimTreeClose")
+    end
   end
 
   nvim_tree.setup {
@@ -45,15 +51,17 @@ return function()
         restrict_above_cwd = false,
       },
     },
+    -- log = {
+    --   enable = true,
+    --   types = { all = true, },
+    -- },
     view = {
       width = 30,
       side = "left",
       mappings = {
         list = {
-          { key = { "e", "<BS>" }, action = "close_node" },
-          { key = { "<C-v>", "v" }, action = "vsplit" },
-          { key = { "<C-x>", "h" }, action = "split" },
-          { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+          -- DEFAULT MAPPINGS
+          { key = { "<CR>", "<2-LeftMouse>" }, action = "edit" },
           { key = "<C-e>", action = "edit_in_place" },
           { key = "O", action = "edit_no_picker" },
           { key = { "<C-]>", "<2-RightMouse>" }, action = "cd" },
@@ -96,6 +104,12 @@ return function()
           { key = "g?", action = "toggle_help" },
           { key = "m", action = "toggle_mark" },
           { key = "bmv", action = "bulk_move" },
+          -- user defined
+          { key = { "e", "<BS>" }, action = "close_node" },
+          { key = { "<C-v>", "v" }, action = "vsplit" },
+          { key = { "<C-x>", "h" }, action = "split" },
+          -- custom actions
+          { key = { "o" }, action = "open_file_close_nvim_tree", action_cb = open_file_close_nvim_tree },
         },
       },
     },
