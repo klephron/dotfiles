@@ -40,11 +40,14 @@ if not status_ok then
   return
 end
 
--- Load impatient
-local im_ok, impatient = safe_require("impatient")
---if im_ok then impatient.enable_profile() end
+-- Impatient
+safe_require("impatient")
+--[[ local im_ok, impatient = safe_require("impatient")
+if im_ok then impatient.enable_profile() end ]]
 
--- NOTE packer cannot use local variables because upvalue
+-- NOTE: packer cannot use local variables because they are upvalues
+-- TODO: check if packer is loaded then don't update these plugins until
+-- restart
 packer.startup({
   function(use)
 
@@ -103,7 +106,11 @@ packer.startup({
     }
     use { -- cmdheight = 2 is bad
       'rcarriga/nvim-notify',
-      config = conf("nvim-notify")
+      config = conf("nvim-notify"),
+    }
+    use {
+      "folke/trouble.nvim",
+      config = conf("trouble"),
     }
 
     --LSP

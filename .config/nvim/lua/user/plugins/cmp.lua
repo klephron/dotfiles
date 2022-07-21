@@ -67,7 +67,7 @@ return function()
 
   cmp.setup {
     enabled = function()
-      return not us.table_contains({ "TelescopePrompt" }, vim.bo.filetype)
+      return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
     end,
     snippet = {
       expand = function(args)

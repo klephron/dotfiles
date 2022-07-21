@@ -18,8 +18,7 @@ function _G.safe_require(module, opts)
 end
 
 function us.dump_lua_table(table)
-  local _, pretty = us.safe_require("pl.pretty")
-  return pretty.dump(table)
+  return vim.inspect(table)
 end
 
 function us.delete_current_buffer()
