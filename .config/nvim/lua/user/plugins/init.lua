@@ -120,7 +120,8 @@ packer.startup({
       requires = {
         { 'williamboman/nvim-lsp-installer' },
         { 'jose-elias-alvarez/null-ls.nvim' },
-        { 'folke/lua-dev.nvim' }
+        { 'folke/lua-dev.nvim' },
+        { 'ray-x/lsp_signature.nvim'},
       },
     }
 

@@ -62,6 +62,7 @@ end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
+  require("lsp_signature").on_attach()
 end
 
 -- capabilities
