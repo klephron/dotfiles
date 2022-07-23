@@ -62,17 +62,20 @@ local function call_mapping(mode, lhs, rhs, opts)
 end
 
 local function resolve_opts(opts)
-  return type(opts) == 'string' and { desc = opts } or opts and vim.deepcopy(opts) or {}
+  return type(opts) == 'string' and { desc = opts } or opts or {}
 end
+
+local remap_opts = { silent = true, remap = true }
+local nomap_opts = { silent = true }
 
 us.set_keyremap = function(mode, lhs, rhs, opts)
   opts = resolve_opts(opts)
-  opts.remap = true
+  opts = vim.tbl_extend('keep', opts, remap_opts)
   call_mapping(mode, lhs, rhs, opts)
 end
 
 us.set_keynomap = function(mode, lhs, rhs, opts)
   opts = resolve_opts(opts)
-  opts.remap = false
+  opts = vim.tbl_extend('keep', opts, nomap_opts)
   call_mapping(mode, lhs, rhs, opts)
 end

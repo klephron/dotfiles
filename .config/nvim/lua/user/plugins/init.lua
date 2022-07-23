@@ -69,7 +69,9 @@ packer.startup({
     use { "lewis6991/impatient.nvim" }
 
     use {
+      -- FIX: sometimes works incorrectly
       'windwp/nvim-autopairs',
+      -- disable = true,
       config = conf("autopairs"),
     }
     use {
@@ -83,6 +85,13 @@ packer.startup({
     use {
       'phaazon/hop.nvim',
       config = conf("hop")
+    }
+    use {
+      'mfussenegger/nvim-treehopper',
+      config = function()
+        us.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
+        us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
+      end
     }
 
     -- Highlighting/colorschemes

@@ -35,7 +35,7 @@ return function()
   us.set_keynomap("xno", 'T', function ()
     hop.hint_char1({
       direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-      hint_offset = -1,
+      hint_offset = 1,
       current_line_only = true,
     })
   end)
