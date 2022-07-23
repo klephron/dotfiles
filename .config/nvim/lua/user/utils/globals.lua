@@ -47,3 +47,32 @@ function us.table_contains(table, value)
   end
   return false
 end
+
+-- MAPPINGS
+local function call_mapping(mode, lhs, rhs, opts)
+  if type(mode) == "table" then
+    for _, v in pairs(mode) do
+      vim.keymap.set(v, lhs, rhs, opts)
+    end
+  else
+    for i = 1, #mode do
+      vim.keymap.set(mode:sub(i, i), lhs, rhs, opts)
+    end
+  end
+end
+
+local function resolve_opts(opts)
+  return type(opts) == 'string' and { desc = opts } or opts and vim.deepcopy(opts) or {}
+end
+
+us.set_keyremap = function(mode, lhs, rhs, opts)
+  opts = resolve_opts(opts)
+  opts.remap = true
+  call_mapping(mode, lhs, rhs, opts)
+end
+
+us.set_keynomap = function(mode, lhs, rhs, opts)
+  opts = resolve_opts(opts)
+  opts.remap = false
+  call_mapping(mode, lhs, rhs, opts)
+end

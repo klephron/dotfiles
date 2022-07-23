@@ -16,15 +16,6 @@ return function()
       PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
       NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     },
-    -- TODO: dfkfakfsajfasf
-    -- HACK: dfkakfjkasjfsdajfjsaf
-    -- WARN: sdfjkasfjksafsakfsaj
-    -- PERF: dksajfsajfjsafjsa
-    -- NOTE: kdjsafjasjfasjf
-    -- FIX: ksdfjksajfasjfasf
-    --
-    -- NOTE: jfsdjfjafjajf
-    --
     merge_keywords = true, -- when true, custom keywords will be merged with the defaults
     -- highlighting of the line containing the todo comment
     -- * before: highlights before the keyword (typically comment characters)

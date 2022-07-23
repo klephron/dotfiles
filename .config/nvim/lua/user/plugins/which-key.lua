@@ -74,9 +74,11 @@ return function()
 
   -- Modes
   --   normal_mode = "n",
-  --   insert_mode = "i",
+  --   visual_and_select = "v",
+  --   select_mode = "s",
   --   visual_mode = "v",
-  --   visual_block_mode = "x",
+  --   operator-pending_mode = "o",
+  --   insert_mode = "i",
   --   term_mode = "t",
   --   command_mode = "c",
 
@@ -138,9 +140,8 @@ return function()
 
     ["p"] = { '"_dP', "Paste from buffer" },
 
-    ["<A-j>"] = { ":m .+1<cr>", "Swap selected with bottom" },
-    ["<A-k>"] = { ":m .-2<cr>", "Swap selected with top" },
-
+    -- ["<A-j>"] = { ":m .+1<cr>", "Swap selected with bottom" },
+    -- ["<A-k>"] = { ":m .-2<cr>", "Swap selected with top" },
   }, { mode = "v" })
   ---------------------------------------------------------------------------//
   -- VISUAL LINE

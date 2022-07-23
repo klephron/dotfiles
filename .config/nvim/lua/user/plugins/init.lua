@@ -50,12 +50,12 @@ if im_ok then impatient.enable_profile() end ]]
 -- restart
 packer.startup({
   function(use)
-    -- remove when https://github.com/neovim/neovim/issues/12587 will be resolved
+    -- NOTE: remove when https://github.com/neovim/neovim/issues/12587 will be resolved
     use {
       'antoinemadec/FixCursorHold.nvim',
       config = function()
         vim.cmd [[
-          let g:cursorhold_updatetime = 100
+          " let g:cursorhold_updatetime = 100
         ]]
       end
     }
@@ -64,8 +64,8 @@ packer.startup({
     use { 'wbthomason/packer.nvim' }
     use { 'nvim-lua/plenary.nvim' } -- useful functions
     use { 'kyazdani42/nvim-web-devicons' }
+    use { 'milisims/nvim-luaref' }
 
-    -- Load using cache
     use { "lewis6991/impatient.nvim" }
 
     use {
@@ -80,13 +80,20 @@ packer.startup({
       'folke/which-key.nvim',
       config = conf("which-key")
     }
-    use { 'milisims/nvim-luaref' }
+    use {
+      'phaazon/hop.nvim',
+      config = conf("hop")
+    }
 
-    -- Colorschemes
+    -- Highlighting/colorschemes
     use { "lunarvim/darkplus.nvim" }
     use {
       "folke/todo-comments.nvim",
       config = conf("todo-comments")
+    }
+    use {
+      'norcalli/nvim-colorizer.lua',
+      config = conf("colorizer"),
     }
 
     -- UI
@@ -97,10 +104,6 @@ packer.startup({
     use {
       'kyazdani42/nvim-tree.lua',
       config = conf("nvim-tree"),
-    }
-    use {
-      'norcalli/nvim-colorizer.lua',
-      config = conf("colorizer"),
     }
     use {
       'akinsho/bufferline.nvim',

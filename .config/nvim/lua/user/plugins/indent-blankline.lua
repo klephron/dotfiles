@@ -5,11 +5,10 @@ return function()
     enabled = true,
     use_treesitter = false,
 
-    char = '|', -- ┆ ┊ 
-    char_highlight_list = {},
-
-    char_blankline = '|',
+    char = '│', -- ┆ ┊ 
+    char_blankline = '│',
     space_char_blankline = ' ',
+    char_highlight_list = {},
     space_char_highlight_list = {},
     space_char_blankline_highlight_list = {},
 
@@ -27,8 +26,8 @@ return function()
       'terminal', 'nofile'
     },
 
-    context_char = '|',
-    context_char_blankline = '|',
+    context_char = '┃',
+    context_char_blankline = '┃',
     show_current_context = true,
     show_current_context_start = false,
     show_current_context_start_on_current_line = false,
