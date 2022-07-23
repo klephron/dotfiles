@@ -29,9 +29,9 @@ return function()
       'terminal', 'nofile'
     },
 
-    context_char = '┃',
-    context_char_blankline = '┃',
-    show_current_context = false,
+    context_char = '|',
+    context_char_blankline = '|',
+    show_current_context = true,
     show_current_context_start = false,
     show_current_context_start_on_current_line = false,
 

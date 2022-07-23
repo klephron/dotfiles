@@ -68,17 +68,10 @@ packer.startup({
       config = conf("comment"),
     }
     use {
-      'lewis6991/gitsigns.nvim',
-      config = conf("gitsigns"),
-    }
-    use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = conf("indent-blankline"),
-    }
-    use {
       'folke/which-key.nvim',
       config = conf("which-key")
     }
+    use { 'milisims/nvim-luaref' }
 
     -- Colorschemes
     use { "lunarvim/darkplus.nvim" }
@@ -111,6 +104,14 @@ packer.startup({
     use {
       "folke/trouble.nvim",
       config = conf("trouble"),
+    }
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = conf("gitsigns"),
+    }
+    use {
+      'lukas-reineke/indent-blankline.nvim',
+      config = conf("indent-blankline"),
     }
 
     --LSP
@@ -164,7 +165,19 @@ packer.startup({
       },
     }
 
-    -- Markdown/Latex
+    -- Task management, notes
+    use {
+      'nvim-neorg/neorg',
+      -- ft = "norg",
+      config = conf("neorg"),
+    }
+
+    use {
+      'lukas-reineke/headlines.nvim',
+      config = conf("headlines"),
+    }
+
+
     use {
       'lervag/vimtex',
       ft = "tex",
