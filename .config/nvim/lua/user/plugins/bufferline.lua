@@ -1,8 +1,5 @@
 return function()
-  local status_ok, bufferline = safe_require("bufferline")
-  if not status_ok then
-    return
-  end
+  local bufferline = require("bufferline")
 
   bufferline.setup {
     options = {

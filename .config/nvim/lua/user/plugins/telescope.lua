@@ -1,10 +1,9 @@
 return function()
-  local status_ok, telescope = safe_require("telescope")
-  if not status_ok then
-    return
-  end
-
+  local telescope = require("telescope")
   local icons = require("user.icons")
+  local actions = require("telescope.actions")
+  local themes = require('telescope.themes')
+  local builtins = require('telescope.builtin')
 
   local ignore_patterns = {
     '%.jpg',
@@ -15,10 +14,6 @@ return function()
     '.git/',
     '.idea/',
   }
-
-  local actions = require("telescope.actions")
-  local themes = require('telescope.themes')
-  local builtins = require('telescope.builtin')
 
   telescope.setup {
     defaults = {

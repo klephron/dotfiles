@@ -1,8 +1,5 @@
 return function()
-  local trouble_ok, trouble = safe_require("trouble")
-  if not trouble_ok then
-    return
-  end
+  local trouble = require("trouble")
 
   trouble.setup {
     position = "bottom", -- position of the list can be: bottom, top, left, right

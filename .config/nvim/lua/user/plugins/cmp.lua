@@ -1,8 +1,5 @@
 return function()
-  local cmp_status_ok, cmp = safe_require("cmp")
-  if not cmp_status_ok then
-    return
-  end
+  local cmp = require("cmp")
 
   local luasnip_status_ok, luasnip = safe_require("luasnip")
   if not luasnip_status_ok then

@@ -1,8 +1,5 @@
 return function()
-  local status_ok, project = safe_require("project_nvim")
-  if not status_ok then
-    return
-  end
+  local project = require("project_nvim")
 
   project.setup {
     -- Manual mode doesn't automatically change your root directory, so you have

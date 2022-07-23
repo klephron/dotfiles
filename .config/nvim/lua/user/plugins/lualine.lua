@@ -1,9 +1,6 @@
 return function()
-  local status_ok, lualine = safe_require("lualine")
-  if not status_ok then
-    return
-  end
-
+  local lualine = require("lualine")
+  
   local fn = vim.fn
 
   local function color(val)

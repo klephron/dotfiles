@@ -1,8 +1,5 @@
 return function()
-  local status_ok, comment = safe_require("Comment")
-  if not status_ok then
-    return
-  end
+  local comment = require("Comment")
 
   comment.setup {
     padding = true,

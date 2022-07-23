@@ -1,12 +1,8 @@
 return function()
-  local status_ok, nvim_tree = safe_require('nvim-tree')
-  if not status_ok then
-    return
-  end
-
-  -- Custom functions
+  local nvim_tree = require('nvim-tree')
   local dispatch = require("nvim-tree.actions.dispatch").dispatch
 
+  -- Custom functions
   local function open_file_close_nvim_tree(node)
     dispatch("open_file")
     if not node.nodes then

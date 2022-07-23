@@ -1,8 +1,5 @@
 return function()
-  local notify_ok, notify = safe_require('notify')
-  if not notify_ok then
-    return
-  end
+  local notify = require('notify')
   local renderer = require('notify.render')
 
   notify.setup {

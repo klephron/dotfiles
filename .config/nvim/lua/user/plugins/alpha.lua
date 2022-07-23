@@ -1,9 +1,5 @@
 return function()
-  local status_ok, alpha = safe_require("alpha")
-  if not status_ok then
-    return
-  end
-
+  local alpha = require("alpha")
   -- imports
   local theme = require("alpha.themes.dashboard")
   local icons = require("user.icons").alpha

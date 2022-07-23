@@ -1,8 +1,5 @@
 return function()
-  local wk_ok, which_key = safe_require("which-key")
-  if not wk_ok then
-    return
-  end
+  local which_key = require("which-key")
   -- https://github.com/folke/which-key.nvim
   which_key.setup({
     plugins = {

@@ -1,8 +1,5 @@
 return function()
-  local status_ok, gitsigns = safe_require("gitsigns")
-  if not status_ok then
-    return
-  end
+  local gitsigns = require("gitsigns")
 
   gitsigns.setup {
     signs = {

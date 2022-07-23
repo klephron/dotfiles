@@ -1,9 +1,6 @@
 return function()
   -- Setup nvim-cmp.
-  local status_ok, autopairs = safe_require("nvim-autopairs")
-  if not status_ok then
-    return
-  end
+  local autopairs = require("nvim-autopairs")
 
   autopairs.setup {
     disable_in_visualblock = true,

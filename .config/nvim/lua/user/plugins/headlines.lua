@@ -1,8 +1,5 @@
 return function()
-  local headlines_ok, headlines = safe_require("headlines")
-  if not headlines_ok then
-    return
-  end
+  local headlines = require("headlines")
 
   headlines.setup {}
 end

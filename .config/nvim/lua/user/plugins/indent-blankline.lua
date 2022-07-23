@@ -1,8 +1,6 @@
 return function()
-  local ib_ok, indentline = safe_require("indent_blankline")
-  if not ib_ok then
-    return
-  end
+  local indentline = require("indent_blankline")
+
   indentline.setup {
     enabled = true,
     use_treesitter = false,

@@ -50,6 +50,15 @@ if im_ok then impatient.enable_profile() end ]]
 -- restart
 packer.startup({
   function(use)
+    -- remove when https://github.com/neovim/neovim/issues/12587 will be resolved
+    use {
+      'antoinemadec/FixCursorHold.nvim',
+      config = function()
+        vim.cmd [[
+          let g:cursorhold_updatetime = 100
+        ]]
+      end
+    }
 
     -- Utilities
     use { 'wbthomason/packer.nvim' }
@@ -75,6 +84,10 @@ packer.startup({
 
     -- Colorschemes
     use { "lunarvim/darkplus.nvim" }
+    use {
+      "folke/todo-comments.nvim",
+      config = conf("todo-comments")
+    }
 
     -- UI
     use {
@@ -121,7 +134,7 @@ packer.startup({
         { 'williamboman/nvim-lsp-installer' },
         { 'jose-elias-alvarez/null-ls.nvim' },
         { 'folke/lua-dev.nvim' },
-        { 'ray-x/lsp_signature.nvim'},
+        { 'ray-x/lsp_signature.nvim' },
       },
     }
 
