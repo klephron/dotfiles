@@ -104,6 +104,13 @@ packer.startup({
       'norcalli/nvim-colorizer.lua',
       config = conf("colorizer"),
     }
+    use {
+      'itchyny/vim-highlighturl',
+      disable = true,
+      config = function ()
+        -- vim.g.highlighturl_guifg = "#4d93ff"
+      end
+    }
 
     -- UI
     use {
@@ -137,6 +144,16 @@ packer.startup({
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = conf("indent-blankline"),
+    }
+    use {
+      'j-hui/fidget.nvim',
+      config = function ()
+        require("fidget").setup {
+          text = {
+            spinner = "dots",
+          }
+        }
+      end,
     }
 
     --LSP
