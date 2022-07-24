@@ -50,6 +50,7 @@ if im_ok then impatient.enable_profile() end ]]
 -- restart
 packer.startup({
   function(use)
+
     -- NOTE: remove when https://github.com/neovim/neovim/issues/12587 will be resolved
     use {
       'antoinemadec/FixCursorHold.nvim',
@@ -66,8 +67,10 @@ packer.startup({
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'milisims/nvim-luaref' }
 
+    -- Caching
     use { "lewis6991/impatient.nvim" }
 
+    -- Editing
     use {
       -- FIX: sometimes works incorrectly
       'windwp/nvim-autopairs',
@@ -143,14 +146,9 @@ packer.startup({
     }
     use {
       'j-hui/fidget.nvim',
-      config = function()
-        require("fidget").setup {
-          text = {
-            spinner = "dots",
-          }
-        }
-      end,
+      config = conf("fidget"),
     }
+
     -- Git
     use {
       'lewis6991/gitsigns.nvim',
@@ -192,6 +190,7 @@ packer.startup({
         { "hrsh7th/cmp-nvim-lua" }, -- nvim lua api
       }
     }
+
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
@@ -217,17 +216,22 @@ packer.startup({
 
     -- Task management, notes
     use {
+      'lukas-reineke/headlines.nvim',
+      config = conf("headlines"),
+    }
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      cmd = "MarkdownPreview",
+      config = [[
+        vim.g.mkdp_theme = 'dark'
+      ]],
+    }
+    use {
       'nvim-neorg/neorg',
       -- ft = "norg",
       config = conf("neorg"),
     }
-
-    use {
-      'lukas-reineke/headlines.nvim',
-      config = conf("headlines"),
-    }
-
-
     use {
       'lervag/vimtex',
       ft = "tex",
@@ -241,14 +245,6 @@ packer.startup({
         }
         vim.cmd("hi clear Conceal")
       ]]
-    }
-    use {
-      "iamcco/markdown-preview.nvim",
-      run = "cd app && npm install",
-      cmd = "MarkdownPreview",
-      config = [[
-        vim.g.mkdp_theme = 'dark'
-      ]],
     }
 
     -- sync configuration after cloning packer.nvim
@@ -275,3 +271,5 @@ packer.startup({
     },
   }
 })
+
+
