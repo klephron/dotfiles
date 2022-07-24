@@ -107,7 +107,7 @@ packer.startup({
     use {
       'itchyny/vim-highlighturl',
       disable = true,
-      config = function ()
+      config = function()
         -- vim.g.highlighturl_guifg = "#4d93ff"
       end
     }
@@ -138,22 +138,29 @@ packer.startup({
       config = conf("trouble"),
     }
     use {
-      'lewis6991/gitsigns.nvim',
-      config = conf("gitsigns"),
-    }
-    use {
       'lukas-reineke/indent-blankline.nvim',
       config = conf("indent-blankline"),
     }
     use {
       'j-hui/fidget.nvim',
-      config = function ()
+      config = function()
         require("fidget").setup {
           text = {
             spinner = "dots",
           }
         }
       end,
+    }
+    -- Git
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = conf("gitsigns"),
+    }
+    use { --WARN: not configured
+      'sindrets/diffview.nvim',
+      -- module = 
+      cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+      config = conf("diffview")
     }
 
     --LSP
