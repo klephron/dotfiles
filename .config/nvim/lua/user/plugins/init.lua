@@ -1,6 +1,7 @@
 local utils = require("user.utils.plugins")
 local fn = vim.fn
 local conf = utils.conf
+local fmt = string.format
 
 -- Stop loading built in plugins
 vim.g.loaded_netrwPlugin = 1
@@ -13,41 +14,19 @@ vim.g.loaded_gzip = 1
 ---------------------------------------------------------------------------------------------------
 -- PACKER
 ---------------------------------------------------------------------------------------------------
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_path = fmt('%s/site/pack/packer/opt/packer.nvim', fn.stdpath('data'))
+local packer_compiled_path = fmt('%s/packer/packer_compiled.lua', fn.stdpath('cache'))
 
--- automatically install packer
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path
-  }
-end
-
--- reload neovim when file plugins.lua is saved
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost */user/plugins/*.lua source <afile> | PackerCompile
-  augroup end
-]]
-
-local status_ok, packer = safe_require("packer")
-if not status_ok then
-  return
-end
+local packer_bootstrap = utils.packer_bootstrap(install_path)
 
 -- Impatient
 safe_require("impatient")
 --[[ local im_ok, impatient = safe_require("impatient")
 if im_ok then impatient.enable_profile() end ]]
 
+local packer = require("packer")
+
 -- NOTE: packer cannot use local variables because they are upvalues
--- TODO: check if packer is loaded then don't update these plugins until
--- restart
 packer.startup({
   function(use)
 
@@ -62,13 +41,13 @@ packer.startup({
     }
 
     -- Utilities
-    use { 'wbthomason/packer.nvim' }
+    use { 'wbthomason/packer.nvim' , opt = true }
     use { 'nvim-lua/plenary.nvim' } -- useful functions
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'milisims/nvim-luaref' }
 
     -- Caching
-    use { "lewis6991/impatient.nvim" }
+    use { "lewis6991/impatient.nvim"}
 
     -- Editing
     use {
@@ -222,7 +201,7 @@ packer.startup({
     use {
       "iamcco/markdown-preview.nvim",
       run = "cd app && npm install",
-      cmd = "MarkdownPreview",
+      ft = "markdown",
       config = [[
         vim.g.mkdp_theme = 'dark'
       ]],
@@ -246,17 +225,11 @@ packer.startup({
         vim.cmd("hi clear Conceal")
       ]]
     }
-
-    -- sync configuration after cloning packer.nvim
-    if PACKER_BOOTSTRAP then
-      packer.sync()
-    end
-
   end,
   log = { level = 'info' },
   config = {
     max_jobs = 50,
-    compile_path = vim.fn.stdpath('data') .. '/site/pack/loader/start/packer.nvim/plugin/packer_compiled.lua',
+    compile_path = packer_compiled_path,
     display = {
       open_fn = function()
         return require("packer.util").float({ border = "single" })
@@ -272,4 +245,23 @@ packer.startup({
   }
 })
 
+-- Automatically set up your configuration after cloning packer.nvim
+if packer_bootstrap then
+  packer.sync()
+end
 
+
+-- TODO: add plugins in black list if they can't be reloaded after config change (ex. nvim-notify)
+
+if not vim.g.packer_compiled_loaded and vim.loop.fs_stat(packer_compiled_path) then
+  vim.cmd(fmt('source %s', packer_compiled_path))
+  vim.g.packer_compiled_loaded = true
+end
+
+-- reload neovim when file plugins.lua is saved
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost */user/plugins/*.lua source <afile> | PackerCompile
+  augroup end
+]]

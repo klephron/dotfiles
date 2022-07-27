@@ -27,11 +27,11 @@ return function()
     exclude_dirs = {},
 
     -- Show hidden files in telescope
-    show_hidden = true,
+    show_hidden = false,
 
     -- When set to false, you will get a message when project.nvim changes your
     -- directory.
-    silent_chdir = true,
+    silent_chdir = false,
 
     -- Path where project.nvim will store the project history for use in
     -- telescope
