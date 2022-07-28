@@ -49,6 +49,8 @@ set shortmess+=c
 set showcmd
 set wildmenu "graphical auto complete menu
 
+set guicursor=n-v-c-sm:block,i-ci-ve:ver20,r-cr-o:hor20
+set guicursor+=a:blinkon0
 "}}}
 
 

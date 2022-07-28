@@ -145,7 +145,7 @@ return function()
           nvim_lua = "[LUA]",
           path = "[Path]",
           cmdline_history = "[Hist]",
-          cmdline = "[CMD]"
+          cmdline = "[CMD]",
         })[entry.source.name]
         return vim_item
       end,

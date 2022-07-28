@@ -39,11 +39,11 @@ return function()
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
   }
 
-  -- return focus to previous window after trouble close
+  -- return focus to alternate buffer
   vim.cmd [[
     augroup _trouble
       au!
-      au FileType Trouble nnoremap <silent> <buffer> q <cmd>bp<cr><cmd>TroubleClose<cr>
+      au FileType Trouble nnoremap <silent> <buffer> q <cmd>b #<cr><cmd>TroubleClose<cr>
     augroup end
   ]]
 

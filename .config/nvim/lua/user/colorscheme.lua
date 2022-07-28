@@ -11,3 +11,6 @@ end
 -- additional options for colorscheme
 vim.cmd("hi clear TSComment")
 vim.cmd("hi link TSComment Comment")
+
+vim.cmd("hi clear Cursor")
+vim.cmd("hi Cursor guibg=#cccccc")
