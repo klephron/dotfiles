@@ -13,16 +13,13 @@ return function()
 
     fast_wrap = {
       map = '<M-e>',
-      chars = { '{', '[', '(', '"', "'" },
-      pattern = [=[[%'%"%)%>%]%)%}%,]]=],
       end_key = 'L',
-      keys = 'qwertyuiopzxcvbnmasdfghjkl',
-      check_comma = true,
-      highlight = 'Search',
-      highlight_grey = 'Comment'
+      highlight = 'HopNextKey',
     },
 
   }
+
+  local handlers = require('nvim-autopairs.completion.handlers')
 
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local cmp_status_ok, cmp = safe_require("cmp")
@@ -31,6 +28,21 @@ return function()
   end
   cmp.event:on(
     'confirm_done',
-    cmp_autopairs.on_confirm_done()
+    cmp_autopairs.on_confirm_done({
+      -- ["*"] = {
+      --   ["("] = {
+      --     kind = {
+      --       cmp.lsp.CompletionItemKind.Function,
+      --       cmp.lsp.CompletionItemKind.Method,
+      --       cmp.lsp.CompletionItemKind.File,
+      --     },
+      --     -- NOTE: Inpect with print(vim.inspect{char, item, bufnr, commit_character})
+      --     handler = function (char, item, bufnr, commit_character)
+      --       print(vim.inspect{char, item, bufnr, commit_character})
+      --     end,
+      --     -- handler = handlers["*"]
+      --   }
+      -- },
+    })
   )
 end
