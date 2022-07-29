@@ -28,7 +28,7 @@ return function()
 
     context_char = '┃',
     context_char_blankline = '┃',
-    show_current_context = true,
+    show_current_context = false,
     show_current_context_start = false,
     show_current_context_start_on_current_line = false,
 

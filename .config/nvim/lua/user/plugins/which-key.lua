@@ -158,7 +158,7 @@ return function()
   end
 
   which_key.register({
-    ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
     ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
+    ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
   }, { mode = "t" })
 end

@@ -53,7 +53,7 @@ packer.startup({
     use {
       -- FIX: sometimes works incorrectly
       'windwp/nvim-autopairs',
-      -- disable = true,
+      disable = true,
       config = conf("autopairs"),
     }
     use {
@@ -126,6 +126,10 @@ packer.startup({
     use {
       'j-hui/fidget.nvim',
       config = conf("fidget"),
+    }
+    use {
+      "akinsho/toggleterm.nvim",
+      config = conf("toggleterm"),
     }
 
     -- Git
