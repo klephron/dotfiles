@@ -51,9 +51,8 @@ packer.startup({
 
     -- Editing
     use {
-      -- FIX: sometimes works incorrectly
       'windwp/nvim-autopairs',
-      disable = true,
+      disable = false,
       config = conf("autopairs"),
     }
     use {
