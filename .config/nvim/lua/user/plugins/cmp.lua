@@ -62,6 +62,14 @@ return function()
     end
   end
 
+  local function toggle_complete()
+    if not cmp.visible() then
+      cmp.complete()
+    else
+      cmp.abort()
+    end
+  end
+
   cmp.setup {
     enabled = function()
       return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
@@ -83,7 +91,7 @@ return function()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 
       ["<M-Space>"] = cmp.mapping.confirm { select = true },
-      ["<C-l>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-l>"] = cmp.mapping(toggle_complete, { "i", "c" }),
 
       ["<C-q>"] = cmp.mapping {
         i = cmp.mapping.abort(),
