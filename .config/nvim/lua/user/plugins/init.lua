@@ -1,6 +1,7 @@
 local utils = require("user.utils.plugins")
-local fn = vim.fn
 local conf = utils.conf
+local block_reload = utils.block_reload
+local fn = vim.fn
 local fmt = string.format
 
 -- Stop loading built in plugins
@@ -79,7 +80,7 @@ packer.startup({
     use { "lunarvim/darkplus.nvim" }
     use {
       "folke/todo-comments.nvim",
-      config = conf("todo-comments")
+      config = block_reload(conf("todo-comments"))
     }
     use {
       'norcalli/nvim-colorizer.lua',
