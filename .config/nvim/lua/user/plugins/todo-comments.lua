@@ -1,4 +1,11 @@
 return function()
+  -- NOTE: remove when https://github.com/folke/todo-comments.nvim/pull/104 is merged
+  local hl = require("todo-comments.highlight")
+  local highlight_win = hl.highlight_win
+  hl.highlight_win = function(win, force)
+    pcall(highlight_win, win, force)
+  end
+
   local todo = require("todo-comments")
 
   todo.setup {

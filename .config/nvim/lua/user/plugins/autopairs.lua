@@ -29,20 +29,19 @@ return function()
   cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done({
-      -- ["*"] = {
-      --   ["("] = {
-      --     kind = {
-      --       cmp.lsp.CompletionItemKind.Function,
-      --       cmp.lsp.CompletionItemKind.Method,
-      --       cmp.lsp.CompletionItemKind.File,
-      --     },
-      --     -- NOTE: Inpect with print(vim.inspect{char, item, bufnr, commit_character})
-      --     handler = function (char, item, bufnr, commit_character)
-      --       print(vim.inspect{char, item, bufnr, commit_character})
-      --     end,
-      --     -- handler = handlers["*"]
-      --   }
-      -- },
+      ["*"] = {
+        ['('] = {
+          kind = {
+            cmp.lsp.CompletionItemKind.Function,
+            cmp.lsp.CompletionItemKind.Method,
+          },
+          -- NOTE: Inpect with print(vim.inspect{char, item, bufnr, commit_character})
+          handler = function (char, item, bufnr, commit_character)
+            vim.notify(vim.inspect{char, item, bufnr, commit_character})
+          end,
+          -- handler = handlers["*"]
+        }
+      },
     })
   )
 end

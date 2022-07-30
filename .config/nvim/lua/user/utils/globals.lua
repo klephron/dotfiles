@@ -12,7 +12,7 @@ function _G.safe_require(module, opts)
   opts = opts or { silent = false }
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
-    vim.notify(result, vim.logresult, vim.log.levels.ERROR, { title = fmt('Error requiring: %s', module) })
+    vim.notify(result, vim.log.levels.ERROR, { title = fmt('Error requiring: %s', module) })
   end
   return ok, result
 end
@@ -50,14 +50,14 @@ end
 
 -- MAPPINGS
 local function call_mapping(mode, lhs, rhs, opts)
-  if type(mode) == "table" then
-    for _, v in pairs(mode) do
-      vim.keymap.set(v, lhs, rhs, opts)
-    end
-  else
+  if type(mode) == "string" then
     for i = 1, #mode do
       vim.keymap.set(mode:sub(i, i), lhs, rhs, opts)
     end
+  elseif type(mode) == "table" then
+    vim.keymap.set(mode, lhs, rhs, opts)
+  else
+    vim.notify(vim.inspect(mode), vim.log.levels.ERROR, { title = 'Error setting keymap' })
   end
 end
 

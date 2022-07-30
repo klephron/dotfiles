@@ -1,6 +1,6 @@
 -- TERMINAL BUFFER LOCAL
 function _G._set_terminal_keymaps()
-  local opts = {buffer = 0}
+  local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
@@ -21,6 +21,8 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   term_mode = "t",
 --   command_mode = "c",
 
+us.set_keynomap({"n", "i"}, "<A-s>", "<cmd>write<cr>", "buffer: Save")
+
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
 ---------------------------------------------------------------------------//
@@ -31,49 +33,69 @@ if which_key_ok then
   ---------------------------------------------------------------------------//
   which_key.register({
     -- configure later
-    ["<C-s>"] = { "<cmd>write<cr>", "Save File" },
+    ["<C-k>"] = { "<c-w>k", "window: Move up" },
+    ["<C-l>"] = { "<c-w>l", "window: Move right" },
+    ["<C-j>"] = { "<c-w>j", "window: Move down" },
+    ["<C-h>"] = { "<c-w>h", "window: Move left" },
 
-    ["<C-k>"] = { "<c-w>k", "Move to Up window" },
-    ["<C-l>"] = { "<c-w>l", "Move to Right window" },
-    ["<C-j>"] = { "<c-w>j", "Move to Down window" },
-    ["<C-h>"] = { "<c-w>h", "Move to Left window" },
+    ["<C-Up>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
+    ["<C-Down>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
+    ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
+    ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
 
-    ["<C-Up>"] = { "<cmd>resize +1<cr>", "Increase window length" },
-    ["<C-Down>"] = { "<cmd>resize -1<cr>", "Decrease window length" },
-    ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "Increase window width" },
-    ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "Decrease window width" },
+    ["<S-l>"] = { "<cmd>bnext<cr>", "buffer: Move next" },
+    ["<S-h>"] = { "<cmd>bprevious<cr>", "buffer: Move previous" },
 
-    ["<S-l>"] = { "<cmd>bnext<cr>", "Move buffer next" },
-    ["<S-h>"] = { "<cmd>bprevious<cr>", "Move buffer previous" },
+    ["<esc><esc>"] = { "<cmd>nohlsearch<cr>", "hl: Clear search hl" },
 
-    ["<esc><esc>"] = { "<cmd>nohlsearch<cr>", "Clear search highlight" },
+    ["<M-q>"] = { "<cmd>q<cr>", "window: Close" },
 
-    ["<M-q>"] = { "<cmd>q<cr>", "Exit" },
-
-    ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>", "Open in system browser" },
+    ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>", "goto: Open link in system browser" },
 
     ["<leader>"] = {
       f = {
         "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-        "Telescope find_files"
+        "telescope: Find files"
       },
-      l = { "<cmd>Telescope live_grep<cr>", "Telescope search pattern" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Telescope recent files" },
-      p = { "<cmd>Telescope projects<cr>", "Telescope projects"},
+      l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
+      r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+      p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
 
-      e = { "<cmd>NvimTreeToggle<cr>", "Nvim-tree toggle" },
+      e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
 
-      d = { "<cmd>lua us.delete_current_buffer()<cr>", "Delete current buffer"},
+      d = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
 
-      m = { "<cmd>write<cr><cmd>lua vim.lsp.buf.formatting()<cr>", "Format current buffer"},
+      m = { "<cmd>write<cr><cmd>lua vim.lsp.buf.formatting()<cr>", "lsp: Format current buffer" },
+
+      ["'"] = { "<cmd>marks<cr>", "mark: Show" },
+      ['"'] = { "<cmd>reg<cr>", "register: Show" },
+    },
+    ["C-w>"] = {
+      name = "window",
+      s = "Split horizontally",
+      v = "Split vertically",
+      n = "Split horizontally and edit [New File]",
+      ["^"] = "Split horizontally and edit the alternative file",
+      c = "Close",
+      o = "Close all except current one",
+      t = "Go to top-left",
+      b = "Go to bottom-right",
+      p = "Go to previous",
+      P = "Go to preview",
+      r = "Rotate downwards/rightwards",
+      R = "Rotate upwards/leftwards",
+      K = "Move far Top",
+      J = "Move far Bottom",
+      H = "Move far Left",
+      L = "Move far Right",
+
     }
   }, { mode = "n" })
   ---------------------------------------------------------------------------//
   -- INSERT
   ---------------------------------------------------------------------------//
   which_key.register({
-    -- configure later
-    ["<C-s>"] = { "<cmd>write<cr>", "Save File" },
+
   }, { mode = "i" })
   ---------------------------------------------------------------------------//
   -- VISUAL-SELECT
@@ -81,9 +103,9 @@ if which_key_ok then
   which_key.register({
     ["<"] = { "<gv", "Shift leftwards" },
     [">"] = { ">gv", "Shift rightwards" },
-    ["p"] = { '"_dP', "Paste from buffer" },
-    ["<A-j>"] = { ":move '>+1<cr>gv", "Swap selected with bottom" },
-    ["<A-k>"] = { ":move '<-2<cr>gv", "Swap selected with top" },
+    ["p"] = { '"_dP', "Replace selected from buffer" },
+    ["<A-j>"] = { ":move '>+1<cr>gv", "Swap selected with next line" },
+    ["<A-k>"] = { ":move '<-2<cr>gv", "Swap selected with previous line" },
   }, { mode = "v" })
   ---------------------------------------------------------------------------//
   -- TERMINAL
@@ -92,8 +114,8 @@ if which_key_ok then
   --   return vim.api.nvim_replace_termcodes(str, true, true, true)
   -- end
   --
-  -- which_key.register({
-  --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-  --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-  -- }, { mode = "t" })
+  which_key.register({
+    --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
+    --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
+  }, { mode = "t" })
 end

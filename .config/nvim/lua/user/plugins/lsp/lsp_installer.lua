@@ -1,9 +1,11 @@
+local M = {}
+
 local status_ok, lsp_installer = safe_require("nvim-lsp-installer")
 if not status_ok then
   return
 end
 
-local servers = {
+M.servers = {
   "ccls",
   "sumneko_lua",
   "pyright",
@@ -12,27 +14,12 @@ local servers = {
 }
 
 -- nvim-lsp-installer-default-settings
-lsp_installer.setup({
-  ensure_installed = servers,
-  install_root_dir = require("nvim-lsp-installer.core.path")
-      .concat({ vim.fn.stdpath("data"), "lsp_servers" }),
-})
-
-local lspconfig_status_ok, lspconfig = safe_require("lspconfig")
-if not lspconfig_status_ok then
-  return
+function M.setup()
+  lsp_installer.setup({
+    ensure_installed = M.servers,
+    install_root_dir = require("nvim-lsp-installer.core.path")
+        .concat({ vim.fn.stdpath("data"), "lsp_servers" }),
+  })
 end
 
-for _, server in pairs(servers) do
-  local opts = {
-    on_attach = require("user.plugins.lsp.handlers").on_attach,
-    capabilities = require("user.plugins.lsp.handlers").capabilities,
-  }
-  local ok, custom_opts = pcall(require, "user.plugins.lsp.servers." .. server)
-  if ok then
-    opts = vim.tbl_deep_extend("force", opts, custom_opts)
-    -- opts = custom_opts
-  end
-  -- print(us.dump_lua_table(opts))
-  lspconfig[server].setup(opts)
-end
+return M

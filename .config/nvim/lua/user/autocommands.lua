@@ -24,8 +24,8 @@ vim.cmd [[
 
   augroup _info_pages
     au!
-    au FileType help,lspinfo,qf,vim nnoremap <silent> <buffer> q :close<CR> 
-    au FileType lspinfo,qf,vim nnoremap <silent> <buffer> <Esc> :close<CR> 
+    au FileType help,lspinfo,qf,vim,checkhealth nnoremap <silent> <buffer> q :close<CR> 
+    au FileType lspinfo,qf,vim,checkhealth nnoremap <silent> <buffer> <Esc> :close<CR> 
   augroup end
 
   augroup _binary

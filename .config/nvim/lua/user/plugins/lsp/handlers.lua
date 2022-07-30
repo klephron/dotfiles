@@ -40,8 +40,8 @@ M.setup = function()
   })
 end
 
--- on_attach
-local function lsp_keymaps(bufnr)
+-- TODO: check if client has capability then attach (handlers.lua) ex. if client.server_capabilities.hoverProvider then ...
+local function lsp_keymaps(client, bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -60,7 +60,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
+  lsp_keymaps(client, bufnr)
   require("lsp_signature").on_attach()
 end
 

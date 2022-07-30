@@ -101,7 +101,7 @@ packer.startup({
     }
     use {
       'kyazdani42/nvim-tree.lua',
-      config = conf("nvim-tree"),
+      config = conf("tree"),
     }
     use {
       'akinsho/bufferline.nvim',
@@ -113,7 +113,7 @@ packer.startup({
     }
     use { -- cmdheight = 2 is bad
       'rcarriga/nvim-notify',
-      config = conf("nvim-notify"),
+      config = conf("notify"),
     }
     use {
       "folke/trouble.nvim",
@@ -171,6 +171,15 @@ packer.startup({
         { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-nvim-lua" }, -- nvim lua api
+      }
+    }
+
+    -- Debugging
+    use {
+      'mfussenegger/nvim-dap',
+      setup = conf("dap").setup,
+      config = conf("dap").config,
+      requires = {
       }
     }
 
