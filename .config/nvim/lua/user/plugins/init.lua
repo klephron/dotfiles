@@ -42,13 +42,13 @@ packer.startup({
     }
 
     -- Utilities
-    use { 'wbthomason/packer.nvim' , opt = true }
+    use { 'wbthomason/packer.nvim', opt = true }
     use { 'nvim-lua/plenary.nvim' } -- useful functions
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'milisims/nvim-luaref' }
 
     -- Caching
-    use { "lewis6991/impatient.nvim"}
+    use { "lewis6991/impatient.nvim" }
 
     -- Editing
     use {
@@ -139,7 +139,7 @@ packer.startup({
     }
     use { --WARN: not configured
       'sindrets/diffview.nvim',
-      -- module = 
+      -- module =
       cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
       config = conf("diffview")
     }
@@ -180,6 +180,9 @@ packer.startup({
       setup = conf("dap").setup,
       config = conf("dap").config,
       requires = {
+        { 'rcarriga/nvim-dap-ui' },
+        { 'theHamsta/nvim-dap-virtual-text' },
+        { 'nvim-telescope/telescope-dap.nvim' },
       }
     }
 

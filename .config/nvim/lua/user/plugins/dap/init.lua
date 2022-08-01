@@ -53,8 +53,16 @@ function M.setup()
 end
 
 function M.config()
+
+  require("user.plugins.dap.dapui")
+  require("user.plugins.dap.virtual-text")
+  require('telescope').load_extension('dap')
+
+  vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='', numhl=''})
+  -- vim.fn.sign_define('DapStopped', {text='→', texthl='DapStopped', linehl=nil, numhl=''})
+
   require("user.plugins.dap.adapters")
-  require("user.plugins.dap.adapters")
+  require("user.plugins.dap.configurations")
 end
 
 return M
