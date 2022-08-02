@@ -9,7 +9,7 @@ dap.configurations.python = {
 
     -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
     program = "${file}"; -- This configuration will launch the current file if used.
-    pythonPath = function()
+    python = function()
       -- venv in path
       local venv = os.getenv("VIRTUAL_ENV")
       if vim.fn.empty(venv) ~= 1 then

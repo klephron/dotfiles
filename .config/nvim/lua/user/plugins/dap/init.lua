@@ -28,11 +28,18 @@ function M.setup()
   end
 
   local function repl_toggle()
-    dap.repl.toggle(nil, 'botright split')
+    dap.repl.toggle(nil, 'belowright split')
   end
 
   local function run_last()
     dap.run_last()
+  end
+
+  -- Dapui
+  local dapui = require("dapui")
+
+  local function dapui_toggle()
+    dapui.toggle()
   end
 
   require('which-key').register({
@@ -46,6 +53,7 @@ function M.setup()
       o = { step_over, 'dap: Step over' },
       l = { run_last, 'dap REPL: Run last' },
       t = { repl_toggle, 'dap REPL: Toggle' },
+      u = { dapui_toggle, 'dapui: Toggle' },
     },
   }, {
     prefix = '<leader>',
