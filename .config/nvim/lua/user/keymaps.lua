@@ -21,7 +21,7 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   term_mode = "t",
 --   command_mode = "c",
 
-us.set_keynomap({"n", "i"}, "<A-s>", "<cmd>write<cr>", "buffer: Save")
+us.set_keynomap({ "n", "i" }, "<A-s>", "<cmd>write<cr>", "buffer: Save")
 
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
@@ -50,7 +50,8 @@ if which_key_ok then
 
     ["<M-q>"] = { "<cmd>q<cr>", "window: Close" },
 
-    ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>", "goto: Open link in system browser" },
+    ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
+      "goto: Open link in system browser" },
 
     ["<leader>"] = {
       f = {
@@ -118,4 +119,17 @@ if which_key_ok then
     --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
     --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
   }, { mode = "t" })
+
+  ---------------------------------------------------------------------------//
+  -- COMMAND
+  ---------------------------------------------------------------------------//
+  -- emacs like keybinds
+  which_key.register({
+    ["<A-b>"] = { "<S-Left>", "Cursor move word left" },
+    ["<A-f>"] = { "<S-Right>", "Cursor move word right" },
+    ["<C-b>"] = { "<Left>", "Cursor move left" },
+    ["<C-f>"] = { "<Right>", "Cursor move right" },
+    ["<C-j>"] = { "<Down>", "History scroll down" },
+    ["<C-k>"] = { "<Up>", "History scroll up" },
+  }, { mode = "c", noremap = true, silent = false })
 end

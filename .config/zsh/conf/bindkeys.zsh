@@ -1,6 +1,7 @@
-bindkey -v
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
+# With zsh-vi-mode
+# bindkey -v
+# bindkey "^P" up-line-or-search
+# bindkey "^N" down-line-or-search
 
 # Zsh-complist
 bindkey -M menuselect 'h' vi-backward-char

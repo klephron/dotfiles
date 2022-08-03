@@ -69,8 +69,7 @@ function M.config()
   vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='', numhl=''})
   -- vim.fn.sign_define('DapStopped', {text='→', texthl='DapStopped', linehl=nil, numhl=''})
 
-  require("user.plugins.dap.adapters")
-  require("user.plugins.dap.configurations")
+  require("user.plugins.dap.langs")
 end
 
 return M

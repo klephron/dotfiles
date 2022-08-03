@@ -77,7 +77,10 @@ packer.startup({
     }
 
     -- Highlighting/colorschemes
-    use { "lunarvim/darkplus.nvim" }
+    use { 
+      "lunarvim/darkplus.nvim",
+      commit = "93fb1fd7b2635192d909e11a77256d5822aed5c8",
+    }
     use {
       "folke/todo-comments.nvim",
       config = block_reload(conf("todo-comments"))
@@ -183,6 +186,8 @@ packer.startup({
         { 'rcarriga/nvim-dap-ui' },
         { 'theHamsta/nvim-dap-virtual-text' },
         { 'nvim-telescope/telescope-dap.nvim' },
+        -- languages
+        { 'mfussenegger/nvim-dap-python' },
       }
     }
 
@@ -274,10 +279,15 @@ if not vim.g.packer_compiled_loaded and vim.loop.fs_stat(packer_compiled_path) t
   vim.g.packer_compiled_loaded = true
 end
 
--- reload neovim when file plugins.lua is saved
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost */user/plugins/*.lua source <afile> | PackerCompile
-  augroup end
-]]
+-- Reload plugins when plugins/*.lua is saved
+us.augroup("PackerSetupInit", {
+  {
+    event = "BufWritePost",
+    pattern = { "*/user/plugins/*.lua" },
+    description = "Packer reload",
+    command = function ()
+      us.reload("user.plugins", true)
+      packer.compile()
+    end
+  }
+})
