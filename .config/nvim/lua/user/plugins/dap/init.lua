@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+  -- TODO: implement hydra.nvim
   local dap = require("dap")
 
   local function continue()
@@ -61,12 +62,9 @@ function M.setup()
 end
 
 function M.config()
-
-  require("user.plugins.dap.dapui")
-  require("user.plugins.dap.virtual-text")
   require('telescope').load_extension('dap')
 
-  vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='', numhl=''})
+  vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
   -- vim.fn.sign_define('DapStopped', {text='→', texthl='DapStopped', linehl=nil, numhl=''})
 
   require("user.plugins.dap.langs")

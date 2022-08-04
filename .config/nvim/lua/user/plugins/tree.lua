@@ -14,7 +14,6 @@ return function()
     disable_netrw = true,
     open_on_setup = false,
     respect_buf_cwd = true,
-    update_cwd = true,
     sync_root_with_cwd = false,
     hijack_directories = {
       enable = true,
@@ -22,7 +21,7 @@ return function()
     },
     update_focused_file = {
       enable = true,
-      update_cwd = true,
+      update_root = true,
       ignore_list = {},
     },
     diagnostics = {

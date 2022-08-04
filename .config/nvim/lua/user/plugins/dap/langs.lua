@@ -38,6 +38,9 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
 -- PYTHON
+require('dap-python').setup('~/.venvs/debugpy/bin/python')
+
+--[[
 dap.adapters.python = {
   type = 'executable';
   command = HOME .. '/.venvs/debugpy/bin/python',
@@ -71,3 +74,4 @@ dap.configurations.python = {
     end;
   },
 }
+]]

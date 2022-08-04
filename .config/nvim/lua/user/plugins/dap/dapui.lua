@@ -1,8 +1,5 @@
-local dapui_ok, dapui = safe_require("dapui")
-if not dapui_ok then
-  return
-end
-
+return function()
+  local dapui = require("dapui")
 --TODO: configure: https://github.com/rcarriga/nvim-dap-ui
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
@@ -64,4 +61,4 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-
+end

@@ -1,6 +1,6 @@
 return function()
   local lualine = require("lualine")
-  
+
   local fn = vim.fn
 
   local function color(val)
@@ -120,6 +120,13 @@ end ]]
     return "spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
   end
 
+  local session_ok, auto_session = safe_require('auto-session-library')
+  local function session()
+    if session_ok then
+      return auto_session.current_session_name()
+    end
+  end
+
   lualine.setup({
     options = {
       icons_enabled = true,
@@ -133,17 +140,17 @@ end ]]
       lualine_a = { mode },
       lualine_b = { branch, diagnostics },
       lualine_c = { filename },
-      lualine_x = { diff, spaces, "encoding" },
-      lualine_y = { location },
-      lualine_z = { progress }
+      lualine_x = { session },
+      lualine_y = { diff, spaces, "encoding" },
+      lualine_z = { location, progress }
     },
     inactive_sections = {
       lualine_a = { mode },
       lualine_b = { branch },
       lualine_c = { filename },
-      lualine_x = { location },
-      lualine_y = { progress },
-      lualine_z = {},
+      lualine_x = { session },
+      lualine_y = { "encoding" },
+      lualine_z = { location, progress },
     },
     tabline = {},
     extensions = {},

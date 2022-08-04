@@ -20,6 +20,8 @@ return function()
     val = {
       theme.button("f", icons.FindFile .. " Find file", "<cmd>Telescope find_files <CR>"),
       theme.button("e", icons.File .. " New file", "<cmd>ene<BAR>startinsert<cr>"),
+      theme.button("s", icons.Reference .. " Restore current session", "<cmd>RestoreSession<cr>"),
+      theme.button("S", icons.SignIn .. " Find session", "<cmd>Telescope session-lens search_session<cr>"),
       theme.button("r", icons.RecentlyUsed .. " Recently used files", "<cmd>Telescope oldfiles <CR>"),
       theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr>"),
       theme.button("p", icons.Folder .. " Find project", "<cmd>Telescope projects <CR>"),

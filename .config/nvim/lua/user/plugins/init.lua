@@ -31,6 +31,7 @@ local packer = require("packer")
 packer.startup({
   function(use)
 
+    -- Fixes
     -- NOTE: remove when https://github.com/neovim/neovim/issues/12587 will be resolved
     use {
       'antoinemadec/FixCursorHold.nvim',
@@ -49,6 +50,18 @@ packer.startup({
 
     -- Caching
     use { "lewis6991/impatient.nvim" }
+
+    -- Session
+    use {
+      'rmagatti/auto-session',
+      config = conf("auto-session"),
+      requires = {
+        {
+          'rmagatti/session-lens',
+          config = conf("session-lens"),
+        },
+      }
+    }
 
     -- Editing
     use {
@@ -75,9 +88,12 @@ packer.startup({
         us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
       end
     }
+    use { 'tpope/vim-surround' }
+    use { 'tpope/vim-repeat' }
+    use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
 
     -- Highlighting/colorschemes
-    use { 
+    use {
       "lunarvim/darkplus.nvim",
       commit = "93fb1fd7b2635192d909e11a77256d5822aed5c8",
     }
@@ -97,6 +113,17 @@ packer.startup({
       end
     }
 
+    -- Treesitter
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      config = conf("treesitter"),
+      run = ':TSUpdate',
+      requires = {
+        { 'JoosepAlviste/nvim-ts-context-commentstring' },
+        { 'nvim-treesitter/playground' },
+      }
+    }
+
     -- UI
     use {
       "goolord/alpha-nvim",
@@ -114,7 +141,7 @@ packer.startup({
       'nvim-lualine/lualine.nvim',
       config = conf("lualine"),
     }
-    use { -- cmdheight = 2 is bad
+    use {
       'rcarriga/nvim-notify',
       config = conf("notify"),
     }
@@ -133,6 +160,18 @@ packer.startup({
     use {
       "akinsho/toggleterm.nvim",
       config = conf("toggleterm"),
+    }
+
+    -- Telescope
+    use {
+      'nvim-telescope/telescope.nvim',
+      config = conf("telescope"),
+      requires = {
+        {
+          "ahmedkhalf/project.nvim",
+          config = conf("project"),
+        }
+      },
     }
 
     -- Git
@@ -183,35 +222,19 @@ packer.startup({
       setup = conf("dap").setup,
       config = conf("dap").config,
       requires = {
-        { 'rcarriga/nvim-dap-ui' },
-        { 'theHamsta/nvim-dap-virtual-text' },
+        {
+          'rcarriga/nvim-dap-ui',
+          conf = block_reload(conf("dap.dapui"))
+        },
+        {
+          'theHamsta/nvim-dap-virtual-text',
+          conf = conf("dap.virtual-text")
+        },
         { 'nvim-telescope/telescope-dap.nvim' },
         -- languages
         { 'mfussenegger/nvim-dap-python' },
+        { 'jbyuki/one-small-step-for-vimkind' },
       }
-    }
-
-    -- Treesitter
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      config = conf("treesitter"),
-      run = ':TSUpdate',
-      requires = {
-        { 'JoosepAlviste/nvim-ts-context-commentstring' },
-        { 'nvim-treesitter/playground' },
-      }
-    }
-
-    -- Telescope
-    use {
-      'nvim-telescope/telescope.nvim',
-      config = conf("telescope"),
-      requires = {
-        {
-          "ahmedkhalf/project.nvim",
-          config = conf("project"),
-        }
-      },
     }
 
     -- Task management, notes
@@ -285,9 +308,10 @@ us.augroup("PackerSetupInit", {
     event = "BufWritePost",
     pattern = { "*/user/plugins/*.lua" },
     description = "Packer reload",
-    command = function ()
+    command = function()
       us.reload("user.plugins", true)
       packer.compile()
+      utils.packer_notify("Compiled", vim.log.levels.INFO)
     end
   }
 })

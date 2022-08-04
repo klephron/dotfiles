@@ -18,7 +18,12 @@ return function()
   telescope.setup {
     defaults = {
       prompt_prefix = icons.Telescope .. "",
-      path_display = { "smart" },
+      path_display = {
+        -- shorten = { len = 1, exclude = { 3, -1 } },
+        -- "hidden",
+        "smart",
+        "truncate",
+      },
       file_ignore_patterns = ignore_patterns,
       dynamic_preview_title = true,
       vimgrep_arguments = {

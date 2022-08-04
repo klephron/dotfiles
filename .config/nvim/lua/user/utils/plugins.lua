@@ -4,8 +4,6 @@ local fn = vim.fn
 
 local M = {}
 
-
-
 function M.packer_notify(msg, level)
   vim.notify(msg, level, { title = "Packer" })
 end

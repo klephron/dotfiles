@@ -40,6 +40,10 @@ vim.opt.undofile = true
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 -----------------------------------------------------------------------------//
+-- Session
+-----------------------------------------------------------------------------//
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+-----------------------------------------------------------------------------//
 -- Display
 -----------------------------------------------------------------------------//
 vim.opt.termguicolors = true
