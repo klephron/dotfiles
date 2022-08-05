@@ -23,8 +23,10 @@ return function()
   local handlers = require("user.plugins.lsp.handlers")
   handlers.setup()
 
+
   setup_servers(lspconfig, lsp_installer.servers, handlers.on_attach, handlers.capabilities)
 
   require("user.plugins.lsp.null-ls").setup()
   require("user.plugins.lsp.lsp_signature").setup()
+  require("user.plugins.lsp.aerial").setup()
 end

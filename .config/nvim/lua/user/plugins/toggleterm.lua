@@ -1,5 +1,6 @@
-return function()
+return function ()
   local toggleterm = require("toggleterm")
+  local api = vim.api
 
   toggleterm.setup({
     open_mapping = [[<c-\>]],
@@ -54,25 +55,6 @@ return function()
     on_open = float_handler,
   })
 
-  -- Keymaps
-  us.set_keynomap('n', '<leader>tt', '<cmd>ToggleTerm<cr>', 'toggleterm: Toggle term')
-
-  us.set_keynomap('n', '<leader>tl', function()
-    lazygit:toggle()
-  end, 'toggleterm: Toggle lazygit')
-
-  us.set_keynomap('n', '<leader>th', function()
-    htop:toggle()
-  end, 'toggleterm: Toggle htop')
-
-
-  local which_key_ok, which_key = safe_require("which-key")
-  if which_key_ok then
-    which_key.register {
-      ["<leader>t"] = {
-        name = "toggleterm",
-        ["a"] = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" }
-      }
-    }
-  end
+  api.nvim_create_user_command("UsToggleTermLazygit", function() lazygit:toggle() end, {})
+  api.nvim_create_user_command("UsToggleTermHtop", function() htop:toggle() end, {})
 end

@@ -130,6 +130,10 @@ return function()
       },
     },
     extensions = {
+      aerial = {
+        -- Display symbols as <root>.<parent>.<symbol>
+        show_nesting = true
+      }
     }
   }
 end

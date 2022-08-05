@@ -1,4 +1,32 @@
--- TERMINAL BUFFER LOCAL
+local M = {}
+
+M.lsp = {
+  definition = "gd",
+  declaration = "gD",
+  hover = "K",
+  implementation = "gi",
+  signature_help = "<C-k>",
+  rename = "gn",
+  references = "gr",
+  code_action = "ga",
+  goto_prev = "[d",
+  goto_next = "]d",
+  open_float = "gl",
+  formatting = "<leader>m",
+  -- not customized
+  codelens = "<leader>za",
+  type_definition = "<leader>zt",
+  aerial = {
+
+  },
+}
+
+M.dap = {
+
+}
+---------------------------------------------------------------------------//
+--TERMINAL BUFFER LOCAL
+---------------------------------------------------------------------------//
 function _G._set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -21,8 +49,10 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   term_mode = "t",
 --   command_mode = "c",
 
+---------------------------------------------------------------------------//
+-- MULTIPLE MODES
+---------------------------------------------------------------------------//
 us.set_keynomap({ "n", "i" }, "<A-s>", "<cmd>write<cr>", "buffer: Save")
-
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
 ---------------------------------------------------------------------------//
@@ -32,7 +62,6 @@ if which_key_ok then
   -- NORMAL
   ---------------------------------------------------------------------------//
   which_key.register({
-    -- configure later
     ["<C-k>"] = { "<c-w>k", "window: Move up" },
     ["<C-l>"] = { "<c-w>l", "window: Move right" },
     ["<C-j>"] = { "<c-w>j", "window: Move down" },
@@ -52,46 +81,65 @@ if which_key_ok then
 
     ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
       "goto: Open link in system browser" },
+  }, { mode = "n" })
 
-    ["<leader>"] = {
-      f = {
-        "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-        "telescope: Find files"
-      },
-      l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
-      r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
-      p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
-
-      e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
-
-      d = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
-
-      m = { "<cmd>write<cr><cmd>lua vim.lsp.buf.formatting()<cr>", "lsp: Format current buffer" },
-
-      ["'"] = { "<cmd>marks<cr>", "mark: Show" },
-      ['"'] = { "<cmd>reg<cr>", "register: Show" },
-    },
+  which_key.register({
     ["C-w>"] = {
       name = "window",
-      s = "Split horizontally",
-      v = "Split vertically",
-      n = "Split horizontally and edit [New File]",
-      ["^"] = "Split horizontally and edit the alternative file",
-      c = "Close",
-      o = "Close all except current one",
-      t = "Go to top-left",
-      b = "Go to bottom-right",
-      p = "Go to previous",
-      P = "Go to preview",
-      r = "Rotate downwards/rightwards",
-      R = "Rotate upwards/leftwards",
-      K = "Move far Top",
-      J = "Move far Bottom",
-      H = "Move far Left",
-      L = "Move far Right",
+      s = { "Split horizontally" },
+      v = { "Split vertically" },
+      n = { "Split horizontally and edit [New File]" },
+      ["^"] = { "Split horizontally and edit the alternative file" },
+      c = { "Close" },
+      o = { "Close all except current one" },
+      t = { "Go to top-left" },
+      b = { "Go to bottom-right" },
+      p = { "Go to previous" },
+      P = { "Go to preview" },
+      r = { "Rotate downwards/rightwards" },
+      R = { "Rotate upwards/leftwards" },
+      K = { "Move far Top" },
+      J = { "Move far Bottom" },
+      H = { "Move far Left" },
+      L = { "Move far Right" },
 
     }
   }, { mode = "n" })
+
+  which_key.register({
+    q = { "<cmd>RestoreSession<cr>", "session: Try restore" },
+    e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
+    r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+    y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
+    u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
+    i = { "<cmd>Trouble document_diagnostics<CR>", "trouble: Document diagnostics" },
+    p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
+
+    a = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
+    A = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
+    ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
+    [']a'] = { "<cmd>execute v:count . 'AerialNext'<cr>", "aerial: Jump N next symbols" },
+    ['[A'] = { "<cmd>execute v:count . 'AerialPrevUp'<cr>", "aerial: Jump N levels up, moving backwards" },
+    [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
+
+    s = {
+      "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+      "telescope: Find files"
+    },
+    d = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
+    j = {
+      name = "toggleterm",
+      t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
+      a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
+      l = { "<cmd>UsToggleTermLazygit<cr>", "toggleterm: Lazygit" },
+      h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
+    },
+    l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
+    b = { "<cmd>buffers<cr>", "buffer: Show" },
+    ["'"] = { "<cmd>marks<cr>", "mark: Show" },
+    ['"'] = { "<cmd>reg<cr>", "register: Show" },
+  }, { mode = "n", prefix = "<leader>" })
+
   ---------------------------------------------------------------------------//
   -- INSERT
   ---------------------------------------------------------------------------//
@@ -133,3 +181,6 @@ if which_key_ok then
     ["<C-k>"] = { "<Up>", "History scroll up" },
   }, { mode = "c", noremap = true, silent = false })
 end
+
+
+return M

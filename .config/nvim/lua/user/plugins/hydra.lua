@@ -1,11 +1,12 @@
 local M = {}
 
-local function dap_hydra()
-  local Hydra = require("hydra")
-end
+local hydra = require("hydra")
 
 M.hydras = {
-  dap = dap_hydra,
+  -- TODO: implement hydra.nvim
+  dap = function()
+
+  end,
 }
 
 return M

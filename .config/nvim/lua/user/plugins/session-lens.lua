@@ -9,13 +9,11 @@ return function()
       "truncate",
     },
     -- layout_strategy = "flex",
-    prompt_title = 'SESSIONS',
+    prompt_title = 'Sessions',
     previewer = false,
     -- theme_conf = nil,
   }
 
   require('telescope').load_extension("session-lens")
 
-  us.set_keynomap("n", "<leader>s", "<cmd>lua require('session-lens').search_session()<cr>",
-    "telescope: Recent session")
 end

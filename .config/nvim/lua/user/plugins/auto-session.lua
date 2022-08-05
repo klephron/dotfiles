@@ -5,6 +5,7 @@ return function()
 
   local function nvim_tree_pre_save()
     vim.cmd("tabdo NvimTreeClose")
+    vim.cmd("tabdo AerialCloseAll")
   end
 
   auto.setup {

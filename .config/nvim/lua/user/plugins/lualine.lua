@@ -140,17 +140,17 @@ end ]]
       lualine_a = { mode },
       lualine_b = { branch, diagnostics },
       lualine_c = { filename },
-      lualine_x = { session },
-      lualine_y = { diff, spaces, "encoding" },
-      lualine_z = { location, progress }
+      lualine_x = { "aerial" },
+      lualine_y = { session, diff },
+      lualine_z = { spaces, "encoding", location, progress }
     },
     inactive_sections = {
       lualine_a = { mode },
       lualine_b = { branch },
       lualine_c = { filename },
-      lualine_x = { session },
-      lualine_y = { "encoding" },
-      lualine_z = { location, progress },
+      lualine_x = {"aerial" },
+      lualine_y = { session },
+      lualine_z = { "encoding", location, progress },
     },
     tabline = {},
     extensions = {},

@@ -34,13 +34,14 @@ function us.delete_current_buffer()
       idx = n
     end
   end
-  if idx == 0 then return end
-  if idx == size then
-    vim.cmd("bprevious")
-  else
-    vim.cmd("bnext")
+  if idx ~= 0 then
+    if idx == size then
+      vim.cmd("bprevious")
+    else
+      vim.cmd("bnext")
+    end
   end
-  vim.cmd("bdelete " .. cbn)
+  vim.cmd("bdelete! " .. cbn) -- wall! is enabled on delete is enabled
 end
 
 function us.table_contains(table, value)
