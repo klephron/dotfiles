@@ -75,7 +75,7 @@ function M.on_attach(client, bufnr)
     us.set_keynomap("n", kmps.code_action, vim.lsp.buf.range_code_action, with_desc('lsp: Code action'))
   end
   if has_provider(client, "signatureHelpProvider") then
-    us.set_keynomap("n", kmps.signature_help, vim.lsp.buf.signature_help, with_desc("lsp: Type definition"))
+    us.set_keynomap("n", kmps.signature_help_n, vim.lsp.buf.signature_help, with_desc("lsp: Type definition"))
     require("lsp_signature").on_attach()
   end
   if has_provider(client, "typeDefinitionProvider") then

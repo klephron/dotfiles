@@ -1,5 +1,5 @@
 return function()
-  -- NOTE: remove when https://github.com/folke/todo-comments.nvim/pull/104 is merged
+  -- NOTE: remove when https://github.com/folke/todo-comments.nvim/pull/104 will be merged
   local hl = require("todo-comments.highlight")
   local highlight_win = hl.highlight_win
   hl.highlight_win = function(win, force)

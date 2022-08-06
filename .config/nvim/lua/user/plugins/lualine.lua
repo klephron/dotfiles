@@ -133,7 +133,8 @@ end ]]
       theme = custom_theme,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
-      disabled_filetypes = { "alpha" },
+      -- NOTE: remove NvimTree when https://github.com/nvim-lualine/lualine.nvim/issues/784 will be closed
+      disabled_filetypes = { "alpha", "NvimTree" },
       always_divide_middle = true,
     },
     sections = {
@@ -148,11 +149,11 @@ end ]]
       lualine_a = { mode },
       lualine_b = { branch },
       lualine_c = { filename },
-      lualine_x = {"aerial" },
+      lualine_x = { "aerial" },
       lualine_y = { session },
       lualine_z = { "encoding", location, progress },
     },
     tabline = {},
-    extensions = {},
+    extensions = { "aerial", "nvim-tree", "nvim-dap-ui", "quickfix", "toggleterm" },
   })
 end

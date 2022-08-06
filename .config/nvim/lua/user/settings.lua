@@ -114,12 +114,6 @@ vim.opt.mousefocus = false
 -----------------------------------------------------------------------------//
 vim.opt.clipboard = "unnamedplus"
 ----------------------------------------------------------------------------//
--- Keymaps
------------------------------------------------------------------------------//
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.cmd("cnoreabbrev hs split")
-----------------------------------------------------------------------------//
 -- Utilities
 -----------------------------------------------------------------------------//
 vim.opt.autowriteall = true -- automatically :write before running commands and changing files
@@ -135,17 +129,17 @@ vim.opt.virtualedit = 'block' -- allow cursor to move where there is no text in 
 if fn.exists("g:neovide") then
   -- vim.opt.guifont = "FiraCode Nerd Font:h6.9"
   vim.opt.guifont = "FiraCode Nerd Font Mono:h6.9"
-  vim.g.neovide_remember_window_size=true
+  vim.g.neovide_remember_window_size = true
   vim.g.neovide_profiler = false
-  vim.g.neovide_input_use_logo=true
-  vim.g.neovide_cursor_antialiasing=true
-  vim.g.neovide_cursor_animation_length=0.0
-  vim.g.neovide_cursor_trail_length=0.18
+  vim.g.neovide_input_use_logo = true
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_cursor_animation_length = 0.0
+  vim.g.neovide_cursor_trail_length = 0.18
 
-  -- vim.g.neovide_window_floating_opacity=0
-  -- vim.g.neovide_window_floating_blur=0
-  vim.g.neovide_floating_opacity=1
-  -- vim.g.neovide_floating_blur=0
+  -- vim.g.neovide_window_floating_opacity = 0
+  -- vim.g.neovide_window_floating_blur = 0
+  vim.g.neovide_floating_opacity = 1
+  -- vim.g.neovide_floating_blur = 0
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   -- print("HELLO")

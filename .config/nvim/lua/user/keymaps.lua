@@ -1,28 +1,58 @@
+----------------------------------------------------------------------------//
+-- Keymaps
+-----------------------------------------------------------------------------//
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.cmd("cnoreabbrev hs split")
+-----------------------------------------------------------------------------//
 local M = {}
 
 M.lsp = {
-  definition = "gd",
-  declaration = "gD",
-  hover = "K",
-  implementation = "gi",
-  signature_help = "<C-k>",
-  rename = "gn",
-  references = "gr",
-  code_action = "ga",
+  definition = "<leader>kd",
+  declaration = "<leader>ke",
+  hover = "<leader>kh",
+  implementation = "<leader>ki",
+  signature_help_n = "<leader>ks",
+  signature_help_i = "<C-k>",
+  rename = "<leader>kn",
+  references = "<leader>kr",
+  code_action = "<leader>ka",
   goto_prev = "[d",
   goto_next = "]d",
-  open_float = "gl",
+  open_float = "<leader>kl",
   formatting = "<leader>m",
   -- not customized
-  codelens = "<leader>za",
-  type_definition = "<leader>zt",
+  codelens = "<leader>kc",
+  type_definition = "<leader>kp",
   aerial = {
 
   },
 }
 
 M.dap = {
-
+  continue = "<leader>dc",
+  run_last = "<leader>du",
+  launch = "<leader>dl",
+  terminate = "<leader>dt",
+  disconnect = "<leader>db",
+  close = "<leader>dq",
+  set_breakpoint_cond = "<leader>de",
+  set_breakpoint_log = "<leader>dm",
+  toggle_breakpoint = "<leader>ds",
+  clear_breakpoints = "<leader>dz",
+  step_over = "<leader>dn",
+  step_into = "<leader>di",
+  step_out = "<leader>do",
+  step_back = "<leader>dd",
+  -- pause = "<leader>dp",
+  reverse_continue = "<leader>dr",
+  up = "<leader>d[",
+  down = "<leader>d]",
+  run_to_cursor = "<leader>da",
+  repl_toggle = "<leader>dg",
+  repl_session = "<leader>dx",
+  hover = "<leader>dh",
+  dapui_toggle = "<leader>dy",
 }
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL
@@ -52,7 +82,7 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 ---------------------------------------------------------------------------//
 -- MULTIPLE MODES
 ---------------------------------------------------------------------------//
-us.set_keynomap({ "n", "i" }, "<A-s>", "<cmd>write<cr>", "buffer: Save")
+-- us.set_keynomap({ "n", "i" }, "<A-s>", "<cmd>write<cr>", "buffer: Save")
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
 ---------------------------------------------------------------------------//
@@ -77,10 +107,9 @@ if which_key_ok then
 
     ["<esc><esc>"] = { "<cmd>nohlsearch<cr>", "hl: Clear search hl" },
 
-    ["<M-q>"] = { "<cmd>q<cr>", "window: Close" },
-
     ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
       "goto: Open link in system browser" },
+
   }, { mode = "n" })
 
   which_key.register({
@@ -107,14 +136,17 @@ if which_key_ok then
   }, { mode = "n" })
 
   which_key.register({
-    q = { "<cmd>RestoreSession<cr>", "session: Try restore" },
+    q = { "<cmd>q<cr>", "window: Close" },
+    Q = { "<cmd>Q<cr>", "window: Close all"},
+    w = { "<cmd>write<cr>", "nvim: Write" },
+    W = { "<cmd>wa<cr>", "nvim: Write all"},
     e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+    Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
     y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
     u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
     i = { "<cmd>Trouble document_diagnostics<CR>", "trouble: Document diagnostics" },
     p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
-
     a = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
     A = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
     ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
@@ -126,7 +158,8 @@ if which_key_ok then
       "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
       "telescope: Find files"
     },
-    d = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
+    d = { name = "dap" },
+    f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
     j = {
       name = "toggleterm",
       t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
@@ -134,6 +167,7 @@ if which_key_ok then
       l = { "<cmd>UsToggleTermLazygit<cr>", "toggleterm: Lazygit" },
       h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
     },
+    k = { name = "lsp" },
     l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
     b = { "<cmd>buffers<cr>", "buffer: Show" },
     ["'"] = { "<cmd>marks<cr>", "mark: Show" },

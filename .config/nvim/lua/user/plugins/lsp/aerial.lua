@@ -5,7 +5,6 @@ if not aerial_ok then
   return
 end
 
--- TODO: configure it!
 function M.setup()
   aerial.setup({
     backends = { "treesitter", "lsp", "markdown" },

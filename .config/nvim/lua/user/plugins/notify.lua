@@ -14,7 +14,7 @@ return function()
     end,
   }
 
-  -- TODO: implement this for LSP: https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes
+  -- Also: https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes
   vim.notify = notify
   require("telescope").load_extension("notify")
 end
