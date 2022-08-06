@@ -30,6 +30,9 @@ M.lsp = {
 }
 
 M.dap = {
+  hydra = {
+    body = "<leader>D",
+  },
   continue = "<leader>dc",
   run_last = "<leader>du",
   launch = "<leader>dl",

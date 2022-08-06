@@ -194,7 +194,7 @@ packer.startup({
         { 'jose-elias-alvarez/null-ls.nvim' },
         { 'folke/lua-dev.nvim' },
         { 'ray-x/lsp_signature.nvim' },
-        { 'stevearc/aerial.nvim'}
+        { 'stevearc/aerial.nvim' }
       },
     }
 

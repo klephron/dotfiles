@@ -143,7 +143,7 @@ end ]]
       lualine_c = { filename },
       lualine_x = { "aerial" },
       lualine_y = { session, diff },
-      lualine_z = { spaces, "encoding", location, progress }
+      lualine_z = { "fileformat", spaces, location, progress }
     },
     inactive_sections = {
       lualine_a = { mode },
@@ -151,7 +151,7 @@ end ]]
       lualine_c = { filename },
       lualine_x = { "aerial" },
       lualine_y = { session },
-      lualine_z = { "encoding", location, progress },
+      lualine_z = { "fileformat", location, progress },
     },
     tabline = {},
     extensions = { "aerial", "nvim-tree", "nvim-dap-ui", "quickfix", "toggleterm" },

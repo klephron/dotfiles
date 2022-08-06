@@ -41,14 +41,17 @@ function M.setup()
   if dapui_ok then
     us.set_keynomap("n", kmps.dapui_toggle, dapui.toggle, "dapui: Toggle")
   end
-
-
   -- OTHER:
   -- E = { ":lua require('dap').list_breakpoints()<cr>", ":lua require('dap').list_breakpoints()<cr>" },
   -- q = { ":lua require('dap').set_exception_breakpoints()<cr>", ":lua require('dap').set_exception_breakpoints()<cr>" },
   -- V = { ":lua require('dap').goto_()<cr>", ":lua require('dap').goto_()<cr>" },
   -- E = { ":lua require('dap.ui.widgets').()<cr>", ":lua require('dap.ui.widgets').hover()<cr>" },
   -- scopes, frames, expression, threads
+
+  local hydra_ok, hydra = safe_require("user.plugins.hydra")
+  if hydra_ok then
+    hydra.hydras.dap()
+  end
 end
 
 function M.config()

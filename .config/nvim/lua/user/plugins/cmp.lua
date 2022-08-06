@@ -132,9 +132,9 @@ return function()
     },
     sources = cmp.config.sources({
       { name = 'path' },
-      { name = 'cmdline_history' },
       { name = 'nvim_lua' },
       { name = 'cmdline' },
+      -- { name = 'cmdline_history' },
     })
   })
 

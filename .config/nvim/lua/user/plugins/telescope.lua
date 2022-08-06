@@ -94,7 +94,12 @@ return function()
           ["<C-/>"] = actions.which_key,
         },
         n = {
-          ["<esc>"] = actions.close,
+          -- NOTE: issue = https://github.com/nvim-telescope/telescope.nvim/issues/2111
+          -- ["<esc>"] = { action = actions.close, opts = { silent = true, nowait = true } },
+          ["<esc>"] = {
+            "<cmd>lua require('telescope.actions').close(vim.api.nvim_get_current_buf())<cr>",
+            type = "command", opts = { silent = true, nowait = true }
+          },
           ["<C-c>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
