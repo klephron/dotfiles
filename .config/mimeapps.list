@@ -1,25 +1,24 @@
 [Added Associations]
-application/octet-stream=gvim.desktop;
 application/x-zip=wine-extension-osr.desktop;wine-extension-osk.desktop;
-application/xml=gvim.desktop;
 application/zip=org.kde.dolphin.desktop;
-text/x-lua=gvim.desktop;
 video/x-matroska=vlc.desktop;
+application/octet-stream=neovide.desktop;
+text/x-lua=neovide.desktop;
+text/plain=neovide.desktop;
+text/x-lua=neovide.desktop;
+application/xml=neovide.desktop;
+application/octet-stream=neovide.desktop;
+application/x-shellscript=neovide.desktop;
 
 [Default Applications]
-application/octet-stream=gvim.desktop;
 /* application/pdf=org.pwmt.zathura.desktop */
 application/pdf=firefox.desktop;
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-startcenter.desktop
 application/x-osu-beatmap-archive=wine-extension-osk.desktop;
-application/x-shellscript=gvim.desktop;
-application/xml=gvim.desktop;
 image/jpeg=qimgv.desktop;
 image/png=qimgv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
 inode/directory=dolphin.desktop;
-text/plain=gvim.desktop;
-text/x-lua=gvim.desktop;
 video/x-matroska=vlc.desktop;
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_home_nikit_Apps_stm_.desktop
 x-scheme-handler/msteams=teams.desktop;

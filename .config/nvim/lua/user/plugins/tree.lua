@@ -56,7 +56,7 @@ return function()
       mappings = {
         list = {
           -- DEFAULT MAPPINGS
-          { key = { "<CR>", "<2-LeftMouse>" }, action = "edit" },
+          { key = { "<CR>", "<2-LeftMouse>", ";" }, action = "edit" },
           { key = "<C-e>", action = "edit_in_place" },
           { key = "O", action = "edit_no_picker" },
           { key = { "<C-]>", "<2-RightMouse>" }, action = "cd" },
