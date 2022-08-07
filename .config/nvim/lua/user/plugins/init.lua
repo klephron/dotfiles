@@ -51,8 +51,20 @@ packer.startup({
     -- Caching
     use { "lewis6991/impatient.nvim" }
 
+    -- Integrations
+    use { -- Discord
+      'andweeb/presence.nvim',
+      config = conf("presence"),
+    }
+
     -- Session
+    -- select from {possession,auto-session}
+    -- use {
+    --   'jedrzejboczar/possession.nvim',
+    --   config = conf("possession"),
+    -- }
     use {
+    -- NOTE: enable plugin when bd! will not be executed after dir change
       'rmagatti/auto-session',
       config = conf("auto-session"),
       requires = {

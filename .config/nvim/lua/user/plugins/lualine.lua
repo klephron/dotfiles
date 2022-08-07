@@ -142,6 +142,7 @@ end ]]
       lualine_c = { filename },
       lualine_x = { "aerial" },
       lualine_y = { session, diff },
+      -- lualine_y = { diff },
       lualine_z = { "fileformat", spaces, location, progress }
     },
     inactive_sections = {
@@ -150,6 +151,7 @@ end ]]
       lualine_c = { filename },
       lualine_x = { "aerial" },
       lualine_y = { session },
+      -- lualine_y = {},
       lualine_z = { "fileformat", location, progress },
     },
     tabline = {},
