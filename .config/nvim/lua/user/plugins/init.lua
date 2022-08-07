@@ -296,8 +296,6 @@ if packer_bootstrap then
 end
 
 
--- TODO: add plugins in black list if they can't be reloaded after config change (ex. nvim-notify)
-
 if not vim.g.packer_compiled_loaded and vim.loop.fs_stat(packer_compiled_path) then
   vim.cmd(fmt('source %s', packer_compiled_path))
   vim.g.packer_compiled_loaded = true

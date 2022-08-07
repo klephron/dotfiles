@@ -133,8 +133,7 @@ end ]]
       theme = custom_theme,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
-      -- NOTE: remove NvimTree when https://github.com/nvim-lualine/lualine.nvim/issues/784 will be closed
-      disabled_filetypes = { "alpha", "NvimTree" },
+      disabled_filetypes = { "alpha" },
       always_divide_middle = true,
     },
     sections = {
