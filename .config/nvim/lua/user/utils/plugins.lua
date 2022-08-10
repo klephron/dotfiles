@@ -35,4 +35,5 @@ function M.block_reload(func)
   end
   func()
 end
+
 return M

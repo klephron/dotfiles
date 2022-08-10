@@ -1,5 +1,6 @@
 return function()
   local trouble = require("trouble")
+  local icons = require("user.icons")
 
   trouble.setup {
     position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -30,11 +31,11 @@ return function()
 
     signs = {
       -- icons / text used for a diagnostic
-      error = "",
-      warning = "",
-      hint = "",
-      information = "",
-      other = "﫠"
+      error = icons.error,
+      warning = icons.warn,
+      hint = icons.hint,
+      information = icons.info,
+      other = "",
     },
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
   }

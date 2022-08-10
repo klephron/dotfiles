@@ -1,12 +1,13 @@
 return function()
   local indentline = require("indent_blankline")
+  local icons = require("user.icons").indentline
 
   indentline.setup {
     enabled = true,
     use_treesitter = false,
 
-    char = '│', -- ┆ ┊ 
-    char_blankline = '│',
+    char = icons.char, -- ┆ ┊ 
+    char_blankline = icons.char,
     space_char_blankline = ' ',
     char_highlight_list = {},
     space_char_highlight_list = {},
@@ -26,8 +27,8 @@ return function()
       'terminal', 'nofile'
     },
 
-    context_char = '┃',
-    context_char_blankline = '┃',
+    context_char = icons.context_char,
+    context_char_blankline = icons.context_char,
     show_current_context = false,
     show_current_context_start = false,
     show_current_context_start_on_current_line = false,

@@ -13,7 +13,7 @@ function M.setup()
     },
     float = {
       enabled = true,
-      text = "",
+      text = require("user.icons").diagnostics.lightbulb,
       win_opts = {
         border = 'none',
       },

@@ -1,5 +1,6 @@
 return function()
   local bufferline = require("bufferline")
+  local icons = require("user.icons").bufferline
 
   bufferline.setup {
     options = {
@@ -9,12 +10,12 @@ return function()
       right_mouse_command = "bdelete! %d",
       left_mouse_command = "buffer %d",
 
-      indicator_icon = '▎',
-      buffer_close_icon = '',
-      modified_icon = '●',
-      close_icon = '',
-      left_trunc_marker = '',
-      right_trunc_marker = '',
+      indicator_icon = icons.indicator,
+      buffer_close_icon = icons.buffer_close,
+      modified_icon = icons.modified,
+      close_icon = icons.tab_close,
+      left_trunc_marker = icons.truncate_left,
+      right_trunc_marker = icons.truncate_right,
 
       max_name_length = 25,
       max_prefix_length = 25, -- prefix used when a buffer is de-duplicated
@@ -25,7 +26,7 @@ return function()
       diagnostics_update_in_insert = false,
 
       offsets = {
-      --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
+        --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
       },
 
       color_icons = true,

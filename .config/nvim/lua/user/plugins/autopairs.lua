@@ -36,8 +36,8 @@ return function()
             cmp.lsp.CompletionItemKind.Method,
           },
           -- NOTE: Inpect with print(vim.inspect{char, item, bufnr, commit_character})
-          handler = function (char, item, bufnr, commit_character)
-            vim.notify(vim.inspect{char, item, bufnr, commit_character})
+          handler = function(char, item, bufnr, commit_character)
+            vim.notify(vim.inspect { char, item, bufnr, commit_character })
           end,
           -- handler = handlers["*"]
         }

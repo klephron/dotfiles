@@ -245,5 +245,43 @@ return {
     Event = "",
     Operator = "",
     TypeParameter = "",
+  },
+  bufferline = {
+    indicator = "▎",
+    buffer_close = "",
+    modified = "●",
+    tab_close = "",
+    truncate_left = "",
+    truncate_right = "",
+  },
+  diagnostics = {
+    error = "",
+    warn = "",
+    hint = "",
+    info = "",
+    lightbulb = "",
+    inv_error = "",
+    inv_warn = "",
+    inv_lightbulb = "",
+    inv_hint = "",
+  },
+  gitsigns = {
+    add = "▌",
+    change = "▌",
+    delete = "契",
+    topdelete = "契",
+    changedelete = "▌",
+  },
+  indentline = {
+    char = "│",
+    context_char = "┃",
+  },
+  comments = {
+    todo = " ",
+    hack = " ",
+    warn = " ",
+    perf = " ",
+    note = " ",
+    fix = " ",
   }
 }

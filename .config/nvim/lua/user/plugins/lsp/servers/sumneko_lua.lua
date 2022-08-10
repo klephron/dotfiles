@@ -27,4 +27,3 @@ config = lua_dev.setup({
 -- table.insert(config.settings.Lua.workspace.library, vim.fn.expand("$HOME/.config/nvim/lua"))
 -- print(us.dump_lua_table(config))
 return config
-

@@ -1,4 +1,4 @@
-return function ()
+return function()
   local fidget = require("fidget")
 
   fidget.setup {

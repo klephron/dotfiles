@@ -47,6 +47,7 @@ end
 function KeymapDictionary:remove_key(name)
   self[name] = nil
 end
+
 -- END
 
 M.lsp = KeymapDictionary:new({
@@ -96,28 +97,29 @@ M.dap = KeymapDictionary:new({
 
 M.dap_hydra = KeymapDictionary:new({
   body = { "<leader>D", },
-  continue = { "<C-c>", M.dap.continue.desc},
-  run_last = { "<C-u>", M.dap.run_last.desc},
-  launch = { "<C-n>", M.dap.launch.desc},
-  terminate = { "<C-t>", M.dap.terminate.desc},
-  disconnect = { "<C-d>", M.dap.disconnect.desc},
-  close = { "Q", M.dap.close.desc},
-  set_breakpoint_cond = { "E", M.dap.set_breakpoint_cond.desc},
-  set_breakpoint_log = { "M", M.dap.set_breakpoint_log.desc},
-  toggle_breakpoint = { "S", M.dap.toggle_breakpoint.desc},
-  clear_breakpoints = { "z", M.dap.clear_breakpoints.desc},
-  step_over = { "N", M.dap.step_over.desc},
-  step_into = { "I", M.dap.step_into.desc},
-  step_out = { "O", M.dap.step_out.desc},
-  step_back = { "D", M.dap.step_back.desc},
-  reverse_continue = { "R", M.dap.reverse_continue.desc},
-  up = { "d[", M.dap.up.desc},
-  down = { "d]", M.dap.down.desc},
-  run_to_cursor = { "A", M.dap.run_to_cursor.desc},
-  repl_toggle = { "G", M.dap.repl_toggle.desc},
-  repl_session = { "X", M.dap.repl_session.desc},
-  hover = { "m", M.dap.hover.desc},
-  dapui_toggle = { "Y", M.dap.dapui_toggle.desc},
+  quit = { "Z", "Quit" },
+  continue = { "<C-c>", M.dap.continue.desc },
+  run_last = { "<C-u>", M.dap.run_last.desc },
+  launch = { "<C-n>", M.dap.launch.desc },
+  terminate = { "<C-t>", M.dap.terminate.desc },
+  disconnect = { "<C-d>", M.dap.disconnect.desc },
+  close = { "Q", M.dap.close.desc },
+  set_breakpoint_cond = { "E", M.dap.set_breakpoint_cond.desc },
+  set_breakpoint_log = { "M", M.dap.set_breakpoint_log.desc },
+  toggle_breakpoint = { "S", M.dap.toggle_breakpoint.desc },
+  clear_breakpoints = { "z", M.dap.clear_breakpoints.desc },
+  step_over = { "N", M.dap.step_over.desc },
+  step_into = { "I", M.dap.step_into.desc },
+  step_out = { "O", M.dap.step_out.desc },
+  step_back = { "D", M.dap.step_back.desc },
+  reverse_continue = { "R", M.dap.reverse_continue.desc },
+  up = { "d[", M.dap.up.desc },
+  down = { "d]", M.dap.down.desc },
+  run_to_cursor = { "A", M.dap.run_to_cursor.desc },
+  repl_toggle = { "G", M.dap.repl_toggle.desc },
+  repl_session = { "X", M.dap.repl_session.desc },
+  hover = { "m", M.dap.hover.desc },
+  dapui_toggle = { "Y", M.dap.dapui_toggle.desc },
 }, "dap")
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL

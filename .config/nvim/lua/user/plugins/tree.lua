@@ -1,6 +1,7 @@
 return function()
   local nvim_tree = require('nvim-tree')
   local dispatch = require("nvim-tree.actions.dispatch").dispatch
+  local icons = require("user.icons")
 
   -- Custom functions
   local function open_file_close_nvim_tree(node)
@@ -25,12 +26,12 @@ return function()
       ignore_list = {},
     },
     diagnostics = {
-      enable = true,
+      enable = false,
       icons = {
-        hint = "",
-        info = "",
-        warning = "",
-        error = "",
+        hint = " ",
+        info = " ",
+        warning = " ",
+        error = icons.diagnostics.error,
       },
     },
     git = {

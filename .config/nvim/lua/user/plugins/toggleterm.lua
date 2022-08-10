@@ -1,4 +1,4 @@
-return function ()
+return function()
   local toggleterm = require("toggleterm")
   local api = vim.api
 
