@@ -1,84 +1,124 @@
+local M = {}
 ----------------------------------------------------------------------------//
 -- Keymaps
 -----------------------------------------------------------------------------//
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.cmd("cnoreabbrev hs split")
------------------------------------------------------------------------------//
-local M = {}
+-- prototype: KeymapDictionary
+local KeymapDictionary = {}
 
-M.lsp = {
-  definition = "<leader>kd",
-  declaration = "<leader>ke",
-  hover = "<leader>kh",
-  implementation = "<leader>ki",
-  signature_help_n = "<leader>ks",
-  signature_help_i = "<C-k>",
-  rename = "<leader>kn",
-  references = "<leader>kr",
-  code_action = "<leader>ka",
-  goto_prev = "[d",
-  goto_next = "]d",
-  open_float = "<leader>kl",
-  formatting = "<leader>m",
+function KeymapDictionary:new(table, prefix)
+  table = table or {}
+  setmetatable(table, self)
+  self.__index = self
+  -- process input data
+  for _, v in pairs(table) do
+    v.key = v[1]
+    v[1] = nil
+    if v[2] then
+      v.desc = prefix .. ": " .. v[2]
+      v[2] = nil
+    end
+  end
+  table._prefix = prefix
+  return table
+end
+
+function KeymapDictionary:key(element)
+  return self[element].key
+end
+
+function KeymapDictionary:desc(element)
+  local desc = self[element].desc
+  if desc == nil then return "" end
+  if self._prefix then
+    return self._prefix .. ": " .. desc
+  else
+    return desc
+  end
+end
+
+function KeymapDictionary:add_key(name, key, desc)
+  self[name] = {}
+  self[name].key = key
+  if desc then
+    self[name].desc = self._prefix .. ": " .. desc
+  end
+end
+
+function KeymapDictionary:remove_key(name)
+  self[name] = nil
+end
+-- END
+
+M.lsp = KeymapDictionary:new({
+  definition = { "<leader>kd", "Definition" },
+  declaration = { "<leader>ke", "Declaration" },
+  hover = { "<leader>kh", "Hover" },
+  implementation = { "<leader>ki", "Implementation" },
+  signature_help_n = { "<leader>ks", "Signature help" },
+  signature_help_i = { "<C-k>", "Signature help" },
+  rename = { "<leader>kn", "Rename" },
+  references = { "<leader>kr", "References" },
+  code_action = { "<leader>ka", "Code action" },
+  goto_prev = { "[d", "Goto previous" },
+  goto_next = { "]d", "Goto next" },
+  open_float = { "<leader>kl", "Open float" },
+  formatting = { "<leader>m", "Format file" },
   -- not customized
-  codelens = "<leader>kc",
-  type_definition = "<leader>kp",
-  aerial = {
+  codelens = { "<leader>kc", "Run codelens" },
+  type_definition = { "<leader>kp", "Type definition" },
+}, "lsp")
 
-  },
-}
+M.dap = KeymapDictionary:new({
+  continue = { "<leader>dc", "Continue" },
+  run_last = { "<leader>du", "Run last" },
+  launch = { "<leader>dl", "Launch" },
+  terminate = { "<leader>dt", "Terminate" },
+  disconnect = { "<leader>db", "Disconnect" },
+  close = { "<leader>dq", "Close" },
+  set_breakpoint_cond = { "<leader>de", "Set conditional break" },
+  set_breakpoint_log = { "<leader>dm", "Set log break" },
+  toggle_breakpoint = { "<leader>ds", "Toggle breakpoint" },
+  clear_breakpoints = { "<leader>dz", "Clear breakpoints" },
+  step_over = { "<leader>dn", "Step over" },
+  step_into = { "<leader>di", "Step into" },
+  step_out = { "<leader>do", "Step out" },
+  step_back = { "<leader>dd", "Step back" },
+  -- pause = {"<leader>dp", "Pause"},
+  reverse_continue = { "<leader>dr", "Reverse continue" },
+  up = { "<leader>d[", "Up" },
+  down = { "<leader>d]", "Down" },
+  run_to_cursor = { "<leader>da", "Run to cursor" },
+  repl_toggle = { "<leader>dg", "Toggle REPL" },
+  repl_session = { "<leader>dx", "REPL session" },
+  hover = { "<leader>dh", "Hover" },
+  dapui_toggle = { "<leader>dy", "Toggle dapui" },
+}, "dap")
 
-M.dap = {
-  hydra = {
-    body = "<leader>D",
-    continue = "<C-c>",
-    run_last = "<C-u>",
-    launch = "<C-n>",
-    terminate = "<C-t>",
-    disconnect = "<C-d>",
-    close = "Q",
-    set_breakpoint_cond = "E",
-    set_breakpoint_log = "M",
-    toggle_breakpoint = "S",
-    clear_breakpoints = "z",
-    step_over = "N",
-    step_into = "I",
-    step_out = "O",
-    step_back = "D",
-    reverse_continue = "R",
-    up = "d[",
-    down = "d]",
-    run_to_cursor = "A",
-    repl_toggle = "G",
-    repl_session = "X",
-    hover = "m",
-    dapui_toggle = "Y",
-  },
-  continue = "<leader>dc",
-  run_last = "<leader>du",
-  launch = "<leader>dl",
-  terminate = "<leader>dt",
-  disconnect = "<leader>db",
-  close = "<leader>dq",
-  set_breakpoint_cond = "<leader>de",
-  set_breakpoint_log = "<leader>dm",
-  toggle_breakpoint = "<leader>ds",
-  clear_breakpoints = "<leader>dz",
-  step_over = "<leader>dn",
-  step_into = "<leader>di",
-  step_out = "<leader>do",
-  step_back = "<leader>dd",
-  -- pause = "<leader>dp",
-  reverse_continue = "<leader>dr",
-  up = "<leader>d[",
-  down = "<leader>d]",
-  run_to_cursor = "<leader>da",
-  repl_toggle = "<leader>dg",
-  repl_session = "<leader>dx",
-  hover = "<leader>dh",
-  dapui_toggle = "<leader>dy",
-}
+M.dap_hydra = KeymapDictionary:new({
+  body = { "<leader>D", },
+  continue = { "<C-c>", M.dap.continue.desc},
+  run_last = { "<C-u>", M.dap.run_last.desc},
+  launch = { "<C-n>", M.dap.launch.desc},
+  terminate = { "<C-t>", M.dap.terminate.desc},
+  disconnect = { "<C-d>", M.dap.disconnect.desc},
+  close = { "Q", M.dap.close.desc},
+  set_breakpoint_cond = { "E", M.dap.set_breakpoint_cond.desc},
+  set_breakpoint_log = { "M", M.dap.set_breakpoint_log.desc},
+  toggle_breakpoint = { "S", M.dap.toggle_breakpoint.desc},
+  clear_breakpoints = { "z", M.dap.clear_breakpoints.desc},
+  step_over = { "N", M.dap.step_over.desc},
+  step_into = { "I", M.dap.step_into.desc},
+  step_out = { "O", M.dap.step_out.desc},
+  step_back = { "D", M.dap.step_back.desc},
+  reverse_continue = { "R", M.dap.reverse_continue.desc},
+  up = { "d[", M.dap.up.desc},
+  down = { "d]", M.dap.down.desc},
+  run_to_cursor = { "A", M.dap.run_to_cursor.desc},
+  repl_toggle = { "G", M.dap.repl_toggle.desc},
+  repl_session = { "X", M.dap.repl_session.desc},
+  hover = { "m", M.dap.hover.desc},
+  dapui_toggle = { "Y", M.dap.dapui_toggle.desc},
+}, "dap")
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//
@@ -103,11 +143,6 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   insert_mode = "i",
 --   term_mode = "t",
 --   command_mode = "c",
-
----------------------------------------------------------------------------//
--- MULTIPLE MODES
----------------------------------------------------------------------------//
--- us.set_keynomap({ "n", "i" }, "<A-s>", "<cmd>write<cr>", "buffer: Save")
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
 ---------------------------------------------------------------------------//
@@ -162,9 +197,9 @@ if which_key_ok then
 
   which_key.register({
     q = { "<cmd>q<cr>", "window: Close" },
-    Q = { "<cmd>Q<cr>", "window: Close all"},
+    Q = { "<cmd>Q<cr>", "window: Close all" },
     w = { "<cmd>write<cr>", "nvim: Write" },
-    W = { "<cmd>wall<cr>", "nvim: Write all"},
+    W = { "<cmd>wall<cr>", "nvim: Write all" },
     e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
     Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },

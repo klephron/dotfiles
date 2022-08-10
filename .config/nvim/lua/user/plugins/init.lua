@@ -194,7 +194,6 @@ packer.startup({
     --   config = conf("possession"),
     -- }
     use {
-      -- NOTE: enable plugin when bd! will not be executed after dir change
       'rmagatti/auto-session',
       config = conf("auto-session"),
       requires = {
