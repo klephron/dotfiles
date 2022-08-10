@@ -94,12 +94,11 @@ return function()
           ["<C-/>"] = actions.which_key,
         },
         n = {
-          -- NOTE: issue = https://github.com/nvim-telescope/telescope.nvim/issues/2111
-          -- ["<esc>"] = { action = actions.close, opts = { silent = true, nowait = true } },
-          ["<esc>"] = {
-            "<cmd>lua require('telescope.actions').close(vim.api.nvim_get_current_buf())<cr>",
-            type = "command", opts = { silent = true, nowait = true }
-          },
+          ["<esc>"] = { actions.close, type = "action", opts = { silent = true, nowait = true } }, -- error when trying to press escape
+          -- ["<esc>"] = {
+          --   "<cmd>lua require('telescope.actions').close(vim.api.nvim_get_current_buf())<cr>",
+          --   type = "command", opts = { silent = true, nowait = true }
+          -- },
           ["<C-c>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
