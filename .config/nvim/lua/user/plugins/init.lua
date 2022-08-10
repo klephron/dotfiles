@@ -173,6 +173,11 @@ packer.startup({
       "akinsho/toggleterm.nvim",
       config = conf("toggleterm"),
     }
+    use {
+      'kevinhwang91/nvim-bqf',
+      ft = "qf",
+      config = conf("bqf"),
+    }
 
     -- Telescope
     use {
