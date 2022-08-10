@@ -6,7 +6,7 @@ function M.setup()
     return
   end
   lightbulb.setup({
-    ignore = { 'null-ls' },
+    ignore = { 'null-ls', 'sumneko_lua' },
     sign = {
       enabled = false,
       priority = 10,
@@ -18,11 +18,7 @@ function M.setup()
         border = 'none',
       },
     },
-    autocmd = {
-      enabled = true,
-      pattern = { "*" },
-      events = { "CursorHold", "CursorHoldI" }
-    },
+    autocmd = { enabled = true, },
   })
 
   vim.api.nvim_command('highlight LightBulbVirtualText guifg=Yellow ctermfg=Yellow')
