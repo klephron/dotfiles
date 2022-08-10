@@ -37,7 +37,7 @@ packer.startup({
       'antoinemadec/FixCursorHold.nvim',
       config = function()
         vim.cmd [[
-          " let g:cursorhold_updatetime = 100
+          let g:cursorhold_updatetime = 500
         ]]
       end
     }
@@ -51,58 +51,6 @@ packer.startup({
     -- Caching
     use { "lewis6991/impatient.nvim" }
 
-    -- Integrations
-    use { -- Discord
-      'andweeb/presence.nvim',
-      config = conf("presence"),
-    }
-
-    -- Session
-    -- select from {possession,auto-session}
-    -- use {
-    --   'jedrzejboczar/possession.nvim',
-    --   config = conf("possession"),
-    -- }
-    use {
-    -- NOTE: enable plugin when bd! will not be executed after dir change
-      'rmagatti/auto-session',
-      config = conf("auto-session"),
-      requires = {
-        {
-          'rmagatti/session-lens',
-          config = conf("session-lens"),
-        },
-      }
-    }
-
-    -- Editing
-    use {
-      'windwp/nvim-autopairs',
-      disable = false,
-      config = conf("autopairs"),
-    }
-    use {
-      "numToStr/Comment.nvim",
-      config = conf("comment"),
-    }
-    use {
-      'folke/which-key.nvim',
-      config = conf("which-key")
-    }
-    use {
-      'phaazon/hop.nvim',
-      config = conf("hop")
-    }
-    use {
-      'mfussenegger/nvim-treehopper',
-      config = function()
-        us.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
-        us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
-      end
-    }
-    use { 'tpope/vim-surround' }
-    use { 'tpope/vim-repeat' }
-    use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
 
     -- Highlighting/colorschemes
     use {
@@ -178,6 +126,10 @@ packer.startup({
       ft = "qf",
       config = conf("bqf"),
     }
+    use {
+      'stevearc/dressing.nvim',
+      config = conf("dressing")
+    }
 
     -- Telescope
     use {
@@ -211,7 +163,8 @@ packer.startup({
         { 'jose-elias-alvarez/null-ls.nvim' },
         { 'folke/lua-dev.nvim' },
         { 'ray-x/lsp_signature.nvim' },
-        { 'stevearc/aerial.nvim' }
+        { 'stevearc/aerial.nvim' },
+        { 'kosayoda/nvim-lightbulb' },
       },
     }
 
@@ -233,6 +186,59 @@ packer.startup({
         { "hrsh7th/cmp-nvim-lua" }, -- nvim lua api
       }
     }
+
+    -- Session
+    -- select from {possession,auto-session}
+    -- use {
+    --   'jedrzejboczar/possession.nvim',
+    --   config = conf("possession"),
+    -- }
+    use {
+      -- NOTE: enable plugin when bd! will not be executed after dir change
+      'rmagatti/auto-session',
+      config = conf("auto-session"),
+      requires = {
+        {
+          'rmagatti/session-lens',
+          config = conf("session-lens"),
+        },
+      }
+    }
+
+    -- Integrations
+    use { -- Discord
+      'andweeb/presence.nvim',
+      config = conf("presence"),
+    }
+
+    -- Editing
+    use {
+      'windwp/nvim-autopairs',
+      disable = false,
+      config = conf("autopairs"),
+    }
+    use {
+      "numToStr/Comment.nvim",
+      config = conf("comment"),
+    }
+    use {
+      'folke/which-key.nvim',
+      config = conf("which-key")
+    }
+    use {
+      'phaazon/hop.nvim',
+      config = conf("hop")
+    }
+    use {
+      'mfussenegger/nvim-treehopper',
+      config = function()
+        us.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
+        us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
+      end
+    }
+    use { 'tpope/vim-surround' }
+    use { 'tpope/vim-repeat' }
+    use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
 
     -- Debugging
     use {

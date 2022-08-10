@@ -29,4 +29,5 @@ return function()
   require("user.plugins.lsp.null-ls").setup()
   require("user.plugins.lsp.lsp_signature").setup()
   require("user.plugins.lsp.aerial").setup()
+  require("user.plugins.lsp.lightbulb").setup()
 end
