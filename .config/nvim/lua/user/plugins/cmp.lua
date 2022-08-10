@@ -69,7 +69,7 @@ return function()
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-
+      ["<A-q>"] = cmp.mapping(cmp.mapping.abort(), {"i"}),
     },
     completion = {},
     formatting = {

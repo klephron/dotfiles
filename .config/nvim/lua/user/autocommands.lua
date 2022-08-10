@@ -1,27 +1,75 @@
+us.augroup("_vimtex", {
+  {
+    event = "User",
+    pattern = "VimtexEventInitPost",
+    -- command = "call vimtex#compiler#start()",
+    command = function ()
+      vim.fn["vimtex#compiler#start"]()
+    end
+  }
+})
+
+us.augroup("_text", {
+  {
+    event = "FileType",
+    pattern = "gitcommit,markdown",
+    command = function()
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
+    end
+  }
+})
+
+us.augroup("_info_pages", {
+  {
+    event = "FileType",
+    pattern = "help,lspinfo,qf,vim,checkhealth,dap-float",
+    command = function()
+      us.set_keynomap("n", "q", "<cmd>close<cr>", {buffer = 0})
+    end
+  },
+  {
+    event = "FileType",
+    pattern = "lspinfo,qf,vim,checkhealth,dap-float",
+    command = function()
+      us.set_keynomap("n", "<Esc>", "<cmd>close<cr>", {buffer = 0})
+    end
+  },
+})
+
+us.augroup("_nasm", {
+  {
+    event = "BufRead,BufNewFile",
+    pattern = "*.inc,*.asm",
+    command = "set filetype=nasm",
+  }
+})
+
+us.augroup("_leave", {
+  {
+    event = "BufLeave",
+    pattern = "*",
+    command = function ()
+      if vim.bo.modifiable == true then
+        vim.cmd("silent! write")
+      end
+    end
+  }
+})
+
+us.augroup("_help", {
+  {
+    event = "BufWinEnter",
+    pattern = "*.txt",
+    command = function()
+      if vim.bo.filetype == "help" then
+        vim.cmd("wincmd L")
+      end
+    end
+  }
+})
+
 vim.cmd [[
-  augroup _vimtex
-      au!
-      au User VimtexEventInitPost call vimtex#compiler#start()
-  augroup END
-
-  augroup _git
-    au!
-    au FileType gitcommit setlocal wrap
-    au FileType gitcommit setlocal spell
-  augroup end
-
-  augroup _markdown
-    au!
-    au FileType markdown setlocal wrap
-    au FileType markdown setlocal spell
-  augroup end
-
-  augroup _info_pages
-    au!
-    au FileType help,lspinfo,qf,vim,checkhealth,dap-float nnoremap <silent> <buffer> q :close<CR> 
-    au FileType lspinfo,qf,vim,checkhealth,dap-float nnoremap <silent> <buffer> <Esc> :close<CR> 
-  augroup end
-
   augroup _binary
     au! 
     au BufReadPre   *.bin,*.exe,*.out let &bin=1
@@ -32,15 +80,4 @@ vim.cmd [[
     au BufWritePost *.bin,*.exe,*.out if &bin | %!xxd
     au BufWritePost *.bin,*.exe,*.out set nomod | endif
   augroup end
-
-  augroup _nasm
-    au!
-    au BufRead,BufNewFile *.inc,*.asm set filetype=nasm
-  augroup end
-
-  augroup _leave
-    au!
-    au BufLeave * silent! wall
-  augroup END
-
 ]]
