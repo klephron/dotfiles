@@ -199,7 +199,7 @@ if which_key_ok then
 
   which_key.register({
     q = { "<cmd>q<cr>", "window: Close" },
-    Q = { "<cmd>Q<cr>", "window: Close all" },
+    Q = { "<cmd>qall<cr>", "window: Close all" },
     w = { "<cmd>write<cr>", "nvim: Write" },
     W = { "<cmd>wall<cr>", "nvim: Write all" },
     e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
