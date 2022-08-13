@@ -177,9 +177,13 @@ if which_key_ok then
     ["<C-h>"] = { "<c-w>h", "window: Move left" },
 
     ["<C-Up>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
+    ["<C-S-k>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
     ["<C-Down>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
+    ["<C-S-j>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
     ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
+    ["<C-S-l>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
     ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
+    ["<C-S-h>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
 
     ["<S-l>"] = { "<cmd>bnext<cr>", "buffer: Move next" },
     ["<S-h>"] = { "<cmd>bprevious<cr>", "buffer: Move previous" },
