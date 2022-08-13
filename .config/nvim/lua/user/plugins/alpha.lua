@@ -27,6 +27,7 @@ return function()
       theme.button("p", icons.Folder .. " Find project", "<cmd>Telescope projects <CR>"),
       theme.button("t", icons.Text .. " Find text", "<cmd>Telescope live_grep<CR>"),
       theme.button("l", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
+      theme.button("h", icons.Checkhealth .. " Checkhealth", "<cmd>checkhealth<cr>" ),
       theme.button("q", icons.Quit .. " Quit nvim", "<cmd>qa<cr>"),
     },
     opts = {

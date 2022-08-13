@@ -63,13 +63,18 @@ return function()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 
       ["<M-Space>"] = cmp.mapping.confirm { select = true },
+
       ["<C-l>"] = cmp.mapping(toggle_complete, { "i", "c" }),
+      ["<A-l>"] = cmp.mapping(toggle_complete, { "i", "c" }),
 
       ["<C-q>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ["<A-q>"] = cmp.mapping(cmp.mapping.abort(), {"i"}),
+      ["<A-q>"] = cmp.mapping {
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      },
     },
     completion = {},
     formatting = {

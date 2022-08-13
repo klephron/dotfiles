@@ -19,10 +19,6 @@ function _G.safe_require(module, opts)
   return ok, result
 end
 
-function us.dump_lua_table(table)
-  return vim.inspect(table)
-end
-
 function us.delete_current_buffer()
   local cbn = vim.api.nvim_get_current_buf()
   local buffers = vim.fn.getbufinfo({ buflisted = true })

@@ -51,21 +51,38 @@ end
 -- END
 
 M.lsp = KeymapDictionary:new({
+  -- gf (override file open), gl, go, gp, gq, gs, gy, gz
   definition = { "<leader>kd", "Definition" },
+  g_definition = { "gd" },
+
   declaration = { "<leader>ke", "Declaration" },
+  g_declaration = { "gD" },
+
   hover = { "<leader>kh", "Hover" },
+  g_hover = { "gh" },
+
   implementation = { "<leader>ki", "Implementation" },
+  g_implementation = { "gm" },
+
   signature_help_n = { "<leader>ks", "Signature help" },
   signature_help_i = { "<C-k>", "Signature help" },
+
   rename = { "<leader>kn", "Rename" },
+
   references = { "<leader>kr", "References" },
+  g_references = { "gr" },
+
   code_action = { "<leader>ka", "Code action" },
+
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },
-  open_float = { "<leader>kl", "Open float" },
+
+  open_float = { "<leader>kf", "Open float" },
+
   formatting = { "<leader>m", "Format file" },
-  -- not customized
-  codelens = { "<leader>kc", "Run codelens" },
+
+  codelens = { "<leader>kl", "Run codelens" },
+
   type_definition = { "<leader>kp", "Type definition" },
 }, "lsp")
 
@@ -169,13 +186,17 @@ if which_key_ok then
 
     ["<esc><esc>"] = { "<cmd>nohlsearch<cr>", "hl: Clear search hl" },
 
-    ["gx"] = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
-      "goto: Open link in system browser" },
+    g = {
+      name = "special",
+      a = { "Print asci character" },
+      x = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
+        "goto: Open link in system browser" },
+    }
 
   }, { mode = "n" })
 
   which_key.register({
-    ["C-w>"] = {
+    ["<C-w>"] = {
       name = "window",
       s = { "Split horizontally" },
       v = { "Split vertically" },
@@ -203,6 +224,7 @@ if which_key_ok then
     w = { "<cmd>write<cr>", "nvim: Write" },
     W = { "<cmd>wall<cr>", "nvim: Write all" },
     e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
+    E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
     Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
     y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },

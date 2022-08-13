@@ -214,6 +214,7 @@ return {
     Telescope = "",
     SignIn = "",
     Reference = "",
+    Checkhealth = "",
   },
   Close = " ",
   Telescope = " ",
