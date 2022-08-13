@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "[json]: launch `a.out`",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "a.out",
+      "cwd":"${workspaceFolder}",
+      "stopOnEntry": true
+    }
+  ]
+}

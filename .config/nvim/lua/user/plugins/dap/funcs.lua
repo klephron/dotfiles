@@ -5,6 +5,10 @@ local dapui = require("dapui")
 local M = {}
 M.func = {}
 
+local function dap_notify(msg, level)
+  vim.notify(msg, level, { title = "Dap" })
+end
+
 function M.continue()
   return dap.continue()
 end
@@ -13,8 +17,31 @@ function M.run_last()
   return dap.run_last()
 end
 
-function M.launch()
-  return dap.launch()
+local launchjs_paths = {
+  '/launch.json',
+  '/.vscode/launch.json',
+}
+
+function M.process_launchjs()
+  local path = nil
+  for _, ipath in ipairs(launchjs_paths) do
+    local resolved_path = vim.fn.getcwd() .. ipath
+    if vim.loop.fs_stat(resolved_path) then
+      path = resolved_path
+      break
+    end
+  end
+  if path == nil then
+    path = vim.fn.input('Path to launch.json: ', vim.fn.getcwd() .. '/', 'file')
+    if not vim.loop.fs_stat(path) then
+      dap_notify("Not resolved path: " .. path .. "\nReturning...", vim.log.levels.WARN)
+      return
+    end
+  end
+  dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
+
+  local ttft = require('user.plugins.dap.langs').type_to_filetype
+  return require("dap.ext.vscode").load_launchjs(path, ttft)
 end
 
 function M.terminate()

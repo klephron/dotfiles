@@ -142,7 +142,6 @@ if fn.exists("g:neovide") then
   -- vim.g.neovide_floating_blur = 0
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
-  -- print("HELLO")
 end
 -----------------------------------------------------------------------------//
 -- KEYS & ABBREVIATIONS
@@ -151,3 +150,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.cmd("cnoreabbrev hs split")
 -----------------------------------------------------------------------------//
+-- Folding
+-----------------------------------------------------------------------------//
+--[[ vim.opt.foldlevelstart = 3 ]]
+--[[ vim.opt.foldmethod = 'expr' ]]
+--[[ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()' ]]

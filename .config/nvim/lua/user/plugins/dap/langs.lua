@@ -1,82 +1,60 @@
 local dap = require('dap')
 local HOME = vim.fn.expand('$HOME')
 
+local M = {}
+M.type_to_filetype = {}
 
--- CXX C RUST
+-- CXX C RUST {{{1
+-----------------------------------------------------------------------------//
 dap.adapters.cppdbg = {
-  id = 'cppdbg',
   type = 'executable',
   command = HOME .. '/Data/cpptools/debugAdapters/bin/OpenDebugAD7',
+  id = 'cppdbg', -- used in initialized request
+  enrich_config = function(config, on_config)
+    on_config(config)
+  end
 }
+
 
 dap.configurations.cpp = {
   {
-    name = "Launch file",
+    name = "[base]: launch `path-to-executable`",
     type = "cppdbg",
     request = "launch",
+    -- opts
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     cwd = '${workspaceFolder}',
-    stopOnEntry = true,
+    stopAtEntry = true,
   },
   {
-    name = 'Attach to gdbserver :1234',
+    name = '[base]: attach gdbserver :1234 `path-to-executable`',
     type = 'cppdbg',
     request = 'launch',
-    MIMode = 'gdb',
-    miDebuggerServerAddress = 'localhost:1234',
-    miDebuggerPath = '/usr/bin/gdb',
-    cwd = '${workspaceFolder}',
+    -- opts
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
+    cwd = '${workspaceFolder}',
+    linux = {
+      MIMode = 'gdb',
+      miDebuggerServerAddress = 'localhost:1234',
+      miDebuggerPath = '/usr/bin/gdb',
+    },
   },
 }
-
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
--- PYTHON
+M.type_to_filetype.cppdbg = {"c", "cpp", "rust"}
+-- }}}
+
+-- PYTHON {{{1
 require('dap-python').setup('~/.venvs/debugpy/bin/python')
+-- }}}
 
---[[
-dap.adapters.python = {
-  type = 'executable';
-  command = HOME .. '/.venvs/debugpy/bin/python',
-  args = { '-m', 'debugpy.adapter' };
-}
-
-dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch file";
-
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-    program = "${file}"; -- This configuration will launch the current file if used.
-    python = function()
-      -- venv in path
-      local venv = os.getenv("VIRTUAL_ENV")
-      if vim.fn.empty(venv) ~= 1 then
-        return venv .. '/bin/python'
-      end
-      -- current directory
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-        return cwd .. '/venv/bin/python'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-        return cwd .. '/.venv/bin/python'
-      else
-        return '/usr/bin/python'
-      end
-    end;
-  },
-}
-]]
-
--- LUA
+-- LUA {{{1
 dap.adapters.nlua = function(callback, config)
   callback({ type = 'server', host = config.host, port = config.port })
 end
@@ -100,3 +78,7 @@ dap.configurations.lua = {
     end,
   }
 }
+-- }}}
+
+return M
+-- vim:foldmethod=marker

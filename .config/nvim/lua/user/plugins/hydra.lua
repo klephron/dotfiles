@@ -9,8 +9,8 @@ end
 local dap_hint = [[
                                            ^^^^^^^^^^^^^^^^^^^^^^^DAP HYDRA:
  ^^^_%{runl}_: run last       ^_%{down}_: down                               ^^^^^^^^_%{togb}_: toggle break       _%{stin}_: step into 
- ^^^_%{lnch}_: launch         ^^^_%{up}_: up                ^_%{hov}_: hover         ^_%{sbc}_: conditional break  _%{stou}_: step out  
- ^^^_%{term}_: terminate   ^^^^_%{cont}_: continue          _%{rplt}_: toggle REPL   ^_%{sbl}_: log break          _%{stov}_: step over 
+ ^^^_%{lnch}_: launchjs       ^^^_%{up}_: up                ^_%{hov}_: hover         ^_%{sbc}_: conditional break  _%{stou}_: step out  
+ ^^^_%{term}_: terminate       _%{cont}_: continue          _%{rplt}_: toggle REPL   ^_%{sbl}_: log break          _%{stov}_: step over 
  ^^^_%{disc}_: disconnect      _%{revc}_: reverse continue  _%{duit}_: toggle dapui  _%{clrb}_: clear breaks       _%{stba}_: step back 
      _%{cls}_: close           _%{rutc}_: run to cursor                                            ^^^^^^^^^^^^^^^^^^^^^^_%{quit}_: exit 
 ]]
@@ -46,7 +46,7 @@ M.hydras = {
             ["quit"] = key(kmps.quit.key),
             ["cont"] = key(kmps.continue.key),
             ["runl"] = key(kmps.run_last.key),
-            ["lnch"] = key(kmps.launch.key),
+            ["lnch"] = key(kmps.process_launchjs.key),
             ["term"] = key(kmps.terminate.key),
             ["disc"] = key(kmps.disconnect.key),
             ["cls"]  = key(kmps.close.key),
@@ -73,7 +73,7 @@ M.hydras = {
         { kmps.quit.key, nil, { exit = true, desc = kmps.quit.desc } },
         { kmps.continue.key, fns.continue, { desc = kmps.continue.desc } },
         { kmps.run_last.key, fns.run_last, { desc = kmps.run_last.desc } },
-        { kmps.launch.key, fns.launch, { desc = kmps.launch.desc } },
+        { kmps.process_launchjs.key, fns.process_launchjs, { desc = kmps.process_launchjs.desc } },
         { kmps.terminate.key, fns.terminate, { desc = kmps.terminate.desc } },
         { kmps.disconnect.key, fns.disconnect, { desc = kmps.disconnect.desc } },
         { kmps.close.key, fns.close, { desc = kmps.close.desc } },
