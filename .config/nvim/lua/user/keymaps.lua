@@ -226,7 +226,7 @@ if which_key_ok then
       name = "toggleterm",
       t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
       a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
-      l = { "<cmd>UsToggleTermLazygit<cr>", "toggleterm: Lazygit" },
+      l = { '<cmd>lua vim.env.NVIM_CWD=vim.fn.getcwd(); vim.cmd("UsToggleTermLazygit")<cr>', "toggleterm: Lazygit" },
       h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
     },
     k = { name = "lsp" },

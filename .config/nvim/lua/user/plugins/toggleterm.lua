@@ -42,7 +42,7 @@ return function()
   end
 
   local lazygit = Terminal:new({
-    cmd = 'lazygit',
+    cmd = 'cd $NVIM_CWD && lazygit',
     hidden = true,
     direction = 'float',
     on_open = float_handler,
