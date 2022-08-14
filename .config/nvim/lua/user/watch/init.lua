@@ -2,6 +2,8 @@ local uv = vim.loop
 local api = vim.api
 local fn = vim.fn
 
+local watch_files = {}
+
 local function watch_notify(msg, level)
   return vim.notify(msg, level, { title = "Watch" })
 end
@@ -53,16 +55,55 @@ local function write_command_output(command, name)
   })
 end
 
-api.nvim_create_user_command("UsWatch", function()
+local function get_augroup_name(name)
+  return "us_watcher_" .. name
+end
+
+api.nvim_create_user_command("UsWatchCreate", function()
   local command = fn.input("Command: ")
   local name = fn.input("Output file: ", fn.getcwd() .. "/", "file")
-  us.augroup("us_watcher", {
+  local pattern = fn.input("Pattern: ")
+  if command == "" or name == "" or pattern == "" then
+    watch_notify("Aborted.", vim.log.levels.INFO)
+    return
+  end
+  local augroup = get_augroup_name(name)
+  us.augroup(augroup, {
     {
       event = "BufWritePost",
-      pattern = fn.input("Pattern: "),
+      pattern = pattern,
       command = function()
         write_command_output(command, name)
       end,
     },
   })
+  if vim.tbl_contains(watch_files, name) then
+    watch_notify("File " .. name .. " already in watch.", vim.log.levels.WARN)
+  else
+    table.insert(watch_files, name)
+  end
 end, {})
+
+api.nvim_create_user_command("UsWatchList", function()
+  print(vim.inspect(watch_files))
+end, {})
+
+api.nvim_create_user_command("UsWatchDelete", function()
+  vim.ui.select(watch_files, {
+    prompt = "Select file:",
+  },
+    function(choice)
+      if choice == nil then return end
+      local name = choice
+      local augroup = get_augroup_name(name)
+      if vim.tbl_contains(watch_files, name) then
+        api.nvim_del_augroup_by_name(augroup)
+        for k, v in pairs(watch_files) do
+          if v == name then
+            table.remove(watch_files, k)
+            break
+          end
+        end
+      end
+    end)
+end, { nargs = 0 })
