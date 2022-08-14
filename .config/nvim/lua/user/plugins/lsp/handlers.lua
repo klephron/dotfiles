@@ -100,12 +100,14 @@ function M.on_attach(client, bufnr)
       with_desc(kmps.formatting.desc))
   end
   -- Diagnostics
+  us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+    with_desc(kmps.open_float.desc))
+  us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+    with_desc(kmps.open_float.desc))
   us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
     with_desc(kmps.goto_next.desc))
   us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
     with_desc(kmps.goto_prev.desc))
-  us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    with_desc(kmps.open_float.desc))
 
   -- OTHER PROVIDERS:
   -- workspaceSymbolProvider
