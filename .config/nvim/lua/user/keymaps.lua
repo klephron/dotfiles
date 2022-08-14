@@ -258,7 +258,7 @@ if which_key_ok then
     },
     k = { name = "lsp" },
     l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
-    b = { "<cmd>buffers<cr>", "buffer: Show" },
+    b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
     ["'"] = { "<cmd>marks<cr>", "mark: Show" },
     ['"'] = { "<cmd>reg<cr>", "register: Show" },
   }, { mode = "n", prefix = "<leader>" })

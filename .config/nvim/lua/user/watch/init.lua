@@ -91,7 +91,7 @@ api.nvim_create_user_command("UsWatchCreate", function()
     },
   })
   if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
-    watch_notify("Watch " .. name .. " is overrided.", vim.log.levels.WARN)
+    watch_notify("Watch " .. name .. " is overridden.", vim.log.levels.WARN)
   else
     watch_files[name] = {command = command, pattern = pattern}
   end
