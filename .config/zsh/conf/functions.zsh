@@ -1,6 +1,6 @@
 watch_file() {
   clear
-  inotifywait -m -e modify $1 \
+  inotifywait -m -e close_write $1 \
   | while read changed; do
       # echo $changed
     clear

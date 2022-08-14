@@ -42,6 +42,7 @@ local function write_command_output(command, name)
   end
   vim.fn.jobstart(command, {
     stdout_buffered = true,
+    stderr_buffered = true,
     on_stdout = append_data,
     on_stderr = append_data,
     on_exit = function()
