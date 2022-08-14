@@ -2,13 +2,21 @@ local uv = vim.loop
 local api = vim.api
 local fn = vim.fn
 
--- name = {command = "", pattern = ""}
+---@class WatchTable
+---@field command string
+---@field pattern string
+
+---@type table<string, WatchTable>
 local watch_files = {}
 
+---@param msg string
+---@param level any
+---@return nil
 local function watch_notify(msg, level)
   return vim.notify(msg, level, { title = "Watch" })
 end
 
+---@param name string
 local function create_file_if_not_exist(name)
   if not uv.fs_stat(name) then
     local ok, fd = pcall(uv.fs_open, name, "w", 420)
@@ -20,6 +28,7 @@ local function create_file_if_not_exist(name)
   end
 end
 
+---@param name string
 local function open_buffer(name)
   local bufnr = fn.bufnr(name)
   if bufnr == -1 then
@@ -31,6 +40,8 @@ local function open_buffer(name)
   return bufnr
 end
 
+---@param command string
+---@param name string
 local function write_command_output(command, name)
   create_file_if_not_exist(name)
   local bufnr = open_buffer(name)
@@ -56,6 +67,7 @@ local function write_command_output(command, name)
   })
 end
 
+---@param name string
 local function get_augroup_name(name)
   return "us_watcher_" .. name
 end
