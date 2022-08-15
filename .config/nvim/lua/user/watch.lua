@@ -9,6 +9,14 @@ local fn = vim.fn
 ---@type table<string, WatchTable>
 local watch_files = {}
 
+local config = {
+  file = {
+    remove = true,
+    overwrite = true
+  },
+  run_on_create = true,
+}
+
 ---@param msg string
 ---@param level any
 ---@return nil
@@ -75,10 +83,21 @@ end
 api.nvim_create_user_command("UsWatchCreate", function()
   local command = fn.input("Command: ")
   local name = fn.input("Output file: ", fn.getcwd() .. "/", "file")
+  -- overwrite
+  if not config.file.overwrite and uv.fs_stat(name) then
+    local res = fn.input("File exists. Overwrite it? (y/n): "):sub(1, 1)
+    if res == "n" or res == "N" then
+      return
+    end
+  end
   local pattern = fn.input("Pattern: ")
   if command == "" or name == "" or pattern == "" then
     watch_notify("Aborted.", vim.log.levels.INFO)
     return
+  end
+  -- run-on-create
+  if config.run_on_create then
+    write_command_output(command, name)
   end
   local augroup = get_augroup_name(name)
   us.augroup(augroup, {
@@ -93,7 +112,7 @@ api.nvim_create_user_command("UsWatchCreate", function()
   if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
     watch_notify("Watch " .. name .. " is overridden.", vim.log.levels.WARN)
   else
-    watch_files[name] = {command = command, pattern = pattern}
+    watch_files[name] = { command = command, pattern = pattern }
   end
 end, {})
 
@@ -112,6 +131,12 @@ api.nvim_create_user_command("UsWatchDelete", function()
       if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
         api.nvim_del_augroup_by_name(augroup)
         watch_files[name] = nil
+        -- file-remove
+        if config.file.remove and uv.fs_stat(name) then
+          local bufnr = fn.bufnr(name)
+          if bufnr ~= -1 then api.nvim_buf_delete(bufnr, {}) end
+          uv.fs_unlink(name)
+        end
       end
     end)
 end, { nargs = 0 })

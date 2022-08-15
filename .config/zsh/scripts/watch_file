@@ -15,7 +15,6 @@ while read changed; do
     echo "File '$file' was moved."
     break
   elif [ $changed = DELETE_SELF ]; then
-    clear
     echo "File '$file' was deleted."
     break
   fi
