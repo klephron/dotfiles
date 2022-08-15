@@ -42,6 +42,6 @@ watch_file() {
     fi
     # clear
     # bat -p --paging=never $file
-  done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" $1)
+  done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" $1 &)
   echo "THERE"
 }

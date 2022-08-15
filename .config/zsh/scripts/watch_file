@@ -18,5 +18,5 @@ while read changed; do
     echo "File '$file' was deleted."
     break
   fi
-  bat -p --paging=never $file
+  bat -pp $file
 done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" $1)

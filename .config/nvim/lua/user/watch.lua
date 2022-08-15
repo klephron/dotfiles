@@ -15,6 +15,11 @@ local config = {
     overwrite = true
   },
   run_on_create = true,
+  decorator = { -- example: treat stdout as terminal
+    enabled = true,
+    left = 'script -q -c "',
+    right = '" /dev/null',
+  }
 }
 
 ---@param msg string
@@ -94,6 +99,10 @@ api.nvim_create_user_command("UsWatchCreate", function()
   if command == "" or name == "" or pattern == "" then
     watch_notify("Aborted.", vim.log.levels.INFO)
     return
+  end
+  -- decorator
+  if config.decorator.enabled then
+    command = config.decorator.left .. command .. config.decorator.right
   end
   -- run-on-create
   if config.run_on_create then
