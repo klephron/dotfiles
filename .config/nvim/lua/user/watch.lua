@@ -87,10 +87,10 @@ end
 
 ---@param name string
 local function get_augroup_name(name)
-  return "us_watcher_" .. name
+  return "_watcher_" .. name
 end
 
-api.nvim_create_user_command("UsWatchCreate", function()
+api.nvim_create_user_command("WatchCreate", function()
   local command = fn.input("Command: ")
   local name = fn.input("Output file: ", fn.getcwd() .. "/", "file")
   -- overwrite
@@ -139,11 +139,11 @@ api.nvim_create_user_command("UsWatchCreate", function()
   end
 end, {})
 
-api.nvim_create_user_command("UsWatchList", function()
+api.nvim_create_user_command("WatchList", function()
   print(vim.inspect(watch_files))
 end, {})
 
-api.nvim_create_user_command("UsWatchDelete", function()
+api.nvim_create_user_command("WatchDelete", function()
   vim.ui.select(vim.tbl_keys(watch_files), {
     prompt = "Select file:",
   },
@@ -164,7 +164,7 @@ api.nvim_create_user_command("UsWatchDelete", function()
     end)
 end, { nargs = 0 })
 
-us.augroup("us_watch_leave", {
+us.augroup("_watch_leave", {
   {
     event = "VimLeavePre",
     pattern = "*",

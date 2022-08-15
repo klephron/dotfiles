@@ -233,8 +233,8 @@ if which_key_ok then
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
     t = {
       name = "watch",
-      n = { "<cmd>UsWatchCreate<cr>", "watch: Create" },
-      d = { "<cmd>UsWatchDelete<cr>", "watch: Delete" },
+      n = { "<cmd>WatchCreate<cr>", "watch: Create" },
+      d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
     },
     Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
     y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
