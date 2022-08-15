@@ -12,14 +12,15 @@ local watch_files = {}
 local config = {
   file = {
     remove = true,
-    overwrite = true
+    overwrite = true,
   },
   run_on_create = true,
   decorator = { -- example: treat stdout as terminal
     enabled = true,
     left = 'script -q -c "',
     right = '" /dev/null',
-  }
+  },
+  buflisted = false,
 }
 
 ---@param msg string
@@ -45,7 +46,7 @@ end
 local function open_buffer(name)
   local bufnr = fn.bufnr(name)
   if bufnr == -1 then
-    bufnr = api.nvim_create_buf(true, true)
+    bufnr = api.nvim_create_buf(config.buflisted, true)
     api.nvim_buf_set_name(bufnr, name)
   end
   api.nvim_buf_set_option(bufnr, "buftype", "")
