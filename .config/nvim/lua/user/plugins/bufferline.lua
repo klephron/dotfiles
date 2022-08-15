@@ -42,76 +42,76 @@ return function()
     },
     highlights = {
       fill = {
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       tab = {
-        guifg = { attribute = "fg", highlight = "TabLine" },
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       tab_selected = {
-        guifg = { attribute = "fg", highlight = "TabLineSel" },
-        guibg = { attribute = "bg", highlight = "Normal" },
-        gui = "bold",
+        fg = { attribute = "fg", highlight = "TabLineSel" },
+        bg = { attribute = "bg", highlight = "Normal" },
+        bold = true,
       },
       tab_close = {
-        guifg = { attribute = "fg", highlight = "TabLine" },
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       separator = {
-        guifg = { attribute = "bg", highlight = "TabLine" }, -- between tabs and buffers
-        guibg = { attribute = "bg", highlight = "TabLine" }, -- border between tabs and buffers
+        fg = { attribute = "bg", highlight = "TabLine" }, -- between tabs and buffers
+        bg = { attribute = "bg", highlight = "TabLine" }, -- border between tabs and buffers
       },
       separator_selected = {
-        guifg = { attribute = "bg", highlight = "TabLine" }, -- small border
-        guibg = { attribute = "bg", highlight = "Normal" }, -- close to tab
+        fg = { attribute = "bg", highlight = "TabLine" }, -- small border
+        bg = { attribute = "bg", highlight = "Normal" }, -- close to tab
       },
       buffer_selected = {
-        guifg = { attribute = "fg", highlight = "Normal" },
-        guibg = { attribute = "bg", highlight = "Normal" },
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
       },
       background = {
-        guifg = { attribute = "fg", highlight = "TabLine" }, -- hidden buffers
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "TabLine" }, -- hidden buffers
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       close_button = {
-        guifg = { attribute = "fg", highlight = "TabLine" }, -- close button of a buffer
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "TabLine" }, -- close button of a buffer
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       indicator_selected = {
-        guifg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-        guibg = { attribute = "bg", highlight = "Normal" },
+        fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+        bg = { attribute = "bg", highlight = "Normal" },
       },
       modified = {
-        guifg = { attribute = "fg", highlight = "TabLine" },
-        guibg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
       },
       modified_selected = {
-        guifg = { attribute = "fg", highlight = "Normal" },
-        guibg = { attribute = "bg", highlight = "Normal" },
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
       },
 
       -- buffer_visible = {
-      --   guifg = { attribute = "bg", highlight = "DiffAdd" },
-      --   guibg = { attribute = "bg", highlight = "DiffChange" },
+      --   fg = { attribute = "bg", highlight = "DiffAdd" },
+      --   bg = { attribute = "bg", highlight = "DiffChange" },
       -- },
       -- duplicate_selected = {
-      --   guifg = { attribute = "bg", highlight = "DiffAdd" },
-      --   guibg = { attribute = "bg", highlight = "DiffChange" },
+      --   fg = { attribute = "bg", highlight = "DiffAdd" },
+      --   bg = { attribute = "bg", highlight = "DiffChange" },
       --   gui = "italic",
       -- },
       -- duplicate_visible = {
-      --   guifg = { attribute = "bg", highlight = "DiffAdd" },
-      --   guibg = { attribute = "bg", highlight = "DiffChange" },
-      --   gui = "italic",
+      --   fg = { attribute = "bg", highlight = "DiffAdd" },
+      --   bg = { attribute = "bg", highlight = "DiffChange" },
+      --   italic = true,
       -- },
       -- duplicate = {
-      --   guifg = { attribute = "bg", highlight = "DiffAdd" },
-      --   guibg = { attribute = "bg", highlight = "DiffChange" },
-      --   gui = "italic",
+      --   fg = { attribute = "bg", highlight = "DiffAdd" },
+      --   bg = { attribute = "bg", highlight = "DiffChange" },
+      --   italic = true,
       -- },
       -- modified_visible = {
-      --   guifg = { attribute = "fg", highlight = "TabLine" },
-      --   guibg = { attribute = "bg", highlight = "TabLine" },
+      --   fg = { attribute = "fg", highlight = "TabLine" },
+      --   bg = { attribute = "bg", highlight = "TabLine" },
       -- },
     },
   }
