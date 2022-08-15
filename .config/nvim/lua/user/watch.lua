@@ -21,6 +21,10 @@ local config = {
     right = '" /dev/null',
   },
   buflisted = false,
+  register = {
+    save_watch_path = true,
+    reg = "+",
+  }
 }
 
 ---@param msg string
@@ -119,10 +123,19 @@ api.nvim_create_user_command("UsWatchCreate", function()
       end,
     },
   })
+  -- save and override
   if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
-    watch_notify("Watch " .. name .. " is overridden.", vim.log.levels.WARN)
-  else
-    watch_files[name] = { command = command, pattern = pattern }
+    watch_notify("Watcher " .. name .. " is overridden.", vim.log.levels.WARN)
+  end
+  watch_files[name] = { command = command, pattern = pattern }
+  -- save in register
+  if config.register.save_watch_path then
+    vim.cmd(":echon ''") -- clear commandline
+    local reg_cmd = "" ..
+      ":redir @" .. config.register.reg .. "\n" ..
+      ":echon '" .. name .. "'\n" ..
+      ":redir end"
+    vim.cmd(reg_cmd)
   end
 end, {})
 
