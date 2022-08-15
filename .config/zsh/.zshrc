@@ -9,7 +9,6 @@ source $XDG_CONFIG_HOME/zsh/conf/prompt.zsh
 # dep: plugins completion
 source $XDG_CONFIG_HOME/zsh/conf/bindkeys.zsh
 source $XDG_CONFIG_HOME/zsh/conf/hooks.zsh
-source $XDG_CONFIG_HOME/zsh/conf/functions.zsh
 
 # TMUX
 precmd() {
