@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file=`pwd`/$1
+file=`readlink -f $1`
 dir=`dirname $file`
 
 clear
