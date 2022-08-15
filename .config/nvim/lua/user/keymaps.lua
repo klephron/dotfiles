@@ -231,6 +231,11 @@ if which_key_ok then
     e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
     E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+    t = {
+      name = "watch",
+      n = { "<cmd>UsWatchCreate<cr>", "watch: Create" },
+      d = { "<cmd>UsWatchDelete<cr>", "watch: Delete" },
+    },
     Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
     y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
     u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },

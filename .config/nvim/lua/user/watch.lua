@@ -149,3 +149,19 @@ api.nvim_create_user_command("UsWatchDelete", function()
       end
     end)
 end, { nargs = 0 })
+
+us.augroup("us_watch_leave", {
+  {
+    event = "VimLeavePre",
+    pattern = "*",
+    command = function()
+      if config.file.remove then
+        for name, _ in pairs(watch_files) do
+          if uv.fs_stat(name) then
+            uv.fs_unlink(name)
+          end
+        end
+      end
+    end
+  }
+})
