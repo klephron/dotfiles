@@ -9,9 +9,6 @@ local open_buffer = util.open_buffer
 local tbl_equals = util.tbl_equals
 local trim = util.trim
 
-local async = require("plenary.async")
-
-
 ---@class WatchTable
 ---@field command_splitted string[]
 ---@field command string
@@ -39,10 +36,10 @@ local config = {
   command = {
     stdout_buffered = true,
     stderr_buffered = true,
-    ignore_split = true, -- TODO: just remove it when plugin will be fixed
-    split_pattern = {
-      -- NOTE: it's just split so shell behaviur won't work
-      "&&", ";"
+    split = {
+      enabled = true,
+      -- NOTE: it's just used to split so shell behaviur won't work
+      pattern = {"&&", ";"},
     },
     exit_on_error = true,
     save_after_each = true,
@@ -79,10 +76,42 @@ local function execute_multiple(name)
   create_file_if_not_exist(name)
   local bufnr = open_buffer(name, config.is_buflisted)
   local commands = watch_data[name].command_splitted
-  print("TODO: not implemented because I'm bad in sync/async and multithreading right now")
+  local co = coroutine.create(function()
+    for _, v in ipairs(commands) do
+      coroutine.yield(v)
+    end
+  end)
+  -- fn
+  local function with_buffer(chan_id, data, stream)
+    append_data(bufnr, chan_id, data, stream)
+  end
+  local function recursive()
+    local ok, command = coroutine.resume(co)
+    if not ok or command == nil then return end
+    local job_id = nil
+    api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. command })
+    job_id = fn.jobstart(command, {
+      stdout_buffered = config.command.stdout_buffered,
+      stderr_buffered = config.command.stderr_buffered,
+      on_stdout = with_buffer,
+      on_stderr = with_buffer,
+      on_exit = function(_, exit, _)
+        if config.command.save_after_each then
+          api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+        end
+        if config.command.exit_on_error and job_id <= 0 or exit ~= 0 then return
+        else recursive() end
+      end
+    })
+  end
+  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
+  recursive()
+  if not config.command.save_after_each then
+    api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+  end
 end
 
----Execute command and write to stdout when all jobs will finish. 
+---Execute command and write to stdout when all jobs will finish.
 ---@param name string
 local function execute_single(name)
   create_file_if_not_exist(name)
@@ -92,6 +121,7 @@ local function execute_single(name)
   local function with_buffer(chan_id, data, stream)
     append_data(bufnr, chan_id, data, stream)
   end
+
   -- execute cmd and print output to the file, after that write file
   api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
   api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. command })
@@ -116,7 +146,7 @@ local function create_record(name, command, pattern)
   end
   -- split commands
   local command_list = { command }
-  for _, p in pairs(config.command.split_pattern) do
+  for _, p in pairs(config.command.split.pattern) do
     for i, c in ipairs(command_list) do
       command_list[i] = vim.split(c, p, { trimempty = true })
     end
@@ -141,10 +171,10 @@ local function create_record(name, command, pattern)
 end
 
 local function execute(name)
-  if config.command.ignore_split then
-    execute_single(name)
-  else
+  if config.command.split.enabled then
     execute_multiple(name)
+  else
+    execute_single(name)
   end
 end
 
