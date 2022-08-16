@@ -2,12 +2,15 @@
 
 file=`readlink -f $1`
 dir=`dirname $file`
+command="bat -pp $file"
 
 clear
 if [[ ! -f "$file" ]]; then
   echo "File '$file' does not exist. Waiting for creation..."
   inotifywait -e create,moved_to --include $1 --format "%w%f %e" -q -q $dir
   clear
+else
+  eval $command
 fi
 while read changed; do
   clear
@@ -18,5 +21,5 @@ while read changed; do
     echo "File '$file' was deleted."
     break
   fi
-  bat -pp $file
-done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" $1)
+  eval $command
+done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" -q $1)

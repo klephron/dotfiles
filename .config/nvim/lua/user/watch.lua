@@ -3,11 +3,11 @@ local api = vim.api
 local fn = vim.fn
 
 ---@class WatchTable
----@field command string
+---@field command string[]
 ---@field pattern string
 
 ---@type table<string, WatchTable>
-local watch_files = {}
+local watch_data = {}
 
 local config = {
   file = {
@@ -24,6 +24,17 @@ local config = {
   register = {
     save_watch_path = true,
     reg = "+",
+  },
+  command = {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    split_pattern = {
+      -- NOTE: it's just split so shell behaviur won't work
+      "&&", ";"
+    },
+    exit_on_error = true,
+    save_after_each = true,
+    trim = true,
   }
 }
 
@@ -58,31 +69,47 @@ local function open_buffer(name)
   return bufnr
 end
 
----@param command string
+---@param t1 table
+---@param t2 table
+local function tbl_equals(t1, t2)
+  if t1 == t2 then return true end
+  for k, v in pairs(t1) do
+    if v ~= t2[k] then return false end
+  end
+  return true
+end
+
 ---@param name string
-local function write_command_output(command, name)
+local function write_command_output(name)
   create_file_if_not_exist(name)
   local bufnr = open_buffer(name)
-  -- print command
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, command, "" })
   -- func
-  local append_data = function(_, data, output)
-    api.nvim_buf_set_lines(bufnr, -1, -1, false, { output .. ":" })
-    if data then
+  local function append_data(_, data, output)
+    if data and not tbl_equals(data, { "" }) then
+      api.nvim_buf_set_lines(bufnr, -1, -1, false, { output .. ":" })
       api.nvim_buf_set_lines(bufnr, -1, -1, false, data)
     end
   end
-  vim.fn.jobstart(command, {
-    stdout_buffered = true,
-    stderr_buffered = true,
-    on_stdout = append_data,
-    on_stderr = append_data,
-    on_exit = function()
-      api.nvim_buf_call(bufnr, function()
-        vim.cmd("w!")
-      end)
-    end
-  })
+  -- print command name in file
+  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
+  -- run jobs
+  for _, cmd in ipairs(watch_data[name].command) do
+    api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. cmd })
+    local job_id = vim.fn.jobstart(cmd, {
+      stdout_buffered = config.command.stdout_buffered,
+      stderr_buffered = config.command.stderr_buffered,
+      on_stdout = append_data,
+      on_stderr = append_data,
+      on_exit = function()
+        if config.command.save_after_each then
+          api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+        end
+      end
+    })
+    if config.command.exit_on_error and job_id <= 0 then break end
+    fn.jobwait({ job_id })
+  end
+  api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
 end
 
 ---@param name string
@@ -90,10 +117,43 @@ local function get_augroup_name(name)
   return "_watcher_" .. name
 end
 
+---@param name string
+---@param command string
+---@param pattern string
+local function create_record(name, command, pattern)
+  -- save and override
+  if vim.tbl_contains(vim.tbl_keys(watch_data), name) then
+    watch_notify("Watcher " .. name .. " is overridden.", vim.log.levels.WARN)
+  end
+  -- split commands
+  local command_list = { command }
+  for _, p in pairs(config.command.split_pattern) do
+    for i, c in ipairs(command_list) do
+      command_list[i] = vim.split(c, p, { trimempty = true })
+    end
+    command_list = vim.tbl_flatten(command_list)
+  end
+  -- trim commands
+  if config.command.trim then
+    for i, c in pairs(command_list) do
+      command_list[i] = c:gsub("^%s*(.-)%s*$", "%1")
+    end
+  end
+  -- decorator
+  if config.decorator.enabled then
+    for i, c in pairs(command_list) do
+      command_list[i] = config.decorator.left .. c .. config.decorator.right
+    end
+  end
+  -- store
+  watch_data[name] = { command = command_list, pattern = pattern }
+end
+
+-- USER COMMANDS
 api.nvim_create_user_command("WatchCreate", function()
   local command = fn.input("Command: ")
   local name = fn.input("Output file: ", fn.getcwd() .. "/", "file")
-  -- overwrite
+  -- ask to overwrite file
   if not config.file.overwrite and uv.fs_stat(name) then
     local res = fn.input("File exists. Overwrite it? (y/n): "):sub(1, 1)
     if res == "n" or res == "N" then
@@ -105,55 +165,48 @@ api.nvim_create_user_command("WatchCreate", function()
     watch_notify("Aborted.", vim.log.levels.INFO)
     return
   end
-  -- decorator
-  if config.decorator.enabled then
-    command = config.decorator.left .. command .. config.decorator.right
-  end
+  create_record(name, command, pattern)
   -- run-on-create
   if config.run_on_create then
-    write_command_output(command, name)
+    write_command_output(name)
   end
+  -- create augroup
   local augroup = get_augroup_name(name)
   us.augroup(augroup, {
     {
       event = "BufWritePost",
       pattern = pattern,
       command = function()
-        write_command_output(command, name)
+        write_command_output(name)
       end,
     },
   })
-  -- save and override
-  if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
-    watch_notify("Watcher " .. name .. " is overridden.", vim.log.levels.WARN)
-  end
-  watch_files[name] = { command = command, pattern = pattern }
-  -- save in register
+  -- save watch filename in register
   if config.register.save_watch_path then
     vim.cmd(":echon ''") -- clear commandline
     local reg_cmd = "" ..
-      ":redir @" .. config.register.reg .. "\n" ..
-      ":echon '" .. name .. "'\n" ..
-      ":redir end"
+        ":redir @" .. config.register.reg .. "\n" ..
+        ":echon '" .. name .. "'\n" ..
+        ":redir end"
     vim.cmd(reg_cmd)
   end
 end, {})
 
 api.nvim_create_user_command("WatchList", function()
-  print(vim.inspect(watch_files))
+  print(vim.inspect(watch_data))
 end, {})
 
 api.nvim_create_user_command("WatchDelete", function()
-  vim.ui.select(vim.tbl_keys(watch_files), {
+  vim.ui.select(vim.tbl_keys(watch_data), {
     prompt = "Select file:",
   },
     function(choice)
       if choice == nil then return end
       local name = choice
       local augroup = get_augroup_name(name)
-      if vim.tbl_contains(vim.tbl_keys(watch_files), name) then
+      if vim.tbl_contains(vim.tbl_keys(watch_data), name) then
         api.nvim_del_augroup_by_name(augroup)
-        watch_files[name] = nil
+        watch_data[name] = nil
         -- file-remove
         if config.file.remove and uv.fs_stat(name) then
           local bufnr = fn.bufnr(name)
@@ -170,7 +223,7 @@ us.augroup("_watch_leave", {
     pattern = "*",
     command = function()
       if config.file.remove then
-        for name, _ in pairs(watch_files) do
+        for name, _ in pairs(watch_data) do
           if uv.fs_stat(name) then
             uv.fs_unlink(name)
           end
