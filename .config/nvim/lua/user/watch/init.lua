@@ -2,10 +2,21 @@ local uv = vim.loop
 local api = vim.api
 local fn = vim.fn
 
----@class WatchTable
----@field command string[]
----@field pattern string
+local util = require("user.watch.util")
+local watch_notify = util.watch_notify
+local create_file_if_not_exist = util.create_file_if_not_exist
+local open_buffer = util.open_buffer
+local tbl_equals = util.tbl_equals
+local trim = util.trim
 
+local async = require("plenary.async")
+
+
+---@class WatchTable
+---@field command_splitted string[]
+---@field command string
+---@field pattern string
+--
 ---@type table<string, WatchTable>
 local watch_data = {}
 
@@ -20,7 +31,7 @@ local config = {
     left = 'script -qe -c "',
     right = '" /dev/null',
   },
-  buflisted = false,
+  is_buflisted = false,
   register = {
     save_watch_path = true,
     reg = "+",
@@ -28,6 +39,7 @@ local config = {
   command = {
     stdout_buffered = true,
     stderr_buffered = true,
+    ignore_split = true, -- TODO: just remove it when plugin will be fixed
     split_pattern = {
       -- NOTE: it's just split so shell behaviur won't work
       "&&", ";"
@@ -38,87 +50,60 @@ local config = {
   }
 }
 
----@param msg string
----@param level any
----@return nil
-local function watch_notify(msg, level)
-  return vim.notify(msg, level, { title = "Watch" })
-end
-
----@param name string
-local function create_file_if_not_exist(name)
-  if not uv.fs_stat(name) then
-    local ok, fd = pcall(uv.fs_open, name, "w", 420)
-    if not ok then
-      watch_notify("Couldn't open file " .. name, vim.log.levels.WARN)
-      return
-    end
-    uv.fs_close(fd)
-  end
-end
-
----@param name string
-local function open_buffer(name)
-  local bufnr = fn.bufnr(name)
-  if bufnr == -1 then
-    bufnr = api.nvim_create_buf(config.buflisted, true)
-    api.nvim_buf_set_name(bufnr, name)
-  end
-  api.nvim_buf_set_option(bufnr, "buftype", "")
-  api.nvim_buf_set_option(bufnr, "modifiable", true)
-  return bufnr
-end
-
----@param t1 table
----@param t2 table
-local function tbl_equals(t1, t2)
-  if t1 == t2 then return true end
-  for k, v in pairs(t1) do
-    if v ~= t2[k] then return false end
-  end
-  return true
-end
-
----@param name string
-local function write_command_output(name)
-  create_file_if_not_exist(name)
-  local bufnr = open_buffer(name)
-  -- func
-  local function append_data(_, data, output)
-    if data and not tbl_equals(data, { "" }) then
-      api.nvim_buf_set_lines(bufnr, -1, -1, false, { output .. ":" })
-      api.nvim_buf_set_lines(bufnr, -1, -1, false, data)
-    end
-  end
-  -- print command name in file
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
-  -- run jobs
-  for _, cmd in ipairs(watch_data[name].command) do
-    api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. cmd })
-    local exit_code = nil;
-    local job_id = vim.fn.jobstart(cmd, {
-      stdout_buffered = config.command.stdout_buffered,
-      stderr_buffered = config.command.stderr_buffered,
-      on_stdout = append_data,
-      on_stderr = append_data,
-      on_exit = function(_, exit, _)
-        exit_code = exit;
-        if config.command.save_after_each then
-          api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
-        end
-      end
-    })
-    fn.jobwait({ job_id })
-    if config.command.exit_on_error and job_id <= 0 or exit_code ~= 0 then break end
-  end
-  if not config.command.save_after_each then
-    api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
-  end
-end
-
 ---@param name string
 local function get_augroup_name(name)
   return "_watcher_" .. name
+end
+
+---Apply decorator
+---@param str string
+---@return string
+local function apply_decorator(str)
+  return config.decorator.left .. str .. config.decorator.right
+end
+
+---Append data to file from stdin/stderr
+---@param data table
+---@param stream string
+---@param bufnr number
+local function append_data(bufnr, _, data, stream)
+  if data and not tbl_equals(data, { "" }) then
+    api.nvim_buf_set_lines(bufnr, -1, -1, false, { stream .. ":" })
+    api.nvim_buf_set_lines(bufnr, -1, -1, false, data)
+  end
+end
+
+---Execute multiple commands at once, more customizable, more options, prefered.
+---@param name any
+local function execute_multiple(name)
+  create_file_if_not_exist(name)
+  local bufnr = open_buffer(name, config.is_buflisted)
+  local commands = watch_data[name].command_splitted
+  print("TODO: not implemented because I'm bad in sync/async and multithreading right now")
+end
+
+---Execute command and write to stdout when all jobs will finish. 
+---@param name string
+local function execute_single(name)
+  create_file_if_not_exist(name)
+  local bufnr = open_buffer(name, config.is_buflisted)
+  local command = watch_data[name].command
+  -- fn
+  local function with_buffer(chan_id, data, stream)
+    append_data(bufnr, chan_id, data, stream)
+  end
+  -- execute cmd and print output to the file, after that write file
+  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
+  api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. command })
+  fn.jobstart(command, {
+    stdout_buffered = config.command.stdout_buffered,
+    stderr_buffered = config.command.stderr_buffered,
+    on_stdout = with_buffer,
+    on_stderr = with_buffer,
+    on_exit = function()
+      api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+    end
+  })
 end
 
 ---@param name string
@@ -139,18 +124,28 @@ local function create_record(name, command, pattern)
   end
   -- trim commands
   if config.command.trim then
+    command = trim(command)
     for i, c in pairs(command_list) do
-      command_list[i] = c:gsub("^%s*(.-)%s*$", "%1")
+      command_list[i] = trim(c)
     end
   end
   -- decorator
   if config.decorator.enabled then
     for i, c in pairs(command_list) do
-      command_list[i] = config.decorator.left .. c .. config.decorator.right
+      command_list[i] = apply_decorator(c)
     end
+    command = apply_decorator(command)
   end
   -- store
-  watch_data[name] = { command = command_list, pattern = pattern }
+  watch_data[name] = { command_splitted = command_list, command = command, pattern = pattern }
+end
+
+local function execute(name)
+  if config.command.ignore_split then
+    execute_single(name)
+  else
+    execute_multiple(name)
+  end
 end
 
 -- USER COMMANDS
@@ -171,18 +166,14 @@ api.nvim_create_user_command("WatchCreate", function()
   end
   create_record(name, command, pattern)
   -- run-on-create
-  if config.run_on_create then
-    write_command_output(name)
-  end
+  if config.run_on_create then execute(name) end
   -- create augroup
   local augroup = get_augroup_name(name)
   us.augroup(augroup, {
     {
       event = "BufWritePost",
       pattern = pattern,
-      command = function()
-        write_command_output(name)
-      end,
+      command = function() execute(name) end,
     },
   })
   -- save watch filename in register

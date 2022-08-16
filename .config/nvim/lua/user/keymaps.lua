@@ -58,7 +58,7 @@ M.lsp = KeymapDictionary:new({
   declaration = { "<leader>ke", "Declaration" },
   g_declaration = { "gD" },
 
-  hover = { "<leader>kh", "Hover" },
+  hover = { "<leader>kl", "Hover" },
   g_hover = { "gl" },
 
   implementation = { "<leader>ki", "Implementation" },
@@ -74,7 +74,7 @@ M.lsp = KeymapDictionary:new({
 
   code_action = { "<leader>ka", "Code action" },
 
-  open_float = { "<leader>kf", "Open float" },
+  open_float = { "<leader>kh", "Open float" },
   g_open_float = { "gh" },
 
   goto_prev = { "[d", "Goto previous" },

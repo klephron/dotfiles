@@ -8,6 +8,7 @@ local config = {
         }
       },
       diagnostics = {
+        ['missing-parameter'] = false,
       },
       completion = { keywordSnippet = 'Replace', callSnippet = 'Replace' },
     },
