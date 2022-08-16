@@ -17,7 +17,7 @@ local config = {
   run_on_create = true,
   decorator = { -- example: treat stdout as terminal
     enabled = true,
-    left = 'script -q -c "',
+    left = 'script -qe -c "',
     right = '" /dev/null',
   },
   buflisted = false,
@@ -95,19 +95,21 @@ local function write_command_output(name)
   -- run jobs
   for _, cmd in ipairs(watch_data[name].command) do
     api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. cmd })
+    local exit_code = nil;
     local job_id = vim.fn.jobstart(cmd, {
       stdout_buffered = config.command.stdout_buffered,
       stderr_buffered = config.command.stderr_buffered,
       on_stdout = append_data,
       on_stderr = append_data,
-      on_exit = function()
+      on_exit = function(_, exit, _)
+        exit_code = exit;
         if config.command.save_after_each then
           api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
         end
       end
     })
-    if config.command.exit_on_error and job_id <= 0 then break end
     fn.jobwait({ job_id })
+    if config.command.exit_on_error and job_id <= 0 or exit_code ~= 0 then break end
   end
   api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
 end
