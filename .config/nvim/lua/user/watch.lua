@@ -111,7 +111,9 @@ local function write_command_output(name)
     fn.jobwait({ job_id })
     if config.command.exit_on_error and job_id <= 0 or exit_code ~= 0 then break end
   end
-  api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+  if not config.command.save_after_each then
+    api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
+  end
 end
 
 ---@param name string
