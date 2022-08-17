@@ -71,7 +71,7 @@ local function append_data(bufnr, _, data, stream)
 end
 
 ---Execute multiple commands at once, more customizable, more options, prefered.
----@param name any
+---@param name string
 local function execute_multiple(name)
   create_file_if_not_exist(name)
   local bufnr = open_buffer(name, config.is_buflisted)
@@ -207,6 +207,9 @@ api.nvim_create_user_command("WatchCreate", function()
     },
   })
   -- save watch filename in register
+  -- NOTE: if getting an error invoking xclip, then add this in ~/.ssh/config
+  -- ForwardX11 yes
+  -- ForwardX11Trusted yes
   if config.register.save_watch_path then
     vim.cmd(":echon ''") -- clear commandline
     local reg_cmd = "" ..

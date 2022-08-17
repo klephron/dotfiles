@@ -4,6 +4,7 @@ file=`readlink -f $1`
 dir=`dirname $file`
 command="bat -pp $file"
 
+# inotifywait processes won't get killed
 clear
 if [[ ! -f "$file" ]]; then
   echo "File '$file' does not exist. Waiting for creation..."
