@@ -220,11 +220,11 @@ api.nvim_create_user_command("WatchCreate", function()
   -- ForwardX11 yes
   -- ForwardX11Trusted yes
   if config.register.save_watch_path then
-    vim.cmd(":echon ''") -- clear commandline
     local reg_cmd = "" ..
         ":redir @" .. config.register.reg .. "\n" ..
         ":echon '" .. name .. "'\n" ..
         ":redir end"
+    vim.cmd(":echo '' | redraw") -- clear commandline
     vim.cmd(reg_cmd)
   end
 end, {})
