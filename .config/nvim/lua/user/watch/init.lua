@@ -39,7 +39,7 @@ local config = {
     split = {
       enabled = true,
       -- NOTE: it's just used to split so shell behaviur won't work
-      pattern = {"&&", ";"},
+      pattern = { "&&", ";" },
     },
     exit_on_error = true,
     save_after_each = true,
@@ -85,6 +85,7 @@ local function execute_multiple(name)
   local function with_buffer(chan_id, data, stream)
     append_data(bufnr, chan_id, data, stream)
   end
+
   local function recursive()
     local ok, command = coroutine.resume(co)
     if not ok or command == nil then return end
@@ -104,6 +105,7 @@ local function execute_multiple(name)
       end
     })
   end
+
   api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
   recursive()
   if not config.command.save_after_each then
@@ -180,9 +182,16 @@ end
 
 -- USER COMMANDS
 api.nvim_create_user_command("WatchCreate", function()
-  local command = fn.input("Command: ")
+  local command = fn.input("Command: ", "", "command")
+  if command == "" then
+    watch_notify("Aborted.", vim.log.levels.INFO)
+    return
+  end
   local name = fn.input("Output file: ", fn.getcwd() .. "/", "file")
-  -- ask to overwrite file
+  if name == "" then
+    watch_notify("Aborted.", vim.log.levels.INFO)
+    return
+  end
   if not config.file.overwrite and uv.fs_stat(name) then
     local res = fn.input("File exists. Overwrite it? (y/n): "):sub(1, 1)
     if res == "n" or res == "N" then
@@ -190,7 +199,7 @@ api.nvim_create_user_command("WatchCreate", function()
     end
   end
   local pattern = fn.input("Pattern: ")
-  if command == "" or name == "" or pattern == "" then
+  if pattern == "" then
     watch_notify("Aborted.", vim.log.levels.INFO)
     return
   end

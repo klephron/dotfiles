@@ -52,8 +52,8 @@ return function()
       end,
     },
     mapping = {
-      ["<Tab>"] = cmp.mapping(tab, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s" }),
+      ["<Tab>"] = cmp.mapping(tab, { "i", "c" }),
+      ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "c" }),
       ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
       ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -109,15 +109,6 @@ return function()
   }
 
   local cmdline_override = {}
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-    completion = { autocomplete = false, },
-    mapping = cmp.mapping.preset.cmdline(cmdline_override),
-    sources = {
-      { name = 'buffer' }
-    }
-  })
-
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     --completion = { autocomplete = true, },
@@ -142,5 +133,8 @@ return function()
       -- { name = 'cmdline_history' },
     })
   })
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', { enabled = function() return false end, })
+  cmp.setup.cmdline('@', { enabled = function() return false end, })
 
 end
