@@ -70,31 +70,37 @@ return function()
       winblend = 0,
       mappings = {
         i = {
-          ["<C-n>"] = actions.cycle_history_next,
-          ["<C-p>"] = actions.cycle_history_prev,
+          ["<C-j>"] = actions.cycle_history_next,
+          ["<C-k>"] = actions.cycle_history_prev,
 
-          ["<C-j>"] = actions.move_selection_next,
-          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-n>"] = actions.move_selection_next,
+          ["<C-p>"] = actions.move_selection_previous,
 
           ["<C-c>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
-          ["<C-h>"] = actions.select_horizontal,
+
+          ["<C-s>"] = actions.select_horizontal,
+          ["<A-s>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
+          ["<A-v>"] = actions.select_vertical,
+
           ["<C-t>"] = actions.select_tab,
+          ["<A-t>"] = actions.select_tab,
 
           ["<C-u>"] = actions.preview_scrolling_up,
           ["<C-d>"] = actions.preview_scrolling_down,
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
           ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+
           ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
           ["<C-/>"] = actions.which_key,
         },
         n = {
-          ["<esc>"] = { actions.close, type = "action", opts = { silent = true, nowait = true } }, -- error when trying to press escape
+          ["<esc>"] = { actions.close, type = "action", opts = { silent = true, nowait = true } },
           -- ["<esc>"] = {
           --   "<cmd>lua require('telescope.actions').close(vim.api.nvim_get_current_buf())<cr>",
           --   type = "command", opts = { silent = true, nowait = true }
@@ -102,12 +108,18 @@ return function()
           ["<C-c>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
-          ["<C-x>"] = actions.select_horizontal,
+
+          ["<C-s>"] = actions.select_horizontal,
+          ["<A-s>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
+          ["<A-v>"] = actions.select_vertical,
+
           ["<C-t>"] = actions.select_tab,
+          ["<A-t>"] = actions.select_tab,
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
           ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+
           ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
@@ -130,8 +142,12 @@ return function()
     pickers = {
       find_files = {
         hidden = true,
-        no_ignore = true,
+        no_ignore = false,
       },
+      live_grep = {
+        -- manual usage:
+        -- :lua require('telescope.builtin').live_grep({additional_args = function() return {"--no-ignore"} end })
+      }
     },
     extensions = {
       aerial = {

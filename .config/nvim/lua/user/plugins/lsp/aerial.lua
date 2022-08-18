@@ -7,7 +7,7 @@ end
 
 function M.setup()
   aerial.setup({
-    backends = { "treesitter", "lsp", "markdown" },
+    backends = { "lsp", "treesitter", "markdown" },
 
     layout = {
       max_width = { 40, 0.2 },
@@ -15,26 +15,29 @@ function M.setup()
       min_width = { 20, 0.1 },
 
       default_direction = "prefer_right",
-      placement = "group",
+      placement = "edge",
     },
 
-    close_behavior = "auto",
+    close_behavior = "global",
 
     default_bindings = true,
 
     disable_max_lines = 10000,
     disable_max_size = 2000000, -- Default 2MB
 
-    filter_kind = {
-      "Class",
-      "Constructor",
-      "Enum",
-      "Function",
-      "Interface",
-      "Module",
-      "Method",
-      "Struct",
-    },
+    --[[ filter_kind = { ]]
+    --[[   "Class", ]]
+    --[[   "Constructor", ]]
+    --[[   "Enum", ]]
+    --[[   "Function", ]]
+    --[[   "Interface", ]]
+    --[[   "Module", ]]
+    --[[   "Method", ]]
+    --[[   "Struct", ]]
+    --[[   "Field", ]]
+    --[[   "Value", ]]
+    --[[ }, ]]
+    filter_kind = false,
 
     highlight_mode = "last",
     highlight_closest = true,
