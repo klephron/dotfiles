@@ -3,7 +3,7 @@ us.augroup("_vimtex", {
     event = "User",
     pattern = "VimtexEventInitPost",
     -- command = "call vimtex#compiler#start()",
-    command = function ()
+    command = function()
       vim.fn["vimtex#compiler#start"]()
     end
   }
@@ -25,14 +25,14 @@ us.augroup("_info_pages", {
     event = "FileType",
     pattern = "help,lspinfo,qf,vim,checkhealth,dap-float",
     command = function()
-      us.set_keynomap("n", "q", "<cmd>close<cr>", {buffer = 0})
+      us.set_keynomap("n", "q", "<cmd>close<cr>", { buffer = 0 })
     end
   },
   {
     event = "FileType",
     pattern = "lspinfo,qf,vim,checkhealth,dap-float",
     command = function()
-      us.set_keynomap("n", "<Esc>", "<cmd>close<cr>", {buffer = 0})
+      us.set_keynomap("n", "<Esc>", "<cmd>close<cr>", { buffer = 0 })
     end
   },
 })
@@ -49,7 +49,7 @@ us.augroup("_leave", {
   {
     event = "BufLeave",
     pattern = "*",
-    command = function ()
+    command = function()
       if vim.bo.modifiable == true then
         vim.cmd("silent! write")
       end
@@ -65,6 +65,23 @@ us.augroup("_help", {
       if vim.bo.filetype == "help" then
         vim.cmd("wincmd L")
       end
+    end
+  }
+})
+
+-- :h getcmdtype
+us.augroup("_cmdline_leave", {
+  {
+    event = "CmdlineLeave",
+    pattern = ":,@,/",
+    description = "Clear cmdline after period of time",
+    command = function()
+      vim.fn.timer_start(3000, function()
+        local mode = vim.api.nvim_get_mode().mode
+        if vim.tbl_contains({ "n", "v", "s", }, mode) then
+          vim.cmd("echon ''")
+        end
+      end)
     end
   }
 })
