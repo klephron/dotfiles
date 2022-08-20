@@ -1,3 +1,5 @@
+local which_key_ok, which_key = safe_require("which-key")
+
 local M = {}
 ----------------------------------------------------------------------------//
 -- Keymaps
@@ -139,6 +141,13 @@ M.dap_hydra = KeymapDictionary:new({
   hover = { "m", M.dap.hover.desc },
   dapui_toggle = { "Y", M.dap.dapui_toggle.desc },
 }, "dap")
+
+if which_key_ok then
+  which_key.register({
+    ["d"] = { name = "dap" },
+    ["k"] = { name = "lsp" },
+  }, { prefix = "<leader>", mode = "n" })
+end
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//
@@ -166,7 +175,6 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 ---------------------------------------------------------------------------//
 -- WHICH_KEY
 ---------------------------------------------------------------------------//
-local which_key_ok, which_key = safe_require("which-key")
 if which_key_ok then
   ---------------------------------------------------------------------------//
   -- NORMAL
@@ -252,7 +260,6 @@ if which_key_ok then
       "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
       "telescope: Find files"
     },
-    d = { name = "dap" },
     f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
     j = {
       name = "toggleterm",
@@ -261,7 +268,6 @@ if which_key_ok then
       l = { '<cmd>lua vim.env.NVIM_CWD=vim.fn.getcwd(); vim.cmd("UsToggleTermLazygit")<cr>', "toggleterm: Lazygit" },
       h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
     },
-    k = { name = "lsp" },
     l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
     b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
     ["'"] = { "<cmd>marks<cr>", "mark: Show" },

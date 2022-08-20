@@ -47,7 +47,7 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-M.type_to_filetype.cppdbg = {"c", "cpp", "rust"}
+M.type_to_filetype.cppdbg = { "c", "cpp", "rust" }
 -- }}}
 
 -- PYTHON {{{1
@@ -81,4 +81,5 @@ dap.configurations.lua = {
 -- }}}
 
 return M
+
 -- vim:foldmethod=marker
