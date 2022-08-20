@@ -155,17 +155,46 @@ packer.startup({
       config = conf("diffview")
     }
 
+    -- Installer for lsp, dap, linters, formatters
+    use {
+      "williamboman/mason.nvim",
+      config = conf("mason"),
+      requires = {
+        "williamboman/mason-lspconfig.nvim",
+      }
+    }
+
     --LSP
     use { 'neovim/nvim-lspconfig',
       config = conf("lsp"),
       requires = {
-        { 'williamboman/nvim-lsp-installer' },
         { 'jose-elias-alvarez/null-ls.nvim' },
         { 'folke/lua-dev.nvim' },
         { 'ray-x/lsp_signature.nvim' },
         { 'stevearc/aerial.nvim' },
         { 'kosayoda/nvim-lightbulb' },
       },
+    }
+
+    -- Debugging
+    use {
+      'mfussenegger/nvim-dap',
+      setup = conf("dap").setup,
+      config = conf("dap").config,
+      requires = {
+        {
+          'rcarriga/nvim-dap-ui',
+          conf = block_reload(conf("dap.dapui"))
+        },
+        {
+          'theHamsta/nvim-dap-virtual-text',
+          conf = conf("dap.virtual-text")
+        },
+        { 'nvim-telescope/telescope-dap.nvim' },
+        -- languages
+        { 'mfussenegger/nvim-dap-python' },
+        { 'jbyuki/one-small-step-for-vimkind' },
+      }
     }
 
     -- Snippet engine
@@ -240,26 +269,6 @@ packer.startup({
     use { 'tpope/vim-repeat' }
     use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
 
-    -- Debugging
-    use {
-      'mfussenegger/nvim-dap',
-      setup = conf("dap").setup,
-      config = conf("dap").config,
-      requires = {
-        {
-          'rcarriga/nvim-dap-ui',
-          conf = block_reload(conf("dap.dapui"))
-        },
-        {
-          'theHamsta/nvim-dap-virtual-text',
-          conf = conf("dap.virtual-text")
-        },
-        { 'nvim-telescope/telescope-dap.nvim' },
-        -- languages
-        { 'mfussenegger/nvim-dap-python' },
-        { 'jbyuki/one-small-step-for-vimkind' },
-      }
-    }
 
     -- Task management, notes
     use {

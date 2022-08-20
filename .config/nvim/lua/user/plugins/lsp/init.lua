@@ -1,3 +1,5 @@
+local M = {}
+
 return function()
   local function setup_servers(lspconfig, servers, on_attach, capabilities)
     for _, server in pairs(servers) do
@@ -17,17 +19,16 @@ return function()
 
   local lspconfig = require("lspconfig")
 
-  local lsp_installer = require("user.plugins.lsp.lsp_installer")
-  lsp_installer.setup()
-
   local handlers = require("user.plugins.lsp.handlers")
   handlers.setup()
 
+  local servers = require("user.plugins.lsp.servers").servers
 
-  setup_servers(lspconfig, lsp_installer.servers, handlers.on_attach, handlers.capabilities)
+  setup_servers(lspconfig, servers, handlers.on_attach, handlers.capabilities)
 
   require("user.plugins.lsp.null-ls").setup()
   require("user.plugins.lsp.lsp_signature").setup()
   require("user.plugins.lsp.aerial").setup()
   require("user.plugins.lsp.lightbulb").setup()
 end
+--return M
