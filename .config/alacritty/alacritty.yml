@@ -36,7 +36,7 @@ font:
     style: Bold
 
   italic:
-    family: FiraCode Nerd Font Mono
+    family: RobotoMono Nerd Font Mono
     style: Italic
 
   offset:

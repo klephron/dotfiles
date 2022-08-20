@@ -278,6 +278,9 @@ packer.startup({
       'nvim-neorg/neorg',
       -- ft = "norg",
       config = conf("neorg"),
+      requires = {
+        'vhyrro/neorg-telescope',
+      },
     }
     use {
       'lervag/vimtex',
