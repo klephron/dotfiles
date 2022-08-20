@@ -182,7 +182,7 @@ end
 
 -- USER COMMANDS
 api.nvim_create_user_command("WatchCreate", function()
-  local command = fn.input("Command: ", "", "command")
+  local command = fn.input("Command: ", "", "shellcmd")
   if command == "" then
     watch_notify("Aborted.", vim.log.levels.INFO)
     return

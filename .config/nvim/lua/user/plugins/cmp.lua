@@ -42,7 +42,7 @@ return function()
     end
   end
 
-  cmp.setup {
+  cmp.setup{
     enabled = function()
       return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
     end,
@@ -109,6 +109,7 @@ return function()
   }
 
   local cmdline_override = {}
+
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     --completion = { autocomplete = true, },
@@ -134,7 +135,15 @@ return function()
     })
   })
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', { enabled = function() return false end, })
-  cmp.setup.cmdline('@', { enabled = function() return false end, })
+  cmp.setup.cmdline('/', {
+    enabled = function() return false end,
+  })
+  cmp.setup.cmdline('@', {
+    enabled = function() return false end,
+    --[[ mapping = { ]]
+    --[[   ["<Tab>"] = false, ]]
+    --[[   ["<S-Tab>"] = false, ]]
+    --[[ } ]]
+  })
 
 end
