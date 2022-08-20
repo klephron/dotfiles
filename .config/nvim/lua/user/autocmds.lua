@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 us.augroup("_vimtex", {
   {
     event = "User",
@@ -69,6 +71,7 @@ us.augroup("_help", {
   }
 })
 
+local running_timer_id = nil
 -- :h getcmdtype
 us.augroup("_cmdline_leave", {
   {
@@ -76,10 +79,15 @@ us.augroup("_cmdline_leave", {
     pattern = ":,@,/",
     description = "Clear cmdline after period of time",
     command = function()
-      vim.fn.timer_start(3000, function()
+      if running_timer_id ~= nil then
+        fn.timer_stop(running_timer_id)
+      end
+
+      running_timer_id = vim.fn.timer_start(3000, function()
         local mode = vim.api.nvim_get_mode().mode
         if vim.tbl_contains({ "n", "v", "s", }, mode) then
           vim.cmd("echon ''")
+          running_timer_id = nil
         end
       end)
     end
