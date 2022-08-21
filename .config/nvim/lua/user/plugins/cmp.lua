@@ -132,7 +132,7 @@ return function()
     mapping = {
       ["<Tab>"] = cmp.mapping({ c = cmdline_tab }),
       ["<S-Tab>"] = cmp.mapping({ c = cmdline_s_tab }),
-      ['<CR>'] = cmp.mapping({ c = cmdline_cr }),
+      --[[ ['<CR>'] = cmp.mapping({ c = cmdline_cr }), ]]
 
       ["<C-n>"] = cmp.mapping({ c = cmp.mapping.select_next_item() }),
       ["<C-p>"] = cmp.mapping({ c = cmp.mapping.select_prev_item() }),
@@ -167,6 +167,7 @@ return function()
   })
 
   cmp.setup.cmdline('@', {
-    mapping = cmp.mapping.preset.cmdline()
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({}),
   })
 end
