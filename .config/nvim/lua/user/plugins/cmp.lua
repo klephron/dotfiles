@@ -20,8 +20,8 @@ return function()
       luasnip.expand()
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
-    --[[ elseif has_word_before() then ]]
-    --[[   cmp.complete() ]]
+      --[[ elseif has_word_before() then ]]
+      --[[   cmp.complete() ]]
     else
       fallback()
     end
@@ -55,30 +55,24 @@ return function()
       end,
     },
     mapping = {
-      --[[ ["<Tab>"] = cmp.mapping(tab, { "i", "s", "c" }), ]]
-      ["<Tab>"] = cmp.mapping(tab, { "i", "s" }), -- if using 'c' then it will be triggered on cmdline
-      ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s" }),
-      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ["<Tab>"] = cmp.mapping(tab, { "i" }), -- if using 'c' then it will be triggered on cmdline
+      ["<S-Tab>"] = cmp.mapping(s_tab, { "i" }),
 
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
+      ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
+
+      ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i" }),
+      ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i" }),
 
       ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
 
-      ["<M-Space>"] = cmp.mapping.confirm { select = true },
 
-      ["<C-l>"] = cmp.mapping(toggle_complete, { "i", "s" }),
-      ["<A-l>"] = cmp.mapping(toggle_complete, { "i", "s" }),
+      ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
+      ["<A-l>"] = cmp.mapping(toggle_complete, { "i" }),
 
-      ["<C-q>"] = cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
-      ["<A-q>"] = cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
+      ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort(), },
+      ["<A-q>"] = cmp.mapping { i = cmp.mapping.abort(), },
     },
     completion = {},
     formatting = {
@@ -86,7 +80,7 @@ return function()
       format = function(entry, vim_item)
         -- Kind icons
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
         vim_item.menu = ({
           nvim_lsp = "[LSP]",
           luasnip = "[Snippet]",
@@ -112,8 +106,45 @@ return function()
     }
   }
 
+  local function cmdline_tab()
+    if not cmp.visible() then
+      cmp.complete()
+    end
+    cmp.select_next_item()
+  end
+
+  local function cmdline_s_tab()
+    if not cmp.visible() then
+      cmp.complete()
+    end
+    cmp.select_prev_item()
+  end
+
+  local function cmdline_cr(fallback)
+    if cmp.visible() then
+      cmp.confirm({ select = true })
+    end
+    fallback()
+  end
+
   cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline({}),
+    --[[ mapping = cmp.mapping.preset.cmdline({}), ]]
+    mapping = {
+      ["<Tab>"] = cmp.mapping({ c = cmdline_tab }),
+      ["<S-Tab>"] = cmp.mapping({ c = cmdline_s_tab }),
+      ['<CR>'] = cmp.mapping({ c = cmdline_cr }),
+
+      ["<C-n>"] = cmp.mapping({ c = cmp.mapping.select_next_item() }),
+      ["<C-p>"] = cmp.mapping({ c = cmp.mapping.select_prev_item() }),
+
+      ["<M-Space>"] = cmp.mapping({ c = cmp.mapping.confirm { select = true } }),
+
+      ["<C-l>"] = cmp.mapping({ c = toggle_complete }),
+      ["<A-l>"] = cmp.mapping({ c = toggle_complete }),
+
+      ["<C-q>"] = cmp.mapping { c = cmp.mapping.abort(), },
+      ["<A-q>"] = cmp.mapping { c = cmp.mapping.abort(), },
+    },
     formatting = {
       format = function(entry, vim_item)
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
@@ -135,18 +166,7 @@ return function()
     }),
   })
 
-  cmp.setup.cmdline('/', {
-    enabled = function() return false end,
-    mapping = {
-      ["<Tab>"] = cmp.config.disable,
-      ["<S-Tab>"] = cmp.config.disable,
-    }
-  })
   cmp.setup.cmdline('@', {
-    enabled = function() return false end,
-    mapping = {
-      ["<Tab>"] = cmp.config.disable,
-      ["<S-Tab>"] = cmp.config.disable,
-    }
+    mapping = cmp.mapping.preset.cmdline()
   })
 end
