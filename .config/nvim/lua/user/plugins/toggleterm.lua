@@ -29,7 +29,7 @@ return function()
   -- Custom cmds
   local Terminal = require('toggleterm.terminal').Terminal
 
-  local float_handler = function(term)
+  local function float_keymaps_delete(term)
     -- override global mappings
     -- vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<esc>', "<esc>", {noremap = true})
     -- vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<C-[>', "<C-[>", {noremap = true})
@@ -41,18 +41,27 @@ return function()
     end
   end
 
+  local opts_prev = {
+    mouse = vim.opt.mouse
+  }
+
   local lazygit = Terminal:new({
     cmd = 'cd $NVIM_CWD && lazygit',
     hidden = true,
     direction = 'float',
-    on_open = float_handler,
+    on_open = float_keymaps_delete,
   })
-
   local htop = Terminal:new({
     cmd = 'htop',
     hidden = true,
     direction = 'float',
-    on_open = float_handler,
+    on_open = function(term)
+      float_keymaps_delete(term)
+      vim.opt.mouse = 'a'
+    end,
+    on_close = function(_)
+      vim.opt.mouse = opts_prev["mouse"]
+    end
   })
 
   api.nvim_create_user_command("UsToggleTermLazygit", function() lazygit:toggle() end, {})
