@@ -9,11 +9,3 @@ source $XDG_CONFIG_HOME/zsh/conf/prompt.zsh
 # dep: plugins completion
 source $XDG_CONFIG_HOME/zsh/conf/bindkeys.zsh
 source $XDG_CONFIG_HOME/zsh/conf/hooks.zsh
-
-# TMUX
-precmd() {
-  if [[ -n "$TMUX" ]]; then
-    tmux setenv "$(tmux display -p 'TMUX_PWD_#D')" "$PWD"
-  fi
-}
-
