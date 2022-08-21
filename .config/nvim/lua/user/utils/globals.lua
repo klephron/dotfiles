@@ -73,9 +73,9 @@ end
 
 ---@class Autocommand
 ---@field description string
----@field event  string list of autocommand events
----@field pattern string list of autocommand patterns
----@field command string | function
+---@field event  string|string[] list of autocommand events
+---@field pattern string|string[] list of autocommand patterns
+---@field command string|function
 ---@field nested  boolean
 ---@field once    boolean
 ---@field buffer  number
@@ -105,7 +105,7 @@ end
 
 ---Reload lua modules
 ---@param path string
----@param recursive string
+---@param recursive boolean
 function us.reload(path, recursive)
   if recursive then
     for key, value in pairs(package.loaded) do

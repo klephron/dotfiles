@@ -13,12 +13,15 @@ return function()
   -- CMP.SETUP
   ----------------------------------------------------------------------------------------------------
   local function tab(fallback)
+    --[[ vim.notify("Setup: " .. vim.fn.getcmdtype()) ]]
     if cmp.visible() then
       cmp.select_next_item()
     elseif luasnip.expandable() then
       luasnip.expand()
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
+    --[[ elseif has_word_before() then ]]
+    --[[   cmp.complete() ]]
     else
       fallback()
     end
@@ -42,7 +45,7 @@ return function()
     end
   end
 
-  cmp.setup{
+  cmp.setup {
     enabled = function()
       return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
     end,
@@ -52,20 +55,21 @@ return function()
       end,
     },
     mapping = {
-      ["<Tab>"] = cmp.mapping(tab, { "i", "c" }),
-      ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "c" }),
+      --[[ ["<Tab>"] = cmp.mapping(tab, { "i", "s", "c" }), ]]
+      ["<Tab>"] = cmp.mapping(tab, { "i", "s" }), -- if using 'c' then it will be triggered on cmdline
+      ["<S-Tab>"] = cmp.mapping(s_tab, { "i", "s" }),
       ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-p>"] = cmp.mapping.select_prev_item(),
 
-      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
 
       ["<M-Space>"] = cmp.mapping.confirm { select = true },
 
-      ["<C-l>"] = cmp.mapping(toggle_complete, { "i", "c" }),
-      ["<A-l>"] = cmp.mapping(toggle_complete, { "i", "c" }),
+      ["<C-l>"] = cmp.mapping(toggle_complete, { "i", "s" }),
+      ["<A-l>"] = cmp.mapping(toggle_complete, { "i", "s" }),
 
       ["<C-q>"] = cmp.mapping {
         i = cmp.mapping.abort(),
@@ -108,12 +112,8 @@ return function()
     }
   }
 
-  local cmdline_override = {}
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-    --completion = { autocomplete = true, },
-    mapping = cmp.mapping.preset.cmdline(cmdline_override),
+    mapping = cmp.mapping.preset.cmdline({}),
     formatting = {
       format = function(entry, vim_item)
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
@@ -132,18 +132,21 @@ return function()
       { name = 'nvim_lua' },
       { name = 'cmdline' },
       -- { name = 'cmdline_history' },
-    })
+    }),
   })
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+
   cmp.setup.cmdline('/', {
     enabled = function() return false end,
+    mapping = {
+      ["<Tab>"] = cmp.config.disable,
+      ["<S-Tab>"] = cmp.config.disable,
+    }
   })
   cmp.setup.cmdline('@', {
     enabled = function() return false end,
-    --[[ mapping = { ]]
-    --[[   ["<Tab>"] = false, ]]
-    --[[   ["<S-Tab>"] = false, ]]
-    --[[ } ]]
+    mapping = {
+      ["<Tab>"] = cmp.config.disable,
+      ["<S-Tab>"] = cmp.config.disable,
+    }
   })
-
 end
