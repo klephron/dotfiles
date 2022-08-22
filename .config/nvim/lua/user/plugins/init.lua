@@ -55,7 +55,6 @@ packer.startup({
     -- Highlighting/colorschemes
     use {
       "lunarvim/darkplus.nvim",
-      commit = "93fb1fd7b2635192d909e11a77256d5822aed5c8",
     }
     use {
       "folke/todo-comments.nvim",

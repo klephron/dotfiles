@@ -14,3 +14,5 @@ vim.cmd("hi link TSComment Comment")
 
 vim.cmd("hi clear Cursor")
 vim.cmd("hi Cursor guibg=#cccccc")
+vim.cmd("hi clear NonText")
+vim.cmd("hi link NonText IndentBlanklineChar")

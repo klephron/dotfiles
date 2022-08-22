@@ -155,3 +155,8 @@ vim.cmd("cnoreabbrev hs split")
 --[[ vim.opt.foldlevelstart = 3 ]]
 --[[ vim.opt.foldmethod = 'expr' ]]
 --[[ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()' ]]
+-----------------------------------------------------------------------------//
+-- Listchars
+-----------------------------------------------------------------------------//
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")

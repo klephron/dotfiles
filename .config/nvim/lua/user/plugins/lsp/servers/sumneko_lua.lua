@@ -7,9 +7,7 @@ local config = {
           ["conf"] = "require"
         }
       },
-      diagnostics = {
-        ['missing-parameter'] = false,
-      },
+      diagnostics = {},
       completion = { keywordSnippet = 'Replace', callSnippet = 'Replace' },
     },
   }
