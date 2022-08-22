@@ -52,12 +52,26 @@ return function()
   local dap = require("dap")
 
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
+    dapui.open({ reset = true })
   end
   dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
+    dapui.close({})
   end
   dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
+    dapui.close({})
   end
+
+  -- Restore size after VimGained focus
+  us.augroup("_dapui_resize", {
+    {
+      event = "VimResized",
+      pattern = "*",
+      command = function()
+        local windows = require("dapui.windows")
+        for _, layout in ipairs(windows.layouts) do
+          if layout:is_open() then layout:resize({ reset = true }) end
+        end
+      end
+    }
+  })
 end

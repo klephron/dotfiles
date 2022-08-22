@@ -4,6 +4,9 @@ return function()
   -- NOTE: Waiting for merge: https://github.com/rmagatti/auto-session/pull/89
 
   local function nvim_tree_pre_save()
+    local dapui_ok, dapui = pcall(require, "dapui")
+    if dapui_ok then dapui.close({}) end
+
     vim.cmd("tabdo NvimTreeClose")
     vim.cmd("tabdo AerialCloseAll")
   end

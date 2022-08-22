@@ -52,7 +52,7 @@ us.augroup("_leave", {
     event = "BufLeave",
     pattern = "*",
     command = function()
-      if vim.bo.modifiable == true then
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
         vim.cmd("silent! write")
       end
     end

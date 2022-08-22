@@ -113,7 +113,7 @@ function M.hover()
 end
 
 function M.dapui_toggle()
-  return dapui.toggle()
+  return dapui.toggle({reset = true})
 end
 
 return M

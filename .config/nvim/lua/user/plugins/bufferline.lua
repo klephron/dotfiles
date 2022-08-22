@@ -10,7 +10,10 @@ return function()
       right_mouse_command = "bdelete! %d",
       left_mouse_command = "buffer %d",
 
-      indicator_icon = icons.indicator,
+      indicator = {
+        icon = icons.indicator,
+        style = 'icon',
+      },
       buffer_close_icon = icons.buffer_close,
       modified_icon = icons.modified,
       close_icon = icons.tab_close,
@@ -44,42 +47,23 @@ return function()
       fill = {
         bg = { attribute = "bg", highlight = "TabLine" },
       },
-      tab = {
-        fg = { attribute = "fg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      tab_selected = {
-        fg = { attribute = "fg", highlight = "TabLineSel" },
-        bg = { attribute = "bg", highlight = "Normal" },
-        bold = true,
-      },
-      tab_close = {
-        fg = { attribute = "fg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      separator = {
-        fg = { attribute = "bg", highlight = "TabLine" }, -- between tabs and buffers
-        bg = { attribute = "bg", highlight = "TabLine" }, -- border between tabs and buffers
-      },
-      separator_selected = {
-        fg = { attribute = "bg", highlight = "TabLine" }, -- small border
-        bg = { attribute = "bg", highlight = "Normal" }, -- close to tab
-      },
-      buffer_selected = {
-        fg = { attribute = "fg", highlight = "Normal" },
-        bg = { attribute = "bg", highlight = "Normal" },
-      },
       background = {
         fg = { attribute = "fg", highlight = "TabLine" }, -- hidden buffers
         bg = { attribute = "bg", highlight = "TabLine" },
       },
+      buffer_visible = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
+      },
+      buffer_selected = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
+        italic = false,
+        bold = true,
+      },
       close_button = {
         fg = { attribute = "fg", highlight = "TabLine" }, -- close button of a buffer
         bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      indicator_selected = {
-        fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-        bg = { attribute = "bg", highlight = "Normal" },
       },
       modified = {
         fg = { attribute = "fg", highlight = "TabLine" },
@@ -89,30 +73,32 @@ return function()
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
       },
+      indicator_selected = {
+        fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+        bg = { attribute = "bg", highlight = "Normal" },
+      },
+      tab_close = {
+        fg = { attribute = "fg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
+      },
+      tab = {
+        fg = { attribute = "fg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
+      },
+      tab_selected = {
+        fg = { attribute = "fg", highlight = "TabLineSel" },
+        bg = { attribute = "bg", highlight = "Normal" },
+        bold = true,
+      },
+      tab_separator = {
+        fg = { attribute = "bg", highlight = "TabLine" },
+        bg = { attribute = "bg", highlight = "TabLine" },
+      },
+      tab_separator_selected = {
+        fg = { attribute = "bg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
+      },
 
-      -- buffer_visible = {
-      --   fg = { attribute = "bg", highlight = "DiffAdd" },
-      --   bg = { attribute = "bg", highlight = "DiffChange" },
-      -- },
-      -- duplicate_selected = {
-      --   fg = { attribute = "bg", highlight = "DiffAdd" },
-      --   bg = { attribute = "bg", highlight = "DiffChange" },
-      --   gui = "italic",
-      -- },
-      -- duplicate_visible = {
-      --   fg = { attribute = "bg", highlight = "DiffAdd" },
-      --   bg = { attribute = "bg", highlight = "DiffChange" },
-      --   italic = true,
-      -- },
-      -- duplicate = {
-      --   fg = { attribute = "bg", highlight = "DiffAdd" },
-      --   bg = { attribute = "bg", highlight = "DiffChange" },
-      --   italic = true,
-      -- },
-      -- modified_visible = {
-      --   fg = { attribute = "fg", highlight = "TabLine" },
-      --   bg = { attribute = "bg", highlight = "TabLine" },
-      -- },
     },
   }
 end

@@ -73,7 +73,7 @@ end
 
 ---@class Autocommand
 ---@field description string
----@field event  string|string[] list of autocommand events
+---@field event  string|string[] list of autocommand events (use list if more than one)
 ---@field pattern string|string[] list of autocommand patterns
 ---@field command string|function
 ---@field nested  boolean

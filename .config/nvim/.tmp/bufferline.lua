@@ -1,0 +1,45 @@
+--[[ numbers = { ]]
+--[[   fg = { attribute = "bg", highlight = "Visual" }, ]]
+--[[   bg = { attribute = "bg", highlight = "TermCursor" }, ]]
+--[[ }, ]]
+--[[ numbers_visible = { ]]
+--[[   fg = { attribute = "bg", highlight = "DiffDelete" }, ]]
+--[[   bg = { attribute = "bg", highlight = "DiffText" }, ]]
+--[[ }, ]]
+--[[ numbers_selected = { ]]
+--[[   fg = { attribute = "bg", highlight = "DiffAdd" }, ]]
+--[[   bg = { attribute = "bg", highlight = "DiffChange" }, ]]
+--[[   bold = true, ]]
+--[[   italic = true, ]]
+--[[ }, ]]
+-- duplicate_selected = {
+--   fg = { attribute = "bg", highlight = "DiffAdd" },
+--   bg = { attribute = "bg", highlight = "DiffChange" },
+--   gui = "italic",
+-- },
+-- duplicate_visible = {
+--   fg = { attribute = "bg", highlight = "DiffAdd" },
+--   bg = { attribute = "bg", highlight = "DiffChange" },
+--   italic = true,
+-- },
+-- duplicate = {
+--   fg = { attribute = "bg", highlight = "DiffAdd" },
+--   bg = { attribute = "bg", highlight = "DiffChange" },
+--   italic = true,
+-- },
+-- modified_visible = {
+--   fg = { attribute = "fg", highlight = "TabLine" },
+--   bg = { attribute = "bg", highlight = "TabLine" },
+-- },
+--[[ separator_selected = { ]]
+--[[     fg = '<color-value-here>', ]]
+--[[     bg = '<color-value-here>' ]]
+--[[ }, ]]
+--[[ separator_visible = { ]]
+--[[     fg = '<color-value-here>', ]]
+--[[     bg = '<color-value-here>' ]]
+--[[ }, ]]
+--[[ separator = { ]]
+--[[     fg = '<color-value-here>', ]]
+--[[     bg = '<color-value-here>' ]]
+--[[ }, ]]
