@@ -261,6 +261,7 @@ if which_key_ok then
       "telescope: Find files"
     },
     f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
+    h = { "<cmd>WhichKey<cr>", "whichkey: Open"},
     j = {
       name = "toggleterm",
       t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },

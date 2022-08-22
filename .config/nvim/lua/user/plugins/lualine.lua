@@ -127,6 +127,15 @@ end ]]
     end
   end
 
+  local hydra_ok, hydra = safe_require("hydra.statusline")
+  local function hydra_name()
+    if hydra_ok then
+      local prefix = "HYDRA: "
+      local name = hydra.get_name()
+      return name == nil and "" or prefix .. name
+    end
+  end
+
   lualine.setup({
     options = {
       icons_enabled = true,
@@ -137,7 +146,7 @@ end ]]
       always_divide_middle = true,
     },
     sections = {
-      lualine_a = { mode },
+      lualine_a = { mode, hydra_name },
       lualine_b = { branch, diagnostics },
       lualine_c = { filename },
       lualine_x = { "aerial" },

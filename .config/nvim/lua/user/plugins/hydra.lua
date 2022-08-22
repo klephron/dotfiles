@@ -1,6 +1,7 @@
 local M = {}
 
 local hydra = require("hydra")
+local which_key_ok, which_key = pcall(require, "which-key")
 
 local function key(kmp)
   return function() return kmp end
@@ -19,8 +20,14 @@ M.hydras = {
   dap = function()
     local kmps = require("user.keymaps").dap_hydra
     local fns = require("user.plugins.dap.funcs")
+
+    if which_key_ok then which_key.register({
+        [kmps.body.key] = "hydra: Dap body",
+      })
+    end
+
     hydra({
-      name = "Dap hydra",
+      name = "dap",
       mode = "n",
       body = kmps:key("body"),
       hint = dap_hint,
@@ -36,7 +43,8 @@ M.hydras = {
 
         end,
         timeout = false,
-        hint = {
+        hint = false,
+        --[[ hint = {
           type = "window",
           position = "bottom",
           offset = 0,
@@ -67,7 +75,7 @@ M.hydras = {
             ["hov"]  = key(kmps.hover.key),
             ["duit"] = key(kmps.dapui_toggle.key),
           }
-        }
+        } --]]
       },
       heads = {
         { kmps.quit.key, nil, { exit = true, desc = kmps.quit.desc } },
