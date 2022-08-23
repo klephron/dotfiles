@@ -1,7 +1,11 @@
-local M = {}
-
 local hydra = require("hydra")
 local which_key_ok, which_key = pcall(require, "which-key")
+
+local M = {}
+
+local function hydra_notify(msg, level)
+  vim.notify(msg, level, { title = "Dap" })
+end
 
 local function key(kmp)
   return function() return kmp end
@@ -37,10 +41,10 @@ M.hydras = {
         buffer = false,
         invoke_on_body = true,
         on_enter = function()
-
+          hydra_notify("Entered dap hydra")
         end,
         on_exit = function()
-
+          hydra_notify("Exited dap hydra")
         end,
         timeout = false,
         hint = false,
@@ -60,7 +64,7 @@ M.hydras = {
             ["cls"]  = key(kmps.close.key),
             ["sbc"]  = key(kmps.set_breakpoint_cond.key),
             ["sbl"]  = key(kmps.set_breakpoint_log.key),
-            ["togb"] = key(kmps.toggle_breakpoint.key),
+            [d"togb"] = key(kmps.toggle_breakpoint.key),
             ["clrb"] = key(kmps.clear_breakpoints.key),
             ["stov"] = key(kmps.step_over.key),
             ["stou"] = key(kmps.step_out.key),
