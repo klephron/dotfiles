@@ -17,10 +17,10 @@ return function()
       {
         elements = {
           -- Elements can be strings or table with id and size keys.
-          { id = "breakpoints", size = 0.15 },
+          { id = "watches", size = 0.2 },
           { id = "scopes", size = 0.35 },
-          { id = "watches", size = 0.3 },
-          { id = "stacks", size = 0.2 },
+          { id = "stacks", size = 0.35 },
+          { id = "breakpoints", size = 0.15 },
         },
         size = 40,
         position = "left",
@@ -30,7 +30,7 @@ return function()
           "repl",
           "console",
         },
-        size = 0.2,
+        size = 0.15,
         position = "bottom",
       },
     },

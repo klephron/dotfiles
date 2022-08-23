@@ -129,7 +129,9 @@ function M.run_to_cursor()
 end
 
 function M.repl_toggle()
-  return dap.repl.toggle()
+  -- local height = vim.fn.winwidth(vim.fn.win_getid())
+  local h = vim.api.nvim_win_get_height(0)
+  return dap.repl.toggle({height = math.floor(h * 0.3)}, "belowright split")
 end
 
 function M.hover()
