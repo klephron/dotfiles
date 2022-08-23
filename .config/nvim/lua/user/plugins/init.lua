@@ -264,8 +264,11 @@ packer.startup({
         us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
       end
     }
-    use { 'tpope/vim-surround' }
-    use { 'tpope/vim-repeat' }
+    use { 
+      "kylechui/nvim-surround",
+      tag = "*",
+      config = conf("surround"),
+    }
     use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
 
 

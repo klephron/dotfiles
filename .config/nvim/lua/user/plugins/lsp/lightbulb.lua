@@ -6,7 +6,7 @@ function M.setup()
     return
   end
   lightbulb.setup({
-    ignore = { 'null-ls', 'sumneko_lua' },
+    ignore = { 'null-ls' },
     sign = {
       enabled = false,
       priority = 10,
