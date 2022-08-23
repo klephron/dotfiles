@@ -1,6 +1,7 @@
 return function()
   local neorg = require("neorg")
   local kmps = require("user.keymaps").neorg
+  local neorg_started = false
 
   us.set_keynomap("n", kmps.gtd_capture.key, "<cmd>Neorg gtd capture<cr>", kmps:desc("gtd_capture"))
   us.set_keynomap("n", kmps.gtd_views.key, "<cmd>Neorg gtd views<cr>", kmps:desc("gtd_views"))
@@ -8,9 +9,13 @@ return function()
   us.set_keynomap("n", kmps.switch_workspace.key, "<cmd>Telescope neorg switch_workspace<cr>",
     kmps:desc("switch_workspace"))
   us.set_keynomap("n", kmps.neorg_start.key, function()
-    vim.cmd("NeorgStart")
-    vim.notify('Loaded.', vim.log.levels.INFO, { title = 'Neorg' })
-    vim.api.nvim_del_keymap("n", kmps.neorg_start.key)
+    if not neorg_started then
+      vim.cmd("NeorgStart")
+      vim.notify('Loaded.', vim.log.levels.INFO, { title = 'Neorg' })
+      neorg_started = true
+    else
+      vim.notify('Already Loaded.', vim.log.levels.INFO, { title = 'Neorg' })
+    end
   end, kmps:desc("neorg_start"))
   us.set_keynomap("n", kmps.journal.key, "<cmd>Neorg journal<cr>", kmps:desc("journal"))
 
