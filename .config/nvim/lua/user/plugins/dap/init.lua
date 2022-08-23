@@ -6,7 +6,7 @@ function M.setup()
 
   us.set_keynomap("n", kmps.continue.key, funcs.continue, kmps.continue.desc)
   us.set_keynomap("n", kmps.run_last.key, funcs.run_last, kmps.run_last.desc)
-  us.set_keynomap("n", kmps.process_launchjs.key, funcs.process_launchjs, kmps.process_launchjs.desc)
+  us.set_keynomap("n", kmps.process_launchjs.key, funcs.process_launchjs_ask, kmps.process_launchjs.desc)
   us.set_keynomap("n", kmps.terminate.key, funcs.terminate, kmps.terminate.desc)
   us.set_keynomap("n", kmps.disconnect.key, funcs.disconnect, kmps.disconnect.desc)
   us.set_keynomap("n", kmps.close.key, funcs.close, kmps.close.desc)

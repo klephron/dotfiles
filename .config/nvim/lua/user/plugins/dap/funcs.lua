@@ -2,6 +2,11 @@ local dap = require("dap")
 local widgets = require("dap.ui.widgets")
 local dapui = require("dapui")
 
+local launchjs_paths = {
+  '/launch.json',
+  '/.vscode/launch.json',
+}
+
 local M = {}
 M.func = {}
 
@@ -9,20 +14,14 @@ local function dap_notify(msg, level)
   vim.notify(msg, level, { title = "Dap" })
 end
 
-function M.continue()
-  return dap.continue()
-end
+local is_launchjs_ok = nil
 
-function M.run_last()
-  return dap.run_last()
-end
-
-local launchjs_paths = {
-  '/launch.json',
-  '/.vscode/launch.json',
-}
-
-function M.process_launchjs()
+---Process launchjs.json
+---@param opts table|nil
+---ask nil|boolean
+---@return boolean
+local function process_launchjs(opts)
+  opts = opts or {}
   local path = nil
   for _, ipath in ipairs(launchjs_paths) do
     local resolved_path = vim.fn.getcwd() .. ipath
@@ -32,16 +31,41 @@ function M.process_launchjs()
     end
   end
   if path == nil then
-    path = vim.fn.input('Path to launch.json: ', vim.fn.getcwd() .. '/', 'file')
-    if not vim.loop.fs_stat(path) then
-      dap_notify("Not resolved path: " .. path .. "\nReturning...", vim.log.levels.WARN)
-      return
+    if opts.ask then
+      path = vim.fn.input('Path to launch.json: ', vim.fn.getcwd() .. '/', 'file')
+      if not vim.loop.fs_stat(path) then
+        dap_notify("Not resolved path: " .. path .. "\nReturning...", vim.log.levels.ERROR)
+        return false
+      end
+    else
+      dap_notify("Path not resolved.\nReturning...", vim.log.levels.ERROR)
+      return false
     end
   end
-  dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
 
   local ttft = require('user.plugins.dap.langs').type_to_filetype
-  return require("dap.ext.vscode").load_launchjs(path, ttft)
+  local ok, result = pcall(require("dap.ext.vscode").load_launchjs, path, ttft)
+  if ok then
+    dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
+  else
+    dap_notify(result, vim.log.levels.ERROR)
+  end
+  return ok
+end
+
+function M.continue()
+  if is_launchjs_ok == nil then
+    is_launchjs_ok = process_launchjs()
+  end
+  return dap.continue()
+end
+
+function M.run_last()
+  return dap.run_last()
+end
+
+function M.process_launchjs_ask()
+  return process_launchjs({ ask = true })
 end
 
 function M.terminate()
@@ -113,7 +137,7 @@ function M.hover()
 end
 
 function M.dapui_toggle()
-  return dapui.toggle({reset = true})
+  return dapui.toggle({ reset = true })
 end
 
 return M

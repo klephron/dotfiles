@@ -58,13 +58,13 @@ M.hydras = {
             ["quit"] = key(kmps.quit.key),
             ["cont"] = key(kmps.continue.key),
             ["runl"] = key(kmps.run_last.key),
-            ["lnch"] = key(kmps.process_launchjs.key),
+            -- ["lnch"] = key(kmps.process_launchjs.key),
             ["term"] = key(kmps.terminate.key),
             ["disc"] = key(kmps.disconnect.key),
             ["cls"]  = key(kmps.close.key),
             ["sbc"]  = key(kmps.set_breakpoint_cond.key),
             ["sbl"]  = key(kmps.set_breakpoint_log.key),
-            [d"togb"] = key(kmps.toggle_breakpoint.key),
+            ["togb"] = key(kmps.toggle_breakpoint.key),
             ["clrb"] = key(kmps.clear_breakpoints.key),
             ["stov"] = key(kmps.step_over.key),
             ["stou"] = key(kmps.step_out.key),
@@ -79,13 +79,14 @@ M.hydras = {
             ["hov"]  = key(kmps.hover.key),
             ["duit"] = key(kmps.dapui_toggle.key),
           }
-        } --]]
+        } ]]
       },
       heads = {
         { kmps.quit.key, nil, { exit = true, desc = kmps.quit.desc } },
+        { kmps.body.key, nil, { exit = true, desc = kmps.quit.desc } },
         { kmps.continue.key, fns.continue, { desc = kmps.continue.desc } },
         { kmps.run_last.key, fns.run_last, { desc = kmps.run_last.desc } },
-        { kmps.process_launchjs.key, fns.process_launchjs, { desc = kmps.process_launchjs.desc } },
+        -- { kmps.process_launchjs.key, fns.process_launchjs_ask, { desc = kmps.process_launchjs.desc } },
         { kmps.terminate.key, fns.terminate, { desc = kmps.terminate.desc } },
         { kmps.disconnect.key, fns.disconnect, { desc = kmps.disconnect.desc } },
         { kmps.close.key, fns.close, { desc = kmps.close.desc } },
