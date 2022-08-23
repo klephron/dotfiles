@@ -7,6 +7,10 @@ local M = {}
 -- prototype: KeymapDictionary
 local KeymapDictionary = {}
 
+---KeymapDictionary constructor
+---@param table table
+---@param prefix string|nil
+---@return object
 function KeymapDictionary:new(table, prefix)
   table = table or {}
   setmetatable(table, self)
@@ -16,7 +20,7 @@ function KeymapDictionary:new(table, prefix)
     v.key = v[1]
     v[1] = nil
     if v[2] then
-      v.desc = prefix .. ": " .. v[2]
+      v.desc = v[2]
       v[2] = nil
     end
   end
@@ -41,9 +45,7 @@ end
 function KeymapDictionary:add_key(name, key, desc)
   self[name] = {}
   self[name].key = key
-  if desc then
-    self[name].desc = self._prefix .. ": " .. desc
-  end
+  self[name].desc = desc
 end
 
 function KeymapDictionary:remove_key(name)
@@ -91,11 +93,11 @@ M.lsp = KeymapDictionary:new({
 
 M.dap = KeymapDictionary:new({
   continue = { "<leader>dc", "Continue" },
-  run_last = { "<leader>du", "Run last" },
+  run_last = { "<leader>dp", "Run last" },
   process_launchjs = { "<leader>dl", "Process launchjs" },
-  terminate = { "<leader>dt", "Terminate" },
-  disconnect = { "<leader>db", "Disconnect" },
-  close = { "<leader>dq", "Close" },
+  terminate = { "<leader>dt", "Terminate debug session" },
+  disconnect = { "<leader>db", "Disconnect from debuggee and terminate adapter" },
+  -- close = { "<leader>dq", "Close" },
   set_breakpoint_cond = { "<leader>de", "Set conditional break" },
   set_breakpoint_log = { "<leader>dm", "Set log break" },
   toggle_breakpoint = { "<leader>ds", "Toggle breakpoint" },
@@ -110,7 +112,7 @@ M.dap = KeymapDictionary:new({
   down = { "<leader>d]", "Down" },
   run_to_cursor = { "<leader>da", "Run to cursor" },
   repl_toggle = { "<leader>dg", "Toggle REPL" },
-  repl_session = { "<leader>dx", "REPL session" },
+  -- repl_session = { "<leader>dx", "REPL session" },
   hover = { "<leader>dh", "Hover" },
   dapui_toggle = { "<leader>dy", "Toggle dapui" },
 }, "dap")
@@ -119,11 +121,11 @@ M.dap_hydra = KeymapDictionary:new({
   body = { "<leader>D", },
   quit = { "Z", "Quit" },
   continue = { "C", M.dap.continue.desc },
-  run_last = { "<C-u>", M.dap.run_last.desc },
+  run_last = { "<C-p>", M.dap.run_last.desc },
   process_launchjs = { "<C-n>", M.dap.process_launchjs.desc },
   terminate = { "<C-t>", M.dap.terminate.desc },
-  disconnect = { "<C-d>", M.dap.disconnect.desc },
-  close = { "Q", M.dap.close.desc },
+  disconnect = { "<C-b>", M.dap.disconnect.desc },
+  -- close = { "Q", M.dap.close.desc },
   set_breakpoint_cond = { "E", M.dap.set_breakpoint_cond.desc },
   set_breakpoint_log = { "M", M.dap.set_breakpoint_log.desc },
   toggle_breakpoint = { "S", M.dap.toggle_breakpoint.desc },
@@ -137,10 +139,10 @@ M.dap_hydra = KeymapDictionary:new({
   down = { "d]", M.dap.down.desc },
   run_to_cursor = { "A", M.dap.run_to_cursor.desc },
   repl_toggle = { "G", M.dap.repl_toggle.desc },
-  repl_session = { "X", M.dap.repl_session.desc },
+  -- repl_session = { "X", M.dap.repl_session.desc },
   hover = { "m", M.dap.hover.desc },
   dapui_toggle = { "Y", M.dap.dapui_toggle.desc },
-}, "dap")
+}, "dap-hydra")
 
 if which_key_ok then
   which_key.register({
