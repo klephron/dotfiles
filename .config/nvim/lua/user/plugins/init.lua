@@ -143,11 +143,13 @@ packer.startup({
     }
 
     -- Git
+    -- TODO: not configured entirely
     use {
       'lewis6991/gitsigns.nvim',
       config = conf("gitsigns"),
     }
-    use { --WARN: not configured
+    -- TODO: not configured at all
+    use {
       'sindrets/diffview.nvim',
       -- module =
       cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
@@ -264,7 +266,7 @@ packer.startup({
         us.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
       end
     }
-    use { 
+    use {
       "kylechui/nvim-surround",
       tag = "*",
       config = conf("surround"),
