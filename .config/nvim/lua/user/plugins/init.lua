@@ -289,10 +289,10 @@ packer.startup({
     }
     use {
       'nvim-neorg/neorg',
-      -- ft = "norg",
       config = conf("neorg"),
       requires = {
         'vhyrro/neorg-telescope',
+        'max397574/neorg-kanban',
       },
     }
     use {
