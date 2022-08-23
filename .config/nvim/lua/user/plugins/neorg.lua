@@ -40,7 +40,6 @@ return function()
           workspaces = {
             notes = "~/Workspace/neorg/notes",
             tasks = "~/Workspace/neorg/tasks",
-            journals = "~/Workspace/neorg/journals",
           },
           index = "index.norg",
           open_last_workspace = false,
