@@ -144,10 +144,21 @@ M.dap_hydra = KeymapDictionary:new({
   dapui_toggle = { "Y", M.dap.dapui_toggle.desc },
 }, "dap-hydra")
 
+
+M.neorg = KeymapDictionary:new({
+  gtd_capture = { "<leader>nc", "GTD capture" },
+  gtd_views = { "<leader>nv", "GTD views" },
+  kanban_toggle = { "<leader>nk", "Kanban toggle" },
+  switch_workspace = { "<leader>ns", "Switch workspace" },
+  neorg_start = { "<leader>nn", "Neorg start" },
+}, "neorg")
+
+
 if which_key_ok then
   which_key.register({
     ["d"] = { name = "dap" },
     ["k"] = { name = "lsp" },
+    ["n"] = { name = "neorg" },
   }, { prefix = "<leader>", mode = "n" })
 end
 ---------------------------------------------------------------------------//
@@ -263,7 +274,7 @@ if which_key_ok then
       "telescope: Find files"
     },
     f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
-    h = { "<cmd>WhichKey<cr>", "whichkey: Open"},
+    h = { "<cmd>WhichKey<cr>", "whichkey: Open" },
     j = {
       name = "toggleterm",
       t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
