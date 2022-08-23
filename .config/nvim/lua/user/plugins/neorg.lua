@@ -5,8 +5,14 @@ return function()
   us.set_keynomap("n", kmps.gtd_capture.key, "<cmd>Neorg gtd capture<cr>", kmps:desc("gtd_capture"))
   us.set_keynomap("n", kmps.gtd_views.key, "<cmd>Neorg gtd views<cr>", kmps:desc("gtd_views"))
   us.set_keynomap("n", kmps.kanban_toggle.key, "<cmd>Neorg kanban toggle<cr>", kmps:desc("kanban_toggle"))
-  us.set_keynomap("n", kmps.switch_workspace.key, "<cmd>Telescope neorg switch_workspace<cr>", kmps:desc("switch_workspace"))
-  us.set_keynomap("n", kmps.neorg_start.key, "<cmd>NeorgStart<cr>", kmps:desc("neorg_start"))
+  us.set_keynomap("n", kmps.switch_workspace.key, "<cmd>Telescope neorg switch_workspace<cr>",
+    kmps:desc("switch_workspace"))
+  us.set_keynomap("n", kmps.neorg_start.key, function()
+    vim.cmd("NeorgStart")
+    vim.notify('Loaded.', vim.log.levels.INFO, { title = 'Neorg' })
+    vim.api.nvim_del_keymap("n", kmps.neorg_start.key)
+  end, kmps:desc("neorg_start"))
+  us.set_keynomap("n", kmps.journal.key, "<cmd>Neorg journal<cr>", kmps:desc("journal"))
 
   neorg.setup {
     load = {
@@ -49,7 +55,7 @@ return function()
       },
       ['core.norg.journal'] = {
         config = {
-          workspace = 'journals',
+          workspace = 'tasks',
         }
       },
       ["core.integrations.telescope"] = {},

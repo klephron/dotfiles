@@ -150,7 +150,8 @@ M.neorg = KeymapDictionary:new({
   gtd_views = { "<leader>nv", "GTD views" },
   kanban_toggle = { "<leader>nk", "Kanban toggle" },
   switch_workspace = { "<leader>ns", "Switch workspace" },
-  neorg_start = { "<leader>nn", "Neorg start" },
+  neorg_start = { "<leader>nn", "Neorg start (execute once)" },
+  journal = { "<leader>nj", "Journal" },
 }, "neorg")
 
 
