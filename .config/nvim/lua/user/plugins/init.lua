@@ -143,12 +143,10 @@ packer.startup({
     }
 
     -- Git
-    -- TODO: not configured entirely
     use {
       'lewis6991/gitsigns.nvim',
       config = conf("gitsigns"),
     }
-    -- TODO: not configured at all
     use {
       'sindrets/diffview.nvim',
       -- module =
