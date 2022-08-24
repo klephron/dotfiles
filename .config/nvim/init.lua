@@ -8,7 +8,6 @@ if fn.exists("g:started_by_firenvim") == 1 then
   vim.opt.guifont = "FiraCode Nerd Font Mono:h12"
   vim.opt.laststatus = 0
   vim.opt.signcolumn = 'no'
-
   -- Options
   vim.g.firenvim_config = {
     globalSettigns = {
@@ -26,7 +25,10 @@ if fn.exists("g:started_by_firenvim") == 1 then
     }
   }
   us.set_keynomap("n", "<Esc>", "<cmd>call firenvim#hide_frame()|call firenvim#press_keys('<LT>Esc>')<cr>")
-  -- us.set_keynomap("n", "<Esc>", "<cmd>wqall<cr>")
+  us.set_keynomap("n", "<leader>q", "<cmd>q<cr>")
+  us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>")
+  us.set_keynomap("n", "<leader>w", "<cmd>write<cr>")
+  us.set_keynomap("n", "<leader>W", "<cmd>wall<cr>")
   vim.cmd [[
     au TextChanged * ++nested write
     au TextChangedI * ++nested write
