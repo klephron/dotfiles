@@ -50,6 +50,7 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.cursorline = true
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 --vim.opt.rnu = true
 vim.opt.cmdheight = 1
