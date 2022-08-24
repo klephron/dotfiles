@@ -240,6 +240,12 @@ packer.startup({
       'andweeb/presence.nvim',
       config = conf("presence"),
     }
+    use { -- for Firefox
+      'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end,
+      config = function()
+      end
+    }
 
     -- Editing
     use {
