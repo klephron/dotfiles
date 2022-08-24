@@ -1,5 +1,6 @@
 return function()
   local hop = require("hop")
+
   hop.setup {
     keys = 'etovxqpdygfbzcisuran',
     quit_key = "<Esc>",
@@ -45,4 +46,10 @@ return function()
       current_line_only = true,
     })
   end, "hop: Move current line after cursor excluded")
+
+  vim.cmd [[
+    highlight HopNextKey gui=bold
+    highlight HopNextKey1 gui=bold
+    highlight HopNextKey2 gui=bold
+  ]]
 end
