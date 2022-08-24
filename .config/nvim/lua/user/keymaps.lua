@@ -154,14 +154,41 @@ M.neorg = KeymapDictionary:new({
   journal = { "<leader>nj", "Journal" },
 }, "neorg")
 
+M.git = KeymapDictionary:new({
+  undo_stage_hunk = { "<leader>gu", "Undo stage"},
+  preview_hunk = {"<leader>gp", "Preview current hunk"},
+  stage_hunk = {"<leader>gs", "Stage current hunk"},
+  reset_hunk = {"<leader>gr", "Reset current hunk"},
+  toggle_blame = {"<leader>gb", "Toggle current line blame"},
+  toggle_deleted = { "<leader>gd", "Show deleted lines"},
+  toggle_word_diff = {"<leader>gw", "Toggle word diff"},
+  blame_line = {"<leader>gl", "Blame line"},
+
+  stage_buffer = {"<localleader>gw", "Stage entire buffer"},
+  reset_buffer = {"<localleader>gr", "Reset entire buffer"},
+
+  qflist_hunks = { "<leader>gh", "QFlist hunks"},
+  diffthis = {"<localleader>gd", "Diff this"},
+  diffthis_PREV = {"<localleader>gD", "Diff this ~HEAD"},
+  select_hunk = {"ig", "Select hunk (text object)"},
+
+  prev_hunk = {"[g", "Go to previous hunk"},
+  next_hunk = {"]g", "Go to next hunk"},
+}, "git")
 
 if which_key_ok then
   which_key.register({
     ["d"] = { name = "dap" },
     ["k"] = { name = "lsp" },
     ["n"] = { name = "neorg" },
+    ["g"] = { name = "git" },
   }, { prefix = "<leader>", mode = "n" })
+  which_key.register({
+    ["n"] = { name = "neorg"},
+    ["g"] = { name = "git"},
+  }, { prefix = "<localleader>", mode = "n"})
 end
+
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//

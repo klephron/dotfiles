@@ -50,45 +50,45 @@ function M.on_attach(client, bufnr)
   local kmps = require("user.keymaps").lsp
 
   local function with_desc(desc)
-    return { buffer = bufnr, desc = desc }
+    return { buffer = bufnr, desc = kmps:desc(desc) }
   end
 
   if has_provider(client, "definitionProvider") then
-    us.set_keynomap("n", kmps.definition.key, vim.lsp.buf.definition, with_desc(kmps:desc("definition")))
-    us.set_keynomap("n", kmps.g_definition.key, vim.lsp.buf.definition, with_desc(kmps:desc("definition")))
+    us.set_keynomap("n", kmps.definition.key, vim.lsp.buf.definition, with_desc("definition"))
+    us.set_keynomap("n", kmps.g_definition.key, vim.lsp.buf.definition, with_desc("definition"))
   end
   if has_provider(client, "declarationProvider") then
-    us.set_keynomap("n", kmps.declaration.key, vim.lsp.buf.declaration, with_desc(kmps:desc("declaration")))
-    us.set_keynomap("n", kmps.g_declaration.key, vim.lsp.buf.declaration, with_desc(kmps:desc("declaration")))
+    us.set_keynomap("n", kmps.declaration.key, vim.lsp.buf.declaration, with_desc("declaration"))
+    us.set_keynomap("n", kmps.g_declaration.key, vim.lsp.buf.declaration, with_desc("declaration"))
   end
   if has_provider(client, "hoverProvider") then
-    us.set_keynomap("n", kmps.hover.key, vim.lsp.buf.hover, with_desc(kmps:desc("hover")))
-    us.set_keynomap("n", kmps.g_hover.key, vim.lsp.buf.hover, with_desc(kmps:desc("hover")))
+    us.set_keynomap("n", kmps.hover.key, vim.lsp.buf.hover, with_desc("hover"))
+    us.set_keynomap("n", kmps.g_hover.key, vim.lsp.buf.hover, with_desc("hover"))
   end
   if has_provider(client, "implementationProvider") then
-    us.set_keynomap("n", kmps.implementation.key, vim.lsp.buf.implementation, with_desc(kmps:desc("implementation")))
-    us.set_keynomap("n", kmps.g_implementation.key, vim.lsp.buf.implementation, with_desc(kmps:desc("implementation")))
+    us.set_keynomap("n", kmps.implementation.key, vim.lsp.buf.implementation, with_desc("implementation"))
+    us.set_keynomap("n", kmps.g_implementation.key, vim.lsp.buf.implementation, with_desc("implementation"))
   end
   if has_provider(client, "renameProvider") then
-    us.set_keynomap("n", kmps.rename.key, vim.lsp.buf.rename, with_desc(kmps:desc("rename")))
+    us.set_keynomap("n", kmps.rename.key, vim.lsp.buf.rename, with_desc("rename"))
   end
   if has_provider(client, "referencesProvider") then
-    us.set_keynomap("n", kmps.references.key, vim.lsp.buf.references, with_desc(kmps:desc("references")))
-    us.set_keynomap("n", kmps.g_references.key, vim.lsp.buf.references, with_desc(kmps:desc("references")))
+    us.set_keynomap("n", kmps.references.key, vim.lsp.buf.references, with_desc("references"))
+    us.set_keynomap("n", kmps.g_references.key, vim.lsp.buf.references, with_desc("references"))
   end
   if has_provider(client, "codeActionProvider") then
-    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc(kmps:desc("code_action")))
-    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc(kmps:desc("code_action")))
+    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc("code_action"))
+    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action"))
   end
   if has_provider(client, "signatureHelpProvider") then
-    us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc(kmps:desc("signature_help_n")))
+    us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc("signature_help_n"))
     require("lsp_signature").on_attach()
   end
   if has_provider(client, "typeDefinitionProvider") then
-    us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc(kmps:desc("type_definition")))
+    us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
   end
   if has_provider(client, "codeLensProvider") then
-    us.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc(kmps:desc("codelens")))
+    us.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc("codelens"))
   end
   if has_provider(client, "documentSymbolProvider") then
     require("aerial").on_attach(client, bufnr)
@@ -97,17 +97,17 @@ function M.on_attach(client, bufnr)
   -- Formattings
   if has_provider(client, "documentFormattingProvider") then
     us.set_keynomap("n", kmps.formatting.key, function() vim.lsp.buf.formatting({ async = true }) end,
-      with_desc(kmps:desc("formatting")))
+      with_desc(("formatting")))
   end
   -- Diagnostics
   us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    with_desc(kmps:desc("open_float")))
+    with_desc("open_float"))
   us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    with_desc(kmps:desc("open_float")))
+    with_desc("open_float"))
   us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-    with_desc(kmps:desc("goto_next")))
+    with_desc("goto_next"))
   us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
-    with_desc(kmps:desc("goto_prev")))
+    with_desc("goto_prev"))
 
   -- OTHER PROVIDERS:
   -- workspaceSymbolProvider
