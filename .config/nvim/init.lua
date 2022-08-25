@@ -1,5 +1,7 @@
 local fn = vim.fn
-
+-----------------------------------------------------------------------------
+-- FIRENVIM
+-----------------------------------------------------------------------------
 if fn.exists("g:started_by_firenvim") == 1 then
   require "user.utils.globals"
   require "user.settings"
@@ -33,6 +35,9 @@ if fn.exists("g:started_by_firenvim") == 1 then
     au TextChanged * ++nested write
     au TextChangedI * ++nested write
   ]]
+  -----------------------------------------------------------------------------
+  -- NEOVIDE
+  -----------------------------------------------------------------------------
 else
   if fn.exists("g:neovide") == 1 then
     -- https://neovide.dev/configuration.html
@@ -51,7 +56,9 @@ else
     vim.g.neovide_floating_blur_amount_x = 2.0
     vim.g.neovide_floating_blur_amount_y = 2.0
   end
-  -- require all
+  -----------------------------------------------------------------------------
+  -- STANDARD
+  -----------------------------------------------------------------------------
   require "user.utils.globals"
   require "user.settings"
   require "user.keymaps"
