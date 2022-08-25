@@ -2,14 +2,8 @@ return function()
   local lualine = require("lualine")
 
   local fn = vim.fn
+  local color = us.color
 
-  local function color(val)
-    if type(val) == "string" then
-      return val
-    else
-      return fn.synIDattr(fn.synIDtrans(fn.hlID(val[1])), val[2] .. "#")
-    end
-  end
 
   -- CUSTOMIZATION
   local colors = {

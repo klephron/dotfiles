@@ -120,3 +120,14 @@ function us.reload(path, recursive)
     require(path)
   end
 end
+
+---Get color of highlight. Type of color should be table { hi, fg|bg } or HEX string
+function us.color(val)
+  if type(val) == "string" then
+    return val
+  elseif type(val) == "table" then
+    return fn.synIDattr(fn.synIDtrans(fn.hlID(val[1])), val[2] .. "#")
+  else
+    assert(false, "type of color should be table { hi, fg|bg } or HEX")
+  end
+end

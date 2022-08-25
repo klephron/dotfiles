@@ -5,11 +5,12 @@ return function()
 
   gitsigns.setup {
     signs = {
-      add = { hl = 'GitSignsAdd', text = icons.add },
-      change = { hl = 'GitSignsChange', text = icons.change },
-      delete = { hl = 'GitSignsDelete', text = icons.delete },
-      topdelete = { hl = 'GitSignsDelete', text = icons.topdelete },
-      changedelete = { hl = 'GitSignsChange', text = icons.changedelete },
+      add = { hl = 'GitSignsAdd', text = icons.add, numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+      change = { hl = 'GitSignsChange', text = icons.change, numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+      delete = { hl = 'GitSignsDelete', text = icons.delete, numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+      topdelete = { hl = 'GitSignsDelete', text = icons.topdelete, numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+      changedelete = { hl = 'GitSignsChange', text = icons.changedelete, numhl = 'GitSignsChangeNr',
+        linehl = 'GitSignsChangeLn' },
     },
     signcolumn = false,
     numhl = true,
@@ -30,7 +31,9 @@ return function()
       local gs = package.loaded.gitsigns
 
       local function qflist_hunks() return gs.setqflist('all') end
+
       local function blame_line_full() return gs.blame_line({ full = true }) end
+
       local function diffthis_PREV() return gs.diffthis('~') end
 
       ---@param desc string

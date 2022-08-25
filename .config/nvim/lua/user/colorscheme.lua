@@ -1,4 +1,5 @@
 local colorscheme = "darkplus"
+local color = us.color
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
@@ -18,5 +19,9 @@ vim.cmd("hi clear Cursor")
 vim.cmd("hi Cursor guibg=#cccccc")
 vim.cmd("hi clear NonText")
 vim.cmd("hi link NonText IndentBlanklineChar")
+
+-- highlight background with foreground of cursorline
+-- vim.cmd("hi CursorLineNr guibg=" .. color({"CursorLine", "bg"}) .. " guifg=" .. color({"CursorLineNr", "fg"}))
+
 -- vim.cmd("hi TabLine guibg='#252525'")
 -- vim.cmd("hi TabLineSel guibg='#252525'")
