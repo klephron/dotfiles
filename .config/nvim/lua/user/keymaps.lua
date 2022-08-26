@@ -1,3 +1,4 @@
+local fn = vim.fn
 local which_key_ok, which_key = safe_require("which-key")
 
 local M = {}
@@ -155,25 +156,25 @@ M.neorg = KeymapDictionary:new({
 }, "neorg")
 
 M.git = KeymapDictionary:new({
-  undo_stage_hunk = { "<leader>gu", "Undo stage"},
-  preview_hunk = {"<leader>gp", "Preview current hunk"},
-  stage_hunk = {"<leader>gs", "Stage current hunk"},
-  reset_hunk = {"<leader>gr", "Reset current hunk"},
-  toggle_blame = {"<leader>gb", "Toggle current line blame"},
-  toggle_deleted = { "<leader>gd", "Show deleted lines"},
-  toggle_word_diff = {"<leader>gw", "Toggle word diff"},
-  blame_line = {"<leader>gl", "Blame line"},
+  undo_stage_hunk = { "<leader>gu", "Undo stage" },
+  preview_hunk = { "<leader>gp", "Preview current hunk" },
+  stage_hunk = { "<leader>gs", "Stage current hunk" },
+  reset_hunk = { "<leader>gr", "Reset current hunk" },
+  toggle_blame = { "<leader>gb", "Toggle current line blame" },
+  toggle_deleted = { "<leader>gd", "Show deleted lines" },
+  toggle_word_diff = { "<leader>gw", "Toggle word diff" },
+  blame_line = { "<leader>gl", "Blame line" },
 
-  stage_buffer = {"<localleader>gw", "Stage entire buffer"},
-  reset_buffer = {"<localleader>gr", "Reset entire buffer"},
+  stage_buffer = { "<localleader>gw", "Stage entire buffer" },
+  reset_buffer = { "<localleader>gr", "Reset entire buffer" },
 
-  qflist_hunks = { "<leader>gh", "QFlist hunks"},
-  diffthis = {"<localleader>gd", "Diff this"},
-  diffthis_PREV = {"<localleader>gD", "Diff this ~HEAD"},
-  select_hunk = {"ig", "Select hunk (text object)"},
+  qflist_hunks = { "<leader>gh", "QFlist hunks" },
+  diffthis = { "<localleader>gd", "Diff this" },
+  diffthis_PREV = { "<localleader>gD", "Diff this ~HEAD" },
+  select_hunk = { "ig", "Select hunk (text object)" },
 
-  prev_hunk = {"[g", "Go to previous hunk"},
-  next_hunk = {"]g", "Go to next hunk"},
+  prev_hunk = { "[g", "Go to previous hunk" },
+  next_hunk = { "]g", "Go to next hunk" },
 }, "git")
 
 if which_key_ok then
@@ -184,9 +185,9 @@ if which_key_ok then
     ["g"] = { name = "git" },
   }, { prefix = "<leader>", mode = "n" })
   which_key.register({
-    ["n"] = { name = "neorg"},
-    ["g"] = { name = "git"},
-  }, { prefix = "<localleader>", mode = "n"})
+    ["n"] = { name = "neorg" },
+    ["g"] = { name = "git" },
+  }, { prefix = "<localleader>", mode = "n" })
 end
 
 ---------------------------------------------------------------------------//
@@ -245,8 +246,10 @@ if which_key_ok then
       a = { "Print asci character" },
       x = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
         "goto: Open link in system browser" },
-    }
+    },
 
+    ["[t"] = { "<cmd>tabprev<cr>", "tab: Open previous" },
+    ["]t"] = { "<cmd>tabnext<cr>", "tab: Open next" },
   }, { mode = "n" })
 
   which_key.register({
@@ -272,6 +275,10 @@ if which_key_ok then
     }
   }, { mode = "n" })
 
+  us.set_keynomap("n", "<leader>tm", function()
+    vim.cmd("tabmove " .. fn.input(""))
+  end, { silent = false, desc = "tab: Move current after N" })
+
   which_key.register({
     q = { "<cmd>q<cr>", "window: Close" },
     Q = { "<cmd>qall<cr>", "window: Close all" },
@@ -281,9 +288,10 @@ if which_key_ok then
     E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
     r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
     t = {
-      name = "watch",
-      n = { "<cmd>WatchCreate<cr>", "watch: Create" },
-      d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
+      name = "tabs",
+      f = { "<cmd>tabclose<cr>", "tab: Close" },
+      n = { "<cmd>tabedit %<cr>", "tab: Edit current buffer" },
+      o = { "<cmd>tabonly<cr>", "tab: Close all except current" },
     },
     Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
     y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
@@ -302,7 +310,6 @@ if which_key_ok then
       "telescope: Find files"
     },
     f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
-    h = { "<cmd>WhichKey<cr>", "whichkey: Open" },
     j = {
       name = "toggleterm",
       t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
@@ -311,9 +318,15 @@ if which_key_ok then
       h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
     },
     l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
+    x = {
+      name = "watch",
+      n = { "<cmd>WatchCreate<cr>", "watch: Create" },
+      d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
+    },
     b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
     ["'"] = { "<cmd>marks<cr>", "mark: Show" },
     ['"'] = { "<cmd>reg<cr>", "register: Show" },
+    ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
   }, { mode = "n", prefix = "<leader>" })
 
   ---------------------------------------------------------------------------//
