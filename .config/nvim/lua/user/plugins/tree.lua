@@ -88,7 +88,7 @@ return function()
           { key = "]e", action = "next_diag_item" },
           { key = "]c", action = "next_git_item" },
           { key = "-", action = "dir_up" },
-          { key = "s", action = "system_open" },
+          { key = "u", action = "system_open" },
           { key = "f", action = "live_filter" },
           { key = "F", action = "clear_live_filter" },
           { key = "q", action = "close" },
@@ -103,7 +103,7 @@ return function()
           -- user defined
           { key = { "e", "<BS>" }, action = "close_node" },
           { key = { "<C-v>", "v" }, action = "vsplit" },
-          { key = { "<C-x>", "h" }, action = "split" },
+          { key = { "<C-x>", "s" }, action = "split" },
           -- custom actions
           { key = { "o" }, action = "open_file_close_nvim_tree", action_cb = open_file_close_nvim_tree },
         },

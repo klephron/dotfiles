@@ -8,5 +8,12 @@ M.servers = {
   "clangd"
 }
 
-return M
+-- M.mason_lspconfig = {
+--   "sumneko_lua",
+--   "pyright",
+--   "bashls",
+--   "cmake",
+--   "clangd",
+-- }
 
+return M
