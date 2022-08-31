@@ -184,6 +184,11 @@ packer.startup({
           disable = true,
           config = conf("lsp.lightbulb").setup,
         },
+        {
+          "glepnir/lspsaga.nvim",
+          branch = "main",
+          config = conf("lsp.lspsaga"),
+        },
         { 'folke/lua-dev.nvim' },
       },
     }
