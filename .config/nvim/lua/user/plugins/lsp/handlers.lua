@@ -96,8 +96,8 @@ function M.on_attach(client, bufnr)
 
   -- Formattings
   if has_provider(client, "documentFormattingProvider") then
-    us.set_keynomap("n", kmps.formatting.key, function() vim.lsp.buf.formatting({ async = true }) end,
-      with_desc(("formatting")))
+    us.set_keynomap("n", kmps.format.key, function() vim.lsp.buf.format({ async = true }) end,
+      with_desc(("format")))
   end
   -- Diagnostics
   us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',

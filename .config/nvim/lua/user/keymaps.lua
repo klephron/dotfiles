@@ -85,7 +85,7 @@ M.lsp = KeymapDictionary:new({
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },
 
-  formatting = { "<leader>m", "Format file" },
+  format = { "<leader>m", "Format file" },
 
   codelens = { "<leader>kl", "Run codelens" },
 
