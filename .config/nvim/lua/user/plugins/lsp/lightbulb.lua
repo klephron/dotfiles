@@ -11,8 +11,13 @@ function M.setup()
       enabled = false,
       priority = 10,
     },
-    float = {
+    virtual_text = {
       enabled = true,
+      text = require("user.icons").diagnostics.lightbulb,
+      hl_mode = "blend",
+    },
+    float = {
+      enabled = false,
       text = require("user.icons").diagnostics.lightbulb,
       win_opts = {
         border = 'none',
@@ -20,6 +25,7 @@ function M.setup()
     },
     autocmd = { enabled = true, },
   })
+  -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
 
   vim.api.nvim_command('highlight LightBulbVirtualText guifg=Yellow ctermfg=Yellow')
   vim.api.nvim_command('highlight LightBulbFloatWin guifg=Yellow ctermfg=Yellow')

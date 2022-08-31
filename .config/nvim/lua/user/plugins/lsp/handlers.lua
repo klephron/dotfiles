@@ -78,7 +78,7 @@ function M.on_attach(client, bufnr)
   end
   if has_provider(client, "codeActionProvider") then
     us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc("code_action"))
-    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action"))
+    -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
   end
   if has_provider(client, "signatureHelpProvider") then
     us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc("signature_help_n"))

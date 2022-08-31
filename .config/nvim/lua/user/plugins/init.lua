@@ -167,11 +167,24 @@ packer.startup({
     use { 'neovim/nvim-lspconfig',
       config = conf("lsp"),
       requires = {
-        { 'jose-elias-alvarez/null-ls.nvim' },
+        {
+          'jose-elias-alvarez/null-ls.nvim',
+          config = conf("lsp.null-ls").setup,
+        },
+        {
+          'ray-x/lsp_signature.nvim',
+          config = conf("lsp.lsp_signature").setup,
+        },
+        {
+          'stevearc/aerial.nvim',
+          config = conf("lsp.aerial").setup,
+        },
+        {
+          'kosayoda/nvim-lightbulb',
+          disable = true,
+          config = conf("lsp.lightbulb").setup,
+        },
         { 'folke/lua-dev.nvim' },
-        { 'ray-x/lsp_signature.nvim' },
-        { 'stevearc/aerial.nvim' },
-        { 'kosayoda/nvim-lightbulb' },
       },
     }
 

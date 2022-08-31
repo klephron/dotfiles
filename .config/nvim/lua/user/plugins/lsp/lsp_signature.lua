@@ -1,12 +1,7 @@
 local M = {}
 
-local signature_ok, signature = safe_require("lsp_signature")
-if not signature_ok then
-  return
-end
-
 function M.setup()
-  signature.setup {
+  require("lsp_signature").setup {
     bind = true,
     hint_enable = false,
     floating_window = false,

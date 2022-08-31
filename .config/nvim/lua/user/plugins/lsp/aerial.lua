@@ -1,12 +1,7 @@
 local M = {}
 
-local aerial_ok, aerial = safe_require("aerial")
-if not aerial_ok then
-  return
-end
-
 function M.setup()
-  aerial.setup({
+  require("aerial").setup({
     backends = { "lsp", "treesitter", "markdown" },
 
     layout = {
