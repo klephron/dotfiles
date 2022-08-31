@@ -1,8 +1,10 @@
+CONFIG_BINDKEYS=$XDG_CONFIG_HOME/zsh/bindkeys.zsh
+
 # Zsh-syntax-highlighting
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 # Zsh-vi-mode
 zvm_after_init() {
-  source $XDG_CONFIG_HOME/zsh/conf/bindkeys.zsh
+  source $CONFIG_BINDKEYS
   # Fzf
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/zsh/site-functions/_fzf
