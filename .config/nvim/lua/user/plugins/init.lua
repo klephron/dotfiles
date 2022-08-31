@@ -294,6 +294,8 @@ packer.startup({
     use {
       'nvim-neorg/neorg',
       config = conf("neorg"),
+      -- after = "nvim-treesitter",
+      -- tag = '0.0.12',
       requires = {
         'vhyrro/neorg-telescope',
         'max397574/neorg-kanban',
