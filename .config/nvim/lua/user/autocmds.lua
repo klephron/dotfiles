@@ -94,6 +94,8 @@ us.augroup("_cmdline_leave", {
   }
 })
 
+-- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
+-- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
   augroup _binary
     au! 
