@@ -177,6 +177,7 @@ packer.startup({
         },
         {
           'stevearc/aerial.nvim',
+          -- cmd = { "AerialToggle", "AerialToggle!" }, # used in lualine
           config = conf("lsp.aerial").setup,
         },
         {
@@ -279,6 +280,7 @@ packer.startup({
     }
     use {
       'phaazon/hop.nvim',
+      keys = { { "n", "s" }, { "n", "f" }, { "n", "F" }, { "n", "t" }, { "n", "T" } },
       config = conf("hop")
     }
     use {
@@ -299,6 +301,7 @@ packer.startup({
     -- Task management, notes
     use {
       'lukas-reineke/headlines.nvim',
+      ft = { "markdown", "org", "norg" },
       config = conf("headlines"),
     }
     use {
@@ -311,8 +314,9 @@ packer.startup({
     }
     use {
       'nvim-neorg/neorg',
-      config = conf("neorg"),
-      -- after = "nvim-treesitter",
+      config = conf("neorg").config,
+      setup = conf("neorg").setup,
+      cmd = {"Neorg", "NeorgStart"},
       -- tag = '0.0.12',
       requires = {
         'vhyrro/neorg-telescope',

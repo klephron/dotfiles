@@ -25,7 +25,7 @@ function KeymapDictionary:new(table, prefix)
       v[2] = nil
     end
   end
-  table._prefix = prefix
+  table.__prefix = prefix
   return table
 end
 
@@ -36,11 +36,19 @@ end
 function KeymapDictionary:desc(element)
   local desc = self[element].desc
   if desc == nil then return "" end
-  if self._prefix then
-    return self._prefix .. ": " .. desc
+  if self.__prefix then
+    return self.__prefix .. ": " .. desc
   else
     return desc
   end
+end
+
+function KeymapDictionary:list_keys()
+  local keys = {}
+  for _, v in pairs(self) do
+    table.insert(keys, v.key)
+  end
+  return keys
 end
 
 function KeymapDictionary:add_key(name, key, desc)

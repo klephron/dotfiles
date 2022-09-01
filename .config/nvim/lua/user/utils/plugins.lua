@@ -36,4 +36,12 @@ function M.block_reload(func)
   func()
 end
 
+function M.packer_keys(modes, list)
+  local keys = {}
+  for _, v in pairs(list) do
+    table.insert(keys, {modes, v})
+  end
+  return keys
+end
+
 return M
