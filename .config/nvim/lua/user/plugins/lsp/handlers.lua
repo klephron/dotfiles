@@ -48,6 +48,7 @@ end
 
 function M.on_attach(client, bufnr)
   local kmps = require("user.keymaps").lsp
+  local lspsaga_ok, _ = pcall(require, "lspsaga")
 
   local function with_desc(desc)
     return { buffer = bufnr, desc = kmps:desc(desc) }
@@ -77,7 +78,11 @@ function M.on_attach(client, bufnr)
     us.set_keynomap("n", kmps.g_references.key, vim.lsp.buf.references, with_desc("references"))
   end
   if has_provider(client, "codeActionProvider") then
-    us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc("code_action"))
+    if lspsaga_ok then
+      us.set_keynomap("n", kmps.code_action.key, "<cmd>Lspsaga code_action<cr>", with_desc("code_action"))
+    else
+      us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc("code_action"))
+    end
     -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
   end
   if has_provider(client, "signatureHelpProvider") then
@@ -99,15 +104,31 @@ function M.on_attach(client, bufnr)
     us.set_keynomap("n", kmps.format.key, function() vim.lsp.buf.format({ async = true }) end,
       with_desc(("format")))
   end
+
   -- Diagnostics
-  us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    with_desc("open_float"))
-  us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    with_desc("open_float"))
-  us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-    with_desc("goto_next"))
-  us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
-    with_desc("goto_prev"))
+  if lspsaga_ok then
+    us.set_keynomap("n", kmps.open_float.key, '<cmd>Lspsaga show_line_diagnostics<cr>',
+      with_desc("open_float"))
+    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>Lspsaga show_line_diagnostics<cr>',
+      with_desc("open_float"))
+    us.set_keynomap("n", kmps.open_float_cursor.key, '<cmd>Lspsaga show_cursor_diagnostics<cr>',
+      with_desc("open_float_cursor"))
+    us.set_keynomap("n", kmps.g_open_float_cursor.key, '<cmd>Lspsaga show_cursor_diagnostics<cr>',
+      with_desc("open_float_cursor"))
+    us.set_keynomap("n", kmps.goto_next.key, '<cmd>Lspsaga diagnostic_jump_next<CR>',
+      with_desc("goto_next"))
+    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>Lspsaga diagnostic_jump_prev<CR>',
+      with_desc("goto_prev"))
+  else
+    us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+      with_desc("open_float"))
+    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+      with_desc("open_float"))
+    us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
+      with_desc("goto_next"))
+    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
+      with_desc("goto_prev"))
+  end
 
   -- OTHER PROVIDERS:
   -- workspaceSymbolProvider

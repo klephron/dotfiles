@@ -80,7 +80,9 @@ M.lsp = KeymapDictionary:new({
   code_action = { "<leader>ka", "Code action" },
 
   open_float = { "<leader>kh", "Open float" },
+  open_float_cursor = { "<leader>kH", "Open float under cursor" },
   g_open_float = { "gh" },
+  g_open_float_cursor = { "gH" },
 
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },

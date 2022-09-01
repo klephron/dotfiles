@@ -2,7 +2,7 @@ return function()
   local lspsaga = require("lspsaga")
   lspsaga.init_lsp_saga({
     -- "single" | "double" | "rounded" | "bold" | "plus"
-    border_style = "single",
+    border_style = "rounded",
     saga_winblend = 0,
     -- when cursor in saga window you config these to move
     move_in_saga = { prev = '<C-p>', next = '<C-n>' },
@@ -16,8 +16,8 @@ return function()
     code_action_icon = require("user.icons").diagnostics.lightbulb,
     code_action_num_shortcut = true,
     code_action_lightbulb = {
-      enable = true,
-      enable_in_insert = true,
+      enable = false,
+      enable_in_insert = false,
       cache_code_action = true,
       sign = false,
       update_time = 150,
