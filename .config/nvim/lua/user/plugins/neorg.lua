@@ -7,12 +7,23 @@ function M.setup()
     return "<cmd>" .. str .. "<cr>"
   end
 
-  us.set_keynomap("n", kmps.gtd_capture.key, cmd("Neorg gtd capture"), kmps:desc("gtd_capture"))
-  us.set_keynomap("n", kmps.gtd_views.key, cmd("Neorg gtd views"), kmps:desc("gtd_views"))
-  us.set_keynomap("n", kmps.kanban_toggle.key, cmd("Neorg kanban toggle"), kmps:desc("kanban_toggle"))
-  us.set_keynomap("n", kmps.switch_workspace.key, cmd("Telescope neorg switch_workspace"),
+  local function load_wrapper(callback)
+    return function()
+      if not require("neorg").is_loaded() then
+        vim.cmd("NeorgStart")
+        vim.notify('Loaded.', vim.log.levels.INFO, { title = 'Neorg' })
+      end
+      if type(callback) == 'function' then return callback()
+      elseif type(callback) == 'string' then return vim.cmd(callback) end
+    end
+  end
+
+  us.set_keynomap("n", kmps.gtd_capture.key, load_wrapper("Neorg gtd capture"), kmps:desc("gtd_capture"))
+  us.set_keynomap("n", kmps.gtd_views.key, load_wrapper("Neorg gtd views"), kmps:desc("gtd_views"))
+  us.set_keynomap("n", kmps.kanban_toggle.key, load_wrapper("Neorg kanban toggle"), kmps:desc("kanban_toggle"))
+  us.set_keynomap("n", kmps.switch_workspace.key, load_wrapper("Telescope neorg switch_workspace"),
     kmps:desc("switch_workspace"))
-  us.set_keynomap("n", kmps.journal.key, cmd("Neorg journal"), kmps:desc("journal"))
+  us.set_keynomap("n", kmps.journal.key, load_wrapper("Neorg journal"), kmps:desc("journal"))
 end
 
 function M.config()
