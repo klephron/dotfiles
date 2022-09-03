@@ -230,161 +230,180 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   term_mode = "t",
 --   command_mode = "c",
 ---------------------------------------------------------------------------//
--- WHICH_KEY
+-- NORMAL
 ---------------------------------------------------------------------------//
-if which_key_ok then
-  ---------------------------------------------------------------------------//
-  -- NORMAL
-  ---------------------------------------------------------------------------//
-  which_key.register({
-    ["<C-k>"] = { "<c-w>k", "window: Move up" },
-    ["<C-l>"] = { "<c-w>l", "window: Move right" },
-    ["<C-j>"] = { "<c-w>j", "window: Move down" },
-    ["<C-h>"] = { "<c-w>h", "window: Move left" },
+which_key.register({
+  ["<C-k>"] = { "<c-w>k", "window: Move up" },
+  ["<C-l>"] = { "<c-w>l", "window: Move right" },
+  ["<C-j>"] = { "<c-w>j", "window: Move down" },
+  ["<C-h>"] = { "<c-w>h", "window: Move left" },
 
-    ["<C-Up>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
-    ["<C-S-k>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
-    ["<C-Down>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
-    ["<C-S-j>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
-    ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
-    ["<C-S-l>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
-    ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
-    ["<C-S-h>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
+  ["<C-Up>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
+  ["<C-S-k>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
+  ["<C-Down>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
+  ["<C-S-j>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
+  ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
+  ["<C-S-l>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
+  ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
+  ["<C-S-h>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
 
-    ["<S-l>"] = { "<cmd>bnext<cr>", "buffer: Move next" },
-    ["<S-h>"] = { "<cmd>bprevious<cr>", "buffer: Move previous" },
+  ["<S-l>"] = { "<cmd>bnext<cr>", "buffer: Move next" },
+  ["<S-h>"] = { "<cmd>bprevious<cr>", "buffer: Move previous" },
 
-    ["<esc><esc>"] = { "<cmd>nohlsearch<cr>", "hl: Clear search hl" },
+  g = {
+    name = "special",
+    a = { "Print asci character" },
+    x = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
+      "goto: Open link in system browser" },
+  },
 
-    g = {
-      name = "special",
-      a = { "Print asci character" },
-      x = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
-        "goto: Open link in system browser" },
-    },
+  ["[t"] = { "<cmd>tabprev<cr>", "tab: Open previous" },
+  ["]t"] = { "<cmd>tabnext<cr>", "tab: Open next" },
+}, { mode = "n" })
 
-    ["[t"] = { "<cmd>tabprev<cr>", "tab: Open previous" },
-    ["]t"] = { "<cmd>tabnext<cr>", "tab: Open next" },
-  }, { mode = "n" })
+which_key.register({
+  ["<C-w>"] = {
+    name = "window",
+    s = { "Split horizontally" },
+    v = { "Split vertically" },
+    n = { "Split horizontally and edit [New File]" },
+    ["^"] = { "Split horizontally and edit the alternative file" },
+    c = { "Close" },
+    o = { "Close all except current one" },
+    t = { "Go to top-left" },
+    b = { "Go to bottom-right" },
+    p = { "Go to previous" },
+    P = { "Go to preview" },
+    r = { "Rotate downwards/rightwards" },
+    R = { "Rotate upwards/leftwards" },
+    K = { "Move far Top" },
+    J = { "Move far Bottom" },
+    H = { "Move far Left" },
+    L = { "Move far Right" },
 
-  which_key.register({
-    ["<C-w>"] = {
-      name = "window",
-      s = { "Split horizontally" },
-      v = { "Split vertically" },
-      n = { "Split horizontally and edit [New File]" },
-      ["^"] = { "Split horizontally and edit the alternative file" },
-      c = { "Close" },
-      o = { "Close all except current one" },
-      t = { "Go to top-left" },
-      b = { "Go to bottom-right" },
-      p = { "Go to previous" },
-      P = { "Go to preview" },
-      r = { "Rotate downwards/rightwards" },
-      R = { "Rotate upwards/leftwards" },
-      K = { "Move far Top" },
-      J = { "Move far Bottom" },
-      H = { "Move far Left" },
-      L = { "Move far Right" },
+  }
+}, { mode = "n" })
 
-    }
-  }, { mode = "n" })
+us.set_keynomap("n", "<leader>tm", function()
+  vim.cmd("tabmove " .. fn.input(""))
+end, { silent = false, desc = "tab: Move current after N" })
 
-  us.set_keynomap("n", "<leader>tm", function()
-    vim.cmd("tabmove " .. fn.input(""))
-  end, { silent = false, desc = "tab: Move current after N" })
+which_key.register({
+  q = { "<cmd>q<cr>", "window: Close" },
+  Q = { "<cmd>qall<cr>", "window: Close all" },
+  w = { "<cmd>write<cr>", "nvim: Write" },
+  W = { "<cmd>wall<cr>", "nvim: Write all" },
+  e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
+  E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
+  r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+  t = {
+    name = "tabs",
+    f = { "<cmd>tabclose<cr>", "tab: Close" },
+    n = { "<cmd>tabedit %<cr>", "tab: Edit current buffer" },
+    o = { "<cmd>tabonly<cr>", "tab: Close all except current" },
+  },
+  Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
+  y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
+  u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
+  i = { "<cmd>Trouble document_diagnostics<CR>", "trouble: Document diagnostics" },
+  p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
+  A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
+  a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
+  ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
+  [']a'] = { "<cmd>execute v:count . 'AerialNext'<cr>", "aerial: Jump N next symbols" },
+  ['[A'] = { "<cmd>execute v:count . 'AerialPrevUp'<cr>", "aerial: Jump N levels up, moving backwards" },
+  [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
 
-  which_key.register({
-    q = { "<cmd>q<cr>", "window: Close" },
-    Q = { "<cmd>qall<cr>", "window: Close all" },
-    w = { "<cmd>write<cr>", "nvim: Write" },
-    W = { "<cmd>wall<cr>", "nvim: Write all" },
-    e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
-    E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
-    r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
-    t = {
-      name = "tabs",
-      f = { "<cmd>tabclose<cr>", "tab: Close" },
-      n = { "<cmd>tabedit %<cr>", "tab: Edit current buffer" },
-      o = { "<cmd>tabonly<cr>", "tab: Close all except current" },
-    },
-    Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
-    y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
-    u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
-    i = { "<cmd>Trouble document_diagnostics<CR>", "trouble: Document diagnostics" },
-    p = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
-    A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
-    a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
-    ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
-    [']a'] = { "<cmd>execute v:count . 'AerialNext'<cr>", "aerial: Jump N next symbols" },
-    ['[A'] = { "<cmd>execute v:count . 'AerialPrevUp'<cr>", "aerial: Jump N levels up, moving backwards" },
-    [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
+  s = {
+    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    "telescope: Find files"
+  },
+  f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
+  j = {
+    name = "toggleterm",
+    t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
+    a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
+    l = { '<cmd>lua vim.env.NVIM_CWD=vim.fn.getcwd(); vim.cmd("UsToggleTermLazygit")<cr>', "toggleterm: Lazygit" },
+    h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
+  },
+  l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
+  x = {
+    name = "watch",
+    n = { "<cmd>WatchCreate<cr>", "watch: Create" },
+    d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
+  },
+  -- c = {
+  --   name = "color",
+  --   n = "<cmd>PickColor<cr>", "color: Pick color",
+  -- },
+  c = { "<cmd>PickColor<cr>", "color: Pick color" },
+  b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
+  ["'"] = { "<cmd>marks<cr>", "mark: Show" },
+  ['"'] = { "<cmd>reg<cr>", "register: Show" },
+  ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
+}, { mode = "n", prefix = "<leader>" })
+---------------------------------------------------------------------------//
+-- INSERT
+---------------------------------------------------------------------------//
+which_key.register({
 
-    s = {
-      "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-      "telescope: Find files"
-    },
-    f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
-    j = {
-      name = "toggleterm",
-      t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
-      a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
-      l = { '<cmd>lua vim.env.NVIM_CWD=vim.fn.getcwd(); vim.cmd("UsToggleTermLazygit")<cr>', "toggleterm: Lazygit" },
-      h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
-    },
-    l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
-    x = {
-      name = "watch",
-      n = { "<cmd>WatchCreate<cr>", "watch: Create" },
-      d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
-    },
-    b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
-    ["'"] = { "<cmd>marks<cr>", "mark: Show" },
-    ['"'] = { "<cmd>reg<cr>", "register: Show" },
-    ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
-  }, { mode = "n", prefix = "<leader>" })
+}, { mode = "i" })
+---------------------------------------------------------------------------//
+-- VISUAL-SELECT
+---------------------------------------------------------------------------//
+which_key.register({
+  ["<"] = { "<gv", "Shift leftwards" },
+  [">"] = { ">gv", "Shift rightwards" },
+  ["p"] = { '"_dP', "Replace selected from buffer" },
+  ["<A-j>"] = { ":move '>+1<cr>gv", "Swap selected with next line" },
+  ["<A-k>"] = { ":move '<-2<cr>gv", "Swap selected with previous line" },
+}, { mode = "v" })
+---------------------------------------------------------------------------//
+-- TERMINAL
+---------------------------------------------------------------------------//
+-- local function termcodes(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+--
+which_key.register({
+  --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
+  --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
+}, { mode = "t" })
 
-  ---------------------------------------------------------------------------//
-  -- INSERT
-  ---------------------------------------------------------------------------//
-  which_key.register({
+---------------------------------------------------------------------------//
+-- COMMAND
+---------------------------------------------------------------------------//
+-- emacs like keybinds
+which_key.register({
+  ["<A-b>"] = { "<S-Left>", "Cursor move word left" },
+  ["<A-f>"] = { "<S-Right>", "Cursor move word right" },
+  ["<C-b>"] = { "<Left>", "Cursor move left" },
+  ["<C-f>"] = { "<Right>", "Cursor move right" },
+  ["<C-j>"] = { "<Down>", "History scroll down" },
+  ["<C-k>"] = { "<Up>", "History scroll up" },
+}, { mode = "c", noremap = true, silent = false })
 
-  }, { mode = "i" })
-  ---------------------------------------------------------------------------//
-  -- VISUAL-SELECT
-  ---------------------------------------------------------------------------//
-  which_key.register({
-    ["<"] = { "<gv", "Shift leftwards" },
-    [">"] = { ">gv", "Shift rightwards" },
-    ["p"] = { '"_dP', "Replace selected from buffer" },
-    ["<A-j>"] = { ":move '>+1<cr>gv", "Swap selected with next line" },
-    ["<A-k>"] = { ":move '<-2<cr>gv", "Swap selected with previous line" },
-  }, { mode = "v" })
-  ---------------------------------------------------------------------------//
-  -- TERMINAL
-  ---------------------------------------------------------------------------//
-  -- local function termcodes(str)
-  --   return vim.api.nvim_replace_termcodes(str, true, true, true)
-  -- end
-  --
-  which_key.register({
-    --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-    --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-  }, { mode = "t" })
 
-  ---------------------------------------------------------------------------//
-  -- COMMAND
-  ---------------------------------------------------------------------------//
-  -- emacs like keybinds
-  which_key.register({
-    ["<A-b>"] = { "<S-Left>", "Cursor move word left" },
-    ["<A-f>"] = { "<S-Right>", "Cursor move word right" },
-    ["<C-b>"] = { "<Left>", "Cursor move left" },
-    ["<C-f>"] = { "<Right>", "Cursor move right" },
-    ["<C-j>"] = { "<Down>", "History scroll down" },
-    ["<C-k>"] = { "<Up>", "History scroll up" },
-  }, { mode = "c", noremap = true, silent = false })
-end
+---------------------------------------------------------------------------//
+-- SPECIAL KEYMAPS
+---------------------------------------------------------------------------//
+-- Nohl keymap (disabled in special buffers)
+local mapnohl_disabled = {
+  "color-picker",
+  "TelescopePrompt",
+  "DressingInput",
+}
 
+us.augroup("_map_hohl", {
+  {
+    event = "FileType",
+    pattern = "*",
+    command = function()
+      if not vim.tbl_contains(mapnohl_disabled, vim.bo.filetype) then
+        us.set_keynomap("n", "<Esc><Esc>", ":nohl<cr>", { buffer = 0 })
+      end
+    end
+  }
+})
 
 return M

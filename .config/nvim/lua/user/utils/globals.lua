@@ -71,6 +71,16 @@ us.set_keynomap = function(mode, lhs, rhs, opts)
   call_mapping(mode, lhs, rhs, opts)
 end
 
+us.try_unmap = function(mode, lhs, buflocal)
+  if fn.maparg(lhs, mode) ~= '' then
+    if buflocal then
+      api.nvim_buf_del_keymap(api.nvim_get_current_buf(), mode, lhs)
+    else
+      api.nvim_del_keymap(mode, lhs)
+    end
+  end
+end
+
 ---@class Autocommand
 ---@field description string
 ---@field event  string|string[] list of autocommand events (use list if more than one)
