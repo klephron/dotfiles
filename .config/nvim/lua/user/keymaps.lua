@@ -187,6 +187,11 @@ M.git = KeymapDictionary:new({
   next_hunk = { "]g", "Go to next hunk" },
 }, "git")
 
+M.ctrl_i = KeymapDictionary:new({
+  colorpicker = { "<c-c>", "color: Pick color in insert" },
+})
+
+
 if which_key_ok then
   which_key.register({
     ["d"] = { name = "dap" },

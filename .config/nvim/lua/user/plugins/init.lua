@@ -129,6 +129,10 @@ packer.startup({
       'stevearc/dressing.nvim',
       config = conf("dressing")
     }
+    use {
+      'ziontee113/color-picker.nvim',
+      config = conf("colorpicker")
+    }
 
     -- Telescope
     use {
