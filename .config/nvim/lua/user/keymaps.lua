@@ -174,15 +174,14 @@ M.git = KeymapDictionary:new({
   toggle_deleted = { "<leader>gd", "Show deleted lines" },
   toggle_word_diff = { "<leader>gw", "Toggle word diff" },
   blame_line = { "<leader>gl", "Blame line" },
+  qflist_hunks = { "<leader>gh", "QFlist hunks" },
 
   stage_buffer = { "<localleader>gw", "Stage entire buffer" },
   reset_buffer = { "<localleader>gr", "Reset entire buffer" },
+  diffview_open = { "<localleader>gd", "Open diffview" },
+  diffview_history = { "<localleader>gh", "Open file history" },
 
-  qflist_hunks = { "<leader>gh", "QFlist hunks" },
-  diffthis = { "<localleader>gd", "Diff this" },
-  diffthis_PREV = { "<localleader>gD", "Diff this ~HEAD" },
   select_hunk = { "ig", "Select hunk (text object)" },
-
   prev_hunk = { "[g", "Go to previous hunk" },
   next_hunk = { "]g", "Go to next hunk" },
 }, "git")

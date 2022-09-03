@@ -153,9 +153,9 @@ packer.startup({
     }
     use {
       'sindrets/diffview.nvim',
-      -- module =
       cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
-      config = conf("diffview")
+      config = conf("diffview").config,
+      setup = conf("diffview").setup,
     }
 
     -- Installer for lsp, dap, linters, formatters

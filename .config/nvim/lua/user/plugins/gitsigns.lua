@@ -54,8 +54,8 @@ return function()
       us.set_keynomap("n", kmps.reset_buffer.key, gs.reset_buffer, with_desc("reset_buffer"))
 
       us.set_keynomap("n", kmps.qflist_hunks.key, qflist_hunks, with_desc("qflist_hunks"))
-      us.set_keynomap("n", kmps.diffthis.key, gs.diffthis, with_desc("diffthis"))
-      us.set_keynomap("n", kmps.diffthis_PREV.key, diffthis_PREV, with_desc("diffthis_PREV"))
+      -- us.set_keynomap("n", kmps.diffthis.key, gs.diffthis, with_desc("diffthis"))
+      -- us.set_keynomap("n", kmps.diffthis_PREV.key, diffthis_PREV, with_desc("diffthis_PREV"))
       -- Text object
       us.set_keynomap({ "o", "x" }, kmps.select_hunk.key, ':<C-U>Gitsigns select_hunk<CR>', with_desc("select_hunk"))
       -- Navigation
