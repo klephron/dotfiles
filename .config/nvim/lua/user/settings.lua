@@ -2,7 +2,30 @@ local fn = vim.fn
 -----------------------------------------------------------------------------//
 -- Message output on vim actions
 -----------------------------------------------------------------------------//
-vim.opt.shortmess:append("c")
+-- vim.opt.shortmess:append("c")
+vim.opt.shortmess = {
+  f = true,
+  i = false,
+  l = true,
+  m = true,
+  n = true,
+  r = true,
+  w = true,
+  x = true,
+  a = false, -- all above
+  o = true,
+  O = true,
+  s = true,
+  t = true,
+  T = true,
+  W = true,
+  A = true,
+  I = false,
+  c = true,
+  q = false,
+  F = true,
+  S = false,
+}
 -----------------------------------------------------------------------------//
 -- Format Options
 -----------------------------------------------------------------------------//
