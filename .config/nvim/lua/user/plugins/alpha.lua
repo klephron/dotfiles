@@ -19,7 +19,7 @@ return function()
     type = "group",
     val = {
       theme.button("f", icons.FindFile .. " Find file", "<cmd>Telescope find_files <CR>"),
-      theme.button("e", icons.File .. " New file", "<cmd>ene<BAR>startinsert<cr>"),
+      theme.button("e", icons.File .. " Plain file", "<cmd>ene<cr>"),
       theme.button("s", icons.Reference .. " Restore current session", "<cmd>RestoreSession<cr>"),
       theme.button("d", icons.SignIn .. " Find session", "<cmd>Telescope session-lens search_session<cr>"),
       theme.button("r", icons.RecentlyUsed .. " Recently used files", "<cmd>Telescope oldfiles <CR>"),
@@ -27,6 +27,7 @@ return function()
       theme.button("p", icons.Folder .. " Find project", "<cmd>Telescope projects <CR>"),
       theme.button("t", icons.Text .. " Find text", "<cmd>Telescope live_grep<CR>"),
       theme.button("l", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
+      -- theme.button("n", icons.Neorg .. " Open neorg workspaces", "<cmd>Neorg ")
       theme.button("h", icons.Checkhealth .. " Checkhealth", "<cmd>checkhealth<cr>" ),
       theme.button("q", icons.Quit .. " Quit nvim", "<cmd>qa<cr>"),
     },

@@ -216,6 +216,7 @@ return {
     SignIn = "",
     Reference = "",
     Checkhealth = "",
+    Neorg = "",
   },
   Close = " ",
   Telescope = " ",
