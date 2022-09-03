@@ -6,6 +6,14 @@ if fn.exists("g:started_by_firenvim") == 1 then
   require "user.utils.globals"
   require "user.settings"
   require "user.colorscheme"
+  require "user.autocmds"
+  -- Stop loading built in plugins
+  vim.g.loaded_netrwPlugin = 1
+  vim.g.loaded_tutor_mode_plugin = 1
+  vim.g.loaded_2html_plugin = 1
+  vim.g.loaded_zipPlugin = 1
+  vim.g.loaded_tarPlugin = 1
+  vim.g.loaded_gzip = 1
   -- -- Override some settings
   vim.opt.guifont = "FiraCode Nerd Font Mono:h12"
   vim.opt.laststatus = 0
@@ -31,7 +39,7 @@ if fn.exists("g:started_by_firenvim") == 1 then
   us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>")
   us.set_keynomap("n", "<leader>w", "<cmd>write<cr>")
   us.set_keynomap("n", "<leader>W", "<cmd>wall<cr>")
-  -- vim.cmd [[ 
+  -- vim.cmd [[
   --   au TextChanged * ++nested write
   --   au TextChangedI * ++nested write
   -- ]]
