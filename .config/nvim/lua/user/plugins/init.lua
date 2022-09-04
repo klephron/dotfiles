@@ -280,6 +280,9 @@ packer.startup({
     }
     use {
       'folke/which-key.nvim',
+      disable = false,
+      commit = "7ee35a7614e34e562fd3f815ad35bd6d7e456093",
+      -- commit = "c96627900191355e6788629bbf5239d7295221f0",
       config = conf("which-key")
     }
     use {

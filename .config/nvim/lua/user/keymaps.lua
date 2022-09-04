@@ -182,20 +182,6 @@ M.ctrl_i = KeymapDictionary:new({
   colorpicker = { "<c-c>", "color: Pick color in insert" },
 })
 
-
-if which_key_ok then
-  which_key.register({
-    ["d"] = { name = "dap" },
-    ["k"] = { name = "lsp" },
-    ["n"] = { name = "neorg" },
-    ["g"] = { name = "git" },
-  }, { prefix = "<leader>", mode = "n" })
-  which_key.register({
-    ["n"] = { name = "neorg" },
-    ["g"] = { name = "git" },
-  }, { prefix = "<localleader>", mode = "n" })
-end
-
 ---------------------------------------------------------------------------//
 --TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//
@@ -211,6 +197,31 @@ end
 
 vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 
+---------------------------------------------------------------------------//
+-- SPECIAL KEYMAPS
+---------------------------------------------------------------------------//
+-- Nohl keymap (disabled in special buffers)
+local mapnohl_disabled = {
+  "color-picker",
+  "TelescopePrompt",
+  "DressingInput",
+}
+
+us.augroup("_map_hohl", {
+  {
+    event = "FileType",
+    pattern = "*",
+    command = function()
+      if not vim.tbl_contains(mapnohl_disabled, vim.bo.filetype) then
+        us.set_keynomap("n", "<Esc><Esc>", ":nohl<cr>", { buffer = 0 })
+      end
+    end
+  }
+})
+
+---------------------------------------------------------------------------//
+-- WHICH-KEY
+---------------------------------------------------------------------------//
 -- Modes
 --   normal_mode = "n",
 --   visual_and_select = "v",
@@ -220,6 +231,24 @@ vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
 --   insert_mode = "i",
 --   term_mode = "t",
 --   command_mode = "c",
+
+if not which_key_ok then
+  vim.notify("which-key is not required, some keymaps are not installed",
+  vim.log.levels.ERROR, {title = "Config"})
+  return M
+end
+
+which_key.register({
+  ["d"] = { name = "dap" },
+  ["k"] = { name = "lsp" },
+  ["n"] = { name = "neorg" },
+  ["g"] = { name = "git" },
+}, { prefix = "<leader>", mode = "n" })
+which_key.register({
+  ["n"] = { name = "neorg" },
+  ["g"] = { name = "git" },
+}, { prefix = "<localleader>", mode = "n" })
+
 ---------------------------------------------------------------------------//
 -- NORMAL
 ---------------------------------------------------------------------------//
@@ -374,27 +403,5 @@ which_key.register({
   ["<C-k>"] = { "<Up>", "History scroll up" },
 }, { mode = "c", noremap = true, silent = false })
 
-
----------------------------------------------------------------------------//
--- SPECIAL KEYMAPS
----------------------------------------------------------------------------//
--- Nohl keymap (disabled in special buffers)
-local mapnohl_disabled = {
-  "color-picker",
-  "TelescopePrompt",
-  "DressingInput",
-}
-
-us.augroup("_map_hohl", {
-  {
-    event = "FileType",
-    pattern = "*",
-    command = function()
-      if not vim.tbl_contains(mapnohl_disabled, vim.bo.filetype) then
-        us.set_keynomap("n", "<Esc><Esc>", ":nohl<cr>", { buffer = 0 })
-      end
-    end
-  }
-})
 
 return M

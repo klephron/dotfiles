@@ -1,6 +1,5 @@
 return function()
   local which_key = require("which-key")
-  -- https://github.com/folke/which-key.nvim
   which_key.setup({
     plugins = {
       marks = false, -- shows a list of your marks on ' and `
