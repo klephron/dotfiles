@@ -318,7 +318,7 @@ which_key.register({
   r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
   t = {
     name = "tabs",
-    f = { "<cmd>tabclose<cr>", "tab: Close" },
+    d = { "<cmd>tabclose<cr>", "tab: Close" },
     n = { "<cmd>tabedit %<cr>", "tab: Edit current buffer" },
     o = { "<cmd>tabonly<cr>", "tab: Close all except current" },
   },
