@@ -75,7 +75,11 @@ vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
-vim.opt.cmdheight = 1 -- only works in >neovim-0.8
+if fn.has("nvim-0.8") ~= 0 then
+  vim.opt.cmdheight = 0
+else
+  vim.opt.cmdheight = 1
+end
 vim.opt.showcmd = true
 vim.opt.laststatus = 3
 vim.opt.showmode = false
