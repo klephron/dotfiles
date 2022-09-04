@@ -1,0 +1,16 @@
+/*  XPCE configuration file for "persistent_frame"
+    Saved Sun Sep  4 08:57:14 2022 by nikit
+*/
+
+configversion(1).
+[persistent_frame].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Option lines starting with a `%' indicate      %
+% the value is equal to the application default. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/* (X-)geometry for persistent frames */
+history/geometry/man_manual =   '+-1-1'.
+
+/* Sub-window layout for persistent frames */
