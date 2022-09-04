@@ -65,41 +65,33 @@ end
 
 M.lsp = KeymapDictionary:new({
   -- gf (override file open), gl, go, gp, gq, gs, gy, gz
-  definition = { "<leader>kd", "Definition" },
   g_definition = { "gd" },
-
-  declaration = { "<leader>ke", "Declaration" },
   g_declaration = { "gD" },
-
-  hover = { "<leader>kl", "Hover" },
   g_hover = { "gl" },
-
-  implementation = { "<leader>ki", "Implementation" },
   g_implementation = { "gm" },
-
-  signature_help_n = { "<leader>ks", "Signature help" },
-  signature_help_i = { "<C-k>", "Signature help" },
-
-  rename = { "<leader>kn", "Rename" },
-
-  references = { "<leader>kr", "References" },
   g_references = { "gr" },
-
-  code_action = { "<leader>ka", "Code action" },
-
-  open_float = { "<leader>kh", "Open float" },
-  open_float_cursor = { "<leader>kH", "Open float under cursor" },
   g_open_float = { "gh" },
   g_open_float_cursor = { "gH" },
+
+  signature_help_i = { "<C-k>", "Signature help" },
 
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },
 
-  format = { "<leader>m", "Format file" },
-
-  codelens = { "<leader>kl", "Run codelens" },
-
+  definition = { "<leader>kd", "Definition" },
+  declaration = { "<leader>ke", "Declaration" },
+  hover = { "<leader>kl", "Hover" },
+  implementation = { "<leader>ki", "Implementation" },
+  signature_help_n = { "<leader>ks", "Signature help" },
+  rename = { "<leader>kn", "Rename" },
+  references = { "<leader>kr", "References" },
+  code_action = { "<leader>ka", "Code action" },
+  open_float = { "<leader>kh", "Open float" },
+  open_float_cursor = { "<leader>kH", "Open float under cursor" },
+  codelens = { "<leader>km", "Run codelens" },
   type_definition = { "<leader>kp", "Type definition" },
+
+  format = { "<leader>m", "Format file" },
 }, "lsp")
 
 M.dap = KeymapDictionary:new({
