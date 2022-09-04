@@ -172,6 +172,7 @@ M.git = KeymapDictionary:new({
   reset_buffer = { "<localleader>gr", "Reset entire buffer" },
   diffview_open = { "<localleader>gd", "Open diffview" },
   diffview_history = { "<localleader>gh", "Open file history" },
+  diffview_history_v = { "gh", "Open range file history" },
 
   select_hunk = { "ig", "Select hunk (text object)" },
   prev_hunk = { "[g", "Go to previous hunk" },
@@ -234,7 +235,7 @@ us.augroup("_map_hohl", {
 
 if not which_key_ok then
   vim.notify("which-key is not required, some keymaps are not installed",
-  vim.log.levels.ERROR, {title = "Config"})
+    vim.log.levels.ERROR, { title = "Config" })
   return M
 end
 

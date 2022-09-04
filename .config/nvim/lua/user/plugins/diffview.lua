@@ -3,6 +3,7 @@ M.setup = function()
   local kmps = require("user.keymaps").git
   us.set_keynomap("n", kmps.diffview_open.key, '<cmd>DiffviewOpen<cr>', kmps:desc("diffview_open"))
   us.set_keynomap("n", kmps.diffview_history.key, '<cmd>DiffviewFileHistory<cr>', kmps:desc("diffview_history"))
+  us.set_keynomap("v", kmps.diffview_history_v.key, "<cmd><,'>DiffviewFileHistory<cr>", kmps:desc("diffview_history_v"))
 end
 
 M.config = function()
@@ -12,6 +13,9 @@ M.config = function()
     diff_binaries = true,
     enhanced_diff_hl = true,
     use_icons = true,
+    default_args = {
+      DiffviewFileHistory = { '%' },
+    },
     file_panel = {
       win_config = {
         position = "left",
@@ -27,9 +31,9 @@ M.config = function()
     hooks = {
       diff_buf_read = function(bufnr)
         -- Change local options in diff buffers
-        vim.opt_local.wrap = false
-        vim.opt_local.list = false
-        vim.opt_local.colorcolumn = { 80 }
+        vim.wo.wrap = false
+        vim.wo.list = false
+        -- vim.wo.colorcolumn = "80"
       end,
     },
     keymaps = {

@@ -153,6 +153,7 @@ packer.startup({
     }
     use {
       'sindrets/diffview.nvim',
+      module = 'diffview',
       cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
       config = conf("diffview").config,
       setup = conf("diffview").setup,
@@ -320,7 +321,8 @@ packer.startup({
       'nvim-neorg/neorg',
       config = conf("neorg").config,
       setup = conf("neorg").setup,
-      cmd = {"Neorg", "NeorgStart"},
+      cmd = { "NeorgStart" },
+      module = "neorg",
       -- tag = '0.0.12',
       requires = {
         'vhyrro/neorg-telescope',
