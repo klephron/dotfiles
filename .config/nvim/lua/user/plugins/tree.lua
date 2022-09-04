@@ -13,9 +13,6 @@ return function()
 
   nvim_tree.setup {
     disable_netrw = true,
-    open_on_setup = false,
-    respect_buf_cwd = true,
-    sync_root_with_cwd = false,
     hijack_directories = {
       enable = true,
       auto_open = true,
@@ -52,9 +49,12 @@ return function()
     --   types = { all = true, },
     -- },
     view = {
+      hide_root_folder = true,
+      signcolumn = "auto",
       width = 30,
       side = "left",
       mappings = {
+        -- WARN: deprecated
         list = {
           -- DEFAULT MAPPINGS
           { key = { "<CR>", "<2-LeftMouse>", ";" }, action = "edit" },
