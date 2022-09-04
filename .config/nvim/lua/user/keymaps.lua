@@ -220,19 +220,77 @@ us.augroup("_map_hohl", {
   }
 })
 
----------------------------------------------------------------------------//
--- WHICH-KEY
----------------------------------------------------------------------------//
--- Modes
---   normal_mode = "n",
---   visual_and_select = "v",
---   select_mode = "s",
---   visual_mode = "v",
---   operator-pending_mode = "o",
---   insert_mode = "i",
---   term_mode = "t",
---   command_mode = "c",
+us.set_keynomap("n", "<c-k>", "<c-w>k", "window: Move up")
+us.set_keynomap("n", "<c-l>", "<c-w>l", "window: Move right")
+us.set_keynomap("n", "<c-j>", "<c-w>j", "window: Move down")
+us.set_keynomap("n", "<c-h>", "<c-w>h", "window: Move left")
 
+us.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "window: Increase height")
+us.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "window: Increase height")
+us.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "window: Decrease height")
+us.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "window: Decrease height")
+
+us.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "window: Increase width")
+us.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "window: Increase width")
+us.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "window: Decrease width")
+us.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "window: Decrease width")
+
+us.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "buffer: Move next")
+us.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "buffer: Move previous")
+
+us.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
+  "goto: Open link in system browser")
+
+us.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "tab: Open previous")
+us.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "tab: Open next")
+
+-- Leader mappings
+us.set_keynomap("n", "<leader>tm", function()
+  vim.cmd("tabmove " .. tostring(tonumber(fn.input("")) - 1))
+end, { silent = false, desc = "tab: Move current after N - 1" })
+
+us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
+us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "window: Close all")
+us.set_keynomap("n", "<leader>q", "<cmd>write<cr>", "nvim: Write")
+us.set_keynomap("n", "<leader>q", "<cmd>wall<cr>", "nvim: Write all")
+us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
+
+us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
+us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
+us.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
+
+us.set_keynomap("n", "<leader>f", "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current")
+us.set_keynomap("n", "<leader>'", "<cmd>marks<cr>", "mark: Show")
+us.set_keynomap("n", '<leader>"', "<cmd>reg<cr>", "register: Show")
+
+-- Visual-select mode
+us.set_keynomap("v",  "<", "<gv", "Shift leftwards" )
+us.set_keynomap("v",  ">", ">gv", "Shift rightwards" )
+us.set_keynomap("v", "p", '"_dP', "Replace selected from buffer" )
+us.set_keynomap("v","<A-j>", ":move '>+1<cr>gv", "Swap selected with next line" )
+us.set_keynomap("v","<A-k>", ":move '<-2<cr>gv", "Swap selected with previous line" )
+
+-- Terminal
+-- local function termcodes(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+--
+
+-- Command
+local function with_nosilent(desc)
+  return { silent = false, desc = desc }
+end
+-- emacs like keybinds
+us.set_keynomap("c","<A-b>", "<S-Left>", with_nosilent("Cursor move word left") )
+us.set_keynomap("c","<A-f>", "<S-Right>", with_nosilent("Cursor move word right") )
+us.set_keynomap("c","<C-b>", "<Left>", with_nosilent("Cursor move left" ) )
+us.set_keynomap("c","<C-f>", "<Right>", with_nosilent("Cursor move right" ) )
+us.set_keynomap("c","<C-j>", "<Down>", with_nosilent("History scroll down" ) )
+us.set_keynomap("c","<C-k>", "<Up>", with_nosilent("History scroll up" ) )
+
+---------------------------------------------------------------------------//
+-- WHICH-KEY keymaps documentation + plugin mappings
+---------------------------------------------------------------------------//
 if not which_key_ok then
   vim.notify("which-key is not required, some keymaps are not installed",
     vim.log.levels.ERROR, { title = "Config" })
@@ -245,84 +303,48 @@ which_key.register({
   ["n"] = { name = "neorg" },
   ["g"] = { name = "git" },
 }, { prefix = "<leader>", mode = "n" })
+
 which_key.register({
   ["n"] = { name = "neorg" },
   ["g"] = { name = "git" },
 }, { prefix = "<localleader>", mode = "n" })
 
----------------------------------------------------------------------------//
--- NORMAL
----------------------------------------------------------------------------//
 which_key.register({
-  ["<C-k>"] = { "<c-w>k", "window: Move up" },
-  ["<C-l>"] = { "<c-w>l", "window: Move right" },
-  ["<C-j>"] = { "<c-w>j", "window: Move down" },
-  ["<C-h>"] = { "<c-w>h", "window: Move left" },
-
-  ["<C-Up>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
-  ["<C-S-k>"] = { "<cmd>resize +1<cr>", "window: Increase height" },
-  ["<C-Down>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
-  ["<C-S-j>"] = { "<cmd>resize -1<cr>", "window: Decrease height" },
-  ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
-  ["<C-S-l>"] = { "<cmd>vertical resize +2<cr>", "window: Increase width" },
-  ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
-  ["<C-S-h>"] = { "<cmd>vertical resize -2<cr>", "window: Decrease width" },
-
-  ["<S-l>"] = { "<cmd>bnext<cr>", "buffer: Move next" },
-  ["<S-h>"] = { "<cmd>bprevious<cr>", "buffer: Move previous" },
-
   g = {
     name = "special",
-    a = { "Print asci character" },
-    x = { ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
-      "goto: Open link in system browser" },
+    a = "Print asci character",
   },
-
-  ["[t"] = { "<cmd>tabprev<cr>", "tab: Open previous" },
-  ["]t"] = { "<cmd>tabnext<cr>", "tab: Open next" },
 }, { mode = "n" })
 
 which_key.register({
   ["<C-w>"] = {
     name = "window",
-    s = { "Split horizontally" },
-    v = { "Split vertically" },
-    n = { "Split horizontally and edit [New File]" },
-    ["^"] = { "Split horizontally and edit the alternative file" },
-    c = { "Close" },
-    o = { "Close all except current one" },
-    t = { "Go to top-left" },
-    b = { "Go to bottom-right" },
-    p = { "Go to previous" },
-    P = { "Go to preview" },
-    r = { "Rotate downwards/rightwards" },
-    R = { "Rotate upwards/leftwards" },
-    K = { "Move far Top" },
-    J = { "Move far Bottom" },
-    H = { "Move far Left" },
-    L = { "Move far Right" },
-
+    s = "Split horizontally",
+    v = "Split vertically",
+    n = "Split horizontally and edit [New File]",
+    ["^"] = "Split horizontally and edit the alternative file",
+    c = "Close",
+    o = "Close all except current one",
+    t = "Go to top-left",
+    b = "Go to bottom-right",
+    p = "Go to previous",
+    P = "Go to preview",
+    r = "Rotate downwards/rightwards",
+    R = "Rotate upwards/leftwards",
+    K = "Move far Top",
+    J = "Move far Bottom",
+    H = "Move far Left",
+    L = "Move far Right",
   }
 }, { mode = "n" })
 
-us.set_keynomap("n", "<leader>tm", function()
-  vim.cmd("tabmove " .. fn.input(""))
-end, { silent = false, desc = "tab: Move current after N" })
 
 which_key.register({
-  q = { "<cmd>q<cr>", "window: Close" },
-  Q = { "<cmd>qall<cr>", "window: Close all" },
-  w = { "<cmd>write<cr>", "nvim: Write" },
-  W = { "<cmd>wall<cr>", "nvim: Write all" },
+  -- q, Q, w, W
   e = { "<cmd>NvimTreeToggle<cr>", "nvim-tree: Toggle" },
   E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
   r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
-  t = {
-    name = "tabs",
-    d = { "<cmd>tabclose<cr>", "tab: Close" },
-    n = { "<cmd>tabedit %<cr>", "tab: Edit current buffer" },
-    o = { "<cmd>tabonly<cr>", "tab: Close all except current" },
-  },
+  t = { name = "tabs", },
   Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
   y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
   u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
@@ -339,7 +361,7 @@ which_key.register({
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
     "telescope: Find files"
   },
-  f = { "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current" },
+  -- f
   j = {
     name = "toggleterm",
     t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
@@ -353,56 +375,10 @@ which_key.register({
     n = { "<cmd>WatchCreate<cr>", "watch: Create" },
     d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
   },
-  -- c = {
-  --   name = "color",
-  --   n = "<cmd>PickColor<cr>", "color: Pick color",
-  -- },
   c = { "<cmd>PickColor<cr>", "color: Pick color" },
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
-  ["'"] = { "<cmd>marks<cr>", "mark: Show" },
-  ['"'] = { "<cmd>reg<cr>", "register: Show" },
+  -- ', "
   ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
 }, { mode = "n", prefix = "<leader>" })
----------------------------------------------------------------------------//
--- INSERT
----------------------------------------------------------------------------//
-which_key.register({
-
-}, { mode = "i" })
----------------------------------------------------------------------------//
--- VISUAL-SELECT
----------------------------------------------------------------------------//
-which_key.register({
-  ["<"] = { "<gv", "Shift leftwards" },
-  [">"] = { ">gv", "Shift rightwards" },
-  ["p"] = { '"_dP', "Replace selected from buffer" },
-  ["<A-j>"] = { ":move '>+1<cr>gv", "Swap selected with next line" },
-  ["<A-k>"] = { ":move '<-2<cr>gv", "Swap selected with previous line" },
-}, { mode = "v" })
----------------------------------------------------------------------------//
--- TERMINAL
----------------------------------------------------------------------------//
--- local function termcodes(str)
---   return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
---
-which_key.register({
-  --   ["<Esc>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-  --   ["<C-[>"] = { termcodes "<C-\\><C-n>", "Go to normal mode" },
-}, { mode = "t" })
-
----------------------------------------------------------------------------//
--- COMMAND
----------------------------------------------------------------------------//
--- emacs like keybinds
-which_key.register({
-  ["<A-b>"] = { "<S-Left>", "Cursor move word left" },
-  ["<A-f>"] = { "<S-Right>", "Cursor move word right" },
-  ["<C-b>"] = { "<Left>", "Cursor move left" },
-  ["<C-f>"] = { "<Right>", "Cursor move right" },
-  ["<C-j>"] = { "<Down>", "History scroll down" },
-  ["<C-k>"] = { "<Up>", "History scroll up" },
-}, { mode = "c", noremap = true, silent = false })
-
 
 return M
