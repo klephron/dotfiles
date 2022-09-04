@@ -12,7 +12,7 @@ APPS_CONFIG='swi-prolog alacritty broot gtk-3.0 htop kdeglobals mimeapps.list nv
 for var in $APPS_ROOT; do
   src=$REP_ROOT/$var
   dist=$HOME_ROOT/$var
-  if ! [ $src -ef $dist ]; then # if files don't point on the same device or inode
+  if ! [ $src -ef $dist ]; then
     ln -sfn $src $dist
     echo "$dist -> $src"
   fi
