@@ -69,6 +69,7 @@ function M.config()
       ['core.norg.journal'] = {
         config = {
           workspace = 'tasks',
+          strategy = 'flat',
         }
       },
       ["core.integrations.telescope"] = {},
