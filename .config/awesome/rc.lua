@@ -231,7 +231,7 @@ globalkeys = mytable.join(
     { description = "lock screen", group = "hotkeys" }),
 
   -- Show help
-  awful.key({ modkey, }, "s", hotkeys_popup.show_help,
+  awful.key({ modkey, "Shift" }, "/", hotkeys_popup.show_help,
     { description = "show help", group = "awesome" }),
 
   -- Tag browsing
@@ -294,14 +294,14 @@ globalkeys = mytable.join(
     { description = "show main menu", group = "awesome" }),
 
   -- Layout manipulation
-  awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
+  awful.key({ modkey, "Shift" }, "l", function() awful.client.swap.byidx(1) end,
     { description = "swap with next client by index", group = "client" }),
-  awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
+  awful.key({ modkey, "Shift" }, "h", function() awful.client.swap.byidx(-1) end,
     { description = "swap with previous client by index", group = "client" }),
-  awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end,
+  awful.key({ modkey, "Control" }, "l", function() awful.screen.focus_relative(1) end,
     { description = "focus the next screen", group = "screen" }),
-  awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end,
-    { description = "focus the previous screen\n", group = "screen" }),
+  awful.key({ modkey, "Control" }, "h", function() awful.screen.focus_relative(-1) end,
+    { description = "focus the previous screen", group = "screen" }),
   awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
     { description = "jump to urgent client", group = "client" }),
   --[[ awful.key({ modkey,           }, "Tab",
@@ -374,17 +374,17 @@ globalkeys = mytable.join(
   awful.key({ modkey, "Shift" }, "q", awesome.quit,
     { description = "quit awesome", group = "awesome" }),
 
-  awful.key({ modkey, altkey }, "l", function() awful.tag.incmwfact(0.05) end,
+  awful.key({ modkey, altkey }, "k", function() awful.tag.incmwfact(0.05) end,
     { description = "increase master width factor", group = "layout" }),
-  awful.key({ modkey, altkey }, "h", function() awful.tag.incmwfact(-0.05) end,
+  awful.key({ modkey, altkey }, "j", function() awful.tag.incmwfact(-0.05) end,
     { description = "decrease master width factor", group = "layout" }),
-  awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
+  awful.key({ modkey, "Shift" }, "k", function() awful.tag.incnmaster(1, nil, true) end,
     { description = "increase the number of master clients", group = "layout" }),
-  awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
+  awful.key({ modkey, "Shift" }, "j", function() awful.tag.incnmaster(-1, nil, true) end,
     { description = "decrease the number of master clients", group = "layout" }),
-  awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol(1, nil, true) end,
+  awful.key({ modkey, "Control" }, "k", function() awful.tag.incncol(1, nil, true) end,
     { description = "increase the number of columns", group = "layout" }),
-  awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true) end,
+  awful.key({ modkey, "Control" }, "j", function() awful.tag.incncol(-1, nil, true) end,
     { description = "decrease the number of columns", group = "layout" }),
   awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
     { description = "select next", group = "layout" }),
@@ -532,20 +532,20 @@ globalkeys = mytable.join(
   awful.key({ modkey }, "o", function()
     awful.util.spawn_with_shell("rofi -show combi -combi-modi \"drun,run\" -modi combi", false)
   end,
-    { description = "rofi -show run", group = "rofi" }),
+    { description = "rofi -show run", group = "launcher" }),
   awful.key({ modkey }, "[", function()
     awful.util.spawn_with_shell("rofi -show window -modi \"window,windowcd\"", false)
   end,
-    { description = "rofi -show window", group = "rofi" }),
+    { description = "rofi -show window", group = "launcher" }),
   awful.key({ modkey }, "d", function()
     awful.util.spawn_with_shell("dolphin", false)
   end,
-    { description = "open dolphin", group = "dolphin" }),
+    { description = "open dolphin", group = "launcher" }),
   -- greenclip
   awful.key({ modkey }, "p", function()
     awful.util.spawn_with_shell("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'", false)
   end,
-    { description = "open greenclip clipboard manager", group = "rofi" })
+    { description = "open greenclip clipboard manager", group = "launcher" })
 )
 
 clientkeys = mytable.join(
