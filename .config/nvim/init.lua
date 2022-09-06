@@ -1,4 +1,30 @@
 local fn = vim.fn
+
+-- Disable some builtin vim plugins
+local disabled_built_ins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  -- "matchit",
+  -- "matchparen",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+  vim.g["loaded_" .. plugin] = 1
+end
 -----------------------------------------------------------------------------
 -- FIRENVIM
 -----------------------------------------------------------------------------
@@ -8,13 +34,6 @@ if fn.exists("g:started_by_firenvim") == 1 then
   require "user.colorscheme"
   require "user.autocmds"
   -- Stop loading built in plugins
-  vim.g.loaded_netrwPlugin = 1
-  vim.g.loaded_tutor_mode_plugin = 1
-  vim.g.loaded_2html_plugin = 1
-  vim.g.loaded_zipPlugin = 1
-  vim.g.loaded_tarPlugin = 1
-  vim.g.loaded_gzip = 1
-  -- -- Override some settings
   vim.opt.guifont = "FiraCode Nerd Font Mono:h12"
   vim.opt.laststatus = 0
   vim.opt.signcolumn = 'no'

@@ -17,7 +17,7 @@ us.augroup("_text", {
     pattern = "gitcommit,markdown",
     command = function()
       vim.opt_local.wrap = true
-      vim.opt_local.spell = true
+      -- vim.opt_local.spell = true
     end
   }
 })

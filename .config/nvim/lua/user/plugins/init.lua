@@ -3,15 +3,6 @@ local conf = utils.conf
 local block_reload = utils.block_reload
 local fn = vim.fn
 local fmt = string.format
-
--- Stop loading built in plugins
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_gzip = 1
-
 ---------------------------------------------------------------------------------------------------
 -- PACKER
 ---------------------------------------------------------------------------------------------------
@@ -134,7 +125,7 @@ packer.startup({
       config = conf("colorpicker")
     }
 
-    -- Telescope
+    -- -- Telescope
     use {
       'nvim-telescope/telescope.nvim',
       config = conf("telescope"),
@@ -146,7 +137,7 @@ packer.startup({
       },
     }
 
-    -- Git
+    -- -- Git
     use {
       'lewis6991/gitsigns.nvim',
       config = conf("gitsigns"),
@@ -159,7 +150,7 @@ packer.startup({
       setup = conf("diffview").setup,
     }
 
-    -- Installer for lsp, dap, linters, formatters
+    -- -- Installer for lsp, dap, linters, formatters
     use {
       "williamboman/mason.nvim",
       config = conf("mason"),
@@ -220,7 +211,7 @@ packer.startup({
       }
     }
 
-    -- Snippet engine
+    -- -- Snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
     use "L3MON4D3/LuaSnip" --snippet engine
 
@@ -242,10 +233,11 @@ packer.startup({
 
     -- Session
     -- select from {possession,auto-session}
-    -- use {
-    --   'jedrzejboczar/possession.nvim',
-    --   config = conf("possession"),
-    -- }
+    use {
+      'jedrzejboczar/possession.nvim',
+      config = conf("possession"),
+      disable = true,
+    }
     use {
       'rmagatti/auto-session',
       config = conf("auto-session"),
@@ -307,6 +299,7 @@ packer.startup({
     use {
       'lukas-reineke/headlines.nvim',
       ft = { "markdown", "org", "norg" },
+      disable = true, -- bad performance on big files
       config = conf("headlines"),
     }
     use {
