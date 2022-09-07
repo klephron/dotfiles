@@ -3,6 +3,7 @@ return function()
 
   configs.setup {
     ensure_installed = "all",
+    sync_install = false,
     ignore_install = {},
     highlight = {
       -- `false` will disable the whole extension

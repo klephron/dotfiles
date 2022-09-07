@@ -14,6 +14,7 @@ local disabled_built_ins = {
   -- "matchit",
   -- "matchparen",
   "tar",
+  "tutor_mode_plugin",
   "tarPlugin",
   "rrhelper",
   "vimball",
