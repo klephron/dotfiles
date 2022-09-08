@@ -13,7 +13,8 @@ function M.setup()
       placement = "edge",
     },
 
-    close_behavior = "global",
+    attach_mode = "global",
+    close_automatic_events = {},
 
     default_bindings = true,
 

@@ -15,13 +15,12 @@ local config = {
 
 
 local ok, lua_dev = safe_require('lua-dev')
-if not ok then
-  return config
+if ok then
+  config = lua_dev.setup({
+    lspconfig = config
+  })
 end
 
-config = lua_dev.setup({
-  lspconfig = config
-})
 -- register config path
 -- table.insert(config.settings.Lua.workspace.library, vim.fn.expand("$HOME/.config/nvim/lua"))
 -- print(us.dump_lua_table(config))
