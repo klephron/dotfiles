@@ -68,7 +68,7 @@ packer.startup({
       'nvim-treesitter/nvim-treesitter',
       config = conf("treesitter"),
       disable = false,
-      run = ':TSUpdate',
+      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
       requires = {
         { 'JoosepAlviste/nvim-ts-context-commentstring' },
         { 'nvim-treesitter/playground' },
