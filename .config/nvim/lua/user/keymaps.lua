@@ -251,9 +251,8 @@ end, { silent = false, desc = "tab: Move current after N - 1" })
 
 us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
 us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "window: Close all")
-us.set_keynomap("n", "<leader>q", "<cmd>write<cr>", "nvim: Write")
-us.set_keynomap("n", "<leader>q", "<cmd>wall<cr>", "nvim: Write all")
-us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
+us.set_keynomap("n", "<leader>w", "<cmd>write<cr>", "nvim: Write")
+us.set_keynomap("n", "<leader>W", "<cmd>wall<cr>", "nvim: Write all")
 
 us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
 us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
