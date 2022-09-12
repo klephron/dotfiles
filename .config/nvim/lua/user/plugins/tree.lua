@@ -48,6 +48,14 @@ return function()
     --   enable = true,
     --   types = { all = true, },
     -- },
+    renderer = {
+      icons = {
+        show = {
+          file = false,
+          folder = false,
+        }
+      }
+    },
     view = {
       hide_root_folder = true,
       signcolumn = "auto",
