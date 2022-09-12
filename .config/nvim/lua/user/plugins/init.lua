@@ -278,7 +278,13 @@ packer.startup({
     }
     use {
       'phaazon/hop.nvim',
-      keys = { { "n", "s" }, { "n", "f" }, { "n", "F" }, { "n", "t" }, { "n", "T" } },
+      keys = {
+        { "n", "s" }, { "x", "s" }, { "o", "s" },
+        { "n", "f" }, { "x", "f" }, { "o", "f" },
+        { "n", "F" }, { "x", "F" }, { "o", "F" },
+        { "n", "t" }, { "x", "t" }, { "o", "t" },
+        { "n", "T" }, { "x", "T" }, { "o", "T" },
+      },
       config = conf("hop")
     }
     use {
