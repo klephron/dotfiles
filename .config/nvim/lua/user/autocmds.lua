@@ -1,4 +1,5 @@
 local fn = vim.fn
+local api = vim.api
 
 us.augroup("_vimtex", {
   {
@@ -108,3 +109,12 @@ vim.cmd [[
     au BufWritePost *.bin,*.exe,*.out set nomod | endif
   augroup end
 ]]
+
+api.nvim_create_user_command("Pwd", function()
+  local reg_cmd = "" ..
+      ":redir @+ \n" ..
+      ":echon getcwd()\n" ..
+      ":redir end"
+  vim.cmd(":echo '' | redraw") -- clear commandline
+  vim.cmd(reg_cmd)
+end, { nargs = 0 })
