@@ -118,3 +118,13 @@ api.nvim_create_user_command("Pwd", function()
   vim.cmd(":echo '' | redraw") -- clear commandline
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
+
+us.augroup("_focus_lost", {
+  {
+    event = "FocusLost",
+    pattern = "*",
+    command = function()
+      vim.cmd("w")
+    end
+  }
+})
