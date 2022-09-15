@@ -8,7 +8,6 @@ local launchjs_paths = {
 }
 
 local M = {}
-M.func = {}
 
 local function dap_notify(msg, level)
   vim.notify(msg, level, { title = "Dap" })
