@@ -4,11 +4,11 @@ return function()
   configs.setup {
     ensure_installed = "all",
     sync_install = false,
-    ignore_install = {},
+    ignore_install = { "markdown", "latex", "bibtex" },
     highlight = {
       -- `false` will disable the whole extension
       enable = true,
-      disable = { "markdown" },
+      disable = { "markdown", "latex", "bibtex" },
       additional_vim_regex_highlighting = false,
     },
     autopairs = { enable = true },

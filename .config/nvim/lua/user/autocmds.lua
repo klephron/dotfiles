@@ -124,7 +124,9 @@ us.augroup("_focus_lost", {
     event = "FocusLost",
     pattern = "*",
     command = function()
-      vim.cmd("w")
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
+        vim.cmd("silent! write")
+      end
     end
   }
 })
