@@ -46,8 +46,8 @@ function M.config()
       ["core.norg.dirman"] = {
         config = {
           workspaces = {
-            notes = "~/Workspace/neorg/notes",
-            tasks = "~/Workspace/neorg/tasks",
+            notes = "~/workspace/neorg/notes",
+            tasks = "~/workspace/neorg/tasks",
           },
           index = "index.norg",
           open_last_workspace = false,

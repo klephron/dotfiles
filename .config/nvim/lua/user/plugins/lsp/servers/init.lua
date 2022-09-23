@@ -5,7 +5,8 @@ M.servers = {
   "pyright",
   "bashls",
   "cmake",
-  "clangd"
+  "clangd",
+  "jdtls"
 }
 
 -- M.mason_lspconfig = {
