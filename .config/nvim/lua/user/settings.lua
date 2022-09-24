@@ -29,7 +29,21 @@ vim.opt.shortmess = {
 -----------------------------------------------------------------------------//
 -- Format Options
 -----------------------------------------------------------------------------//
--- vim.opt.formatoptions = { }
+vim.opt.formatoptions = {
+  t = false,
+  c = true,
+  r = true,
+  o = false,
+  n = true,
+  j = true,
+  ['1'] = true,
+  ['2'] = true, -- Use indent from 2nd line of a paragraph
+  -- Only break if the line was not longer than 'textwidth' when the insert
+  -- started and only at a white character that has been entered during the
+  -- current insert command.
+  l = true,
+  v = true,
+}
 -----------------------------------------------------------------------------//
 -- Timings
 -----------------------------------------------------------------------------//
@@ -108,7 +122,7 @@ vim.opt.titlestring = [[NVIM (%{tabpagenr()} of %{tabpagenr('$')}) %{substitute(
 ----------------------------------------------------------------------------//
 -- Wrapping
 -----------------------------------------------------------------------------//
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.showbreak = "↪ "
 vim.opt.whichwrap:prepend("<,>,[,]")
