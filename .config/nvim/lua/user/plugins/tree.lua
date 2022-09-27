@@ -13,13 +13,15 @@ return function()
 
   nvim_tree.setup {
     disable_netrw = true,
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     hijack_directories = {
       enable = true,
       auto_open = true,
     },
     update_focused_file = {
       enable = true,
-      update_root = true,
+      update_root = false,
       ignore_list = {},
     },
     diagnostics = {
@@ -40,7 +42,7 @@ return function()
       use_system_clipboard = true,
       change_dir = {
         enable = true,
-        global = false,
+        global = true,
         restrict_above_cwd = false,
       },
     },
