@@ -263,11 +263,11 @@ us.set_keynomap("n", "<leader>'", "<cmd>marks<cr>", "mark: Show")
 us.set_keynomap("n", '<leader>"', "<cmd>reg<cr>", "register: Show")
 
 -- Visual-select mode
-us.set_keynomap("v",  "<", "<gv", "Shift leftwards" )
-us.set_keynomap("v",  ">", ">gv", "Shift rightwards" )
-us.set_keynomap("v", "p", '"_dP', "Replace selected from buffer" )
-us.set_keynomap("v","<A-j>", ":move '>+1<cr>gv", "Swap selected with next line" )
-us.set_keynomap("v","<A-k>", ":move '<-2<cr>gv", "Swap selected with previous line" )
+us.set_keynomap("v", "<", "<gv", "Shift leftwards")
+us.set_keynomap("v", ">", ">gv", "Shift rightwards")
+us.set_keynomap("v", "p", '"_dP', "Replace selected from buffer")
+us.set_keynomap("v", "<A-j>", ":move '>+1<cr>gv", "Swap selected with next line")
+us.set_keynomap("v", "<A-k>", ":move '<-2<cr>gv", "Swap selected with previous line")
 
 -- Terminal
 -- local function termcodes(str)
@@ -279,13 +279,14 @@ us.set_keynomap("v","<A-k>", ":move '<-2<cr>gv", "Swap selected with previous li
 local function with_nosilent(desc)
   return { silent = false, desc = desc }
 end
+
 -- emacs like keybinds
-us.set_keynomap("c","<A-b>", "<S-Left>", with_nosilent("Cursor move word left") )
-us.set_keynomap("c","<A-f>", "<S-Right>", with_nosilent("Cursor move word right") )
-us.set_keynomap("c","<C-b>", "<Left>", with_nosilent("Cursor move left" ) )
-us.set_keynomap("c","<C-f>", "<Right>", with_nosilent("Cursor move right" ) )
-us.set_keynomap("c","<C-j>", "<Down>", with_nosilent("History scroll down" ) )
-us.set_keynomap("c","<C-k>", "<Up>", with_nosilent("History scroll up" ) )
+us.set_keynomap("c", "<A-b>", "<S-Left>", with_nosilent("Cursor move word left"))
+us.set_keynomap("c", "<A-f>", "<S-Right>", with_nosilent("Cursor move word right"))
+us.set_keynomap("c", "<C-b>", "<Left>", with_nosilent("Cursor move left"))
+us.set_keynomap("c", "<C-f>", "<Right>", with_nosilent("Cursor move right"))
+us.set_keynomap("c", "<C-j>", "<Down>", with_nosilent("History scroll down"))
+us.set_keynomap("c", "<C-k>", "<Up>", with_nosilent("History scroll up"))
 
 ---------------------------------------------------------------------------//
 -- WHICH-KEY keymaps documentation + plugin mappings
@@ -352,11 +353,6 @@ which_key.register({
   P = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
   A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
   a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
-  ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
-  [']a'] = { "<cmd>execute v:count . 'AerialNext'<cr>", "aerial: Jump N next symbols" },
-  ['[A'] = { "<cmd>execute v:count . 'AerialPrevUp'<cr>", "aerial: Jump N levels up, moving backwards" },
-  [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
-
   s = {
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
     "telescope: Find files"
@@ -378,7 +374,15 @@ which_key.register({
   c = { "<cmd>PickColor<cr>", "color: Pick color" },
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
   -- ', "
+  [";"] = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
   ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
 }, { mode = "n", prefix = "<leader>" })
+
+which_key.register({
+  ['[a'] = { "<cmd>execute v:count . 'AerialPrev'<cr>", "aerial: Jump N previous symbols" },
+  [']a'] = { "<cmd>execute v:count . 'AerialNext'<cr>", "aerial: Jump N next symbols" },
+  ['[A'] = { "<cmd>execute v:count . 'AerialPrevUp'<cr>", "aerial: Jump N levels up, moving backwards" },
+  [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
+}, { mode = "n" })
 
 return M
