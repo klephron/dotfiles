@@ -213,13 +213,15 @@ packer.startup({
     }
 
     -- -- Snippet engine
-    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-    use "L3MON4D3/LuaSnip" --snippet engine
+    use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
+    use {
+      "L3MON4D3/LuaSnip",
+      config = conf("luasnip"),
+    }
 
     -- Cmp
     use {
       "hrsh7th/nvim-cmp", -- The completion plugin
-      disable = false,
       config = conf("cmp"),
       requires = {
         { "hrsh7th/cmp-buffer" }, -- buffer completions

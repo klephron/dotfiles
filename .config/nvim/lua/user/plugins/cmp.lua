@@ -6,8 +6,6 @@ return function()
     return
   end
 
-  require("luasnip.loaders.from_vscode").lazy_load()
-
   local kind_icons = require("user.icons").kind_icons
   ----------------------------------------------------------------------------------------------------
   -- CMP.SETUP
@@ -97,7 +95,7 @@ return function()
       { name = "nvim_lsp" },
       { name = 'nvim_lua' },
       { name = "luasnip" },
-      { name = "buffer" },
+      { name = "buffer", max_item_count = 10 },
       { name = "path" },
     },
     window = {
