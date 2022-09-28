@@ -266,8 +266,8 @@ us.set_keynomap("n", '<leader>"', "<cmd>reg<cr>", "register: Show")
 us.set_keynomap("v", "<", "<gv", "Shift leftwards")
 us.set_keynomap("v", ">", ">gv", "Shift rightwards")
 us.set_keynomap("v", "p", '"_dP', "Replace selected from buffer")
-us.set_keynomap("v", "<A-j>", ":move '>+1<cr>gv", "Swap selected with next line")
-us.set_keynomap("v", "<A-k>", ":move '<-2<cr>gv", "Swap selected with previous line")
+us.set_keynomap("v", "<A-n>", ":move '>+1<cr>gv", "Swap selected with next line")
+us.set_keynomap("v", "<A-p>", ":move '<-2<cr>gv", "Swap selected with previous line")
 
 -- Terminal
 -- local function termcodes(str)

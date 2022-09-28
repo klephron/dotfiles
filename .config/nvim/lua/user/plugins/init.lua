@@ -216,7 +216,7 @@ packer.startup({
     use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
     use {
       "L3MON4D3/LuaSnip",
-      config = conf("luasnip"),
+      config = conf("luasnip").config,
     }
 
     -- Cmp
