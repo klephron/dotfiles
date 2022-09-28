@@ -339,6 +339,9 @@ packer.startup({
         vim.g.vimtex_quickfix_mode=0
         vim.g.vimtex_compiler_latexmk = {
           build_dir = 'build',
+          options = {
+            '-shell-escape'
+          }
         }
         vim.cmd("hi clear Conceal")
       ]]
