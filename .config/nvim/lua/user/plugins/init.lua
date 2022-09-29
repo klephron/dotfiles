@@ -187,7 +187,10 @@ packer.startup({
           branch = "main",
           config = conf("lsp.lspsaga"),
         },
-        { 'folke/lua-dev.nvim' },
+        {
+          'folke/lua-dev.nvim',
+          -- disable = true,
+        },
       },
     }
 
@@ -221,7 +224,9 @@ packer.startup({
 
     -- Cmp
     use {
-      "hrsh7th/nvim-cmp", -- The completion plugin
+      -- "hrsh7th/nvim-cmp", -- The completion plugin
+      "Shougo/nvim-cmp",
+      branch = "cmdheight",
       config = conf("cmp"),
       requires = {
         { "hrsh7th/cmp-buffer" }, -- buffer completions
