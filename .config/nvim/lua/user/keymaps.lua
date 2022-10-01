@@ -385,4 +385,12 @@ which_key.register({
   [']A'] = { "<cmd>execute v:count . 'AerialNextUp'<cr>", "aerial: Jump N levels up, moving forwards" },
 }, { mode = "n" })
 
+which_key.register({
+  name = "packer",
+  p = {
+    ["s"] = { "<cmd>PackerSync<cr>", "packer: Sync" },
+    ["c"] = { "<cmd>LocalPackerCompile<cr>", "packer: Compile" },
+    ["i"] = { "<cmd>PackerStatus<cr>", "packer: Status info"}
+  }
+}, { mode = "n", prefix = "<localleader>" })
 return M

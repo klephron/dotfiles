@@ -2,6 +2,7 @@ local utils = require("user.utils.plugins")
 local conf = utils.conf
 local block_reload = utils.block_reload
 local fn = vim.fn
+local api = vim.api
 local fmt = string.format
 ---------------------------------------------------------------------------------------------------
 -- PACKER
@@ -385,15 +386,17 @@ if not vim.g.packer_compiled_loaded and vim.loop.fs_stat(packer_compiled_path) t
 end
 
 -- Reload plugins when plugins/*.lua is saved
+api.nvim_create_user_command("LocalPackerCompile", function()
+  us.reload("user.plugins", true)
+  packer.compile()
+  utils.packer_notify("Compiled", vim.log.levels.INFO)
+end, {nargs = 0})
+
 us.augroup("PackerSetupInit", {
   {
     event = "BufWritePost",
     pattern = { "*/user/plugins/*.lua" },
     description = "Packer reload",
-    command = function()
-      us.reload("user.plugins", true)
-      packer.compile()
-      utils.packer_notify("Compiled", vim.log.levels.INFO)
-    end
+    command = "LocalPackerCompile",
   }
 })
