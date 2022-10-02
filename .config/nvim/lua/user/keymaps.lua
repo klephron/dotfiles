@@ -251,8 +251,8 @@ end, { silent = false, desc = "tab: Move current after N - 1" })
 
 us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
 us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "window: Close all")
-us.set_keynomap("n", "<leader>w", "<cmd>write<cr>", "nvim: Write")
-us.set_keynomap("n", "<leader>W", "<cmd>wall<cr>", "nvim: Write all")
+us.set_keynomap("n", "<leader>w", "<cmd>silent write<cr>", "nvim: Write")
+us.set_keynomap("n", "<leader>W", "<cmd>silent wall<cr>", "nvim: Write all")
 
 us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
 us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
@@ -391,6 +391,15 @@ which_key.register({
     ["s"] = { "<cmd>PackerSync<cr>", "packer: Sync" },
     ["c"] = { "<cmd>LocalPackerCompile<cr>", "packer: Compile" },
     ["i"] = { "<cmd>PackerStatus<cr>", "packer: Status info"}
+  }
+}, { mode = "n", prefix = "<localleader>" })
+
+which_key.register({
+  name = "lsp",
+  l = {
+    ["r"] = { "<cmd>LspRestart<cr>", "lsp: Restart" },
+    ["i"] = { "<cmd>LspInfo<cr>", "lsp: Info" },
+    ["o"] = { "<cmd>LspLog<cr>", "lsp: Log"}
   }
 }, { mode = "n", prefix = "<localleader>" })
 return M

@@ -48,17 +48,6 @@ us.augroup("_nasm", {
   }
 })
 
-us.augroup("_leave", {
-  {
-    event = "BufLeave",
-    pattern = "*",
-    command = function()
-      if vim.bo.modifiable == true and vim.bo.readonly == false then
-        vim.cmd("silent! write")
-      end
-    end
-  }
-})
 
 us.augroup("_help", {
   {
@@ -95,6 +84,35 @@ us.augroup("_cmdline_leave", {
   }
 })
 
+-- Write to buffer and trigger events
+us.augroup("_leave", {
+  {
+    event = "BufLeave",
+    pattern = "*",
+    command = function()
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
+        vim.cmd("doautocmd BufWritePre")
+        vim.cmd("silent! write")
+        vim.cmd("doautocmd BufWritePost")
+      end
+    end
+  }
+})
+
+us.augroup("_focus_lost", {
+  {
+    event = "FocusLost",
+    pattern = "*",
+    command = function()
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
+        vim.cmd("doautocmd BufWritePre")
+        vim.cmd("silent! write")
+        vim.cmd("doautocmd BufWritePost")
+      end
+    end
+  }
+})
+
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
@@ -119,14 +137,3 @@ api.nvim_create_user_command("Pwd", function()
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
 
-us.augroup("_focus_lost", {
-  {
-    event = "FocusLost",
-    pattern = "*",
-    command = function()
-      if vim.bo.modifiable == true and vim.bo.readonly == false then
-        vim.cmd("silent! write")
-      end
-    end
-  }
-})
