@@ -392,11 +392,11 @@ api.nvim_create_user_command("LocalPackerCompile", function()
   utils.packer_notify("Compiled", vim.log.levels.INFO)
 end, {nargs = 0})
 
-us.augroup("PackerSetupInit", {
-  {
-    event = "BufWritePost",
-    pattern = { "*/user/plugins/*.lua" },
-    description = "Packer reload",
-    command = "LocalPackerCompile",
-  }
-})
+-- us.augroup("PackerSetupInit", {
+--   {
+--     event = "BufWritePost",
+--     pattern = { "*/user/plugins/*.lua" },
+--     description = "Packer reload",
+--     command = "LocalPackerCompile",
+--   }
+-- })
