@@ -216,9 +216,6 @@ api.nvim_create_user_command("WatchCreate", function()
     },
   })
   -- save watch filename in register
-  -- NOTE: if getting an error invoking xclip, then add this in ~/.ssh/config
-  -- ForwardX11 yes
-  -- ForwardX11Trusted yes
   if config.register.save_watch_path then
     local reg_cmd = "" ..
         ":redir @" .. config.register.reg .. "\n" ..

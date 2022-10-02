@@ -91,7 +91,7 @@ us.augroup("_leave", {
     pattern = "*",
     command = function()
       if vim.bo.modifiable == true and vim.bo.readonly == false then
-        vim.cmd("doautocmd BufWritePre")
+        vim.cmd("silent! doautocmd BufWritePre")
         vim.cmd("silent! write")
         vim.cmd("doautocmd BufWritePost")
       end
@@ -110,6 +110,26 @@ us.augroup("_focus_lost", {
         vim.cmd("doautocmd BufWritePost")
       end
     end
+  }
+})
+
+us.augroup("_reload_file", {
+  {
+    event = "BufEnter",
+    pattern = "*",
+    command = function()
+      vim.cmd("if mode() != 'c' | checktime | endif")
+    end
+  }
+})
+
+us.augroup("_file_changed_shell", {
+  {
+    event = "FileChangedShell",
+    pattern = "*",
+    command = function()
+      vim.cmd("let v:fcs_choice = 'reload'")
+    end,
   }
 })
 
