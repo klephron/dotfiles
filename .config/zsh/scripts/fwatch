@@ -1,14 +1,14 @@
 #!/bin/bash
-
-file=`readlink -f $1`
+file=`readlink -f ${@: -1}`
+args="${@:1:$#-1}"
 dir=`dirname $file`
-command="bat -pp $file"
+command="bat -pp $args $file"
 
 # inotifywait processes won't get killed
 clear
 if [[ ! -f "$file" ]]; then
   echo "File '$file' does not exist. Waiting for creation..."
-  inotifywait -e create,moved_to --include $1 --format "%w%f %e" -q -q $dir
+  inotifywait -e create,moved_to --include $file --format "%w%f %e" -q -q $dir
   clear
 else
   eval $command
@@ -23,4 +23,4 @@ while read changed; do
     break
   fi
   eval $command
-done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" -q $1)
+done < <(inotifywait -m -e close_write,delete_self,move_self --format "%e" -q $file)
