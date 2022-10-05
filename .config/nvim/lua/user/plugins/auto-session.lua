@@ -23,10 +23,10 @@ return function()
   auto.setup({
     log_level = 'error',
     auto_session_enable_last_session = false,
-    auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
+    auto_session_root_dir = vim.fn.stdpath('cache') .. "/sessions/",
     auto_session_enabled = true,
     auto_session_create_enabled = true,
-    auto_save_enabled = true,
+    auto_save_enabled = false,
     auto_restore_enabled = false,
     -- auto_session_suppress_dirs = { "~/" },
     -- auto_session_allowed_dirs = {},
@@ -41,5 +41,13 @@ return function()
     -- hooks
     pre_save_cmds = { nvim_tree_pre_save, close_all_floating_wins },
     post_restore_cmds = {},
+  })
+  
+  us.augroup("_AutoSession", {
+    {
+      event = "VimLeavePre",
+      pattern = "*",
+      command = "SaveSession",
+    }
   })
 end

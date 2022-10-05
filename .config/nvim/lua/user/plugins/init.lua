@@ -310,9 +310,9 @@ packer.startup({
       'mg979/vim-visual-multi',
       config = function()
         vim.g.VM_highlight_matches = ""
-        vim.g.VM_maps = {
-          
-        }
+        -- vim.g.VM_maps = {
+        --   
+        -- }
       end
     }
 
