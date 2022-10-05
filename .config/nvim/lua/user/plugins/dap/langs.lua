@@ -8,7 +8,7 @@ M.type_to_filetype = {}
 -----------------------------------------------------------------------------//
 dap.adapters.cppdbg = {
   type = 'executable',
-  command = HOME .. '/Data/cpptools/debugAdapters/bin/OpenDebugAD7',
+  command = HOME .. '/data/cpptools/debugAdapters/bin/OpenDebugAD7',
   id = 'cppdbg', -- used in initialized request
   enrich_config = function(config, on_config)
     on_config(config)

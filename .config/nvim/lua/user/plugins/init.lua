@@ -225,9 +225,7 @@ packer.startup({
 
     -- Cmp
     use {
-      -- "hrsh7th/nvim-cmp", -- The completion plugin
-      "Shougo/nvim-cmp",
-      branch = "cmdheight",
+      "hrsh7th/nvim-cmp", -- The completion plugin
       config = conf("cmp"),
       requires = {
         { "hrsh7th/cmp-buffer" }, -- buffer completions
@@ -308,6 +306,15 @@ packer.startup({
       config = conf("surround"),
     }
     use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
+    use {
+      'mg979/vim-visual-multi',
+      config = function()
+        vim.g.VM_highlight_matches = ""
+        vim.g.VM_maps = {
+          
+        }
+      end
+    }
 
 
     -- Task management, notes
@@ -390,7 +397,7 @@ api.nvim_create_user_command("LocalPackerCompile", function()
   us.reload("user.plugins", true)
   packer.compile()
   utils.packer_notify("Compiled", vim.log.levels.INFO)
-end, {nargs = 0})
+end, { nargs = 0 })
 
 -- us.augroup("PackerSetupInit", {
 --   {
