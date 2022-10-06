@@ -11,7 +11,15 @@ dap.adapters.cppdbg = {
   command = HOME .. '/data/cpptools/debugAdapters/bin/OpenDebugAD7',
   id = 'cppdbg', -- used in initialized request
   enrich_config = function(config, on_config)
-    on_config(config)
+    if config.preLaunchTask then
+      vim.fn.jobstart(config.preLaunchTask, {
+        on_exit = function()
+          on_config(config)
+        end
+      })
+    else
+      on_config(config)
+    end
   end
 }
 
