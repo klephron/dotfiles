@@ -413,38 +413,40 @@ globalkeys = mytable.join(
     { description = "show weather", group = "widgets" }),
 
   -- ALSA volume control
-  --[[
-    awful.key({ altkey }, "Up",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume up", group = "hotkeys"}),
-    awful.key({ altkey }, "Down",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume down", group = "hotkeys"}),
-    awful.key({ altkey }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "toggle mute", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 100%", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "0",
-        function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 0%", group = "hotkeys"}),
---]]
+  awful.key({}, "#121",
+    function()
+      os.execute("amixer set Master toggle")
+      beautiful.volume.update()
+    end,
+    { description = "audio mute", group = "hotkeys" }),
+
+  awful.key({ }, "#122",
+    function()
+      os.execute("amixer set Master 1%-")
+      beautiful.volume.update()
+    end,
+    { description = "volume down", group = "hotkeys" }),
+
+  awful.key({}, "#123",
+    function()
+      os.execute("amixer set Master 1%+")
+      beautiful.volume.update()
+    end,
+    { description = "volume up", group = "hotkeys" }),
+
+  awful.key({}, "#198",
+    function()
+      os.execute("amixer set Capture toggle")
+      beautiful.volume.update()
+    end,
+    { description = "mic mute", group = "hotkeys" }),
+  -- awful.key({ altkey, "Control" }, "0",
+  --   function()
+  --     os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
+  --     beautiful.volume.update()
+  --   end,
+  --   { description = "volume 0%", group = "hotkeys" }),
+
   -- MPD control
   awful.key({ altkey, "Control" }, "Up",
     function()
@@ -700,7 +702,8 @@ awful.rules.rules = {
       "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
       "Wpa_gui",
       "veromix",
-      "xtightvncviewer" },
+      "xtightvncviewer"
+    },
 
     -- Note that the name property shown in xprop might be set slightly after creation of the client
     -- and the name shown there might not match defined rules here.
