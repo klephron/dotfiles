@@ -34,6 +34,7 @@ if fn.exists("g:started_by_firenvim") == 1 then
   require "user.settings"
   require "user.colorscheme"
   require "user.autocmds"
+  require "user.aliases"
   -- Stop loading built in plugins
   vim.opt.guifont = "FiraCode Nerd Font Mono:h12"
   vim.opt.laststatus = 0
@@ -94,5 +95,6 @@ else
   require "user.plugins"
   require "user.autocmds"
   require "user.watch"
+  require "user.aliases"
   -- SERVERS: "user.plugins.lsp.lsp_installer"
 end

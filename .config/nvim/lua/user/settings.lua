@@ -164,11 +164,10 @@ vim.opt.virtualedit = 'block' -- allow cursor to move where there is no text in 
 
 --vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
 -----------------------------------------------------------------------------//
--- KEYS & ABBREVIATIONS
+-- KEYS
 -----------------------------------------------------------------------------//
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-vim.cmd("cnoreabbrev hs split")
 -----------------------------------------------------------------------------//
 -- Folding
 -----------------------------------------------------------------------------//
