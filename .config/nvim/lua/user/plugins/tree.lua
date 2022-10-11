@@ -12,9 +12,10 @@ return function()
   end
 
   nvim_tree.setup {
-    disable_netrw = true,
+    disable_netrw = false,
     sync_root_with_cwd = true,
     respect_buf_cwd = true,
+    open_on_setup = true,
     hijack_directories = {
       enable = true,
       auto_open = true,
