@@ -189,7 +189,7 @@ packer.startup({
           config = conf("lsp.lspsaga"),
         },
         {
-          'folke/lua-dev.nvim',
+          'folke/neodev.nvim',
           -- disable = true,
         },
       },

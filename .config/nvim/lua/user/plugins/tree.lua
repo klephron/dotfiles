@@ -18,7 +18,7 @@ return function()
     open_on_setup = true,
     hijack_directories = {
       enable = true,
-      auto_open = true,
+      auto_open = false,
     },
     update_focused_file = {
       enable = true,
