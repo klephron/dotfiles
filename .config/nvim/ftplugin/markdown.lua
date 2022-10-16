@@ -1,8 +1,3 @@
--- check if current zone is table 
--- find count of columns from | - | - |
--- for each column find max width for each cell
--- for each column from start (get value from cell -> align it -> goto next cell until everything done)
---
 local pattern = "^%s*|.*|%s*$"
 
 local function isInTable(line)
@@ -39,33 +34,56 @@ local function trimString(str)
   return string.gsub(str, "^%s*(.-)%s*$", "%1")
 end
 
+local function getLineInfo(max_columns, colcnt, row)
+  local line = vim.api.nvim_buf_get_lines(0, row, row + 1, true)[1]
+  local seps = getSeparatorPos(line)
+  for j = 1, colcnt do
+    max_columns[j] = math.max(max_columns[j], trimString(line:sub(seps[j] + 1, seps[j + 1] - 1)):len() + 1)
+  end
+end
+
+local function setLine(max_columns, colcnt, row)
+  local line = vim.api.nvim_buf_get_lines(0, row, row + 1, true)[1]
+  local seps = getSeparatorPos(line)
+  local new_line = ""
+  for j = 1, colcnt do
+    local cell = trimString(string.sub(line, seps[j] + 1, seps[j + 1] - 1))
+    local len = string.len(cell)
+    new_line = new_line .. "|" .. cell .. string.rep(" ", max_columns[j] - len - 1)
+  end
+  new_line = new_line .. "|"
+  vim.api.nvim_buf_set_lines(0, row, row + 1, true, { new_line })
+end
+
+local function setHeaderSep(max_columns, colcnt, row)
+  local new_line = ""
+  for j = 1, colcnt do
+    new_line = new_line .. "|" .. string.rep("-", max_columns[j] - 1)
+  end
+  new_line = new_line .. "|"
+  vim.api.nvim_buf_set_lines(0, row, row + 1, true, { new_line })
+end
+
 local function formatTable(top, bottom)
   local line = vim.api.nvim_buf_get_lines(0, top + 1, top + 2, false)[1]
-  local _, columns = string.gsub(line, "|", "")
-  columns = columns - 1
+  local _, colcnt = string.gsub(line, "|", "")
+  colcnt = colcnt - 1
   local max_columns = {}
-  for i = 1, columns do
-    table.insert(max_columns, i, 0)
+  for i = 1, colcnt do
+    table.insert(max_columns, i, 2) -- min width
   end
-  for i = top, bottom - 1 do
-    line = vim.api.nvim_buf_get_lines(0, i, i + 1, true)[1]
-    local seps = getSeparatorPos(line)
-    for j = 1, columns do
-      max_columns[j] = math.max(max_columns[j], trimString(line:sub(seps[j] + 1, seps[j + 1] - 1)):len() + 1)
-    end
+  -- get info
+  getLineInfo(max_columns, colcnt, top)
+  for i = top + 2, bottom - 1 do
+    getLineInfo(max_columns, colcnt, i)
   end
-  for i = top, bottom - 1 do
-    line = vim.api.nvim_buf_get_lines(0, i, i + 1, true)[1]
-    local seps = getSeparatorPos(line)
-    local new_line = ""
-    for j = 1, columns do
-      local cell = trimString(string.sub(line, seps[j] + 1, seps[j + 1] - 1))
-      local len = string.len(cell)
-      new_line = new_line .. "|" .. cell .. string.rep(" ", max_columns[j] - len - 1)
-    end
-    new_line = new_line .. "|"
-    vim.api.nvim_buf_set_lines(0, i, i + 1, true, {new_line})
+  -- set body
+  setLine(max_columns, colcnt, top)
+  setHeaderSep(max_columns, colcnt, top + 1)
+  for i = top + 2, bottom - 1 do
+    setLine(max_columns, colcnt, i)
   end
+
 end
 
 local function tableFormat()
