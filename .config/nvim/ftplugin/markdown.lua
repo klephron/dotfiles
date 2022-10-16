@@ -35,6 +35,10 @@ local function getSeparatorPos(line)
   return seps
 end
 
+local function trimString(str)
+  return string.gsub(str, "^%s*(.-)%s*$", "%1")
+end
+
 local function formatTable(top, bottom)
   local line = vim.api.nvim_buf_get_lines(0, top + 1, top + 2, false)[1]
   local _, columns = string.gsub(line, "|", "")
@@ -47,7 +51,7 @@ local function formatTable(top, bottom)
     line = vim.api.nvim_buf_get_lines(0, i, i + 1, true)[1]
     local seps = getSeparatorPos(line)
     for j = 1, columns do
-      max_columns[j] = math.max(max_columns[j], seps[j + 1] - seps[j])
+      max_columns[j] = math.max(max_columns[j], trimString(line:sub(seps[j] + 1, seps[j + 1] - 1)):len() + 1)
     end
   end
   for i = top, bottom - 1 do
@@ -55,7 +59,9 @@ local function formatTable(top, bottom)
     local seps = getSeparatorPos(line)
     local new_line = ""
     for j = 1, columns do
-      new_line = new_line .. string.sub(line, seps[j], seps[j + 1] - 1) .. string.rep(" ", max_columns[j] - seps[j + 1] + seps[j])
+      local cell = trimString(string.sub(line, seps[j] + 1, seps[j + 1] - 1))
+      local len = string.len(cell)
+      new_line = new_line .. "|" .. cell .. string.rep(" ", max_columns[j] - len - 1)
     end
     new_line = new_line .. "|"
     vim.api.nvim_buf_set_lines(0, i, i + 1, true, {new_line})
