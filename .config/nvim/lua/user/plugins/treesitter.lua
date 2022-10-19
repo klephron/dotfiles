@@ -3,6 +3,7 @@ return function()
 
   configs.setup {
     ensure_installed = "all",
+    -- ensure_installed = { "cpp", "c", "java", "bash", "clojure", "vim", "lua", "norg" },
     sync_install = false,
     ignore_install = { "markdown", "latex", "bibtex" },
     highlight = {

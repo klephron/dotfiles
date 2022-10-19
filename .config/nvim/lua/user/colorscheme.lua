@@ -1,4 +1,5 @@
 local colorscheme = "darkplus"
+-- local colorscheme = "carbonfox"
 local color = us.color
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

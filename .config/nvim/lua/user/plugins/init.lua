@@ -46,7 +46,8 @@ packer.startup({
 
     -- Highlighting/colorschemes
     use {
-      "lunarvim/darkplus.nvim",
+      { "lunarvim/darkplus.nvim" },
+      { "EdenEast/nightfox.nvim", },
     }
     use {
       "folke/todo-comments.nvim",
@@ -311,7 +312,7 @@ packer.startup({
       config = function()
         vim.g.VM_highlight_matches = ""
         -- vim.g.VM_maps = {
-        --   
+        --
         -- }
       end
     }
