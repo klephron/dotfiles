@@ -17,9 +17,9 @@ return function()
       {
         elements = {
           -- Elements can be strings or table with id and size keys.
-          { id = "watches", size = 0.2 },
-          { id = "scopes", size = 0.35 },
-          { id = "stacks", size = 0.35 },
+          { id = "stacks", size = 0.15 },
+          { id = "scopes", size = 0.30 },
+          { id = "watches", size = 0.40 },
           { id = "breakpoints", size = 0.15 },
         },
         size = 40,

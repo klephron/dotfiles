@@ -21,6 +21,9 @@ vim.cmd("hi Cursor guibg=#cccccc")
 vim.cmd("hi clear NonText")
 vim.cmd("hi link NonText IndentBlanklineChar")
 
+-- Treesitter
+vim.cmd("hi link @namespace StorageClass")
+
 -- highlight background with foreground of cursorline
 -- vim.cmd("hi CursorLineNr guibg=" .. color({"CursorLine", "bg"}) .. " guifg=" .. color({"CursorLineNr", "fg"}))
 
