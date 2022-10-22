@@ -1,564 +1,557 @@
+local c = require('darkplus.colors')
 
-local c = require('darkplus.palette')
-
-local hl = vim.api.nvim_set_hl
 local theme = {}
 
-theme.set_highlights = function()
-  -- Editor
-  hl(0, "Normal", { fg = c.fg, bg = c.bg })
-  hl(0, "SignColumn", { fg = 'NONE', bg = c.bg })
-  hl(0, "MsgArea", { fg = c.fg, bg = c.bg })
-  hl(0, "ModeMsg", { fg = c.fg, bg = c.alt_bg })
-  hl(0, "MsgSeparator", { fg = c.fg, bg = c.bg })
-  hl(0, "SpellBad", { fg = 'NONE', bg = 'NONE', sp = c.red, undercurl=true, })
-  hl(0, "SpellCap", { fg = 'NONE', bg = 'NONE', sp = c.yellow, undercurl=true, })
-  hl(0, "SpellLocal", { fg = 'NONE', bg = 'NONE', sp = c.green, underline=true, })
-  hl(0, "SpellRare", { fg = 'NONE', bg = 'NONE', sp = c.purple, underline=true, })
-  hl(0, "NormalNC", { fg = c.fg, bg = c.bg })
-  hl(0, "Pmenu", { fg = c.light_gray, bg = c.menu_bg })
-  hl(0, "PmenuSel", { fg = 'NONE', bg = c.ui2_blue })
-  hl(0, "WildMenu", { fg = c.fg, bg = c.ui2_blue })
-  hl(0, "CursorLineNr", { fg = c.light_gray, bg = 'NONE' })
-  hl(0, "Folded", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "FoldColumn", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "LineNr", { fg = c.gray, bg = 'NONE' })
-  hl(0, "FloatBoder", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "Whitespace", { fg = c.bg, bg = 'NONE' })
-  hl(0, "VertSplit", { fg = c.gray, bg = c.bg })
-  hl(0, "CursorLine", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "CursorColumn", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "ColorColumn", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "NormalFloat", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "Visual", { fg = 'NONE', bg = c.ui_blue })
-  hl(0, "VisualNOS", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "WarningMsg", { fg = c.ui_orange, bg = c.bg })
-  hl(0, "DiffText", { fg = c.alt_bg, bg = c.sign_delete })
-  hl(0, "DiffAdd", { fg = c.alt_bg, bg = c.sign_add })
-  hl(0, "DiffChange", { fg = c.alt_bg, bg = c.sign_change, underline=true, })
-  hl(0, "DiffDelete", { fg = c.alt_bg, bg = c.sign_delete })
-  hl(0, "QuickFixLine", { fg = 'NONE', bg = c.ui2_blue })
-  hl(0, "PmenuSbar", { fg = 'NONE', bg = c.alt_bg })
-  hl(0, "PmenuThumb", { fg = 'NONE', bg = c.gray })
-  hl(0, "MatchWord", { fg = 'NONE', bg = c.reference })
-  hl(0, "MatchParen", { fg = c.hint, bg = c.reference })
-  hl(0, "MatchWordCur", { fg = 'NONE', bg = c.reference })
-  hl(0, "MatchParenCur", { fg = 'NONE', bg = c.reference })
-  hl(0, "Cursor", { fg = c.cursor_fg, bg = c.cursor_bg })
-  hl(0, "lCursor", { fg = c.cursor_fg, bg = c.cursor_bg })
-  hl(0, "CursorIM", { fg = c.cursor_fg, bg = c.cursor_bg })
-  hl(0, "TermCursor", { fg = c.cursor_fg, bg = c.cursor_bg })
-  hl(0, "TermCursorNC", { fg = c.cursor_fg, bg = c.cursor_bg })
-  hl(0, "Conceal", { fg = c.gray, bg = 'NONE' })
-  hl(0, "Directory", { fg = c.folder_blue, bg = 'NONE' })
-  hl(0, "SpecialKey", { fg = c.blue, bg = 'NONE', bold=true, })
-  hl(0, "ErrorMsg", { fg = c.error, bg = c.bg, bold=true, })
-  hl(0, "Search", { fg = 'NONE', bg = c.ui5_blue })
-  hl(0, "IncSearch", { fg = 'NONE', bg = c.ui2_orange })
-  hl(0, "Substitute", { fg = 'NONE', bg = c.ui2_orange })
-  hl(0, "MoreMsg", { fg = c.orange, bg = 'NONE' })
-  hl(0, "Question", { fg = c.orange, bg = 'NONE' })
-  hl(0, "EndOfBuffer", { fg = c.bg, bg = 'NONE' })
-  hl(0, "NonText", { fg = c.bg, bg = 'NONE' })
-  hl(0, "TabLine", { fg = c.light_gray, bg = c.line })
-  hl(0, "TabLineSel", { fg = c.fg, bg = c.line })
-  hl(0, "TabLineFill", { fg = c.line, bg = c.line })
+theme.highlights = {
+  Normal = { fg = c.fg, bg = c.bg },
+  SignColumn = { fg = 'NONE', bg = c.bg },
+  MsgArea = { fg = c.fg, bg = c.bg },
+  ModeMsg = { fg = c.fg, bg = c.alt_bg },
+  MsgSeparator = { fg = c.fg, bg = c.bg },
+  SpellBad = { fg = 'NONE', bg = 'NONE', sp = c.red, undercurl = true, },
+  SpellCap = { fg = 'NONE', bg = 'NONE', sp = c.yellow, undercurl = true, },
+  SpellLocal = { fg = 'NONE', bg = 'NONE', sp = c.green, underline = true, },
+  SpellRare = { fg = 'NONE', bg = 'NONE', sp = c.purple, underline = true, },
+  NormalNC = { fg = c.fg, bg = c.bg },
+  Pmenu = { fg = c.light_gray, bg = c.menu_bg },
+  PmenuSel = { fg = 'NONE', bg = c.ui2_blue },
+  WildMenu = { fg = c.fg, bg = c.ui2_blue },
+  CursorLineNr = { fg = c.light_gray, bg = 'NONE' },
+  Folded = { fg = c.gray, bg = c.alt_bg },
+  FoldColumn = { fg = c.gray, bg = c.alt_bg },
+  LineNr = { fg = c.gray, bg = 'NONE' },
+  FloatBoder = { fg = c.gray, bg = c.alt_bg },
+  Whitespace = { fg = c.bg, bg = 'NONE' },
+  VertSplit = { fg = c.gray, bg = c.bg },
+  CursorLine = { fg = 'NONE', bg = c.alt_bg },
+  CursorColumn = { fg = 'NONE', bg = c.alt_bg },
+  ColorColumn = { fg = 'NONE', bg = c.alt_bg },
+  NormalFloat = { fg = 'NONE', bg = c.alt_bg },
+  Visual = { fg = 'NONE', bg = c.ui_blue },
+  VisualNOS = { fg = 'NONE', bg = c.alt_bg },
+  WarningMsg = { fg = c.ui_orange, bg = c.bg },
+  DiffText = { fg = c.alt_bg, bg = c.sign_delete },
+  DiffAdd = { fg = c.alt_bg, bg = c.sign_add },
+  DiffChange = { fg = c.alt_bg, bg = c.sign_change, underline = true, },
+  DiffDelete = { fg = c.alt_bg, bg = c.sign_delete },
+  QuickFixLine = { fg = 'NONE', bg = c.ui2_blue },
+  PmenuSbar = { fg = 'NONE', bg = c.alt_bg },
+  PmenuThumb = { fg = 'NONE', bg = c.gray },
+  MatchWord = { fg = 'NONE', bg = c.reference },
+  MatchParen = { fg = c.hint, bg = c.reference },
+  MatchWordCur = { fg = 'NONE', bg = c.reference },
+  MatchParenCur = { fg = 'NONE', bg = c.reference },
+  Cursor = { fg = c.cursor_fg, bg = c.cursor_bg },
+  lCursor = { fg = c.cursor_fg, bg = c.cursor_bg },
+  CursorIM = { fg = c.cursor_fg, bg = c.cursor_bg },
+  TermCursor = { fg = c.cursor_fg, bg = c.cursor_bg },
+  TermCursorNC = { fg = c.cursor_fg, bg = c.cursor_bg },
+  Conceal = { fg = c.gray, bg = 'NONE' },
+  Directory = { fg = c.folder_blue, bg = 'NONE' },
+  SpecialKey = { fg = c.blue, bg = 'NONE', bold = true, },
+  ErrorMsg = { fg = c.error, bg = c.bg, bold = true, },
+  Search = { fg = 'NONE', bg = c.ui5_blue },
+  IncSearch = { fg = 'NONE', bg = c.ui2_orange },
+  Substitute = { fg = 'NONE', bg = c.ui2_orange },
+  MoreMsg = { fg = c.orange, bg = 'NONE' },
+  Question = { fg = c.orange, bg = 'NONE' },
+  EndOfBuffer = { fg = c.bg, bg = 'NONE' },
+  NonText = { fg = c.bg, bg = 'NONE' },
+  TabLine = { fg = c.light_gray, bg = c.line },
+  TabLineSel = { fg = c.fg, bg = c.line },
+  TabLineFill = { fg = c.line, bg = c.line },
 
   -- Code
-  hl(0, "Comment", { fg = c.context, bg = 'NONE' })
-  hl(0, "Variable", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "String", { fg = c.orange, bg = 'NONE' })
-  hl(0, "Character", { fg = c.orange, bg = 'NONE' })
-  hl(0, "Number", { fg = c.light_green, bg = 'NONE' })
-  hl(0, "Float", { fg = c.light_green, bg = 'NONE' })
-  hl(0, "Boolean", { fg = c.blue, bg = 'NONE' })
-  hl(0, "Constant", { fg = c.vivid_blue, bg = 'NONE' })
-  hl(0, "Type", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "Function", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "Keyword", { fg = c.blue, bg = 'NONE' })
-  hl(0, "Conditional", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Repeat", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Operator", { fg = c.fg, bg = 'NONE' })
-  hl(0, "PreProc", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Include", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Exception", { fg = c.purple, bg = 'NONE' })
-  hl(0, "StorageClass", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "Structure", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "Typedef", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Define", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Macro", { fg = c.blue, bg = 'NONE' })
-  hl(0, "Debug", { fg = c.red, bg = 'NONE' })
-  hl(0, "Title", { fg = c.blue, bg = 'NONE', bold=true, })
-  hl(0, "Label", { fg = c.blue, bg = 'NONE' })
-  hl(0, "SpecialChar", { fg = c.orange, bg = 'NONE' })
-  hl(0, "Delimiter", { fg = c.fg, bg = 'NONE' })
-  hl(0, "SpecialComment", { fg = c.fg, bg = 'NONE' })
-  hl(0, "Tag", { fg = c.blue, bg = 'NONE' })
-  hl(0, "Bold", { fg = 'NONE', bg = 'NONE', bold=true, })
-  hl(0, "Italic", { fg = 'NONE', bg = 'NONE', italic=true, })
-  hl(0, "Underlined", { fg = 'NONE', bg = 'NONE', underline=true, })
-  hl(0, "Ignore", { fg = c.magenta, bg = 'NONE', bold=true, })
-  hl(0, "Todo", { fg = c.magenta, bg = 'NONE', bold=true, })
-  hl(0, "Error", { fg = c.error, bg = 'NONE', bold=true, })
-  hl(0, "Statement", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Identifier", { fg = c.fg, bg = 'NONE' })
-  hl(0, "PreCondit", { fg = c.purple, bg = 'NONE' })
-  hl(0, "Special", { fg = c.orange, bg = 'NONE' })
+  Comment = { fg = c.context, bg = 'NONE' },
+  Variable = { fg = c.light_blue, bg = 'NONE' },
+  String = { fg = c.orange, bg = 'NONE' },
+  Character = { fg = c.orange, bg = 'NONE' },
+  Number = { fg = c.light_green, bg = 'NONE' },
+  Float = { fg = c.light_green, bg = 'NONE' },
+  Boolean = { fg = c.blue, bg = 'NONE' },
+  Constant = { fg = c.vivid_blue, bg = 'NONE' },
+  Type = { fg = c.cyan, bg = 'NONE' },
+  Function = { fg = c.yellow, bg = 'NONE' },
+  Keyword = { fg = c.blue, bg = 'NONE' },
+  Conditional = { fg = c.purple, bg = 'NONE' },
+  Repeat = { fg = c.purple, bg = 'NONE' },
+  Operator = { fg = c.fg, bg = 'NONE' },
+  PreProc = { fg = c.purple, bg = 'NONE' },
+  Include = { fg = c.purple, bg = 'NONE' },
+  Exception = { fg = c.purple, bg = 'NONE' },
+  StorageClass = { fg = c.cyan, bg = 'NONE' },
+  Structure = { fg = c.cyan, bg = 'NONE' },
+  Typedef = { fg = c.purple, bg = 'NONE' },
+  Define = { fg = c.purple, bg = 'NONE' },
+  Macro = { fg = c.blue, bg = 'NONE' },
+  Debug = { fg = c.red, bg = 'NONE' },
+  Title = { fg = c.blue, bg = 'NONE', bold = true, },
+  Label = { fg = c.blue, bg = 'NONE' },
+  SpecialChar = { fg = c.orange, bg = 'NONE' },
+  Delimiter = { fg = c.fg, bg = 'NONE' },
+  SpecialComment = { fg = c.fg, bg = 'NONE' },
+  Tag = { fg = c.blue, bg = 'NONE' },
+  Bold = { fg = 'NONE', bg = 'NONE', bold = true, },
+  Italic = { fg = 'NONE', bg = 'NONE', italic = true, },
+  Underlined = { fg = 'NONE', bg = 'NONE', underline = true, },
+  Ignore = { fg = c.magenta, bg = 'NONE', bold = true, },
+  Todo = { fg = c.magenta, bg = 'NONE', bold = true, },
+  Error = { fg = c.error, bg = 'NONE', bold = true, },
+  Statement = { fg = c.purple, bg = 'NONE' },
+  Identifier = { fg = c.fg, bg = 'NONE' },
+  PreCondit = { fg = c.purple, bg = 'NONE' },
+  Special = { fg = c.orange, bg = 'NONE' },
 
   -- Treesitter
-  hl(0, "TSComment", { fg = c.green, bg = 'NONE', italic=true, })
-  hl(0, "TSVariable", { link = 'Variable' })
-  hl(0, "TSString", { link = 'String' })
-  hl(0, "TSStringRegex", { link = 'String' })
-  hl(0, "TSStringEscape", { link = 'String' })
-  hl(0, "TSCharacter", { link = 'String' })
-  hl(0, "TSCharacterSpecial", { link = 'SpecialChar' })
-  hl(0, "TSNumber", { link = 'Number' })
-  hl(0, "TSFloat", { link = 'Float' })
-  hl(0, "TSBoolean", { link = 'Boolean' })
-  hl(0, "TSConstant", { link = 'Constant' })
-  hl(0, "TSConstBuiltin", { link = 'Constant' })
-  hl(0, "TSConstructor", { link = 'Type' })
-  hl(0, "TSType", { link = 'Type' })
-  hl(0, "TSInclude", { link = 'Include' })
-  hl(0, "TSException", { link = 'Exception' })
-  hl(0, "TSKeyword", { link = 'Keyword' })
-  hl(0, "TSKeywordReturn", { link = 'Include' })
-  hl(0, "TSKeywordOperator", { link = 'Include' })
-  hl(0, "TSKeywordFunction", { link = 'Keyword' })
-  hl(0, "TSFunction", { link = 'Function' })
-  hl(0, "TSFuncBuiltin", { link = 'Type' })
-  hl(0, "TSMethod", { link = 'Function' })
-  hl(0, "TSFuncMacro", { link = 'Function' })
-  hl(0, "TSConditional", { link = 'Conditional' })
-  hl(0, "TSRepeat", { link = 'Repeat' })
-  hl(0, "TSOperator", { link = 'Operator' })
-  hl(0, "TSPreProc", { link = 'PreProc' })
-  hl(0, "TSStorageClass", { link = 'StorageClass' })
-  hl(0, "TSStructure", { link = 'Structure' })
-  hl(0, "TSTypeDefinition", { link = 'Typedef' })
-  hl(0, "TSDefine", { link = 'Define' })
-  hl(0, "TSNote", { link = 'Comment' })
-  hl(0, "TSTodo", { link = 'Todo' })
-  hl(0, "TSDebug", { link = 'Debug' })
-  hl(0, "TSDanger", { link = 'Error' })
-  hl(0, "TSTitle", { link = 'Title' })
-  hl(0, "TSLabel", { link = 'Label' })
-  hl(0, "TSPunctDelimiter", { link = 'Delimiter' })
-  hl(0, "TSTagDelimiter", { fg = c.gray, bg = 'NONE' })
-  hl(0, "TSPunctBracket", { link = 'Delimiter' })
-  hl(0, "TSPunctSpecial", { link = 'Delimiter' })
-  hl(0, "TSTag", { link = 'Tag' })
-  hl(0, "TSStrong", { link = 'Bold' })
-  hl(0, "TSEmphasis", { link = 'Italic' })
-  hl(0, "TSUnderline", { link = 'Underline' })
-  hl(0, "TSStrike", { fg = 'NONE', bg = 'NONE', strikethrough=true, })
-  hl(0, "TSStringSpecial", { fg = c.fg, bg = 'NONE' })
-  hl(0, "TSEnvironmentName", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "TSVariableBuiltin", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "TSConstMacro", { fg = c.vivid_blue, bg = 'NONE' })
-  hl(0, "TSTypeBuiltin", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "TSAnnotation", { fg = c.blue, bg = 'NONE' })
-  hl(0, "TSNamespace", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "TSSymbol", { fg = c.fg, bg = 'NONE' })
-  hl(0, "TSField", { link = 'Variable' })
-  hl(0, "TSProperty", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "TSParameter", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "TSParameterReference", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "TSAttribute", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "TSText", { fg = c.fg, bg = 'NONE' })
-  hl(0, "TSTagAttribute", { fg = c.light_blue, bg = 'NONE', italic=true, })
-  hl(0, "TSError", { fg = c.error, bg = 'NONE' })
-  hl(0, "TSWarning", { fg = c.warn, bg = 'NONE' })
-  hl(0, "TSQueryLinterError", { fg = c.error, bg = 'NONE' })
-  hl(0, "TSURI", { fg = c.cyan, bg = 'NONE', underline=true, })
-  hl(0, "TSMath", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "TSLiteral", { fg = c.orange, bg = 'NONE' })
+  TSComment = { fg = c.context, bg = 'NONE', italic = true, },
+  TSVariable = { link = 'Variable' },
+  TSString = { link = 'String' },
+  TSStringRegex = { link = 'String' },
+  TSStringEscape = { link = 'String' },
+  TSCharacter = { link = 'String' },
+  TSCharacterSpecial = { link = 'SpecialChar' },
+  TSNumber = { link = 'Number' },
+  TSFloat = { link = 'Float' },
+  TSBoolean = { link = 'Boolean' },
+  TSConstant = { link = 'Constant' },
+  TSConstBuiltin = { link = 'Constant' },
+  TSConstructor = { link = 'Type' },
+  TSType = { link = 'Type' },
+  TSInclude = { link = 'Include' },
+  TSException = { link = 'Exception' },
+  TSKeyword = { link = 'Keyword' },
+  TSKeywordReturn = { link = 'Include' },
+  TSKeywordOperator = { link = 'Include' },
+  TSKeywordFunction = { link = 'Keyword' },
+  TSFunction = { link = 'Function' },
+  TSFuncBuiltin = { link = 'Type' },
+  TSMethod = { link = 'Function' },
+  TSFuncMacro = { link = 'Function' },
+  TSConditional = { link = 'Conditional' },
+  TSRepeat = { link = 'Repeat' },
+  TSOperator = { link = 'Operator' },
+  TSPreProc = { link = 'PreProc' },
+  TSStorageClass = { link = 'StorageClass' },
+  TSStructure = { link = 'Structure' },
+  TSTypeDefinition = { link = 'Typedef' },
+  TSDefine = { link = 'Define' },
+  TSNote = { link = 'Comment' },
+  TSTodo = { link = 'Todo' },
+  TSDebug = { link = 'Debug' },
+  TSDanger = { link = 'Error' },
+  TSTitle = { link = 'Title' },
+  TSLabel = { link = 'Label' },
+  TSPunctDelimiter = { link = 'Delimiter' },
+  TSTagDelimiter = { fg = c.gray, bg = 'NONE' },
+  TSPunctBracket = { link = 'Delimiter' },
+  TSPunctSpecial = { link = 'Delimiter' },
+  TSTag = { link = 'Tag' },
+  TSStrong = { link = 'Bold' },
+  TSEmphasis = { link = 'Italic' },
+  TSUnderline = { link = 'Underline' },
+  TSStrike = { fg = 'NONE', bg = 'NONE', strikethrough = true, },
+  TSStringSpecial = { fg = c.fg, bg = 'NONE' },
+  TSEnvironmentName = { fg = c.cyan, bg = 'NONE' },
+  TSVariableBuiltin = { fg = c.cyan, bg = 'NONE' },
+  TSConstMacro = { fg = c.vivid_blue, bg = 'NONE' },
+  TSTypeBuiltin = { fg = c.cyan, bg = 'NONE' },
+  TSAnnotation = { fg = c.blue, bg = 'NONE' },
+  TSNamespace = { fg = c.cyan, bg = 'NONE' },
+  TSSymbol = { fg = c.fg, bg = 'NONE' },
+  TSField = { link = 'Variable' },
+  TSProperty = { fg = c.light_blue, bg = 'NONE' },
+  TSParameter = { fg = c.light_blue, bg = 'NONE' },
+  TSParameterReference = { fg = c.light_blue, bg = 'NONE' },
+  TSAttribute = { fg = c.cyan, bg = 'NONE' },
+  TSText = { fg = c.fg, bg = 'NONE' },
+  TSTagAttribute = { fg = c.light_blue, bg = 'NONE', italic = true, },
+  TSError = { fg = c.error, bg = 'NONE' },
+  TSWarning = { fg = c.warn, bg = 'NONE' },
+  TSQueryLinterError = { fg = c.error, bg = 'NONE' },
+  TSURI = { fg = c.cyan, bg = 'NONE', underline = true, },
+  TSMath = { fg = c.yellow, bg = 'NONE' },
+  TSLiteral = { fg = c.orange, bg = 'NONE' },
 
   -- markdown
-  hl(0, "markdownBlockquote", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownCode", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownCodeBlock", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownCodeDelimiter", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownH1", { link = 'Title' })
-  hl(0, "markdownH2", { link = 'Title' })
-  hl(0, "markdownH3", { link = 'Title' })
-  hl(0, "markdownH4", { link = 'Title' })
-  hl(0, "markdownH5", { link = 'Title' })
-  hl(0, "markdownH6", { link = 'Title' })
-  hl(0, "markdownHeadingDelimiter", { fg = c.blue, bg = 'NONE' })
-  hl(0, "markdownHeadingRule", { fg = c.fg, bg = 'NONE', bold=true, })
-  hl(0, "markdownId", { link = 'Identifier' })
-  hl(0, "markdownIdDeclaration", { fg = c.blue, bg = 'NONE' })
-  hl(0, "markdownIdDelimiter", { fg = c.light_gray, bg = 'NONE' })
-  hl(0, "markdownLinkDelimiter", { fg = c.light_gray, bg = 'NONE' })
-  hl(0, "markdownBold", { fg = c.blue, bg = 'NONE', bold=true, })
-  hl(0, "markdownItalic", { link = 'Italic' })
-  hl(0, "markdownBoldItalic", { fg = c.yellow, bg = 'NONE', bold=true, italic=true, })
-  hl(0, "markdownListMarker", { fg = c.blue, bg = 'NONE' })
-  hl(0, "markdownOrderedListMarker", { fg = c.purple, bg = 'NONE' })
-  hl(0, "markdownRule", { fg = c.gray, bg = 'NONE' })
-  if vim.fn.has("nvim-0.7.3") == 1 then
-    hl(0, "markdownUrl", { fg = c.cyan, bg = 'NONE', underdotted=true, })
-  else
-    hl(0, "markdownUrl", { fg = c.cyan, bg = 'NONE', underdot=true, })
-  end
-  hl(0, "markdownLinkText", { fg = c.blue, bg = 'NONE' })
-  hl(0, "markdownFootnote", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownFootnoteDefinition", { fg = c.orange, bg = 'NONE' })
-  hl(0, "markdownEscape", { fg = c.yellow, bg = 'NONE' })
+  markdownBlockquote = { fg = c.orange, bg = 'NONE' },
+  markdownCode = { fg = c.orange, bg = 'NONE' },
+  markdownCodeBlock = { fg = c.orange, bg = 'NONE' },
+  markdownCodeDelimiter = { fg = c.orange, bg = 'NONE' },
+  markdownH1 = { link = 'Title' },
+  markdownH2 = { link = 'Title' },
+  markdownH3 = { link = 'Title' },
+  markdownH4 = { link = 'Title' },
+  markdownH5 = { link = 'Title' },
+  markdownH6 = { link = 'Title' },
+  markdownHeadingDelimiter = { fg = c.blue, bg = 'NONE' },
+  markdownHeadingRule = { fg = c.fg, bg = 'NONE', bold = true, },
+  markdownId = { link = 'Identifier' },
+  markdownIdDeclaration = { fg = c.blue, bg = 'NONE' },
+  markdownIdDelimiter = { fg = c.light_gray, bg = 'NONE' },
+  markdownLinkDelimiter = { fg = c.light_gray, bg = 'NONE' },
+  markdownBold = { fg = c.blue, bg = 'NONE', bold = true, },
+  markdownItalic = { link = 'Italic' },
+  markdownBoldItalic = { fg = c.yellow, bg = 'NONE', bold = true, italic = true, },
+  markdownListMarker = { fg = c.blue, bg = 'NONE' },
+  markdownOrderedListMarker = { fg = c.purple, bg = 'NONE' },
+  markdownRule = { fg = c.gray, bg = 'NONE' },
+  markdownUrl = { fg = c.cyan, bg = 'NONE', underdotted = true, },
+  markdownLinkText = { fg = c.blue, bg = 'NONE' },
+  markdownFootnote = { fg = c.orange, bg = 'NONE' },
+  markdownFootnoteDefinition = { fg = c.orange, bg = 'NONE' },
+  markdownEscape = { fg = c.yellow, bg = 'NONE' },
 
   -- Whichkey
-  hl(0, "WhichKey", { fg = c.purple, bg = 'NONE' })
-  hl(0, "WhichKeySeperator", { fg = c.green, bg = 'NONE' })
-  hl(0, "WhichKeyGroup", { fg = c.blue, bg = 'NONE' })
-  hl(0, "WhichKeyDesc", { fg = c.fg, bg = 'NONE' })
-  hl(0, "WhichKeyFloat", { fg = 'NONE', bg = c.alt_bg })
+  WhichKey = { fg = c.purple, bg = 'NONE' },
+  WhichKeySeperator = { fg = c.green, bg = 'NONE' },
+  WhichKeyGroup = { fg = c.blue, bg = 'NONE' },
+  WhichKeyDesc = { fg = c.fg, bg = 'NONE' },
+  WhichKeyFloat = { fg = 'NONE', bg = c.alt_bg },
 
   -- Git
-  hl(0, "SignAdd", { fg = c.sign_add, bg = 'NONE' })
-  hl(0, "SignChange", { fg = c.sign_change, bg = 'NONE' })
-  hl(0, "SignDelete", { fg = c.sign_delete, bg = 'NONE' })
-  hl(0, "GitSignsAdd", { fg = c.sign_add, bg = 'NONE' })
-  hl(0, "GitSignsChange", { fg = c.sign_change, bg = 'NONE' })
-  hl(0, "GitSignsDelete", { fg = c.sign_delete, bg = 'NONE' })
+  SignAdd = { fg = c.sign_add, bg = 'NONE' },
+  SignChange = { fg = c.sign_change, bg = 'NONE' },
+  SignDelete = { fg = c.sign_delete, bg = 'NONE' },
+  GitSignsAdd = { fg = c.sign_add, bg = 'NONE' },
+  GitSignsChange = { fg = c.sign_change, bg = 'NONE' },
+  GitSignsDelete = { fg = c.sign_delete, bg = 'NONE' },
 
   -- LSP
-  hl(0, "DiagnosticHint", { fg = c.hint, bg = 'NONE' })
-  hl(0, "DiagnosticInfo", { fg = c.info, bg = 'NONE' })
-  hl(0, "DiagnosticWarn", { fg = c.warn, bg = 'NONE' })
-  hl(0, "DiagnosticError", { fg = c.error, bg = 'NONE' })
-  hl(0, "DiagnosticOther", { fg = c.ui_purple, bg = 'NONE' })
-  hl(0, "DiagnosticSignHint", { link = 'DiagnosticHint' })
-  hl(0, "DiagnosticSignInfo", { link = 'DiagnosticInfo' })
-  hl(0, "DiagnosticSignWarn", { link = 'DiagnosticWarn' })
-  hl(0, "DiagnosticSignError", { link = 'DiagnosticError' })
-  hl(0, "DiagnosticSignOther", { link = 'DiagnosticOther' })
-  hl(0, "DiagnosticSignWarning", { link = 'DiagnosticWarn' })
-  hl(0, "DiagnosticFloatingHint", { link = 'DiagnosticHint' })
-  hl(0, "DiagnosticFloatingInfo", { link = 'DiagnosticInfo' })
-  hl(0, "DiagnosticFloatingWarn", { link = 'DiagnosticWarn' })
-  hl(0, "DiagnosticFloatingError", { link = 'DiagnosticError' })
-  hl(0, "DiagnosticUnderlineHint", { fg = 'NONE', bg = 'NONE', sp = c.hint, undercurl=true, })
-  hl(0, "DiagnosticUnderlineInfo", { fg = 'NONE', bg = 'NONE', sp = c.info, undercurl=true, })
-  hl(0, "DiagnosticUnderlineWarn", { fg = 'NONE', bg = 'NONE', sp = c.warn, undercurl=true, })
-  hl(0, "DiagnosticUnderlineError", { fg = 'NONE', bg = 'NONE', sp = c.error, undercurl=true, })
-  hl(0, "DiagnosticSignInformation", { link = 'DiagnosticInfo' })
-  hl(0, "DiagnosticVirtualTextHint", { fg = c.hint, bg = c.hint_bg })
-  hl(0, "DiagnosticVirtualTextInfo", { fg = c.info, bg = c.info_bg })
-  hl(0, "DiagnosticVirtualTextWarn", { fg = c.warn, bg = c.warn_bg })
-  hl(0, "DiagnosticVirtualTextError", { fg = c.error, bg = c.error_bg })
-  hl(0, "LspDiagnosticsError", { fg = c.error, bg = 'NONE' })
-  hl(0, "LspDiagnosticsWarning", { fg = c.warn, bg = 'NONE' })
-  hl(0, "LspDiagnosticsInfo", { fg = c.info, bg = 'NONE' })
-  hl(0, "LspDiagnosticsInformation", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsHint", { fg = c.hint, bg = 'NONE' })
-  hl(0, "LspDiagnosticsDefaultError", { link = 'LspDiagnosticsError' })
-  hl(0, "LspDiagnosticsDefaultWarning", { link = 'LspDiagnosticsWarning' })
-  hl(0, "LspDiagnosticsDefaultInformation", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsDefaultInfo", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsDefaultHint", { link = 'LspDiagnosticsHint' })
-  hl(0, "LspDiagnosticsVirtualTextError", { link = 'DiagnosticVirtualTextError' })
-  hl(0, "LspDiagnosticsVirtualTextWarning", { link = 'DiagnosticVirtualTextWarn' })
-  hl(0, "LspDiagnosticsVirtualTextInformation", { link = 'DiagnosticVirtualTextInfo' })
-  hl(0, "LspDiagnosticsVirtualTextInfo", { link = 'DiagnosticVirtualTextInfo' })
-  hl(0, "LspDiagnosticsVirtualTextHint", { link = 'DiagnosticVirtualTextHint' })
-  hl(0, "LspDiagnosticsFloatingError", { link = 'LspDiagnosticsError' })
-  hl(0, "LspDiagnosticsFloatingWarning", { link = 'LspDiagnosticsWarning' })
-  hl(0, "LspDiagnosticsFloatingInformation", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsFloatingInfo", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsFloatingHint", { link = 'LspDiagnosticsHint' })
-  hl(0, "LspDiagnosticsSignError", { link = 'LspDiagnosticsError' })
-  hl(0, "LspDiagnosticsSignWarning", { link = 'LspDiagnosticsWarning' })
-  hl(0, "LspDiagnosticsSignInformation", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsSignInfo", { link = 'LspDiagnosticsInfo' })
-  hl(0, "LspDiagnosticsSignHint", { link = 'LspDiagnosticsHint' })
-  hl(0, "NvimTreeLspDiagnosticsError", { link = 'LspDiagnosticsError' })
-  hl(0, "NvimTreeLspDiagnosticsWarning", { link = 'LspDiagnosticsWarning' })
-  hl(0, "NvimTreeLspDiagnosticsInformation", { link = 'LspDiagnosticsInfo' })
-  hl(0, "NvimTreeLspDiagnosticsInfo", { link = 'LspDiagnosticsInfo' })
-  hl(0, "NvimTreeLspDiagnosticsHint", { link = 'LspDiagnosticsHint' })
-  hl(0, "LspDiagnosticsUnderlineError", { link = 'DiagnosticUnderlineError' })
-  hl(0, "LspDiagnosticsUnderlineWarning", { link = 'DiagnosticUnderlineWarn' })
-  hl(0, "LspDiagnosticsUnderlineInformation", { link = 'DiagnosticUnderlineInfo' })
-  hl(0, "LspDiagnosticsUnderlineInfo", { link = 'DiagnosticUnderlineInfo' })
-  hl(0, "LspDiagnosticsUnderlineHint", { link = 'DiagnosticUnderlineHint' })
-  hl(0, "LspReferenceRead", { fg = 'NONE', bg = c.reference })
-  hl(0, "LspReferenceText", { fg = 'NONE', bg = c.reference })
-  hl(0, "LspReferenceWrite", { fg = 'NONE', bg = c.reference })
-  hl(0, "IlluminatedWordRead", { link = 'LspReferenceRead' })
-  hl(0, "IlluminatedWordText", { link = 'LspReferenceText' })
-  hl(0, "IlluminatedWordWrite", { link = 'LspReferenceWrite' })
-  hl(0, "LspCodeLens", { fg = c.context, bg = 'NONE', italic=true, })
-  hl(0, "LspCodeLensSeparator", { fg = c.context, bg = 'NONE', italic=true, })
+  DiagnosticHint = { fg = c.hint, bg = 'NONE' },
+  DiagnosticInfo = { fg = c.info, bg = 'NONE' },
+  DiagnosticWarn = { fg = c.warn, bg = 'NONE' },
+  DiagnosticError = { fg = c.error, bg = 'NONE' },
+  DiagnosticOther = { fg = c.ui_purple, bg = 'NONE' },
+  DiagnosticSignHint = { link = 'DiagnosticHint' },
+  DiagnosticSignInfo = { link = 'DiagnosticInfo' },
+  DiagnosticSignWarn = { link = 'DiagnosticWarn' },
+  DiagnosticSignError = { link = 'DiagnosticError' },
+  DiagnosticSignOther = { link = 'DiagnosticOther' },
+  DiagnosticSignWarning = { link = 'DiagnosticWarn' },
+  DiagnosticFloatingHint = { link = 'DiagnosticHint' },
+  DiagnosticFloatingInfo = { link = 'DiagnosticInfo' },
+  DiagnosticFloatingWarn = { link = 'DiagnosticWarn' },
+  DiagnosticFloatingError = { link = 'DiagnosticError' },
+  DiagnosticUnderlineHint = { fg = 'NONE', bg = 'NONE', sp = c.hint, undercurl = true, },
+  DiagnosticUnderlineInfo = { fg = 'NONE', bg = 'NONE', sp = c.info, undercurl = true, },
+  DiagnosticUnderlineWarn = { fg = 'NONE', bg = 'NONE', sp = c.warn, undercurl = true, },
+  DiagnosticUnderlineError = { fg = 'NONE', bg = 'NONE', sp = c.error, undercurl = true, },
+  DiagnosticSignInformation = { link = 'DiagnosticInfo' },
+  DiagnosticVirtualTextHint = { fg = c.hint, bg = c.hint_bg },
+  DiagnosticVirtualTextInfo = { fg = c.info, bg = c.info_bg },
+  DiagnosticVirtualTextWarn = { fg = c.warn, bg = c.warn_bg },
+  DiagnosticVirtualTextError = { fg = c.error, bg = c.error_bg },
+  LspDiagnosticsError = { fg = c.error, bg = 'NONE' },
+  LspDiagnosticsWarning = { fg = c.warn, bg = 'NONE' },
+  LspDiagnosticsInfo = { fg = c.info, bg = 'NONE' },
+  LspDiagnosticsInformation = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsHint = { fg = c.hint, bg = 'NONE' },
+  LspDiagnosticsDefaultError = { link = 'LspDiagnosticsError' },
+  LspDiagnosticsDefaultWarning = { link = 'LspDiagnosticsWarning' },
+  LspDiagnosticsDefaultInformation = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsDefaultInfo = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsDefaultHint = { link = 'LspDiagnosticsHint' },
+  LspDiagnosticsVirtualTextError = { link = 'DiagnosticVirtualTextError' },
+  LspDiagnosticsVirtualTextWarning = { link = 'DiagnosticVirtualTextWarn' },
+  LspDiagnosticsVirtualTextInformation = { link = 'DiagnosticVirtualTextInfo' },
+  LspDiagnosticsVirtualTextInfo = { link = 'DiagnosticVirtualTextInfo' },
+  LspDiagnosticsVirtualTextHint = { link = 'DiagnosticVirtualTextHint' },
+  LspDiagnosticsFloatingError = { link = 'LspDiagnosticsError' },
+  LspDiagnosticsFloatingWarning = { link = 'LspDiagnosticsWarning' },
+  LspDiagnosticsFloatingInformation = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsFloatingInfo = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsFloatingHint = { link = 'LspDiagnosticsHint' },
+  LspDiagnosticsSignError = { link = 'LspDiagnosticsError' },
+  LspDiagnosticsSignWarning = { link = 'LspDiagnosticsWarning' },
+  LspDiagnosticsSignInformation = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsSignInfo = { link = 'LspDiagnosticsInfo' },
+  LspDiagnosticsSignHint = { link = 'LspDiagnosticsHint' },
+  NvimTreeLspDiagnosticsError = { link = 'LspDiagnosticsError' },
+  NvimTreeLspDiagnosticsWarning = { link = 'LspDiagnosticsWarning' },
+  NvimTreeLspDiagnosticsInformation = { link = 'LspDiagnosticsInfo' },
+  NvimTreeLspDiagnosticsInfo = { link = 'LspDiagnosticsInfo' },
+  NvimTreeLspDiagnosticsHint = { link = 'LspDiagnosticsHint' },
+  LspDiagnosticsUnderlineError = { link = 'DiagnosticUnderlineError' },
+  LspDiagnosticsUnderlineWarning = { link = 'DiagnosticUnderlineWarn' },
+  LspDiagnosticsUnderlineInformation = { link = 'DiagnosticUnderlineInfo' },
+  LspDiagnosticsUnderlineInfo = { link = 'DiagnosticUnderlineInfo' },
+  LspDiagnosticsUnderlineHint = { link = 'DiagnosticUnderlineHint' },
+  LspReferenceRead = { fg = 'NONE', bg = c.reference },
+  LspReferenceText = { fg = 'NONE', bg = c.reference },
+  LspReferenceWrite = { fg = 'NONE', bg = c.reference },
+  IlluminatedWordRead = { link = 'LspReferenceRead' },
+  IlluminatedWordText = { link = 'LspReferenceText' },
+  IlluminatedWordWrite = { link = 'LspReferenceWrite' },
+  LspCodeLens = { fg = c.context, bg = 'NONE', italic = true, },
+  LspCodeLensSeparator = { fg = c.context, bg = 'NONE', italic = true, },
 
   -- Quickscope
-  hl(0, "QuickScopePrimary", { fg = '#ff007c', bg = 'NONE', underline=true, })
-  hl(0, "QuickScopeSecondary", { fg = '#00dfff', bg = 'NONE', underline=true, })
+  QuickScopePrimary = { fg = '#ff007c', bg = 'NONE', underline = true, },
+  QuickScopeSecondary = { fg = '#00dfff', bg = 'NONE', underline = true, },
 
   -- Telescope
-  hl(0, "TelescopeSelection", { fg = 'NONE', bg = c.ui2_blue })
-  hl(0, "TelescopeSelectionCaret", { fg = c.red, bg = c.ui2_blue })
-  hl(0, "TelescopeMatching", { fg = c.info, bg = 'NONE', bold=true, italic=true, })
-  hl(0, "TelescopeBorder", { fg = c.alt_fg, bg = 'NONE' })
-  hl(0, "TelescopeNormal", { fg = c.fg, bg = c.menu_bg })
-  hl(0, "TelescopePromptPrefix", { fg = c.hint, bg = 'NONE' })
-  hl(0, "TelescopePromptTitle", { fg = c.ui_orange, bg = 'NONE', bold=true, })
-  hl(0, "TelescopeResultsTitle", { fg = c.ui_orange, bg = 'NONE', bold=true, })
-  hl(0, "TelescopePreviewTitle", { fg = c.ui_orange, bg = 'NONE', bold=true, })
-  hl(0, "TelescopePromptCounter", { fg = c.red, bg = 'NONE' })
-  hl(0, "TelescopePreviewHyphen", { fg = c.red, bg = 'NONE' })
+  TelescopeSelection = { fg = 'NONE', bg = c.ui2_blue },
+  TelescopeSelectionCaret = { fg = c.red, bg = c.ui2_blue },
+  TelescopeMatching = { fg = c.info, bg = 'NONE', bold = true, italic = true, },
+  TelescopeBorder = { fg = c.alt_fg, bg = 'NONE' },
+  TelescopeNormal = { fg = c.fg, bg = c.menu_bg },
+  TelescopePromptPrefix = { fg = c.hint, bg = 'NONE' },
+  TelescopePromptTitle = { fg = c.ui_orange, bg = 'NONE', bold = true, },
+  TelescopeResultsTitle = { fg = c.ui_orange, bg = 'NONE', bold = true, },
+  TelescopePreviewTitle = { fg = c.ui_orange, bg = 'NONE', bold = true, },
+  TelescopePromptCounter = { fg = c.red, bg = 'NONE' },
+  TelescopePreviewHyphen = { fg = c.red, bg = 'NONE' },
 
   -- NvimTree
-  hl(0, "NvimTreeFolderIcon", { link = 'Directory' })
-  hl(0, "NvimTreeIndentMarker", { fg = c.context, bg = 'NONE' })
-  hl(0, "NvimTreeNormal", { fg = c.fg, bg = c.alt_bg })
-  hl(0, "NvimTreeVertSplit", { fg = c.alt_bg, bg = c.alt_bg })
-  hl(0, "NvimTreeFolderName", { link = 'Directory' })
-  hl(0, "NvimTreeOpenedFolderName", { fg = c.folder_blue, bg = 'NONE', bold=true, italic=true, })
-  hl(0, "NvimTreeEmptyFolderName", { fg = c.gray, bg = 'NONE', italic=true, })
-  hl(0, "NvimTreeGitIgnored", { fg = c.gray, bg = 'NONE', italic=true, })
-  hl(0, "NvimTreeImageFile", { fg = c.light_gray, bg = 'NONE' })
-  hl(0, "NvimTreeSpecialFile", { fg = c.orange, bg = 'NONE' })
-  hl(0, "NvimTreeEndOfBuffer", { fg = c.alt_bg, bg = 'NONE' })
-  hl(0, "NvimTreeCursorLine", { fg = 'NONE', bg = c.line })
-  hl(0, "NvimTreeGitStaged", { fg = c.sign_add_alt, bg = 'NONE' })
-  hl(0, "NvimTreeGitNew", { fg = c.sign_add_alt, bg = 'NONE' })
-  hl(0, "NvimTreeGitRenamed", { fg = c.sign_add_alt, bg = 'NONE' })
-  hl(0, "NvimTreeGitDeleted", { fg = c.sign_delete, bg = 'NONE' })
-  hl(0, "NvimTreeGitMerge", { fg = c.sign_change_alt, bg = 'NONE' })
-  hl(0, "NvimTreeGitDirty", { fg = c.sign_change_alt, bg = 'NONE' })
-  hl(0, "NvimTreeSymlink", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "NvimTreeRootFolder", { fg = c.fg, bg = 'NONE', bold=true, })
-  hl(0, "NvimTreeExecFile", { fg = '#9FBA89', bg = 'NONE' })
+  NvimTreeFolderIcon = { link = 'Directory' },
+  NvimTreeIndentMarker = { fg = c.context, bg = 'NONE' },
+  NvimTreeNormal = { fg = c.fg, bg = c.alt_bg },
+  NvimTreeVertSplit = { fg = c.alt_bg, bg = c.alt_bg },
+  NvimTreeFolderName = { link = 'Directory' },
+  NvimTreeOpenedFolderName = { fg = c.folder_blue, bg = 'NONE', bold = true, italic = true, },
+  NvimTreeEmptyFolderName = { fg = c.gray, bg = 'NONE', italic = true, },
+  NvimTreeGitIgnored = { fg = c.gray, bg = 'NONE', italic = true, },
+  NvimTreeImageFile = { fg = c.light_gray, bg = 'NONE' },
+  NvimTreeSpecialFile = { fg = c.orange, bg = 'NONE' },
+  NvimTreeEndOfBuffer = { fg = c.alt_bg, bg = 'NONE' },
+  NvimTreeCursorLine = { fg = 'NONE', bg = c.line },
+  NvimTreeGitStaged = { fg = c.sign_add_alt, bg = 'NONE' },
+  NvimTreeGitNew = { fg = c.sign_add_alt, bg = 'NONE' },
+  NvimTreeGitRenamed = { fg = c.sign_add_alt, bg = 'NONE' },
+  NvimTreeGitDeleted = { fg = c.sign_delete, bg = 'NONE' },
+  NvimTreeGitMerge = { fg = c.sign_change_alt, bg = 'NONE' },
+  NvimTreeGitDirty = { fg = c.sign_change_alt, bg = 'NONE' },
+  NvimTreeSymlink = { fg = c.cyan, bg = 'NONE' },
+  NvimTreeRootFolder = { fg = c.fg, bg = 'NONE', bold = true, },
+  NvimTreeExecFile = { fg = '#9FBA89', bg = 'NONE' },
 
   -- Lir
-  hl(0, "LirFloatNormal", { fg = c.fg, bg = c.alt_bg })
-  hl(0, "LirDir", { link = 'Directory' })
-  hl(0, "LirSymLink", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "LirEmptyDirText", { fg = c.gray, bg = 'NONE', italic=true, })
+  LirFloatNormal = { fg = c.fg, bg = c.alt_bg },
+  LirDir = { link = 'Directory' },
+  LirSymLink = { fg = c.cyan, bg = 'NONE' },
+  LirEmptyDirText = { fg = c.gray, bg = 'NONE', italic = true, },
 
   -- Buffer
-  hl(0, "BufferCurrent", { fg = c.fg, bg = c.bg })
-  hl(0, "BufferCurrentIndex", { fg = c.fg, bg = c.bg })
-  hl(0, "BufferCurrentMod", { fg = c.info, bg = c.bg })
-  hl(0, "BufferCurrentSign", { fg = c.hint, bg = c.bg })
-  hl(0, "BufferCurrentTarget", { fg = c.red, bg = c.bg, bold=true, })
-  hl(0, "BufferVisible", { fg = c.fg, bg = c.bg })
-  hl(0, "BufferVisibleIndex", { fg = c.fg, bg = c.bg })
-  hl(0, "BufferVisibleMod", { fg = c.info, bg = c.bg })
-  hl(0, "BufferVisibleSign", { fg = c.gray, bg = c.bg })
-  hl(0, "BufferVisibleTarget", { fg = c.red, bg = c.bg, bold=true, })
-  hl(0, "BufferInactive", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "BufferInactiveIndex", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "BufferInactiveMod", { fg = c.info, bg = c.alt_bg })
-  hl(0, "BufferInactiveSign", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "BufferInactiveTarget", { fg = c.red, bg = c.alt_bg, bold=true, })
+  BufferCurrent = { fg = c.fg, bg = c.bg },
+  BufferCurrentIndex = { fg = c.fg, bg = c.bg },
+  BufferCurrentMod = { fg = c.info, bg = c.bg },
+  BufferCurrentSign = { fg = c.hint, bg = c.bg },
+  BufferCurrentTarget = { fg = c.red, bg = c.bg, bold = true, },
+  BufferVisible = { fg = c.fg, bg = c.bg },
+  BufferVisibleIndex = { fg = c.fg, bg = c.bg },
+  BufferVisibleMod = { fg = c.info, bg = c.bg },
+  BufferVisibleSign = { fg = c.gray, bg = c.bg },
+  BufferVisibleTarget = { fg = c.red, bg = c.bg, bold = true, },
+  BufferInactive = { fg = c.gray, bg = c.alt_bg },
+  BufferInactiveIndex = { fg = c.gray, bg = c.alt_bg },
+  BufferInactiveMod = { fg = c.info, bg = c.alt_bg },
+  BufferInactiveSign = { fg = c.gray, bg = c.alt_bg },
+  BufferInactiveTarget = { fg = c.red, bg = c.alt_bg, bold = true, },
 
   -- StatusLine
-  hl(0, "StatusLine", { fg = c.context, bg = c.bg })
-  hl(0, "StatusLineNC", { fg = c.line, bg = c.bg })
-  hl(0, "StatusLineSeparator", { fg = c.line, bg = 'NONE' })
-  hl(0, "StatusLineTerm", { fg = c.line, bg = 'NONE' })
-  hl(0, "StatusLineTermNC", { fg = c.line, bg = 'NONE' })
+  StatusLine = { fg = c.context, bg = c.bg },
+  StatusLineNC = { fg = c.line, bg = c.bg },
+  StatusLineSeparator = { fg = c.line, bg = 'NONE' },
+  StatusLineTerm = { fg = c.line, bg = 'NONE' },
+  StatusLineTermNC = { fg = c.line, bg = 'NONE' },
 
   -- IndentBlankline
-  hl(0, "IndentBlanklineContextChar", { fg = c.context, bg = 'NONE' })
-  hl(0, "IndentBlanklineContextStart", { fg = 'NONE', bg = 'NONE', underline=true, })
-  hl(0, "IndentBlanklineChar", { fg = c.dark_gray, bg = 'NONE' })
+  IndentBlanklineContextChar = { fg = c.context, bg = 'NONE' },
+  IndentBlanklineContextStart = { fg = 'NONE', bg = 'NONE', underline = true, },
+  IndentBlanklineChar = { fg = c.dark_gray, bg = 'NONE' },
 
   -- Dashboard
-  hl(0, "DashboardHeader", { fg = c.blue, bg = 'NONE' })
-  hl(0, "DashboardCenter", { fg = c.purple, bg = 'NONE' })
-  hl(0, "DashboardFooter", { fg = c.cyan, bg = 'NONE' })
+  DashboardHeader = { fg = c.blue, bg = 'NONE' },
+  DashboardCenter = { fg = c.purple, bg = 'NONE' },
+  DashboardFooter = { fg = c.cyan, bg = 'NONE' },
 
   -- DiffView
-  hl(0, "DiffViewNormal", { fg = c.gray, bg = c.alt_bg })
-  hl(0, "DiffviewStatusAdded", { fg = c.sign_add, bg = 'NONE' })
-  hl(0, "DiffviewStatusModified", { fg = c.sign_change, bg = 'NONE' })
-  hl(0, "DiffviewStatusRenamed", { fg = c.sign_change, bg = 'NONE' })
-  hl(0, "DiffviewStatusDeleted", { fg = c.sign_delete, bg = 'NONE' })
-  hl(0, "DiffviewFilePanelInsertion", { fg = c.sign_add, bg = 'NONE' })
-  hl(0, "DiffviewFilePanelDeletion", { fg = c.sign_delete, bg = 'NONE' })
-  hl(0, "DiffviewVertSplit", { fg = 'NONE', bg = c.bg })
+  DiffViewNormal = { fg = c.gray, bg = c.alt_bg },
+  DiffviewStatusAdded = { fg = c.sign_add, bg = 'NONE' },
+  DiffviewStatusModified = { fg = c.sign_change, bg = 'NONE' },
+  DiffviewStatusRenamed = { fg = c.sign_change, bg = 'NONE' },
+  DiffviewStatusDeleted = { fg = c.sign_delete, bg = 'NONE' },
+  DiffviewFilePanelInsertion = { fg = c.sign_add, bg = 'NONE' },
+  DiffviewFilePanelDeletion = { fg = c.sign_delete, bg = 'NONE' },
+  DiffviewVertSplit = { fg = 'NONE', bg = c.bg },
 
   -- Bookmarks
-  hl(0, "BookmarkSign", { fg = c.sign_change, bg = 'NONE' })
-  hl(0, "BookmarkAnnotationSign", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "BookmarkLine", { fg = c.ui2_blue, bg = 'NONE' })
-  hl(0, "BookmarkAnnotationLine", { fg = c.ui2_blue, bg = 'NONE' })
+  BookmarkSign = { fg = c.sign_change, bg = 'NONE' },
+  BookmarkAnnotationSign = { fg = c.yellow, bg = 'NONE' },
+  BookmarkLine = { fg = c.ui2_blue, bg = 'NONE' },
+  BookmarkAnnotationLine = { fg = c.ui2_blue, bg = 'NONE' },
 
   -- Bqf
-  hl(0, "BqfPreviewBorder", { fg = c.fg, bg = 'NONE' })
-  hl(0, "BqfPreviewRange", { fg = 'NONE', bg = c.ui2_blue })
+  BqfPreviewBorder = { fg = c.fg, bg = 'NONE' },
+  BqfPreviewRange = { fg = 'NONE', bg = c.ui2_blue },
 
   -- Cmp
-  hl(0, "CmpItemAbbrDeprecated", { fg = c.gray, bg = 'NONE', strikethrough=true, })
-  hl(0, "CmpItemAbbrMatch", { fg = c.ui3_blue, bg = 'NONE' })
-  hl(0, "CmpItemAbbrMatchFuzzy", { fg = c.ui3_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindFunction", { fg = c.ui_purple, bg = 'NONE' })
-  hl(0, "CmpItemKindMethod", { fg = c.ui_purple, bg = 'NONE' })
-  hl(0, "CmpItemKindConstructor", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "CmpItemKindClass", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "CmpItemKindEnum", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "CmpItemKindEvent", { fg = c.info, bg = 'NONE' })
-  hl(0, "CmpItemKindInterface", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "CmpItemKindStruct", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "CmpItemKindVariable", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindField", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindProperty", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindEnumMember", { fg = c.vivid_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindConstant", { fg = c.vivid_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindKeyword", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindModule", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "CmpItemKindValue", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindUnit", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindText", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindSnippet", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindFile", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindFolder", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindColor", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindReference", { fg = c.light_blue, bg = 'NONE' })
-  hl(0, "CmpItemKindOperator", { fg = c.fg, bg = 'NONE' })
-  hl(0, "CmpItemKindTypeParameter", { fg = c.light_blue, bg = 'NONE' })
+  CmpItemAbbrDeprecated = { fg = c.gray, bg = 'NONE', strikethrough = true, },
+  CmpItemAbbrMatch = { fg = c.ui3_blue, bg = 'NONE' },
+  CmpItemAbbrMatchFuzzy = { fg = c.ui3_blue, bg = 'NONE' },
+  CmpItemKindFunction = { fg = c.ui_purple, bg = 'NONE' },
+  CmpItemKindMethod = { fg = c.ui_purple, bg = 'NONE' },
+  CmpItemKindConstructor = { fg = c.ui_orange, bg = 'NONE' },
+  CmpItemKindClass = { fg = c.ui_orange, bg = 'NONE' },
+  CmpItemKindEnum = { fg = c.ui_orange, bg = 'NONE' },
+  CmpItemKindEvent = { fg = c.info, bg = 'NONE' },
+  CmpItemKindInterface = { fg = c.ui_orange, bg = 'NONE' },
+  CmpItemKindStruct = { fg = c.ui_orange, bg = 'NONE' },
+  CmpItemKindVariable = { fg = c.light_blue, bg = 'NONE' },
+  CmpItemKindField = { fg = c.light_blue, bg = 'NONE' },
+  CmpItemKindProperty = { fg = c.light_blue, bg = 'NONE' },
+  CmpItemKindEnumMember = { fg = c.vivid_blue, bg = 'NONE' },
+  CmpItemKindConstant = { fg = c.vivid_blue, bg = 'NONE' },
+  CmpItemKindKeyword = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindModule = { fg = c.cyan, bg = 'NONE' },
+  CmpItemKindValue = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindUnit = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindText = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindSnippet = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindFile = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindFolder = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindColor = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindReference = { fg = c.light_blue, bg = 'NONE' },
+  CmpItemKindOperator = { fg = c.fg, bg = 'NONE' },
+  CmpItemKindTypeParameter = { fg = c.light_blue, bg = 'NONE' },
 
   -- Navic
-  hl(0, "NavicIconsFile", { link = 'CmpItemKindFile' })
-  hl(0, "NavicIconsModule", { link = 'CmpItemKindModule' })
-  hl(0, "NavicIconsNamespace", { link = 'CmpItemKindModule' })
-  hl(0, "NavicIconsPackage", { link = 'CmpItemKindModule' })
-  hl(0, "NavicIconsClass", { link = 'CmpItemKindClass' })
-  hl(0, "NavicIconsMethod", { link = 'CmpItemKindMethod' })
-  hl(0, "NavicIconsProperty", { link = 'CmpItemKindProperty' })
-  hl(0, "NavicIconsField", { link = 'CmpItemKindField' })
-  hl(0, "NavicIconsConstructor", { link = 'CmpItemKindConstructor' })
-  hl(0, "NavicIconsEnum", { link = 'CmpItemKindEnum' })
-  hl(0, "NavicIconsInterface", { link = 'CmpItemKindInterface' })
-  hl(0, "NavicIconsFunction", { link = 'CmpItemKindFunction' })
-  hl(0, "NavicIconsVariable", { link = 'CmpItemKindVariable' })
-  hl(0, "NavicIconsConstant", { link = 'CmpItemKindConstant' })
-  hl(0, "NavicIconsString", { link = 'String' })
-  hl(0, "NavicIconsNumber", { link = 'Number' })
-  hl(0, "NavicIconsBoolean", { link = 'Boolean' })
-  hl(0, "NavicIconsArray", { link = 'CmpItemKindClass' })
-  hl(0, "NavicIconsObject", { link = 'CmpItemKindClass' })
-  hl(0, "NavicIconsKey", { link = 'CmpItemKindKeyword' })
-  hl(0, "NavicIconsKeyword", { link = 'CmpItemKindKeyword' })
-  hl(0, "NavicIconsNull", { fg = c.blue, bg = 'NONE' })
-  hl(0, "NavicIconsEnumMember", { link = 'CmpItemKindEnumMember' })
-  hl(0, "NavicIconsStruct", { link = 'CmpItemKindStruct' })
-  hl(0, "NavicIconsEvent", { link = 'CmpItemKindEvent' })
-  hl(0, "NavicIconsOperator", { link = 'CmpItemKindOperator' })
-  hl(0, "NavicIconsTypeParameter", { link = 'CmpItemKindTypeParameter' })
-  hl(0, "NavicText", { fg = c.gray, bg = 'NONE' })
-  hl(0, "NavicSeparator", { fg = c.context, bg = 'NONE' })
+  NavicIconsFile = { link = 'CmpItemKindFile' },
+  NavicIconsModule = { link = 'CmpItemKindModule' },
+  NavicIconsNamespace = { link = 'CmpItemKindModule' },
+  NavicIconsPackage = { link = 'CmpItemKindModule' },
+  NavicIconsClass = { link = 'CmpItemKindClass' },
+  NavicIconsMethod = { link = 'CmpItemKindMethod' },
+  NavicIconsProperty = { link = 'CmpItemKindProperty' },
+  NavicIconsField = { link = 'CmpItemKindField' },
+  NavicIconsConstructor = { link = 'CmpItemKindConstructor' },
+  NavicIconsEnum = { link = 'CmpItemKindEnum' },
+  NavicIconsInterface = { link = 'CmpItemKindInterface' },
+  NavicIconsFunction = { link = 'CmpItemKindFunction' },
+  NavicIconsVariable = { link = 'CmpItemKindVariable' },
+  NavicIconsConstant = { link = 'CmpItemKindConstant' },
+  NavicIconsString = { link = 'String' },
+  NavicIconsNumber = { link = 'Number' },
+  NavicIconsBoolean = { link = 'Boolean' },
+  NavicIconsArray = { link = 'CmpItemKindClass' },
+  NavicIconsObject = { link = 'CmpItemKindClass' },
+  NavicIconsKey = { link = 'CmpItemKindKeyword' },
+  NavicIconsKeyword = { link = 'CmpItemKindKeyword' },
+  NavicIconsNull = { fg = c.blue, bg = 'NONE' },
+  NavicIconsEnumMember = { link = 'CmpItemKindEnumMember' },
+  NavicIconsStruct = { link = 'CmpItemKindStruct' },
+  NavicIconsEvent = { link = 'CmpItemKindEvent' },
+  NavicIconsOperator = { link = 'CmpItemKindOperator' },
+  NavicIconsTypeParameter = { link = 'CmpItemKindTypeParameter' },
+  NavicText = { fg = c.gray, bg = 'NONE' },
+  NavicSeparator = { fg = c.context, bg = 'NONE' },
 
   -- Packer
-  hl(0, "packerString", { fg = c.ui_orange, bg = 'NONE' })
-  hl(0, "packerHash", { fg = c.ui4_blue, bg = 'NONE' })
-  hl(0, "packerOutput", { fg = c.ui_purple, bg = 'NONE' })
-  hl(0, "packerRelDate", { fg = c.gray, bg = 'NONE' })
-  hl(0, "packerSuccess", { fg = c.success_green, bg = 'NONE' })
-  hl(0, "packerStatusSuccess", { fg = c.ui4_blue, bg = 'NONE' })
+  packerString = { fg = c.ui_orange, bg = 'NONE' },
+  packerHash = { fg = c.ui4_blue, bg = 'NONE' },
+  packerOutput = { fg = c.ui_purple, bg = 'NONE' },
+  packerRelDate = { fg = c.gray, bg = 'NONE' },
+  packerSuccess = { fg = c.success_green, bg = 'NONE' },
+  packerStatusSuccess = { fg = c.ui4_blue, bg = 'NONE' },
 
   -- SymbolOutline
-  hl(0, "SymbolsOutlineConnector", { fg = c.gray, bg = 'NONE' })
-  hl(0, "FocusedSymbol", { fg = 'NONE', bg = '#36383F' })
+  SymbolsOutlineConnector = { fg = c.gray, bg = 'NONE' },
+  FocusedSymbol = { fg = 'NONE', bg = '#36383F' },
 
   -- Notify
-  hl(0, "NotifyERRORBorder", { fg = '#8A1F1F', bg = 'NONE' })
-  hl(0, "NotifyWARNBorder", { fg = '#79491D', bg = 'NONE' })
-  hl(0, "NotifyINFOBorder", { fg = c.ui_blue, bg = 'NONE' })
-  hl(0, "NotifyDEBUGBorder", { fg = c.gray, bg = 'NONE' })
-  hl(0, "NotifyTRACEBorder", { fg = '#4F3552', bg = 'NONE' })
-  hl(0, "NotifyERRORIcon", { fg = c.error, bg = 'NONE' })
-  hl(0, "NotifyWARNIcon", { fg = c.warn, bg = 'NONE' })
-  hl(0, "NotifyINFOIcon", { fg = c.ui4_blue, bg = 'NONE' })
-  hl(0, "NotifyDEBUGIcon", { fg = c.gray, bg = 'NONE' })
-  hl(0, "NotifyTRACEIcon", { fg = c.ui_purple, bg = 'NONE' })
-  hl(0, "NotifyERRORTitle", { fg = c.error, bg = 'NONE' })
-  hl(0, "NotifyWARNTitle", { fg = c.warn, bg = 'NONE' })
-  hl(0, "NotifyINFOTitle", { fg = c.ui4_blue, bg = 'NONE' })
-  hl(0, "NotifyDEBUGTitle", { fg = c.gray, bg = 'NONE' })
-  hl(0, "NotifyTRACETitle", { fg = c.ui_purple, bg = 'NONE' })
+  NotifyERRORBorder = { fg = '#8A1F1F', bg = 'NONE' },
+  NotifyWARNBorder = { fg = '#79491D', bg = 'NONE' },
+  NotifyINFOBorder = { fg = c.ui_blue, bg = 'NONE' },
+  NotifyDEBUGBorder = { fg = c.gray, bg = 'NONE' },
+  NotifyTRACEBorder = { fg = '#4F3552', bg = 'NONE' },
+  NotifyERRORIcon = { fg = c.error, bg = 'NONE' },
+  NotifyWARNIcon = { fg = c.warn, bg = 'NONE' },
+  NotifyINFOIcon = { fg = c.ui4_blue, bg = 'NONE' },
+  NotifyDEBUGIcon = { fg = c.gray, bg = 'NONE' },
+  NotifyTRACEIcon = { fg = c.ui_purple, bg = 'NONE' },
+  NotifyERRORTitle = { fg = c.error, bg = 'NONE' },
+  NotifyWARNTitle = { fg = c.warn, bg = 'NONE' },
+  NotifyINFOTitle = { fg = c.ui4_blue, bg = 'NONE' },
+  NotifyDEBUGTitle = { fg = c.gray, bg = 'NONE' },
+  NotifyTRACETitle = { fg = c.ui_purple, bg = 'NONE' },
 
   -- TreesitterContext
-  hl(0, "TreesitterContext", { fg = 'NONE', bg = c.alt_bg })
+  TreesitterContext = { fg = 'NONE', bg = c.alt_bg },
 
   -- Hop
-  hl(0, "HopNextKey", { fg = '#4ae0ff', bg = 'NONE' })
-  hl(0, "HopNextKey1", { fg = '#d44eed', bg = 'NONE' })
-  hl(0, "HopNextKey2", { fg = '#b42ecd', bg = 'NONE' })
-  hl(0, "HopUnmatched", { fg = c.gray, bg = 'NONE' })
-  hl(0, "HopPreview", { fg = '#c7ba7d', bg = 'NONE' })
+  HopNextKey = { fg = '#4ae0ff', bg = 'NONE' },
+  HopNextKey1 = { fg = '#d44eed', bg = 'NONE' },
+  HopNextKey2 = { fg = '#b42ecd', bg = 'NONE' },
+  HopUnmatched = { fg = c.gray, bg = 'NONE' },
+  HopPreview = { fg = '#c7ba7d', bg = 'NONE' },
 
   -- Crates
-  hl(0, "CratesNvimLoading", { fg = c.hint, bg = 'NONE' })
-  hl(0, "CratesNvimVersion", { fg = c.hint, bg = 'NONE' })
+  CratesNvimLoading = { fg = c.hint, bg = 'NONE' },
+  CratesNvimVersion = { fg = c.hint, bg = 'NONE' },
 
   -- Misc
-  hl(0, "diffAdded", { fg = c.sign_add, bg = 'NONE' })
-  hl(0, "diffRemoved", { fg = c.sign_delete, bg = 'NONE' })
-  hl(0, "diffFileId", { fg = c.blue, bg = 'NONE', bold=true, reverse=true, })
-  hl(0, "diffFile", { fg = c.alt_bg, bg = 'NONE' })
-  hl(0, "diffNewFile", { fg = c.green, bg = 'NONE' })
-  hl(0, "diffOldFile", { fg = c.red, bg = 'NONE' })
-  hl(0, "debugPc", { fg = 'NONE', bg = c.ui5_blue })
-  hl(0, "debugBreakpoint", { fg = c.red, bg = 'NONE', reverse=true, })
-  hl(0, "CodiVirtualText", { fg = c.hint, bg = 'NONE' })
-  hl(0, "SniprunVirtualTextOk", { fg = c.hint, bg = 'NONE' })
-  hl(0, "SniprunFloatingWinOk", { fg = c.hint, bg = 'NONE' })
-  hl(0, "SniprunVirtualTextErr", { fg = c.error, bg = 'NONE' })
-  hl(0, "SniprunFloatingWinErr", { fg = c.error, bg = 'NONE' })
-  hl(0, "DapBreakpoint", { fg = c.error, bg = 'NONE' })
+  diffAdded = { fg = c.sign_add, bg = 'NONE' },
+  diffRemoved = { fg = c.sign_delete, bg = 'NONE' },
+  diffFileId = { fg = c.blue, bg = 'NONE', bold = true, reverse = true, },
+  diffFile = { fg = c.alt_bg, bg = 'NONE' },
+  diffNewFile = { fg = c.green, bg = 'NONE' },
+  diffOldFile = { fg = c.red, bg = 'NONE' },
+  debugPc = { fg = 'NONE', bg = c.ui5_blue },
+  debugBreakpoint = { fg = c.red, bg = 'NONE', reverse = true, },
+  CodiVirtualText = { fg = c.hint, bg = 'NONE' },
+  SniprunVirtualTextOk = { fg = c.hint, bg = 'NONE' },
+  SniprunFloatingWinOk = { fg = c.hint, bg = 'NONE' },
+  SniprunVirtualTextErr = { fg = c.error, bg = 'NONE' },
+  SniprunFloatingWinErr = { fg = c.error, bg = 'NONE' },
+  DapBreakpoint = { fg = c.error, bg = 'NONE' },
 
-  -- Language
-  hl(0, "xmlTag", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "xmlTagName", { fg = c.cyan, bg = 'NONE' })
-  hl(0, "xmlEndTag", { fg = c.cyan, bg = 'NONE' })
-  -- hl(0, "yamlPlainScalar", { fg = c.orange, bg = 'NONE' })
-  -- hl(0, "yamlTSField", { fg = c.blue, bg = 'NONE' })
-  hl(0, "luaFunc", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "luaFunction", { fg = c.blue, bg = 'NONE' })
-  hl(0, "hclTSPunctSpecial", { fg = c.alt_fg, bg = 'NONE' })
-  hl(0, "htmlH1", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlH2", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlH3", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlH4", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlH5", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlH6", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlHead", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlTitle", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlArg", { fg = c.fg, bg = 'NONE' })
-  hl(0, "htmlTag", { fg = c.blue, bg = 'NONE' })
-  hl(0, "htmlTagN", { fg = c.blue, bg = 'NONE' })
-  hl(0, "htmlTagName", { fg = c.blue, bg = 'NONE' })
-  hl(0, "htmlComment", { fg = c.green, bg = 'NONE' })
-  hl(0, "htmlLink", { fg = c.orange, bg = 'NONE', underline=true, })
-  hl(0, "cssBraces", { fg = c.fg, bg = 'NONE' })
-  hl(0, "cssInclude", { fg = c.purple, bg = 'NONE' })
-  hl(0, "cssTagName", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssClassName", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssPseudoClass", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssPseudoClassId", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssPseudoClassLang", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssIdentifier", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssProp", { fg = c.fg, bg = 'NONE' })
-  hl(0, "cssDefinition", { fg = c.fg, bg = 'NONE' })
-  hl(0, "cssAttr", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssAttrRegion", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssColor", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssFunction", { fg = c.purple, bg = 'NONE' })
-  hl(0, "cssFunctionName", { fg = c.yellow, bg = 'NONE' })
-  hl(0, "cssVendor", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssValueNumber", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssValueLength", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssUnitDecorators", { fg = c.orange, bg = 'NONE' })
-  hl(0, "cssStyle", { fg = c.fg, bg = 'NONE' })
-  hl(0, "cssImportant", { fg = c.blue, bg = 'NONE' })
-  hl(0, "jsonKeyword", { fg = c.blue, bg = 'NONE' })
-  hl(0, "yamlBlockMappingKey", { fg = c.blue, bg = 'NONE' })
-  hl(0, "tomlTSProperty", { fg = c.blue, bg = 'NONE' })
-end
+  -- Language,
+  xmlTag = { fg = c.cyan, bg = 'NONE' },
+  xmlTagName = { fg = c.cyan, bg = 'NONE' },
+  xmlEndTag = { fg = c.cyan, bg = 'NONE' },
+  -- yamlPlainScalar = { fg = c.orange, bg = 'NONE' },
+  -- yamlTSField = { fg = c.blue, bg = 'NONE' },
+  luaFunc = { fg = c.yellow, bg = 'NONE' },
+  luaFunction = { fg = c.blue, bg = 'NONE' },
+  hclTSPunctSpecial = { fg = c.alt_fg, bg = 'NONE' },
+  htmlH1 = { fg = c.fg, bg = 'NONE' },
+  htmlH2 = { fg = c.fg, bg = 'NONE' },
+  htmlH3 = { fg = c.fg, bg = 'NONE' },
+  htmlH4 = { fg = c.fg, bg = 'NONE' },
+  htmlH5 = { fg = c.fg, bg = 'NONE' },
+  htmlH6 = { fg = c.fg, bg = 'NONE' },
+  htmlHead = { fg = c.fg, bg = 'NONE' },
+  htmlTitle = { fg = c.fg, bg = 'NONE' },
+  htmlArg = { fg = c.fg, bg = 'NONE' },
+  htmlTag = { fg = c.blue, bg = 'NONE' },
+  htmlTagN = { fg = c.blue, bg = 'NONE' },
+  htmlTagName = { fg = c.blue, bg = 'NONE' },
+  htmlComment = { fg = c.green, bg = 'NONE' },
+  htmlLink = { fg = c.orange, bg = 'NONE', underline = true, },
+  cssBraces = { fg = c.fg, bg = 'NONE' },
+  cssInclude = { fg = c.purple, bg = 'NONE' },
+  cssTagName = { fg = c.yellow, bg = 'NONE' },
+  cssClassName = { fg = c.yellow, bg = 'NONE' },
+  cssPseudoClass = { fg = c.yellow, bg = 'NONE' },
+  cssPseudoClassId = { fg = c.yellow, bg = 'NONE' },
+  cssPseudoClassLang = { fg = c.yellow, bg = 'NONE' },
+  cssIdentifier = { fg = c.yellow, bg = 'NONE' },
+  cssProp = { fg = c.fg, bg = 'NONE' },
+  cssDefinition = { fg = c.fg, bg = 'NONE' },
+  cssAttr = { fg = c.orange, bg = 'NONE' },
+  cssAttrRegion = { fg = c.orange, bg = 'NONE' },
+  cssColor = { fg = c.orange, bg = 'NONE' },
+  cssFunction = { fg = c.purple, bg = 'NONE' },
+  cssFunctionName = { fg = c.yellow, bg = 'NONE' },
+  cssVendor = { fg = c.orange, bg = 'NONE' },
+  cssValueNumber = { fg = c.orange, bg = 'NONE' },
+  cssValueLength = { fg = c.orange, bg = 'NONE' },
+  cssUnitDecorators = { fg = c.orange, bg = 'NONE' },
+  cssStyle = { fg = c.fg, bg = 'NONE' },
+  cssImportant = { fg = c.blue, bg = 'NONE' },
+  jsonKeyword = { fg = c.blue, bg = 'NONE' },
+  yamlBlockMappingKey = { fg = c.blue, bg = 'NONE' },
+  tomlTSProperty = { fg = c.blue, bg = 'NONE' },
+}
 
 return theme

@@ -1,4 +1,4 @@
 lua << EOF
 local darkplus = require("darkplus")
-darkplus.setup({})
+darkplus.setup()
 EOF

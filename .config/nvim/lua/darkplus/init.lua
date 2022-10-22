@@ -1,5 +1,6 @@
 local M = {}
 local theme = require('darkplus.theme')
+local util = require('darkplus.util')
 
 M.setup = function()
   vim.cmd('hi clear')
@@ -11,8 +12,7 @@ M.setup = function()
 
   vim.o.termguicolors = true
   vim.g.colors_name = 'darkplus'
-
-  theme.set_highlights()
+  util.load(theme.highlights)
 end
 
 return M

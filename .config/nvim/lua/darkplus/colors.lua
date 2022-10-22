@@ -1,4 +1,4 @@
-local colors = {
+local M = {
   fg = "#D4D4D4",
   bg = "#1E1E1E",
   alt_fg = "#a4a4a4",
@@ -49,4 +49,4 @@ local colors = {
   ui_purple = "#B180D7",
 }
 
-return colors
+return M
