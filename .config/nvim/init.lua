@@ -88,13 +88,14 @@ else
   -----------------------------------------------------------------------------
   -- STANDARD
   -----------------------------------------------------------------------------
-  require "user.utils.globals"
-  require "user.settings"
-  require "user.keymaps"
-  require "user.colorscheme"
-  require "user.plugins"
-  require "user.autocmds"
-  require "user.watch"
-  require "user.aliases"
+  require("user.utils.globals")
+  require("user.settings")
+  require("user.keymaps")
+  require("user.colorscheme")
+  require("user.configs") -- configurations for plugins
+  require("user.autocmds")
+  require("user.aliases")
+  -- Load custom plugins
+  require("watch") -- custom plugins
   -- SERVERS: "user.plugins.lsp.lsp_installer"
 end

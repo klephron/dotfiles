@@ -1,4 +1,4 @@
-local load_wrapper = require("user.plugins.neorg.util").load_wrapper
+local load_wrapper = require("user.configs.neorg.util").load_wrapper
 
 local M = {}
 
@@ -15,7 +15,7 @@ end
 
 function M.setup()
   local kmps = require("user.keymaps").neorg
-  local lw = require("user.plugins.neorg.util").load_wrapper
+  local lw = require("user.configs.neorg.util").load_wrapper
 
   us.set_keynomap("n", kmps.gtd_capture.key, lw("Neorg gtd capture"), kmps:desc("gtd_capture"))
   us.set_keynomap("n", kmps.gtd_views.key, lw("Neorg gtd views"), kmps:desc("gtd_views"))

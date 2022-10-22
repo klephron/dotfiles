@@ -5,7 +5,7 @@ local fn = vim.fn
 
 _G.us = {
   prefix = {
-    plugins = "user.plugins"
+    plugins = "user.configs"
   }
 }
 

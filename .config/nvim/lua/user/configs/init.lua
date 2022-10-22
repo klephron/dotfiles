@@ -45,10 +45,8 @@ packer.startup({
 
 
     -- Highlighting/colorschemes
-    use {
-      { "lunarvim/darkplus.nvim" },
-      { "EdenEast/nightfox.nvim", },
-    }
+    use { "EdenEast/nightfox.nvim", }
+    
     use {
       "folke/todo-comments.nvim",
       config = block_reload(conf("todo-comments"))
@@ -395,7 +393,7 @@ end
 
 -- Reload plugins when plugins/*.lua is saved
 api.nvim_create_user_command("LocalPackerCompile", function()
-  us.reload("user.plugins", true)
+  us.reload("user.configs", true)
   packer.compile()
   utils.packer_notify("Compiled", vim.log.levels.INFO)
 end, { nargs = 0 })
@@ -403,7 +401,7 @@ end, { nargs = 0 })
 -- us.augroup("PackerSetupInit", {
 --   {
 --     event = "BufWritePost",
---     pattern = { "*/user/plugins/*.lua" },
+--     pattern = { "*/user.configs/*.lua" },
 --     description = "Packer reload",
 --     command = "LocalPackerCompile",
 --   }

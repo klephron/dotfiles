@@ -23,7 +23,7 @@ local dap_hint = [[
 M.hydras = {
   dap = function()
     local kmps = require("user.keymaps").dap_hydra
-    local fns = require("user.plugins.dap.funcs")
+    local fns = require("user.configs.dap.funcs")
 
     if which_key_ok then which_key.register({
         [kmps.body.key] = "hydra: Dap body",
