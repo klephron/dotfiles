@@ -479,11 +479,12 @@ theme.highlights = {
   TreesitterContext = { fg = 'NONE', bg = c.alt_bg },
 
   -- Hop
-  HopNextKey = { fg = '#4ae0ff', bg = 'NONE' },
-  HopNextKey1 = { fg = '#d44eed', bg = 'NONE' },
-  HopNextKey2 = { fg = '#b42ecd', bg = 'NONE' },
+  HopNextKey = { fg = '#ff007c', bg = 'NONE' },
+  HopNextKey1 = { fg = '#00dfff', bg = 'NONE' },
+  HopNextKey2 = { fg = '#2b8db3', bg = 'NONE' },
   HopUnmatched = { fg = c.gray, bg = 'NONE' },
-  HopPreview = { fg = '#c7ba7d', bg = 'NONE' },
+  HopCursor = { link = "Cursor" },
+  HopPreview = { link = "IncSearch" },
 
   -- Crates
   CratesNvimLoading = { fg = c.hint, bg = 'NONE' },

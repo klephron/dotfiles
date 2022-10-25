@@ -9,7 +9,7 @@ return function()
     jump_on_sole_occurence = true,
     multi_windows = false,
     current_line_only = false,
-    -- teasing = false,
+    create_hl_autocmd = false
   }
 
   us.set_keynomap({ "x", "n", "o" }, 's', function()
