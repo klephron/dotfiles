@@ -54,11 +54,6 @@ function M.setup()
     manage_folds = false,
     nerd_font = "auto",
 
-    on_attach = function(bufnr)
-      local kmps = require("user.keymaps").aerial
-      -- Set keymaps
-    end,
-
     open_automatic = false,
     close_on_select = false,
 

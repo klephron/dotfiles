@@ -87,7 +87,6 @@ function M.on_attach(client, bufnr)
   -- if has "codeLensProvider"
   us.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc("codelens"))
   -- if has "documentSymbolProvider"
-  require("aerial").on_attach(client, bufnr)
 
   -- Formattings
   -- if has "documentFormattingProvider"

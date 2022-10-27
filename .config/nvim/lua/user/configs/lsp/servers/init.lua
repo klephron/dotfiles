@@ -6,7 +6,8 @@ M.servers = {
   "bashls",
   "cmake",
   "clangd",
-  "jdtls"
+  "jdtls",
+  -- "sqlls",
 }
 
 -- M.mason_lspconfig = {
