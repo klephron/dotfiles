@@ -212,7 +212,6 @@ root.buttons(mytable.join(
 -- }}}
 
 -- {{{ Key bindings
-
 globalkeys = mytable.join(
 -- Destroy all notifications
 --awful.key({ "Control",           }, "space", function() naughty.destroy_all_notifications() end,
@@ -420,7 +419,7 @@ globalkeys = mytable.join(
     end,
     { description = "audio mute", group = "hotkeys" }),
 
-  awful.key({ }, "#122",
+  awful.key({}, "#122",
     function()
       os.execute("amixer set Master 1%-")
       beautiful.volume.update()
@@ -594,7 +593,12 @@ clientkeys = mytable.join(
       c.maximized_horizontal = not c.maximized_horizontal
       c:raise()
     end,
-    { description = "(un)maximize horizontally", group = "client" })
+    { description = "(un)maximize horizontally", group = "client" }),
+  -- Toggle titlebar
+  awful.key({ modkey, }, "i", function(c)
+    awful.titlebar.toggle(c)
+    -- naughty.notify({ text = c:titlebar_top(0).size })
+  end, { description = 'toggle title bar', group = 'client' })
 )
 
 -- Bind all key numbers to tags.
@@ -786,22 +790,17 @@ client.connect_signal("request::titlebars", function(c)
     },
     layout = wibox.layout.align.horizontal
   }
-  -- Only show titlebar when floating
-  if not c.floating then
-    awful.titlebar.hide(c)
-  end
+  -- Always hide titlebar
+  awful.titlebar.hide(c)
   -- c.floating = c.first_tag.layout == awful.layout.suit.floating
 end)
 
 -- Only show titlebar when floating
 client.connect_signal("property::floating", function(c)
-  if c.floating then
-    awful.titlebar.show(c)
-    c:relative_move(0, 0, 0, -16)
-  else
-    awful.titlebar.hide(c)
-    c:relative_move(0, 0, 0, 16)
-  end
+  -- awful.titlebar.show(c)
+  -- c:relative_move(0, 0, 0, -16)
+  -- awful.titlebar.hide(c)
+  -- c:relative_move(0, 0, 0, 16)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
