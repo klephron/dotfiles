@@ -14,6 +14,9 @@ else:
 ipath = os.path.join(cwd, ipath)
 opath = os.path.join(cwd, opath)
 
+print("Input:", ipath, sep="\n")
+print("Output:", opath, sep="\n")
+
 if ipath == opath:
     file = open(ipath, "r+")
     ifile = file

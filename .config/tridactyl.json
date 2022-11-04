@@ -6,11 +6,7 @@
     "DocLoad": {
       "^https://github.com/tridactyl/tridactyl/issues/new$": "issue"
     },
-    "DocStart": {
-      "leetcode.com": "mode normal",
-      "monkeytype.com": "mode ignore",
-      "play.typeracer.com": "mode ignore"
-    },
+    "DocStart": {},
     "FullscreenChange": {},
     "FullscreenEnter": {},
     "FullscreenLeft": {},
@@ -59,7 +55,6 @@
   "cursorpos": "end",
   "customthemes": {},
   "downloadsskiphistory": "false",
-  "editor": "gvim",
   "editorcmd": "auto",
   "escapehatchsidebarhack": "true",
   "exaliases": {
@@ -378,27 +373,9 @@
     "gg": "scrollto 0",
     "gh": "home",
     "gi": "focusinput -l",
-    "gn1": "tabopen https://github.com/tridactyl/tridactyl",
-    "gn2": "tabopen https://github.com/tridactyl/tridactyl",
-    "gn:": "tabopen https://grpc.io/docs/what-is-grpc/introduction/",
-    "gn<": "tabopen https://github.com/tridactyl/tridactyl",
-    "gnA": "tabopen https://vk.com/audios280164295?q=%D0%BE%D0%BE",
-    "gnj": "tabopen https://github.com/tridactyl/tridactyl",
-    "go1": "open https://github.com/tridactyl/tridactyl",
-    "go2": "open https://github.com/tridactyl/tridactyl",
-    "go:": "open https://grpc.io/docs/what-is-grpc/introduction/",
-    "go<": "open https://github.com/tridactyl/tridactyl",
-    "goA": "open https://vk.com/audios280164295?q=%D0%BE%D0%BE",
-    "goj": "open https://github.com/tridactyl/tridactyl",
     "gr": "reader",
     "gt": "tabnext_gt",
     "gu": "urlparent",
-    "gw1": "winopen https://github.com/tridactyl/tridactyl",
-    "gw2": "winopen https://github.com/tridactyl/tridactyl",
-    "gw:": "winopen https://grpc.io/docs/what-is-grpc/introduction/",
-    "gw<": "winopen https://github.com/tridactyl/tridactyl",
-    "gwA": "winopen https://vk.com/audios280164295?q=%D0%BE%D0%BE",
-    "gwj": "winopen https://github.com/tridactyl/tridactyl",
     "gx$": "tabclosealltoright",
     "gx0": "tabclosealltoleft",
     "h": "scrollpx -50",
@@ -473,9 +450,6 @@
         "f": "hint -c [tabindex]:not(.two)>div,a"
       }
     },
-    "https://codeforces.com/": {
-      "noiframe": "true"
-    },
     "www.google.com": {
       "followpagepatterns": {
         "next": "Next",
@@ -487,7 +461,7 @@
   "tabclosepinned": "true",
   "tabopencontaineraware": "false",
   "tabopenpos": "next",
-  "tabsort": "mru",
+  "tabsort": "default",
   "theme": "midnight",
   "ttspitch": 1,
   "ttsrate": 1,
@@ -495,7 +469,7 @@
   "ttsvolume": 1,
   "update": {
     "checkintervalsecs": 86400,
-    "lastchecktime": 1662141532533,
+    "lastchecktime": 1667550159225,
     "lastnaggedversion": "1.14.0",
     "nag": true,
     "nagwait": 7
