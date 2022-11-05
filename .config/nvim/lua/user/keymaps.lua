@@ -386,8 +386,8 @@ which_key.register({
 }, { mode = "n" })
 
 which_key.register({
-  name = "packer",
   p = {
+    name = "packer",
     ["s"] = { "<cmd>PackerSync<cr>", "packer: Sync" },
     ["c"] = { "<cmd>LocalPackerCompile<cr>", "packer: Compile" },
     ["i"] = { "<cmd>PackerStatus<cr>", "packer: Status info"}
@@ -395,8 +395,8 @@ which_key.register({
 }, { mode = "n", prefix = "<localleader>" })
 
 which_key.register({
-  name = "lsp",
   l = {
+    name = "lsp",
     ["r"] = { "<cmd>LspRestart<cr>", "lsp: Restart" },
     ["i"] = { "<cmd>LspInfo<cr>", "lsp: Info" },
     ["o"] = { "<cmd>LspLog<cr>", "lsp: Log"}
