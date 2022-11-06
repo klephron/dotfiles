@@ -249,10 +249,13 @@ us.set_keynomap("n", "<leader>tm", function()
   vim.cmd("tabmove " .. tostring(tonumber(fn.input("")) - 1))
 end, { silent = false, desc = "tab: Move current after N - 1" })
 
-us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "window: Close")
-us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "window: Close all")
+us.set_keynomap("n", "<leader>x", "<cmd>q<cr>", "window: Close")
+us.set_keynomap("n", "<leader>X", "<cmd>qall<cr>", "window: Close all")
 us.set_keynomap("n", "<leader>w", "<cmd>silent write<cr>", "nvim: Write")
 us.set_keynomap("n", "<leader>W", "<cmd>silent wall<cr>", "nvim: Write all")
+
+us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "nvim: Write")
+us.set_keynomap("n", "<leader>u", "<cmd>vertical split<cr>", "nvim: Write all")
 
 us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
 us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
@@ -345,9 +348,8 @@ which_key.register({
   E = { "<cmd>NvimTreeFocus<cr>", "nvim-tree: Focus" },
   r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
   t = { name = "tabs", },
-  Y = { "<cmd>RestoreSession<cr>", "session: Try restore" },
-  y = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
-  u = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
+  -- used: u y
+  I = { "<cmd>Trouble workspace_diagnostics<CR>", "trouble: Workspace diagnostics" },
   i = { "<cmd>Trouble document_diagnostics<CR>", "trouble: Document diagnostics" },
   p = { "<cmd>ProjectRoot<cr>", "project: Update root" },
   P = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
@@ -366,12 +368,14 @@ which_key.register({
     h = { "<cmd>UsToggleTermHtop<cr>", "toggleterm: Htop" },
   },
   l = { "<cmd>Telescope live_grep<cr>", "telescope: Search pattern" },
-  x = {
+  q = {
     name = "watch",
     n = { "<cmd>WatchCreate<cr>", "watch: Create" },
     d = { "<cmd>WatchDelete<cr>", "watch: Delete" },
   },
   c = { "<cmd>PickColor<cr>", "color: Pick color" },
+  V = { "<cmd>RestoreSession<cr>", "session: Try restore" },
+  v = { "<cmd>lua require('session-lens').search_session()<cr>", "telescope: Find session" },
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
   -- ', "
   [";"] = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
