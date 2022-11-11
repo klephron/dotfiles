@@ -1,16 +1,16 @@
 local fn = vim.fn
 local api = vim.api
 
-us.augroup("_vimtex", {
-  {
-    event = "User",
-    pattern = "VimtexEventInitPost",
-    -- command = "call vimtex#compiler#start()",
-    command = function()
-      vim.fn["vimtex#compiler#start"]()
-    end
-  }
-})
+-- us.augroup("_vimtex", {
+--   {
+--     event = "User",
+--     pattern = "VimtexEventInitPost",
+--     -- command = "call vimtex#compiler#start()",
+--     command = function()
+--       vim.fn["vimtex#compiler#start"]()
+--     end
+--   }
+-- })
 
 us.augroup("_text", {
   {
