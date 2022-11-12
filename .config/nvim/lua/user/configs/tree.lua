@@ -72,7 +72,7 @@ return function()
           { key = "<C-e>", action = "edit_in_place" },
           { key = "O", action = "edit_no_picker" },
           { key = { "<C-]>", "<2-RightMouse>" }, action = "cd" },
-          { key = "<C-t>", action = "tabnew" },
+          { key = "t", action = "tabnew" },
           { key = "<", action = "prev_sibling" },
           { key = ">", action = "next_sibling" },
           { key = "P", action = "parent_node" },
