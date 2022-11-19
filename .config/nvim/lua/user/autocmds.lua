@@ -91,9 +91,11 @@ us.augroup("_leave", {
     pattern = "*",
     command = function()
       if vim.bo.modifiable == true and vim.bo.readonly == false then
-        vim.cmd("silent! doautocmd BufWritePre")
-        vim.cmd("silent! write")
-        vim.cmd("doautocmd BufWritePost")
+        if vim.bo.modified == true then
+          vim.cmd("silent! doautocmd BufWritePre")
+          vim.cmd("silent! write")
+          vim.cmd("doautocmd BufWritePost")
+        end
       end
     end
   }
@@ -105,9 +107,11 @@ us.augroup("_focus_lost", {
     pattern = "*",
     command = function()
       if vim.bo.modifiable == true and vim.bo.readonly == false then
-        vim.cmd("doautocmd BufWritePre")
-        vim.cmd("silent! write")
-        vim.cmd("doautocmd BufWritePost")
+        if vim.bo.modified == true then
+          vim.cmd("doautocmd BufWritePre")
+          vim.cmd("silent! write")
+          vim.cmd("doautocmd BufWritePost")
+        end
       end
     end
   }

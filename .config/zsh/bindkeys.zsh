@@ -10,3 +10,4 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey '^k' autosuggest-accept
+bindkey '^e' end-of-line
