@@ -56,8 +56,10 @@ return function()
         show = {
           file = false,
           folder = false,
-        }
-      }
+          -- git = false
+        },
+        git_placement = "after",
+      },
     },
     view = {
       hide_root_folder = true,

@@ -84,6 +84,32 @@ colors:
     cyan:    '0x35434d'
     white:   '0xffffff'
 
+# Colors (Atom one light Theme)
+# colors:
+#   primary:
+#     background: '0xf8f8f8'
+#     foreground: '0x2a2b33'
+
+#   normal:
+#     black:   '0x000000'
+#     red:     '0xde3d35'
+#     green:   '0x3e953a'
+#     yellow:  '0xd2b67b'
+#     blue:    '0x2f5af3'
+#     magenta: '0xa00095'
+#     cyan:    '0x3e953a'
+#     white:   '0xbbbbbb'
+
+#   bright:
+#     black:   '0x000000'
+#     red:     '0xde3d35'
+#     green:   '0x3e953a'
+#     yellow:  '0xd2b67b'
+#     blue:    '0x2f5af3'
+#     magenta: '0xa00095'
+#     cyan:    '0x3e953a'
+#     white:   '0xffffff'
+
 key_bindings:
   - { key: H,   mods: Control|Shift, chars: "\x1b[72;6u"}
   - { key: J,   mods: Control|Shift, chars: "\x1b[74;6u"}

@@ -162,5 +162,5 @@ api.nvim_create_user_command("Pwd", function()
 end, { nargs = 0 })
 
 api. nvim_create_user_command("Fdir", function()
-  vim.cmd('echo expand("%:p:h")')
+  vim.cmd('echo expand("%")')
 end, {nargs = 0})
