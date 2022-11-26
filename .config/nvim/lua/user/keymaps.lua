@@ -94,30 +94,54 @@ M.lsp = KeymapDictionary:new({
   format = { "<leader>m", "Format file" },
 }, "lsp")
 
+M.dap_fn = KeymapDictionary:new({
+  step_over = { "<F1>", "Step over" },
+  step_into = { "<F2>", "Step into" },
+  step_out = { "<F3>", "Step out" },
+  step_back = { "<F5>", "Step back"},
+  run_to_cursor = { "<F4>", "Run to cursor", },
+
+  continue = {"<F8>", "Continue"},
+  run_last = { "<F7>", "Run last"},
+  terminate = {"<S-F7>", "Terminate"},
+
+  toggle_breakpoint = { "<F9>", "Toggle breakpoint" },
+  clear_breakpoints = { "<S-F9>", "Clear breakpoints" },
+
+  hover = { "<F6>", "Hover" }, -- show variable
+}, "dap-fn")
+
 M.dap = KeymapDictionary:new({
-  continue = { "<leader>dc", "Continue" },
-  run_last = { "<leader>dp", "Run last" },
-  process_launchjs = { "<leader>dl", "Process launchjs" },
-  terminate = { "<leader>dt", "Terminate debug session" },
-  disconnect = { "<leader>db", "Disconnect from debuggee and terminate adapter" },
-  -- close = { "<leader>dq", "Close" },
-  set_breakpoint_cond = { "<leader>de", "Set conditional break" },
-  set_breakpoint_log = { "<leader>dm", "Set log break" },
-  toggle_breakpoint = { "<leader>ds", "Toggle breakpoint" },
-  clear_breakpoints = { "<leader>dz", "Clear breakpoints" },
+  -- Main
   step_over = { "<leader>dn", "Step over" },
   step_into = { "<leader>di", "Step into" },
   step_out = { "<leader>do", "Step out" },
   step_back = { "<leader>dd", "Step back" },
-  -- pause = {"<leader>dp", "Pause"},
-  reverse_continue = { "<leader>dr", "Reverse continue" },
+  run_to_cursor = { "<leader>da", "Run to cursor" },
+
   up = { "<leader>d[", "Up" },
   down = { "<leader>d]", "Down" },
-  run_to_cursor = { "<leader>da", "Run to cursor" },
+
+  continue = { "<leader>dc", "Continue" },
+  run_last = { "<leader>dp", "Run last" },
+  terminate = { "<leader>dt", "Terminate debug session" },
+
+  set_breakpoint_cond = { "<leader>de", "Set conditional break" },
+  set_breakpoint_log = { "<leader>dm", "Set log break" },
+  toggle_breakpoint = { "<leader>ds", "Toggle breakpoint" },
+  clear_breakpoints = { "<leader>dz", "Clear breakpoints" },
+
+  hover = { "<leader>dh", "Hover" }, -- show variable
+  dapui_toggle = { "<leader>dy", "Toggle dapui" },
+
+  -- Optional
+  process_launchjs = { "<leader>dl", "Process launchjs" },
+  disconnect = { "<leader>db", "Disconnect from debuggee and terminate adapter" },
+  -- close = { "<leader>dq", "Close" },
+  -- pause = {"<leader>dp", "Pause"},
+  reverse_continue = { "<leader>dr", "Reverse continue" },
   repl_toggle = { "<leader>dg", "Toggle REPL" },
   -- repl_session = { "<leader>dx", "REPL session" },
-  hover = { "<leader>dh", "Hover" },
-  dapui_toggle = { "<leader>dy", "Toggle dapui" },
 }, "dap")
 
 M.dap_hydra = KeymapDictionary:new({
@@ -178,6 +202,7 @@ M.git = KeymapDictionary:new({
   prev_hunk = { "[g", "Go to previous hunk" },
   next_hunk = { "]g", "Go to next hunk" },
 }, "git")
+
 
 M.ctrl_i = KeymapDictionary:new({
   colorpicker = { "<c-c>", "color: Pick color in insert" },
@@ -394,7 +419,7 @@ which_key.register({
     name = "packer",
     ["s"] = { "<cmd>PackerSync<cr>", "packer: Sync" },
     ["c"] = { "<cmd>LocalPackerCompile<cr>", "packer: Compile" },
-    ["i"] = { "<cmd>PackerStatus<cr>", "packer: Status info"}
+    ["i"] = { "<cmd>PackerStatus<cr>", "packer: Status info" }
   }
 }, { mode = "n", prefix = "<localleader>" })
 
@@ -403,7 +428,7 @@ which_key.register({
     name = "lsp",
     ["r"] = { "<cmd>LspRestart<cr>", "lsp: Restart" },
     ["i"] = { "<cmd>LspInfo<cr>", "lsp: Info" },
-    ["o"] = { "<cmd>LspLog<cr>", "lsp: Log"}
+    ["o"] = { "<cmd>LspLog<cr>", "lsp: Log" }
   }
 }, { mode = "n", prefix = "<localleader>" })
 return M
