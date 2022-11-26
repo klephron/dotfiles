@@ -78,7 +78,11 @@ return function()
       modified = '[+]', -- Text to show when the file is modified.
       readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
       unnamed = '[No Name]', -- Text to show for unnamed buffers.
-    }
+    },
+    fmt = function()
+      local res = fn.fnamemodify(fn.expand('%:h'), ':t') .. '/' .. fn.expand('%:t')
+      return res == '/' and '' or res
+    end
   }
 
   local filetype = {
