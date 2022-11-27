@@ -19,7 +19,25 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys.firefox")
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+local switcher = require("awesome-switcher")
 -- }}}
+
+-- plugins
+switcher.settings.preview_box = true -- display preview-box
+switcher.settings.preview_box_bg = "#dddddd88" -- background color
+switcher.settings.preview_box_border = "#222222aa" -- border-color
+switcher.settings.preview_box_fps = 30 -- refresh framerate
+switcher.settings.preview_box_delay = 300 -- delay in ms
+switcher.settings.preview_box_title_font = { "sans", "italic", "normal" } -- the font for cairo
+switcher.settings.preview_box_title_font_size_factor = 0.8 -- the font sizing factor
+switcher.settings.preview_box_title_color = { 0, 0, 0, 1 } -- the font color
+
+switcher.settings.client_opacity = false -- opacity for unselected clients
+switcher.settings.client_opacity_value = 0.5 -- alpha-value for any client
+switcher.settings.client_opacity_value_in_focus = 0.5 -- alpha-value for the client currently in focus
+switcher.settings.client_opacity_value_selected = 1 -- alpha-value for the selected client
+
+switcher.settings.cycle_raise_client = true -- raise clients on cycle
 
 
 -- {{{ Error handling
@@ -337,6 +355,16 @@ globalkeys = mytable.join(
     end,
     { description = "cycle with previous", group = "client" }),
 
+  awful.key({ "Mod1", }, "Tab",
+    function()
+      switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
+    end),
+
+  awful.key({ "Mod1", "Shift" }, "Tab",
+    function()
+      switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+    end),
+
   -- Show/hide wibox
   awful.key({ modkey }, "b", function()
     for s in screen do
@@ -390,6 +418,7 @@ globalkeys = mytable.join(
     { description = "select next", group = "layout" }),
   awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
     { description = "select previous", group = "layout" }),
+
 
   awful.key({ modkey, "Control" }, "n", function()
     local c = awful.client.restore()

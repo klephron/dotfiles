@@ -95,15 +95,15 @@ M.lsp = KeymapDictionary:new({
 }, "lsp")
 
 M.dap_fn = KeymapDictionary:new({
-  step_over = { "<F1>", "Step over" },
-  step_into = { "<F2>", "Step into" },
+  step_into = { "<F1>", "Step into" },
+  step_over = { "<F2>", "Step over" },
   step_out = { "<F3>", "Step out" },
-  step_back = { "<F5>", "Step back"},
+  step_back = { "<F5>", "Step back" },
   run_to_cursor = { "<F4>", "Run to cursor", },
 
-  continue = {"<F8>", "Continue"},
-  run_last = { "<F7>", "Run last"},
-  terminate = {"<S-F7>", "Terminate"},
+  continue = { "<F8>", "Continue" },
+  run_last = { "<F7>", "Run last" },
+  terminate = { "<S-F7>", "Terminate" },
 
   toggle_breakpoint = { "<F9>", "Toggle breakpoint" },
   clear_breakpoints = { "<S-F9>", "Clear breakpoints" },
