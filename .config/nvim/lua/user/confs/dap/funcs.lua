@@ -42,7 +42,7 @@ local function process_launchjs(opts)
     end
   end
 
-  local ttft = require('user.configs.dap.langs').type_to_filetype
+  local ttft = require('user.confs.dap.langs').type_to_filetype
   local ok, result = pcall(require("dap.ext.vscode").load_launchjs, path, ttft)
   if ok then
     dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
@@ -68,10 +68,12 @@ function M.process_launchjs_ask()
 end
 
 function M.terminate()
+  dapui.close({})
   return dap.terminate()
 end
 
 function M.disconnect()
+  dapui.close({})
   return dap.disconnect()
 end
 
@@ -130,7 +132,7 @@ end
 function M.repl_toggle()
   -- local height = vim.fn.winwidth(vim.fn.win_getid())
   local h = vim.api.nvim_win_get_height(0)
-  return dap.repl.toggle({height = math.floor(h * 0.3)}, "belowright split")
+  return dap.repl.toggle({ height = math.floor(h * 0.3) }, "belowright split")
 end
 
 function M.hover()

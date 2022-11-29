@@ -3,7 +3,7 @@ local M = {}
 function M.setup()
   local kmps = require("user.keymaps").dap
   local kmps_fn = require("user.keymaps").dap_fn
-  local funcs = require("user.configs.dap.funcs")
+  local funcs = require("user.confs.dap.funcs")
 
   us.set_keynomap("n", kmps.continue.key, funcs.continue, kmps:desc("continue"))
   us.set_keynomap("n", kmps.run_last.key, funcs.run_last, kmps:desc("run_last"))
@@ -51,7 +51,7 @@ function M.setup()
   -- E = { ":lua require('dap.ui.widgets').()<cr>", ":lua require('dap.ui.widgets').hover()<cr>" },
   -- scopes, frames, expression, threads
 
-  local hydra_ok, hydra = safe_require("user.configs.hydra")
+  local hydra_ok, hydra = safe_require("user.confs.hydra")
   if hydra_ok then
     hydra.hydras.dap()
   end
@@ -62,7 +62,7 @@ function M.config()
   vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
   -- vim.fn.sign_define('DapStopped', {text='→', texthl='DapStopped', linehl=nil, numhl=''})
   --
-  require("user.configs.dap.langs")
+  require("user.confs.dap.langs")
   require('telescope').load_extension('dap')
 end
 

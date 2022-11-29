@@ -3,7 +3,9 @@ return function()
   dressing.setup({
     input = {
       insert_only = false,
-      winblend = 5,
+      win_options = {
+        winblend = 5,
+      },
       mappings = {},
     },
   })

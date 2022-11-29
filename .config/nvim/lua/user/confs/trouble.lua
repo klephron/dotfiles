@@ -44,7 +44,7 @@ return function()
   vim.cmd [[
     augroup _trouble
       au!
-      au FileType Trouble nnoremap <silent> <buffer> q <cmd>b #<cr><cmd>TroubleClose<cr>
+      au FileType Trouble nnoremap <buffer> q <cmd>silent! b #<cr><cmd>silent! TroubleClose<cr>
     augroup end
   ]]
 

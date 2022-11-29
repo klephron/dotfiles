@@ -1,5 +1,3 @@
--- {{{ Libraries
-
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -346,8 +344,7 @@ local globalkeys = gears.table.join(
       switcher.switch(-1, "Mod4", "Super_L", "Shift", "Tab")
     end),
 
-
-  -- Layout manipulation
+  -- Swap clients
   awful.key({ modkey, "Control" }, "l", function() awful.client.swap.byidx(1) end,
     { description = "swap with next client by index", group = "client" }),
   awful.key({ modkey, "Control" }, "h", function() awful.client.swap.byidx(-1) end,
@@ -361,6 +358,13 @@ local globalkeys = gears.table.join(
       c:emit_signal("request::activate", "key.unminimize", { raise = true })
     end
   end, { description = "restore minimized", group = "client" }), -- but actually it is not client
+
+
+  -- Layout manipulation
+  awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
+    { description = "next layout", group = "layout" }),
+  awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
+    { description = "previous layout", group = "layout" }),
 
 
   -- Screen
@@ -447,6 +451,7 @@ local globalkeys = gears.table.join(
     { description = "dolphin", group = "launcher" })
 )
 
+-- Client
 local clientkeys = gears.table.join(
 
   awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,

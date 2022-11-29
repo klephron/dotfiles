@@ -172,7 +172,8 @@ vim.g.maplocalleader = ","
 -- Folding
 -----------------------------------------------------------------------------//
 -- vim.opt.foldlevelstart = 2
-vim.opt.foldmethod = 'expr'
+vim.opt.foldmethod = 'marker'
+vim.opt.foldlevel = 0
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
 -----------------------------------------------------------------------------//

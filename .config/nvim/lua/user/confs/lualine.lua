@@ -80,8 +80,13 @@ return function()
       unnamed = '[No Name]', -- Text to show for unnamed buffers.
     },
     fmt = function()
-      local res = fn.fnamemodify(fn.expand('%:h'), ':t') .. '/' .. fn.expand('%:t')
-      return res == '/' and '' or res
+      local par_dir = fn.fnamemodify(fn.expand('%:h'), ':t')
+      local fname = fn.expand('%:t')
+      if par_dir == "" then
+        return fname
+      else
+        return par_dir .. '/' .. fname
+      end
     end
   }
 

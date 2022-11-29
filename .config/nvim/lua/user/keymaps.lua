@@ -98,12 +98,12 @@ M.dap_fn = KeymapDictionary:new({
   step_into = { "<F1>", "Step into" },
   step_over = { "<F2>", "Step over" },
   step_out = { "<F3>", "Step out" },
-  step_back = { "<F5>", "Step back" },
+  step_back = { "<F5>", "Step back"},
   run_to_cursor = { "<F4>", "Run to cursor", },
 
-  continue = { "<F8>", "Continue" },
-  run_last = { "<F7>", "Run last" },
-  terminate = { "<S-F7>", "Terminate" },
+  continue = {"<F8>", "Continue"},
+  run_last = { "<F7>", "Run last"},
+  terminate = {"<S-F7>", "Terminate"},
 
   toggle_breakpoint = { "<F9>", "Toggle breakpoint" },
   clear_breakpoints = { "<S-F9>", "Clear breakpoints" },
@@ -286,7 +286,8 @@ us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
 us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
 us.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
 
-us.set_keynomap("n", "<leader>f", "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current")
+-- us.set_keynomap("n", "<leader>f", "<cmd>lua us.delete_current_buffer()<cr>", "buffer: Delete current")
+us.set_keynomap("n", "<leader>f", "<cmd>Bdelete<cr>", "buffer: Delete current")
 us.set_keynomap("n", "<leader>'", "<cmd>marks<cr>", "mark: Show")
 us.set_keynomap("n", '<leader>"', "<cmd>reg<cr>", "register: Show")
 

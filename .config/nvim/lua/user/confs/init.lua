@@ -43,10 +43,13 @@ packer.startup({
     -- Caching
     use { "lewis6991/impatient.nvim" }
 
+    -- Buffers
+    use { "famiu/bufdelete.nvim" }
+
 
     -- Highlighting/colorschemes
     use { "EdenEast/nightfox.nvim", }
-    
+
     use {
       "folke/todo-comments.nvim",
       config = block_reload(conf("todo-comments"))
@@ -107,6 +110,7 @@ packer.startup({
     use {
       'j-hui/fidget.nvim',
       config = conf("fidget"),
+      disable = true,
     }
     use {
       "akinsho/toggleterm.nvim",
@@ -247,6 +251,7 @@ packer.startup({
     use {
       'rmagatti/auto-session',
       config = conf("auto-session"),
+      disable = false,
       requires = {
         {
           'rmagatti/session-lens',
@@ -393,7 +398,7 @@ end
 
 -- Reload plugins when plugins/*.lua is saved
 api.nvim_create_user_command("LocalPackerCompile", function()
-  us.reload("user.configs", true)
+  us.reload("user.confs", true)
   packer.compile()
   utils.packer_notify("Compiled", vim.log.levels.INFO)
 end, { nargs = 0 })
@@ -401,7 +406,7 @@ end, { nargs = 0 })
 -- us.augroup("PackerSetupInit", {
 --   {
 --     event = "BufWritePost",
---     pattern = { "*/user.configs/*.lua" },
+--     pattern = { "*/user.confs/*.lua" },
 --     description = "Packer reload",
 --     command = "LocalPackerCompile",
 --   }
