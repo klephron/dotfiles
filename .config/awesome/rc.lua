@@ -23,14 +23,14 @@ local switcher = require("awesome-switcher")
 -- }}}
 
 -- plugins
-switcher.settings.preview_box = true -- display preview-box
+switcher.settings.preview_box = false -- display preview-box
 switcher.settings.preview_box_bg = "#dddddd88" -- background color
 switcher.settings.preview_box_border = "#222222aa" -- border-color
 switcher.settings.preview_box_fps = 30 -- refresh framerate
-switcher.settings.preview_box_delay = 300 -- delay in ms
+switcher.settings.preview_box_delay = 20000000 -- delay in ms
 switcher.settings.preview_box_title_font = { "sans", "italic", "normal" } -- the font for cairo
 switcher.settings.preview_box_title_font_size_factor = 0.8 -- the font sizing factor
-switcher.settings.preview_box_title_color = { 0, 0, 0, 1 } -- the font color
+switcher.settings.preview_box_title_color = { 0, 0, 0, 0 } -- the font color
 
 switcher.settings.client_opacity = false -- opacity for unselected clients
 switcher.settings.client_opacity_value = 0.5 -- alpha-value for any client
@@ -357,12 +357,12 @@ globalkeys = mytable.join(
 
   awful.key({ "Mod1", }, "Tab",
     function()
-      switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
+      switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab", "Alt_R")
     end),
 
   awful.key({ "Mod1", "Shift" }, "Tab",
     function()
-      switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+      switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab", "Alt_R")
     end),
 
   -- Show/hide wibox
