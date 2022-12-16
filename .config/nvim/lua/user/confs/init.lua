@@ -50,10 +50,10 @@ packer.startup({
     -- Highlighting/colorschemes
     use { "EdenEast/nightfox.nvim", }
 
-    use {
-      "folke/todo-comments.nvim",
-      config = block_reload(conf("todo-comments"))
-    }
+   use {
+     "folke/todo-comments.nvim",
+     config = conf("todo-comments")
+   }
     use {
       'norcalli/nvim-colorizer.lua',
       config = conf("colorizer"),
@@ -204,10 +204,10 @@ packer.startup({
       setup = conf("dap").setup,
       config = conf("dap").config,
       requires = {
-        {
-          'rcarriga/nvim-dap-ui',
-          conf = block_reload(conf("dap.dapui"))
-        },
+       {
+         'rcarriga/nvim-dap-ui',
+         conf = conf("dap.dapui")
+       },
         {
           'theHamsta/nvim-dap-virtual-text',
           conf = conf("dap.virtual-text")

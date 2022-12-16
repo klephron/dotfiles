@@ -11,13 +11,15 @@ return function()
     '%.png',
     '%.otf',
     '%.ttf',
-    '.git/',
-    '.idea/',
+    '^.git/',
+    '^node_modules/',
+    '^site-packages/',
+    '^.yarn/',
   }
 
   telescope.setup {
     defaults = {
-      prompt_prefix = icons.Telescope .. "",
+      prompt_prefix = icons.Telescope,
       path_display = {
         -- shorten = { len = 1, exclude = { 3, -1 } },
         -- "hidden",
@@ -76,7 +78,9 @@ return function()
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
 
-          ["<C-c>"] = actions.close,
+          ["<C-o>"] = function() vim.cmd.stopinsert() end,
+          ["<esc>"] = actions.close,
+          -- ["<C-]>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
 
@@ -101,40 +105,6 @@ return function()
         },
         n = {
           ["<esc>"] = { actions.close, type = "action", opts = { silent = true, nowait = true } },
-          -- ["<esc>"] = {
-          --   "<cmd>lua require('telescope.actions').close(vim.api.nvim_get_current_buf())<cr>",
-          --   type = "command", opts = { silent = true, nowait = true }
-          -- },
-          ["<C-c>"] = actions.close,
-
-          ["<CR>"] = actions.select_default,
-
-          ["<C-s>"] = actions.select_horizontal,
-          ["<A-s>"] = actions.select_horizontal,
-          ["<C-v>"] = actions.select_vertical,
-          ["<A-v>"] = actions.select_vertical,
-
-          ["<C-t>"] = actions.select_tab,
-          ["<A-t>"] = actions.select_tab,
-
-          ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-          ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-
-          ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-          ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-
-          ["j"] = actions.move_selection_next,
-          ["k"] = actions.move_selection_previous,
-          ["H"] = actions.move_to_top,
-          ["M"] = actions.move_to_middle,
-          ["L"] = actions.move_to_bottom,
-
-          ["gg"] = actions.move_to_top,
-          ["G"] = actions.move_to_bottom,
-
-          ["<C-u>"] = actions.preview_scrolling_up,
-          ["<C-d>"] = actions.preview_scrolling_down,
-
           ["?"] = actions.which_key,
         }
       }
@@ -142,12 +112,15 @@ return function()
     pickers = {
       find_files = {
         hidden = true,
-        no_ignore = false,
+        -- no_ignore = false,
+      },
+      oldfiles = {
+        hidden = true,
       },
       live_grep = {
         -- manual usage:
         -- :lua require('telescope.builtin').live_grep({additional_args = function() return {"--no-ignore"} end })
-      }
+      },
     },
     extensions = {
       aerial = {

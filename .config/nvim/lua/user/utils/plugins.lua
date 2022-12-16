@@ -29,6 +29,7 @@ function M.conf(name)
   return require(fmt("%s.%s", us.prefix.plugins, name))
 end
 
+-- function breaks packer, be careful
 function M.block_reload(func)
   if vim.g.packer_compiled_loaded then
     return
