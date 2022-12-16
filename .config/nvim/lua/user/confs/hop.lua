@@ -1,7 +1,6 @@
 return function()
   local hop = require("hop")
 
-  -- ISSUE: 't,T' with unicode characters: https://github.com/phaazon/hop.nvim/issues/30701
   hop.setup {
     keys = 'etovxqpdygfbzcisuran',
     quit_key = "<Esc>",
