@@ -37,7 +37,6 @@ local function process_launchjs(opts)
         return false
       end
     else
-      dap_notify("Path not resolved.\nReturning...", vim.log.levels.ERROR)
       return false
     end
   end
@@ -54,7 +53,7 @@ end
 
 function M.continue()
   if is_launchjs_ok == nil then
-    is_launchjs_ok = process_launchjs()
+    is_launchjs_ok = process_launchjs({ ask = false })
   end
   return dap.continue()
 end

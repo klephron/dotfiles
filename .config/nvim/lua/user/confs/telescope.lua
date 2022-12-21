@@ -78,7 +78,7 @@ return function()
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
 
-          ["<C-o>"] = function() vim.cmd.stopinsert() end,
+          ["<C-c>"] = function() vim.cmd.stopinsert() end,
           ["<esc>"] = actions.close,
           -- ["<C-]>"] = actions.close,
 

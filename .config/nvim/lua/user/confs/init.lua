@@ -204,10 +204,10 @@ packer.startup({
       setup = conf("dap").setup,
       config = conf("dap").config,
       requires = {
-       {
-         'rcarriga/nvim-dap-ui',
-         conf = conf("dap.dapui")
-       },
+        {
+          'rcarriga/nvim-dap-ui',
+          conf = conf("dap.dapui")
+        },
         {
           'theHamsta/nvim-dap-virtual-text',
           conf = conf("dap.virtual-text")
