@@ -22,18 +22,6 @@ local packer = require("packer")
 -- NOTE: packer cannot use local variables because they are upvalues
 packer.startup({
   function(use)
-
-    -- Fixes
-    -- NOTE: remove when https://github.com/neovim/neovim/issues/12587 will be resolved
-    use {
-      'antoinemadec/FixCursorHold.nvim',
-      config = function()
-        vim.cmd [[
-          let g:cursorhold_updatetime = 500
-        ]]
-      end
-    }
-
     -- Utilities
     use { 'wbthomason/packer.nvim', opt = true }
     use { 'nvim-lua/plenary.nvim' } -- useful functions
