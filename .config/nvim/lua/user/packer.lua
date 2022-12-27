@@ -1,5 +1,4 @@
 local utils = require("user.utils.plugins")
-local conf = utils.conf
 local block_reload = utils.block_reload
 local fn = vim.fn
 local api = vim.api
@@ -40,11 +39,11 @@ packer.startup({
 
    use {
      "folke/todo-comments.nvim",
-     config = conf("todo-comments")
+     config = plug_require("todo-comments")
    }
     use {
       'norcalli/nvim-colorizer.lua',
-      config = conf("colorizer"),
+      config = plug_require("colorizer"),
     }
     use {
       'itchyny/vim-highlighturl',
@@ -57,7 +56,7 @@ packer.startup({
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
-      config = conf("treesitter"),
+      config = plug_require("treesitter"),
       disable = false,
       run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
       requires = {
@@ -69,63 +68,63 @@ packer.startup({
     -- UI
     use {
       "goolord/alpha-nvim",
-      config = conf("alpha"),
+      config = plug_require("alpha"),
     }
     use {
       'kyazdani42/nvim-tree.lua',
-      config = conf("tree"),
+      config = plug_require("tree"),
     }
     use {
       'akinsho/bufferline.nvim',
-      config = conf("bufferline"),
+      config = plug_require("bufferline"),
     }
     use {
       'nvim-lualine/lualine.nvim',
-      config = conf("lualine"),
+      config = plug_require("lualine"),
     }
     use {
       'rcarriga/nvim-notify',
-      config = conf("notify"),
+      config = plug_require("notify"),
     }
     use {
       "folke/trouble.nvim",
-      config = conf("trouble"),
+      config = plug_require("trouble"),
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
-      config = conf("indent-blankline"),
+      config = plug_require("indent-blankline"),
     }
     use {
       'j-hui/fidget.nvim',
-      config = conf("fidget"),
+      config = plug_require("fidget"),
       disable = true,
     }
     use {
       "akinsho/toggleterm.nvim",
-      config = conf("toggleterm"),
+      config = plug_require("toggleterm"),
     }
     use {
       'kevinhwang91/nvim-bqf',
       ft = "qf",
-      config = conf("bqf"),
+      config = plug_require("bqf"),
     }
     use {
       'stevearc/dressing.nvim',
-      config = conf("dressing")
+      config = plug_require("dressing")
     }
     use {
       'ziontee113/color-picker.nvim',
-      config = conf("colorpicker")
+      config = plug_require("colorpicker")
     }
 
     -- -- Telescope
     use {
       'nvim-telescope/telescope.nvim',
-      config = conf("telescope"),
+      config = plug_require("telescope"),
       requires = {
         {
           "ahmedkhalf/project.nvim",
-          config = conf("project"),
+          config = plug_require("project"),
         }
       },
     }
@@ -133,20 +132,20 @@ packer.startup({
     -- -- Git
     use {
       'lewis6991/gitsigns.nvim',
-      config = conf("gitsigns"),
+      config = plug_require("gitsigns"),
     }
     use {
       'sindrets/diffview.nvim',
       module = 'diffview',
       cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
-      config = conf("diffview").config,
-      setup = conf("diffview").setup,
+      config = plug_require("diffview").config,
+      setup = plug_require("diffview").setup,
     }
 
     -- -- Installer for lsp, dap, linters, formatters
     use {
       "williamboman/mason.nvim",
-      config = conf("mason"),
+      config = plug_require("mason"),
       requires = {
         "williamboman/mason-lspconfig.nvim",
       }
@@ -154,30 +153,30 @@ packer.startup({
 
     --LSP
     use { 'neovim/nvim-lspconfig',
-      config = conf("lsp"),
+      config = plug_require("lsp"),
       requires = {
         {
           'jose-elias-alvarez/null-ls.nvim',
-          config = conf("lsp.null-ls").setup,
+          config = plug_require("lsp.null-ls").setup,
         },
         {
           'ray-x/lsp_signature.nvim',
-          config = conf("lsp.lsp_signature").setup,
+          config = plug_require("lsp.lsp_signature").setup,
         },
         {
           'stevearc/aerial.nvim',
           -- cmd = { "AerialToggle", "AerialToggle!" }, # used in lualine
-          config = conf("lsp.aerial").setup,
+          config = plug_require("lsp.aerial").setup,
         },
         {
           'kosayoda/nvim-lightbulb',
           disable = true,
-          config = conf("lsp.lightbulb").setup,
+          config = plug_require("lsp.lightbulb").setup,
         },
         {
           "glepnir/lspsaga.nvim",
           branch = "main",
-          config = conf("lsp.lspsaga"),
+          config = plug_require("lsp.lspsaga"),
         },
         {
           'folke/neodev.nvim',
@@ -189,16 +188,16 @@ packer.startup({
     -- Debugging
     use {
       'mfussenegger/nvim-dap',
-      setup = conf("dap").setup,
-      config = conf("dap").config,
+      setup = plug_require("dap").setup,
+      config = plug_require("dap").config,
       requires = {
         {
           'rcarriga/nvim-dap-ui',
-          conf = conf("dap.dapui")
+          conf = plug_require("dap.dapui")
         },
         {
           'theHamsta/nvim-dap-virtual-text',
-          conf = conf("dap.virtual-text")
+          conf = plug_require("dap.virtual-text")
         },
         { 'nvim-telescope/telescope-dap.nvim' },
         -- languages
@@ -211,13 +210,13 @@ packer.startup({
     use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
     use {
       "L3MON4D3/LuaSnip",
-      config = conf("luasnip").config,
+      config = plug_require("luasnip").config,
     }
 
     -- Cmp
     use {
       "hrsh7th/nvim-cmp", -- The completion plugin
-      config = conf("cmp"),
+      config = plug_require("cmp"),
       requires = {
         { "hrsh7th/cmp-buffer" }, -- buffer completions
         { "hrsh7th/cmp-path" }, -- path completions
@@ -233,17 +232,17 @@ packer.startup({
     -- select from {possession,auto-session}
     use {
       'jedrzejboczar/possession.nvim',
-      config = conf("possession"),
+      config = plug_require("possession"),
       disable = true,
     }
     use {
       'rmagatti/auto-session',
-      config = conf("auto-session"),
+      config = plug_require("auto-session"),
       disable = false,
       requires = {
         {
           'rmagatti/session-lens',
-          config = conf("session-lens"),
+          config = plug_require("session-lens"),
         },
       }
     }
@@ -251,7 +250,7 @@ packer.startup({
     -- Integrations
     use { -- Discord
       'andweeb/presence.nvim',
-      config = conf("presence"),
+      config = plug_require("presence"),
     }
     use { -- for Firefox
       'glacambre/firenvim',
@@ -264,15 +263,15 @@ packer.startup({
     use {
       'windwp/nvim-autopairs',
       disable = false,
-      config = conf("autopairs"),
+      config = plug_require("autopairs"),
     }
     use {
       "numToStr/Comment.nvim",
-      config = conf("comment"),
+      config = plug_require("comment"),
     }
     use {
       'folke/which-key.nvim',
-      config = conf("which-key")
+      config = plug_require("which-key")
     }
     use {
       'phaazon/hop.nvim',
@@ -283,7 +282,7 @@ packer.startup({
         { "n", "t" }, { "x", "t" }, { "o", "t" },
         { "n", "T" }, { "x", "T" }, { "o", "T" },
       },
-      config = conf("hop")
+      config = plug_require("hop")
     }
     use {
       'mfussenegger/nvim-treehopper',
@@ -295,7 +294,7 @@ packer.startup({
     use {
       "kylechui/nvim-surround",
       tag = "*",
-      config = conf("surround"),
+      config = plug_require("surround"),
     }
     use { 'anuvyklack/hydra.nvim' } -- wonderful plugin for submodes
     use {
@@ -314,7 +313,7 @@ packer.startup({
       'lukas-reineke/headlines.nvim',
       ft = { "markdown", "org", "norg" },
       disable = true, -- bad performance on big files
-      config = conf("headlines"),
+      config = plug_require("headlines"),
     }
     use {
       "iamcco/markdown-preview.nvim",
@@ -326,8 +325,8 @@ packer.startup({
     }
     use {
       'nvim-neorg/neorg',
-      config = conf("neorg").config,
-      setup = conf("neorg").setup,
+      config = plug_require("neorg").config,
+      setup = plug_require("neorg").setup,
       cmd = { "NeorgStart" },
       module = "neorg",
       -- tag = '0.0.12',
@@ -386,7 +385,7 @@ end
 
 -- Reload plugins when plugins/*.lua is saved
 api.nvim_create_user_command("LocalPackerCompile", function()
-  us.reload("user.confs", true)
+  us.reload("user.plugins", true)
   packer.compile()
   utils.packer_notify("Compiled", vim.log.levels.INFO)
 end, { nargs = 0 })
@@ -394,7 +393,7 @@ end, { nargs = 0 })
 -- us.augroup("PackerSetupInit", {
 --   {
 --     event = "BufWritePost",
---     pattern = { "*/user.confs/*.lua" },
+--     pattern = { "*/user.plugins/*.lua" },
 --     description = "Packer reload",
 --     command = "LocalPackerCompile",
 --   }

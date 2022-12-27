@@ -7,7 +7,7 @@ return function()
         on_attach = on_attach,
         capabilities = capabilities,
       }
-      local ok, custom_opts = pcall(require, "user.confs.lsp.servers." .. server)
+      local ok, custom_opts = pcall(plug_require, "lsp.servers." .. server)
       if ok then
         opts = vim.tbl_deep_extend("force", opts, custom_opts)
         -- opts = custom_opts
@@ -19,10 +19,10 @@ return function()
 
   local lspconfig = require("lspconfig")
 
-  local handlers = require("user.confs.lsp.handlers")
+  local handlers = plug_require("lsp.handlers")
   handlers.setup()
 
-  local servers = require("user.confs.lsp.servers").servers
+  local servers = plug_require("lsp.servers").servers
 
   setup_servers(lspconfig, servers, handlers.on_attach, handlers.capabilities)
 end

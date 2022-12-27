@@ -14,7 +14,7 @@ return function()
 
 
   lspinstaller.setup({
-    ensure_installed = require("user.confs.lsp.servers").servers,
+    ensure_installed = plug_require("lsp.servers").servers,
     automatic_installation = false,
   })
 

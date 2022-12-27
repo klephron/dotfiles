@@ -92,7 +92,7 @@ else
   require("user.settings")
   require("user.keymaps")
   require("user.colorscheme")
-  require("user.confs") -- configurations for plugins
+  require("user.packer") -- configurations for plugins
   require("user.autocmds")
   require("user.aliases")
   -- Load custom plugins

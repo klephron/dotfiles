@@ -5,10 +5,14 @@ local fn = vim.fn
 
 _G.us = {
   prefix = {
-    plugins = "user.confs"
+    plugins = "user.plugins"
   }
 }
 
+
+function _G.plug_require(name)
+  return require(fmt("%s.%s", us.prefix.plugins, name))
+end
 
 function _G.safe_require(module, opts)
   opts = opts or { silent = false }

@@ -41,7 +41,7 @@ local function process_launchjs(opts)
     end
   end
 
-  local ttft = require('user.confs.dap.langs').type_to_filetype
+  local ttft = plug_require('dap.langs').type_to_filetype
   local ok, result = pcall(require("dap.ext.vscode").load_launchjs, path, ttft)
   if ok then
     dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
