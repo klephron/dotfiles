@@ -47,7 +47,7 @@ vim.opt.formatoptions = {
 -----------------------------------------------------------------------------//
 -- Timings
 -----------------------------------------------------------------------------//
-vim.opt.updatetime = 4000
+vim.opt.updatetime = 1000
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 vim.opt.ttimeoutlen = 50

@@ -2,7 +2,7 @@ local M = {}
 
 M.servers = {
   "sumneko_lua",
-  "pyright",
+-- "pyright",
   "bashls",
   "cmake",
   "clangd",

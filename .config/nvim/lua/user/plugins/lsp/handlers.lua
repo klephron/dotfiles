@@ -46,7 +46,7 @@ local function has_provider(client, provider)
   return capabilities[provider] ~= nil
 end
 
-function M.on_attach(client, bufnr)
+function M.attach_keymaps(client, bufnr)
   local kmps = require("user.keymaps").lsp
   local lspsaga_ok, _ = pcall(require, "lspsaga")
 
@@ -81,7 +81,6 @@ function M.on_attach(client, bufnr)
   -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
   -- if has "signatureHelpProvider"
   us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc("signature_help_n"))
-  require("lsp_signature").on_attach()
   -- if has "typeDefinitionProvider"
   us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
   -- if has "codeLensProvider"
@@ -117,26 +116,26 @@ function M.on_attach(client, bufnr)
     us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
       with_desc("goto_prev"))
   end
-
-  -- OTHER PROVIDERS:
-  -- workspaceSymbolProvider
-  -- documentHighlightProvider - when hover -> highlight references
-  -- documentRangeFormattingProvider
-  -- completionProvider
-  -- documentLinkProvider
-  -- colorProvider
-  -- documentOnTypeFormattingProvider
-  -- foldingRangeProvider
-  -- executeCommandProvider
-  -- selectionRangeProvider
 end
 
--- Capabilities
-local status_ok, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
-if not status_ok then
-  return
+function M.attach_highlights(client, bufnr)
+  if has_provider(client, "documentHighlightProvider") then
+    us.augroup("_lsp_document_highlight", {
+      {
+        event = "CursorHold",
+        command = vim.lsp.buf.document_highlight,
+        buffer = bufnr,
+        description = "Document Highlight"
+      },
+      {
+        event = "CursorMoved",
+        command = vim.lsp.buf.clear_references,
+        buffer = bufnr,
+        description = "Clear All the References",
+      }
+    })
+  end
 end
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
 
 return M

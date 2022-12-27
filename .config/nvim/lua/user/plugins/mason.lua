@@ -2,6 +2,12 @@ return function()
   local mason = require("mason")
   local lspinstaller = require("mason-lspconfig")
 
+  local lspservers = plug_require("lsp.servers").servers
+
+  local servers = vim.tbl_extend("keep", lspservers, {
+    "pylint",
+  })
+
   mason.setup({
     ui = {
       icons = {
@@ -14,7 +20,7 @@ return function()
 
 
   lspinstaller.setup({
-    ensure_installed = plug_require("lsp.servers").servers,
+    ensure_installed = servers,
     automatic_installation = false,
   })
 

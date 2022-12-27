@@ -157,7 +157,6 @@ packer.startup({
       requires = {
         {
           'jose-elias-alvarez/null-ls.nvim',
-          config = plug_require("lsp.null-ls").setup,
         },
         {
           'ray-x/lsp_signature.nvim',
