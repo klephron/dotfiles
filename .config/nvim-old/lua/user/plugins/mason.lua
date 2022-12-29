@@ -2,7 +2,7 @@ return function()
   local mason = require("mason")
   local lspinstaller = require("mason-lspconfig")
 
-  local lspservers = plug_require("lsp.servers").servers
+  local lspservers = plug_require("lsp.servers")
 
   local servers = vim.tbl_extend("keep", lspservers, {
     "pylint",

@@ -91,14 +91,6 @@ vim.opt.relativenumber = false
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 if fn.has("nvim-0.8") ~= 0 then
   vim.opt.cmdheight = 0
-
-  -- make all keymaps silent by default
-  local keymap_set = vim.keymap.set
-  vim.keymap.set = function(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    return keymap_set(mode, lhs, rhs, opts)
-  end
 else
   vim.opt.cmdheight = 1
 end

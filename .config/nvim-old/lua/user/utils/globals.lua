@@ -5,7 +5,7 @@ local fn = vim.fn
 
 _G.us = {
   prefix = {
-    plugins = "user.plugins",
+    plugins = "user.plugins"
   }
 }
 
@@ -42,6 +42,13 @@ function us.delete_current_buffer()
     end
   end
   vim.cmd("bdelete! " .. cbn) -- wall! is enabled on delete is enabled
+end
+
+function us.table_contains(table, value)
+  for _, e in ipairs(table) do
+    if value == e then return true end
+  end
+  return false
 end
 
 -- MAPPINGS

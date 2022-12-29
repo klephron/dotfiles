@@ -1,10 +1,13 @@
-return function()
+local M = {}
+
+
+function M.setup()
   local lspconfig = require("lspconfig")
   local lsp_signature = require("lsp_signature")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
   local handlers = plug_require("lsp.handlers")
-  local servers = plug_require("lsp.servers").servers
+  local servers = plug_require("lsp.servers")
   local lsp_null_ls = plug_require("lsp.null-ls")
 
 
@@ -36,3 +39,5 @@ return function()
   handlers.setup()
   lsp_null_ls.setup(options)
 end
+
+return M

@@ -153,7 +153,7 @@ packer.startup({
 
     --LSP
     use { 'neovim/nvim-lspconfig',
-      config = plug_require("lsp"),
+      config = plug_require("lsp").setup,
       requires = {
         {
           'jose-elias-alvarez/null-ls.nvim',

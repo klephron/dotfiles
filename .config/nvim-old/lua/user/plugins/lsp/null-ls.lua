@@ -12,17 +12,18 @@ function M.setup(options)
   local sources = {
     -- python
     diagnostics.pylint,
-    diagnostics.mypy,
+    diagnostics.mypy.with { extra_args = {"--strict"} },
     formatting.black,
   }
 
   null_ls.setup({
     debug = false,
+    debounce = 150,
+    save_after_format = false,
     diagnostics_format = "[#{c}] #{m} (#{s})",
     sources = sources,
     on_attach = options.on_attach
   })
 end
-
 
 return M
