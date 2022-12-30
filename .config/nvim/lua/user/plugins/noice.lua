@@ -20,7 +20,7 @@ function M.config()
   })
 
   require("noice").setup({
-    debug = true,
+    debug = false,
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
@@ -39,7 +39,7 @@ function M.config()
     commands = {
       history = {
         filter = {
-          min_length = 1,
+          min_length = 1, -- add everything
           --[[
           any = {
             { event = "notify" },
@@ -68,10 +68,14 @@ function M.config()
       {
         filter = {
           any = {
-            { find = "%d+L, %d+B" },
+            { find = "%d+L, %d+B$" },
             { find = "^Already at oldest change" },
             { find = "^Already at newest change" },
-            { find = "%d+ seconds ago$" },
+            { find = "^%d+ change" },
+            { find = "^%d+ lines <ed" },
+            { find = "^%d+ lines >ed" },
+            { find = "^%d fewer line" },
+            { find = "^%d more line" },
           },
           event = "msg_show",
           max_height = 1,

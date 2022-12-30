@@ -10,8 +10,12 @@ local M = {
   config = function()
     neo_tree = require("neo-tree")
     neo_tree.setup({
-      use_libuv_file_watcher = true,
-    })
+      filesystem = {
+        use_libuv_file_watcher = true,
+        follow_current_file = true,
+        hijack_netrw_behaviour = "open_current",
+      }
+      })
   end,
 }
 
