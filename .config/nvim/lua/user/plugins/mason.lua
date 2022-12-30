@@ -2,14 +2,14 @@ local M = {
   "williamboman/mason.nvim",
 }
 
-M.tools = {
+local tools = {
   "black",
   "stylua",
 }
 
-function M.check()
+local function check()
   local mr = require("mason-registry")
-  for _, tool in ipairs(M.tools) do
+  for _, tool in ipairs(tools) do
     local p = mr.get_package(tool)
     if not p:is_installed() then
       p:install()
@@ -22,7 +22,7 @@ function M.config()
   local mason_lspconfig = require("mason-lspconfig")
 
   mason.setup({})
-  M.check()
+  check()
 
   mason_lspconfig.setup({
     automatic_installation = true,

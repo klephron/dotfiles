@@ -4,7 +4,7 @@ local M = {
   dependencies = {
     's1n7ax/nvim-window-picker',
     config = {
-      selection_chars = 'FJDKSLA;CMRUEIWOQP',
+      selection_chars = 'fjdksla;cmrueiwoqp',
     }
   },
   config = function()
@@ -14,8 +14,13 @@ local M = {
         use_libuv_file_watcher = true,
         follow_current_file = true,
         hijack_netrw_behaviour = "open_current",
+      },
+      window = {
+        mappings = {
+          ["<space>"] = "none",
+        }
       }
-      })
+    })
   end,
 }
 
