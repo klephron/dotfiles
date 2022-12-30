@@ -77,6 +77,7 @@ function M.config()
             { find = "^%d+ change" },
             { find = "^%d+ lines <ed" },
             { find = "^%d+ lines >ed" },
+            { find = "^%d line less" },
             { find = "^%d+ fewer line" },
             { find = "^%d+ more line" },
             { find = "^%d+ fewer line" },

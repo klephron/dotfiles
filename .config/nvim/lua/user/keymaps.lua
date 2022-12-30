@@ -62,6 +62,8 @@ vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+us.set_keynomap("v", "<", "<gv", "Shift leftwards")
+us.set_keynomap("v", ">", ">gv", "Shift rightwards")
 
 -- Clear search
 local mapnohl_disabled = {
@@ -91,7 +93,7 @@ us.set_keynomap("n", "<leader>w", "<cmd>silent wa<cr>", "Write all")
 
 -- Splits
 us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")
-us.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Write all")
+us.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Vertical split")
 
 -- Makes * and # work on visual mode too.
 vim.cmd([[
@@ -122,9 +124,53 @@ if not wk_ok then return end
 
 -- Leader mappings
 local leader = {
+  -- Buffers
   f = { "<cmd>Bdelete<cr>", "buf: Delete current" },
+  -- Tabs
   t = { name = "tabs" },
+  -- Project
+  p = { "<cmd>ProjectRoot<cr>", "project: Update root" },
+  P = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
+  -- Toggleterm
+  j = {
+    name = "toggleterm",
+    t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
+    a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
+    l = { '<cmd>ToggleTermLazygit<cr>', "toggleterm: Lazygit" },
+    h = { "<cmd>ToggleTermHtop<cr>", "toggleterm: Htop" },
+  },
+  -- Neo-tree
+  e = { "<cmd>Neotree toggle<cr>", "neo-tree: Toggle" },
+  E = { "<cmd>Neotree<cr>", "neo-tree" },
+  -- Session
+  v = { "<cmd>lua require('persistence').load()<cr>", "persistence: Restore current session" },
+  -- Telescope
+  r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
+  s = {
+    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    "telescope: Find files"
+  },
+  b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
+  -- Which-key
+  ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
 }
 
-wk.register({ g = { name = "+goto" } })
+local localleader = {
+  l = {
+    name = "lsp",
+  },
+  -- Lazy
+  a = { "<cmd>Lazy<cr>", "Lazy" },
+  -- Luasnip
+  ["s"] = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
+}
+
+wk.register({ 
+  g = { 
+    name = "+goto",
+    a = "Print ASCII character",
+  } 
+})
+
 wk.register(leader, { prefix = "<leader>" })
+wk.register(localleader, { prefix = "<localleader>" })
