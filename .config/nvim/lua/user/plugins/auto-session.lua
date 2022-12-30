@@ -1,6 +1,6 @@
 local M = {
   "rmagatti/auto-session",
-  enabled = true,
+  enabled = false,
   dependencies = {
     {
       "rmagatti/session-lens",
