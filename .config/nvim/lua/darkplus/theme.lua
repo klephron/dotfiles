@@ -553,6 +553,9 @@ theme.highlights = {
   jsonKeyword = { fg = c.blue, bg = 'NONE' },
   yamlBlockMappingKey = { fg = c.blue, bg = 'NONE' },
   tomlTSProperty = { fg = c.blue, bg = 'NONE' },
+
+  NeoTreeGitUntracked = { fg = c.orange },
+  NeoTreeGitConflict = { fg = c.bright_orange },
 }
 
 return theme

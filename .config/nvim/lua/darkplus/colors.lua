@@ -17,6 +17,7 @@ local M = {
   light_green = "#B5CEA8",
   cyan = "#4EC9B0",
   orange = "#CE9178",
+  bright_orange = "#FF8700",
   yellow = "#DCDCAA",
   yellow_orange = "#D7BA7D",
   purple = "#C586C0",

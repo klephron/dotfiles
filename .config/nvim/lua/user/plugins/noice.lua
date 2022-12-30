@@ -1,5 +1,7 @@
 local M = {
   "folke/noice.nvim",
+  enabled = true,
+  config = {}
 }
 
 function M.config()
@@ -36,19 +38,20 @@ function M.config()
       inc_rename = false,
       lsp_doc_border = false,
     },
+    messages = {
+      enabled = true,
+    },
     commands = {
       history = {
         filter = {
           min_length = 1, -- add everything
-          --[[
-          any = {
-            { event = "notify" },
-            { error = true },
-            { warning = true },
-            { event = "msg_show", },
-            { event = "lsp", kind = "message" },
-          }
-          --]]
+          -- any = {
+          --   { event = "notify" },
+          --   { error = true },
+          --   { warning = true },
+          --   { event = "msg_show", },
+          --   { event = "lsp", kind = "message" },
+          -- }
         }
       },
       all = {
@@ -94,7 +97,6 @@ function M.config()
       }
     }
   })
-
   if not pcall(function() require("telescope").load_extension("noice") end) then
     vim.notify("module 'telescope' for noice.nvim is not present", vim.log.levels.WARN, { title = "config" })
   end
