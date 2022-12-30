@@ -5,40 +5,7 @@ local M = {
 function M.config()
   local lualine = require("lualine")
   local lualine_progress = require("lualine.components.progress")
-
-  local fn = vim.fn
-  local color = us.color
-
-  -- CUSTOMIZATION
-  local colors = {
-    color1 = color({ "TabLine", "fg" }),
-    color2 = color({ "TabLine", "bg" }),
-    color3 = color("#d4d4d4"),
-    color4 = color("#007acc"),
-  }
-
-  local custom_theme = {
-    normal = {
-      a = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-      b = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-      c = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-      x = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-      y = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-      z = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-    },
-    insert = {
-      a = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-    },
-    visual = {
-      a = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-    },
-    replace = {
-      a = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-    },
-    inactive = {
-      a = { fg = colors.color1, bg = colors.color2, gui = 'bold' },
-    },
-  }
+  local custom_theme = require("darkplus.lualine")
 
   local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -84,8 +51,8 @@ function M.config()
       unnamed = '[No Name]', -- Text to show for unnamed buffers.
     },
     fmt = function()
-      local par_dir = fn.fnamemodify(fn.expand('%:h'), ':t')
-      local fname = fn.expand('%:t')
+      local par_dir = vim.fn.fnamemodify(vim.fn.expand('%:h'), ':t')
+      local fname = vim.fn.expand('%:t')
       if par_dir == "." then
         return fname
       else
