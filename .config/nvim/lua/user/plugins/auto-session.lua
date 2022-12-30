@@ -33,9 +33,7 @@ function M.config()
     auto_save_enabled = true,
     auto_restore_enabled = false,
     auto_session_use_git_branch = nil,
-    cwd_change_handling = {
-      restore_upcoming_session = false,
-    }
+    cwd_change_handling = false,
   })
 end
 
