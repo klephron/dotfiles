@@ -21,9 +21,7 @@ function M.config()
 
   -- Also: https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes
   vim.notify = notify
-  if not pcall(function() require("telescope").load_extension("notify") end) then
-    vim.notify("module 'telescope' for nvim-notify is not present", vim.log.levels.WARN, { title = "config" })
-  end
+  require("telescope").load_extension("notify")
 end
 
 return M

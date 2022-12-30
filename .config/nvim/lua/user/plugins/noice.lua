@@ -97,9 +97,7 @@ function M.config()
       }
     }
   })
-  if not pcall(function() require("telescope").load_extension("noice") end) then
-    vim.notify("module 'telescope' for noice.nvim is not present", vim.log.levels.WARN, { title = "config" })
-  end
+  require("telescope").load_extension("noice")
 end
 
 return M

@@ -18,10 +18,7 @@ function M.config()
       delete_buffers = true
     }
   })
-
-  if not pcall(function() require("telescope").load_extension("possession") end) then
-    vim.notify("module 'telescope' for possession is not present", vim.log.levels.WARN, { title = "config" })
-  end
+  require("telescope").load_extension("possession")
 end
 
 return M
