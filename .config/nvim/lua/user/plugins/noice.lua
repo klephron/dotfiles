@@ -20,6 +20,7 @@ function M.config()
   })
 
   require("noice").setup({
+    debug = true,
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
@@ -31,9 +32,30 @@ function M.config()
     presets = {
       bottom_search = true,
       command_palette = true,
-      long_message_to_split = true,
+      long_message_to_split = false,
       inc_rename = false,
       lsp_doc_border = false,
+    },
+    commands = {
+      history = {
+        filter = {
+          min_length = 1,
+          --[[
+          any = {
+            { event = "notify" },
+            { error = true },
+            { warning = true },
+            { event = "msg_show", },
+            { event = "lsp", kind = "message" },
+          }
+          --]]
+        }
+      },
+      all = {
+        view = "split",
+        opts = { enter = true, format = "details" },
+        filter = {},
+      }
     },
     routes = {
       {
@@ -44,17 +66,28 @@ function M.config()
         opts = { stop = false },
       },
       {
-        view = "notify",
-        filter = { event = "msg_showmode" },
+        filter = {
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "^Already at oldest change" },
+            { find = "^Already at newest change" },
+            { find = "%d+ seconds ago$" },
+          },
+          event = "msg_show",
+          max_height = 1,
+        },
+        view = "mini",
       },
       {
         filter = {
-          event = "msg_show",
-          kind = "",
+          any = {
+            { min_height = 14 },
+            { min_width = 120 },
+          }
         },
-        opts = { skip = false, merge = true, replace = true },
-        view = "mini"
-      },
+        view = "split",
+        opts = { merge = true, enter = true },
+      }
     }
   })
 
