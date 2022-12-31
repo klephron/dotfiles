@@ -30,6 +30,12 @@ function M.config()
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      hover = {
+        enabled = false,
+      },
+      signature = {
+        enabled = false
+      }
     },
     presets = {
       bottom_search = true,
@@ -93,7 +99,7 @@ function M.config()
           any = {
             { min_height = 14 },
             { min_width = 120 },
-          }
+          },
         },
         view = "split",
         opts = { merge = true, enter = true },

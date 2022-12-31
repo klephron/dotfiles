@@ -6,11 +6,23 @@ local M = {
   }
 }
 
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+    width = 60,
+  }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+    width = 60,
+  })
+}
+
 function M.config()
   local diagnostics = conf_require("lsp.diagnostics")
   local formatting = conf_require("lsp.formatting")
   local keymaps = conf_require("lsp.keymaps")
   local servers = conf_require("lsp.servers")
+  local null_ls = conf_require("lsp.null-ls")
 
   local lspconfig = require("lspconfig")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -28,15 +40,18 @@ function M.config()
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    handlers = handlers
   }
-
+  -- Setup diagnostics
+  diagnostics.setup()
+  -- Setup servers
   for server, opts in pairs(servers) do
     opts = vim.tbl_deep_extend("force", {}, options, opts or {})
     lspconfig[server].setup(opts)
   end
-
-  conf_require("lsp.null-ls").setup(options)
+  -- Setup null-ls
+  null_ls.setup(options)
 end
 
 return M

@@ -41,41 +41,50 @@ function M.on_attach(client, bufnr)
     return { buffer = bufnr, desc = kmps:desc(desc) }
   end
 
-  -- Editing and movement
-  -- If has "definitionProvider"
+  -- definitionProvider
   us.set_keynomap("n", kmps.definition.key, vim.lsp.buf.definition, with_desc("definition"))
   us.set_keynomap("n", kmps.g_definition.key, vim.lsp.buf.definition, with_desc("definition"))
-  -- If has "declarationProvider"
+
+  -- declarationProvider
   us.set_keynomap("n", kmps.declaration.key, vim.lsp.buf.declaration, with_desc("declaration"))
   us.set_keynomap("n", kmps.g_declaration.key, vim.lsp.buf.declaration, with_desc("declaration"))
-  -- if has "hoverProvider"
+
+  -- hoverProvider
   us.set_keynomap("n", kmps.hover.key, vim.lsp.buf.hover, with_desc("hover"))
   us.set_keynomap("n", kmps.g_hover.key, vim.lsp.buf.hover, with_desc("hover"))
-  -- if has "implementationProvider"
+
+  -- implementationProvider
   us.set_keynomap("n", kmps.implementation.key, vim.lsp.buf.implementation, with_desc("implementation"))
   us.set_keynomap("n", kmps.g_implementation.key, vim.lsp.buf.implementation, with_desc("implementation"))
-  -- if has "renameProvider"
+
+  -- renameProvider
   us.set_keynomap("n", kmps.rename.key, vim.lsp.buf.rename, with_desc("rename"))
-  -- if has "referencesProvider"
+
+  -- referencesProvider
   us.set_keynomap("n", kmps.references.key, vim.lsp.buf.references, with_desc("references"))
+
   us.set_keynomap("n", kmps.g_references.key, vim.lsp.buf.references, with_desc("references"))
-  -- if has "codeActionProvider"
+
+  -- codeActionProvider
   if lspsaga_ok then
     us.set_keynomap("n", kmps.code_action.key, "<cmd>Lspsaga code_action<cr>", with_desc("code_action"))
   else
     us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.code_action, with_desc("code_action"))
   end
   -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
-  -- if has "signatureHelpProvider"
+  --
+  -- signatureHelpProvider
   us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc("signature_help_n"))
-  -- if has "typeDefinitionProvider"
-  us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
-  -- if has "codeLensProvider"
-  us.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc("codelens"))
-  -- if has "documentSymbolProvider"
 
-  -- Formattings
-  -- if has "documentFormattingProvider"
+  -- typeDefinitionProvider
+  us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
+
+  -- codeLensProvider
+  us.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc("codelens"))
+
+  -- documentSymbolProvider
+
+  -- documentFormattingProvider
   us.set_keynomap("n", kmps.format.key, function() vim.lsp.buf.format({ async = true }) end,
     with_desc(("format")))
 
@@ -89,18 +98,18 @@ function M.on_attach(client, bufnr)
       with_desc("open_float_cursor"))
     us.set_keynomap("n", kmps.g_open_float_cursor.key, '<cmd>Lspsaga show_cursor_diagnostics<cr>',
       with_desc("open_float_cursor"))
-    us.set_keynomap("n", kmps.goto_next.key, '<cmd>Lspsaga diagnostic_jump_next<CR>',
+    us.set_keynomap("n", kmps.goto_next.key, '<cmd>Lspsaga diagnostic_jump_next<cr>',
       with_desc("goto_next"))
-    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>Lspsaga diagnostic_jump_prev<CR>',
+    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>Lspsaga diagnostic_jump_prev<cr>',
       with_desc("goto_prev"))
   else
-    us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+    us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
       with_desc("open_float"))
-    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
       with_desc("open_float"))
-    us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
+    us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next()<cr>',
       with_desc("goto_next"))
-    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
+    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev()<cr>',
       with_desc("goto_prev"))
   end
 end
