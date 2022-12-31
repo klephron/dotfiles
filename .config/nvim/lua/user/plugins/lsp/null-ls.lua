@@ -10,7 +10,7 @@ local hover = null_ls.builtins.hover
 
 local sources = {
   diagnostics.pylint,
-  diagnostics.mypy.with { extra_args = {"--strict"} },
+  diagnostics.mypy.with { extra_args = { "--strict" } },
   formatting.black,
 }
 

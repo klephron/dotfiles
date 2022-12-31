@@ -111,6 +111,7 @@ vim.cmd([[
 local function with_nosilent(desc)
   return { silent = false, desc = desc }
 end
+
 us.set_keynomap("c", "<A-b>", "<S-Left>", with_nosilent("Move word left"))
 us.set_keynomap("c", "<A-f>", "<S-Right>", with_nosilent("Move word right"))
 us.set_keynomap("c", "<C-b>", "<Left>", with_nosilent("Move char left"))
@@ -174,7 +175,7 @@ local localleader = {
   -- Lazy
   a = { "<cmd>Lazy<cr>", "Lazy" },
   -- Mason
-  m = { 
+  m = {
     name = "mason",
     s = { "<cmd>Mason<cr>", "Info" },
     i = { "<cmd>MasonInstall<cr>", "Install" },
@@ -184,11 +185,11 @@ local localleader = {
   s = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
 }
 
-wk.register({ 
-  g = { 
+wk.register({
+  g = {
     name = "+goto",
     a = "Print ASCII character",
-  } 
+  }
 })
 
 wk.register(leader, { prefix = "<leader>" })

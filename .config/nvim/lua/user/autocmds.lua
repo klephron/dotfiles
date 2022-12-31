@@ -90,16 +90,16 @@ api.nvim_create_autocmd({ "FileType" }, {
 ---------------------------------------------------------------------------------
 api.nvim_create_user_command("Pwd", function()
   local reg_cmd = "" ..
-      ":redir @+ \n" ..
-      ":echon getcwd()\n" ..
-      ":redir end"
+    ":redir @+ \n" ..
+    ":echon getcwd()\n" ..
+    ":redir end"
   vim.cmd(":echo '' | redraw") -- clear commandline
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
 
 api.nvim_create_user_command("Fdir", function()
   vim.cmd('echo expand("%")')
-end, {nargs = 0})
+end, { nargs = 0 })
 
 
 ---------------------------------------------------------------------------------

@@ -47,7 +47,7 @@ function M.config()
   }
 
   -- Floating terminals
-  api.nvim_create_user_command("ToggleTermLazygit", function() 
+  api.nvim_create_user_command("ToggleTermLazygit", function()
     local lazygit = Terminal:new({
       cmd = 'lazygit',
       hidden = true,
@@ -70,7 +70,7 @@ function M.config()
         vim.opt.mouse = opts_prev["mouse"]
       end
     })
-    htop:toggle() 
+    htop:toggle()
   end, {})
 end
 

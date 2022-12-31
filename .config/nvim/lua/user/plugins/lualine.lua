@@ -104,7 +104,7 @@ function M.config()
       lualine_b = { branch },
       lualine_c = { filename },
       -- lualine_x = { "aerial" },
-      lualine_y = { },
+      lualine_y = {},
       lualine_z = { "fileformat", location, progress },
     },
     tabline = {},

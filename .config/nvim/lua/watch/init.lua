@@ -218,9 +218,9 @@ api.nvim_create_user_command("WatchCreate", function()
   -- save watch filename in register
   if config.register.save_watch_path then
     local reg_cmd = "" ..
-        ":redir @" .. config.register.reg .. "\n" ..
-        ":echon '" .. name .. "'\n" ..
-        ":redir end"
+      ":redir @" .. config.register.reg .. "\n" ..
+      ":echon '" .. name .. "'\n" ..
+      ":redir end"
     vim.cmd(":echo '' | redraw") -- clear commandline
     vim.cmd(reg_cmd)
   end

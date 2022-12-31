@@ -80,7 +80,7 @@ vim.opt.swapfile = false
 -- Session
 -----------------------------------------------------------------------------//
 -- vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.o.sessionoptions="buffers,curdir,tabpages,winsize"
+vim.o.sessionoptions = "buffers,curdir,tabpages,winsize"
 -----------------------------------------------------------------------------//
 -- Display
 -----------------------------------------------------------------------------//
