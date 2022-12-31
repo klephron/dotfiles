@@ -10,7 +10,7 @@ _G.us = {
 }
 
 
-function _G.plug_require(name)
+function _G.conf_require(name)
   return require(fmt("%s.%s", us.prefix.plugins, name))
 end
 

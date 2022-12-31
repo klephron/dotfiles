@@ -150,19 +150,38 @@ local leader = {
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
     "telescope: Find files"
   },
+  g = { "<cmd>Telescope live_grep<cr>", "telescope: Live grep" },
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
   -- Which-key
   ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
 }
 
 local localleader = {
+  -- Lsp
   l = {
     name = "lsp",
+    s = { "<cmd>LspInfo<cr>", "Info" },
+    i = { "<cmd>LspInstall<cr>", "Install" },
+    r = { "<cmd>LspRestart<cr>", "Restart" },
+    l = { "<cmd>LspLog<cr>", "Log" },
+  },
+  -- Null-ls
+  u = {
+    name = "null-ls",
+    s = { "<cmd>NullLsInfo<cr>", "Info" },
+    l = { "<cmd>NullLsLog<cr>", "Log" },
   },
   -- Lazy
   a = { "<cmd>Lazy<cr>", "Lazy" },
+  -- Mason
+  m = { 
+    name = "mason",
+    s = { "<cmd>Mason<cr>", "Info" },
+    i = { "<cmd>MasonInstall<cr>", "Install" },
+    l = { "<cmd>MasonLog<cr>", "Log" },
+  },
   -- Luasnip
-  ["s"] = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
+  s = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
 }
 
 wk.register({ 
