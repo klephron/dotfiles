@@ -222,6 +222,7 @@ theme.highlights = {
   DiagnosticWarn = { fg = c.warn, bg = 'NONE' },
   DiagnosticError = { fg = c.error, bg = 'NONE' },
   DiagnosticOther = { fg = c.ui_purple, bg = 'NONE' },
+  DiagnosticOk = { fg = c.green, bg = 'NONE' },
   DiagnosticSignHint = { link = 'DiagnosticHint' },
   DiagnosticSignInfo = { link = 'DiagnosticInfo' },
   DiagnosticSignWarn = { link = 'DiagnosticWarn' },

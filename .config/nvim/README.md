@@ -2,8 +2,6 @@
 
 * [ ] - indent-blankline
 * [ ] - presence
-* [ ] - todo-comments
-* [ ] - trouble.nvim
 * [ ] - diffview
 * [ ] - gitsigns
 * [ ] - illuminate

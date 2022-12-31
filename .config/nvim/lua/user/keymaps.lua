@@ -158,6 +158,9 @@ local leader = {
   -- Aerial
   A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
   a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
+  -- Trouble
+  I = { "<cmd>Trouble workspace_diagnostics<cr>", "trouble: toggle" },
+  i = { "<cmd>Trouble document_diagnostics<cr>", "trouble: toggle" },
 }
 
 local localleader = {
@@ -180,8 +183,8 @@ local localleader = {
   -- Noice
   n = {
     name = "noice",
-    l = {"<cmd>Noice last<cr>", "Last"},
-    h = {"<cmd>Noice history<cr>", "History"},
+    l = { "<cmd>Noice last<cr>", "Last" },
+    h = { "<cmd>Noice history<cr>", "History" },
   },
   -- Mason
   m = {
