@@ -1,8 +1,169 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  dependencies = {
+    "L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+  }
 }
 
 function M.config()
+  local cmp = require("cmp")
+
+  local luasnip = require("luasnip")
+  local kind_icons = require("user.icons").kind_icons
+
+  -- Function implementations
+  local function has_words_before()
+    local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
+  local function tab_select(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    elseif has_words_before() then
+      cmp.complete()
+    else
+      fallback()
+    end
+  end
+
+  local function s_tab_select(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end
+
+  local function toggle_complete()
+    if not cmp.visible() then
+      cmp.complete()
+    else
+      cmp.abort()
+    end
+  end
+
+  local function open_cmp_menu(fallback)
+    if not cmp.visible() then
+      cmp.complete()
+    end
+  end
+
+  local function select_next_item(fallback)
+    open_cmp_menu(fallback)
+    cmp.select_next_item()
+  end
+
+  local function select_prev_item(fallback)
+    open_cmp_menu(fallback)
+    cmp.select_prev_item()
+  end
+
+  local function tab_intellij(fallback)
+    if cmp.visible() then
+      cmp.confirm({ select = true })
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    elseif not has_words_before() then
+      fallback()
+    else
+      open_cmp_menu(fallback)
+    end
+  end
+
+  -- Mappings
+  local old_mappings = {
+    ["<Tab>"] = cmp.mapping(tab_select, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(s_tab_select, { "i", "s" }),
+
+    ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
+    ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
+
+    ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
+    ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
+
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
+
+    ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
+    ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
+
+    ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+    ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+  }
+
+  local intellij_mappings = {
+    ["<Tab>"] = cmp.mapping(tab_intellij, { "i", "s" }),
+    ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
+    ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
+
+    ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
+    ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
+
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
+
+    ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
+    ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
+
+    ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+    ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+  }
+
+  -- Config
+  -- Disable default mappings
+  cmp.config.disable = true
+
+  -- Editor mode
+  cmp.setup {
+    enabled = function()
+      return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
+    end,
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end,
+    },
+
+    mapping = intellij_mappings,
+    completion = {},
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        -- Kind icons
+        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+        vim_item.menu = ({
+          luasnip = "[S]",
+          buffer = "[B]",
+          path = "[P]",
+        })[entry.source.name]
+        return vim_item
+      end,
+    },
+    matching = {
+      disallow_fuzzy_matching = false,
+    },
+    sources = {
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "buffer", max_item_count = 10 },
+      { name = "path" },
+    },
+    experimental = {
+      ghost_text = true
+    }
+  }
 end
 
 return M

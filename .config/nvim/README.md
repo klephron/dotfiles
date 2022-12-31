@@ -1,6 +1,5 @@
 ## Plugins:
 
-* [ ] - cmp
 * [ ] - luasnip + friendly snippets
 * [ ] - nvim-treehopper
 * [ ] - nvim-surround
