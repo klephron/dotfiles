@@ -1,10 +1,5 @@
 ## Plugins:
 
-* [ ] - lsp
-    * [ ] - lsp-signature
-    * [ ] - aerial
-    * [ ] - lsp-saga (?)
-* [ ] - null-ls
 * [ ] - cmp
 * [ ] - luasnip + friendly snippets
 * [ ] - nvim-treehopper

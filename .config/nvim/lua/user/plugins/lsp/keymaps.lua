@@ -12,8 +12,6 @@ M.keymaps = KeymapDictionary:new({
   g_open_float = { "gh" },
   g_open_float_cursor = { "gH" },
 
-  signature_help_i = { "<C-k>", "Signature help" },
-
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },
 
@@ -21,7 +19,7 @@ M.keymaps = KeymapDictionary:new({
   declaration = { "<leader>ke", "Declaration" },
   hover = { "<leader>kl", "Hover" },
   implementation = { "<leader>ki", "Implementation" },
-  signature_help_n = { "<leader>ks", "Signature help" },
+  signature_help = { "<leader>kk", "Signature help" },
   rename = { "<leader>kn", "Rename" },
   references = { "<leader>kr", "References" },
   code_action = { "<leader>ka", "Code action" },
@@ -35,7 +33,6 @@ M.keymaps = KeymapDictionary:new({
 
 function M.on_attach(client, bufnr)
   local kmps = M.keymaps
-  local lspsaga_ok, _ = pcall(require, "lspsaga")
 
   local function with_desc(desc)
     return { buffer = bufnr, desc = kmps:desc(desc) }
@@ -74,7 +71,7 @@ function M.on_attach(client, bufnr)
   -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
   --
   -- signatureHelpProvider
-  us.set_keynomap("n", kmps.signature_help_n.key, vim.lsp.buf.signature_help, with_desc("signature_help_n"))
+  us.set_keynomap("n", kmps.signature_help.key, vim.lsp.buf.signature_help, with_desc("signature_help"))
 
   -- typeDefinitionProvider
   us.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
@@ -89,29 +86,14 @@ function M.on_attach(client, bufnr)
     with_desc(("format")))
 
   -- Diagnostics
-  if lspsaga_ok then
-    us.set_keynomap("n", kmps.open_float.key, '<cmd>Lspsaga show_line_diagnostics<cr>',
-      with_desc("open_float"))
-    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>Lspsaga show_line_diagnostics<cr>',
-      with_desc("open_float"))
-    us.set_keynomap("n", kmps.open_float_cursor.key, '<cmd>Lspsaga show_cursor_diagnostics<cr>',
-      with_desc("open_float_cursor"))
-    us.set_keynomap("n", kmps.g_open_float_cursor.key, '<cmd>Lspsaga show_cursor_diagnostics<cr>',
-      with_desc("open_float_cursor"))
-    us.set_keynomap("n", kmps.goto_next.key, '<cmd>Lspsaga diagnostic_jump_next<cr>',
-      with_desc("goto_next"))
-    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>Lspsaga diagnostic_jump_prev<cr>',
-      with_desc("goto_prev"))
-  else
-    us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
-      with_desc("open_float"))
-    us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
-      with_desc("open_float"))
-    us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next()<cr>',
-      with_desc("goto_next"))
-    us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev()<cr>',
-      with_desc("goto_prev"))
-  end
+  us.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
+    with_desc("open_float"))
+  us.set_keynomap("n", kmps.g_open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
+    with_desc("open_float"))
+  us.set_keynomap("n", kmps.goto_next.key, '<cmd>lua vim.diagnostic.goto_next()<cr>',
+    with_desc("goto_next"))
+  us.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev()<cr>',
+    with_desc("goto_prev"))
 end
 
 return M

@@ -155,6 +155,9 @@ local leader = {
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
   -- Which-key
   ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
+  -- Aerial
+  A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
+  a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
 }
 
 local localleader = {

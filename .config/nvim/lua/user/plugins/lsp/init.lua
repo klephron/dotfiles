@@ -2,7 +2,7 @@ local M = {
   'neovim/nvim-lspconfig',
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
-    { 'jose-elias-alvarez/null-ls.nvim' },
+    { "jose-elias-alvarez/null-ls.nvim" },
   }
 }
 
@@ -22,7 +22,7 @@ function M.config()
   local formatting = conf_require("lsp.formatting")
   local keymaps = conf_require("lsp.keymaps")
   local servers = conf_require("lsp.servers")
-  local null_ls = conf_require("lsp.null-ls")
+  local null_ls = conf_require("null-ls")
 
   local lspconfig = require("lspconfig")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -50,7 +50,7 @@ function M.config()
     opts = vim.tbl_deep_extend("force", {}, options, opts or {})
     lspconfig[server].setup(opts)
   end
-  -- Setup null-ls
+  -- Setup dependencies
   null_ls.setup(options)
 end
 
