@@ -92,6 +92,7 @@ function M.config()
           event = "msg_show",
           max_height = 1,
         },
+        opts = { replace = true },
         view = "mini",
       },
       {

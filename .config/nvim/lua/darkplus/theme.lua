@@ -486,6 +486,8 @@ theme.highlights = {
   HopCursor = { link = "Cursor" },
   HopPreview = { link = "IncSearch" },
 
+  -- Treehopper
+  TSNodeKey = { link = "HopNextKey" },
   -- Crates
   CratesNvimLoading = { fg = c.hint, bg = 'NONE' },
   CratesNvimVersion = { fg = c.hint, bg = 'NONE' },

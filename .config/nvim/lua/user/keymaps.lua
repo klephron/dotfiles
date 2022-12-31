@@ -177,6 +177,12 @@ local localleader = {
   },
   -- Lazy
   a = { "<cmd>Lazy<cr>", "Lazy" },
+  -- Noice
+  n = {
+    name = "noice",
+    l = {"<cmd>Noice last<cr>", "Last"},
+    h = {"<cmd>Noice history<cr>", "History"},
+  },
   -- Mason
   m = {
     name = "mason",
