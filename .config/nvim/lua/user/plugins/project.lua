@@ -16,7 +16,7 @@ function M.config()
     exclude_dirs = {},
     show_hidden = true,
     silent_chdir = true,
-    datapath = vim.fn.expand(vim.fn.stdpath("cache") .. "/project/"),
+    datapath = vim.fn.expand(vim.fn.stdpath("cache")),
   }
   -- Add to telescope
   telescope.load_extension('projects')
