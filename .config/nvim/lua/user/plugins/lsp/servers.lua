@@ -18,6 +18,7 @@ local M = {
       },
     },
   },
+  clangd = {},
 }
 
 return M
