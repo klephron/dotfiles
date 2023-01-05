@@ -3,12 +3,10 @@ local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
     's1n7ax/nvim-window-picker',
-    config = {
-      selection_chars = 'fjdksla;cmrueiwoqp',
-    }
+    config = {}
   },
   config = function()
-    neo_tree = require("neo-tree")
+    local neo_tree = require("neo-tree")
     neo_tree.setup({
       filesystem = {
         use_libuv_file_watcher = true,
@@ -18,6 +16,9 @@ local M = {
       window = {
         mappings = {
           ["<space>"] = "none",
+          ["P"] = function()
+            vim.cmd("cd ..")
+          end
         }
       }
     })

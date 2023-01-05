@@ -3,7 +3,7 @@ local M = {
   enabled = true,
   config = {
     dir = vim.fn.expand(vim.fn.stdpath("cache") .. "/persistence/"),
-    options = { "buffers", "curdir", "tabpages", "winsize" },
+    options = { "buffers", "curdir", "folds", "help", "tabpages", "winsize", "winpos" },
   }
 }
 

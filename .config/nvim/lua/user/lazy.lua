@@ -16,17 +16,20 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("user.plugins", {
   install = { colorscheme = { "darkplus" }, },
-  rtp = {
-    disabled_plugins = {
-      "gzip",
-      "matchit",
-      "matchparen",
-      "netrwPlugin",
-      "tarPlugin",
-      "tohtml",
-      "tutor",
-      "zipPlugin",
-      "nvim-treesitter-textobjects",
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "nvim-treesitter-textobjects",
+      },
     },
   },
+
 })

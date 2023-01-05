@@ -18,7 +18,7 @@ function M.setup()
     update_in_insert = false,
     severity_sort = true,
     float = {
-      focusable = false,
+      focusable = true,
       style = "minimal",
       border = "rounded",
     }

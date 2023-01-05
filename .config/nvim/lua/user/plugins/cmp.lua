@@ -161,7 +161,7 @@ function M.config()
       { name = "path" },
     },
     experimental = {
-      ghost_text = true
+      ghost_text = false
     }
   }
 end
