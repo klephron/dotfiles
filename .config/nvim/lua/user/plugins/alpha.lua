@@ -20,14 +20,23 @@ function M.config()
   local buttons = {
     type = "group",
     val = {
-      theme.button("s", icons.FindFile .. " Find file", "<cmd>Telescope find_files<CR>"),
+      -- Files
       theme.button("e", icons.File .. " Plain file", "<cmd>ene<cr>"),
-      theme.button("y", icons.Reference .. " Restore current session", "<cmd>lua require('persistence').load()<cr>"),
-      theme.button("r", icons.RecentlyUsed .. " Recently used files", "<cmd>Telescope oldfiles<CR>"),
       theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr><cmd>ProjectRoot<cr>"),
+
+      -- Session
+      theme.button("y", icons.Reference .. " Restore current session", "<cmd>RestoreSession<cr>"),
+      theme.button("u", icons.SignIn .. " Find session", "<cmd>Telescope session-lens search_session<cr><cmd>ProjectRoot<cr>"),
+      -- theme.button("y", icons.Reference .. " Restore current session", "<cmd>lua require('persistence').load()<cr>"),
+      
+      -- Telescope
+      theme.button("s", icons.FindFile .. " Find file", "<cmd>Telescope find_files<CR>"),
+      theme.button("r", icons.RecentlyUsed .. " Recently used files", "<cmd>Telescope oldfiles<CR>"),
       theme.button("p", icons.Folder .. " Find project", "<cmd>Telescope projects<cr><cmd>ProjectRoot<cr>"),
       theme.button("l", icons.Text .. " Find text", "<cmd>Telescope live_grep<CR>"),
       theme.button("t", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
+
+      -- Others
       theme.button("h", icons.Checkhealth .. " Checkhealth", "<cmd>checkhealth<cr>"),
       theme.button("q", icons.Quit .. " Quit nvim", "<cmd>qa<cr>"),
     },

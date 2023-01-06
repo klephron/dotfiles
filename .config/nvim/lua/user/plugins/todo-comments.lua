@@ -5,6 +5,7 @@ local M = {
 function M.config()
   local todo = require("todo-comments")
   todo.setup({
+    signs = false,
     keywords = {
       FIX = {
         color = "error",

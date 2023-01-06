@@ -109,6 +109,7 @@ vim.opt.showmode = false
 vim.opt.conceallevel = 2
 vim.opt.pumheight = 15
 vim.opt.signcolumn = 'yes:1'
+-- vim.opt.signcolumn = 'number'
 
 -- vim.opt.emoji = false
 -----------------------------------------------------------------------------//

@@ -18,7 +18,9 @@ local M = {
       },
     },
   },
-  clangd = {},
+  clangd = {
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+  },
 }
 
 return M

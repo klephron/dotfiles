@@ -16,6 +16,8 @@ function M.setup(options)
     diagnostics.pylint,
     diagnostics.mypy.with { extra_args = { "--strict" } },
     formatting.black,
+    formatting.protolint,
+    diagnostics.protolint
   }
 
   null_ls.setup({

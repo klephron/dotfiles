@@ -12,8 +12,16 @@ M.signs = {
 function M.setup()
   vim.diagnostic.config({
     underline = true,
-    -- virtual_text = { spacing = 4, prefix = "●" },
     virtual_text = false,
+    -- virtual_text = { spacing = 2, prefix = "●", format = function(diagnostic)
+      -- local STR_MAX_SIZE = 30
+      -- local mes = string.format("%s", diagnostic.message)
+      -- if mes:len() > STR_MAX_SIZE - 3 then
+      --   return mes:sub(1, 17) .. "..."
+      -- end
+      -- return mes
+    -- end
+    -- },
     signs = true,
     update_in_insert = false,
     severity_sort = true,

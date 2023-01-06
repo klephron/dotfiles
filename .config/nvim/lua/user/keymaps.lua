@@ -144,7 +144,9 @@ local leader = {
   e = { "<cmd>Neotree toggle<cr>", "neo-tree: Toggle" },
   E = { "<cmd>Neotree<cr>", "neo-tree" },
   -- Session
-  v = { "<cmd>lua require('persistence').load()<cr>", "persistence: Restore current session" },
+  -- v = { "<cmd>lua require('persistence').load()<cr>", "persistence: Restore current session" },
+  v = { "<cmd>RestoreSession<cr>", "auto-session: Restore current session" },
+  V = { "<cmd>SearchSession<cr>", "auto-session: Search session" },
   -- Telescope
   r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
   s = {
