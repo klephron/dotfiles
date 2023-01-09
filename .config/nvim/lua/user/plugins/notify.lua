@@ -8,7 +8,7 @@ function M.config()
 
   notify.setup {
     --stages = "fade_in_slide_out",
-    timeout = 0,
+    timeout = 1000,
     fps = 30,
     level = vim.log.levels.INFO,
     max_width = function() return math.floor(vim.o.columns * 0.6) end,

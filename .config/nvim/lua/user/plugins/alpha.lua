@@ -25,7 +25,7 @@ function M.config()
       theme.button("c", icons.Settings .. " Edit config", "<cmd>e $MYVIMRC<cr><cmd>ProjectRoot<cr>"),
 
       -- Session
-      theme.button("y", icons.Reference .. " Restore current session", "<cmd>RestoreSession<cr>"),
+      theme.button("v", icons.Reference .. " Restore current session", "<cmd>RestoreSession<cr>"),
       theme.button("u", icons.SignIn .. " Find session", "<cmd>Telescope session-lens search_session<cr><cmd>ProjectRoot<cr>"),
       -- theme.button("y", icons.Reference .. " Restore current session", "<cmd>lua require('persistence').load()<cr>"),
       

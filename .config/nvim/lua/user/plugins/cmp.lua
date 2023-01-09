@@ -67,7 +67,18 @@ function M.config()
 
   local function tab_intellij(fallback)
     if cmp.visible() then
-      cmp.confirm({ select = true })
+      local is_exact = cmp.get_entries()[1].exact
+      local comp_item = cmp.get_entries()[1].completion_item
+      -- if is not expanded
+      local is_simple = comp_item.filterText == comp_item.insertText
+      cmp.confirm({
+        select = true
+      }, function() -- callback
+        print(is_exact)
+        if is_exact and is_simple and luasnip.jumpable(1) then
+          luasnip.expand_or_jump()
+        end
+      end)
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
     elseif not has_words_before() then

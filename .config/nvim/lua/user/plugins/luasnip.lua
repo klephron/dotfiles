@@ -18,8 +18,8 @@ function M.config()
   luasnip.setup({
     history = true,
     update_events = 'TextChanged,TextChangedI',
+    region_check_events = 'CursorMoved',
     enable_autosnippets = true,
-    delete_check_events = "TextChanged",
     ext_opts = {
       [types.choiceNode] = {
         active = {
