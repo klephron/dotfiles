@@ -92,7 +92,15 @@ function M.config()
           event = "msg_show",
           max_height = 1,
         },
-        opts = { replace = true },
+        view = "mini",
+        opts = { replace = true, stop = true },
+      },
+      {
+        filter = {
+          event = "notify",
+          kind = "info",
+        },
+        opts = { skip = true },
         view = "mini",
       },
       {
