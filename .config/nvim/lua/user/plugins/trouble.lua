@@ -7,7 +7,7 @@ function M.config()
   trouble.setup({
     use_diagnostic_signs = true,
     action_keys = {
-      close = "Q",
+      close = "Q"
     }
   })
 
@@ -15,7 +15,7 @@ function M.config()
   vim.cmd [[
     augroup _trouble
       au!
-      au FileType Trouble nnoremap <buffer> q <cmd>silent! b #<cr><cmd>silent! TroubleClose<cr>
+      au FileType Trouble nnoremap <buffer> q <CMD>lua vim.cmd('wincmd p')<CR><CMD>silent! TroubleClose<CR>
     augroup end
   ]]
 end

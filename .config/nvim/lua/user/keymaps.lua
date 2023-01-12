@@ -84,6 +84,7 @@ local mapnohl_disabled = {
   "color-picker",
   "TelescopePrompt",
   "DressingInput",
+  "Trouble",
 }
 
 us.augroup("_map_hohl", {
@@ -175,8 +176,8 @@ local leader = {
   A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
   a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
   -- Trouble
-  I = { "<cmd>Trouble workspace_diagnostics<cr>", "trouble: toggle" },
-  i = { "<cmd>Trouble document_diagnostics<cr>", "trouble: toggle" },
+  I = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "trouble: toggle workspace" },
+  i = { "<cmd>TroubleToggle document_diagnostics<cr>", "trouble: toggle document" },
 }
 
 local localleader = {

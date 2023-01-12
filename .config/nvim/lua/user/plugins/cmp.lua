@@ -74,7 +74,6 @@ function M.config()
       cmp.confirm({
         select = true
       }, function() -- callback
-        print(is_exact)
         if is_exact and is_simple and luasnip.jumpable(1) then
           luasnip.expand_or_jump()
         end
