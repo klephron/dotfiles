@@ -17,6 +17,7 @@ function M.config()
       "markdown_inline",
       "cmake",
       "python",
+      "norg",
     },
     highlight = {
       enable = true,

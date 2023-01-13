@@ -13,11 +13,14 @@ function M.setup(options)
   local hover = null_ls.builtins.hover
 
   local sources = {
-    diagnostics.pylint,
-    diagnostics.mypy.with { extra_args = { "--strict" } },
-    formatting.black,
-    formatting.protolint,
-    diagnostics.protolint
+    -- python
+    -- diagnostics.pylint,
+    -- diagnostics.mypy.with { extra_args = { "--strict" } },
+    -- formatting.black,
+
+    -- proto
+    -- formatting.protolint,
+    -- diagnostics.protolint
   }
 
   null_ls.setup({
