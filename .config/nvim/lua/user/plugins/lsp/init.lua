@@ -51,7 +51,7 @@ function M.config()
     lspconfig[server].setup(opts)
   end
   -- Setup dependencies
-  null_ls.setup(options)
+  null_ls.lconfig(options)
 end
 
 return M

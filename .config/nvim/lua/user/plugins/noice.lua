@@ -1,7 +1,6 @@
 local M = {
   "folke/noice.nvim",
   enabled = true,
-  config = {}
 }
 
 function M.config()

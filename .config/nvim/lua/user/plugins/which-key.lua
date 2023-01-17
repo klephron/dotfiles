@@ -1,6 +1,6 @@
 local M = {
   "folke/which-key.nvim",
-  config = {
+  opts = {
     show_help = false,
     key_labels = {},
   }

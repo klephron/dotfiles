@@ -3,7 +3,7 @@ local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
     's1n7ax/nvim-window-picker',
-    config = {}
+    opts = {}
   },
   config = function()
     local neo_tree = require("neo-tree")
