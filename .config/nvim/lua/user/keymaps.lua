@@ -212,6 +212,12 @@ local localleader = {
   },
   -- Luasnip
   s = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
+  -- Git (diffview)
+  g = {
+    name = "git",
+    o = { "<cmd>DiffviewOpen<cr>", 'diffview: open' },
+    h = { "<cmd>DiffviewFileHistory<cr>", 'diffview: file history' },
+  },
 }
 
 wk.register({
