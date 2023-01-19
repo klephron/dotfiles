@@ -44,7 +44,7 @@ function M.config()
       lsp_doc_border = false,
     },
     messages = {
-      enabled = true,
+      enabled = false,
     },
     commands = {
       history = {
@@ -76,17 +76,17 @@ function M.config()
       {
         filter = {
           any = {
-            { find = "%d+L, %d+B$" },
-            { find = "^Already at oldest change" },
-            { find = "^Already at newest change" },
-            { find = "^%d+ change" },
-            { find = "^%d+ lines <ed" },
-            { find = "^%d+ lines >ed" },
-            { find = "^%d line less" },
-            { find = "^%d+ fewer line" },
-            { find = "^%d+ more line" },
-            { find = "^%d+ fewer line" },
-            { find = "^%d+ lines yanked" },
+            -- { find = "%d+L, %d+B$" },
+            -- { find = "^Already at oldest change" },
+            -- { find = "^Already at newest change" },
+            -- { find = "^%d+ change" },
+            -- { find = "^%d+ lines <ed" },
+            -- { find = "^%d+ lines >ed" },
+            -- { find = "^%d line less" },
+            -- { find = "^%d+ fewer line" },
+            -- { find = "^%d+ more line" },
+            -- { find = "^%d+ fewer line" },
+            -- { find = "^%d+ lines yanked" },
           },
           event = "msg_show",
           max_height = 1,

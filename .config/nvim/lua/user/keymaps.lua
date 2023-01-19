@@ -2,18 +2,21 @@ local wk_ok, wk = pcall(require, "which-key")
 ---------------------------------------------------------------------------//
 -- TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//
-function _G._set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-end
-
-vim.cmd('autocmd! TermOpen term://* lua _set_terminal_keymaps()')
-
+us.augroup("AddTerminalMappings", {
+  {
+    event = { "TermOpen" },
+    pattern = { "term://*" },
+    command = function()
+      local opts = { buffer = 0, silent = false }
+      us.set_keynomap('t', '<esc>', [[<C-\><C-n>]], opts)
+      us.set_keynomap('t', '<C-[>', [[<C-\><C-n>]], opts)
+      us.set_keynomap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+      us.set_keynomap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+      us.set_keynomap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+      us.set_keynomap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+    end
+  }
+})
 ---------------------------------------------------------------------------//
 -- KEYMAPS
 ---------------------------------------------------------------------------//
@@ -72,10 +75,11 @@ us.set_keynomap("n", "<leader>9", "9gt")
 us.set_keynomap("n", "<leader>0", ":tablast<cr>")
 
 -- Move Lines
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+us.set_keynomap("n", '<a-k>', '<cmd>move-2<CR>==')
+us.set_keynomap("n", '<a-j>', '<cmd>move+<CR>==')
+us.set_keynomap("x", '<a-k>', ":move-2<CR>='[gv")
+us.set_keynomap("x", '<a-j>', ":move'>+<CR>='[gv")
+
 us.set_keynomap("v", "<", "<gv", "Shift leftwards")
 us.set_keynomap("v", ">", ">gv", "Shift rightwards")
 
