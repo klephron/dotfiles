@@ -448,7 +448,12 @@ local globalkeys = gears.table.join(
   awful.key({ modkey }, "d", function()
     awful.util.spawn_with_shell("dolphin", false)
   end,
-    { description = "dolphin", group = "launcher" })
+    { description = "dolphin", group = "launcher" }),
+  -- neovide
+  awful.key({ modkey }, "e", function()
+    awful.util.spawn_with_shell("neovide", false)
+  end,
+    { description = "neovide", group = "launcher" })
 )
 
 -- Client
