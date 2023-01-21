@@ -1,5 +1,6 @@
 local M = {
   "monaqa/dial.nvim",
+  event = "VeryLazy",
 }
 
 function M.config()

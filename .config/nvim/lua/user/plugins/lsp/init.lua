@@ -1,5 +1,6 @@
 local M = {
   'neovim/nvim-lspconfig',
+  event = "VeryLazy",
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "jose-elias-alvarez/null-ls.nvim" },

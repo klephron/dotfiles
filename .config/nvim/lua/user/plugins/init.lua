@@ -6,5 +6,9 @@ return {
   -- for mason.nvim
   "williamboman/mason-lspconfig.nvim",
   -- delete buffers without messing out layout
-  'famiu/bufdelete.nvim',
+  {
+    'famiu/bufdelete.nvim',
+    cmd = { "Bdelete" },
+  },
+
 }

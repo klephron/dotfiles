@@ -1,5 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  event = "VeryLazy",
   dependencies = {
     "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-buffer",
@@ -12,6 +13,11 @@ function M.config()
 
   local luasnip = require("luasnip")
   local kind_icons = require("user.icons").kind_icons
+
+  -- issues
+  if not table.unpack then
+    table.unpack = unpack
+  end
 
   -- Function implementations
   local function has_words_before()

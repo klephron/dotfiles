@@ -1,5 +1,6 @@
 local M = {
   "williamboman/mason.nvim",
+  event = "VeryLazy",
 }
 
 local tools = {

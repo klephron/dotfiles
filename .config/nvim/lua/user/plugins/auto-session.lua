@@ -1,5 +1,6 @@
 local M = {
   "rmagatti/auto-session",
+  cmd = { "SearchSession", "RestoreSession", "Autosession" },
   enabled = true,
   dependencies = {
     {

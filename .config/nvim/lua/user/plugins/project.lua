@@ -1,5 +1,6 @@
 local M = {
-  "ahmedkhalf/project.nvim"
+  "ahmedkhalf/project.nvim",
+  cmd = { "ProjectRoot" },
 }
 
 function M.config()
