@@ -21,6 +21,9 @@ local M = {
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   },
+  pyright = {
+    single_file_support = true
+  },
 }
 
 return M
