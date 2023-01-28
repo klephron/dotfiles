@@ -109,6 +109,8 @@ us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "win: Close all")
 
 -- Write
 us.set_keynomap("n", "<leader>w", "<cmd>silent wa<cr>", "Write all")
+us.set_keynomap("i", "<C-s>", "<cmd> silent wa<cr>", "Write all")
+us.set_keynomap("n", "<C-s>", "<cmd> silent wa<cr>", "Write all")
 
 -- Splits
 us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")

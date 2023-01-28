@@ -18,6 +18,7 @@ function M.config()
       "cmake",
       "python",
       "norg",
+      "rust",
     },
     highlight = {
       enable = true,

@@ -1,5 +1,8 @@
 local M = {
   "williamboman/mason.nvim",
+  dependencies = {
+
+  }
 }
 
 local tools = {
