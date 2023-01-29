@@ -36,8 +36,6 @@ function M.config()
       whitespace = "  ",
     },
   })
-  -- Telescope integration
-  require('telescope').load_extension('aerial')
 end
 
 return M

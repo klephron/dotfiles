@@ -1,5 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  -- event = "InsertEnter",
   event = "VeryLazy",
   dependencies = {
     "L3MON4D3/LuaSnip",

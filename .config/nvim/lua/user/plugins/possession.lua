@@ -18,7 +18,6 @@ function M.config()
       delete_buffers = true
     }
   })
-  require("telescope").load_extension("possession")
 end
 
 return M

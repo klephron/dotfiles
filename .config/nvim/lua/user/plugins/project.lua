@@ -6,7 +6,6 @@ local M = {
 
 function M.config()
   local project = require("project_nvim")
-  local telescope = require("telescope")
 
   project.setup {
     manual_mode = true,
@@ -27,8 +26,6 @@ function M.config()
     silent_chdir = true,
     datapath = vim.fn.expand(vim.fn.stdpath("cache")),
   }
-  -- Add to telescope
-  telescope.load_extension('projects')
 end
 
 return M

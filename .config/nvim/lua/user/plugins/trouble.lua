@@ -1,5 +1,6 @@
 local M = {
-  "folke/trouble.nvim"
+  "folke/trouble.nvim",
+  cmd = { "TroubleToggle" },
 }
 
 function M.config()

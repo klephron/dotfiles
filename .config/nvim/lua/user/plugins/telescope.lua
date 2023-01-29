@@ -3,6 +3,10 @@ local M = {
   cmd = { "Telescope" },
   dependencies = {
     "ahmedkhalf/project.nvim",
+    "rcarriga/nvim-notify",
+    "stevearc/aerial.nvim",
+    "folke/noice.nvim",
+    "rmagatti/session-lens",
   }
 }
 
@@ -106,6 +110,18 @@ function M.config()
       }
     }
   }
+
+  -- Noice
+  telescope.load_extension("noice")
+  -- Notify
+  telescope.load_extension("notify")
+  -- Session
+  -- telescope.load_extension("possession")
+  telescope.load_extension("session-lens")
+  -- Projects
+  telescope.load_extension('projects')
+  -- Aerial
+  telescope.load_extension('aerial')
 end
 
 return M
