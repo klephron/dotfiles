@@ -1,5 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
+  event = "UIEnter",
 }
 
 function M.config()

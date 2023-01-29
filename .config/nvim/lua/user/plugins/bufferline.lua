@@ -1,5 +1,6 @@
 local M = {
   "akinsho/bufferline.nvim",
+  event = "UIEnter",
 }
 
 function M.config()
