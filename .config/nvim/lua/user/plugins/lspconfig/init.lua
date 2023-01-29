@@ -18,10 +18,10 @@ local handlers = {
 }
 
 function M.config()
-  local diagnostics = conf_require("lsp.diagnostics")
-  local formatting = conf_require("lsp.formatting")
-  local keymaps = conf_require("lsp.keymaps")
-  local servers = conf_require("lsp.servers")
+  local diagnostics = conf_require("lspconfig.diagnostics")
+  local formatting = conf_require("lspconfig.formatting")
+  local keymaps = conf_require("lspconfig.keymaps")
+  local servers = conf_require("lspconfig.servers")
   local null_ls = conf_require("null-ls")
 
   local lspconfig = require("lspconfig")
