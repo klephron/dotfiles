@@ -1,6 +1,7 @@
 local M = {
   "ahmedkhalf/project.nvim",
   cmd = { "ProjectRoot" },
+  enable = false,
 }
 
 function M.config()
@@ -11,7 +12,14 @@ function M.config()
     manual_mode = true,
     detection_methods = { "lsp", "pattern" },
     patterns = {
-      ".git", "_darcs", ".hg", ".bzr", "Makefile", "CMakeLists.txt", "package.json",
+      ".git",
+      "_darcs",
+      ".hg",
+      ".bzr",
+      "Makefile",
+      "CMakeLists.txt",
+      "package.json",
+      "Cargo.toml",
     },
     ignore_lsp = {},
     exclude_dirs = {},

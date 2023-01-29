@@ -74,7 +74,7 @@ function M.config()
       --   view = "notify_send",
       --   opts = { stop = true },
       -- },
-      {
+      { -- Neovim default notifications
         filter = {
           any = {
             -- { find = "%d+L, %d+B$" },
@@ -95,7 +95,7 @@ function M.config()
         view = "mini",
         opts = { replace = true, stop = true },
       },
-      {
+      { -- Mini
         filter = {
           event = "notify",
           kind = "info",
@@ -103,7 +103,7 @@ function M.config()
         opts = { skip = true },
         view = "mini",
       },
-      {
+      { -- Split
         filter = {
           any = {
             { min_height = 14 },

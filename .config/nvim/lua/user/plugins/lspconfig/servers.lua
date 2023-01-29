@@ -24,6 +24,7 @@ local M = {
   pyright = {
     single_file_support = true
   },
+  rust_analyzer = {},
 }
 
 return M
