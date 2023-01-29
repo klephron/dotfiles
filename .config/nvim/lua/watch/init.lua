@@ -65,7 +65,8 @@ end
 ---@param bufnr number
 local function append_data(bufnr, _, data, stream)
   if data and not tbl_equals(data, { "" }) then
-    api.nvim_buf_set_lines(bufnr, -1, -1, false, { stream .. ":" })
+    api.nvim_buf_set_lines(bufnr, -1, -1, false,
+      { "[" .. string.upper(stream) .. "]" })
     api.nvim_buf_set_lines(bufnr, -1, -1, false, data)
   end
 end
@@ -90,7 +91,7 @@ local function execute_multiple(name)
     local ok, command = coroutine.resume(co)
     if not ok or command == nil then return end
     local job_id = nil
-    api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. command })
+    api.nvim_buf_set_lines(bufnr, -2, -1, false, { "[COMMAND] " .. command })
     job_id = fn.jobstart(command, {
       stdout_buffered = config.command.stdout_buffered,
       stderr_buffered = config.command.stderr_buffered,
@@ -106,7 +107,8 @@ local function execute_multiple(name)
     })
   end
 
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
+  -- api.nvim_buf_set_lines(bufnr, 0, -1, false, { "[FNAME] " .. name, "", "" })
+  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "" })
   recursive()
   if not config.command.save_after_each then
     api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
@@ -125,8 +127,8 @@ local function execute_single(name)
   end
 
   -- execute cmd and print output to the file, after that write file
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "filename: " .. name, "" })
-  api.nvim_buf_set_lines(bufnr, -1, -1, false, { "command: " .. command })
+  api.nvim_buf_set_lines(bufnr, 0, -1, false, { "[FNAME] " .. name, "" })
+  api.nvim_buf_set_lines(bufnr, -1, -1, false, { "[COMMAND] " .. command })
   fn.jobstart(command, {
     stdout_buffered = config.command.stdout_buffered,
     stderr_buffered = config.command.stderr_buffered,

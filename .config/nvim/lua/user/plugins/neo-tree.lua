@@ -5,7 +5,6 @@ local M = {
     's1n7ax/nvim-window-picker',
     config = true,
   },
-  cmd = { "Neotree" },
 }
 
 function M.config()
@@ -14,7 +13,7 @@ function M.config()
     filesystem = {
       use_libuv_file_watcher = true,
       follow_current_file = true,
-      hijack_netrw_behaviour = "open_current",
+      -- hijack_netrw_behaviour = "open_default",
     },
     window = {
       mappings = {

@@ -224,6 +224,13 @@ local localleader = {
     o = { "<cmd>DiffviewOpen<cr>", 'diffview: open' },
     h = { "<cmd>DiffviewFileHistory<cr>", 'diffview: file history' },
   },
+  -- Watch
+  w = {
+    name = "watch",
+    c = { "<cmd>WatchCreate<cr>", "watch: create" },
+    d = { "<cmd>WatchDelete<cr>", "watch: delete" },
+    l = { "<cmd>WatchList<cr>", "watch: list" },
+  }
 }
 
 wk.register({
