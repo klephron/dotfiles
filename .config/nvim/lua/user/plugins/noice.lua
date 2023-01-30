@@ -45,7 +45,8 @@ function M.config()
       lsp_doc_border = false,
     },
     messages = {
-      enabled = false,
+      view = "mini",
+      enabled = true,
     },
     commands = {
       history = {

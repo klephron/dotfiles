@@ -15,6 +15,16 @@ us.augroup("_nasm", {
 -- Check reload file when changed
 api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
+us.augroup("ReloadFile", {
+  {
+    event = "BufWinEnter",
+    pattern = "*",
+    command = function()
+      vim.cmd("if mode() != 'c' | checktime | endif")
+    end
+  }
+})
+
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[

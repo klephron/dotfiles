@@ -24,12 +24,23 @@ function M.config()
 
       ["core.integrations.telescope"] = {},
 
+      ["core.export"] = {},
+      ["core.export.markdown"] = {},
+
+      ['core.norg.journal'] = {
+        config = {
+          workspace = 'root',
+          strategy = 'flat',
+        }
+      },
+
       ["core.norg.dirman"] = {
         config = {
           workspaces = {
-            default = "~/workspace/neorg",
-            notes = "~/workspace/neorg/notes",
-            tasks = "~/workspace/neorg/tasks",
+            root = "~/Workspaces/neorg",
+            notes = "~/Workspaces/neorg/notes",
+            tasks = "~/Workspaces/neorg/tasks",
+            journal = "~/Workspaces/neorg/journal",
           },
           index = "index.norg",
         }
