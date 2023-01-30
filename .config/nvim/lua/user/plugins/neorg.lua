@@ -34,9 +34,6 @@ function M.config()
           index = "index.norg",
         }
       },
-
-
-
     }
   })
 end

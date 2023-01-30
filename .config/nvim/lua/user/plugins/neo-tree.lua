@@ -2,7 +2,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
-    's1n7ax/nvim-window-picker',
+    "s1n7ax/nvim-window-picker",
     config = true,
   },
 }
