@@ -202,7 +202,7 @@ local localleader = {
     l = { "<cmd>NullLsLog<cr>", "Log" },
   },
   -- Lazy
-  a = { "<cmd>Lazy<cr>", "Lazy" },
+  z = { "<cmd>Lazy<cr>", "Lazy" },
   -- Noice
   n = {
     name = "noice",
@@ -236,14 +236,9 @@ local localleader = {
     name = "neorg",
     s = { "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace"},
   },
+  -- EasyAlign
+  a = { "<cmd>ascii<cr>", "print ASCII character"},
 }
-
-wk.register({
-  g = {
-    name = "+goto",
-    a = "Print ASCII character",
-  }
-})
 
 wk.register(leader, { prefix = "<leader>" })
 wk.register(localleader, { prefix = "<localleader>" })
