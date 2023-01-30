@@ -11,8 +11,8 @@ function M.config()
     options = {
       mode = "buffers",
       numbers = "none",
-      close_command = "bdelete! %d",
-      right_mouse_command = "bdelete! %d",
+      close_command = "Bdelete! %d",
+      right_mouse_command = "Bdelete! %d",
       left_mouse_command = "buffer %d",
 
       indicator = {
@@ -33,9 +33,10 @@ function M.config()
       diagnostics = false,
       diagnostics_update_in_insert = false,
 
-      offsets = {
+      offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
+      -- offsets = {
         --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
-      },
+      -- },
 
       color_icons = true,
       show_buffer_icons = true,
@@ -50,11 +51,12 @@ function M.config()
     },
     highlights = {
       fill = {
-        bg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLineNC" },
       },
       background = {
-        fg = { attribute = "fg", highlight = "TabLine" }, -- hidden buffers
-        bg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLine" },
       },
       buffer_visible = {
         fg = { attribute = "fg", highlight = "Normal" },
@@ -63,44 +65,29 @@ function M.config()
       buffer_selected = {
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
-        italic = false,
-        bold = true,
+      },
+      separator = {
+        fg = { attribute = "bg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLine" },
+      },
+      separator_selected = {
+        fg = { attribute = "fg", highlight = "Special" },
+        bg = { attribute = "bg", highlight = "Normal" },
+      },
+      separator_visible = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLineNC" },
       },
       close_button = {
-        fg = { attribute = "fg", highlight = "TabLine" }, -- close button of a buffer
-        bg = { attribute = "bg", highlight = "TabLine" },
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLine" },
       },
-      modified = {
-        fg = { attribute = "fg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      modified_selected = {
+      close_button_selected = {
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
       },
-      indicator_selected = {
-        fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-        bg = { attribute = "bg", highlight = "Normal" },
-      },
-      tab_close = {
-        fg = { attribute = "fg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      tab = {
-        fg = { attribute = "fg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      tab_selected = {
-        fg = { attribute = "fg", highlight = "TabLineSel" },
-        bg = { attribute = "bg", highlight = "Normal" },
-        bold = true,
-      },
-      tab_separator = {
-        fg = { attribute = "bg", highlight = "TabLine" },
-        bg = { attribute = "bg", highlight = "TabLine" },
-      },
-      tab_separator_selected = {
-        fg = { attribute = "bg", highlight = "Normal" },
+      close_button_visible = {
+        fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
       },
     },

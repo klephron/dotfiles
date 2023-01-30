@@ -6,7 +6,7 @@ local M = {
 function M.config()
   local lualine = require("lualine")
   local lualine_progress = require("lualine.components.progress")
-  local custom_theme = require("darkplus.lualine")
+  -- local custom_theme = require("darkplus.lualine")
 
   local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -86,7 +86,7 @@ function M.config()
   lualine.setup({
     options = {
       icons_enabled = true,
-      theme = custom_theme,
+      theme = "vscode",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "alpha" },
@@ -96,17 +96,17 @@ function M.config()
       lualine_a = { mode },
       lualine_b = { branch, diagnostics },
       lualine_c = { filename },
-      -- lualine_x = { "aerial" },
-      lualine_y = { diff },
-      lualine_z = { "fileformat", spaces, location, lualine_progress }
+      lualine_x = { "aerial" },
+      lualine_y = { diff, "fileformat", spaces, },
+      lualine_z = { location, lualine_progress }
     },
     inactive_sections = {
       lualine_a = { mode },
       lualine_b = { branch },
       lualine_c = { filename },
-      -- lualine_x = { "aerial" },
+      lualine_x = { "aerial", "fileformat" },
       lualine_y = {},
-      lualine_z = { "fileformat", location, progress },
+      lualine_z = { location, lualine_progress },
     },
     tabline = {},
     extensions = { "aerial", "nvim-tree", "nvim-dap-ui", "quickfix", "toggleterm" },

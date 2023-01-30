@@ -45,5 +45,6 @@
   "todo-comments.nvim": { "branch": "main", "commit": "74c7d28cb50b0713c881ef69bcb6cdd77d8907d1" },
   "toggleterm.nvim": { "branch": "main", "commit": "a54e6c471ce1cd8ef8357e34598a28a955297131" },
   "trouble.nvim": { "branch": "main", "commit": "490f7fe6d227f4f7a64f00be8c7dcd7a508ed271" },
+  "vscode.nvim": { "branch": "main", "commit": "f8f636f624e0133eea1ea5011943f514d652ee89" },
   "which-key.nvim": { "branch": "main", "commit": "684e96c5e8477f1ee9b3f2e9a12d802fd12c5531" }
 }

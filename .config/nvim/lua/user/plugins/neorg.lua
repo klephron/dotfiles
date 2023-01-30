@@ -1,9 +1,10 @@
 local M = {
   "nvim-neorg/neorg",
-  ft = "norg",
   dependencies = {
     'vhyrro/neorg-telescope',
   },
+  ft = "norg",
+  build = ":Neorg sync-parsers",
   cmd = { "Neorg" },
 }
 
@@ -33,6 +34,9 @@ function M.config()
           index = "index.norg",
         }
       },
+
+
+
     }
   })
 end

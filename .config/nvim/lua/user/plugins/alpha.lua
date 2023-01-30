@@ -38,6 +38,7 @@ function M.config()
       theme.button("t", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
 
       -- Neorg
+      theme.button("o", icons.Neorg .. " Neorg workspace", "<cmd>Telescope neorg switch_workspace<cr><cmd>ProjectRoot<cr>"),
       theme.button("n", icons.Neorg .. " Neorg notes", "<cmd>Neorg workspace notes<cr><cmd>ProjectRoot<cr>"),
       theme.button("m", icons.Neorg .. " Neorg tasks", "<cmd>Neorg workspace tasks<cr><cmd>ProjectRoot<cr>"),
 
