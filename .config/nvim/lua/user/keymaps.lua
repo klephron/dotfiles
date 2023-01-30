@@ -230,7 +230,12 @@ local localleader = {
     c = { "<cmd>WatchCreate<cr>", "watch: create" },
     d = { "<cmd>WatchDelete<cr>", "watch: delete" },
     l = { "<cmd>WatchList<cr>", "watch: list" },
-  }
+  },
+  -- Neorg
+  o = {
+    name = "neorg",
+    s = { "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace"},
+  },
 }
 
 wk.register({

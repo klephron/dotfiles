@@ -7,6 +7,7 @@ local M = {
     "stevearc/aerial.nvim",
     "folke/noice.nvim",
     "rmagatti/session-lens",
+    "nvim-neorg/neorg",
   }
 }
 
