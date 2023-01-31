@@ -28,14 +28,14 @@ function M.config()
       max_name_length = 25,
       max_prefix_length = 25, -- prefix used when a buffer is de-duplicated
       tab_size = 18,
-      separator_style = { "", "" },
+      separator_style = {},
 
       diagnostics = false,
       diagnostics_update_in_insert = false,
 
       offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
       -- offsets = {
-        --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
+      --  { filetype = "NvimTree", text = "", text_align = "center", padding = 1 }
       -- },
 
       color_icons = true,
@@ -50,10 +50,7 @@ function M.config()
       always_show_bufferline = true,
     },
     highlights = {
-      fill = {
-        fg = { attribute = "fg", highlight = "Normal" },
-        bg = { attribute = "bg", highlight = "StatusLineNC" },
-      },
+      -- Buffer (without icon (close, modified...))
       background = {
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "StatusLine" },
@@ -66,18 +63,8 @@ function M.config()
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
       },
-      separator = {
-        fg = { attribute = "bg", highlight = "Normal" },
-        bg = { attribute = "bg", highlight = "StatusLine" },
-      },
-      separator_selected = {
-        fg = { attribute = "fg", highlight = "Special" },
-        bg = { attribute = "bg", highlight = "Normal" },
-      },
-      separator_visible = {
-        fg = { attribute = "fg", highlight = "Normal" },
-        bg = { attribute = "bg", highlight = "StatusLineNC" },
-      },
+
+      -- Buffer close button
       close_button = {
         fg = { attribute = "fg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "StatusLine" },
@@ -88,6 +75,29 @@ function M.config()
       },
       close_button_visible = {
         fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
+      },
+
+      -- Tabs
+      tab_close = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLineNC" },
+      },
+      tab = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "StatusLine" },
+      },
+      tab_selected = {
+        fg = { attribute = "fg", highlight = "Normal" },
+        bg = { attribute = "bg", highlight = "Normal" },
+        bold = true,
+      },
+      tab_separator = {
+        fg = { attribute = "bg", highlight = "StatusLine" },
+        bg = { attribute = "bg", highlight = "StatusLine" },
+      },
+      tab_separator_selected = {
+        fg = { attribute = "bg", highlight = "Normal" },
         bg = { attribute = "bg", highlight = "Normal" },
       },
     },

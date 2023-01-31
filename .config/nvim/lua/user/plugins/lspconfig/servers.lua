@@ -24,7 +24,16 @@ local M = {
   pyright = {
     single_file_support = true
   },
-  rust_analyzer = {},
+  rust_analyzer = {
+      standalone = true,
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = {
+          features = "all",
+        },
+      }
+    }
+  },
 }
 
 return M
