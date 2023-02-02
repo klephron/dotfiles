@@ -273,7 +273,7 @@ local globalkeys = gears.table.join(
   awful.key({ modkey, }, "Right", awful.tag.viewnext,
     { description = "view next", group = "tag" }),
   -- Previous tab
-  awful.key({ modkey, }, "Escape", awful.tag.history.restore,
+  awful.key({ altkey, }, "Escape", awful.tag.history.restore,
     { description = "go back", group = "tag" }),
   -- Non-empty tag browsing
   awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
@@ -337,12 +337,12 @@ local globalkeys = gears.table.join(
   -- Switch between clients in one tag like in windows but without preview
   awful.key({ altkey, }, "Tab",
     function()
-      switcher.switch(1, altkey, "Alt_L", "Shift", "Tab")
+      switcher.switch(1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
     end),
 
   awful.key({ altkey, "Shift" }, "Tab",
     function()
-      switcher.switch(-1, altkey, "Alt_L", "Shift", "Tab")
+      switcher.switch(-1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
     end),
 
   -- Swap clients
@@ -467,7 +467,7 @@ local clientkeys = gears.table.join(
     { description = "toggle floating", group = "client" }),
 
   awful.key({ modkey }, "'", function(c) c.sticky = not c.sticky end,
-    { description = "toggle sticky", group = "client"}),
+    { description = "toggle sticky", group = "client" }),
 
 
   awful.key({ modkey, }, "f",
@@ -485,7 +485,7 @@ local clientkeys = gears.table.join(
     end,
     { description = "minimize", group = "client" }),
 
-  -- Size 
+  -- Size
   awful.key({ modkey, }, "m",
     function(c)
       c.maximized = not c.maximized
@@ -517,12 +517,12 @@ local clientkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
     { description = "close", group = "client" })
 
-  -- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
-  --   { description = "magnify client", group = "client" }),
-  -- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
-  --   { description = "move to master", group = "client" }),
-  -- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
-  --   { description = "move to screen", group = "client" }),
+-- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
+--   { description = "magnify client", group = "client" }),
+-- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
+--   { description = "move to master", group = "client" }),
+-- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
+--   { description = "move to screen", group = "client" }),
 )
 
 -- Bind all key numbers to tags.
@@ -676,8 +676,8 @@ client.connect_signal("manage", function(c)
   -- if not awesome.startup then awful.client.setslave(c) end
 
   if awesome.startup
-      and not c.size_hints.user_position
-      and not c.size_hints.program_position then
+    and not c.size_hints.user_position
+    and not c.size_hints.program_position then
     -- Prevent clients from being unreachable after screen count changes.
     awful.placement.no_offscreen(c)
   end
