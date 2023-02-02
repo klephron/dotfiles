@@ -80,7 +80,7 @@ local editor       = os.getenv("EDITOR") or "nvim"
 local browser      = "firefox-bin"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
 awful.layout.layouts = {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
@@ -234,7 +234,7 @@ local globalkeys = gears.table.join(
     { description = "lock screen", group = "awesome" }),
 
   -- Show help
-  awful.key({ modkey, control }, "/", hotkeys_popup.show_help,
+  awful.key({ modkey, "Shift" }, "/", hotkeys_popup.show_help,
     { description = "show help", group = "awesome" }),
 
   -- Menu
@@ -269,17 +269,21 @@ local globalkeys = gears.table.join(
 
   -- Tag browsing
   awful.key({ modkey, }, "Left", awful.tag.viewprev,
-    { description = "view previous", group = "tag" }),
+    { description = "view previous [modkey]", group = "tag" }),
   awful.key({ modkey, }, "Right", awful.tag.viewnext,
-    { description = "view next", group = "tag" }),
+    { description = "view next [modkey]", group = "tag" }),
+  awful.key({ control, }, "Left", awful.tag.viewprev,
+    { description = "view previous [control]", group = "tag" }),
+  awful.key({ control, }, "Right", awful.tag.viewnext,
+    { description = "view next [control]", group = "tag" }),
   -- Previous tab
   awful.key({ altkey, }, "Escape", awful.tag.history.restore,
-    { description = "go back", group = "tag" }),
+    { description = "open previous tag", group = "tag" }),
   -- Non-empty tag browsing
   awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
-    { description = "view  previous nonempty", group = "tag" }),
+    { description = "view previous nonempty", group = "tag" }),
   awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
-    { description = "view  previous nonempty", group = "tag" }),
+    { description = "view previous nonempty", group = "tag" }),
 
   -- Dynamic tagging
   -- awful.key({ modkey, "Shift" }, "n", function() lain.util.add_tag() end,
@@ -527,8 +531,7 @@ local clientkeys = gears.table.join(
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i, v in ipairs(awful.util.tagnames) do
   globalkeys = gears.table.join(globalkeys,
     -- View tag only.
     awful.key({ control }, "#" .. i + 9,
@@ -539,7 +542,7 @@ for i = 1, 9 do
           tag:view_only()
         end
       end,
-      { description = "view tag [control] #" .. i, group = "tag" }),
+      { description = "view tag [control] #" .. v, group = "tag" }),
     -- View tag only with modkey
     awful.key({ modkey }, "#" .. i + 9,
       function()
@@ -549,7 +552,7 @@ for i = 1, 9 do
           tag:view_only()
         end
       end,
-      { description = "view tag [modkey] #" .. i, group = "tag" }),
+      { description = "view tag [modkey] #" .. v, group = "tag" }),
     -- Toggle tag display.
     awful.key({ modkey, "Shift" }, "#" .. i + 9,
       function()
@@ -559,7 +562,7 @@ for i = 1, 9 do
           awful.tag.viewtoggle(tag)
         end
       end,
-      { description = "toggle tag #" .. i, group = "tag" }),
+      { description = "toggle tag #" .. v, group = "tag" }),
     -- Move client to tag.
     awful.key({ modkey, control }, "#" .. i + 9,
       function()
@@ -570,7 +573,7 @@ for i = 1, 9 do
           end
         end
       end,
-      { description = "move focused client to tag #" .. i, group = "tag" }),
+      { description = "move focused client to tag #" .. v, group = "tag" }),
     -- Toggle tag on focused client.
     awful.key({ modkey, control, "Shift" }, "#" .. i + 9,
       function()
@@ -581,7 +584,7 @@ for i = 1, 9 do
           end
         end
       end,
-      { description = "toggle focused client on tag #" .. i, group = "tag" })
+      { description = "toggle focused client on tag #" .. v, group = "tag" })
   )
 end
 
