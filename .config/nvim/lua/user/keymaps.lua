@@ -213,7 +213,7 @@ local localleader = {
   m = {
     name = "mason",
     s = { "<cmd>Mason<cr>", "Info" },
-    i = { "<cmd>MasonInstall<cr>", "Install" },
+    -- i = { "<cmd>MasonInstall<cr>", "Install" },
     l = { "<cmd>MasonLog<cr>", "Log" },
   },
   -- Luasnip

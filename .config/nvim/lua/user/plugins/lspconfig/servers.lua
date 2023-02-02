@@ -34,6 +34,7 @@ local M = {
       }
     }
   },
+  gopls = {},
 }
 
 return M
