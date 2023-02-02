@@ -73,11 +73,16 @@ function M.config()
   end
 
   local function tab_intellij(fallback)
+    -- file = io.open("~/tmp/lua.log", "w")
+    -- io.output(file)
+    -- io.write(vim.inspect(cmp.get_entries()[1].completion_item))
+    -- file:close()
     if cmp.visible() then
       local is_exact = cmp.get_entries()[1].exact
       local comp_item = cmp.get_entries()[1].completion_item
       -- if is not expanded
       local is_simple = comp_item.filterText == comp_item.insertText
+        or comp_item.insertTextFormat == nil;
       cmp.confirm({
         select = true
       }, function() -- callback
