@@ -276,9 +276,13 @@ local globalkeys = gears.table.join(
     { description = "view previous [control]", group = "tag" }),
   awful.key({ control, }, "Right", awful.tag.viewnext,
     { description = "view next [control]", group = "tag" }),
+
   -- Previous tab
   awful.key({ altkey, }, "Escape", awful.tag.history.restore,
-    { description = "open previous tag", group = "tag" }),
+    { description = "open previous tag [altkey]", group = "tag" }),
+  -- awful.key({ modkey, }, "Escape", awful.tag.history.restore,
+  --   { description = "open previous tag [modkey]", group = "tag" }),
+
   -- Non-empty tag browsing
   awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
     { description = "view previous nonempty", group = "tag" }),
