@@ -1,6 +1,7 @@
 local M = {
   {
     "rmagatti/session-lens",
+    cmd = { "SearchSession" },
     dependencies = {
       "rmagatti/auto-session",
     },
