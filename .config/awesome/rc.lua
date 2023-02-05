@@ -547,7 +547,6 @@ for i, v in ipairs(awful.util.tagnames) do
         end
       end,
       { description = "view tag [control] #" .. v, group = "tag" }),
-    -- View tag only with modkey
     awful.key({ modkey }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -558,6 +557,15 @@ for i, v in ipairs(awful.util.tagnames) do
       end,
       { description = "view tag [modkey] #" .. v, group = "tag" }),
     -- Toggle tag display.
+    awful.key({ control, "Shift" }, "#" .. i + 9,
+      function()
+        local screen = awful.screen.focused()
+        local tag = screen.tags[i]
+        if tag then
+          awful.tag.viewtoggle(tag)
+        end
+      end,
+      { description = "toggle tag [control] #" .. v, group = "tag" }),
     awful.key({ modkey, "Shift" }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -566,7 +574,7 @@ for i, v in ipairs(awful.util.tagnames) do
           awful.tag.viewtoggle(tag)
         end
       end,
-      { description = "toggle tag #" .. v, group = "tag" }),
+      { description = "toggle tag [modkey] #" .. v, group = "tag" }),
     -- Move client to tag.
     awful.key({ modkey, control }, "#" .. i + 9,
       function()
