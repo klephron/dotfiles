@@ -11,17 +11,29 @@ function M.config()
   local neo_tree = require("neo-tree")
   neo_tree.setup({
     filesystem = {
-      use_libuv_file_watcher = true,
+      -- use_libuv_file_watcher = true,
       follow_current_file = true,
       -- hijack_netrw_behaviour = "open_default",
-    },
-    window = {
-      mappings = {
-        ["<space>"] = "none",
-        ["P"] = function()
+      window = {
+        mappings = {
+          ["<space>"] = "none",
+          ["-"] = "root_parent",
+          ["o"] = "system_open",
+        }
+      },
+      commands = {
+        root_parent = function()
           vim.cmd("cd ..")
+        end,
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          -- Mac OSX
+          vim.api.nvim_command("silent !open -g " .. path)
+          -- Linux
+          vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
         end
-      }
+      },
     }
   })
 end
