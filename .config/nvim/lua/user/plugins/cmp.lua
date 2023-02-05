@@ -110,8 +110,8 @@ function M.config()
     ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
     ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
 
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
 
     ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
     ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
@@ -128,8 +128,8 @@ function M.config()
     ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
     ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
 
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
 
     ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
     ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
