@@ -25,7 +25,7 @@ local M = {
     single_file_support = true
   },
   rust_analyzer = {
-    standalone = true,
+    standalone = false,
     settings = {
       ["rust-analyzer"] = {
         -- assist = {

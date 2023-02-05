@@ -17,16 +17,13 @@ function M.config()
       window = {
         mappings = {
           ["<space>"] = "none",
-          ["-"] = "root_parent",
           ["o"] = "system_open",
+          ["-"] = "navigate_up"
         }
       },
       commands = {
-        root_parent = function()
-          vim.cmd("cd ..")
-        end,
         system_open = function(state)
-          local node = state.tree:get_node()
+          local node = state.tree: get_node()
           local path = node:get_id()
           -- Mac OSX
           vim.api.nvim_command("silent !open -g " .. path)
