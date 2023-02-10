@@ -25,6 +25,15 @@ us.augroup("ReloadFile", {
   }
 })
 
+-- Autosave after leaving insert mode
+us.augroup("AutosaveAfterInsert", {
+  {
+    event = "InsertLeave",
+    command = "update",
+    nested = true
+  }
+})
+
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
@@ -110,8 +119,6 @@ end, { nargs = 0 })
 api.nvim_create_user_command("Fdir", function()
   vim.cmd('echo expand("%")')
 end, { nargs = 0 })
-
-
 ---------------------------------------------------------------------------------
 -- Funny thing from folke
 ---------------------------------------------------------------------------------
