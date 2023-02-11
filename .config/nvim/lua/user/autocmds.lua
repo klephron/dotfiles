@@ -29,7 +29,7 @@ us.augroup("ReloadFile", {
 us.augroup("AutosaveAfterInsert", {
   {
     event = "InsertLeave",
-    command = "update",
+    command = "silent update",
     nested = true
   }
 })
