@@ -1,5 +1,5 @@
 local M = {
-  sumneko_lua = {
+  lua_ls = {
     -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
     single_file_support = true,
     settings = {

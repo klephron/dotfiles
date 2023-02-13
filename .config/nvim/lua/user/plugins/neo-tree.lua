@@ -18,17 +18,22 @@ function M.config()
         mappings = {
           ["<space>"] = "none",
           ["o"] = "system_open",
-          ["-"] = "navigate_up"
+          ["-"] = "navigate_up",
+          ["u"] = "focus_parent",
         }
       },
       commands = {
         system_open = function(state)
-          local node = state.tree: get_node()
+          local node = state.tree:get_node()
           local path = node:get_id()
           -- Mac OSX
           vim.api.nvim_command("silent !open -g " .. path)
           -- Linux
           vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
+        end,
+        focus_parent = function(state)
+          local node = state.tree:get_node()
+          require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
         end
       },
     }
