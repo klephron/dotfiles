@@ -20,6 +20,7 @@ function M.config()
           ["o"] = "system_open",
           ["-"] = "navigate_up",
           ["u"] = "focus_parent",
+          [";"] = "open",
         }
       },
       commands = {
