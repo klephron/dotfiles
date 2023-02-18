@@ -6,5 +6,4 @@ local M = {
 }
 -- dependencies
 table.insert(M, conf_require("dap.dap"))
-
 return M
