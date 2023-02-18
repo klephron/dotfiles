@@ -12,14 +12,13 @@ local function setup()
   end
 
   vim.api.nvim_set_hl(0, 'DapBreakpoint',
-    { ctermbg = 0, fg = get_color("ErrorMsg", "fg"), bg = nil }
+    { ctermbg = 0, fg = "#e41400", bg = nil }
   )
   vim.api.nvim_set_hl(0, 'DapStopped',
     { ctermbg = 0, fg = nil, bg = "#022e4b" }
   )
 
   vim.fn.sign_define('DapBreakpoint',
-    l
     { text = '',
       texthl = 'DapBreakpoint',
       linehl = '',
