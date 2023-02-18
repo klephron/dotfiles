@@ -3,7 +3,7 @@ local M = {
 }
 
 
-function M.lconfig(options)
+function M.manual_config(options)
   local null_ls = require("null-ls")
 
   local code_actions = null_ls.builtins.code_actions

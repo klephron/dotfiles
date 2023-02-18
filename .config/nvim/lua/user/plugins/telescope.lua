@@ -8,6 +8,7 @@ local M = {
     "folke/noice.nvim",
     "rmagatti/session-lens",
     "nvim-neorg/neorg",
+    -- "mfussenegger/nvim-dap",
   }
 }
 
@@ -123,6 +124,8 @@ function M.config()
   telescope.load_extension('projects')
   -- Aerial
   telescope.load_extension('aerial')
+  -- Dap
+  -- telescope.load_extension('dap')
 end
 
 return M

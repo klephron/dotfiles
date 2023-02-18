@@ -18,11 +18,12 @@ local handlers = {
 }
 
 function M.config()
-  local diagnostics = conf_require("lspconfig.diagnostics")
-  local formatting = conf_require("lspconfig.formatting")
-  local keymaps = conf_require("lspconfig.keymaps")
-  local servers = conf_require("lspconfig.servers")
-  local null_ls = conf_require("null-ls")
+  local diagnostics = conf_require("lsp.sfn.diagnostics")
+  local formatting = conf_require("lsp.sfn.formatting")
+  local keymaps = conf_require("lsp.sfn.keymaps")
+  local servers = conf_require("lsp.sfn.servers")
+
+  local conf_null_ls = conf_require("lsp.null-ls")
 
   local lspconfig = require("lspconfig")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -51,7 +52,7 @@ function M.config()
     lspconfig[server].setup(opts)
   end
   -- Setup dependencies
-  null_ls.lconfig(options)
+  conf_null_ls.manual_config(options)
 end
 
 return M

@@ -1,31 +1,28 @@
 local M = {
-  {
-    "williamboman/mason.nvim",
-    opts = {},
-  },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = {},
-      automatic_installation = true,
-      dependencies = {
-        "williamboman/mason.nvim",
-        "neovim/nvim-lspconfig",
-      }
-    }
-  },
-
-  {
-    "jay-babu/mason-null-ls.nvim",
-    opts = {
-      ensure_installed = { "black", "stylua" },
-    },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    }
-  },
+  "williamboman/mason.nvim",
 }
+
+local tools = {
+  "black",
+  "stylua",
+}
+
+
+local function check()
+  local registry = require("mason-registry")
+
+  for _, tool in ipairs(tools) do
+    local p = registry.get_package(tool)
+    if not p:is_installed() then
+      p:install()
+    end
+  end
+end
+
+function M.config()
+  local mason = require("mason")
+  mason.setup({})
+  check()
+end
 
 return M
