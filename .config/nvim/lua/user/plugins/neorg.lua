@@ -37,10 +37,10 @@ function M.config()
       ["core.norg.dirman"] = {
         config = {
           workspaces = {
-            root = "~/Workspaces/neorg",
-            notes = "~/Workspaces/neorg/notes",
-            tasks = "~/Workspaces/neorg/tasks",
-            journal = "~/Workspaces/neorg/journal",
+            root = "~/Documents/neorg",
+            notes = "~/Documents/neorg/notes",
+            tasks = "~/Documents/neorg/tasks",
+            journal = "~/Documents/neorg/journal",
           },
           index = "index.norg",
         }

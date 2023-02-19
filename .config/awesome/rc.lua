@@ -2,7 +2,7 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
+-- {{{ Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
@@ -18,7 +18,9 @@ require("awful.hotkeys_popup.keys.firefox")
 
 -- }}}
 
--- plugins
+-- {{{ Plugins
+
+-- {{{ Awesome switcher 
 local switcher = require("awesome-switcher")
 
 switcher.settings.preview_box = false -- display preview-box
@@ -36,7 +38,9 @@ switcher.settings.client_opacity_value_in_focus = 0.5 -- alpha-value for the cli
 switcher.settings.client_opacity_value_selected = 1 -- alpha-value for the selected client
 
 switcher.settings.cycle_raise_client = true -- raise clients on cycle
+-- }}}
 
+-- }}}
 
 -- {{{ Error handling
 
@@ -65,7 +69,6 @@ do
 end
 
 -- }}}
-
 
 -- {{{ Variable definitions
 
@@ -173,7 +176,7 @@ awful.util.mymainmenu = freedesktop.menu.build {
     -- other triads can be put here
   }
 }
-
+-- }}}
 
 -- {{{ Screen
 
@@ -266,40 +269,6 @@ local globalkeys = gears.table.join(
     end,
     { description = "lua execute prompt", group = "awesome" }),
 
-
-  -- Tag browsing
-  awful.key({ modkey, }, "Left", awful.tag.viewprev,
-    { description = "view previous [modkey]", group = "tag" }),
-  awful.key({ modkey, }, "Right", awful.tag.viewnext,
-    { description = "view next [modkey]", group = "tag" }),
-  awful.key({ control, }, "Left", awful.tag.viewprev,
-    { description = "view previous [control]", group = "tag" }),
-  awful.key({ control, }, "Right", awful.tag.viewnext,
-    { description = "view next [control]", group = "tag" }),
-
-  -- Previous tab
-  awful.key({ altkey, }, "Escape", awful.tag.history.restore,
-    { description = "open previous tag [altkey]", group = "tag" }),
-  -- awful.key({ modkey, }, "Escape", awful.tag.history.restore,
-  --   { description = "open previous tag [modkey]", group = "tag" }),
-
-  -- Non-empty tag browsing
-  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
-    { description = "view previous nonempty", group = "tag" }),
-  awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
-    { description = "view previous nonempty", group = "tag" }),
-
-  -- Dynamic tagging
-  -- awful.key({ modkey, "Shift" }, "n", function() lain.util.add_tag() end,
-  --   { description = "add new tag", group = "tag" }),
-  -- awful.key({ modkey, "Shift" }, "r", function() lain.util.rename_tag() end,
-  --   { description = "rename tag", group = "tag" }),
-  -- awful.key({ modkey, "Shift" }, "Left", function() lain.util.move_tag(-1) end,
-  --   { description = "move tag to the left", group = "tag" }),
-  -- awful.key({ modkey, "Shift" }, "Right", function() lain.util.move_tag(1) end,
-  --   { description = "move tag to the right", group = "tag" }),
-  -- awful.key({ modkey, "Shift" }, "d", function() lain.util.delete_tag() end,
-  --   { description = "delete tag", group = "tag" }),
 
 
   -- Default client focus
@@ -513,24 +482,69 @@ local clientkeys = gears.table.join(
     end,
     { description = "(un)maximize horizontally", group = "client" }),
 
-
   -- Toggle titlebar
   awful.key({ modkey, }, "i", function(c)
     awful.titlebar.toggle(c)
     -- naughty.notify({ text = c:titlebar_top(0).size })
   end, { description = 'toggle title bar', group = 'client' }),
 
-
   -- Kill
   awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
-    { description = "close", group = "client" })
+    { description = "close", group = "client" }),
 
--- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
---   { description = "magnify client", group = "client" }),
--- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
---   { description = "move to master", group = "client" }),
--- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
---   { description = "move to screen", group = "client" }),
+  -- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
+  --   { description = "magnify client", group = "client" }),
+  -- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
+  --   { description = "move to master", group = "client" }),
+  -- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
+  --   { description = "move to screen", group = "client" }),
+
+  -- {{{ Tag browsing
+  --
+  -- Alt + <arrows> -- switch between tags nonempty
+  -- Mod(Ctrl) + <arrows> -- switch between tags
+  --
+  -- Mod(Ctrl) + <escape> -- history previous tag
+  --
+  -- Mod(Ctrl) + <number> -- switch to window number
+  -- Mod(Ctrl) + Shift + <number> -- toggle focused client to tag
+  --
+  -- Mod(Ctrl) + Alt + <number> -- move focused client on tag
+
+  awful.key({ modkey, }, "Left", awful.tag.viewprev,
+    { description = "[modkey] view previous", group = "tag" }),
+  awful.key({ modkey, }, "Right", awful.tag.viewnext,
+    { description = "[modkey] view next", group = "tag" }),
+  awful.key({ control, }, "Left", awful.tag.viewprev,
+    { description = "[control] view previous", group = "tag" }),
+  awful.key({ control, }, "Right", awful.tag.viewnext,
+    { description = "[control] view next", group = "tag" }),
+
+  -- Previous tab
+  awful.key({ control, }, "Escape", awful.tag.history.restore,
+    { description = "open previous tag [control]", group = "tag" }),
+  awful.key({ modkey, }, "Escape", awful.tag.history.restore,
+    { description = "open previous tag [modkey]", group = "tag" }),
+  -- awful.key({ modkey, }, "Escape", awful.tag.history.restore,
+  --   { description = "open previous tag [modkey]", group = "tag" }),
+
+  -- Non-empty tag browsing
+  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
+    { description = "view previous nonempty", group = "tag" }),
+  awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
+    { description = "view previous nonempty", group = "tag" })
+
+-- Dynamic tagging
+-- awful.key({ modkey, "Shift" }, "n", function() lain.util.add_tag() end,
+--   { description = "add new tag", group = "tag" }),
+-- awful.key({ modkey, "Shift" }, "r", function() lain.util.rename_tag() end,
+--   { description = "rename tag", group = "tag" }),
+-- awful.key({ modkey, "Shift" }, "Left", function() lain.util.move_tag(-1) end,
+--   { description = "move tag to the left", group = "tag" }),
+-- awful.key({ modkey, "Shift" }, "Right", function() lain.util.move_tag(1) end,
+--   { description = "move tag to the right", group = "tag" }),
+-- awful.key({ modkey, "Shift" }, "d", function() lain.util.delete_tag() end,
+--   { description = "delete tag", group = "tag" }),
 )
 
 -- Bind all key numbers to tags.
@@ -546,7 +560,7 @@ for i, v in ipairs(awful.util.tagnames) do
           tag:view_only()
         end
       end,
-      { description = "view tag [control] #" .. v, group = "tag" }),
+      { description = "[control] view tag #" .. v, group = "tag" }),
     awful.key({ modkey }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -555,7 +569,7 @@ for i, v in ipairs(awful.util.tagnames) do
           tag:view_only()
         end
       end,
-      { description = "view tag [modkey] #" .. v, group = "tag" }),
+      { description = "[modkey] view tag #" .. v, group = "tag" }),
     -- Toggle tag display.
     awful.key({ control, "Shift" }, "#" .. i + 9,
       function()
@@ -565,7 +579,7 @@ for i, v in ipairs(awful.util.tagnames) do
           awful.tag.viewtoggle(tag)
         end
       end,
-      { description = "toggle tag [control] #" .. v, group = "tag" }),
+      { description = "[control] toggle tag #" .. v, group = "tag" }),
     awful.key({ modkey, "Shift" }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -574,9 +588,9 @@ for i, v in ipairs(awful.util.tagnames) do
           awful.tag.viewtoggle(tag)
         end
       end,
-      { description = "toggle tag [modkey] #" .. v, group = "tag" }),
+      { description = "[modkey] toggle tag #" .. v, group = "tag" }),
     -- Move client to tag.
-    awful.key({ modkey, control }, "#" .. i + 9,
+    awful.key({ control, altkey }, "#" .. i + 9,
       function()
         if client.focus then
           local tag = client.focus.screen.tags[i]
@@ -585,20 +599,33 @@ for i, v in ipairs(awful.util.tagnames) do
           end
         end
       end,
-      { description = "move focused client to tag #" .. v, group = "tag" }),
-    -- Toggle tag on focused client.
-    awful.key({ modkey, control, "Shift" }, "#" .. i + 9,
+      { description = "[modkey] move focused client to tag #" .. v, group = "tag" }),
+
+    awful.key({ modkey, altkey }, "#" .. i + 9,
       function()
         if client.focus then
           local tag = client.focus.screen.tags[i]
           if tag then
-            client.focus:toggle_tag(tag)
+            client.focus:move_to_tag(tag)
           end
         end
       end,
-      { description = "toggle focused client on tag #" .. v, group = "tag" })
+      { description = "[control] move focused client to tag #" .. v, group = "tag" })
+
+  -- Toggle tag on focused client.
+  -- awful.key({ modkey, control, "Shift" }, "#" .. i + 9,
+  --   function()
+  --     if client.focus then
+  --       local tag = client.focus.screen.tags[i]
+  --       if tag then
+  --         client.focus:toggle_tag(tag)
+  --       end
+  --     end
+  --   end,
+  --   { description = "toggle focused client on tag #" .. v, group = "tag" })
   )
 end
+-- }}}
 
 local clientbuttons = gears.table.join(
   awful.button({}, 1, function(c)
