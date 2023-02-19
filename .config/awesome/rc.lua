@@ -20,7 +20,7 @@ require("awful.hotkeys_popup.keys.firefox")
 
 -- {{{ Plugins
 
--- {{{ Awesome switcher 
+-- {{{ Awesome switcher
 local switcher = require("awesome-switcher")
 
 switcher.settings.preview_box = false -- display preview-box
@@ -431,73 +431,7 @@ local globalkeys = gears.table.join(
   awful.key({ modkey }, "e", function()
     awful.util.spawn_with_shell("neovide", false)
   end,
-    { description = "neovide", group = "launcher" })
-)
-
--- Client
-local clientkeys = gears.table.join(
-
-  awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
-    { description = "toggle keep on top", group = "client" }),
-
-  awful.key({ modkey, control }, "space", awful.client.floating.toggle,
-    { description = "toggle floating", group = "client" }),
-
-  awful.key({ modkey }, "'", function(c) c.sticky = not c.sticky end,
-    { description = "toggle sticky", group = "client" }),
-
-
-  awful.key({ modkey, }, "f",
-    function(c)
-      c.fullscreen = not c.fullscreen
-      c:raise()
-    end,
-    { description = "toggle fullscreen", group = "client" }),
-
-  awful.key({ modkey, }, "n",
-    function(c)
-      -- The client currently has the input focus, so it cannot be
-      -- minimized, since minimized clients can't have the focus.
-      c.minimized = true
-    end,
-    { description = "minimize", group = "client" }),
-
-  -- Size
-  awful.key({ modkey, }, "m",
-    function(c)
-      c.maximized = not c.maximized
-      c:raise()
-    end,
-    { description = "(un)maximize", group = "client" }),
-  awful.key({ modkey, "Control" }, "m",
-    function(c)
-      c.maximized_vertical = not c.maximized_vertical
-      c:raise()
-    end,
-    { description = "(un)maximize vertically", group = "client" }),
-  awful.key({ modkey, "Shift" }, "m",
-    function(c)
-      c.maximized_horizontal = not c.maximized_horizontal
-      c:raise()
-    end,
-    { description = "(un)maximize horizontally", group = "client" }),
-
-  -- Toggle titlebar
-  awful.key({ modkey, }, "i", function(c)
-    awful.titlebar.toggle(c)
-    -- naughty.notify({ text = c:titlebar_top(0).size })
-  end, { description = 'toggle title bar', group = 'client' }),
-
-  -- Kill
-  awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
-    { description = "close", group = "client" }),
-
-  -- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
-  --   { description = "magnify client", group = "client" }),
-  -- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
-  --   { description = "move to master", group = "client" }),
-  -- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
-  --   { description = "move to screen", group = "client" }),
+    { description = "neovide", group = "launcher" }),
 
   -- {{{ Tag browsing
   --
@@ -625,6 +559,73 @@ for i, v in ipairs(awful.util.tagnames) do
   --   { description = "toggle focused client on tag #" .. v, group = "tag" })
   )
 end
+-- }}}
+
+-- Client
+local clientkeys = gears.table.join(
+
+  awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
+    { description = "toggle keep on top", group = "client" }),
+
+  awful.key({ modkey, control }, "space", awful.client.floating.toggle,
+    { description = "toggle floating", group = "client" }),
+
+  awful.key({ modkey }, "'", function(c) c.sticky = not c.sticky end,
+    { description = "toggle sticky", group = "client" }),
+
+
+  awful.key({ modkey, }, "f",
+    function(c)
+      c.fullscreen = not c.fullscreen
+      c:raise()
+    end,
+    { description = "toggle fullscreen", group = "client" }),
+
+  awful.key({ modkey, }, "n",
+    function(c)
+      -- The client currently has the input focus, so it cannot be
+      -- minimized, since minimized clients can't have the focus.
+      c.minimized = true
+    end,
+    { description = "minimize", group = "client" }),
+
+  -- Size
+  awful.key({ modkey, }, "m",
+    function(c)
+      c.maximized = not c.maximized
+      c:raise()
+    end,
+    { description = "(un)maximize", group = "client" }),
+  awful.key({ modkey, "Control" }, "m",
+    function(c)
+      c.maximized_vertical = not c.maximized_vertical
+      c:raise()
+    end,
+    { description = "(un)maximize vertically", group = "client" }),
+  awful.key({ modkey, "Shift" }, "m",
+    function(c)
+      c.maximized_horizontal = not c.maximized_horizontal
+      c:raise()
+    end,
+    { description = "(un)maximize horizontally", group = "client" }),
+
+  -- Toggle titlebar
+  awful.key({ modkey, }, "i", function(c)
+    awful.titlebar.toggle(c)
+    -- naughty.notify({ text = c:titlebar_top(0).size })
+  end, { description = 'toggle title bar', group = 'client' }),
+
+  -- Kill
+  awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
+    { description = "close", group = "client" })
+
+-- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
+--   { description = "magnify client", group = "client" }),
+-- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
+--   { description = "move to master", group = "client" }),
+-- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
+--   { description = "move to screen", group = "client" }),
+)
 -- }}}
 
 local clientbuttons = gears.table.join(
