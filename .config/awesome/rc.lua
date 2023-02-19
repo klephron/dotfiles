@@ -423,12 +423,12 @@ local globalkeys = gears.table.join(
     function() awful.util.spawn_with_shell("rofi -show window -modi \"window,windowcd\"", false) end,
     { description = "show windows", group = "launcher" }),
   -- dolphin
-  awful.key({ modkey }, "d", function()
+  awful.key({ modkey }, "e", function()
     awful.util.spawn_with_shell("dolphin", false)
   end,
     { description = "dolphin", group = "launcher" }),
   -- neovide
-  awful.key({ modkey }, "e", function()
+  awful.key({ modkey }, "n", function()
     awful.util.spawn_with_shell("neovide", false)
   end,
     { description = "neovide", group = "launcher" }),
@@ -581,13 +581,13 @@ local clientkeys = gears.table.join(
     end,
     { description = "toggle fullscreen", group = "client" }),
 
-  awful.key({ modkey, }, "n",
+  awful.key({ modkey, }, "d",
     function(c)
       -- The client currently has the input focus, so it cannot be
       -- minimized, since minimized clients can't have the focus.
       c.minimized = true
     end,
-    { description = "minimize", group = "client" }),
+    { description = "minimize (down)", group = "client" }),
 
   -- Size
   awful.key({ modkey, }, "m",
