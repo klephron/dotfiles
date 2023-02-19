@@ -428,8 +428,8 @@ local globalkeys = gears.table.join(
   end,
     { description = "dolphin", group = "launcher" }),
   -- neovide
-  awful.key({ modkey }, "n", function()
-    awful.util.spawn_with_shell("neovide", false)
+  awful.key({ modkey }, "u", function()
+    awful.spawn("neovide", {})
   end,
     { description = "neovide", group = "launcher" }),
 
@@ -581,7 +581,7 @@ local clientkeys = gears.table.join(
     end,
     { description = "toggle fullscreen", group = "client" }),
 
-  awful.key({ modkey, }, "d",
+  awful.key({ modkey, }, "n",
     function(c)
       -- The client currently has the input focus, so it cannot be
       -- minimized, since minimized clients can't have the focus.

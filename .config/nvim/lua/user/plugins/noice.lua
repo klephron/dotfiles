@@ -1,7 +1,7 @@
 local M = {
   "folke/noice.nvim",
   event = "UIEnter",
-  enabled = true,
+  cond = function() return not vim.fn.exists("g:neovide") end,
 }
 
 function M.config()
