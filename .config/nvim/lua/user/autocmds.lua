@@ -26,13 +26,13 @@ us.augroup("ReloadFile", {
 })
 
 -- Autosave after leaving insert mode
-us.augroup("AutosaveAfterInsert", {
+--[[ us.augroup("AutosaveAfterInsert", {
   {
     event = "InsertLeave",
     command = "silent! update",
     nested = true
   }
-})
+}) ]]
 
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
