@@ -72,6 +72,21 @@ function M.config()
     })
     htop:toggle()
   end, {})
+
+  api.nvim_create_user_command("ToggleTermFloat", function()
+    local htop = Terminal:new({
+      direction = 'float',
+      hidden = false,
+      on_open = function(term)
+        float_keymaps_delete(term)
+        vim.opt.mouse = 'a'
+      end,
+      on_close = function(_)
+        vim.opt.mouse = opts_prev["mouse"]
+      end
+    })
+    htop:toggle()
+  end, {})
 end
 
 return M

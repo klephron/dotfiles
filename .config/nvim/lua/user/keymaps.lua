@@ -160,6 +160,7 @@ local leader = {
     a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
     l = { '<cmd>ToggleTermLazygit<cr>', "toggleterm: Lazygit" },
     h = { "<cmd>ToggleTermHtop<cr>", "toggleterm: Htop" },
+    f = { "<cmd>ToggleTermFloat<cr>", "toggleterm: Float" },
   },
   -- Neo-tree
   e = { "<cmd>Neotree toggle<cr>", "neo-tree: Toggle" },
@@ -242,3 +243,4 @@ local localleader = {
 
 wk.register(leader, { prefix = "<leader>" })
 wk.register(localleader, { prefix = "<localleader>" })
+

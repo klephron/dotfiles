@@ -66,12 +66,10 @@ function M.process_launchjs_ask()
 end
 
 function M.terminate()
-  require("dapui").close({})
   return dap.terminate()
 end
 
 function M.disconnect()
-  require("dapui").close({})
   return dap.disconnect()
 end
 

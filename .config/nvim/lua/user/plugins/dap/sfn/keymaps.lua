@@ -6,17 +6,18 @@ M.dap_fn = KeymapDictionary:new({
   step_into = { "<F1>", "Step into" },
   step_over = { "<F2>", "Step over" },
   step_out = { "<F3>", "Step out" },
-  step_back = { "<F5>", "Step back" },
   run_to_cursor = { "<F4>", "Run to cursor", },
+  step_back = { "<F5>", "Step back" },
 
-  continue = { "<F8>", "Continue" },
+  hover = { "<F6>", "Hover" },
+
   run_last = { "<F7>", "Run last" },
-  terminate = { "<S-F7>", "Terminate" },
+  continue = { "<F8>", "Continue" },
 
   toggle_breakpoint = { "<F9>", "Toggle breakpoint" },
-  clear_breakpoints = { "<S-F9>", "Clear breakpoints" },
+  clear_breakpoints = { "<F33>", "Clear breakpoints" }, -- Ctrl + <F9>
 
-  hover = { "<F6>", "Hover" }, -- show variable
+  terminate = { "<F10>", "Terminate" },
 }, "dap-fn")
 
 M.dap = KeymapDictionary:new({
