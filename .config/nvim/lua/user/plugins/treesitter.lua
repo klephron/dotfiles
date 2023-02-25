@@ -20,6 +20,12 @@ function M.config()
       "python",
       "norg",
       "rust",
+      "sql",
+      "go",
+      "java",
+      "javascript",
+      "make",
+      "yaml"
     },
     highlight = {
       enable = true,
