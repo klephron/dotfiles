@@ -2,8 +2,8 @@ local M = {
   'neovim/nvim-lspconfig',
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
-    { "jose-elias-alvarez/null-ls.nvim" },
-  }
+  },
+  options = nil
 }
 
 local handlers = {
@@ -51,8 +51,8 @@ function M.config()
     opts = vim.tbl_deep_extend("force", {}, options, opts or {})
     lspconfig[server].setup(opts)
   end
-  -- Setup dependencies
-  conf_null_ls.manual_config(options)
+  -- For setuping others plugins
+  M.options = options
 end
 
 return M
