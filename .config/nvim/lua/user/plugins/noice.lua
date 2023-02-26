@@ -104,14 +104,6 @@ function M.config()
         view = "mini",
         opts = { stop = true, skip = true },
       },
-      { -- Mini
-        filter = {
-          event = "notify",
-          kind = "info",
-        },
-        opts = { skip = true },
-        view = "mini",
-      },
       { -- Split
         filter = {
           any = {
