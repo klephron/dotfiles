@@ -8,15 +8,13 @@ local options = conf_require("lsp.lspconfig").options
 local opts = {}
 
 local install_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls/"
--- local install_path = vim.fn.expand("$HOME") .. '/Data/jdtls-1.9.0/'
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath("cache") .. '/jdtls/workspace/' .. project_name
 
 local jar_path = vim.fn.system("echo -n " .. install_path .. 'plugins/' .. 'org.eclipse.equinox.launcher_*.jar')
--- local jar_path = install_path .. 'plugins/' .. 'org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar'
 
-local config_type = install_path .. "./config_linux"
+local config_type = install_path .. "config_linux/"
 
 opts = {
   cmd = {

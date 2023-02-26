@@ -98,6 +98,14 @@ function M.config()
       },
       { -- Mini
         filter = {
+          event = "lsp",
+          kind = "progress",
+        },
+        view = "mini",
+        opts = { stop = true, skip = true },
+      },
+      { -- Mini
+        filter = {
           event = "notify",
           kind = "info",
         },
