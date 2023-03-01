@@ -104,6 +104,17 @@ function M.config()
         view = "mini",
         opts = { stop = true, skip = true },
       },
+      { -- One line info messages to mini
+        filter = {
+          any = {
+            { max_height = 1},
+          },
+          event = "notify",
+          kind = "info"
+        },
+        view = "mini",
+        opts = { skip = false, stop = true },
+      },
       { -- Split
         filter = {
           any = {
