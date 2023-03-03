@@ -47,9 +47,11 @@ switcher.settings.cycle_raise_client = true -- raise clients on cycle
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-  naughty.notify({ preset = naughty.config.presets.critical,
+  naughty.notify({
+    preset = naughty.config.presets.critical,
     title = "Oops, there were errors during startup!",
-    text = awesome.startup_errors })
+    text = awesome.startup_errors
+  })
 end
 
 -- Handle runtime errors after startup
@@ -60,9 +62,11 @@ do
     if in_error then return end
     in_error = true
 
-    naughty.notify({ preset = naughty.config.presets.critical,
+    naughty.notify({
+      preset = naughty.config.presets.critical,
       title = "Oops, an error happened!",
-      text = tostring(err) })
+      text = tostring(err)
+    })
 
     in_error = false
   end)
@@ -72,18 +76,18 @@ end
 
 -- {{{ Variable definitions
 
-local chosen_theme = "powerarrow-dark"
-local modkey       = "Mod4"
-local altkey       = "Mod1"
-local control      = "Control"
-local terminal     = "alacritty"
-local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev   = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
-local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "firefox-bin"
+local chosen_theme   = "powerarrow-dark"
+local modkey         = "Mod4"
+local altkey         = "Mod1"
+local control        = "Control"
+local terminal       = "alacritty"
+local vi_focus       = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local cycle_prev     = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
+local editor         = os.getenv("EDITOR") or "nvim"
+local browser        = "firefox-bin"
 
-awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
+awful.util.terminal  = terminal
+awful.util.tagnames  = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
 awful.layout.layouts = {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
@@ -121,7 +125,7 @@ lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
 -- Actions with tags buttons
-awful.util.taglist_buttons = gears.table.join(
+awful.util.taglist_buttons             = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
   awful.button({ modkey }, 1, function(t)
     if client.focus then client.focus:move_to_tag(t) end
@@ -135,7 +139,7 @@ awful.util.taglist_buttons = gears.table.join(
 )
 
 -- Actions with opened tasks
-awful.util.tasklist_buttons = gears.table.join(
+awful.util.tasklist_buttons            = gears.table.join(
   awful.button({}, 1, function(c)
     if c == client.focus then
       c.minimized = true
@@ -147,7 +151,7 @@ awful.util.tasklist_buttons = gears.table.join(
     awful.menu.client_list({ theme = { width = 250 } })
   end),
   awful.button({}, 4, function() awful.client.focus.byidx(1) end),
-  awful.button({}, 5, function() awful.client.focus.byidx(-1) end)
+  awful.button({}, 5, function() awful.client.focus.byidx( -1) end)
 )
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
@@ -158,11 +162,11 @@ beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv
 
 -- Create a launcher widget and a main menu
 local myawesomemenu = {
-  { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-  { "Manual", string.format("%s -e man awesome", terminal) },
+  { "Hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+  { "Manual",      string.format("%s -e man awesome", terminal) },
   { "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-  { "Restart", awesome.restart },
-  { "Quit", function() awesome.quit() end },
+  { "Restart",     awesome.restart },
+  { "Quit",        function() awesome.quit() end },
 }
 
 
@@ -195,9 +199,18 @@ end)
 
 -- No borders when rearranging only 1 non-floating or maximized client
 screen.connect_signal("arrange", function(s)
-  local only_one = #s.tiled_clients == 1
+  -- naughty.notify({ text = "arranging!" })
+  -- local only_one = #s.tiled_clients == 1
+  -- for _, c in pairs(s.clients) do
+  --   if only_one and not c.floating or c.maximized or c.fullscreen then
+  --     c.border_width = 0
+  --   else
+  --     c.border_width = beautiful.border_width
+  --   end
+  -- end
+
   for _, c in pairs(s.clients) do
-    if only_one and not c.floating or c.maximized or c.fullscreen then
+    if c.maximized or c.fullscreen then
       c.border_width = 0
     else
       c.border_width = beautiful.border_width
@@ -226,7 +239,6 @@ local globalkeys = gears.table.join(
 -- Destroy all notifications
   awful.key({ modkey, control }, "x", function() naughty.destroy_all_notifications() end,
     { description = "destroy all notifications", group = "awesome" }),
-
   awful.key({ modkey, control }, "r", awesome.restart,
     { description = "reload awesome", group = "awesome" }),
   awful.key({ modkey, control }, "q", awesome.quit,
@@ -280,7 +292,7 @@ local globalkeys = gears.table.join(
   ),
   awful.key({ modkey, "Shift" }, "h",
     function()
-      awful.client.focus.byidx(-1)
+      awful.client.focus.byidx( -1)
     end,
     { description = "focus previous by index", group = "focus" }
   ),
@@ -319,13 +331,13 @@ local globalkeys = gears.table.join(
 
   awful.key({ altkey, "Shift" }, "Tab",
     function()
-      switcher.switch(-1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
+      switcher.switch( -1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
     end),
 
   -- Swap clients
   awful.key({ modkey, "Control" }, "l", function() awful.client.swap.byidx(1) end,
     { description = "swap with next client by index", group = "client" }),
-  awful.key({ modkey, "Control" }, "h", function() awful.client.swap.byidx(-1) end,
+  awful.key({ modkey, "Control" }, "h", function() awful.client.swap.byidx( -1) end,
     { description = "swap with previous client by index", group = "client" }),
 
   -- Restore client
@@ -341,14 +353,14 @@ local globalkeys = gears.table.join(
   -- Layout manipulation
   awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
     { description = "next layout", group = "layout" }),
-  awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
+  awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc( -1) end,
     { description = "previous layout", group = "layout" }),
 
 
   -- Screen
   awful.key({ modkey, "Shift" }, "j", function() awful.screen.focus_relative(1) end,
     { description = "focus the next screen", group = "screen" }),
-  awful.key({ modkey, "Shift" }, "k", function() awful.screen.focus_relative(-1) end,
+  awful.key({ modkey, "Shift" }, "k", function() awful.screen.focus_relative( -1) end,
     { description = "focus the previous screen", group = "screen" }),
   -- awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
   --   { description = "jump to urgent client", group = "client" }),
@@ -363,18 +375,30 @@ local globalkeys = gears.table.join(
 
   -- ALSA volume control
   awful.key({}, "#121",
-    function() os.execute("amixer set Master toggle") beautiful.volume.update() end
+    function()
+      os.execute("amixer set Master toggle")
+      beautiful.volume.update()
+    end
   ),
 
   awful.key({}, "#122",
-    function() os.execute("amixer set Master 1%-") beautiful.volume.update() end
+    function()
+      os.execute("amixer set Master 1%-")
+      beautiful.volume.update()
+    end
   ),
 
   awful.key({}, "#123",
-    function() os.execute("amixer set Master 1%+") beautiful.volume.update() end
+    function()
+      os.execute("amixer set Master 1%+")
+      beautiful.volume.update()
+    end
   ),
   awful.key({}, "#198",
-    function() os.execute("amixer set Capture toggle") beautiful.volume.update() end
+    function()
+      os.execute("amixer set Capture toggle")
+      beautiful.volume.update()
+    end
   ),
 
 
@@ -408,10 +432,8 @@ local globalkeys = gears.table.join(
   -- Launch programs
   awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
     { description = "open a terminal", group = "launcher" }),
-
   awful.key({ modkey, }, "z", function() awful.screen.focused().quake:toggle() end,
     { description = "dropdown application", group = "launcher" }),
-
   awful.key({ modkey }, "q", function() awful.spawn(browser) end,
     { description = "run browser", group = "launcher" }),
   -- rofi
@@ -463,7 +485,7 @@ local globalkeys = gears.table.join(
   --   { description = "open previous tag [modkey]", group = "tag" }),
 
   -- Non-empty tag browsing
-  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
+  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty( -1) end,
     { description = "view previous nonempty", group = "tag" }),
   awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
     { description = "view previous nonempty", group = "tag" })
@@ -534,7 +556,6 @@ for i, v in ipairs(awful.util.tagnames) do
         end
       end,
       { description = "[modkey] move focused client to tag #" .. v, group = "tag" }),
-
     awful.key({ modkey, altkey }, "#" .. i + 9,
       function()
         if client.focus then
@@ -566,10 +587,8 @@ local clientkeys = gears.table.join(
 
   awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
     { description = "toggle keep on top", group = "client" }),
-
   awful.key({ modkey, control }, "space", awful.client.floating.toggle,
     { description = "toggle floating", group = "client" }),
-
   awful.key({ modkey }, "'", function(c) c.sticky = not c.sticky end,
     { description = "toggle sticky", group = "client" }),
 
@@ -593,6 +612,11 @@ local clientkeys = gears.table.join(
   awful.key({ modkey, }, "m",
     function(c)
       c.maximized = not c.maximized
+      -- if c.maximized then
+      --   c.border_width = 0
+      -- else
+      --   c.border_width = beautiful.border_width
+      -- end
       c:raise()
     end,
     { description = "(un)maximize", group = "client" }),
@@ -719,8 +743,8 @@ client.connect_signal("manage", function(c)
   -- if not awesome.startup then awful.client.setslave(c) end
 
   if awesome.startup
-    and not c.size_hints.user_position
-    and not c.size_hints.program_position then
+      and not c.size_hints.user_position
+      and not c.size_hints.program_position then
     -- Prevent clients from being unreachable after screen count changes.
     awful.placement.no_offscreen(c)
   end
