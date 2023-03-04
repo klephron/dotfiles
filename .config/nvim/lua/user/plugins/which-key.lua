@@ -3,11 +3,11 @@ local M = {
   opts = {
     show_help = false,
     key_labels = {},
-    triggers = { "leader", '"', '<c-r>' },
+    triggers = "auto",
     triggers_nowait = {
       -- marks
-      "`",
-      "'",
+      -- "`",
+      -- "'",
       "g`",
       "g'",
       -- registers
@@ -15,7 +15,7 @@ local M = {
       -- "<c-r>",
       -- spelling
       "z=",
-    }
+    },
   }
 }
 
