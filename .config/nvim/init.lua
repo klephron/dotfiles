@@ -25,8 +25,8 @@ end
 
 require("user.settings")
 require("user.utils.globals")
-require("user.colorscheme")
 require("user.lazy")
+require("user.colorscheme")
 require("user.keymaps")
 require("user.autocmds")
 
