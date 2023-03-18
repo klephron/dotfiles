@@ -25,6 +25,22 @@ us.augroup("ReloadFile", {
   }
 })
 
+-- us.augroup("SaveWhenFocusLost", {
+--   {
+--     event = "FocusLost",
+--     pattern = "*",
+--     command = function()
+--       if vim.bo.modifiable == true and vim.bo.readonly == false then
+--         if vim.bo.modified == true then
+--           vim.cmd("doautocmd BufWritePre")
+--           vim.cmd("silent! write")
+--           vim.cmd("doautocmd BufWritePost")
+--         end
+--       end
+--     end
+--   }
+-- })
+
 -- Autosave after leaving insert mode
 --[[ us.augroup("AutosaveAfterInsert", {
   {

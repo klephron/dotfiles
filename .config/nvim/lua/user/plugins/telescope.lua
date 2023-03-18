@@ -19,6 +19,21 @@ function M.config()
   local themes = require('telescope.themes')
   local builtins = require('telescope.builtin')
 
+  local functions = {
+    buffer_delete = function(prompt_bufnr)
+      local action_state = require("telescope.actions.state")
+      local bufdelete = require("bufdelete")
+
+      local current_picker = action_state.get_current_picker(prompt_bufnr)
+      -- Use bufdelete instead not to break layout
+      current_picker:delete_selection(function(selection)
+        local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
+        local ok = pcall(bufdelete.bufdelete, selection.bufnr, force)
+        return ok
+      end)
+    end
+  }
+
   local ignore_patterns = {
     '%.jpg',
     '%.jpeg',
@@ -86,11 +101,14 @@ function M.config()
         i = {
           ["<C-j>"] = actions.cycle_history_next,
           ["<C-k>"] = actions.cycle_history_prev,
-
+          ["<C-f>"] = functions.buffer_delete,
           ["<C-c>"] = function() vim.cmd.stopinsert() end,
           ["<esc>"] = actions.close,
         },
-      }
+        n = {
+          ["f"] = functions.buffer_delete,
+        }
+      },
     },
     pickers = {
       find_files = {

@@ -119,7 +119,6 @@ function M.config()
         filter = {
           any = {
             { min_height = 14 },
-            { min_width = 120 },
           },
         },
         view = "split",
