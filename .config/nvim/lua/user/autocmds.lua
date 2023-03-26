@@ -12,6 +12,18 @@ us.augroup("_nasm", {
   }
 })
 
+us.augroup("RestoreCursorShapeOnExit", {
+  {
+    event = "VimLeave",
+    pattern = "*",
+    command = function()
+      vim.opt.guicursor = {
+        [[a:ver20]],
+      }
+    end
+  }
+})
+
 -- Check reload file when changed
 api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
@@ -49,12 +61,11 @@ us.augroup("ReloadFile", {
     nested = true
   }
 }) ]]
-
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
   augroup _binary
-    au! 
+    au!
     au BufReadPre   *.bin,*.exe,*.out let &bin=1
     au BufReadPost  *.bin,*.exe,*.out if &bin | %!xxd
     au BufReadPost  *.bin,*.exe,*.out set ft=xxd | endif
@@ -126,9 +137,9 @@ api.nvim_create_autocmd({ "FileType" }, {
 ---------------------------------------------------------------------------------
 api.nvim_create_user_command("Pwd", function()
   local reg_cmd = "" ..
-    ":redir @+ \n" ..
-    ":echon getcwd()\n" ..
-    ":redir end"
+      ":redir @+ \n" ..
+      ":echon getcwd()\n" ..
+      ":redir end"
   vim.cmd(":echo '' | redraw") -- clear commandline
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
@@ -141,7 +152,7 @@ end, { nargs = 0 })
 ---------------------------------------------------------------------------------
 -- local id
 -- for _, key in ipairs({ "h", "j", "k", "l" }) do
-  -- local count = 0
+-- local count = 0
 --   vim.keymap.set("n", key, function()
 --     if count >= 10 then
 --       id = vim.notify("Hold it Cowboy!", vim.log.levels.WARN, {

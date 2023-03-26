@@ -22,7 +22,6 @@ if fn.exists("g:neovide") == 1 then
   vim.g.neovide_floating_blur_amount_y = 2.0
 end
 
-
 require("user.settings")
 require("user.utils.globals")
 require("user.lazy")

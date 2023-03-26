@@ -481,8 +481,6 @@ local globalkeys = gears.table.join(
     { description = "open previous tag [control]", group = "tag" }),
   awful.key({ modkey, }, "Escape", awful.tag.history.restore,
     { description = "open previous tag [modkey]", group = "tag" }),
-  -- awful.key({ modkey, }, "Escape", awful.tag.history.restore,
-  --   { description = "open previous tag [modkey]", group = "tag" }),
 
   -- Non-empty tag browsing
   awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty( -1) end,
@@ -495,10 +493,10 @@ local globalkeys = gears.table.join(
 --   { description = "add new tag", group = "tag" }),
 -- awful.key({ modkey, "Shift" }, "r", function() lain.util.rename_tag() end,
 --   { description = "rename tag", group = "tag" }),
--- awful.key({ modkey, "Shift" }, "Left", function() lain.util.move_tag(-1) end,
+-- awful.key({ modkey, control }, "Left", function() lain.util.move_tag(-1) end,
 --   { description = "move tag to the left", group = "tag" }),
--- awful.key({ modkey, "Shift" }, "Right", function() lain.util.move_tag(1) end,
---   { description = "move tag to the right", group = "tag" }),
+-- awful.key({ modkey, control }, "Right", function() lain.util.move_tag(1) end,
+  -- { description = "move tag to the right", group = "tag" })
 -- awful.key({ modkey, "Shift" }, "d", function() lain.util.delete_tag() end,
 --   { description = "delete tag", group = "tag" }),
 )

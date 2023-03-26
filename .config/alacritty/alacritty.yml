@@ -51,7 +51,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Block
+  style: Beam
 
 draw_bold_text_with_bright_colors: false
 
