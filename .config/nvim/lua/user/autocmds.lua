@@ -140,12 +140,17 @@ api.nvim_create_user_command("Pwd", function()
       ":redir @+ \n" ..
       ":echon getcwd()\n" ..
       ":redir end"
-  vim.cmd(":echo '' | redraw") -- clear commandline
+  vim.cmd(":echo '' | redraw")
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
 
 api.nvim_create_user_command("Fdir", function()
-  vim.cmd('echo expand("%")')
+  local reg_cmd = "" ..
+      ":redir @+ \n" ..
+      ":echon expand('%:h')\n" ..
+      ":redir end"
+  vim.cmd(":echo '' | redraw")
+  vim.cmd(reg_cmd)
 end, { nargs = 0 })
 ---------------------------------------------------------------------------------
 -- Funny thing from folke
