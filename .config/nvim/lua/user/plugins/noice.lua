@@ -75,26 +75,16 @@ function M.config()
       --   view = "notify_send",
       --   opts = { stop = true },
       -- },
-      { -- Neovim default notifications
+      { -- Disable neovim default notifications
         filter = {
           any = {
-            -- { find = "%d+L, %d+B$" },
-            -- { find = "^Already at oldest change" },
-            -- { find = "^Already at newest change" },
-            -- { find = "^%d+ change" },
-            -- { find = "^%d+ lines <ed" },
-            -- { find = "^%d+ lines >ed" },
-            -- { find = "^%d line less" },
-            -- { find = "^%d+ fewer line" },
-            -- { find = "^%d+ more line" },
-            -- { find = "^%d+ fewer line" },
-            -- { find = "^%d+ lines yanked" },
+             { find = "--d+%--$" },
           },
           event = "msg_show",
           max_height = 1,
         },
         view = "mini",
-        opts = { replace = true, stop = true },
+        opts = { skip = true, replace = true, stop = true },
       },
       { -- Mini
         filter = {
@@ -102,12 +92,12 @@ function M.config()
           kind = "progress",
         },
         view = "mini",
-        opts = { stop = true, skip = true },
+        opts = { skip = true, stop = true },
       },
       { -- One line info messages to mini
         filter = {
           any = {
-            { max_height = 1},
+            { max_height = 1 },
           },
           event = "notify",
           kind = "info"
@@ -122,7 +112,7 @@ function M.config()
           },
         },
         view = "split",
-        opts = { merge = true, enter = true },
+        opts = { merge = true, enter = true, stop = true },
       }
     }
   })
