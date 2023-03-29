@@ -4,7 +4,7 @@ local api = vim.api
 ---------------------------------------------------------------------------------
 -- Autocmds
 ---------------------------------------------------------------------------------
-us.augroup("_nasm", {
+us.augroup("Nasm", {
   {
     event = "BufRead,BufNewFile",
     pattern = "*.inc,*.asm",
@@ -37,21 +37,21 @@ us.augroup("ReloadFile", {
   }
 })
 
--- us.augroup("SaveWhenFocusLost", {
---   {
---     event = "FocusLost",
---     pattern = "*",
---     command = function()
---       if vim.bo.modifiable == true and vim.bo.readonly == false then
---         if vim.bo.modified == true then
---           vim.cmd("doautocmd BufWritePre")
---           vim.cmd("silent! write")
---           vim.cmd("doautocmd BufWritePost")
---         end
---       end
---     end
---   }
--- })
+us.augroup("SaveWhenFocusLost", {
+  {
+    event = "FocusLost",
+    pattern = "*",
+    command = function()
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
+        if vim.bo.modified == true then
+          vim.cmd("doautocmd BufWritePre")
+          vim.cmd("silent! write")
+          vim.cmd("doautocmd BufWritePost")
+        end
+      end
+    end
+  }
+})
 
 -- Autosave after leaving insert mode
 --[[ us.augroup("AutosaveAfterInsert", {
@@ -64,7 +64,7 @@ us.augroup("ReloadFile", {
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
-  augroup _binary
+  augroup BinaryXXD
     au!
     au BufReadPre   *.bin,*.exe,*.out let &bin=1
     au BufReadPost  *.bin,*.exe,*.out if &bin | %!xxd
