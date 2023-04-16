@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     'mfussenegger/nvim-dap',
   },
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   config = function()
     require("nvim-dap-virtual-text").setup({

@@ -5,7 +5,7 @@ local wk_ok, wk = pcall(require, "which-key")
 us.augroup("AddTerminalMappings", {
   {
     event = { "TermOpen" },
-    pattern = { "term://*" },
+    pattern = { "term://*", '\\[dap-terminal\\]*' },
     command = function()
       local opts = { buffer = 0, silent = false }
       us.set_keynomap('t', '<esc>', [[<C-\><C-n>]], opts)

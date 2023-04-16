@@ -25,7 +25,8 @@ function M.config()
       "java",
       "javascript",
       "make",
-      "yaml"
+      "yaml",
+      "verilog"
     },
     highlight = {
       enable = true,
