@@ -41,7 +41,6 @@ function M.config()
       color_icons = true,
       show_buffer_icons = true,
       show_buffer_close_icons = true,
-      show_buffer_default_icon = true,
       show_close_icon = true,
       show_tab_indicators = true,
 

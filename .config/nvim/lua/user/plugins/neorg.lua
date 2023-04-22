@@ -6,6 +6,7 @@ local M = {
   ft = "norg",
   build = ":Neorg sync-parsers",
   cmd = { "Neorg" },
+  enabled = false -- WARN: config deprecated
 }
 
 function M.config()
