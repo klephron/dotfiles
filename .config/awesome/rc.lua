@@ -446,9 +446,9 @@ local globalkeys = gears.table.join(
     { description = "show windows", group = "launcher" }),
   -- dolphin
   awful.key({ modkey }, "e", function()
-    awful.util.spawn_with_shell("dolphin", false)
+    awful.util.spawn_with_shell("pcmanfm", false)
   end,
-    { description = "dolphin", group = "launcher" }),
+    { description = "file-manager", group = "launcher" }),
   -- neovide
   awful.key({ modkey }, "u", function()
     awful.spawn("neovide", {})
