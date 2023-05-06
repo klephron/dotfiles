@@ -27,7 +27,7 @@ function M.config()
     {
       event = "VimLeavePre",
       pattern = "*",
-      command = "SaveSession",
+      command = "SessionSave",
     }
   })
 end
