@@ -40,7 +40,7 @@ function M.config()
     presets = {
       bottom_search = true,
       command_palette = true,
-      long_message_to_split = false,
+      long_message_to_split = true,
       inc_rename = false,
       lsp_doc_border = false,
     },
@@ -51,14 +51,7 @@ function M.config()
     commands = {
       history = {
         filter = {
-          min_length = 1, -- add everything
-          -- any = {
-          --   { event = "notify" },
-          --   { error = true },
-          --   { warning = true },
-          --   { event = "msg_show", },
-          --   { event = "lsp", kind = "message" },
-          -- }
+          min_length = 1,
         }
       },
       all = {
@@ -68,24 +61,6 @@ function M.config()
       }
     },
     routes = {
-      -- {
-      --   filter = {
-      --     cond = function() return not focused end,
-      --   },
-      --   view = "notify_send",
-      --   opts = { stop = true },
-      -- },
-      { -- Disable neovim default notifications
-        filter = {
-          any = {
-             { find = "--d+%--$" },
-          },
-          event = "msg_show",
-          max_height = 1,
-        },
-        view = "mini",
-        opts = { skip = true, replace = true, stop = true },
-      },
       { -- Mini
         filter = {
           event = "lsp",
@@ -94,25 +69,13 @@ function M.config()
         view = "mini",
         opts = { skip = true, stop = true },
       },
-      { -- One line info messages to mini
+      {
         filter = {
-          any = {
-            { max_height = 1 },
-          },
           event = "notify",
           kind = "info"
         },
         view = "mini",
-        opts = { skip = false, stop = true },
-      },
-      { -- Split
-        filter = {
-          any = {
-            { min_height = 14 },
-          },
-        },
-        view = "split",
-        opts = { merge = true, enter = true, stop = true },
+        opts = { stop = true }
       }
     }
   })

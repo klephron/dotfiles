@@ -1,6 +1,6 @@
 local M = {
   "rmagatti/auto-session",
-  cmd = {  "RestoreSession", "Autosession", "SaveSession" },
+  cmd = {  "Autosession", "SessionRestore", "SessionSave" },
   enabled = true,
 }
 

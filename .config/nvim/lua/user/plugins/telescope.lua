@@ -6,7 +6,6 @@ local M = {
     "rcarriga/nvim-notify",
     "stevearc/aerial.nvim",
     "folke/noice.nvim",
-    "rmagatti/session-lens",
     "nvim-neorg/neorg",
     -- "mfussenegger/nvim-dap",
   }
@@ -102,10 +101,12 @@ function M.config()
           ["<C-j>"] = actions.cycle_history_next,
           ["<C-k>"] = actions.cycle_history_prev,
           ["<C-f>"] = functions.buffer_delete,
-          ["<C-c>"] = function() vim.cmd.stopinsert() end,
+          ["<C-o>"] = function() vim.cmd.stopinsert() end,
           ["<esc>"] = actions.close,
         },
         n = {
+          ["<Tab>"] = actions.toggle_selection + actions.move_selection_previous,
+          ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_next,
           ["f"] = functions.buffer_delete,
         }
       },
@@ -137,7 +138,6 @@ function M.config()
   telescope.load_extension("notify")
   -- Session
   -- telescope.load_extension("possession")
-  telescope.load_extension("session-lens")
   -- Projects
   telescope.load_extension('projects')
   -- Aerial

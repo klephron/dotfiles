@@ -23,8 +23,8 @@ function M.config()
     -- formatting.black,
 
     -- proto
-    -- formatting.protolint,
-    -- diagnostics.protolint
+    formatting.protolint,
+    diagnostics.protolint
   }
 
   null_ls.setup({
