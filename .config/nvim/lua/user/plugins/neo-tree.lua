@@ -13,7 +13,7 @@ function M.config()
     filesystem = {
       -- use_libuv_file_watcher = true,
       follow_current_file = true,
-      -- hijack_netrw_behaviour = "open_default",
+      hijack_netrw_behaviour = "open_default",
       window = {
         mappings = {
           ["<space>"] = "none",
