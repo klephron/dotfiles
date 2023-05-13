@@ -16,6 +16,9 @@ local M = {
       -- spelling
       "z=",
     },
+    motions = {
+      count = false,
+    },
   }
 }
 
