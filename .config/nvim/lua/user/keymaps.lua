@@ -116,6 +116,9 @@ us.set_keynomap("n", "<C-s>", "<cmd>wall<cr>", "Write all")
 us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")
 us.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Vertical split")
 
+-- Other
+us.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "print ASCII character")
+
 -- Makes * and # work on visual mode too.
 vim.cmd([[
   function! g:VSetSearch(cmdtype)
@@ -141,8 +144,13 @@ us.set_keynomap("c", "<C-j>", "<Down>", with_nosilent("History scroll down"))
 us.set_keynomap("c", "<C-k>", "<Up>", with_nosilent("History scroll up"))
 
 
+
 -- Don't load which-key mappings if this plugin is not loaded
-if not wk_ok then return end
+if not wk_ok then
+  vim.notify("which-key is not istalled. Ignoring some keymaps",
+    vim.log.levels.WARN, { title = "keymaps" })
+  return
+end
 
 -- Leader mappings
 local leader = {
@@ -235,12 +243,10 @@ local localleader = {
   -- Neorg
   o = {
     name = "neorg",
-    s = { "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace"},
+    s = { "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace" },
   },
-  -- EasyAlign
-  a = { "<cmd>ascii<cr>", "print ASCII character"},
+  -- a: ASCII
 }
 
 wk.register(leader, { prefix = "<leader>" })
 wk.register(localleader, { prefix = "<localleader>" })
-

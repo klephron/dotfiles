@@ -15,7 +15,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("user.plugins", {
-  install = { colorscheme = { "darkplus" }, },
+  install = {},
   performance = {
     rtp = {
       disabled_plugins = {

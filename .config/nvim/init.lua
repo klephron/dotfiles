@@ -5,6 +5,16 @@ if fn.exists("g:started_by_firenvim") == 1 then
   require("user.utils.globals")
   require("user.keymaps")
   require("user.autocmds")
+  vim.notify("Using firenvim config", vim.log.levels.INFO, {})
+  return
+end
+
+if fn.exists("g:vscode") == 1 then
+  require("user.settings")
+  require("user.utils.globals")
+  require("user.keymaps")
+  require("user.autocmds")
+  vim.notify("Using vscode config", vim.log.levels.INFO, {})
   return
 end
 
@@ -21,6 +31,7 @@ if fn.exists("g:neovide") == 1 then
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
 end
+
 
 require("user.settings")
 require("user.utils.globals")
