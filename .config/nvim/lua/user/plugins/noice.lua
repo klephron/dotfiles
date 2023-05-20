@@ -61,6 +61,10 @@ function M.config()
       }
     },
     routes = {
+      {
+        view = "notify",
+        filter = { event = "msg_showmode" },
+      },
       { -- Mini
         filter = {
           event = "lsp",

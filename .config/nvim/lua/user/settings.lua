@@ -2,10 +2,9 @@ local fn = vim.fn
 -----------------------------------------------------------------------------//
 -- Message output on vim actions
 -----------------------------------------------------------------------------//
--- vim.opt.shortmess:append("c")
 vim.opt.shortmess = {
   f = true,
-  i = false,
+  i = true,
   l = true,
   m = true,
   n = true,
