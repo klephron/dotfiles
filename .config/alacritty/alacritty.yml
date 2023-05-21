@@ -21,8 +21,8 @@ window:
   dynamic_title: true
 
 font:
-    # family: MesloLGS Nerd Font Mono
   normal:
+    # family: MesloLGS Nerd Font Mono
     family: FiraCode Nerd Font Mono
     style: Regular
   bold:
@@ -37,7 +37,7 @@ font:
   glyph_offset:
     x: 0
     y: 0
-  size: 7.0
+  size: 7
 
 mouse:
   # Click settings
