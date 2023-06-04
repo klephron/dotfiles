@@ -196,6 +196,8 @@ local leader = {
 }
 
 local localleader = {
+  -- Neotree
+  e = { "<cmd>Neotree position=current<cr>", "Neotree position=current"},
   -- Lsp
   l = {
     name = "lsp",

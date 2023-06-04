@@ -25,7 +25,7 @@ function M.config()
   -- Manually save session
   us.augroup("SaveSessionManually", {
     {
-      event = "VimLeavePre",
+      event = "VimLeave",
       pattern = "*",
       command = "SessionSave",
     }
