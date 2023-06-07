@@ -36,5 +36,4 @@ require("user.preset.nvim.colorscheme")
 require("user.preset.nvim.keymaps")
 require("user.preset.nvim.autocmds")
 
--- watch personal module
 require("watch")
