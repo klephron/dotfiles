@@ -6,7 +6,7 @@ function M.config()
   local alpha = require("alpha")
   -- Imports
   local theme = require("alpha.themes.dashboard")
-  local icons = require("user.icons").alpha
+  local icons = require("user.preset.nvim.icons").alpha
   -- Header
   local header = {
     type = "text",

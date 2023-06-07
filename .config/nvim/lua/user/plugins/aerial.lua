@@ -24,7 +24,7 @@ function M.config()
     highlight_on_hover = true,
     highlight_on_jump = 500,
 
-    icons = require("user.icons").kind_icons,
+    icons = require("user.preset.nvim.icons").kind_icons,
 
     nerd_font = "auto",
 

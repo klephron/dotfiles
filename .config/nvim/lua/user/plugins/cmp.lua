@@ -13,7 +13,7 @@ function M.config()
   local cmp = require("cmp")
 
   local luasnip = require("luasnip")
-  local kind_icons = require("user.icons").kind_icons
+  local kind_icons = require("user.preset.nvim.icons").kind_icons
 
   -- issues
   if not table.unpack then

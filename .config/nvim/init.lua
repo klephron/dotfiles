@@ -3,8 +3,6 @@ local fn = vim.fn
 if fn.exists("g:started_by_firenvim") == 1 then
   require("user.settings")
   require("user.utils.globals")
-  require("user.keymaps")
-  require("user.autocmds")
   vim.notify("Using firenvim config", vim.log.levels.INFO, {})
   return
 end
@@ -12,8 +10,6 @@ end
 if fn.exists("g:vscode") == 1 then
   require("user.settings")
   require("user.utils.globals")
-  require("user.keymaps")
-  require("user.autocmds")
   vim.notify("Using vscode config", vim.log.levels.INFO, {})
   return
 end
@@ -35,10 +31,10 @@ end
 
 require("user.settings")
 require("user.utils.globals")
-require("user.lazy")
-require("user.colorscheme")
-require("user.keymaps")
-require("user.autocmds")
+require("user.preset.nvim.lazy")
+require("user.preset.nvim.colorscheme")
+require("user.preset.nvim.keymaps")
+require("user.preset.nvim.autocmds")
 
 -- watch personal module
 require("watch")
