@@ -2,4 +2,5 @@
 -- local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
 -- vscode.nvim
-require("vscode").load("dark")
+-- require("vscode").load("dark")
+vim.cmd("colorscheme kanagawa")

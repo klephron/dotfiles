@@ -20,7 +20,7 @@ function M.config()
     -- python
     -- diagnostics.pylint,
     -- diagnostics.mypy.with { extra_args = { "--strict" } },
-    -- formatting.black,
+    formatting.black,
 
     -- proto
     formatting.protolint,
