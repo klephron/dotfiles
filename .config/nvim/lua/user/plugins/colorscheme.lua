@@ -26,6 +26,7 @@ local M = {
     lazy = true,
     opts = {
       terminalColors = false,
+      commentStyle = { italic = false },
     }
   }
 }
