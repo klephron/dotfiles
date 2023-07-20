@@ -1,28 +1,23 @@
 local M = {
   "williamboman/mason.nvim",
-}
+  config = function()
+    local mason = require("mason")
+    mason.setup({})
 
-local tools = {
-  "black",
-  "stylua",
-}
+    local tools = {
+      "black",
+      "stylua",
+    }
 
+    local registry = require("mason-registry")
 
-local function check()
-  local registry = require("mason-registry")
-
-  for _, tool in ipairs(tools) do
-    local p = registry.get_package(tool)
-    if not p:is_installed() then
-      p:install()
+    for _, tool in ipairs(tools) do
+      local p = registry.get_package(tool)
+      if not p:is_installed() then
+        p:install()
+      end
     end
   end
-end
-
-function M.config()
-  local mason = require("mason")
-  mason.setup({})
-  check()
-end
+}
 
 return M
