@@ -8,7 +8,7 @@ local M = {
 
 function M.config()
   local null_ls = require("null-ls")
-  local options = conf_require("lsp.lspconfig").options
+  local options = conf_require("lspconfig").lspconfig_get_options()
 
   local code_actions = null_ls.builtins.code_actions
   local diagnostics = null_ls.builtins.diagnostics

@@ -6,9 +6,7 @@ local M = {
   enabled = true,
   event = "VeryLazy",
   config = function()
-    require("nvim-dap-virtual-text").setup({
-
-    })
+    require("nvim-dap-virtual-text").setup({})
     -- Update highlights
     vim.api.nvim_set_hl(0, "NvimDapVirtualText", { link = "NonText" })
   end
