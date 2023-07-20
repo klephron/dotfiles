@@ -15,11 +15,6 @@ function M.config()
   local luasnip = require("luasnip")
   local kind_icons = require("user.preset.nvim.icons").kind_icons
 
-  -- issues
-  if not table.unpack then
-    table.unpack = unpack
-  end
-
   -- Function implementations
   local function has_words_before()
     local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -82,7 +77,7 @@ function M.config()
       local comp_item = cmp.get_entries()[1].completion_item
       -- if is not expanded
       local is_simple = comp_item.filterText == comp_item.insertText
-        or comp_item.insertTextFormat == nil;
+          or comp_item.insertTextFormat == nil;
       cmp.confirm({
         select = true
       }, function() -- callback
@@ -138,33 +133,25 @@ function M.config()
     ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
   }
 
-  -- Config
-  -- Disable default mappings
-  cmp.config.disable = true
-
-  -- Editor mode
+  cmp.config.disable = true -- disable default mappings
   cmp.setup {
     enabled = function()
       return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
     end,
     snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
+      expand = function(args) luasnip.lsp_expand(args.body) end,
     },
-
     mapping = intellij_mappings,
     completion = {},
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+    preselect = cmp.PreselectMode.None,
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        -- Kind icons
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
         vim_item.menu = ({
           luasnip = "[S]",
           buffer = "[B]",
@@ -173,18 +160,19 @@ function M.config()
         return vim_item
       end,
     },
-    matching = {
-      disallow_fuzzy_matching = false,
+    duplicates = {
+      nvim_lsp = 1,
+      luasnip = 1,
+      cmp_tabnine = 1,
+      buffer = 1,
+      path = 1,
     },
     sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer", max_item_count = 10 },
-      { name = "path" },
+      { name = "nvim_lsp", priority = 1000 },
+      { name = "luasnip",  priority = 750 },
+      { name = "buffer",   priority = 500 },
+      { name = "path",     priority = 250 },
     },
-    experimental = {
-      ghost_text = false
-    }
   }
 end
 

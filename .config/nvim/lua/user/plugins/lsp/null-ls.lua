@@ -24,7 +24,9 @@ function M.config()
 
     -- proto
     formatting.protolint,
-    diagnostics.protolint
+    diagnostics.protolint,
+
+    formatting.fourmolu
   }
 
   null_ls.setup({

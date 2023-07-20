@@ -49,6 +49,9 @@ local M = {
     }
   },
   gopls = {},
+  hls = {
+    filetypes = { 'haskell', 'lhaskell', 'cabal' },
+  }
 }
 
 return M

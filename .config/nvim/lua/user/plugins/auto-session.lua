@@ -13,7 +13,7 @@ function M.config()
     log_level = 'info',
     auto_session_root_dir = vim.fn.stdpath('cache') .. "/auto-session/",
     auto_session_enabled = true,
-    auto_save_enabled = false,
+    auto_save_enabled = true,
     auto_restore_enabled = false,
     auto_session_use_git_branch = nil,
     cwd_change_handling = false,
@@ -23,13 +23,13 @@ function M.config()
   })
 
   -- Manually save session
-  us.augroup("SaveSessionManually", {
-    {
-      event = "VimLeave",
-      pattern = "*",
-      command = "SessionSave",
-    }
-  })
+  -- us.augroup("SaveSessionManually", {
+  --   {
+  --     event = "VimLeave",
+  --     pattern = "*",
+  --     command = "SessionSave",
+  --   }
+  -- })
 end
 
 return M
