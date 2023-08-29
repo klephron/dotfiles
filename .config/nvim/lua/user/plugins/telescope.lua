@@ -7,6 +7,7 @@ local M = {
     "stevearc/aerial.nvim",
     "folke/noice.nvim",
     "nvim-neorg/neorg",
+    "jedrzejboczar/possession.nvim",
     -- "mfussenegger/nvim-dap",
   },
   config = function()
@@ -132,7 +133,7 @@ local M = {
 
     telescope.load_extension("noice")
     telescope.load_extension("notify")
-    -- telescope.load_extension("possession")
+    telescope.load_extension("possession")
     telescope.load_extension('projects')
     telescope.load_extension('aerial')
     -- telescope.load_extension('dap')

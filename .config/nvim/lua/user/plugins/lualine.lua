@@ -81,6 +81,10 @@ local M = {
       return "spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
     end
 
+    local session_name = function()
+        return require('possession.session').session_name or ''
+    end
+
     lualine.setup({
       options = {
         icons_enabled = true,
@@ -93,7 +97,7 @@ local M = {
       sections = {
         lualine_a = { mode },
         lualine_b = { branch, diagnostics },
-        lualine_c = { filename },
+        lualine_c = { session_name, filename },
         lualine_x = { "aerial" },
         lualine_y = { diff, "fileformat", spaces, },
         lualine_z = { location, lualine_progress }
@@ -101,7 +105,7 @@ local M = {
       inactive_sections = {
         lualine_a = { mode },
         lualine_b = { branch },
-        lualine_c = { filename },
+        lualine_c = { session_name, filename },
         lualine_x = { "aerial", "fileformat" },
         lualine_y = {},
         lualine_z = { location, lualine_progress },

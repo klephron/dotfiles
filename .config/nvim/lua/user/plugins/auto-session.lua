@@ -1,7 +1,7 @@
 local M = {
   "rmagatti/auto-session",
   cmd = { "Autosession", "SessionRestore", "SessionSave" },
-  enabled = true,
+  enabled = false,
   config = function()
     local close_conflicted = { "tabdo Neotree close", "tabdo AerialCloseAll" }
 
@@ -10,7 +10,7 @@ local M = {
       log_level = 'info',
       auto_session_root_dir = vim.fn.stdpath('cache') .. "/auto-session/",
       auto_session_enabled = true,
-      auto_save_enabled = true,
+      auto_save_enabled = false,
       auto_restore_enabled = false,
       auto_session_use_git_branch = nil,
       cwd_change_handling = false,
@@ -20,13 +20,13 @@ local M = {
     })
 
     -- Manually save session
-    -- us.augroup("SaveSessionManually", {
-    --   {
-    --     event = "VimLeave",
-    --     pattern = "*",
-    --     command = "SessionSave",
-    --   }
-    -- })
+    us.augroup("SaveSessionManually", {
+      {
+        event = "VimLeave",
+        pattern = "*",
+        command = "SessionSave",
+      }
+    })
   end
 }
 

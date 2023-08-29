@@ -51,7 +51,8 @@ local M = {
   gopls = {},
   hls = {
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
-  }
+  },
+  denols = {},
 }
 
 return M

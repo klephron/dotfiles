@@ -19,3 +19,5 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # TMUX
 alias ta="tmux attach || tmux"
+
+alias jl="lazygit"
