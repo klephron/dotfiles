@@ -34,6 +34,7 @@ require("user.utils.globals")
 require("user.preset.nvim.lazy")
 require("user.preset.nvim.colorscheme")
 require("user.preset.nvim.keymaps")
+require("user.preset.nvim.aliases")
 require("user.preset.nvim.autocmds")
 
 require("watch")
