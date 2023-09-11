@@ -31,7 +31,7 @@ local M = {
         enable = true,
       },
       indent = {
-        enable = true,
+        enable = false,
       },
       context_commentstring = {
         enable = true,
