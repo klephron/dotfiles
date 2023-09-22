@@ -103,18 +103,20 @@ us.augroup("_map_hohl", {
   }
 })
 
--- Quit
-us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "win: Close")
-us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "win: Close all")
-
 -- Write
 us.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "Write all")
 us.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
 us.set_keynomap("n", "<C-s>", "<cmd>wall<cr>", "Write all")
 
--- Splits
-us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")
-us.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Vertical split")
+if not us.is_vscode then
+  -- Quit
+  us.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "win: Close")
+  us.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "win: Close all")
+
+  -- Splits
+  us.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")
+  us.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Vertical split")
+end
 
 -- Other
 us.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "print ASCII character")
@@ -142,7 +144,6 @@ us.set_keynomap("c", "<C-b>", "<Left>", with_nosilent("Move char left"))
 us.set_keynomap("c", "<C-f>", "<Right>", with_nosilent("Move char right"))
 us.set_keynomap("c", "<C-j>", "<Down>", with_nosilent("History scroll down"))
 us.set_keynomap("c", "<C-k>", "<Up>", with_nosilent("History scroll up"))
-
 
 
 -- Don't load which-key mappings if this plugin is not loaded
@@ -196,7 +197,7 @@ local leader = {
 
 local localleader = {
   -- Neotree
-  e = { "<cmd>Neotree position=current<cr>", "Neotree position=current"},
+  e = { "<cmd>Neotree position=current<cr>", "Neotree position=current" },
   -- Lsp
   l = {
     name = "lsp",

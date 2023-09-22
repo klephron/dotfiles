@@ -11,7 +11,7 @@ local M = {
     -- Load configured snippets
     require("luasnip.loaders.from_vscode").lazy_load()
     -- require("luasnip.loaders.from_snipmate").load({ paths = "~/.config/nvim/snippets/snipmate/" })
-    -- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
+    require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
 
     luasnip.setup({
       history = true,
@@ -37,6 +37,9 @@ local M = {
         luasnip.jump(-1)
       end
     end)
+
+    vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
+
   end
 }
 
