@@ -2,13 +2,14 @@ local fmt = string.format
 local api = vim.api
 local fn = vim.fn
 
-
 _G.us = {
   prefix = {
     plugins = "user.plugins",
-  }
+  },
+  is_vscode = fn.exists("g:vscode") == 1,
+  is_firenvim = fn.exists("g:started_by_firenvim") == 1,
+  is_neovide = fn.exists("g:neovide") == 1,
 }
-
 
 function _G.conf_require(name)
   return require(fmt("%s.%s", us.prefix.plugins, name))
@@ -58,13 +59,13 @@ us.try_unmap = function(mode, lhs, buflocal)
 end
 
 ---@class Autocommand
----@field description string
+---@field description string|nil
 ---@field event  string|string[] list of autocommand events (use list if more than one)
----@field pattern string|string[] list of autocommand patterns
+---@field pattern string|string[]|nil list of autocommand patterns
 ---@field command string|function
----@field nested  boolean
----@field once    boolean
----@field buffer  number
+---@field nested  boolean|nil
+---@field once    boolean|nil
+---@field buffer  number|nil
 
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.

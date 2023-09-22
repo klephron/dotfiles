@@ -11,6 +11,7 @@ source $CONFIG/prompt.zsh
 # dep: plugins completion
 source $CONFIG/bindkeys.zsh
 source $CONFIG/hooks.zsh
+source $CONFIG/functions.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

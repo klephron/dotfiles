@@ -4,7 +4,7 @@ local KeymapDictionary = {}
 ---KeymapDictionary constructor
 ---@param table table
 ---@param prefix string|nil
----@return object
+---@return table
 function KeymapDictionary:new(table, prefix)
   table = table or {}
   setmetatable(table, self)

@@ -21,3 +21,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 alias ta="tmux attach || tmux"
 
 alias jl="lazygit"
+
+alias ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
+
+alias v="nvim"

@@ -12,7 +12,7 @@ local M = {
   },
   config = function()
     local telescope = require("telescope")
-    local icons = require("user.preset.nvim.icons")
+    local icons = require("user.icons")
     local actions = require("telescope.actions")
     local themes = require('telescope.themes')
     local builtins = require('telescope.builtin')

@@ -1,20 +1,6 @@
-local fn = vim.fn
+require("user.utils.globals")
 
-if fn.exists("g:started_by_firenvim") == 1 then
-  require("user.settings")
-  require("user.utils.globals")
-  vim.notify("Using firenvim config", vim.log.levels.INFO, {})
-  return
-end
-
-if fn.exists("g:vscode") == 1 then
-  require("user.settings")
-  require("user.utils.globals")
-  vim.notify("Using vscode config", vim.log.levels.INFO, {})
-  return
-end
-
-if fn.exists("g:neovide") == 1 then
+if us.is_neovide then
   vim.opt.guifont = "FiraCode Nerd Font Mono:h6.9"
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_profiler = false
@@ -28,13 +14,27 @@ if fn.exists("g:neovide") == 1 then
   vim.g.neovide_floating_blur_amount_y = 2.0
 end
 
+if us.is_firenvim then
+  require("user.settings")
+  vim.notify("Using firenvim config", vim.log.levels.INFO, {})
+  return
+end
+
+if us.is_vscode then
+  require("user.settings")
+  require("user.preset.vscode-lazy")
+  require("user.keymaps")
+  require("user.autocmds")
+  require("user.aliases")
+  vim.notify("Using vscode config", vim.log.levels.INFO, {})
+  return
+end
 
 require("user.settings")
-require("user.utils.globals")
-require("user.preset.nvim.lazy")
-require("user.preset.nvim.colorscheme")
-require("user.preset.nvim.keymaps")
-require("user.preset.nvim.aliases")
-require("user.preset.nvim.autocmds")
+require("user.preset.nvim-lazy")
+require("user.colorscheme")
+require("user.keymaps")
+require("user.aliases")
+require("user.autocmds")
 
 require("watch")

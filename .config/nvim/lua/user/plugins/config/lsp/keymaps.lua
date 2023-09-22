@@ -34,6 +34,8 @@ M.keymaps = KeymapDictionary:new({
 function M.on_attach(client, bufnr)
   local kmps = M.keymaps
 
+  local lspsaga_ok = false
+
   local function with_desc(desc)
     return { buffer = bufnr, desc = kmps:desc(desc) }
   end

@@ -11,7 +11,7 @@ local M = {
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
-    local kind_icons = require("user.preset.nvim.icons").kind_icons
+    local kind_icons = require("user.icons").kind_icons
 
     -- Function implementations
     local function has_words_before()

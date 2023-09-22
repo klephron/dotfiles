@@ -1,7 +1,7 @@
 local M = {
   "folke/noice.nvim",
   event = "UIEnter",
-  cond = function() return vim.fn.exists("g:neovide") == 0 end,
+  cond = function() return not us.is_neovide and not us.is_firenvim end,
   config = function()
     local focused = true
     us.augroup("noice_focus", {

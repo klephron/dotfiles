@@ -4,6 +4,7 @@ local api = vim.api
 ---------------------------------------------------------------------------------
 -- Autocmds
 ---------------------------------------------------------------------------------
+
 us.augroup("Nasm", {
   {
     event = "BufRead,BufNewFile",
@@ -12,55 +13,6 @@ us.augroup("Nasm", {
   }
 })
 
-us.augroup("RestoreCursorShapeOnExit", {
-  {
-    event = "VimLeave",
-    pattern = "*",
-    command = function()
-      vim.opt.guicursor = {
-        [[a:ver20]],
-      }
-    end
-  }
-})
-
--- Check reload file when changed
-api.nvim_create_autocmd("FocusGained", { command = "checktime" })
-
-us.augroup("ReloadFile", {
-  {
-    event = "BufWinEnter",
-    pattern = "*",
-    command = function()
-      vim.cmd("if mode() != 'c' | checktime | endif")
-    end
-  }
-})
-
-us.augroup("SaveWhenFocusLost", {
-  {
-    event = "FocusLost",
-    pattern = "*",
-    command = function()
-      if vim.bo.modifiable == true and vim.bo.readonly == false then
-        if vim.bo.modified == true then
-          vim.cmd("doautocmd BufWritePre")
-          vim.cmd("silent! write")
-          vim.cmd("doautocmd BufWritePost")
-        end
-      end
-    end
-  }
-})
-
--- Autosave after leaving insert mode
---[[ us.augroup("AutosaveAfterInsert", {
-  {
-    event = "InsertLeave",
-    command = "silent! update",
-    nested = true
-  }
-}) ]]
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
@@ -152,9 +104,7 @@ api.nvim_create_user_command("Fdir", function()
   vim.cmd(":echo '' | redraw")
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
----------------------------------------------------------------------------------
--- Funny thing from folke
----------------------------------------------------------------------------------
+
 -- local id
 -- for _, key in ipairs({ "h", "j", "k", "l" }) do
 -- local count = 0
@@ -176,3 +126,58 @@ end, { nargs = 0 })
 --     end
 --   end, { expr = true })
 -- end
+
+
+if us.is_vscode or us.is_firenvim then
+  return
+end
+
+us.augroup("RestoreCursorShapeOnExit", {
+  {
+    event = "VimLeave",
+    pattern = "*",
+    command = function()
+      vim.opt.guicursor = {
+        [[a:ver20]],
+      }
+    end
+  }
+})
+
+-- Check reload file when changed
+api.nvim_create_autocmd("FocusGained", { command = "checktime" })
+
+us.augroup("ReloadFile", {
+  {
+    event = "BufWinEnter",
+    pattern = "*",
+    command = function()
+      vim.cmd("if mode() != 'c' | checktime | endif")
+    end
+  }
+})
+
+us.augroup("SaveWhenFocusLost", {
+  {
+    event = "FocusLost",
+    pattern = "*",
+    command = function()
+      if vim.bo.modifiable == true and vim.bo.readonly == false then
+        if vim.bo.modified == true then
+          vim.cmd("doautocmd BufWritePre")
+          vim.cmd("silent! write")
+          vim.cmd("doautocmd BufWritePost")
+        end
+      end
+    end
+  }
+})
+
+-- Autosave after leaving insert mode
+--[[ us.augroup("AutosaveAfterInsert", {
+  {
+    event = "InsertLeave",
+    command = "silent! update",
+    nested = true
+  }
+}) ]]

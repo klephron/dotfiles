@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require("user.preset.nvim.icons").diagnostics
+local icons = require("user.icons").diagnostics
 
 M.signs = {
   Error = icons.error,

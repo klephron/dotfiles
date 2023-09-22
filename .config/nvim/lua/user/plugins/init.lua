@@ -4,9 +4,5 @@ return {
   "rcarriga/nvim-notify",
   'nvim-tree/nvim-web-devicons',
   -- delete buffers without messing out layout
-  {
-    'famiu/bufdelete.nvim',
-    cmd = { "Bdelete" },
-  },
 
 }

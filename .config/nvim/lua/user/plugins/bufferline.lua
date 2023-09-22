@@ -3,7 +3,7 @@ local M = {
   event = "UIEnter",
   config = function()
     local bufferline = require("bufferline")
-    local icons = require("user.preset.nvim.icons").bufferline
+    local icons = require("user.icons").bufferline
 
     bufferline.setup {
       options = {
