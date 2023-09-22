@@ -10,11 +10,11 @@ local M = {
   config = function()
     local handlers = {
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
+        border = "single",
         width = 60,
       }),
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
+        border = "single",
         width = 60,
       })
     }
