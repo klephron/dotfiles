@@ -28,22 +28,24 @@ vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 
--- Window movements
-us.set_keynomap("n", "<c-k>", "<c-w>k", "win: Move up")
-us.set_keynomap("n", "<c-l>", "<c-w>l", "win: Move right")
-us.set_keynomap("n", "<c-j>", "<c-w>j", "win: Move down")
-us.set_keynomap("n", "<c-h>", "<c-w>h", "win: Move left")
+if not us.is_vscode and not us.is_firenvim then
+  -- Window movements
+  us.set_keynomap("n", "<c-k>", "<c-w>k", "win: Move up")
+  us.set_keynomap("n", "<c-l>", "<c-w>l", "win: Move right")
+  us.set_keynomap("n", "<c-j>", "<c-w>j", "win: Move down")
+  us.set_keynomap("n", "<c-h>", "<c-w>h", "win: Move left")
 
--- Window resize
-us.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "win: Increase height")
-us.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "win: Increase height")
-us.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "win: Decrease height")
-us.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "win: Decrease height")
+  -- Window resize
+  us.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "win: Increase height")
+  us.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "win: Increase height")
+  us.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "win: Decrease height")
+  us.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "win: Decrease height")
 
-us.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "win: Increase width")
-us.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "win: Increase width")
-us.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
-us.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
+  us.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "win: Increase width")
+  us.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "win: Increase width")
+  us.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
+  us.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
+end
 
 -- Buffer move
 us.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "buf: Move next")
@@ -53,26 +55,28 @@ us.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "buf: Move previous")
 us.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
   "goto: Open link in system browser")
 
--- Tabs
-us.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "tab: Open previous")
-us.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "tab: Open next")
-us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
-us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
-us.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
-us.set_keynomap("n", "<leader>tm", function()
-  vim.cmd("tabmove " .. tostring(tonumber(vim.fn.input("")) - 1))
-end, { silent = false, desc = "tab: Move current after N - 1" })
--- Bind leader keys to specific tabs
-us.set_keynomap("n", "<leader>1", "1gt")
-us.set_keynomap("n", "<leader>2", "2gt")
-us.set_keynomap("n", "<leader>3", "3gt")
-us.set_keynomap("n", "<leader>4", "4gt")
-us.set_keynomap("n", "<leader>5", "5gt")
-us.set_keynomap("n", "<leader>6", "6gt")
-us.set_keynomap("n", "<leader>7", "7gt")
-us.set_keynomap("n", "<leader>8", "8gt")
-us.set_keynomap("n", "<leader>9", "9gt")
-us.set_keynomap("n", "<leader>0", ":tablast<cr>")
+if not us.is_vscode and not us.is_firenvim then
+  -- Tabs
+  us.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "tab: Open previous")
+  us.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "tab: Open next")
+  us.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
+  us.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
+  us.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
+  us.set_keynomap("n", "<leader>tm", function()
+    vim.cmd("tabmove " .. tostring(tonumber(vim.fn.input("")) - 1))
+  end, { silent = false, desc = "tab: Move current after N - 1" })
+  -- Bind leader keys to specific tabs
+  us.set_keynomap("n", "<leader>1", "1gt")
+  us.set_keynomap("n", "<leader>2", "2gt")
+  us.set_keynomap("n", "<leader>3", "3gt")
+  us.set_keynomap("n", "<leader>4", "4gt")
+  us.set_keynomap("n", "<leader>5", "5gt")
+  us.set_keynomap("n", "<leader>6", "6gt")
+  us.set_keynomap("n", "<leader>7", "7gt")
+  us.set_keynomap("n", "<leader>8", "8gt")
+  us.set_keynomap("n", "<leader>9", "9gt")
+  us.set_keynomap("n", "<leader>0", ":tablast<cr>")
+end
 
 -- Move Lines
 us.set_keynomap("n", '<a-k>', '<cmd>move-2<CR>==')
