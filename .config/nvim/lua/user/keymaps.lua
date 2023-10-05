@@ -187,7 +187,11 @@ local leader = {
     "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
     "telescope: Find files"
   },
-  g = { "<cmd>Telescope live_grep<cr>", "telescope: Live grep" },
+  h = { "<cmd>Telescope live_grep<cr>", "telescope: Live grep" },
+  g = {
+    name = "git",
+    b = { "<cmd>Gitsigns blame_line<cr>", "gitsigns: blame line" },
+  },
   b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
   -- Which-key
   ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
@@ -234,10 +238,14 @@ local localleader = {
   -- Luasnip
   s = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
   -- Git (diffview)
-  g = {
-    name = "git",
+  d = {
+    name = "diffview",
     o = { "<cmd>DiffviewOpen<cr>", 'diffview: open' },
     h = { "<cmd>DiffviewFileHistory<cr>", 'diffview: file history' },
+  },
+  g = {
+    name = "git",
+    b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "gitsigns: toggle current line blame", },
   },
   -- Watch
   w = {

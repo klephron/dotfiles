@@ -1,4 +1,4 @@
-if us.is_vscode or us.is_neovide then
+if us.is_vscode then
   return
 end
 
