@@ -26,7 +26,7 @@ if us.is_vscode then
   require("user.keymaps")
   require("user.autocmds")
   require("user.aliases")
-  vim.notify("Using vscode config", vim.log.levels.INFO, {})
+    vim.notify("Using vscode config", vim.log.levels.INFO, {})
   return
 end
 

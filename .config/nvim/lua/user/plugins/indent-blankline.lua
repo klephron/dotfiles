@@ -2,10 +2,13 @@ local M = {
   "lukas-reineke/indent-blankline.nvim",
   enabled = true,
   config = function()
-    require("indent_blankline").setup {
-      space_char_blankline = " ",
-      show_current_context = false,
-      show_current_context_start = false,
+    require("ibl").setup {
+      indent = {
+        char = '│'
+      },
+      scope = {
+        enabled = false,
+      }
     }
   end
 }
