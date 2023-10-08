@@ -29,6 +29,7 @@ opts = {
     '-Dlog.level=ALL',
     '-noverify',
     '-Xmx1G',
+    "-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
@@ -39,7 +40,7 @@ opts = {
 
   on_attach = function(client, bufnr)
     options.on_attach(client, bufnr)
-    -- NOTE: when launching dap update config: 
+    -- NOTE: when launching dap update config:
     -- require('jdtls.dap').setup_dap_main_class_configs()
     jdtls.setup_dap({ hotcodereplace = 'auto' })
   end,

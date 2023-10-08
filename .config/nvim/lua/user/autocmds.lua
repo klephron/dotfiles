@@ -164,9 +164,9 @@ us.augroup("SaveWhenFocusLost", {
     command = function()
       if vim.bo.modifiable == true and vim.bo.readonly == false then
         if vim.bo.modified == true then
-          vim.cmd("doautocmd BufWritePre")
+          -- vim.cmd("doautocmd BufWritePre")
           vim.cmd("silent! write")
-          vim.cmd("doautocmd BufWritePost")
+          -- vim.cmd("doautocmd BufWritePost")
         end
       end
     end
