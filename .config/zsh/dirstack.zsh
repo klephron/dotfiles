@@ -12,3 +12,6 @@ function chpwd () {
     print -l $PWD ${(u)dirstack} > $DIRSTACKFILE
 }
 
+# DIRSTACK
+setopt autopushd pushdsilent pushdtohome
+setopt pushdignoredups
