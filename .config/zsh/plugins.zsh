@@ -10,5 +10,8 @@ ZSH_AUTOSUGGEST_STRATEGY="history"
 source /usr/local/share/zsh/site-functions/bd-zsh/bd.plugin.zsh
 
 source /usr/share/fzf/key-bindings.zsh
+if [[ -f ~/.config/fzf ]]; then
+  source ~/.config/fzf
+fi
 
 source $CONFIG_BINDKEYS

@@ -458,27 +458,21 @@ local globalkeys = gears.table.join(
   -- {{{ Tag browsing
   --
   -- Alt + <arrows> -- switch between tags nonempty
-  -- Mod(Ctrl) + <arrows> -- switch between tags
+  -- Mod + <arrows> -- switch between tags
   --
-  -- Mod(Ctrl) + <escape> -- history previous tag
+  -- Mod + <escape> -- history previous tag
   --
-  -- Mod(Ctrl) + <number> -- switch to window number
-  -- Mod(Ctrl) + Shift + <number> -- toggle focused client to tag
+  -- Mod + <number> -- switch to window number
+  -- Mod + Shift + <number> -- toggle focused client to tag
   --
-  -- Mod(Ctrl) + Alt + <number> -- move focused client on tag
+  -- Mod + Alt + <number> -- move focused client on tag
 
   awful.key({ modkey, }, "Left", awful.tag.viewprev,
     { description = "[modkey] view previous", group = "tag" }),
   awful.key({ modkey, }, "Right", awful.tag.viewnext,
     { description = "[modkey] view next", group = "tag" }),
-  awful.key({ control, }, "Left", awful.tag.viewprev,
-    { description = "[control] view previous", group = "tag" }),
-  awful.key({ control, }, "Right", awful.tag.viewnext,
-    { description = "[control] view next", group = "tag" }),
 
   -- Previous tab
-  awful.key({ control, }, "Escape", awful.tag.history.restore,
-    { description = "open previous tag [control]", group = "tag" }),
   awful.key({ modkey, }, "Escape", awful.tag.history.restore,
     { description = "open previous tag [modkey]", group = "tag" }),
 
@@ -506,15 +500,6 @@ local globalkeys = gears.table.join(
 for i, v in ipairs(awful.util.tagnames) do
   globalkeys = gears.table.join(globalkeys,
     -- View tag only.
-    awful.key({ control }, "#" .. i + 9,
-      function()
-        local screen = awful.screen.focused()
-        local tag = screen.tags[i]
-        if tag then
-          tag:view_only()
-        end
-      end,
-      { description = "[control] view tag #" .. v, group = "tag" }),
     awful.key({ modkey }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -525,15 +510,6 @@ for i, v in ipairs(awful.util.tagnames) do
       end,
       { description = "[modkey] view tag #" .. v, group = "tag" }),
     -- Toggle tag display.
-    awful.key({ control, "Shift" }, "#" .. i + 9,
-      function()
-        local screen = awful.screen.focused()
-        local tag = screen.tags[i]
-        if tag then
-          awful.tag.viewtoggle(tag)
-        end
-      end,
-      { description = "[control] toggle tag #" .. v, group = "tag" }),
     awful.key({ modkey, "Shift" }, "#" .. i + 9,
       function()
         local screen = awful.screen.focused()
@@ -544,16 +520,6 @@ for i, v in ipairs(awful.util.tagnames) do
       end,
       { description = "[modkey] toggle tag #" .. v, group = "tag" }),
     -- Move client to tag.
-    awful.key({ control, altkey }, "#" .. i + 9,
-      function()
-        if client.focus then
-          local tag = client.focus.screen.tags[i]
-          if tag then
-            client.focus:move_to_tag(tag)
-          end
-        end
-      end,
-      { description = "[modkey] move focused client to tag #" .. v, group = "tag" }),
     awful.key({ modkey, altkey }, "#" .. i + 9,
       function()
         if client.focus then
@@ -563,7 +529,7 @@ for i, v in ipairs(awful.util.tagnames) do
           end
         end
       end,
-      { description = "[control] move focused client to tag #" .. v, group = "tag" })
+      { description = "[modkey] move focused client to tag #" .. v, group = "tag" })
 
   -- Toggle tag on focused client.
   -- awful.key({ modkey, control, "Shift" }, "#" .. i + 9,
