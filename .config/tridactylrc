@@ -1,0 +1,10 @@
+set theme midnight
+bind F hint -t
+bind H tabprev
+bind J back
+bind K forward
+bind L tabnext
+bind ^ buffer #
+bind q unfocus
+unbind <C-f>
+
