@@ -52,7 +52,8 @@ local M = {
   hls = {
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
   },
-  denols = {},
+  -- denols = {},
+  tsserver = {},
 }
 
 return M
