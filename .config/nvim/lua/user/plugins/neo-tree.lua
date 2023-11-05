@@ -9,7 +9,7 @@ local M = {
     local neo_tree = require("neo-tree")
     neo_tree.setup({
       filesystem = {
-        -- use_libuv_file_watcher = true,
+        use_libuv_file_watcher = true,
         follow_current_file = true,
         hijack_netrw_behaviour = "open_default",
         window = {
