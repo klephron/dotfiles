@@ -7,7 +7,7 @@ local api = vim.api
 
 us.augroup("Nasm", {
   {
-    event = "BufRead,BufNewFile",
+    event = { "BufRead", "BufNewFile" },
     pattern = "*.inc,*.asm",
     command = "set filetype=nasm",
   }

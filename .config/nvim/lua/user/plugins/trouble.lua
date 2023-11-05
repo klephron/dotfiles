@@ -10,13 +10,18 @@ local M = {
       }
     })
 
-    -- return focus to alternate buffer
-    vim.cmd [[
-    augroup _trouble
-      au!
-      au FileType Trouble nnoremap <buffer> q <CMD>lua vim.cmd('wincmd p')<CR><CMD>silent! TroubleClose<CR>
-    augroup end
-  ]]
+    us.augroup("_trouble", {
+      {
+        event = "FileType",
+        pattern = "Trouble",
+        command = function()
+          us.set_keynomap("n", "q", function()
+            vim.cmd('wincmd p')
+            vim.cmd('silent! TroubleClose')
+          end, { buffer = 0 })
+        end
+      },
+    })
   end
 }
 
