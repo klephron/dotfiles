@@ -1,0 +1,10 @@
+startup_message off
+
+bind j focus down
+bind k focus up
+bind h focus left
+bind l focus right
+
+term screen-256color
+
+hardstatus alwayslastline '%{= kg}[ %{G}%H %{g}][%= %{= kB}%?%-Lw%?%{+b r}(%{G}%n*%f %t%?(%u)%?%{r})%{-b B}%?%+Lw%?%?%= %{g}%]'
