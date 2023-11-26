@@ -7,14 +7,15 @@ local M = {
   },
   config = function()
     local neo_tree = require("neo-tree")
-    local commands = conf_require("config.neo-tree")
+    local com_swarn = conf_require("config.neo-tree.swarn")
+    local com_bjarksen = conf_require("config.neo-tree.mrbjarksen")
 
     neo_tree.setup({
       filesystem = {
         use_libuv_file_watcher = true,
         follow_current_file = {
           enabled = true,
-          leave_dirs_open = false,
+          -- leave_dirs_open = false,
         },
         hijack_netrw_behaviour = "open_default",
         window = {
@@ -25,19 +26,10 @@ local M = {
             ["u"] = "focus_parent",
             [";"] = "open",
             ["z"] = "none",
-            ['zo'] = commands.open_fold,
-            ['zO'] = commands.open_folds_rec,
-            ['zc'] = commands.close_fold,
-            ['zC'] = commands.close_folds_rec,
-            ['za'] = commands.toggle_fold,
-            ['zA'] = commands.toggle_folds_rec,
-            ['zv'] = commands.fold_view_cursor,
-            ['zM'] = commands.close_all_folds,
-            ['zR'] = commands.expand_all_folds,
-            ['[z'] = commands.focus_fold_start,
-            [']z'] = commands.focus_fold_end,
-            ['zj'] = commands.focus_next_fold_start,
-            ['zk'] = commands.focus_prev_fold_end,
+            ['zo'] = com_bjarksen.open_fold,
+            ['zO'] = com_bjarksen.open_folds_rec,
+            ['zc'] = com_bjarksen.close_fold,
+            ['za'] = com_bjarksen.toggle_fold,
           }
         },
         commands = {

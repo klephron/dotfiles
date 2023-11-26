@@ -7,14 +7,14 @@ local fs_scan = require 'neo-tree.sources.filesystem.lib.fs_scan'
 -- Event to update cursor node when cursor is moved
 local cursor_moved = 'cursor_moved'
 events.define_autocmd_event(cursor_moved, { 'CursorMoved' })
-local cursor_event = function(handler)
+local cursor_event = function (handler)
   return { event = cursor_moved, id = 'update_cursor_node', handler = handler }
 end
 
 ---- Helper functions ----
 
 -- Determine if current cursor node is descendent of the seleced node
-local cursor_node_is_descendant = function(tree)
+local cursor_node_is_descendant = function (tree)
   if not tree.cursor_node then return false end
   local curnode = tree.cursor_node
   while true do
@@ -27,10 +27,10 @@ end
 -- Set the cursor node position if it is not set
 -- and handle removing it when needed
 local should_update_cursor = true
-local update_cursor_node = function(state)
+local update_cursor_node = function (state)
   if state.tree.cursor_node then return end
   state.tree.cursor_node = state.tree:get_node()
-  manager.subscribe(state.name, cursor_event(function()
+  manager.subscribe(state.name, cursor_event(function ()
     if not should_update_cursor then return end
     local should_remove = state.name ~= vim.b.neo_tree_source
     should_remove = should_remove or not cursor_node_is_descendant(state.tree)
@@ -47,12 +47,12 @@ end
 -- NOTE: This seems to work, but it's pretty ugly and probably
 --       isn't as efficient as it could be.
 local num_started, num_done
-local function scan_all(state, parent_id, callback, rec)
+local function scan_all (state, parent_id, callback, rec)
   if not rec then num_started, num_done = 0, 0 end
   num_started = num_started + 1
   local parent = state.tree.nodes.by_id[parent_id]
   if state.name == 'filesystem' and parent.loaded == false then
-    fs_scan.get_items(state, parent_id, nil, function()
+    fs_scan.get_items(state, parent_id, nil, function ()
       for _, id in ipairs(parent:get_child_ids()) do
         if state.tree.nodes.by_id[id].type == 'directory' then
           scan_all(state, id, callback, true)
@@ -80,12 +80,12 @@ end
 local commands = {}
 
 -- Used for hjkl navigation
-commands.expand_node = function(state)
+commands.expand_node = function (state)
   local node = state.tree:get_node()
   if not utils.is_expandable(node) or node:is_expanded() then return end
   state.commands.toggle_node(state)
 
-  local focus_child = function()
+  local focus_child = function ()
     if node:has_children() then
       renderer.focus_node(state, node:get_child_ids()[1])
     end
@@ -97,7 +97,7 @@ commands.expand_node = function(state)
   end
 end
 
-commands.open_fold = function(state)
+commands.open_fold = function (state)
   local tree = state.tree
   local node = tree:get_node()
   if not utils.is_expandable(node) or node:is_expanded() then return end
@@ -112,13 +112,13 @@ commands.open_fold = function(state)
   end
 end
 
-commands.open_folds_rec = function(state)
+commands.open_folds_rec = function (state)
   local tree = state.tree
   local node = tree:get_node()
   if not utils.is_expandable(node) or node:is_expanded() then return end
 
   should_update_cursor = false
-  scan_all(state, node:get_id(), function()
+  scan_all(state, node:get_id(), function ()
     if tree.cursor_node then
       renderer.focus_node(state, tree.cursor_node:get_id())
     end
@@ -127,19 +127,19 @@ commands.open_folds_rec = function(state)
   end)
 end
 
-commands.close_fold = function(state)
+commands.close_fold = function (state)
   update_cursor_node(state)
   state.commands.close_node(state)
 end
 
-commands.close_folds_rec = function(state)
+commands.close_folds_rec = function (state)
   update_cursor_node(state)
   while not vim.tbl_contains(state.tree.nodes.root_ids, state.tree:get_node():get_id()) do
     state.commands.close_node(state)
   end
 end
 
-commands.toggle_fold = function(state)
+commands.toggle_fold = function (state)
   local node = state.tree:get_node()
   if utils.is_expandable(node) then
     if node:is_expanded() then
@@ -152,7 +152,7 @@ commands.toggle_fold = function(state)
   end
 end
 
-commands.toggle_folds_rec = function(state)
+commands.toggle_folds_rec = function (state)
   local node = state.tree:get_node()
   if utils.is_expandable(node) then
     if node:is_expanded() then
@@ -165,7 +165,7 @@ commands.toggle_folds_rec = function(state)
   end
 end
 
-commands.fold_view_cursor = function(state)
+commands.fold_view_cursor = function (state)
   local tree = state.tree
   if tree.cursor_node then
     renderer.focus_node(state, tree.cursor_node:get_id())
@@ -173,17 +173,17 @@ commands.fold_view_cursor = function(state)
   end
 end
 
-commands.close_all_folds = function(state)
+commands.close_all_folds = function (state)
   update_cursor_node(state)
   state.commands.close_all_nodes(state)
   state.commands.close_node(state)
 end
 
-commands.expand_all_folds = function(state)
+commands.expand_all_folds = function (state)
   local tree = state.tree
   local node = tree:get_node()
   should_update_cursor = false
-  scan_all(state, tree.nodes.root_ids[1], function()
+  scan_all(state, tree.nodes.root_ids[1], function ()
     if tree.cursor_node then
       renderer.focus_node(state, tree.cursor_node:get_id())
     else
@@ -194,12 +194,12 @@ commands.expand_all_folds = function(state)
   end)
 end
 
-commands.focus_fold_start = function(state)
+commands.focus_fold_start = function (state)
   local parent_id = state.tree:get_node():get_parent_id()
   if parent_id then renderer.focus_node(state, parent_id) end
 end
 
-commands.focus_fold_end = function(state)
+commands.focus_fold_end = function (state)
   local node = state.tree:get_node()
   local last
   if utils.is_expandable(node) and node:is_expanded() then
@@ -214,7 +214,7 @@ commands.focus_fold_end = function(state)
   if last then renderer.focus_node(state, last) end
 end
 
-commands.focus_next_fold_start = function(state, node, dont_check_children)
+commands.focus_next_fold_start = function (state, node, dont_check_children)
   node = node or state.tree:get_node()
   local nodes = state.tree.nodes.by_id
 
@@ -242,7 +242,7 @@ commands.focus_next_fold_start = function(state, node, dont_check_children)
   commands.focus_next_fold_start(state, nodes[parent_id], true)
 end
 
-commands.focus_prev_fold_end = function(state, node)
+commands.focus_prev_fold_end = function (state, node)
   node = node or state.tree:get_node()
   local nodes = state.tree.nodes.by_id
 
