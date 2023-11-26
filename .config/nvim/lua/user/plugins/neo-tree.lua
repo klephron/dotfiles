@@ -7,7 +7,6 @@ local M = {
   },
   config = function()
     local neo_tree = require("neo-tree")
-    local com_swarn = conf_require("config.neo-tree.swarn")
     local com_bjarksen = conf_require("config.neo-tree.mrbjarksen")
 
     neo_tree.setup({
@@ -29,6 +28,7 @@ local M = {
             ['zo'] = com_bjarksen.open_fold,
             ['zO'] = com_bjarksen.open_folds_rec,
             ['zc'] = com_bjarksen.close_fold,
+            ['zC'] = "close_all_subnodes",
             ['za'] = com_bjarksen.toggle_fold,
           }
         },
