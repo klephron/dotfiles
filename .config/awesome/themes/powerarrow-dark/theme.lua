@@ -18,7 +18,7 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.wallpaper                                 = "~/Documents/images/wallpaper/space-sky-cropped.jpg"
 -- theme.font                                      = "Terminus 9"
-theme.font                                      = "Droid Sans 8.5"
+theme.font                                      = "Noto Sans 9"
 theme.fg_normal                                 = "#DDDDFF"
 theme.fg_focus                                  = "#388bff"
 theme.fg_urgent                                 = "#CC9393"
@@ -192,7 +192,8 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
   settings = function()
     widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
-  end
+  end,
+  tempfile = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input"
 })
 
 -- / fs
@@ -291,10 +292,10 @@ local net = lain.widget.net({
   units = 1024,
   timeout = 2,
   settings = function()
-    widget:set_markup(markup.font("Droid Sans Mono",
-      markup("#7AC82E", " " .. string.format("%4.0f KB", net_now.received))
+    widget:set_markup(markup.font("Noto Sans Mono 9",
+      markup("#7AC82E", " " .. string.format("%6.0f KB", net_now.received))
       .. " " ..
-      markup("#46A8C3", " " .. string.format("%4.0f KB", net_now.sent) .. " ")))
+      markup("#46A8C3", " " .. string.format("%6.0f KB", net_now.sent) .. " ")))
   end
 })
 

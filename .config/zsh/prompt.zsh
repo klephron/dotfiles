@@ -1,1 +1,1 @@
- prompt gentoo
+prompt gentoo

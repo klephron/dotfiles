@@ -1,4 +1,4 @@
-set theme midnight
+set theme dark
 bind F hint -t
 bind H tabprev
 bind J back
