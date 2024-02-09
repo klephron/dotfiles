@@ -193,7 +193,7 @@ local temp = lain.widget.temp({
   settings = function()
     widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
   end,
-  tempfile = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input"
+  tempfile = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input"
 })
 
 -- / fs
@@ -293,9 +293,9 @@ local net = lain.widget.net({
   timeout = 2,
   settings = function()
     widget:set_markup(markup.font("Noto Sans Mono 9",
-      markup("#7AC82E", " " .. string.format("%6.0f KB", net_now.received))
+      markup("#7AC82E", " " .. string.format("%5.0f KB", net_now.received))
       .. " " ..
-      markup("#46A8C3", " " .. string.format("%6.0f KB", net_now.sent) .. " ")))
+      markup("#46A8C3", " " .. string.format("%5.0f KB", net_now.sent) .. " ")))
   end
 })
 
