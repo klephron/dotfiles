@@ -54,6 +54,9 @@ local M = {
   },
   -- denols = {},
   tsserver = {},
+  cssls = {},
+  cssmodules_ls = {},
+  css_variables = {},
 }
 
 return M

@@ -7,6 +7,7 @@ local M = {
 
     local ensure_installed = {
       "c",
+      "css",
       "cpp",
       "lua",
       "vim",
