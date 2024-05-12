@@ -38,7 +38,6 @@ local M = {
         enable = false,
       },
       context_commentstring = {
-        enable = true,
         enable_autocmd = false,
       },
       sync_install = false,

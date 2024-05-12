@@ -82,7 +82,7 @@ local M = {
     end
 
     local session_name = function()
-        return require('possession.session').session_name or ''
+        return require('possession.session').get_session_name() or ''
     end
 
     lualine.setup({
