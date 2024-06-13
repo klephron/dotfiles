@@ -1,5 +1,5 @@
 local M = {
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   dependencies = {
     'neovim/nvim-lspconfig',
   },
@@ -20,10 +20,7 @@ local M = {
       formatting.black,
 
       -- proto
-      formatting.protolint,
       diagnostics.protolint,
-
-      formatting.fourmolu
     }
 
     null_ls.setup({

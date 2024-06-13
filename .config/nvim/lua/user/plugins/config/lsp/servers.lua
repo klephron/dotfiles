@@ -33,6 +33,7 @@ local M = {
         },
         cargo = {
           features = "all",
+          sysrootQueryMetadata = true,
         },
         checkOnSave = {
           command = 'clippy',
@@ -43,6 +44,10 @@ local M = {
           experimental = {
             enable = true,
           },
+          disabled = {
+            -- "macro-error",
+            -- "unresolved-macro-call"
+          }
         },
       }
     }
