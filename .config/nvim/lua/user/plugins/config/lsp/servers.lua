@@ -25,20 +25,19 @@ local M = {
     single_file_support = true
   },
   rust_analyzer = {
-    standalone = false,
     settings = {
       ["rust-analyzer"] = {
-        -- assist = {
-        --   importEnforceGranularity = true,
-        --   importPrefix = 'crate',
-        -- },
+        assist = {
+          importEnforceGranularity = true,
+          importPrefix = 'crate',
+        },
         cargo = {
           features = "all",
         },
         checkOnSave = {
           command = 'clippy',
         },
-        -- inlayHints = { locationLinks = false },
+        inlayHints = { locationLinks = false },
         diagnostics = {
           enable = true,
           experimental = {
