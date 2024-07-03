@@ -2,8 +2,8 @@ local M = {
   "mfussenegger/nvim-dap",
   event = "VeryLazy",
   config = function()
-    local keymaps = conf_require("dap.keymaps")
-    local langs = conf_require("dap.langs")
+    local keymaps = p_require("dap.keymaps")
+    local langs = p_require("dap.langs")
 
     vim.api.nvim_set_hl(0, 'DapBreakpoint',
       { ctermbg = 0, fg = "#e41400", bg = nil }

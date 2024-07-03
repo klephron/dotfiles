@@ -1,3 +1,5 @@
+require("config.settings")
+
 -- bootstrap from github
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -15,13 +17,16 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
-  require("config.plugins.hop"),
-  require("config.plugins.vim-easy-align"),
-  require("config.plugins.markdown-preview"),
-  require("config.plugins.nvim-surround"),
-  require("config.plugins.comment"),
-  require("config.plugins.dial"),
-  require("config.plugins.luasnip"),
+  p_require("hop"),
+  p_require("vim-easy-align"),
+  p_require("markdown-preview"),
+  p_require("nvim-surround"),
+  p_require("which-key"),
+  p_require("comment"),
+  p_require("dial"),
+  p_require("luasnip"),
+  p_require("treesitter"),
+  p_require("treehopper")
 }
 , {
   install = {},
@@ -42,3 +47,9 @@ require("lazy").setup({
   },
 
 })
+
+require("config.keymaps")
+require("config.autocmds")
+require("config.aliases")
+
+vim.notify("Using vscode config", vim.log.levels.INFO, {})

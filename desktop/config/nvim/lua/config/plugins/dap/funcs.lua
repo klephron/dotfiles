@@ -2,7 +2,7 @@ local M = {}
 
 local dap = require("dap")
 local widgets = require("dap.ui.widgets")
-local dap_ttft = conf_require("dap.langs").ttft
+local dap_ttft = p_require("dap.langs").ttft
 
 local launchjs_paths = {
   '/launch.json',

@@ -11,7 +11,7 @@ _G.config = {
   is_neovide = fn.exists("g:neovide") == 1,
 }
 
-function _G.conf_require(name)
+function _G.p_require(name)
   return require(fmt("%s.%s", config.prefix.plugins, name))
 end
 

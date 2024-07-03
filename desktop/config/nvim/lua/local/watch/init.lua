@@ -2,7 +2,7 @@ local uv = vim.loop
 local api = vim.api
 local fn = vim.fn
 
-local util = require("watch.util")
+local util = require("local.watch.util")
 local watch_notify = util.watch_notify
 local create_file_if_not_exist = util.create_file_if_not_exist
 local open_buffer = util.open_buffer

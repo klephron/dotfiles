@@ -7,7 +7,7 @@ local M = {
   },
   config = function()
     local neo_tree = require("neo-tree")
-    local com_bjarksen = conf_require("neo-tree.mrbjarksen")
+    local com_bjarksen = p_require("neo-tree.mrbjarksen")
 
     neo_tree.setup({
       filesystem = {

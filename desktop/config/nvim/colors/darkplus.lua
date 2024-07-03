@@ -1,1 +1,1 @@
--- require("darkplus").setup()
+-- require("local.darkplus").setup()

@@ -19,10 +19,10 @@ local M = {
       })
     }
 
-    local diagnostics = conf_require("lsp.diagnostics")
-    local formatting = conf_require("lsp.formatting")
-    local keymaps = conf_require("lsp.keymaps")
-    local servers = conf_require("lsp.servers")
+    local diagnostics = p_require("lsp.diagnostics")
+    local formatting = p_require("lsp.formatting")
+    local keymaps = p_require("lsp.keymaps")
+    local servers = p_require("lsp.servers")
 
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")

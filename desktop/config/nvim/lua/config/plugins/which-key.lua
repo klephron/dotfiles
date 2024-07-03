@@ -19,6 +19,9 @@ local M = {
     motions = {
       count = false,
     },
+    disable = {
+      buftypes = config.is_vscode and {"", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt"} or {}
+    }
   }
 }
 

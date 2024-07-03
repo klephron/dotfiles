@@ -1,6 +1,6 @@
 local M = {}
-local theme = require('darkplus.theme')
-local util = require('darkplus.util')
+local theme = require('local.darkplus.theme')
+local util = require('local.darkplus.util')
 
 M.setup = function()
   vim.cmd('hi clear')

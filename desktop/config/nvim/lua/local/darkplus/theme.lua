@@ -1,4 +1,4 @@
-local c = require('darkplus.colors')
+local c = require('local.darkplus.colors')
 
 local theme = {}
 
