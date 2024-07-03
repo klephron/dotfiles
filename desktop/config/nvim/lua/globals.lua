@@ -27,5 +27,8 @@ end
 function _G.l_require(name)
   return require(fmt("%s.%s", config.prefix._local, name))
 end
+function _G.preset_require(name)
+  return require(fmt("%s.%s", config.prefix.presets, name))
+end
 
 
