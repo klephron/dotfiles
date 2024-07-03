@@ -8,6 +8,7 @@ local M = {
   config = function()
     local luasnip = require("luasnip")
     local types = require("luasnip.util.types")
+    local utils = u_require("funcs")
 
     luasnip.setup({
       history = true,
@@ -30,12 +31,12 @@ local M = {
     require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
 
 
-    config.set_keynomap({ "i", "s" }, "<a-k>", function()
+    utils.set_keynomap({ "i", "s" }, "<a-k>", function()
       if luasnip.jumpable(1) then
         luasnip.jump(1)
       end
     end)
-    config.set_keynomap({ "i", "s" }, "<a-j>", function()
+    utils.set_keynomap({ "i", "s" }, "<a-j>", function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end

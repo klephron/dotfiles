@@ -1,4 +1,5 @@
 local M = {}
+
 -- prototype: KeymapDictionary
 M.KeymapDictionary = {}
 

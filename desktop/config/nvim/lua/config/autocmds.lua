@@ -1,11 +1,12 @@
 local fn = vim.fn
 local api = vim.api
+local funcs = u_require("funcs")
 
 ---------------------------------------------------------------------------------
 -- Autocmds
 ---------------------------------------------------------------------------------
 
-config.augroup("Nasm", {
+funcs.augroup("Nasm", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.inc,*.asm",
@@ -128,11 +129,11 @@ end, { nargs = 0 })
 -- end
 
 
-if config.is_vscode or config.is_firenvim then
+if funcs.is_vscode or funcs.is_firenvim then
   return
 end
 
-config.augroup("RestoreCursorShapeOnExit", {
+funcs.augroup("RestoreCursorShapeOnExit", {
   {
     event = "VimLeave",
     pattern = "*",
@@ -147,7 +148,7 @@ config.augroup("RestoreCursorShapeOnExit", {
 -- Check reload file when changed
 api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
-config.augroup("ReloadFile", {
+funcs.augroup("ReloadFile", {
   {
     event = "BufWinEnter",
     pattern = "*",
@@ -157,7 +158,7 @@ config.augroup("ReloadFile", {
   }
 })
 
-config.augroup("SaveWhenFocusLost", {
+funcs.augroup("SaveWhenFocusLost", {
   {
     event = "FocusLost",
     pattern = "*",
@@ -174,7 +175,7 @@ config.augroup("SaveWhenFocusLost", {
 })
 
 -- Autosave after leaving insert mode
---[[ config.augroup("AutosaveAfterInsert", {
+--[[ funcs.augroup("AutosaveAfterInsert", {
   {
     event = "InsertLeave",
     command = "silent! update",

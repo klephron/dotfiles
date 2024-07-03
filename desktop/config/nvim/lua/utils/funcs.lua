@@ -1,23 +1,10 @@
+local M = {}
+
 local fmt = string.format
-local api = vim.api
 local fn = vim.fn
+local api = vim.api
 
-_G.config = {
-  prefix = {
-    plugins = "config.plugins",
-  },
-  is_vscode = fn.exists("g:vscode") == 1,
-  is_firenvim = fn.exists("g:started_by_firenvim") == 1,
-  is_neovide = fn.exists("g:neovide") == 1,
-}
-
-_G.config.is_nvim = not (config.is_vscode or config.is_firenvim or config.is_neovide)
-
-function _G.p_require(name)
-  return require(fmt("%s.%s", config.prefix.plugins, name))
-end
-
-function _G.safe_require(module, opts)
+function M.safe_require(module, opts)
   opts = opts or { silent = false }
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
@@ -38,19 +25,19 @@ end
 local remap_opts = { silent = true, remap = true }
 local nomap_opts = { silent = true }
 
-config.set_keyremap = function(mode, lhs, rhs, opts)
+M.set_keyremap = function(mode, lhs, rhs, opts)
   opts = resolve_opts(opts)
   opts = vim.tbl_extend('keep', opts, remap_opts)
   call_mapping(mode, lhs, rhs, opts)
 end
 
-config.set_keynomap = function(mode, lhs, rhs, opts)
+M.set_keynomap = function(mode, lhs, rhs, opts)
   opts = resolve_opts(opts)
   opts = vim.tbl_extend('keep', opts, nomap_opts)
   call_mapping(mode, lhs, rhs, opts)
 end
 
-config.try_unmap = function(mode, lhs, buflocal)
+M.try_unmap = function(mode, lhs, buflocal)
   if fn.maparg(lhs, mode) ~= '' then
     if buflocal then
       api.nvim_buf_del_keymap(api.nvim_get_current_buf(), mode, lhs)
@@ -74,7 +61,7 @@ end
 ---@param group string
 ---@param commands Autocommand[]
 ---@return number
-function config.augroup(group, commands)
+M.augroup = function(group, commands)
   local id = api.nvim_create_augroup(group, { clear = true })
   for _, autocmd in ipairs(commands) do
     local is_callback = type(autocmd.command) == 'function'
@@ -95,7 +82,7 @@ end
 ---Reload lua modules
 ---@param path string
 ---@param recursive boolean
-function config.reload(path, recursive)
+M.reload = function(path, recursive)
   if recursive then
     for key, value in pairs(package.loaded) do
       if key ~= '_G' and value and fn.match(key, path) ~= -1 then
@@ -111,7 +98,7 @@ function config.reload(path, recursive)
 end
 
 ---Get color of highlight. Type of color should be table { hi, fg|bg } or HEX string
-function config.color(val)
+M.color = function(val)
   if type(val) == "string" then
     return val
   elseif type(val) == "table" then
@@ -120,3 +107,5 @@ function config.color(val)
     assert(false, "type of color should be table { hi, fg|bg } or HEX")
   end
 end
+
+return M

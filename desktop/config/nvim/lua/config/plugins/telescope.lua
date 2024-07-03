@@ -12,7 +12,7 @@ local M = {
   },
   config = function()
     local telescope = require("telescope")
-    local icons = require("config.icons")
+    local icons = c_require("icons")
     local actions = require("telescope.actions")
     local themes = require('telescope.themes')
     local builtins = require('telescope.builtin')

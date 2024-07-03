@@ -4,7 +4,7 @@ local M = {
     local alpha = require("alpha")
     -- Imports
     local theme = require("alpha.themes.dashboard")
-    local icons = require("config.icons").alpha
+    local icons = c_require("icons").alpha
     -- Header
     local header = {
       type = "text",

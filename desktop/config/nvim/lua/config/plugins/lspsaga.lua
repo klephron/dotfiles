@@ -5,7 +5,7 @@ local M = {
     local lspsaga = require("lspsaga")
     lspsaga.init_lsp_saga({
       border_style = "rounded",
-      code_action_icon = require("config.icons").diagnostics.lightbulb,
+      code_action_icon = c_require("icons").diagnostics.lightbulb,
       code_action_lightbulb = {
         enable = false,
       },

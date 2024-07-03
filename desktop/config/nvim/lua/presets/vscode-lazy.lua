@@ -1,4 +1,4 @@
-require("config.settings")
+c_require("settings")
 
 -- bootstrap from github
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -48,8 +48,8 @@ require("lazy").setup({
 
 })
 
-require("config.keymaps")
-require("config.autocmds")
-require("config.aliases")
+l_require("keymaps")
+l_require("autocmds")
+l_require("aliases")
 
 vim.notify("Using vscode config", vim.log.levels.INFO, {})

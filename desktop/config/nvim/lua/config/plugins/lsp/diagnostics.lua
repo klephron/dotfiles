@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require("config.icons").diagnostics
+local icons = c_require("icons").diagnostics
 
 M.signs = {
   Error = icons.error,

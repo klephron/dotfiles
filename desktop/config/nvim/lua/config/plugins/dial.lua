@@ -2,16 +2,17 @@ local M = {
   "monaqa/dial.nvim",
   event = "VeryLazy",
   config = function()
+    local utils = u_require("funcs")
     local dial = require("dial.map")
     local augend = require("dial.augend")
     local dial_config = require("dial.config")
 
-    config.set_keynomap("n", '<C-a>', dial.inc_normal())
-    config.set_keynomap("n", '<C-x>', dial.dec_normal())
-    config.set_keynomap("v", '<C-a>', dial.inc_visual())
-    config.set_keynomap("v", '<C-x>', dial.dec_visual())
-    config.set_keynomap("v", 'g<C-a>', dial.inc_gvisual())
-    config.set_keynomap("v", 'g<C-x>', dial.dec_gvisual())
+    utils.set_keynomap("n", '<C-a>', dial.inc_normal())
+    utils.set_keynomap("n", '<C-x>', dial.dec_normal())
+    utils.set_keynomap("v", '<C-a>', dial.inc_visual())
+    utils.set_keynomap("v", '<C-x>', dial.dec_visual())
+    utils.set_keynomap("v", 'g<C-a>', dial.inc_gvisual())
+    utils.set_keynomap("v", 'g<C-x>', dial.dec_gvisual())
 
     dial_config.augends:register_group({
       default = {

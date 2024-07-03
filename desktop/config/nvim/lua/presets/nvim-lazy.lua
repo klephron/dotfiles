@@ -1,4 +1,4 @@
-require("config.settings")
+c_require("settings")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -35,9 +35,9 @@ require("lazy").setup(config.prefix.plugins, {
 
 })
 
-require("config.colorscheme")
-require("config.keymaps")
-require("config.aliases")
-require("config.autocmds")
+c_require("colorscheme")
+c_require("keymaps")
+c_require("aliases")
+c_require("autocmds")
 
-require("local.watch")
+l_require("watch")

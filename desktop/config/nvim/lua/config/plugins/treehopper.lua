@@ -5,9 +5,10 @@ local M = {
   },
   config = function()
     local treehopper = require("tsht")
+    local utils = u_require("funcs")
     treehopper.config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
-    config.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
-    config.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
+    utils.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
+    utils.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
 
     vim.api.nvim_set_hl(0, "TSNodeUnmatched", { link = "HopUnmatched" })
     vim.api.nvim_set_hl(0, "TSNodeKey", { link = "HopNextKey" })

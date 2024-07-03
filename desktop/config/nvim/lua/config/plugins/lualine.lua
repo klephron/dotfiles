@@ -4,7 +4,7 @@ local M = {
   config = function()
     local lualine = require("lualine")
     local lualine_progress = require("lualine.components.progress")
-    -- local custom_theme = require("local.darkplus.lualine")
+    -- local custom_theme = l_require("darkplus.lualine")
 
     local hide_in_width = function()
       return vim.fn.winwidth(0) > 80
