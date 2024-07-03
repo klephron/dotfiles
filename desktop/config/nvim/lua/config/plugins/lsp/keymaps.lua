@@ -1,6 +1,6 @@
 local M = {}
 
-local KeymapDictionary = require("config.utils.keymaps")
+local KeymapDictionary = require("config.utils.kmps_dict").KeymapDictionary
 
 M.keymaps = KeymapDictionary:new({
   -- gf (override file open), gl, go, gp, gq, gs, gy, gz

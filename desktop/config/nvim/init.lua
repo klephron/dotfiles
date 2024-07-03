@@ -1,4 +1,4 @@
-require("config.utils.globals")
+require("config.globals")
 
 if config.is_neovide then
   require("presets.neovide")
