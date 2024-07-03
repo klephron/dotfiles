@@ -53,10 +53,29 @@ local function trim(str)
   return str:gsub("^%s*(.-)%s*$", "%1")
 end
 
+local function augroup(group, commands)
+  local id = api.nvim_create_augroup(group, { clear = true })
+  for _, autocmd in ipairs(commands) do
+    local is_callback = type(autocmd.command) == 'function'
+    api.nvim_create_autocmd(autocmd.event, {
+      group = group,
+      pattern = autocmd.pattern,
+      desc = autocmd.description,
+      callback = is_callback and autocmd.command or nil,
+      command = not is_callback and autocmd.command or nil,
+      once = autocmd.once,
+      nested = autocmd.nested,
+      buffer = autocmd.buffer,
+    })
+  end
+  return id
+end
+
 M.watch_notify = watch_notify
 M.create_file_if_not_exist = create_file_if_not_exist
 M.open_buffer = open_buffer
 M.tbl_equals = tbl_equals
 M.trim = trim
+M.augroup = augroup
 
 return M

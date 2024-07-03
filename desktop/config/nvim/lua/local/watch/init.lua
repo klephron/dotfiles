@@ -210,7 +210,7 @@ api.nvim_create_user_command("WatchCreate", function()
   if watch_config.run_on_create then execute(name) end
   -- create augroup
   local augroup = get_augroup_name(name)
-  config.augroup(augroup, {
+  util.augroup(augroup, {
     {
       event = "BufWritePost",
       pattern = pattern,
@@ -253,7 +253,7 @@ api.nvim_create_user_command("WatchDelete", function()
     end)
 end, { nargs = 0 })
 
-config.augroup("_watch_leave", {
+util.augroup("_watch_leave", {
   {
     event = "VimLeavePre",
     pattern = "*",
