@@ -61,6 +61,7 @@ local M = {
   cssls = {},
   cssmodules_ls = {},
   css_variables = {},
+  bashls = {},
 }
 
 return M
