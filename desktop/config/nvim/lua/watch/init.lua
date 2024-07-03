@@ -17,7 +17,7 @@ local trim = util.trim
 ---@type table<string, WatchTable>
 local watch_data = {}
 
-local config = {
+local watch_config = {
   file = {
     remove = true,
     overwrite = true,
@@ -56,7 +56,7 @@ end
 ---@param str string
 ---@return string
 local function apply_decorator(str)
-  return config.decorator.left .. str .. config.decorator.right
+  return watch_config.decorator.left .. str .. watch_config.decorator.right
 end
 
 ---Append data to file from stdin/stderr
@@ -75,7 +75,7 @@ end
 ---@param name string
 local function execute_multiple(name)
   create_file_if_not_exist(name)
-  local bufnr = open_buffer(name, config.is_buflisted)
+  local bufnr = open_buffer(name, watch_config.is_buflisted)
   local commands = watch_data[name].command_splitted
   local co = coroutine.create(function()
     for _, v in ipairs(commands) do
@@ -93,15 +93,15 @@ local function execute_multiple(name)
     local job_id = nil
     api.nvim_buf_set_lines(bufnr, -2, -1, false, { "[COMMAND] " .. command })
     job_id = fn.jobstart(command, {
-      stdout_buffered = config.command.stdout_buffered,
-      stderr_buffered = config.command.stderr_buffered,
+      stdout_buffered = watch_config.command.stdout_buffered,
+      stderr_buffered = watch_config.command.stderr_buffered,
       on_stdout = with_buffer,
       on_stderr = with_buffer,
       on_exit = function(_, exit, _)
-        if config.command.save_after_each then
+        if watch_config.command.save_after_each then
           api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
         end
-        if config.command.exit_on_error and job_id <= 0 or exit ~= 0 then return
+        if watch_config.command.exit_on_error and job_id <= 0 or exit ~= 0 then return
         else recursive() end
       end
     })
@@ -110,7 +110,7 @@ local function execute_multiple(name)
   -- api.nvim_buf_set_lines(bufnr, 0, -1, false, { "[FNAME] " .. name, "", "" })
   api.nvim_buf_set_lines(bufnr, 0, -1, false, { "" })
   recursive()
-  if not config.command.save_after_each then
+  if not watch_config.command.save_after_each then
     api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
   end
 end
@@ -119,7 +119,7 @@ end
 ---@param name string
 local function execute_single(name)
   create_file_if_not_exist(name)
-  local bufnr = open_buffer(name, config.is_buflisted)
+  local bufnr = open_buffer(name, watch_config.is_buflisted)
   local command = watch_data[name].command
   -- fn
   local function with_buffer(chan_id, data, stream)
@@ -130,8 +130,8 @@ local function execute_single(name)
   api.nvim_buf_set_lines(bufnr, 0, -1, false, { "[FNAME] " .. name, "" })
   api.nvim_buf_set_lines(bufnr, -1, -1, false, { "[COMMAND] " .. command })
   fn.jobstart(command, {
-    stdout_buffered = config.command.stdout_buffered,
-    stderr_buffered = config.command.stderr_buffered,
+    stdout_buffered = watch_config.command.stdout_buffered,
+    stderr_buffered = watch_config.command.stderr_buffered,
     on_stdout = with_buffer,
     on_stderr = with_buffer,
     on_exit = function()
@@ -150,21 +150,21 @@ local function create_record(name, command, pattern)
   end
   -- split commands
   local command_list = { command }
-  for _, p in pairs(config.command.split.pattern) do
+  for _, p in pairs(watch_config.command.split.pattern) do
     for i, c in ipairs(command_list) do
       command_list[i] = vim.split(c, p, { trimempty = true })
     end
     command_list = vim.tbl_flatten(command_list)
   end
   -- trim commands
-  if config.command.trim then
+  if watch_config.command.trim then
     command = trim(command)
     for i, c in pairs(command_list) do
       command_list[i] = trim(c)
     end
   end
   -- decorator
-  if config.decorator.enabled then
+  if watch_config.decorator.enabled then
     for i, c in pairs(command_list) do
       command_list[i] = apply_decorator(c)
     end
@@ -175,7 +175,7 @@ local function create_record(name, command, pattern)
 end
 
 local function execute(name)
-  if config.command.split.enabled then
+  if watch_config.command.split.enabled then
     execute_multiple(name)
   else
     execute_single(name)
@@ -194,7 +194,7 @@ api.nvim_create_user_command("WatchCreate", function()
     watch_notify("Aborted.", vim.log.levels.INFO)
     return
   end
-  if not config.file.overwrite and uv.fs_stat(name) then
+  if not watch_config.file.overwrite and uv.fs_stat(name) then
     local res = fn.input("File exists. Overwrite it? (y/n): "):sub(1, 1)
     if res == "n" or res == "N" then
       return
@@ -207,10 +207,10 @@ api.nvim_create_user_command("WatchCreate", function()
   end
   create_record(name, command, pattern)
   -- run-on-create
-  if config.run_on_create then execute(name) end
+  if watch_config.run_on_create then execute(name) end
   -- create augroup
   local augroup = get_augroup_name(name)
-  us.augroup(augroup, {
+  config.augroup(augroup, {
     {
       event = "BufWritePost",
       pattern = pattern,
@@ -218,9 +218,9 @@ api.nvim_create_user_command("WatchCreate", function()
     },
   })
   -- save watch filename in register
-  if config.register.save_watch_path then
+  if watch_config.register.save_watch_path then
     local reg_cmd = "" ..
-      ":redir @" .. config.register.reg .. "\n" ..
+      ":redir @" .. watch_config.register.reg .. "\n" ..
       ":echon '" .. name .. "'\n" ..
       ":redir end"
     vim.cmd(":echo '' | redraw") -- clear commandline
@@ -244,7 +244,7 @@ api.nvim_create_user_command("WatchDelete", function()
         api.nvim_del_augroup_by_name(augroup)
         watch_data[name] = nil
         -- file-remove
-        if config.file.remove and uv.fs_stat(name) then
+        if watch_config.file.remove and uv.fs_stat(name) then
           local bufnr = fn.bufnr(name)
           if bufnr ~= -1 then api.nvim_buf_delete(bufnr, {}) end
           uv.fs_unlink(name)
@@ -253,12 +253,12 @@ api.nvim_create_user_command("WatchDelete", function()
     end)
 end, { nargs = 0 })
 
-us.augroup("_watch_leave", {
+config.augroup("_watch_leave", {
   {
     event = "VimLeavePre",
     pattern = "*",
     command = function()
-      if config.file.remove then
+      if watch_config.file.remove then
         for name, _ in pairs(watch_data) do
           if uv.fs_stat(name) then
             uv.fs_unlink(name)
