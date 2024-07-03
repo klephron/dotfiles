@@ -11,6 +11,8 @@ _G.config = {
   is_neovide = fn.exists("g:neovide") == 1,
 }
 
+_G.config.is_nvim = not (config.is_vscode or config.is_firenvim or config.is_neovide)
+
 function _G.p_require(name)
   return require(fmt("%s.%s", config.prefix.plugins, name))
 end
