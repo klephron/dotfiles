@@ -39,11 +39,11 @@ local M = {
         --   sysrootQueryMetadata = true,
         -- },
         checkOnSave = {
-          command = 'clippy',
+          command = 'check', -- used clippy, but it is really slow
         },
         inlayHints = { locationLinks = false },
         diagnostics = {
-          enable = false,
+          enable = true,
           -- experimental = {
           --   enable = true,
           -- },
