@@ -48,8 +48,8 @@ require("lazy").setup({
 
 })
 
-l_require("keymaps")
-l_require("autocmds")
-l_require("aliases")
+c_require("keymaps")
+c_require("autocmds")
+c_require("aliases")
 
 vim.notify("Using vscode config", vim.log.levels.INFO, {})

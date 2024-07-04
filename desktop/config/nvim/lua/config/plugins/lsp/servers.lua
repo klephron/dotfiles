@@ -27,23 +27,26 @@ local M = {
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
+        cachePriming = {
+          enable = false
+        },
         assist = {
           importEnforceGranularity = true,
           importPrefix = 'crate',
         },
-        cargo = {
-          features = "all",
-          sysrootQueryMetadata = true,
-        },
+        -- cargo = {
+        --   features = "all",
+        --   sysrootQueryMetadata = true,
+        -- },
         checkOnSave = {
           command = 'clippy',
         },
         inlayHints = { locationLinks = false },
         diagnostics = {
-          enable = true,
-          experimental = {
-            enable = true,
-          },
+          enable = false,
+          -- experimental = {
+          --   enable = true,
+          -- },
           disabled = {
             -- "macro-error",
             -- "unresolved-macro-call"
