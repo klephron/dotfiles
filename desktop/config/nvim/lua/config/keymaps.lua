@@ -159,108 +159,64 @@ end
 
 -- Leader mappings
 local leader = {
-  -- Buffers
-  f = { "<cmd>Bdelete<cr>", "buf: Delete current" },
-  -- Tabs
-  t = { name = "tabs" },
-  -- Project
-  p = { "<cmd>ProjectRoot<cr>", "project: Update root" },
-  P = { "<cmd>Telescope projects<cr>", "telescope: Projects" },
-  -- Toggleterm
-  j = {
-    name = "toggleterm",
-    t = { "<cmd>ToggleTerm<cr>", "toggleterm: Toggle" },
-    a = { "<cmd>ToggleTermToggleAll<cr>", "toggleterm: Toggle all" },
-    l = { '<cmd>ToggleTermLazygit<cr>', "toggleterm: Lazygit" },
-    h = { "<cmd>ToggleTermHtop<cr>", "toggleterm: Htop" },
-    f = { "<cmd>ToggleTermFloat<cr>", "toggleterm: Float" },
-  },
-  -- Neo-tree
-  e = { "<cmd>Neotree toggle<cr>", "neo-tree: Toggle" },
-  E = { "<cmd>Neotree<cr>", "neo-tree" },
-  -- Session
-  v = { "<cmd>PossessionLoad<cr>", "possession: Restore current session" },
-  V = { "<cmd>Telescope possession list<cr>", "possession: Search session" },
-  -- Telescope
-  r = { "<cmd>Telescope oldfiles<cr>", "telescope: Recent files" },
-  s = {
-    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-    "telescope: Find files"
-  },
-  h = { "<cmd>Telescope live_grep<cr>", "telescope: Live grep" },
-  g = {
-    name = "git",
-    b = { "<cmd>Gitsigns blame_line<cr>", "gitsigns: blame line" },
-  },
-  b = { "<cmd>Telescope buffers<cr>", "telescope: Buffers" },
-  -- Which-key
-  ["?"] = { "<cmd>WhichKey<cr>", "whichkey: Open" },
-  -- Aerial
-  A = { "<cmd>AerialToggle!<cr>", "aerial: Toggle" },
-  a = { "<cmd>AerialToggle<cr>", "aerial: Toggle focus" },
-  -- Trouble
-  I = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "trouble: toggle workspace" },
-  i = { "<cmd>TroubleToggle document_diagnostics<cr>", "trouble: toggle document" },
+  { "<leader>?",  "<cmd>WhichKey<cr>",                                                                                                   desc = "whichkey: Open" },
+  { "<leader>A",  "<cmd>AerialToggle!<cr>",                                                                                              desc = "aerial: Toggle" },
+  { "<leader>E",  "<cmd>Neotree<cr>",                                                                                                    desc = "neo-tree" },
+  { "<leader>I",  "<cmd>TroubleToggle workspace_diagnostics<cr>",                                                                        desc = "trouble: toggle workspace" },
+  { "<leader>P",  "<cmd>Telescope projects<cr>",                                                                                         desc = "telescope: Projects" },
+  { "<leader>V",  "<cmd>Telescope possession list<cr>",                                                                                  desc = "possession: Search session" },
+  { "<leader>a",  "<cmd>AerialToggle<cr>",                                                                                               desc = "aerial: Toggle focus" },
+  { "<leader>b",  "<cmd>Telescope buffers<cr>",                                                                                          desc = "telescope: Buffers" },
+  { "<leader>e",  "<cmd>Neotree toggle<cr>",                                                                                             desc = "neo-tree: Toggle" },
+  { "<leader>f",  "<cmd>Bdelete<cr>",                                                                                                    desc = "buf: Delete current" },
+  { "<leader>g",  group = "git" },
+  { "<leader>gb", "<cmd>Gitsigns blame_line<cr>",                                                                                        desc = "gitsigns: blame line" },
+  { "<leader>h",  "<cmd>Telescope live_grep<cr>",                                                                                        desc = "telescope: Live grep" },
+  { "<leader>i",  "<cmd>TroubleToggle document_diagnostics<cr>",                                                                         desc = "trouble: toggle document" },
+  { "<leader>j",  group = "toggleterm" },
+  { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",                                                                                        desc = "toggleterm: Toggle all" },
+  { "<leader>jf", "<cmd>ToggleTermFloat<cr>",                                                                                            desc = "toggleterm: Float" },
+  { "<leader>jh", "<cmd>ToggleTermHtop<cr>",                                                                                             desc = "toggleterm: Htop" },
+  { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",                                                                                          desc = "toggleterm: Lazygit" },
+  { "<leader>jt", "<cmd>ToggleTerm<cr>",                                                                                                 desc = "toggleterm: Toggle" },
+  { "<leader>p",  "<cmd>ProjectRoot<cr>",                                                                                                desc = "project: Update root" },
+  { "<leader>r",  "<cmd>Telescope oldfiles<cr>",                                                                                         desc = "telescope: Recent files" },
+  { "<leader>s",  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", desc = "telescope: Find files" },
+  { "<leader>t",  group = "tabs" },
+  { "<leader>v",  "<cmd>PossessionLoad<cr>",                                                                                             desc = "possession: Restore current session" },
 }
+
 
 local localleader = {
-  -- Neotree
-  e = { "<cmd>Neotree position=current<cr>", "Neotree position=current" },
-  -- Lsp
-  l = {
-    name = "lsp",
-    s = { "<cmd>LspInfo<cr>", "Info" },
-    i = { "<cmd>LspInstall<cr>", "Install" },
-    r = { "<cmd>LspRestart<cr>", "Restart" },
-    l = { "<cmd>LspLog<cr>", "Log" },
-  },
-  -- Null-ls
-  u = {
-    name = "null-ls",
-    s = { "<cmd>NullLsInfo<cr>", "Info" },
-    l = { "<cmd>NullLsLog<cr>", "Log" },
-  },
-  -- Lazy
-  z = { "<cmd>Lazy<cr>", "Lazy" },
-  -- Noice
-  n = {
-    name = "noice",
-    l = { "<cmd>Noice last<cr>", "Last" },
-    h = { "<cmd>Noice history<cr>", "History" },
-  },
-  -- Mason
-  m = {
-    name = "mason",
-    s = { "<cmd>Mason<cr>", "Info" },
-    -- i = { "<cmd>MasonInstall<cr>", "Install" },
-    l = { "<cmd>MasonLog<cr>", "Log" },
-  },
-  -- Luasnip
-  s = { "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", "luasnip: Edit snippets" },
-  -- Git (diffview)
-  d = {
-    name = "diffview",
-    o = { "<cmd>DiffviewOpen<cr>", 'diffview: open' },
-    h = { "<cmd>DiffviewFileHistory<cr>", 'diffview: file history' },
-  },
-  g = {
-    name = "git",
-    b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "gitsigns: toggle current line blame", },
-  },
-  -- Watch
-  w = {
-    name = "watch",
-    c = { "<cmd>WatchCreate<cr>", "watch: create" },
-    d = { "<cmd>WatchDelete<cr>", "watch: delete" },
-    l = { "<cmd>WatchList<cr>", "watch: list" },
-  },
-  -- Neorg
-  o = {
-    name = "neorg",
-    s = { "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace" },
-  },
-  -- a: ASCII
+  { "<localleader>d",  group = "diffview" },
+  { "<localleader>dh", "<cmd>DiffviewFileHistory<cr>",                                          desc = "diffview: file history" },
+  { "<localleader>do", "<cmd>DiffviewOpen<cr>",                                                 desc = "diffview: open" },
+  { "<localleader>e",  "<cmd>Neotree position=current<cr>",                                     desc = "Neotree position=current" },
+  { "<localleader>g",  group = "git" },
+  { "<localleader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>",                           desc = "gitsigns: toggle current line blame" },
+  { "<localleader>l",  group = "lsp" },
+  { "<localleader>li", "<cmd>LspInstall<cr>",                                                   desc = "Install" },
+  { "<localleader>ll", "<cmd>LspLog<cr>",                                                       desc = "Log" },
+  { "<localleader>lr", "<cmd>LspRestart<cr>",                                                   desc = "Restart" },
+  { "<localleader>ls", "<cmd>LspInfo<cr>",                                                      desc = "Info" },
+  { "<localleader>m",  group = "mason" },
+  { "<localleader>ml", "<cmd>MasonLog<cr>",                                                     desc = "Log" },
+  { "<localleader>ms", "<cmd>Mason<cr>",                                                        desc = "Info" },
+  { "<localleader>n",  group = "noice" },
+  { "<localleader>nh", "<cmd>Noice history<cr>",                                                desc = "History" },
+  { "<localleader>nl", "<cmd>Noice last<cr>",                                                   desc = "Last" },
+  { "<localleader>o",  group = "neorg" },
+  { "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>",                             desc = "neorg: switch workspace" },
+  { "<localleader>s",  "<cmd>lua require('luasnip.loaders.from_lua').edit_snippet_files()<cr>", desc = "luasnip: Edit snippets" },
+  { "<localleader>u",  group = "null-ls" },
+  { "<localleader>ul", "<cmd>NullLsLog<cr>",                                                    desc = "Log" },
+  { "<localleader>us", "<cmd>NullLsInfo<cr>",                                                   desc = "Info" },
+  { "<localleader>w",  group = "watch" },
+  { "<localleader>wc", "<cmd>WatchCreate<cr>",                                                  desc = "watch: create" },
+  { "<localleader>wd", "<cmd>WatchDelete<cr>",                                                  desc = "watch: delete" },
+  { "<localleader>wl", "<cmd>WatchList<cr>",                                                    desc = "watch: list" },
+  { "<localleader>z",  "<cmd>Lazy<cr>",                                                         desc = "Lazy" },
 }
 
-wk.register(leader, { prefix = "<leader>" })
-wk.register(localleader, { prefix = "<localleader>" })
+wk.add(leader)
+wk.add(localleader)
