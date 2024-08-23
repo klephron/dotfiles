@@ -8,3 +8,4 @@ bind ^ buffer #
 bind q unfocus
 unbind <C-f>
 bind ' gobble 1 markjump
+bind O tabopen
