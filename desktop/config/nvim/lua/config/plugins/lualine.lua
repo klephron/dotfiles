@@ -85,6 +85,14 @@ local M = {
         return require('possession.session').get_session_name() or ''
     end
 
+    local hostname = {
+        function()
+        return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
+        end,
+        padding = { right = 1, left = 1 },
+        separator = { left = "", right = "" },
+    }
+
     lualine.setup({
       options = {
         icons_enabled = true,
@@ -96,7 +104,7 @@ local M = {
       },
       sections = {
         lualine_a = { mode },
-        lualine_b = { branch, diagnostics },
+        lualine_b = { hostname, branch, diagnostics },
         lualine_c = { session_name, filename },
         lualine_x = { "aerial" },
         lualine_y = { diff, "fileformat", spaces, },

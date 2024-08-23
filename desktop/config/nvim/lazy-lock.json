@@ -44,6 +44,7 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "possession.nvim": { "branch": "master", "commit": "e3b9d7c00fe335bedb5a12d88e9eac08c944acfe" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
+  "remote-nvim.nvim": { "branch": "main", "commit": "66fc20fd259401c7bb6ac5189ecb6283c2eb65d2" },
   "telescope.nvim": { "branch": "master", "commit": "bfcc7d5c6f12209139f175e6123a7b7de6d9c18a" },
   "todo-comments.nvim": { "branch": "main", "commit": "337de2d9a8887406a41a59396ba0de74a043a452" },
   "toggleterm.nvim": { "branch": "main", "commit": "cd55bf6aab3f88c259fa29ea86bbdcb1a325687d" },
@@ -51,5 +52,5 @@
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
   "vimtex": { "branch": "master", "commit": "80c9bc179784c30192d482741a43f176c859daa1" },
   "vscode.nvim": { "branch": "main", "commit": "3ba16d763097cecc75eb93761f4a981467acfc23" },
-  "which-key.nvim": { "branch": "main", "commit": "60688872f4ecc552a5e2bcbd01e7629a155f377f" }
+  "which-key.nvim": { "branch": "main", "commit": "b9de9278bdc57adfa69a67d8a3309f07c83951d0" }
 }
