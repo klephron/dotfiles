@@ -47,8 +47,12 @@ install/_current:
 		for var in `ls -A $(DOTFILES_DIR)/$(CONFIG_SDIR)`; do \
 			src=$(abspath $(DESKTOP_DIR)/$(CONFIG_SDIR)/$$var); \
 			dist=$$XDG_CONFIG_HOME/$$var; \
-			if ! [ $$src -ef $$dist ]; then \
-				ln -vsfn $$src $$dist  ;\
+			if [ -d $$dist ] && ! [ -L $$dist ]; then \
+				echo "$$dist is not a symlink pointing to a directory." ;\
+			else \
+				if ! [ $$src -ef $$dist ]; then \
+					ln -vsfn $$src $$dist  ;\
+				fi \
 			fi \
 		done \
 	fi
