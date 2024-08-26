@@ -1,8 +1,8 @@
 ! Xcursor.size:32
 Xft.dpi:144
-Xft.antialias:false
+Xft.antialias:true
 Xft.hinting:true
-! Xft.rgba: rgb
-! Xft.hintstyle: hintslight
+Xft.rgba:rgb
+Xft.hintstyle:hintslight
 ! Xft.dpi: 96
 ! Xft.dpi: 141 / 163
