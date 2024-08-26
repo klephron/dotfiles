@@ -25,3 +25,6 @@ alias jl="lazygit"
 alias ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 
 alias v="nvim"
+
+alias 2160p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load dual && echo 'awesome.restart()' | awesome-client"
+alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load laptop && echo 'awesome.restart()' | awesome-client"

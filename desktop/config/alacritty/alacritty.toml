@@ -10,7 +10,7 @@ style = "Beam"
 TERM = "alacritty"
 
 [font]
-size = 7
+size = 10
 
 [font.bold]
 family = "FiraCode Nerd Font Mono"
