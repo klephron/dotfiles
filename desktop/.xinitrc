@@ -40,7 +40,7 @@ if [[ $is_dual != "" ]]
 then
   sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources
   xrdb ~/.Xresources
-  autorandr --load dual
+  autorandr --load dual_scale-1.25
 else
   sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources
   xrdb ~/.Xresources
@@ -52,7 +52,7 @@ fi
 nm-applet &
 
 # Composition manager
-picom &
+# picom &
 
 # Greenclip
 exec greenclip daemon &
