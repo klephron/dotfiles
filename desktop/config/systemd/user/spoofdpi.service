@@ -1,0 +1,8 @@
+[Unit]
+Description=To bypass Deep Paacket Inspection
+DefaultDependencies=no
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/bash /usr/local/bin/spoofdpi
+Type=simple

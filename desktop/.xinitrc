@@ -14,9 +14,6 @@ if [ -f $sysmodmap ]; then
     xmodmap $sysmodmap
 fi
 
-# # set proper dpi
-# sed -i -E s/^Xft.dpi:96/Xft.dpi:144/ ~/.Xresources
-
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
