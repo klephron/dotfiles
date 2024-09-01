@@ -1,11 +1,10 @@
 local M = {
   'nvimtools/none-ls.nvim',
-  dependencies = {
-    'neovim/nvim-lspconfig',
-  },
+  event = "VeryLazy",
   config = function()
     local null_ls = require("null-ls")
-    local options = p_require("lspconfig").lspconfig_get_options()
+    local lspconfig = p_require("lspconfig")
+    local options = lspconfig.fetch_options()
 
     local code_actions = null_ls.builtins.code_actions
     local diagnostics = null_ls.builtins.diagnostics
