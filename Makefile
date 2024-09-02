@@ -51,7 +51,7 @@ install/_current:
 		fi \
 	done
 
-	@[[ -d $XDG_CONFIG_HOME ]] || mkdir -v $XDG_CONFIG_HOME
+	@[[ -d $(XDG_CONFIG_HOME) ]] || mkdir -v $(XDG_CONFIG_HOME)
 
 	@if [ -d $(DOTFILES_DIR)/$(CONFIG_SDIR) ]; then \
 		for var in `ls -A $(DOTFILES_DIR)/$(CONFIG_SDIR)`; do \
