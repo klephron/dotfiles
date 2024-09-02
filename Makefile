@@ -2,6 +2,7 @@
 
 DESKTOP_DIR := desktop
 SERVER_DIR  := server
+DEVCONTAINER_DIR := dev-container
 SCRIPTS_DIR := scripts
 CONFIG_SDIR := config
 
@@ -31,6 +32,13 @@ install/desktop:
 install/server: export DOTFILES_DIR := $(SERVER_DIR)
 
 install/server:
+	@$(MAKE) install/_current
+
+
+### Install configs for dev container
+install/dev-container: export DOTFILES_DIR := $(DEVCONTAINER_DIR)
+
+install/dev-container:
 	@$(MAKE) install/_current
 
 
