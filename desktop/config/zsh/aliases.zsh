@@ -30,3 +30,8 @@ alias 2160p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xre
 alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load laptop && echo 'awesome.restart()' | awesome-client"
 
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
+alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
+
+alias docker-ip='docker inspect -f "{{ .NetworkSettings.IPAddress }}"'
+
+alias chownikit="sudo chown nikit:nikit -R ."
