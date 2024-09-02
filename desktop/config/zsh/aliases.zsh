@@ -28,3 +28,5 @@ alias v="nvim"
 
 alias 2160p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load dual_scale-1.25 && echo 'awesome.restart()' | awesome-client"
 alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load laptop && echo 'awesome.restart()' | awesome-client"
+
+alias ssh="TERM=tmux-256color ssh"
