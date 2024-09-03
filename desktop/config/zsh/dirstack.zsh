@@ -1,6 +1,9 @@
 DIRSTACKSIZE=30
 DIRSTACKFILE=~/.cache/zsh/dirstack
 
+mkdir -p $(dirname $DIRSTACKFILE)
+touch $DIRSTACKFILE
+
 # The load dirs into stack from given file.
 if [[ -f $DIRSTACKFILE && $#dirstack -eq 0 ]]; then
     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
