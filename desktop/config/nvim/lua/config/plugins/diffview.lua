@@ -21,7 +21,12 @@ local M = {
         file_history_panel = { q = '<Cmd>DiffviewClose<CR>' },
       },
     })
-  end
+  end,
+  keys = {
+    { "<localleader>d",  group = "diffview" },
+    { "<localleader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "diffview: file history" },
+    { "<localleader>do", "<cmd>DiffviewOpen<cr>",        desc = "diffview: open" },
+  }
 }
 
 return M

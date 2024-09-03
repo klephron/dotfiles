@@ -24,7 +24,11 @@ local M = {
       silent_chdir = true,
       datapath = vim.fn.expand(vim.fn.stdpath("cache")),
     }
-  end
+  end,
+  keys = {
+    { "<leader>P", "<cmd>Telescope projects<cr>", desc = "telescope: Projects" },
+    { "<leader>p", "<cmd>ProjectRoot<cr>",        desc = "project: Update root" },
+  }
 }
 
 return M

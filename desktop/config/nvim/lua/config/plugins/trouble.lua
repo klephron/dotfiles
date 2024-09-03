@@ -23,7 +23,11 @@ local M = {
         end
       },
     })
-  end
+  end,
+  keys = {
+    { "<leader>I", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "trouble: toggle workspace" },
+    { "<leader>i", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "trouble: toggle document" },
+  }
 }
 
 return M

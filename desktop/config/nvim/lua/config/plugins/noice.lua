@@ -82,7 +82,12 @@ local M = {
         }
       }
     })
-  end
+  end,
+  keys = {
+    { "<localleader>n",  group = "noice" },
+    { "<localleader>nh", "<cmd>Noice history<cr>", desc = "History" },
+    { "<localleader>nl", "<cmd>Noice last<cr>",    desc = "Last" },
+  }
 }
 
 return M

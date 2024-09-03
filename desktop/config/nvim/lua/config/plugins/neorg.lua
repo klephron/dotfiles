@@ -9,6 +9,7 @@ local M = {
   build = ":Neorg sync-parsers",
   config = function()
     local neorg = require("neorg")
+    local funcs = require("utils.funcs")
     neorg.setup({
       load = {
         ["core.defaults"] = {}, -- https://github.com/nvim-neorg/neorg/wiki#default-modules
@@ -46,7 +47,16 @@ local M = {
         },
       }
     })
-  end
+
+    local wk_ok, wk = pcall(require, "which-key")
+    if wk_ok then
+      wk.add({
+        { "<localleader>o", group = "neorg" },
+      })
+    end
+
+    funcs.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace")
+  end,
 }
 
 function M.config()

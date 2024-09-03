@@ -10,6 +10,7 @@ local M = {
   config = function()
     local diagnostics = require("config.plugins.lsp.diagnostics")
     local servers = require("config.plugins.lsp.servers")
+    local funcs = require("utils.funcs")
 
     local lspconfig = require("lspconfig")
     local options = fetch_options()
@@ -21,7 +22,20 @@ local M = {
       opts = vim.tbl_deep_extend("force", {}, options, opts or {})
       lspconfig[server].setup(opts)
     end
-  end
+
+    local wk_ok, wk = pcall(require, "which-key")
+    if wk_ok then
+      wk.add({
+        { "<localleader>l",  group = "lsp" },
+      })
+    end
+
+    funcs.set_keynomap("n", "<localleader>li", "<cmd>LspInstall<cr>", "Install")
+    funcs.set_keynomap("n", "<localleader>ll", "<cmd>LspLog<cr>", "Install")
+    funcs.set_keynomap("n", "<localleader>lr", "<cmd>LspRestart<cr>", "Install")
+    funcs.set_keynomap("n", "<localleader>ls", "<cmd>LspInfo<cr>", "Install")
+
+  end,
 }
 
 setup_options = function()

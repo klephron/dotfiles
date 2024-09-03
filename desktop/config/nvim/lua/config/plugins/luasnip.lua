@@ -30,6 +30,7 @@ local M = {
     -- require("luasnip.loaders.from_snipmate").load({ paths = "~/.config/nvim/snippets/snipmate/" })
     require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
 
+    vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
 
     utils.set_keynomap({ "i", "s" }, "<a-k>", function()
       if luasnip.jumpable(1) then
@@ -42,8 +43,9 @@ local M = {
       end
     end)
 
-    vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
-  end
+    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "luasnip: Edit snippets")
+
+  end,
 }
 
 return M

@@ -85,7 +85,15 @@ local M = {
       })
       htop:toggle()
     end, {})
-  end
+  end,
+  keys = {
+    { "<leader>j",  group = "toggleterm" },
+    { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>", desc = "toggleterm: Toggle all" },
+    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",     desc = "toggleterm: Float" },
+    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",      desc = "toggleterm: Htop" },
+    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",   desc = "toggleterm: Lazygit" },
+    { "<leader>jt", "<cmd>ToggleTerm<cr>",          desc = "toggleterm: Toggle" },
+  }
 }
 
 return M

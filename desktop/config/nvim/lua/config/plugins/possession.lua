@@ -11,13 +11,13 @@ local M = {
       },
       hooks = {
         before_save = function(_)
-          vim.cmd("tabdo Neotree close")
-          vim.cmd("tabdo AerialCloseAll")
+          if vim.fn.exists(":Neotree") > 0 then vim.cmd("tabdo Neotree close") end
+          if vim.fn.exists(":AerialCloseAll") > 0 then vim.cmd("tabdo AerialCloseAll") end
           return {}
         end,
         before_load = function(_, user_data)
-          vim.cmd("tabdo Neotree close")
-          vim.cmd("tabdo AerialCloseAll")
+          if vim.fn.exists(":Neotree") > 0 then vim.cmd("tabdo Neotree close") end
+          if vim.fn.exists(":AerialCloseAll") > 0 then vim.cmd("tabdo AerialCloseAll") end
           return user_data
         end
       },
@@ -33,7 +33,11 @@ local M = {
         },
       },
     })
-  end
+  end,
+  keys = {
+    { "<leader>V", "<cmd>Telescope possession list<cr>", desc = "possession: Search session" },
+    { "<leader>v", "<cmd>PossessionLoad<cr>",            desc = "possession: Restore current session" },
+  }
 }
 
 return M

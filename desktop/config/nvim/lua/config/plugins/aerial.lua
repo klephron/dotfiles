@@ -34,7 +34,11 @@ local M = {
         whitespace = "  ",
       },
     })
-  end
+  end,
+  keys = {
+    { "<leader>A", "<cmd>AerialToggle!<cr>", desc = "aerial: Toggle" },
+    { "<leader>a", "<cmd>AerialToggle<cr>",  desc = "aerial: Toggle focus" },
+  }
 }
 
 return M
