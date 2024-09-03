@@ -3,7 +3,7 @@ if not jdtls_ok then
   return
 end
 
-local options = p_require("lspconfig").options
+local options = require("config.plugins.lspconfig").options
 
 local opts = {}
 

@@ -2,7 +2,7 @@ local M = {
   "monaqa/dial.nvim",
   event = "VeryLazy",
   config = function()
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
     local dial = require("dial.map")
     local augend = require("dial.augend")
     local dial_config = require("dial.config")

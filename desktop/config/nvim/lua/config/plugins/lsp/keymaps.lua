@@ -1,6 +1,6 @@
 local M = {}
 
-local KeymapDictionary = u_require("kmps_dict").KeymapDictionary
+local KeymapDictionary = require("utils.kmps_dict").KeymapDictionary
 
 M.keymaps = KeymapDictionary:new({
   -- gf (override file open), gl, go, gp, gq, gs, gy, gz
@@ -33,7 +33,7 @@ M.keymaps = KeymapDictionary:new({
 
 function M.on_attach(client, bufnr)
   local kmps = M.keymaps
-  local utils = u_require("funcs")
+  local utils = require("utils.funcs")
 
   local lspsaga_ok = false
 

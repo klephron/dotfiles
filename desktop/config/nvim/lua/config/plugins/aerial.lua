@@ -22,7 +22,7 @@ local M = {
       highlight_on_hover = true,
       highlight_on_jump = 500,
 
-      icons = c_require("icons").kind_icons,
+      icons = require("config.icons").kind_icons,
 
       nerd_font = "auto",
 

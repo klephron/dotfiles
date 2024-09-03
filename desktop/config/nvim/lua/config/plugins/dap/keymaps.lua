@@ -1,6 +1,6 @@
 local M = {}
 
-local KeymapDictionary = u_require("kmps_dict").KeymapDictionary
+local KeymapDictionary = require("utils.kmps_dict").KeymapDictionary
 
 M.dap_fn = KeymapDictionary:new({
   step_into = { "<F1>", "Step into" },
@@ -57,8 +57,8 @@ M.dap = KeymapDictionary:new({
 function M.setup()
   local kmps = M.dap
   local fn_kmps = M.dap_fn
-  local funcs = p_require("dap.funcs")
-  local utils = u_require("funcs")
+  local funcs = require("config.plugins.dap.funcs")
+  local utils = require("utils.funcs")
 
   utils.set_keynomap("n", kmps.continue.key, funcs.continue, kmps:desc("continue"))
   utils.set_keynomap("n", kmps.run_last.key, funcs.run_last, kmps:desc("run_last"))

@@ -1,6 +1,6 @@
 local M = {}
 
-local ts = l_require("darkplus.treesitter")
+local ts = require("local.darkplus.treesitter")
 
 function M.highlight(group, hl)
   group = ts.get(group)

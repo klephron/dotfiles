@@ -58,6 +58,6 @@ M.create_file_if_not_exist = create_file_if_not_exist
 M.open_buffer = open_buffer
 M.tbl_equals = tbl_equals
 M.trim = trim
-M.augroup = u_require("funcs").augroup
+M.augroup = require("utils.funcs").augroup
 
 return M

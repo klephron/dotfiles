@@ -11,7 +11,7 @@ local M = {
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
-    local kind_icons = c_require("icons").kind_icons
+    local kind_icons = require("config.icons").kind_icons
 
     -- Function implementations
     local function has_words_before()

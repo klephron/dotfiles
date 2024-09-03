@@ -15,20 +15,3 @@ _G.config = {
 }
 _G.config.is_nvim = not (config.is_vscode or config.is_firenvim or config.is_neovide)
 
-function _G.c_require(name)
-  return require(fmt("%s.%s", config.prefix.config, name))
-end
-function _G.p_require(name)
-  return require(fmt("%s.%s", config.prefix.plugins, name))
-end
-function _G.u_require(name)
-  return require(fmt("%s.%s", config.prefix.utils, name))
-end
-function _G.l_require(name)
-  return require(fmt("%s.%s", config.prefix._local, name))
-end
-function _G.preset_require(name)
-  return require(fmt("%s.%s", config.prefix.presets, name))
-end
-
-

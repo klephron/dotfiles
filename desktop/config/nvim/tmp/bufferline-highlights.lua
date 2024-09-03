@@ -1,4 +1,4 @@
-highlight = {
+local highlight = {
   fill = {
     fg = { attribute = "bg", highlight = "DiffText" },
     bg = { attribute = "bg", highlight = "DiffText" },

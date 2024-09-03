@@ -3,7 +3,7 @@ local M = {
   event = "VeryLazy",
   config = function()
     local null_ls = require("null-ls")
-    local lspconfig = p_require("lspconfig")
+    local lspconfig = require("config.plugins.lspconfig")
     local options = lspconfig.fetch_options()
 
     local code_actions = null_ls.builtins.code_actions

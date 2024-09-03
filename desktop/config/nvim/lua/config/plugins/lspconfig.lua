@@ -8,8 +8,8 @@ local M = {
   },
   _options = nil,
   config = function()
-    local diagnostics = p_require("lsp.diagnostics")
-    local servers = p_require("lsp.servers")
+    local diagnostics = require("config.plugins.lsp.diagnostics")
+    local servers = require("config.plugins.lsp.servers")
 
     local lspconfig = require("lspconfig")
     local options = fetch_options()
@@ -25,8 +25,8 @@ local M = {
 }
 
 setup_options = function()
-  local formatting = p_require("lsp.formatting")
-  local keymaps = p_require("lsp.keymaps")
+  local formatting = require("config.plugins.lsp.formatting")
+  local keymaps = require("config.plugins.lsp.keymaps")
 
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -59,6 +59,7 @@ setup_options = function()
   }
 end
 
+---@return table
 fetch_options = function()
   if M._options == nil then
     setup_options()

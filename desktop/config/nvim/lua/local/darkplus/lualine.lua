@@ -1,4 +1,4 @@
-local colors = l_require("darkplus.colors")
+local colors = require("local.darkplus.colors")
 
 local darkplus = {}
 

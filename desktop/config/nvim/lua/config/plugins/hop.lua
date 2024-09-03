@@ -2,7 +2,7 @@ local M = {
   "phaazon/hop.nvim",
   config = function()
     local hop = require("hop")
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
 
     hop.setup({
       quit_key = "<Esc>",

@@ -5,7 +5,7 @@ local M = {
   },
   config = function()
     local treehopper = require("tsht")
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
     treehopper.config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
     utils.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
     utils.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")

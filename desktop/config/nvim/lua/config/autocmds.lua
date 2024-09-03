@@ -1,6 +1,6 @@
 local fn = vim.fn
 local api = vim.api
-local funcs = u_require("funcs")
+local funcs = require("utils.funcs")
 
 ---------------------------------------------------------------------------------
 -- Autocmds

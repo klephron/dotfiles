@@ -8,7 +8,7 @@ local M = {
   config = function()
     local luasnip = require("luasnip")
     local types = require("luasnip.util.types")
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
 
     luasnip.setup({
       history = true,

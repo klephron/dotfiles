@@ -3,7 +3,7 @@ local M = {
   event = "UIEnter",
   cond = function() return not config.is_neovide and not config.is_firenvim end,
   config = function()
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
     local focused = true
     utils.augroup("noice_focus", {
       {

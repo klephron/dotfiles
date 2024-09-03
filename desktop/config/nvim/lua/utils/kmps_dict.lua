@@ -6,7 +6,6 @@ M.KeymapDictionary = {}
 ---KeymapDictionary constructor
 ---@param table table
 ---@param prefix string|nil
----@return object
 function M.KeymapDictionary:new(table, prefix)
   table = table or {}
   setmetatable(table, self)

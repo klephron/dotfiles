@@ -10,4 +10,4 @@ vim.g.neovide_floating_opacity = 1
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0
 
-preset_require("nvim-lazy")
+require("presets.nvim-lazy")

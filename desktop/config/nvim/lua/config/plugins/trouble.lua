@@ -2,7 +2,7 @@ local M = {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle" },
   config = function()
-    local utils = u_require("funcs")
+    local utils = require("utils.funcs")
     local trouble = require("trouble")
     trouble.setup({
       use_diagnostic_signs = true,

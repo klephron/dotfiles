@@ -3,7 +3,7 @@ local M = {
   event = "UIEnter",
   config = function()
     local bufferline = require("bufferline")
-    local icons = c_require("icons").bufferline
+    local icons = require("config.icons").bufferline
 
     bufferline.setup {
       options = {
