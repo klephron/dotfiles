@@ -30,6 +30,7 @@ require("lazy").setup({
 }
 , {
   install = {},
+  concurrency = vim.uv.available_parallelism() * 2,
   performance = {
     rtp = {
       disabled_plugins = {
