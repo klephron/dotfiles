@@ -15,3 +15,4 @@ _G.config = {
 }
 _G.config.is_nvim = not (config.is_vscode or config.is_firenvim or config.is_neovide)
 
+table.unpack = table.unpack or unpack

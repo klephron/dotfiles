@@ -65,6 +65,9 @@ local M = {
   cssmodules_ls = {},
   css_variables = {},
   bashls = {},
+  yamlls = {},
+  ansiblels = {},
+
 }
 
 return M

@@ -13,6 +13,7 @@ local M = {
     local luasnip = require("luasnip")
     local kind_icons = require("config.icons").kind_icons
 
+
     -- Function implementations
     local function has_words_before()
       local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
