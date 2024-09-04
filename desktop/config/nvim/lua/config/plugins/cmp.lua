@@ -3,6 +3,7 @@ local M = {
   -- event = "InsertEnter",
   event = "VeryLazy",
   dependencies = {
+    "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
