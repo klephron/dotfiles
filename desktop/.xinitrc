@@ -46,10 +46,12 @@ fi
 
 
 # Network manager applet
-nm-applet &
+exec nm-applet &
+
+exec lxpolkit &
 
 # Composition manager
-# picom &
+exec picom &
 
 # Greenclip
 exec greenclip daemon &

@@ -1,0 +1,17 @@
+[Unit]
+Description=rclonemount
+AssertPathIsDirectory=%h/Documents/clouds/%i
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount \
+        --config=%h/.config/rclone/rclone.conf \
+        --vfs-cache-mode=full \
+        %i: %h/Documents/clouds/%i
+ExecStop=/bin/fusermount -u %h/Documents/clouds/%i
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
