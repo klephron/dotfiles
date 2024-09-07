@@ -73,8 +73,8 @@ dynamic_title = true
 title = "Alacritty"
 
 [window.dimensions]
-columns = 0
-lines = 0
+columns = 80
+lines = 20
 
 [window.padding]
 x = 0
