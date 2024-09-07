@@ -200,21 +200,19 @@ end)
 -- No borders when rearranging only 1 non-floating or maximized client
 screen.connect_signal("arrange", function(s)
   -- naughty.notify({ text = "arranging!" })
-  -- local only_one = #s.tiled_clients == 1
-  -- for _, c in pairs(s.clients) do
-  --   if only_one and not c.floating or c.maximized or c.fullscreen then
-  --     c.border_width = 0
-  --   else
-  --     c.border_width = beautiful.border_width
-  --   end
-  -- end
-
+  
   for _, c in pairs(s.clients) do
-    if c.maximized or c.fullscreen then
-      c.border_width = 0
+    local border_width;
+
+    local only_one = #s.tiled_clients == 1
+    local layout_tiling = awful.layout.get(s) ~= awful.layout.suit.floating
+    if only_one and layout_tiling or c.maximized or c.fullscreen then
+      border_width = 0
     else
-      c.border_width = beautiful.border_width
+      border_width = beautiful.border_width
     end
+
+    c.border_width = border_width
   end
 end)
 
