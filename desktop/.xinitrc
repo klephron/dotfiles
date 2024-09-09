@@ -39,7 +39,7 @@ then
   xrdb ~/.Xresources
   autorandr --load dual_scale-1.25
   # fix mouse cursor blinking
-  xrandr --output DisplayPort-0 --scale 0.99996x0.99996 --filter nearest
+  # xrandr --output DisplayPort-0 --scale 0.99996x0.99996 --filter nearest
 else
   sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources
   xrdb ~/.Xresources
