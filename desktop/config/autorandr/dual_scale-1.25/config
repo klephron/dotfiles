@@ -1,11 +1,10 @@
 output HDMI-A-0
 off
 output DisplayPort-0
-crtc 0
+crtc 1
 filter nearest
 mode 3840x2160
 pos 2400x0
-primary
 rate 60.00
 transform 0.999893,0.000000,0.000000,0.000000,0.999893,0.000000,0.000000,0.000000,1.000000
 x-prop-colorspace Default
@@ -17,10 +16,11 @@ x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
 output eDP
-crtc 1
+crtc 0
 filter bilinear
 mode 1920x1080
 pos 0x810
+primary
 rate 60.01
 transform 1.250000,0.000000,0.000000,0.000000,1.250000,0.000000,0.000000,0.000000,1.000000
 x-prop-colorspace Default
