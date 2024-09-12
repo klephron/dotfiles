@@ -35,6 +35,7 @@ alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xres
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
 alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
 
-alias docker-ip='docker inspect -f "{{ .NetworkSettings.IPAddress }}"'
+alias docker-ip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
+alias docker-ips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
 
 alias chownikit="sudo chown nikit:nikit -R ."
