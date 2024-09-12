@@ -7,8 +7,7 @@ local M = {
     mason.setup({})
 
     local tools = {
-      "black",
-      "stylua",
+      "lua-language-server",
     }
 
     funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", {desc="Log"})
