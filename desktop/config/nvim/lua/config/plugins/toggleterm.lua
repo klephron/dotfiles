@@ -88,6 +88,7 @@ local M = {
   end,
   keys = {
     { "<leader>j",  group = "toggleterm" },
+    { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "toggleterm: Open terminal" },
     { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>", desc = "toggleterm: Toggle all" },
     { "<leader>jf", "<cmd>ToggleTermFloat<cr>",     desc = "toggleterm: Float" },
     { "<leader>jh", "<cmd>ToggleTermHtop<cr>",      desc = "toggleterm: Htop" },
