@@ -1,12 +1,12 @@
-output HDMI-A-0
-off
 output DisplayPort-0
-crtc 1
+off
+output HDMI-A-0
+crtc 2
 filter nearest
 mode 3840x2160
 pos 2400x0
 rate 60.00
-transform 0.999878,0.000000,0.000000,0.000000,0.999878,0.000000,0.000000,0.000000,1.000000
+transform 0.999893,0.000000,0.000000,0.000000,0.999893,0.000000,0.000000,0.000000,1.000000
 x-prop-colorspace Default
 x-prop-max_bpc 16
 x-prop-non_desktop 0

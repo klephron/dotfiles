@@ -27,3 +27,4 @@ x-scheme-handler/msteams=teams.desktop;
 x-scheme-handler/postman=Postman.desktop
 application/x-gnome-saved-search=pcmanfm.desktop
 devpod=dev-pod-handler.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
