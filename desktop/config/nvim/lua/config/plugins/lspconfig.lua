@@ -26,7 +26,7 @@ local M = {
     local wk_ok, wk = pcall(require, "which-key")
     if wk_ok then
       wk.add({
-        { "<localleader>l",  group = "lsp" },
+        { "<localleader>l", group = "lsp" },
       })
     end
 
@@ -34,7 +34,6 @@ local M = {
     funcs.set_keynomap("n", "<localleader>ll", "<cmd>LspLog<cr>", "Install")
     funcs.set_keynomap("n", "<localleader>lr", "<cmd>LspRestart<cr>", "Install")
     funcs.set_keynomap("n", "<localleader>ls", "<cmd>LspInfo<cr>", "Install")
-
   end,
 }
 
@@ -52,7 +51,13 @@ setup_options = function()
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = "single",
       width = 60,
-    })
+    }),
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics,
+      {
+        virtual_text = true,
+      }
+    )
   }
 
   local function on_attach(client, bufnr)
