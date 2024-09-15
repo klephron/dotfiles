@@ -51,13 +51,7 @@ setup_options = function()
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = "single",
       width = 60,
-    }),
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      {
-        virtual_text = true,
-      }
-    )
+    })
   }
 
   local function on_attach(client, bufnr)
@@ -74,7 +68,7 @@ setup_options = function()
     flags = {
       debounce_text_changes = 150,
     },
-    handlers = handlers
+    handlers = handlers,
   }
 end
 
