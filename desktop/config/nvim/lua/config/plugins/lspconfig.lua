@@ -40,6 +40,7 @@ local M = {
 setup_options = function()
   local formatting = require("config.plugins.lsp.formatting")
   local keymaps = require("config.plugins.lsp.keymaps")
+  local diagnostics = require("config.plugins.lsp.diagnostics")
 
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -57,6 +58,7 @@ setup_options = function()
   local function on_attach(client, bufnr)
     formatting.on_attach(client, bufnr)
     keymaps.on_attach(client, bufnr)
+    diagnostics.on_attach(client, bufnr)
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()

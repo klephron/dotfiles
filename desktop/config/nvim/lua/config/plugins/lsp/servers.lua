@@ -15,11 +15,22 @@ local M = {
             continuation_indent_size = "2",
           },
         },
+        hint = {
+          enable = true,
+        }
       },
     },
   },
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    clangd = {
+      InlayHints = {
+        Designators = true,
+        Enabled = true,
+        ParameterNames = true,
+        DeducedTypes = true,
+      },
+    }
   },
   pyright = {
     single_file_support = true
@@ -41,7 +52,39 @@ local M = {
         checkOnSave = {
           command = 'check', -- used clippy, but it is really slow
         },
-        inlayHints = { locationLinks = false },
+        inlayHints = {
+          bindingModeHints = {
+            enable = false,
+          },
+          chainingHints = {
+            enable = true,
+          },
+          closingBraceHints = {
+            enable = true,
+            minLines = 25,
+          },
+          closureReturnTypeHints = {
+            enable = "never",
+          },
+          lifetimeElisionHints = {
+            enable = "never",
+            useParameterNames = false,
+          },
+          maxLength = 25,
+          parameterHints = {
+            enable = true,
+          },
+          reborrowHints = {
+            enable = "never",
+          },
+          renderColons = true,
+          typeHints = {
+            enable = true,
+            hideClosureInitialization = false,
+            hideNamedConstructor = false,
+          },
+          locationLinks = false,
+        },
         diagnostics = {
           enable = true,
           -- experimental = {
@@ -67,7 +110,6 @@ local M = {
   bashls = {},
   yamlls = {},
   ansiblels = {},
-
 }
 
 return M

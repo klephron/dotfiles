@@ -28,6 +28,8 @@ M.keymaps = KeymapDictionary:new({
   codelens = { "<leader>km", "Run codelens" },
   type_definition = { "<leader>kp", "Type definition" },
 
+  inlay_hints = { "<leader>kt", "Inlay hints" },
+
   format = { "<leader>m", "Format file" },
 }, "lsp")
 
@@ -97,6 +99,10 @@ function M.on_attach(client, bufnr)
     with_desc("goto_next"))
   utils.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev()<cr>',
     with_desc("goto_prev"))
+
+  utils.set_keynomap("n", kmps.inlay_hints.key,
+    '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}), {0})<cr>',
+    with_desc("inlay_hints"))
 end
 
 return M
