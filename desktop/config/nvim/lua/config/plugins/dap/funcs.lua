@@ -5,8 +5,8 @@ local widgets = require("dap.ui.widgets")
 local dap_ttft = require("config.plugins.dap.langs").ttft
 
 local launchjs_paths = {
-  '/launch.json',
-  '/.vscode/launch.json',
+  'launch.json',
+  '.vscode/launch.json',
 }
 
 local function dap_notify(msg, level)
@@ -23,7 +23,7 @@ local function process_launchjs(opts)
   opts = opts or {}
   local path = nil
   for _, ipath in ipairs(launchjs_paths) do
-    local resolved_path = vim.fn.getcwd() .. ipath
+    local resolved_path = vim.fn.getcwd() .. '/' .. ipath
     if vim.loop.fs_stat(resolved_path) then
       path = resolved_path
       break

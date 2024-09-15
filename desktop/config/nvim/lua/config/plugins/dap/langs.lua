@@ -63,7 +63,7 @@ function M.setup()
   -- }}}
 
   -- PYTHON {{{1
-  require('dap-python').setup('~/.venvs/debugpy/bin/python')
+  require('dap-python').setup('~/Data/venvs/debugpy/bin/python')
 
   --[[ dap.adapters.python = {
     type = 'executable';
