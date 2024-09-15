@@ -3,7 +3,6 @@ local M = {
   dependencies = {
     "https://github.com/nvim-neotest/nvim-nio",
   },
-  lazy = true,
   config = function()
     local dapui = require("dapui")
     local funcs = require("utils.funcs")
