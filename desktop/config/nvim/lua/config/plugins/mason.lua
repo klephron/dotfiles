@@ -8,6 +8,7 @@ local M = {
 
     local tools = {
       "lua-language-server",
+      "cpptools",
     }
 
     funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", {desc="Log"})
