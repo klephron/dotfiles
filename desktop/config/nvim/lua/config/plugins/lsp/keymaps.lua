@@ -100,6 +100,7 @@ function M.on_attach(client, bufnr)
   utils.set_keynomap("n", kmps.goto_prev.key, '<cmd>lua vim.diagnostic.goto_prev()<cr>',
     with_desc("goto_prev"))
 
+  -- Hints
   utils.set_keynomap("n", kmps.inlay_hints.key,
     '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}), {0})<cr>',
     with_desc("inlay_hints"))

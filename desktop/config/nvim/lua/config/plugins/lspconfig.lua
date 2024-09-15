@@ -8,15 +8,14 @@ local M = {
   },
   _options = nil,
   config = function()
-    local diagnostics = require("config.plugins.lsp.diagnostics")
+    local ui = require("config.plugins.lsp.ui")
     local servers = require("config.plugins.lsp.servers")
     local funcs = require("utils.funcs")
 
     local lspconfig = require("lspconfig")
     local options = fetch_options()
 
-    -- Setup diagnostics
-    diagnostics.setup()
+    ui.setup()
     -- Setup servers
     for server, opts in pairs(servers) do
       opts = vim.tbl_deep_extend("force", {}, options, opts or {})
@@ -40,7 +39,7 @@ local M = {
 setup_options = function()
   local formatting = require("config.plugins.lsp.formatting")
   local keymaps = require("config.plugins.lsp.keymaps")
-  local diagnostics = require("config.plugins.lsp.diagnostics")
+  local ui = require("config.plugins.lsp.ui")
 
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -58,7 +57,7 @@ setup_options = function()
   local function on_attach(client, bufnr)
     formatting.on_attach(client, bufnr)
     keymaps.on_attach(client, bufnr)
-    diagnostics.on_attach(client, bufnr)
+    ui.on_attach(client, bufnr)
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()

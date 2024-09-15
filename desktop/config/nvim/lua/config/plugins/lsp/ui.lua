@@ -2,7 +2,7 @@ local M = {}
 
 local icons = require("config.icons").diagnostics
 
-M.signs = {
+local signs = {
   Error = icons.error,
   Warn = icons.warn,
   Hint = icons.hint,
@@ -32,13 +32,14 @@ function M.setup()
     }
   })
 
-  for type, icon in pairs(M.signs) do
+  for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { texthl = hl, text = icon, numhl = "" })
   end
 end
 
 function M.on_attach(client, bufnr)
+  -- Inlay hints
   if client.server_capabilities.inlayHintProvider then
     vim.lsp.inlay_hint.enable(true, { bufnr })
   end
