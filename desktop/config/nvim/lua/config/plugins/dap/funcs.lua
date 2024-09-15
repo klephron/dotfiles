@@ -51,6 +51,8 @@ local function process_launchjs(opts)
 end
 
 function M.continue()
+  -- Force load dap-ui
+  require("dapui")
   if is_launchjs_ok == nil then
     is_launchjs_ok = process_launchjs({ ask = false })
   end
