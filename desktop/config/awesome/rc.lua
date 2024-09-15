@@ -10,7 +10,7 @@ local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
-local scrlocker     = "i3lock -B 7 --clock --keylayout=2 --indicator --inside-color=000000 --layout-color=bbbbbb --time-color=bbbbbb --date-color=bbbbbb --greeter-color=bbbbbb --radius=100"
+local scrlocker     = "betterlockscreen -l --show-layout &"
 --local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
