@@ -27,7 +27,7 @@ alias docker-ips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}
 alias chownikit="sudo chown nikit:nikit -R ."
 
 # Pacman
-alias pacman-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | LC_ALL=C.UTF-8 sort -h"
+alias pacman-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
 
 # Others
 alias c="clear"
