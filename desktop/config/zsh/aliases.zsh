@@ -29,8 +29,8 @@ alias ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 
 alias v="nvim"
 
-alias 2160p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load dual_scale-1.25 && echo 'awesome.restart()' | awesome-client"
-alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load laptop && echo 'awesome.restart()' | awesome-client"
+alias 2160p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load dual_scale-1.25 && xrandr --output eDP --filter bilinear && echo 'awesome.restart()' | awesome-client"
+alias 1080p="sed -i -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load laptop && xrandr --output eDP --filter bilinear && echo 'awesome.restart()' | awesome-client"
 
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
 alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
