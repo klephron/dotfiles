@@ -14,6 +14,8 @@ source $CONFIG/functions.zsh
 
 source $CONFIG/zoxide.zsh
 
+. /opt/asdf-vm/asdf.sh
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # __conda_setup="$('/home/nikit/Apps/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

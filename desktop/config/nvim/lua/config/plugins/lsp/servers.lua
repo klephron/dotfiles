@@ -103,7 +103,7 @@ local M = {
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
   },
   -- denols = {},
-  tsserver = {},
+  ts_ls = {},
   cssls = {},
   cssmodules_ls = {},
   css_variables = {},
