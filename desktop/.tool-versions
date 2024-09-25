@@ -1,4 +1,4 @@
-neovim nightly
+neovim 0.10.1
 cmake 3.30.3
 golang 1.23.1
 gradle 8.10.2
