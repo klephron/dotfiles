@@ -46,6 +46,7 @@ else
   autorandr --load laptop
 fi
 
+xrandr --output eDP --filter bilinear
 
 # Network manager applet
 exec nm-applet &

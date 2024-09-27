@@ -14,11 +14,12 @@ local M = {
     local hover = null_ls.builtins.hover
 
     local sources = {
+      formatting.black,
+      formatting.prettier,
+
       -- python
       -- diagnostics.pylint,
       -- diagnostics.mypy.with { extra_args = { "--strict" } },
-      formatting.black,
-
       -- proto
       diagnostics.protolint,
     }
