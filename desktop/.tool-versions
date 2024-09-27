@@ -1,9 +1,0 @@
-neovim 0.10.1
-cmake  3.30.3
-golang 1.23.1
-gradle 8.10.2
-maven  3.9.9
-pnpm   9.11.0
-rust   1.81.0
-yarn   1.22.22
-java   openjdk-22

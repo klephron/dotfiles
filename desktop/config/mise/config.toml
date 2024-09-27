@@ -1,3 +1,16 @@
 [settings]
 experimental = true
 disable_hints = ["registry"]
+
+[tools]
+usage = "latest"
+node = "latest"
+cmake = "latest"
+neovim = "latest"
+go = "latest"
+gradle = "latest"
+maven = "latest"
+pnpm = "latest"
+rust = "latest"
+yarn = "latest"
+java = "openjdk-22.0.2"

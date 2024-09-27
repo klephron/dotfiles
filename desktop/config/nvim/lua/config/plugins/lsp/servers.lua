@@ -110,6 +110,7 @@ local M = {
   bashls = {},
   yamlls = {},
   ansiblels = {},
+  lemminx = {},
 }
 
 return M
