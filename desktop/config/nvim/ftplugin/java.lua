@@ -3,7 +3,7 @@ if not jdtls_ok then
   return
 end
 
-local options = require("config.plugins.lspconfig").options
+local options = require("config.plugins.lspconfig").fetch_options()
 
 local opts = {}
 
@@ -49,7 +49,8 @@ opts = {
     bundles = {
       jda_jar_path
     },
-  }
+  },
+  root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw', '.gitignore' }, { upward = true })[1]),
 }
 
 opts = vim.tbl_deep_extend("force", {}, options, opts or {})
