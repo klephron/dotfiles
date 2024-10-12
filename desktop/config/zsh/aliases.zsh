@@ -22,6 +22,7 @@ alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresourc
 # SSH
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
 alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
+alias ssh-nocheck="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
 
 # Docker
 alias docker-ip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
