@@ -16,6 +16,10 @@ make install/dev-container
 # Setup zsh for current user
 echo "emulate sh -c 'source /etc/profile'" >> ~/.profile
 
-chsh -s $(which zsh) $(whoami)
+if command -v sudo &> /dev/null; then
+  sudo chsh -s $(which zsh) $(whoami)
+else
+  chsh -s $(which zsh) $(whoami)
+fi
 
 zsh
