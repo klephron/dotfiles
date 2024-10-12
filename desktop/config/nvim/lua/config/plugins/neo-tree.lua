@@ -18,6 +18,7 @@ local M = {
         },
         hijack_netrw_behaviour = "open_default",
         window = {
+          position = "right",
           mappings = {
             ["<space>"] = "none",
             ["o"] = "system_open",
