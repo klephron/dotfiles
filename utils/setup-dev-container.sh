@@ -13,9 +13,9 @@ cd $root_path
 
 make install/dev-container
 
-# Setup zsh
-chsh -s $(which zsh) root
+# Setup zsh for current user
+echo "emulate sh -c 'source /etc/profile'" >> ~/.profile
 
-echo "emulate sh -c 'source /etc/profile'" >> /etc/zsh/zprofile
+chsh -s $(which zsh) $(whoami)
 
 zsh
