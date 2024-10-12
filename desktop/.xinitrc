@@ -60,5 +60,7 @@ exec picom &
 exec greenclip daemon &
 
 # Awesome window manager
-exec awesome
-
+exec awesome &
+systemctl --user start graphical-session-manager.target
+wait $!
+systemctl --user stop graphical-session-manager.target
