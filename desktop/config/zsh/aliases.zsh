@@ -9,6 +9,7 @@ alias gentoo-ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 
 # Arch
 alias pac-update="sudo pacman -Syu"
+alias pac-rmorph="sudo pacman -Rns $(pacman -Qdtq)"
 alias yay-update="yay --answerdiff None --answerclean None --answeredit None"
 
 # Dirstack

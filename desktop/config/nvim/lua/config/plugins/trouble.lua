@@ -25,8 +25,8 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>I", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "trouble: toggle workspace" },
-    { "<leader>i", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "trouble: toggle document" },
+    { "<leader>i", "<cmd>Trouble diagnostics focus=true<cr>",  desc = "trouble: diagnostics" },
+    { "<leader>I", "<cmd>Trouble diagnostics toggle focus=true<cr>",  desc = "trouble: diagnostics toggle" },
   }
 }
 
