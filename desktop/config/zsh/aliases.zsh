@@ -1,15 +1,15 @@
 # Gentoo
-alias gentoo_sysupdate="sudo emerge --sync && sudo emerge -aDNuv @world --exclude=\"\`awk 'END{print RS}\$0=\$0' ORS=\" \" /etc/portage/package.exclude_desktop\`\""
-alias gentoo_sysupdateall="sudo emerge --sync && sudo emerge -aDNuv @world"
+alias gentoo-sysupdate="sudo emerge --sync && sudo emerge -aDNuv @world --exclude=\"\`awk 'END{print RS}\$0=\$0' ORS=\" \" /etc/portage/package.exclude_desktop\`\""
+alias gentoo-sysupdateall="sudo emerge --sync && sudo emerge -aDNuv @world"
 
-alias gentoo_sysupdate.emerge="sudo emerge -aDNuv @world --exclude=\"\`awk 'END{print RS}\$0=\$0' ORS=\" \" /etc/portage/package.exclude_desktop\`\""
-alias gentoo_sysupdateall.emerge="sudo emerge -aDNuv @world"
+alias gentoo-sysupdate.emerge="sudo emerge -aDNuv @world --exclude=\"\`awk 'END{print RS}\$0=\$0' ORS=\" \" /etc/portage/package.exclude_desktop\`\""
+alias gentoo-sysupdateall.emerge="sudo emerge -aDNuv @world"
 
-alias gentoo_ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
+alias gentoo-ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 
 # Arch
-alias pacupdate="sudo pacman -Syu"
-alias yayupdate="yay --answerdiff None --answerclean None --answeredit None"
+alias pac-update="sudo pacman -Syu"
+alias yay-update="yay --answerdiff None --answerclean None --answeredit None"
 
 # Dirstack
 alias d='dirs -v'

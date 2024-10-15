@@ -13,9 +13,9 @@ source $CONFIG/hooks.zsh
 source $CONFIG/functions.zsh
 
 source $CONFIG/zoxide.zsh
+source $CONFIG/mise.zsh
 
 # . /opt/asdf-vm/asdf.sh
-eval "$(/usr/bin/mise activate zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
