@@ -55,6 +55,16 @@ local M = {
       lazygit:toggle()
     end, {})
 
+    api.nvim_create_user_command("ToggleTermLazydocker", function()
+      local lazygit = Terminal:new({
+        cmd = 'lazydocker',
+        hidden = true,
+        direction = 'float',
+        on_open = float_keymaps_delete,
+      })
+      lazygit:toggle()
+    end, {})
+
     api.nvim_create_user_command("ToggleTermHtop", function()
       local htop = Terminal:new({
         cmd = 'htop',
@@ -93,6 +103,7 @@ local M = {
     { "<leader>jf", "<cmd>ToggleTermFloat<cr>",     desc = "toggleterm: Float" },
     { "<leader>jh", "<cmd>ToggleTermHtop<cr>",      desc = "toggleterm: Htop" },
     { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",   desc = "toggleterm: Lazygit" },
+    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>",   desc = "toggleterm: Lazydocker" },
     { "<leader>jt", "<cmd>ToggleTerm<cr>",          desc = "toggleterm: Toggle" },
   }
 }
