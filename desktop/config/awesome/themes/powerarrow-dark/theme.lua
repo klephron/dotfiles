@@ -348,22 +348,22 @@ function theme.at_screen_connect(s)
       spacing = 0,
       layout  = wibox.layout.fixed.horizontal
     },
-    widget_template = {
-      {
-        {
-          {
-            id     = 'text_role',
-            widget = wibox.widget.textbox,
-          },
-          layout = wibox.layout.fixed.horizontal,
-        },
-        left   = 6,
-        right  = 6,
-        widget = wibox.container.margin
-      },
-      id     = 'background_role',
-      widget = wibox.container.background,
-    },
+    -- widget_template = {
+    --   {
+    --     {
+    --       {
+    --         id     = 'text_role',
+    --         widget = wibox.widget.textbox,
+    --       },
+    --       layout = wibox.layout.fixed.horizontal,
+    --     },
+    --     left   = 6,
+    --     right  = 6,
+    --     widget = wibox.container.margin
+    --   },
+    --   id     = 'background_role',
+    --   widget = wibox.container.background,
+    -- },
     buttons         = awful.util.taglist_buttons
   })
 
