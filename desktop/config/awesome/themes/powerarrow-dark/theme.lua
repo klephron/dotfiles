@@ -1,19 +1,29 @@
---[[
+local gears                                     = require("gears")
+local lain                                      = require("lain")
+local awful                                     = require("awful")
+local wibox                                     = require("wibox")
+local dpi                                       = require("beautiful.xresources").apply_dpi
 
-     Powerarrow Dark Awesome WM theme
-     github.com/lcpz
-
---]]
-local gears = require("gears")
-local lain  = require("lain")
-local awful = require("awful")
-local wibox = require("wibox")
-local dpi   = require("beautiful.xresources").apply_dpi
-
-local os = os
-local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
+local os                                        = os
+local my_table                                  = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
+
+local function img_scaled(img_path, width, height)
+  return gears.surface.load_from_shape(width, height,
+  function(cr, w, h)
+    local img = gears.surface(gears.surface.load(img_path))
+    local img_width, img_height = gears.surface.get_size(img)
+
+    local scale_x = w / img_width
+    local scale_y = h / img_height
+
+    cr:scale(scale_x, scale_y)
+    cr:set_source_surface(img, 0, 0)
+    cr:paint()
+  end)
+end
+
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.wallpaper                                 = "~/Documents/images/wallpaper/space_8k.jpg"
@@ -36,8 +46,9 @@ theme.titlebar_fg_focus                         = theme.fg_focus
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
-theme.taglist_squares_sel                       = theme.dir .. "/icons/square_sel_14x14_right.png"
-theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel_14x14_right.png"
+theme.taglist_squares_sel                       = img_scaled(theme.dir .. "/icons/square_sel_14x14_right.png", dpi(14), dpi(14))
+theme.taglist_squares_unsel                     = img_scaled(theme.dir .. "/icons/square_unsel_14x14_right.png", dpi(14), dpi(14))
+theme.taglist_squares_resize                    = false
 theme.layout_tile                               = theme.dir .. "/icons/tile.png"
 theme.layout_tileleft                           = theme.dir .. "/icons/tileleft.png"
 theme.layout_tilebottom                         = theme.dir .. "/icons/tilebottom.png"
@@ -89,14 +100,14 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
-local markup = lain.util.markup
-local separators = lain.util.separators
+local markup                                    = lain.util.markup
+local separators                                = lain.util.separators
 
-local keyboardlayout = awful.widget.keyboardlayout:new()
+local keyboardlayout                            = awful.widget.keyboardlayout:new()
 
 -- Textclock
-local clockicon = wibox.widget.imagebox(theme.widget_clock)
-local clock = awful.widget.watch(
+local clockicon                                 = wibox.widget.imagebox(theme.widget_clock)
+local clock                                     = awful.widget.watch(
   "date +'%a %d %b %T'", 1,
   function(widget, stdout)
     widget:set_markup(" " .. markup.font(theme.font, stdout))
@@ -104,7 +115,7 @@ local clock = awful.widget.watch(
 )
 
 -- Calendar
-theme.cal = lain.widget.cal({
+theme.cal                                       = lain.widget.cal({
   attach_to = { clock },
   notification_preset = {
     font = "Droid Sans Mono 10",
@@ -114,7 +125,7 @@ theme.cal = lain.widget.cal({
 })
 
 -- Mail IMAP check
-local mailicon = wibox.widget.imagebox(theme.widget_mail)
+local mailicon                                  = wibox.widget.imagebox(theme.widget_mail)
 --[[ commented because it needs to be set before use
 mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
 theme.mail = lain.widget.imap({
@@ -288,7 +299,7 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 --   end
 -- })
 
-local net = lain.widget.net({
+local net     = lain.widget.net({
   units = 1024,
   timeout = 2,
   settings = function()
@@ -330,7 +341,31 @@ function theme.at_screen_connect(s)
     awful.button({}, 4, function() awful.layout.inc(1) end),
     awful.button({}, 5, function() awful.layout.inc(-1) end)))
   -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
+  s.mytaglist = awful.widget.taglist({
+    screen          = s,
+    filter          = awful.widget.taglist.filter.all,
+    layout          = {
+      spacing = 0,
+      layout  = wibox.layout.fixed.horizontal
+    },
+    widget_template = {
+      {
+        {
+          {
+            id     = 'text_role',
+            widget = wibox.widget.textbox,
+          },
+          layout = wibox.layout.fixed.horizontal,
+        },
+        left   = 6,
+        right  = 6,
+        widget = wibox.container.margin
+      },
+      id     = 'background_role',
+      widget = wibox.container.background,
+    },
+    buttons         = awful.util.taglist_buttons
+  })
 
   -- Create a tasklist widget
   s.mytasklist = awful.widget.tasklist({
@@ -376,7 +411,7 @@ function theme.at_screen_connect(s)
       spr,
     },
     s.mytasklist, -- Middle widget
-    { -- Right widgets
+    {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
       spr,
