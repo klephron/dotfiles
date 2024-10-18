@@ -48,6 +48,7 @@
   "possession.nvim": { "branch": "master", "commit": "246050074fa9878ca414badc613e0645867308b5" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "remote-nvim.nvim": { "branch": "main", "commit": "66fc20fd259401c7bb6ac5189ecb6283c2eb65d2" },
+  "snipe.nvim": { "branch": "main", "commit": "e2d43b9290480d745910b5a872a504651da29bd3" },
   "telescope.nvim": { "branch": "master", "commit": "6b08cdcc22a630d19172b9db55f7b8db5f81d761" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
   "toggleterm.nvim": { "branch": "main", "commit": "137d06fb103952a0fb567882bb8527e2f92d327d" },
