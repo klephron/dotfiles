@@ -158,7 +158,7 @@ funcs.augroup("ReloadFile", {
   }
 })
 
-funcs.augroup("SaveWhenFocusLost", {
+--[[ funcs.augroup("SaveWhenFocusLost", {
   {
     event = "FocusLost",
     pattern = "*",
@@ -172,7 +172,7 @@ funcs.augroup("SaveWhenFocusLost", {
       end
     end
   }
-})
+}) ]]
 
 -- Autosave after leaving insert mode
 --[[ funcs.augroup("AutosaveAfterInsert", {

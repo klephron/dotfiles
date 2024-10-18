@@ -63,9 +63,17 @@ if not config.is_vscode and not config.is_firenvim then
   funcs.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
   funcs.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
   funcs.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
+
   funcs.set_keynomap("n", "<leader>tm", function()
-    vim.cmd("tabmove " .. tostring(tonumber(vim.fn.input("")) - 1))
+    vim.ui.input({ prompt = "Enter new tab index: ", },
+      function(str)
+        if str then
+          vim.cmd("tabmove " .. tostring(tonumber(str) - 1))
+        end
+      end
+    )
   end, { silent = false, desc = "tab: Move current after N - 1" })
+
   -- Bind leader keys to specific tabs
   funcs.set_keynomap("n", "<leader>1", "1gt")
   funcs.set_keynomap("n", "<leader>2", "2gt")
@@ -159,15 +167,15 @@ end
 
 -- Leader mappings
 local leader = {
-  { "<leader>t",  group = "tabs" },
+  { "<leader>t", group = "tabs" },
 }
 
 local localleader = {
   { "<localleader>w",  group = "watch" },
-  { "<localleader>wc", "<cmd>WatchCreate<cr>",                                                  desc = "watch: create" },
-  { "<localleader>wd", "<cmd>WatchDelete<cr>",                                                  desc = "watch: delete" },
-  { "<localleader>wl", "<cmd>WatchList<cr>",                                                    desc = "watch: list" },
-  { "<localleader>z",  "<cmd>Lazy<cr>",                                                         desc = "Lazy" },
+  { "<localleader>wc", "<cmd>WatchCreate<cr>", desc = "watch: create" },
+  { "<localleader>wd", "<cmd>WatchDelete<cr>", desc = "watch: delete" },
+  { "<localleader>wl", "<cmd>WatchList<cr>",   desc = "watch: list" },
+  { "<localleader>z",  "<cmd>Lazy<cr>",        desc = "Lazy" },
 }
 
 wk.add(leader)

@@ -8,6 +8,8 @@ local M = {
     possession.setup({
       autosave = {
         current = true,
+        on_load = true,
+        on_quit = true,
       },
       hooks = {
         before_save = function(_)
@@ -27,7 +29,7 @@ local M = {
           mappings = {
             save = { n = '<c-s>', i = '<c-s>' },
             load = { n = '<c-l>', i = '<c-l>' },
-            delete = { n = '<c-f>', i = '<c-f>' },
+            delete = { n = '<c-d>', i = '<c-d>' },
             rename = { n = '<c-r>', i = '<c-r>' },
           },
         },
@@ -35,8 +37,23 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>V", "<cmd>Telescope possession list<cr>", desc = "possession: Search session" },
-    { "<leader>v", "<cmd>PossessionLoad<cr>",            desc = "possession: Restore current session" },
+    { "<leader>V",  "<cmd>Telescope possession list<cr>", desc = "possession: Search session" },
+    { "<leader>vd", "<cmd>PossessionDelete<cr>",          desc = "possession: Delete current session" },
+    { "<leader>vl", "<cmd>PossessionLoad<cr>",            desc = "possession: Load session" },
+    { "<leader>vr", "<cmd>PossessionRename<cr>",          desc = "possession: Rename session" },
+    {
+      "<leader>vs",
+      function()
+        vim.ui.input({ prompt = "Enter session name: ", },
+          function(str)
+            if str then
+              vim.cmd("PossessionSave " .. str)
+            end
+          end
+        )
+      end,
+      desc = "possession: Save session with name"
+    },
   }
 }
 
