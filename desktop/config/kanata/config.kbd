@@ -1,5 +1,6 @@
 (defcfg
   process-unmapped-keys yes
+  linux-device-detect-mode keyboard-only
 )
 
 (defsrc
