@@ -11,8 +11,8 @@ alias gentoo-ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 alias pac-update="sudo pacman -Syu"
 alias pac-rmorph="sudo pacman -Rns \$(pacman -Qdtq)"
 alias pac-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
-alias yay-updateall="yay --answerdiff none --answerclean none --answeredit none"
-alias yay-update="yay-updateall --ignore \$(< /etc/pacman-ignore.txt tr '\\n' ',' | sed 's/,$//')"
+alias yayn="yay --answerdiff none --answerclean none --answeredit none"
+alias yayni="yayn --ignore \$(< /etc/pacman-ignore.txt tr '\\n' ',' | sed 's/,$//')"
 
 # Dirstack
 alias d='dirs -v'
@@ -25,7 +25,7 @@ alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresourc
 # SSH
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
 alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
-alias ssh-nocheck="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
+alias ssh-nc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
 
 # Docker
 alias docker-ip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
