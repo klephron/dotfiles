@@ -505,7 +505,7 @@ for i, v in ipairs(awful.util.tagnames) do
       end,
       { description = "[modkey] toggle tag #" .. v, group = "tag" }),
     -- Move client to tag.
-    awful.key({ modkey, altkey }, "#" .. i + 9,
+    awful.key({ modkey, control }, "#" .. i + 9,
       function()
         if client.focus then
           local tag = client.focus.screen.tags[i]
