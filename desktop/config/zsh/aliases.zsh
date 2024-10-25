@@ -10,7 +10,9 @@ alias gentoo-ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 # Arch
 alias pac-update="sudo pacman -Syu"
 alias pac-rmorph="sudo pacman -Rns \$(pacman -Qdtq)"
-alias yay-update="yay --answerdiff None --answerclean None --answeredit None"
+alias pac-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
+alias yay-updateall="yay --answerdiff none --answerclean none --answeredit none"
+alias yay-update="yay-updateall --ignore \$(< /etc/pacman-ignore.txt tr '\\n' ',' | sed 's/,$//')"
 
 # Dirstack
 alias d='dirs -v'
@@ -31,9 +33,6 @@ alias docker-ips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}
 
 # Ownership
 alias chownikit="sudo chown nikit:nikit -R ."
-
-# Pacman
-alias pacman-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
 
 # Others
 alias c="clear"
