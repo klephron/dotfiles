@@ -49,8 +49,7 @@ alias lla="ls -la"
 alias info='info --vi-keys'
 
 alias ta="tmux attach || tmux"
-
 alias jl="lazygit"
 alias jd="lazydocker"
-
 alias v="nvim"
+alias py="python"
