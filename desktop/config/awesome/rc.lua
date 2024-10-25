@@ -23,21 +23,21 @@ require("awful.hotkeys_popup.keys.firefox")
 -- {{{ Awesome switcher
 local switcher = require("awesome-switcher")
 
-switcher.settings.preview_box = false -- display preview-box
-switcher.settings.preview_box_bg = "#dddddd88" -- background color
-switcher.settings.preview_box_border = "#222222aa" -- border-color
-switcher.settings.preview_box_fps = 30 -- refresh framerate
-switcher.settings.preview_box_delay = 2000000000 -- delay in ms (big delay because small panel appears)
+switcher.settings.preview_box = false                                     -- display preview-box
+switcher.settings.preview_box_bg = "#dddddd88"                            -- background color
+switcher.settings.preview_box_border = "#222222aa"                        -- border-color
+switcher.settings.preview_box_fps = 30                                    -- refresh framerate
+switcher.settings.preview_box_delay = 2000000000                          -- delay in ms (big delay because small panel appears)
 switcher.settings.preview_box_title_font = { "sans", "italic", "normal" } -- the font for cairo
-switcher.settings.preview_box_title_font_size_factor = 0.8 -- the font sizing factor
-switcher.settings.preview_box_title_color = { 0, 0, 0, 0 } -- the font color
+switcher.settings.preview_box_title_font_size_factor = 0.8                -- the font sizing factor
+switcher.settings.preview_box_title_color = { 0, 0, 0, 0 }                -- the font color
 
-switcher.settings.client_opacity = false -- opacity for unselected clients
-switcher.settings.client_opacity_value = 0.5 -- alpha-value for any client
-switcher.settings.client_opacity_value_in_focus = 0.5 -- alpha-value for the client currently in focus
-switcher.settings.client_opacity_value_selected = 1 -- alpha-value for the selected client
+switcher.settings.client_opacity = false                                  -- opacity for unselected clients
+switcher.settings.client_opacity_value = 0.5                              -- alpha-value for any client
+switcher.settings.client_opacity_value_in_focus = 0.5                     -- alpha-value for the client currently in focus
+switcher.settings.client_opacity_value_selected = 1                       -- alpha-value for the selected client
 
-switcher.settings.cycle_raise_client = true -- raise clients on cycle
+switcher.settings.cycle_raise_client = true                               -- raise clients on cycle
 -- }}}
 
 -- }}}
@@ -80,9 +80,10 @@ local chosen_theme   = "powerarrow-dark"
 local modkey         = "Mod4"
 local altkey         = "Mod1"
 local control        = "Control"
+local shift          = "Shift"
 local terminal       = "alacritty"
 local vi_focus       = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev     = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
+local cycle_prev     = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor         = os.getenv("EDITOR") or "nvim"
 local browser        = "firefox"
 
@@ -151,7 +152,7 @@ awful.util.tasklist_buttons            = gears.table.join(
     awful.menu.client_list({ theme = { width = 250 } })
   end),
   awful.button({}, 4, function() awful.client.focus.byidx(1) end),
-  awful.button({}, 5, function() awful.client.focus.byidx( -1) end)
+  awful.button({}, 5, function() awful.client.focus.byidx(-1) end)
 )
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
@@ -200,7 +201,7 @@ end)
 -- No borders when rearranging only 1 non-floating or maximized client
 screen.connect_signal("arrange", function(s)
   -- naughty.notify({ text = "arranging!" })
-  
+
   for _, c in pairs(s.clients) do
     local border_width;
 
@@ -242,12 +243,8 @@ local globalkeys = gears.table.join(
   awful.key({ modkey, control }, "q", awesome.quit,
     { description = "quit awesome", group = "awesome" }),
 
-  -- X screen locker
-  awful.key({ altkey, control }, "l", function() os.execute(scrlocker) end,
-    { description = "lock screen", group = "awesome" }),
-
   -- Show help
-  awful.key({ modkey, "Shift" }, "/", hotkeys_popup.show_help,
+  awful.key({ modkey, shift }, "/", hotkeys_popup.show_help,
     { description = "show help", group = "awesome" }),
 
   -- Menu
@@ -256,13 +253,13 @@ local globalkeys = gears.table.join(
 
   -- Show/hide wibox
   awful.key({ modkey }, "b", function()
-    for s in screen do
-      s.mywibox.visible = not s.mywibox.visible
-      if s.mybottomwibox then
-        s.mybottomwibox.visible = not s.mybottomwibox.visible
+      for s in screen do
+        s.mywibox.visible = not s.mywibox.visible
+        if s.mybottomwibox then
+          s.mybottomwibox.visible = not s.mybottomwibox.visible
+        end
       end
-    end
-  end,
+    end,
     { description = "toggle wibox", group = "awesome" }),
 
   -- Prompt
@@ -290,7 +287,7 @@ local globalkeys = gears.table.join(
   ),
   awful.key({ modkey, "Shift" }, "h",
     function()
-      awful.client.focus.byidx( -1)
+      awful.client.focus.byidx(-1)
     end,
     { description = "focus previous by index", group = "focus" }
   ),
@@ -329,13 +326,13 @@ local globalkeys = gears.table.join(
 
   awful.key({ altkey, "Shift" }, "Tab",
     function()
-      switcher.switch( -1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
+      switcher.switch(-1, altkey, { "Alt_L", "Alt_R" }, "Shift", "Tab")
     end),
 
   -- Swap clients
   awful.key({ modkey, "Control" }, "l", function() awful.client.swap.byidx(1) end,
     { description = "swap with next client by index", group = "client" }),
-  awful.key({ modkey, "Control" }, "h", function() awful.client.swap.byidx( -1) end,
+  awful.key({ modkey, "Control" }, "h", function() awful.client.swap.byidx(-1) end,
     { description = "swap with previous client by index", group = "client" }),
 
   -- Restore client
@@ -351,14 +348,14 @@ local globalkeys = gears.table.join(
   -- Layout manipulation
   awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
     { description = "next layout", group = "layout" }),
-  awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc( -1) end,
+  awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
     { description = "previous layout", group = "layout" }),
 
 
   -- Screen
   awful.key({ modkey, "Shift" }, "j", function() awful.screen.focus_relative(1) end,
     { description = "focus the next screen", group = "screen" }),
-  awful.key({ modkey, "Shift" }, "k", function() awful.screen.focus_relative( -1) end,
+  awful.key({ modkey, "Shift" }, "k", function() awful.screen.focus_relative(-1) end,
     { description = "focus the previous screen", group = "screen" }),
   -- awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
   --   { description = "jump to urgent client", group = "client" }),
@@ -378,14 +375,12 @@ local globalkeys = gears.table.join(
       beautiful.volume.update()
     end
   ),
-
   awful.key({}, "#122",
     function()
       os.execute("amixer set Master 1%-")
       beautiful.volume.update()
     end
   ),
-
   awful.key({}, "#123",
     function()
       os.execute("amixer set Master 1%+")
@@ -422,8 +417,8 @@ local globalkeys = gears.table.join(
   ),
   -- greenclip
   awful.key({ modkey }, "p", function()
-    awful.util.spawn_with_shell("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'", false)
-  end,
+      awful.util.spawn_with_shell("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'", false)
+    end,
     { description = "list clipboard", group = "clipboard" }),
 
 
@@ -434,37 +429,28 @@ local globalkeys = gears.table.join(
     { description = "dropdown application", group = "launcher" }),
   awful.key({ modkey }, "q", function() awful.spawn(browser) end,
     { description = "run browser", group = "launcher" }),
+  -- screen locker
+  awful.key({ altkey, control }, "l", function() os.execute(scrlocker) end,
+    { description = "lock screen", group = "launcher" }),
   -- rofi
   awful.key({ modkey }, "o",
     function() awful.util.spawn_with_shell("rofi -show combi -combi-modi \"drun,run\" -modi combi", false) end,
     { description = "launch desktop", group = "launcher" }),
-
   awful.key({ modkey }, "[",
     function() awful.util.spawn_with_shell("rofi -show window -modi \"window,windowcd\"", false) end,
     { description = "show windows", group = "launcher" }),
-  -- dolphin
+  -- explorer
   awful.key({ modkey }, "e", function()
-    awful.util.spawn_with_shell("pcmanfm", false)
-  end,
+      awful.util.spawn_with_shell("pcmanfm", false)
+    end,
     { description = "file-manager", group = "launcher" }),
   -- neovide
   awful.key({ modkey }, "u", function()
-    awful.spawn("neovide", {})
-  end,
+      awful.spawn("neovide", {})
+    end,
     { description = "neovide", group = "launcher" }),
 
   -- {{{ Tag browsing
-  --
-  -- Alt + <arrows> -- switch between tags nonempty
-  -- Mod + <arrows> -- switch between tags
-  --
-  -- Mod + <escape> -- history previous tag
-  --
-  -- Mod + <number> -- switch to window number
-  -- Mod + Shift + <number> -- toggle focused client to tag
-  --
-  -- Mod + Alt + <number> -- move focused client on tag
-
   awful.key({ modkey, }, "Left", awful.tag.viewprev,
     { description = "[modkey] view previous", group = "tag" }),
   awful.key({ modkey, }, "Right", awful.tag.viewnext,
@@ -475,7 +461,7 @@ local globalkeys = gears.table.join(
     { description = "open previous tag [modkey]", group = "tag" }),
 
   -- Non-empty tag browsing
-  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty( -1) end,
+  awful.key({ altkey }, "Left", function() lain.util.tag_view_nonempty(-1) end,
     { description = "view previous nonempty", group = "tag" }),
   awful.key({ altkey }, "Right", function() lain.util.tag_view_nonempty(1) end,
     { description = "view previous nonempty", group = "tag" })
@@ -488,9 +474,10 @@ local globalkeys = gears.table.join(
 -- awful.key({ modkey, control }, "Left", function() lain.util.move_tag(-1) end,
 --   { description = "move tag to the left", group = "tag" }),
 -- awful.key({ modkey, control }, "Right", function() lain.util.move_tag(1) end,
-  -- { description = "move tag to the right", group = "tag" })
+-- { description = "move tag to the right", group = "tag" })
 -- awful.key({ modkey, "Shift" }, "d", function() lain.util.delete_tag() end,
 --   { description = "delete tag", group = "tag" }),
+--
 )
 
 -- Bind all key numbers to tags.
@@ -544,9 +531,8 @@ for i, v in ipairs(awful.util.tagnames) do
 end
 -- }}}
 
--- Client
+-- Client (client as first argument)
 local clientkeys = gears.table.join(
-
   awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
     { description = "toggle keep on top", group = "client" }),
   awful.key({ modkey, control }, "space", awful.client.floating.toggle,
@@ -603,14 +589,15 @@ local clientkeys = gears.table.join(
 
   -- Kill
   awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
-    { description = "close", group = "client" })
+    { description = "close", group = "client" }),
 
--- awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
---   { description = "magnify client", group = "client" }),
--- awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
---   { description = "move to master", group = "client" }),
--- awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
---   { description = "move to screen", group = "client" }),
+  -- Screens
+  awful.key({ modkey, shift }, "o", lain.util.magnify_client,
+    { description = "magnify client", group = "client" }),
+  awful.key({ modkey, shift }, "i", function(c) c:swap(awful.client.getmaster()) end,
+    { description = "move to master", group = "client" }),
+  awful.key({ modkey, shift }, "'", function(c) c:move_to_screen() end,
+    { description = "move to screen", group = "client" })
 )
 -- }}}
 
@@ -638,8 +625,10 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
   -- All clients will match this rule.
-  { rule = {},
-    properties = { border_width = beautiful.border_width,
+  {
+    rule = {},
+    properties = {
+      border_width = beautiful.border_width,
       border_color = beautiful.border_normal,
       callback = awful.client.setslave,
       focus = awful.client.focus.filter,
@@ -653,40 +642,45 @@ awful.rules.rules = {
   },
 
   -- Floating clients.
-  { rule_any = {
-    instance = {
-      "DTA", -- Firefox addon DownThemAll.
-      "copyq", -- Includes session name in class.
-      "pinentry",
-    },
-    class = {
-      "Arandr",
-      "Blueman-manager",
-      "Gpick",
-      "Kruler",
-      "MessageWin", -- kalarm.
-      "Sxiv",
-      "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-      "Wpa_gui",
-      "veromix",
-      "xtightvncviewer"
-    },
+  {
+    rule_any = {
+      instance = {
+        "DTA",   -- Firefox addon DownThemAll.
+        "copyq", -- Includes session name in class.
+        "pinentry",
+      },
+      class = {
+        "Arandr",
+        "Blueman-manager",
+        "Gpick",
+        "Kruler",
+        "MessageWin",  -- kalarm.
+        "Sxiv",
+        "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+        "Wpa_gui",
+        "veromix",
+        "xtightvncviewer"
+      },
 
-    -- Note that the name property shown in xprop might be set slightly after creation of the client
-    -- and the name shown there might not match defined rules here.
-    name = {
-      "Event Tester", -- xev.
+      -- Note that the name property shown in xprop might be set slightly after creation of the client
+      -- and the name shown there might not match defined rules here.
+      name = {
+        "Event Tester", -- xev.
+      },
+      role = {
+        "AlarmWindow",   -- Thunderbird's calendar.
+        "ConfigManager", -- Thunderbird's about:config.
+        "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
+      }
     },
-    role = {
-      "AlarmWindow", -- Thunderbird's calendar.
-      "ConfigManager", -- Thunderbird's about:config.
-      "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
-    }
-  }, properties = { floating = true } },
+    properties = { floating = true }
+  },
 
   -- Add titlebars to normal clients and dialogs
-  { rule_any = { type = { "normal", "dialog" }
-  }, properties = { titlebars_enabled = true }
+  {
+    rule_any = { type = { "normal", "dialog" }
+    },
+    properties = { titlebars_enabled = true }
   },
 
   -- Set Firefox to always map on the tag named "2" on screen 1.

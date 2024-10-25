@@ -1,4 +1,3 @@
-import = ["/home/nikit/.config/alacritty/themes/kanagawa.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -64,7 +63,7 @@ hide_when_typing = false
 # [mouse.triple_click]
 # threshold = 300
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 [window]
@@ -79,3 +78,8 @@ lines = 20
 [window.padding]
 x = 0
 y = 0
+
+[general]
+import = ["/home/nikit/.config/alacritty/themes/kanagawa.toml"]
+
+[terminal]
