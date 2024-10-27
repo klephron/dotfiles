@@ -416,7 +416,7 @@ function theme.at_screen_connect(s)
       },
       {
         widget = wibox.widget.textbox,
-        text = "S: " .. s.index,
+        text = "s" .. s.index,
       },
       {
         widget = wibox.container.margin,
@@ -435,7 +435,6 @@ function theme.at_screen_connect(s)
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.container.background(s.myscreenindex, theme.bg_normal),
-      spr,
       s.mytaglist,
       s.mypromptbox,
       spr,
