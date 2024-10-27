@@ -596,7 +596,10 @@ local clientkeys = gears.table.join(
     { description = "magnify client", group = "client" }),
   awful.key({ modkey, shift }, "i", function(c) c:swap(awful.client.getmaster()) end,
     { description = "move to master", group = "client" }),
-  awful.key({ modkey, shift }, "'", function(c) c:move_to_screen() end,
+  -- TODO: caclulate screen index based on current
+  awful.key({ modkey, shift }, ",", function(c) c:move_to_screen(c.screen.index-1) end,
+    { description = "move to screen", group = "client" }),
+  awful.key({ modkey, shift }, ".", function(c) c:move_to_screen(c.screen.index+1) end,
     { description = "move to screen", group = "client" })
 )
 -- }}}

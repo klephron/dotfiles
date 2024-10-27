@@ -1,27 +1,27 @@
-local gears                                     = require("gears")
-local lain                                      = require("lain")
-local awful                                     = require("awful")
-local wibox                                     = require("wibox")
-local dpi                                       = require("beautiful.xresources").apply_dpi
+local gears    = require("gears")
+local lain     = require("lain")
+local awful    = require("awful")
+local wibox    = require("wibox")
+local dpi      = require("beautiful.xresources").apply_dpi
 
-local os                                        = os
-local my_table                                  = awful.util.table or gears.table -- 4.{0,1} compatibility
+local os       = os
+local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
-local theme                                     = {}
+local theme    = {}
 
 local function img_scaled(img_path, width, height)
   return gears.surface.load_from_shape(width, height,
-  function(cr, w, h)
-    local img = gears.surface(gears.surface.load(img_path))
-    local img_width, img_height = gears.surface.get_size(img)
+    function(cr, w, h)
+      local img = gears.surface(gears.surface.load(img_path))
+      local img_width, img_height = gears.surface.get_size(img)
 
-    local scale_x = w / img_width
-    local scale_y = h / img_height
+      local scale_x = w / img_width
+      local scale_y = h / img_height
 
-    cr:scale(scale_x, scale_y)
-    cr:set_source_surface(img, 0, 0)
-    cr:paint()
-  end)
+      cr:scale(scale_x, scale_y)
+      cr:set_source_surface(img, 0, 0)
+      cr:paint()
+    end)
 end
 
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
@@ -46,8 +46,10 @@ theme.titlebar_fg_focus                         = theme.fg_focus
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
-theme.taglist_squares_sel                       = img_scaled(theme.dir .. "/icons/square_sel_14x14_right.png", dpi(14), dpi(14))
-theme.taglist_squares_unsel                     = img_scaled(theme.dir .. "/icons/square_unsel_14x14_right.png", dpi(14), dpi(14))
+theme.taglist_squares_sel                       = img_scaled(theme.dir .. "/icons/square_sel_14x14_right.png", dpi(14),
+  dpi(14))
+theme.taglist_squares_unsel                     = img_scaled(theme.dir .. "/icons/square_unsel_14x14_right.png", dpi(14),
+  dpi(14))
 theme.taglist_squares_resize                    = false
 theme.layout_tile                               = theme.dir .. "/icons/tile.png"
 theme.layout_tileleft                           = theme.dir .. "/icons/tileleft.png"
@@ -164,6 +166,8 @@ mpdicon:buttons(my_table.join(
   end)))
 theme.mpd = lain.widget.mpd({
   settings = function()
+    local title = ""
+    local artist = ""
     if mpd_now.state == "play" then
       artist = " " .. mpd_now.artist .. " "
       title  = mpd_now.title .. " "
@@ -172,8 +176,6 @@ theme.mpd = lain.widget.mpd({
       artist = " mpd "
       title  = "paused "
     else
-      artist = ""
-      title  = ""
       mpdicon:set_image(theme.widget_music)
     end
 
@@ -342,9 +344,9 @@ function theme.at_screen_connect(s)
     awful.button({}, 5, function() awful.layout.inc(-1) end)))
   -- Create a taglist widget
   s.mytaglist = awful.widget.taglist({
-    screen          = s,
-    filter          = awful.widget.taglist.filter.all,
-    layout          = {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    layout  = {
       spacing = 0,
       layout  = wibox.layout.fixed.horizontal
     },
@@ -364,7 +366,7 @@ function theme.at_screen_connect(s)
     --   id     = 'background_role',
     --   widget = wibox.container.background,
     -- },
-    buttons         = awful.util.taglist_buttons
+    buttons = awful.util.taglist_buttons,
   })
 
   -- Create a tasklist widget
@@ -397,15 +399,37 @@ function theme.at_screen_connect(s)
     },
   })
 
+  s.myscreenindex = wibox.widget({
+    {
+      layout = wibox.layout.align.horizontal,
+      {
+        widget = wibox.container.margin,
+        margins = 5
+      },
+      {
+        widget = wibox.widget.textbox,
+        text = "S: " .. s.index,
+      },
+      {
+        widget = wibox.container.margin,
+        margins = 5
+      },
+    },
+    widget = wibox.container.background,
+    shape = gears.shape.rect,
+    bg = theme.bg_normal,
+    fg = theme.fg_normal,
+  })
+
   -- Create the wibox
   s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
-
   -- Add widgets to the wibox
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       --spr,
+      s.myscreenindex,
       s.mytaglist,
       s.mypromptbox,
       spr,
