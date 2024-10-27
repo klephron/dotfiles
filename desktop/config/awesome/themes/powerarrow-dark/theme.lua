@@ -425,8 +425,6 @@ function theme.at_screen_connect(s)
     },
     widget = wibox.container.background,
     shape = gears.shape.rect,
-    bg = theme.bg_normal,
-    fg = theme.fg_normal,
   })
 
   -- Create the wibox
@@ -436,8 +434,8 @@ function theme.at_screen_connect(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      --spr,
-      s.myscreenindex,
+      wibox.container.background(s.myscreenindex, theme.bg_normal),
+      spr,
       s.mytaglist,
       s.mypromptbox,
       spr,
