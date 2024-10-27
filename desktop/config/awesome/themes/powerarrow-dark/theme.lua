@@ -434,7 +434,7 @@ function theme.at_screen_connect(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(s.myscreenindex, theme.bg_normal),
+      wibox.container.background(s.myscreenindex, theme.border_normal),
       s.mytaglist,
       s.mypromptbox,
       spr,
