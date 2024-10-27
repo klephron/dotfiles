@@ -302,13 +302,47 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 -- })
 
 local net     = lain.widget.net({
-  units = 1024,
+  units = 1,
   timeout = 2,
   settings = function()
+    local get_net_string = function(units)
+      local unit;
+      local value;
+      local format
+
+      unit = "B"
+      value = tonumber(units)
+
+      if value >= 1000 then
+        unit = "kB"
+        value = value / (2 ^ 10)
+      end
+
+      if value >= 1000 then
+        unit = "MB"
+        value = value / (2 ^ 10)
+      end
+
+      if value >= 1000 then
+        unit = "GB"
+        value = value / (2 ^ 10)
+      end
+
+      if value < 10 then
+        format = "%1.2f %s"
+      elseif value < 100 then
+        format = "%2.1f %s"
+      else
+        format = " %3.0f %s"
+      end
+
+      return string.format(format, value, unit)
+    end
+
     widget:set_markup(markup.font("Noto Sans Mono 9",
-      markup("#7AC82E", " " .. string.format("%5.0f KB", net_now.received))
+      markup("#7AC82E", " " .. get_net_string(net_now.received))
       .. " " ..
-      markup("#46A8C3", " " .. string.format("%5.0f KB", net_now.sent) .. " ")))
+      markup("#46A8C3", " " .. get_net_string(net_now.sent) .. " ")))
   end
 })
 
