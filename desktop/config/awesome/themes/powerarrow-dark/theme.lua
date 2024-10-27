@@ -273,33 +273,7 @@ theme.volume.widget:buttons(awful.util.table.join(
 ))
 
 
--- ERROR: Attempt to call a nil value
 local neticon = wibox.widget.imagebox(theme.widget_net)
-
--- local net = lain.widget.net({
---   units = 1024,
---   timeout = 2,
---   settings = function()
---     local format_net_units = function(units)
---       local power = math.log(units, 2)
---       if power > 30 then
---         return { "GB", units / math.pow(2, 30) }
---       elseif power > 20 then
---         return { "MB", units / math.pow(2, 20) }
---       elseif power > 10 then
---         return { "KB", units / math.pow(2, 10) }
---       else
---         return { "B", units }
---       end
---     end
---     local nrf, nru = format_net_units(net_now.received)
---     local nsf, nsu = format_net_units(net_now.sent)
---     widget:set_markup(markup.font(theme.font,
---       markup("#7AC82E", " " .. string.format("%d %s", nru, nrf))
---       .. " " ..
---       markup("#46A8C3", " " .. string.format("%d %s", nsu, nsf) .. " ")))
---   end
--- })
 
 local net     = lain.widget.net({
   units = 1,
