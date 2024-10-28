@@ -192,6 +192,15 @@ local mem = lain.widget.mem({
   end
 })
 
+-- CPU Sysload
+local sysloadicon = wibox.widget.imagebox(theme.widget_cpu)
+local sysload = lain.widget.sysload({
+  timeout = 2,
+  settings = function()
+    widget:set_markup(markup.font(theme.font, " " .. load_1 .. "  " .. load_5 .. "  " .. load_15 .. " "))
+  end
+})
+
 -- CPU
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu = lain.widget.cpu({
@@ -459,8 +468,8 @@ function theme.at_screen_connect(s)
       wibox.container.background(memicon, theme.bg_focus),
       wibox.container.background(mem.widget, theme.bg_focus),
       arrl_dl,
-      cpuicon,
-      cpu.widget,
+      sysloadicon,
+      sysload.widget,
       arrl_ld,
       wibox.container.background(tempicon, theme.bg_focus),
       wibox.container.background(temp.widget, theme.bg_focus),
