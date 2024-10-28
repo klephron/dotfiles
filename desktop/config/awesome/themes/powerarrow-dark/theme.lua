@@ -284,7 +284,7 @@ local net     = lain.widget.net({
       local value;
       local format
 
-      unit = "B"
+      unit = "B "
       value = tonumber(units)
 
       if value >= 1000 then
@@ -388,12 +388,12 @@ function theme.at_screen_connect(s)
           {
             id     = 'text_margin_role',
             widget = wibox.widget {
-              forced_width = 5,
+              forced_width = dpi(4),
               shape        = gears.shape.circle,
               widget       = wibox.widget.separator,
             }
           },
-          margins = 5,
+          margins = dpi(4),
           widget  = wibox.container.margin,
         },
         {
@@ -412,7 +412,7 @@ function theme.at_screen_connect(s)
       layout = wibox.layout.align.horizontal,
       {
         widget = wibox.container.margin,
-        margins = 5
+        margins = dpi(4)
       },
       {
         widget = wibox.widget.textbox,
@@ -420,7 +420,7 @@ function theme.at_screen_connect(s)
       },
       {
         widget = wibox.container.margin,
-        margins = 5
+        margins = dpi(4)
       },
     },
     widget = wibox.container.background,
