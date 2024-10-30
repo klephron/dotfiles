@@ -1,5 +1,3 @@
-CONFIG_BINDKEYS=$XDG_CONFIG_HOME/zsh/bindkeys.zsh
-
 # PLUGINS
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -12,4 +10,5 @@ if [[ -f ~/.config/fzf ]]; then
   source ~/.config/fzf
 fi
 
-source $CONFIG_BINDKEYS
+source $XDG_CONFIG_HOME/zsh/plugins/mise.zsh
+source $XDG_CONFIG_HOME/zsh/plugins/zoxide.zsh
