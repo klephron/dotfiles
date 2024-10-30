@@ -1,12 +1,9 @@
-CONFIG=$XDG_CONFIG_HOME/zsh
+source $XDG_CONFIG_HOME/zsh/completion.zsh
+source $XDG_CONFIG_HOME/zsh/dirstack.zsh
+source $XDG_CONFIG_HOME/zsh/history.zsh
+source $XDG_CONFIG_HOME/zsh/prompt.zsh
+source $XDG_CONFIG_HOME/zsh/bindkeys.zsh
 
-source $CONFIG/aliases.zsh
-source $CONFIG/completion.zsh
-source $CONFIG/dirstack.zsh
-source $CONFIG/history.zsh
-# dep: completion
-source $CONFIG/prompt.zsh
-# dep: plugins completion
-source $CONFIG/bindkeys.zsh
-source $CONFIG/hooks.zsh
-source $CONFIG/functions.zsh
+source $XDG_CONFIG_HOME/zsh/functions.zsh
+source $XDG_CONFIG_HOME/zsh/hooks.zsh
+source $XDG_CONFIG_HOME/zsh/aliases.zsh
