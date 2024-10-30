@@ -1,3 +1,4 @@
+-- :h lspconfig-all
 local M = {
   lua_ls = {
     -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
@@ -34,6 +35,10 @@ local M = {
   },
   pyright = {
     single_file_support = true
+  },
+  ruff = {
+    settings = {
+    }
   },
   rust_analyzer = {
     settings = {

@@ -14,13 +14,10 @@ local M = {
     local hover = null_ls.builtins.hover
 
     local sources = {
-      formatting.black,
       formatting.prettier,
+      formatting.black,
 
-      -- python
-      -- diagnostics.pylint,
-      -- diagnostics.mypy.with { extra_args = { "--strict" } },
-      -- proto
+      diagnostics.mypy.with { extra_args = { "--strict" } },
       diagnostics.protolint,
     }
 
@@ -36,13 +33,12 @@ local M = {
     local wk_ok, wk = pcall(require, "which-key")
     if wk_ok then
       wk.add({
-        { "<localleader>u",  group = "null-ls" },
+        { "<localleader>u", group = "null-ls" },
       })
     end
 
     funcs.set_keynomap("n", "<localleader>ul", "<cmd>NullLsLog<cr>", "null-ls: Log")
     funcs.set_keynomap("n", "<localleader>us", "<cmd>NullLsInfo<cr>", "null-ls: Info")
-
   end,
 }
 
