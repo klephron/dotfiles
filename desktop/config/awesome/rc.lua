@@ -712,6 +712,16 @@ awful.rules.rules = {
     }
   },
 
+  -- NOTE: redundant
+  -- {
+  --   rule_any = {
+  --     name = {
+  --       "Meeting",
+  --     },
+  --   },
+  --   properties = { floating = false }
+  -- },
+
   -- Floating clients.
   {
     rule_any = {
@@ -737,6 +747,7 @@ awful.rules.rules = {
       -- and the name shown there might not match defined rules here.
       name = {
         "Event Tester", -- xev.
+        "zoom"
       },
       role = {
         "AlarmWindow",   -- Thunderbird's calendar.
@@ -746,6 +757,7 @@ awful.rules.rules = {
     },
     properties = { floating = true }
   },
+
 
   -- Add titlebars to normal clients and dialogs
   {
