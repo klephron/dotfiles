@@ -17,7 +17,8 @@ local M = {
       formatting.prettier,
       formatting.black,
 
-      diagnostics.mypy.with { extra_args = { "--strict" } },
+      -- diagnostics.mypy.with { extra_args = { "--strict" } },
+      diagnostics.mypy,
       diagnostics.protolint,
     }
 
