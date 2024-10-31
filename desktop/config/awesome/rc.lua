@@ -712,16 +712,6 @@ awful.rules.rules = {
     }
   },
 
-  -- NOTE: redundant
-  -- {
-  --   rule_any = {
-  --     name = {
-  --       "Meeting",
-  --     },
-  --   },
-  --   properties = { floating = false }
-  -- },
-
   -- Floating clients.
   {
     rule_any = {
