@@ -54,13 +54,13 @@ exec nm-applet &
 exec lxpolkit &
 
 # Composition manager
-exec picom --experimental-backends &
+exec picom &
 
 # Greenclip
 exec greenclip daemon &
 
-# Awesome window manager
-exec awesome &
+# Awesome window manager (with disabled opacity)
+exec awesome --no-argb &
 systemctl --user start graphical-session-manager.target
 wait $!
 systemctl --user stop graphical-session-manager.target
