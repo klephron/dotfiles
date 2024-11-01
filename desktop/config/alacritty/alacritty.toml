@@ -1,4 +1,3 @@
-
 [colors]
 draw_bold_text_with_bright_colors = false
 
@@ -9,7 +8,7 @@ style = "Beam"
 TERM = "xterm-256color"
 
 [font]
-size = 11
+size = 10.5
 
 [font.bold]
 family = "FiraCode Nerd Font Mono"
@@ -29,7 +28,7 @@ style = "Regular"
 
 [font.offset]
 x = 0
-y = 0
+y = 1
 
 [[keyboard.bindings]]
 chars = "\u001B[72;6u"
