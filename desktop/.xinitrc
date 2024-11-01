@@ -54,7 +54,7 @@ exec nm-applet &
 exec lxpolkit &
 
 # Composition manager
-exec picom &
+exec picom --experimental-backends &
 
 # Greenclip
 exec greenclip daemon &
