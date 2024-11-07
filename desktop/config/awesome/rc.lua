@@ -378,25 +378,25 @@ local globalkeys = gears.table.join(
   -- ALSA volume control
   awful.key({}, "#121",
     function()
-      os.execute("amixer set Master toggle")
+      os.execute("pactl set-sink-mute @DEFAULT_SINK@ toggle")
       beautiful.volume.update()
     end
   ),
   awful.key({}, "#122",
     function()
-      os.execute("amixer set Master 1%-")
+      os.execute("pactl set-sink-volume @DEFAULT_SINK@ -1%")
       beautiful.volume.update()
     end
   ),
   awful.key({}, "#123",
     function()
-      os.execute("amixer set Master 1%+")
+      os.execute("pactl set-sink-volume @DEFAULT_SINK@ +1%")
       beautiful.volume.update()
     end
   ),
   awful.key({}, "#198",
     function()
-      os.execute("amixer set Capture toggle")
+      os.execute("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
       beautiful.volume.update()
     end
   ),
