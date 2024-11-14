@@ -220,14 +220,12 @@ local temp = lain.widget.temp({
 
 -- / fs
 local fsicon = wibox.widget.imagebox(theme.widget_hdd)
---[[ commented because it needs Gio/Glib >= 2.54
 theme.fs = lain.widget.fs({
-    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
-    settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. fs_now["/"].percentage .. "% "))
-    end
+  notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
+  settings = function()
+    widget:set_markup(markup.font(theme.font, " " .. fs_now["/"].percentage .. "% "))
+  end
 })
---]]
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
@@ -453,29 +451,28 @@ function theme.at_screen_connect(s)
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
       spr,
+      keyboardlayout,
       arrl_ld,
-      wibox.container.background(keyboardlayout, theme.bg_focus),
-      arrl_dl,
       --arrl_ld,
       --wibox.container.background(mpdicon, theme.bg_focus),
       --wibox.container.background(theme.mpd.widget, theme.bg_focus),
       --arrl_dl,
-      volicon,
-      theme.volume.widget,
+      wibox.container.background(volicon, theme.bg_focus),
+      wibox.container.background(theme.volume.widget, theme.bg_focus),
       --wibox.container.background(mailicon, theme.bg_focus),
       --wibox.container.background(theme.mail.widget, theme.bg_focus),
-      arrl_ld,
-      wibox.container.background(memicon, theme.bg_focus),
-      wibox.container.background(mem.widget, theme.bg_focus),
       arrl_dl,
-      sysloadicon,
-      sysload.widget,
+      memicon,
+      mem.widget,
       arrl_ld,
-      wibox.container.background(tempicon, theme.bg_focus),
-      wibox.container.background(temp.widget, theme.bg_focus),
-      --arrl_ld,
-      --wibox.container.background(fsicon, theme.bg_focus),
-      --wibox.container.background(theme.fs.widget, theme.bg_focus),
+      wibox.container.background(sysloadicon, theme.bg_focus),
+      wibox.container.background(sysload.widget, theme.bg_focus),
+      arrl_dl,
+      tempicon,
+      temp.widget,
+      arrl_ld,
+      wibox.container.background(fsicon, theme.bg_focus),
+      wibox.container.background(theme.fs.widget, theme.bg_focus),
       arrl_dl,
       baticon,
       bat.widget,
