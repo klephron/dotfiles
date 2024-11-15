@@ -44,6 +44,13 @@ local M = {
     {
       "<leader>vs",
       function()
+        vim.cmd("PossessionSave!")
+      end,
+      desc = "possession: Save session"
+    },
+    {
+      "<leader>vS",
+      function()
         vim.ui.input({ prompt = "Enter session name: ", },
           function(str)
             if str then
