@@ -68,11 +68,16 @@ if not config.is_vscode and not config.is_firenvim then
     vim.ui.input({ prompt = "Enter new tab index: ", },
       function(str)
         if str then
-          vim.cmd("tabmove " .. tostring(tonumber(str) - 1))
+          -- local tabs = #vim.api.nvim_list_tabpages()
+          local index = tonumber(str)
+          if index == 1 then
+            index = index - 1
+          end
+          vim.cmd("tabmove " .. tostring(index))
         end
       end
     )
-  end, { silent = false, desc = "tab: Move current after N - 1" })
+  end, { silent = false, desc = "tab: Move current to N" })
 
   -- Bind leader keys to specific tabs
   funcs.set_keynomap("n", "<leader>1", "1gt")
