@@ -14,8 +14,8 @@ require("awful.hotkeys_popup.keys.firefox")
 
 -- External dependencies
 package.path = package.path .. ";"
-    .. gears.filesystem.get_configuration_dir() .. "deps/?.lua;"
-    .. gears.filesystem.get_configuration_dir() .. "deps/?/init.lua"
+    .. gears.filesystem.get_configuration_dir() .. "plugins/?.lua;"
+    .. gears.filesystem.get_configuration_dir() .. "plugins/?/init.lua"
 
 local lain = require("lain")
 local scrlocker = "betterlockscreen -l --show-layout &"

@@ -1,0 +1,9 @@
+[submodule "desktop/config/awesome/plugins/lain"]
+	path = desktop/config/awesome/deps/lain
+	url = git@github.com:lcpz/lain.git
+[submodule "desktop/config/awesome/plugins/freedesktop"]
+	path = desktop/config/awesome/deps/freedesktop
+	url = git@github.com:lcpz/awesome-freedesktop.git
+[submodule "desktop/config/awesome/plugins/awesome-switcher"]
+	path = desktop/config/awesome/deps/awesome-switcher
+	url = git@github.com:zubrailx/awesome-switcher.git
