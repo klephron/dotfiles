@@ -6,15 +6,20 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
-local wibox         = require("wibox")
-local beautiful     = require("beautiful")
-local naughty       = require("naughty")
-local lain          = require("lain")
-local scrlocker     = "betterlockscreen -l --show-layout &"
---local menubar       = require("menubar")
-local freedesktop   = require("freedesktop")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys.firefox")
+
+-- External dependencies
+package.path = package.path .. ";"
+    .. gears.filesystem.get_configuration_dir() .. "deps/?.lua;"
+    .. gears.filesystem.get_configuration_dir() .. "deps/?/init.lua"
+
+local lain = require("lain")
+local scrlocker = "betterlockscreen -l --show-layout &"
+local freedesktop = require("freedesktop")
 
 -- }}}
 
@@ -77,15 +82,15 @@ end
 --- {{{ Variable / Function definitions
 
 local chosen_theme = "powerarrow-dark"
-local modkey       = "Mod4"
-local altkey       = "Mod1"
-local ctrl         = "Control"
-local shift        = "Shift"
-local terminal     = "alacritty"
-local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
-local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "firefox"
+local modkey = "Mod4"
+local altkey = "Mod1"
+local ctrl = "Control"
+local shift = "Shift"
+local terminal = "alacritty"
+local vi_focus = false  -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
+local editor = os.getenv("EDITOR") or "nvim"
+local browser = "firefox"
 
 local function s_width()
   return awful.screen.focused().geometry.width
@@ -95,8 +100,8 @@ local function s_height()
   return awful.screen.focused().geometry.height
 end
 
-awful.util.terminal  = terminal
-awful.util.tagnames  = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
+awful.util.terminal = terminal
+awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.tile.left,
@@ -123,18 +128,18 @@ awful.layout.layouts = {
 }
 
 
-lain.layout.termfair.nmaster           = 3
-lain.layout.termfair.ncol              = 1
-lain.layout.termfair.center.nmaster    = 3
-lain.layout.termfair.center.ncol       = 1
-lain.layout.cascade.tile.offset_x      = 2
-lain.layout.cascade.tile.offset_y      = 32
+lain.layout.termfair.nmaster = 3
+lain.layout.termfair.ncol = 1
+lain.layout.termfair.center.nmaster = 3
+lain.layout.termfair.center.ncol = 1
+lain.layout.cascade.tile.offset_x = 2
+lain.layout.cascade.tile.offset_y = 32
 lain.layout.cascade.tile.extra_padding = 5
-lain.layout.cascade.tile.nmaster       = 5
-lain.layout.cascade.tile.ncol          = 2
+lain.layout.cascade.tile.nmaster = 5
+lain.layout.cascade.tile.ncol = 2
 
 -- Actions with tags buttons
-awful.util.taglist_buttons             = gears.table.join(
+awful.util.taglist_buttons = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
   awful.button({ modkey }, 1, function(t)
     if client.focus then client.focus:move_to_tag(t) end
@@ -148,7 +153,7 @@ awful.util.taglist_buttons             = gears.table.join(
 )
 
 -- Actions with opened tasks
-awful.util.tasklist_buttons            = gears.table.join(
+awful.util.tasklist_buttons = gears.table.join(
   awful.button({}, 1, function(c)
     if c == client.focus then
       c.minimized = true
