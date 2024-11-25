@@ -9,9 +9,9 @@ root_path=$parent_path/..
 
 cd $root_path
 
-. ./dev-container/.xdgenv
+. ./dev/.xdgenv
 
-make install/dev-container
+make install/dev
 
 # Setup zsh for current user
 echo "emulate sh -c 'source /etc/profile'" >> ~/.profile

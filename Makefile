@@ -1,10 +1,10 @@
-.PHONY: install install/desktop install/server help
+.PHONY: default install install/desktop install/dev install/_current help
 
 DESKTOP_DIR := desktop
-SERVER_DIR  := server
-DEVCONTAINER_DIR := dev-container
+DEV_DIR := dev
 SCRIPTS_DIR := scripts
 CONFIG_SDIR := config
+
 
 ifndef HOME
 $(error HOME is not set)
@@ -14,31 +14,21 @@ ifndef XDG_CONFIG_HOME
 $(error XDG_CONFIG_HOME is not set)
 endif
 
-default: help
 
+default: help
 
 ### Install default (desktop)
 install: install/desktop
-		
+
 
 ### Install configs for desktop
 install/desktop: export DOTFILES_DIR := $(DESKTOP_DIR)
-
-install/desktop: 
-	@$(MAKE) install/_current
-	
-
-### Install configs for server
-install/server: export DOTFILES_DIR := $(SERVER_DIR)
-
-install/server:
+install/desktop:
 	@$(MAKE) install/_current
 
-
-### Install configs for dev container
-install/dev-container: export DOTFILES_DIR := $(DEVCONTAINER_DIR)
-
-install/dev-container:
+### Install configs for dev
+install/dev: export DOTFILES_DIR := $(DEV_DIR)
+install/dev:
 	@$(MAKE) install/_current
 
 
@@ -67,7 +57,7 @@ install/_current:
 		done \
 	fi
 
-### Help 
+### Help
 help:
 	@printf "Targets:\n"
 	@awk '/^[a-zA-Z\-_0-9%:\\]+/ { \
@@ -81,4 +71,3 @@ help:
 		} \
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST) | sort -u
-
