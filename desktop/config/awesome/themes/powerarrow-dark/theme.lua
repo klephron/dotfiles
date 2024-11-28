@@ -221,7 +221,7 @@ local temp = lain.widget.temp({
 })
 
 -- / fs
-local fsicon = wibox.widget.imagebox(theme.widget_cpu)
+local fsicon = wibox.widget.imagebox(theme.widget_hdd)
 local fs = widgets.fs({
   timeout = 60,
   theme = theme
