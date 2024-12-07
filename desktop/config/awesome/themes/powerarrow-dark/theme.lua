@@ -25,9 +25,11 @@ local function img_scaled(img_path, width, height)
     end)
 end
 
-theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
+local HOME = os.getenv("HOME")
+
+theme.dir = HOME .. "/.config/awesome/themes/powerarrow-dark"
 -- theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.wallpaper = "~/Documents/images/wallpaper/space_8k.jpg"
+theme.wallpaper = HOME .. "/images/wallpaper/space_8k.jpg"
 -- theme.font                                      = "Terminus 9"
 theme.font = "Noto Sans 9"
 theme.fg_normal = "#DDDDFF"
