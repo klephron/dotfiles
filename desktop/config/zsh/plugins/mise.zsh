@@ -5,25 +5,25 @@ mise() {
   local command
   command="${1:-}"
   if [ "$#" = 0 ]; then
-    command /usr/bin/mise
+    command mise
     return
   fi
   shift
 
   case "$command" in
-  deactivate|s|shell)
+  deactivate|shell|sh)
     # if argv doesn't contains -h,--help
     if [[ ! " $@ " =~ " --help " ]] && [[ ! " $@ " =~ " -h " ]]; then
-      eval "$(command /usr/bin/mise "$command" "$@")"
+      eval "$(command mise "$command" "$@")"
       return $?
     fi
     ;;
   esac
-  command /usr/bin/mise "$command" "$@"
+  command mise "$command" "$@"
 }
 
 _mise_hook() {
-  eval "$(/usr/bin/mise hook-env -s zsh)";
+  eval "$(mise hook-env -s zsh)";
 }
 typeset -ag precmd_functions;
 if [[ -z "${precmd_functions[(r)_mise_hook]+1}" ]]; then
@@ -34,12 +34,13 @@ if [[ -z "${chpwd_functions[(r)_mise_hook]+1}" ]]; then
   chpwd_functions=( _mise_hook ${chpwd_functions[@]} )
 fi
 
+_mise_hook
 if [ -z "${_mise_cmd_not_found:-}" ]; then
     _mise_cmd_not_found=1
     [ -n "$(declare -f command_not_found_handler)" ] && eval "${$(declare -f command_not_found_handler)/command_not_found_handler/_command_not_found_handler}"
 
     function command_not_found_handler() {
-        if /usr/bin/mise hook-not-found -s zsh -- "$1"; then
+        if mise hook-not-found -s zsh -- "$1"; then
           _mise_hook
           "$@"
         elif [ -n "$(declare -f _command_not_found_handler)" ]; then
@@ -50,7 +51,6 @@ if [ -z "${_mise_cmd_not_found:-}" ]; then
         fi
     }
 fi
-
 #compdef mise
 local curcontext="$curcontext"
 
@@ -80,11 +80,11 @@ _mise() {
     zstyle ":completion:${curcontext}:" cache-policy _usage_mise_cache_policy
   fi
 
-  if ( [[ -z "${_usage_mise_spec:-}" ]] || _cache_invalid _usage_mise_spec ) \
-      && ! _retrieve_cache _usage_mise_spec;
+  if ( [[ -z "${_usage_spec_mise_2024_12_17:-}" ]] || _cache_invalid _usage_spec_mise_2024_12_17 ) \
+      && ! _retrieve_cache _usage_spec_mise_2024_12_17;
   then
     spec="$(mise usage)"
-    _store_cache _usage_mise_spec spec
+    _store_cache _usage_spec_mise_2024_12_17 spec
   fi
 
   _arguments "*: :(($(usage complete-word --shell zsh -s "$spec" -- "${words[@]}" )))"

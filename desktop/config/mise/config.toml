@@ -5,7 +5,6 @@ disable_hints = ["registry"]
 [tools]
 usage = "latest"
 node = "latest"
-cmake = "latest"
 neovim = "latest"
 go = "latest"
 gradle = "latest"
@@ -18,3 +17,4 @@ cheat = "latest"
 poetry = "latest"
 tmux = "3.4"
 python = "latest"
+cmake = "latest"
