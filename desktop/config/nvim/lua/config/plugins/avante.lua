@@ -44,6 +44,9 @@ local M = {
       sidebar = {
       },
     },
+    hints = {
+      enabled = false,
+    }
   },
   build = "make",
 }

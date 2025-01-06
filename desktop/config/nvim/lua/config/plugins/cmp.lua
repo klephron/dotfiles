@@ -179,7 +179,7 @@ local M = {
         { name = "path",     priority = 250 },
       },
       experimental = {
-        ghost_text = true
+        ghost_text = false
       }
     })
   end
