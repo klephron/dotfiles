@@ -31,9 +31,10 @@ local M = {
     },
   },
   event = "VeryLazy",
-  enabled = true,
+  build = "make",
   lazy = false,
   version = "*",
+  enabled = true,
   opts = {
     provider = "copilot",
     auto_suggestions_provider = "copilot",
@@ -41,6 +42,14 @@ local M = {
       ask = "<leader>oa",
       edit = "<leader>oe",
       refresh = "<leader>or",
+      focus = "<leader>of",
+      toggle = {
+        default = "<leader>ot",
+        debug = "<leader>od",
+        hint = "<leader>oh",
+        suggestion = "<leader>os",
+        repomap = "<leader>oR",
+      },
       sidebar = {
       },
     },
@@ -48,7 +57,6 @@ local M = {
       enabled = false,
     }
   },
-  build = "make",
 }
 
 return M
