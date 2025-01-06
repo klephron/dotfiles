@@ -151,8 +151,9 @@ local M = {
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-          vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+          vim_item.kind = entry.source.name ~= "copilot" and string.format("%s", kind_icons[vim_item.kind]) or ""
           vim_item.menu = ({
+            copilot = "[C]",
             luasnip = "[S]",
             buffer = "[B]",
             path = "[P]",
@@ -168,6 +169,7 @@ local M = {
         path = 1,
       },
       sources = {
+        { name = "copilot",  priority = 1250, group_index = 2 },
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip",  priority = 750 },
         { name = "buffer",   priority = 500 },

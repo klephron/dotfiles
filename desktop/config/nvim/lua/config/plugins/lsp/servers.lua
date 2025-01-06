@@ -30,6 +30,9 @@ local M = {
         ParameterNames = true,
         DeducedTypes = true,
       },
+    },
+    capabilities = {
+      offsetEncoding = { "utf-16", "utf-8" },
     }
   },
   pyright = {
