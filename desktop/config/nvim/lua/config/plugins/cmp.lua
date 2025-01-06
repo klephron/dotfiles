@@ -7,12 +7,13 @@ local M = {
     "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "onsails/lspkind.nvim",
   },
   config = function()
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
-    local kind_icons = require("config.icons").kind_icons
+    local lspkind = require('lspkind')
 
 
     -- Function implementations
@@ -134,7 +135,7 @@ local M = {
     }
 
     cmp.config.disable = true -- disable default mappings
-    cmp.setup {
+    cmp.setup({
       enabled = function()
         return not vim.tbl_contains({ "TelescopePrompt" }, vim.bo.filetype)
       end,
@@ -150,16 +151,18 @@ local M = {
       preselect = cmp.PreselectMode.None,
       formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = function(entry, vim_item)
-          vim_item.kind = entry.source.name ~= "copilot" and string.format("%s", kind_icons[vim_item.kind]) or ""
-          vim_item.menu = ({
-            copilot = "[C]",
-            luasnip = "[S]",
-            buffer = "[B]",
-            path = "[P]",
-          })[entry.source.name]
-          return vim_item
-        end,
+        format = lspkind.cmp_format({
+          mode = 'symbol', -- show only symbol annotations
+          maxwidth = {
+            abbr = function() return math.floor(0.25 * vim.o.columns) end,
+            menu = function() return math.floor(0.30 * vim.o.columns) end,
+          },
+          ellipsis_char = '…',
+          show_labelDetails = true,
+          before = function(entry, vim_item)
+            return vim_item
+          end
+        })
       },
       duplicates = {
         nvim_lsp = 1,
@@ -175,7 +178,10 @@ local M = {
         { name = "buffer",   priority = 500 },
         { name = "path",     priority = 250 },
       },
-    }
+      experimental = {
+        ghost_text = true
+      }
+    })
   end
 }
 
