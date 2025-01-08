@@ -16,5 +16,6 @@ java = "openjdk-22.0.2"
 cheat = "latest"
 poetry = "latest"
 tmux = "3.4"
-python = "latest"
 cmake = "latest"
+
+[env]
