@@ -1,7 +1,7 @@
 local M = {
   "zbirenbaum/copilot.lua",
   event = "InsertEnter",
-  enabled = false,
+  enabled = true,
   config = function()
     require("copilot").setup({
       suggestion = { enabled = false },
