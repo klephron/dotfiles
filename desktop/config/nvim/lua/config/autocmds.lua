@@ -105,6 +105,7 @@ funcs.augroup("local_keymap_q_close", {
       "man",
       "notify",
       "lspinfo",
+      "gitsigns-blame",
       "spectre_panel",
       "startuptime",
       "tsplayground",
@@ -115,6 +116,28 @@ funcs.augroup("local_keymap_q_close", {
       vim.bo[event.buf].buflisted = false
       vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end
+  }
+})
+
+funcs.augroup("local_resize_on_window_change", {
+  {
+    event = { "VimResized" },
+    command = function()
+      local current_tab = vim.fn.tabpagenr()
+      vim.cmd("tabdo wincmd =")
+      vim.cmd("tabnext " .. current_tab)
+    end
+  }
+})
+
+funcs.augroup("local_wrap_spell", {
+  {
+    event = "FileType",
+    pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+    command = function()
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
+    end,
   }
 })
 
