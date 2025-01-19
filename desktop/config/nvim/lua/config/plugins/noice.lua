@@ -13,10 +13,10 @@ local M = {
           ["cmp.entry.get_documentation"] = true,
         },
         hover = {
-          enabled = true,
+          enabled = false,
         },
         signature = {
-          enabled = true
+          enabled = false
         }
       },
       presets = {

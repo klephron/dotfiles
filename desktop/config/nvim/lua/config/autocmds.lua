@@ -16,78 +16,114 @@ funcs.augroup("local_nasm", {
 
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
-vim.cmd [[
-  augroup local_binary_xxd
-    au!
-    au BufReadPre   *.bin,*.exe,*.out let &bin=1
-    au BufReadPost  *.bin,*.exe,*.out if &bin | %!xxd
-    au BufReadPost  *.bin,*.exe,*.out set ft=xxd | endif
-    au BufWritePre  *.bin,*.exe,*.out if &bin | %!xxd -r
-    au BufWritePre  *.bin,*.exe,*.out endif
-    au BufWritePost *.bin,*.exe,*.out if &bin | %!xxd
-    au BufWritePost *.bin,*.exe,*.out set nomod | endif
-  augroup end
-]]
+-- Define the augroup for handling binary files with xxd
+funcs.augroup("local_binary_xxd", {
+  {
+    event = { "BufReadPre" },
+    pattern = "*.bin,*.exe,*.out",
+    command = function()
+      vim.opt_local.binary = true
+    end,
+  },
+  {
+    event = { "BufReadPost" },
+    pattern = "*.bin,*.exe,*.out",
+    command = function()
+      if vim.opt_local.binary:get() then
+        vim.cmd("%!xxd")
+        vim.bo.filetype = "xxd"
+      end
+    end,
+  },
+  {
+    event = { "BufWritePre" },
+    pattern = "*.bin,*.exe,*.out",
+    command = function()
+      if vim.opt_local.binary:get() then
+        vim.cmd("%!xxd -r")
+      end
+    end,
+  },
+  {
+    event = { "BufWritePost" },
+    pattern = "*.bin,*.exe,*.out",
+    command = function()
+      if vim.opt_local.binary:get() then
+        vim.cmd("%!xxd")
+        vim.opt_local.modified = false
+      end
+    end,
+  },
+})
 
 -- Create directories when needed, when saving a file
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("local_create_dir_on_file_write", { clear = true }),
-  callback = function(event)
-    local file = vim.loop.fs_realpath(event.match) or event.match
+funcs.augroup("local_create_dir_on_file_write", {
+  {
+    event = { "BufWritePre" },
+    command = function(event)
+      local file = vim.loop.fs_realpath(event.match) or event.match
 
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-    local backup = vim.fn.fnamemodify(file, ":p:~:h")
-    backup = backup:gsub("[/\\]", "%%")
-    vim.go.backupext = backup
-  end,
+      vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+      local backup = vim.fn.fnamemodify(file, ":p:~:h")
+      backup = backup:gsub("[/\\]", "%%")
+      vim.go.backupext = backup
+    end
+  }
 })
 
 -- Fix conceallevel for json & help files
-api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "json", "jsonc" },
-  callback = function()
-    vim.wo.spell = false
-    vim.wo.conceallevel = 0
-  end,
+funcs.augroup("local_json_conceal", {
+  {
+    event = { "FileType" },
+    pattern = { "json", "jsonc" },
+    command = function()
+      vim.wo.spell = false
+      vim.wo.conceallevel = 0
+    end
+  }
 })
 
 -- Go to last loc when opening a buffer
-api.nvim_create_autocmd("BufReadPre", {
-  pattern = "*",
-  callback = function()
-    api.nvim_create_autocmd("FileType", {
-      pattern = "<buffer>",
-      once = true,
-      callback = function()
-        vim.cmd(
-          [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]]
-        )
-      end,
-    })
-  end,
+funcs.augroup("local_open_last_loc", {
+  {
+    event = "BufReadPre",
+    patterm = "*",
+    command = function()
+      api.nvim_create_autocmd("FileType", {
+        pattern = "<buffer>",
+        once = true,
+        callback = function()
+          vim.cmd(
+            [[if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]]
+          )
+        end,
+      })
+    end
+  }
 })
 
-api.nvim_create_autocmd({ "FileType" }, {
-  pattern = {
-    "qf",
-    "help",
-    "man",
-    "notify",
-    "lspinfo",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-    "PlenaryTestPopup",
-    "dap-float",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
+funcs.augroup("local_keymap_q_close", {
+  {
+    event = "FileType",
+    pattern = {
+      "qf",
+      "help",
+      "man",
+      "notify",
+      "lspinfo",
+      "spectre_panel",
+      "startuptime",
+      "tsplayground",
+      "PlenaryTestPopup",
+      "dap-float",
+    },
+    command = function()
+      vim.bo[event.buf].buflisted = false
+      vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    end
+  }
 })
----------------------------------------------------------------------------------
--- User commands
----------------------------------------------------------------------------------
+
 api.nvim_create_user_command("Pwd", function()
   local reg_cmd = "" ..
       ":redir @+ \n" ..
@@ -96,6 +132,7 @@ api.nvim_create_user_command("Pwd", function()
   vim.cmd(":echo '' | redraw")
   vim.cmd(reg_cmd)
 end, { nargs = 0 })
+
 
 api.nvim_create_user_command("Fdir", function()
   local reg_cmd = "" ..
@@ -146,7 +183,16 @@ funcs.augroup("local_restore_cursor_shape_on_exit", {
 })
 
 -- Check reload file when changed
-api.nvim_create_autocmd("FocusGained", { command = "checktime" })
+funcs.augroup("local_checktime", {
+  {
+    event = { "FocusGained", "TermClose", "TermLeave" },
+    command = function()
+      if vim.o.buftype ~= "nofile" then
+        vim.cmd("checktime")
+      end
+    end
+  }
+})
 
 funcs.augroup("local_reload_file", {
   {
