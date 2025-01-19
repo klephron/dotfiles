@@ -1,10 +1,4 @@
-local fn = vim.fn
-local api = vim.api
 local funcs = require("utils.funcs")
-
----------------------------------------------------------------------------------
--- Autocmds
----------------------------------------------------------------------------------
 
 funcs.augroup("local_nasm", {
   {
@@ -89,7 +83,7 @@ funcs.augroup("local_open_last_loc", {
     event = "BufReadPre",
     patterm = "*",
     command = function()
-      api.nvim_create_autocmd("FileType", {
+      vim.api.nvim_create_autocmd("FileType", {
         pattern = "<buffer>",
         once = true,
         callback = function()
@@ -117,14 +111,14 @@ funcs.augroup("local_keymap_q_close", {
       "PlenaryTestPopup",
       "dap-float",
     },
-    command = function()
+    command = function(event)
       vim.bo[event.buf].buflisted = false
       vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end
   }
 })
 
-api.nvim_create_user_command("Pwd", function()
+vim.api.nvim_create_user_command("Pwd", function()
   local reg_cmd = "" ..
       ":redir @+ \n" ..
       ":echon getcwd()\n" ..
@@ -134,7 +128,7 @@ api.nvim_create_user_command("Pwd", function()
 end, { nargs = 0 })
 
 
-api.nvim_create_user_command("Fdir", function()
+vim.api.nvim_create_user_command("Fdir", function()
   local reg_cmd = "" ..
       ":redir @+ \n" ..
       ":echon expand('%:h')\n" ..
