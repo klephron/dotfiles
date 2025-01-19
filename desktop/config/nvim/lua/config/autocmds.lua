@@ -6,7 +6,7 @@ local funcs = require("utils.funcs")
 -- Autocmds
 ---------------------------------------------------------------------------------
 
-funcs.augroup("Nasm", {
+funcs.augroup("local_nasm", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.inc,*.asm",
@@ -17,7 +17,7 @@ funcs.augroup("Nasm", {
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 vim.cmd [[
-  augroup BinaryXXD
+  augroup local_binary_xxd
     au!
     au BufReadPre   *.bin,*.exe,*.out let &bin=1
     au BufReadPost  *.bin,*.exe,*.out if &bin | %!xxd
@@ -31,7 +31,7 @@ vim.cmd [[
 
 -- Create directories when needed, when saving a file
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+  group = vim.api.nvim_create_augroup("local_create_dir_on_file_write", { clear = true }),
   callback = function(event)
     local file = vim.loop.fs_realpath(event.match) or event.match
 
@@ -133,7 +133,7 @@ if funcs.is_vscode or funcs.is_firenvim then
   return
 end
 
-funcs.augroup("RestoreCursorShapeOnExit", {
+funcs.augroup("local_restore_cursor_shape_on_exit", {
   {
     event = "VimLeave",
     pattern = "*",
@@ -148,7 +148,7 @@ funcs.augroup("RestoreCursorShapeOnExit", {
 -- Check reload file when changed
 api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
-funcs.augroup("ReloadFile", {
+funcs.augroup("local_reload_file", {
   {
     event = "BufWinEnter",
     pattern = "*",
@@ -158,7 +158,7 @@ funcs.augroup("ReloadFile", {
   }
 })
 
---[[ funcs.augroup("SaveWhenFocusLost", {
+--[[ funcs.augroup("local_save_on_focus_lost", {
   {
     event = "FocusLost",
     pattern = "*",
@@ -175,7 +175,7 @@ funcs.augroup("ReloadFile", {
 }) ]]
 
 -- Autosave after leaving insert mode
---[[ funcs.augroup("AutosaveAfterInsert", {
+--[[ funcs.augroup("local_save_on_insert_leave", {
   {
     event = "InsertLeave",
     command = "silent! update",

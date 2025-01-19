@@ -3,7 +3,7 @@ local funcs = require("utils.funcs")
 ---------------------------------------------------------------------------//
 -- TERMINAL BUFFER LOCAL
 ---------------------------------------------------------------------------//
-funcs.augroup("AddTerminalMappings", {
+funcs.augroup("local_keymap_terminal", {
   {
     event = { "TermOpen" },
     pattern = { "term://*", '\\[dap-terminal\\]*' },
@@ -108,7 +108,7 @@ local mapnohl_disabled = {
   "Trouble",
 }
 
-funcs.augroup("_map_hohl", {
+funcs.augroup("local_map_nohl", {
   {
     event = "FileType",
     pattern = "*",

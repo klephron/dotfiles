@@ -49,7 +49,7 @@ local watch_config = {
 
 ---@param name string
 local function get_augroup_name(name)
-  return "_watcher_" .. name
+  return "watch_" .. name
 end
 
 ---Apply decorator
@@ -253,7 +253,7 @@ api.nvim_create_user_command("WatchDelete", function()
     end)
 end, { nargs = 0 })
 
-util.augroup("_watch_leave", {
+util.augroup("WatchLeave", {
   {
     event = "VimLeavePre",
     pattern = "*",

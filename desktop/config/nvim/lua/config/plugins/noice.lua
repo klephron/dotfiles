@@ -3,23 +3,6 @@ local M = {
   event = "UIEnter",
   cond = function() return not config.is_neovide and not config.is_firenvim end,
   config = function()
-    local utils = require("utils.funcs")
-    local focused = true
-    utils.augroup("noice_focus", {
-      {
-        event = "FocusGained",
-        command = function()
-          focused = true
-        end
-      },
-      {
-        event = "FocusLost",
-        command = function()
-          focused = false
-        end
-      }
-    })
-
     require("noice").setup({
       debug = false,
       lsp = {
@@ -30,10 +13,10 @@ local M = {
           ["cmp.entry.get_documentation"] = true,
         },
         hover = {
-          enabled = false,
+          enabled = true,
         },
         signature = {
-          enabled = false
+          enabled = true
         }
       },
       presets = {

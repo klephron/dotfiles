@@ -11,7 +11,7 @@ local M = {
       }
     })
 
-    utils.augroup("_trouble", {
+    utils.augroup("local_trouble", {
       {
         event = "FileType",
         pattern = "Trouble",
