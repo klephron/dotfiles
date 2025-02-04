@@ -187,17 +187,17 @@ if funcs.is_vscode or funcs.is_firenvim then
   return
 end
 
--- funcs.augroup("local_restore_cursor_shape_on_exit", {
---   {
---     event = "VimLeave",
---     pattern = "*",
---     command = function()
---       vim.opt.guicursor = {
---         [[a:ver20]],
---       }
---     end
---   }
--- })
+funcs.augroup("local_restore_cursor_shape", {
+  {
+    event = "VimLeave",
+    pattern = "*",
+    command = function()
+      vim.opt.guicursor = {
+        [[a:ver20]],
+      }
+    end
+  }
+})
 
 -- Check reload file when changed
 funcs.augroup("local_checktime", {

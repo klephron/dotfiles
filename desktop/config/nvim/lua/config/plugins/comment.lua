@@ -4,8 +4,10 @@ local M = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
   keys = {
-    { "gc", mode = { "n", "v" } },
-    { "gb", mode = { "n", "v" }, },
+    { "gcc", mode = { "n" } },
+    { "gbc", mode = { "n" } },
+    { "gc",  mode = { "n", "x", "o" } },
+    { "gb",  mode = { "n", "x", "o" }, },
   },
   config = function()
     local comment = require("Comment")
