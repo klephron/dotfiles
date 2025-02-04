@@ -3,16 +3,13 @@ local M = {
   dependencies = {
     "mfussenegger/nvim-dap",
   },
+  event = "VeryLazy",
   opts = {
     strategy = {
       "toggleterm",
       quit_on_exit = "success",
     },
   },
-  -- keys = {
-  --   { "<leader>o", "overseer" },
-  --   { "<leader>o", "<cmd>Overseer<cr>", desc = "whichkey: Open" },
-  -- }
 }
 
 return M
