@@ -31,10 +31,11 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 
 if not config.is_vscode and not config.is_firenvim then
   -- Window movements
-  funcs.set_keynomap("n", "<c-k>", "<c-w>k", "win: Move up")
-  funcs.set_keynomap("n", "<c-l>", "<c-w>l", "win: Move right")
-  funcs.set_keynomap("n", "<c-j>", "<c-w>j", "win: Move down")
-  funcs.set_keynomap("n", "<c-h>", "<c-w>h", "win: Move left")
+  funcs.set_keynomap("n", "<C-k>", "<C-w>k", "win: Move up")
+  funcs.set_keynomap("n", "<C-l>", "<C-w>l", "win: Move right")
+  funcs.set_keynomap("n", "<C-j>", "<C-w>j", "win: Move down")
+  funcs.set_keynomap("n", "<C-h>", "<C-w>h", "win: Move left")
+  funcs.set_keynomap("n", "<C-v>", "<C-w><C-p>", "win: Move previous")
 
   -- Window resize
   funcs.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "win: Increase height")

@@ -18,6 +18,8 @@ local M = {
       },
       task_list = {
         bindings = {
+          ["<C-u>"] = "OpenVsplit",
+          ["<C-y>"] = "OpenSplit",
           ["q"] = "<cmd>OverseerClose<cr>"
         }
       }
