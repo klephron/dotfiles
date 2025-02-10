@@ -133,7 +133,7 @@ funcs.augroup("local_resize_on_window_change", {
 funcs.augroup("local_wrap_spell", {
   {
     event = "FileType",
-    pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+    pattern = { "plaintex", "typst", "gitcommit", "markdown" },
     command = function()
       vim.opt_local.wrap = true
       vim.opt_local.spell = true
