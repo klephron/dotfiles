@@ -35,7 +35,7 @@ if not config.is_vscode and not config.is_firenvim then
   funcs.set_keynomap("n", "<C-l>", "<C-w>l", "win: Move right")
   funcs.set_keynomap("n", "<C-j>", "<C-w>j", "win: Move down")
   funcs.set_keynomap("n", "<C-h>", "<C-w>h", "win: Move left")
-  funcs.set_keynomap("n", "<Tab>", "<C-w><C-p>", "win: Move previous")
+  funcs.set_keynomap("n", "<C-s>", "<C-w><C-p>", "win: Move previous")
 
   -- Window resize
   funcs.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "win: Increase height")
@@ -124,7 +124,6 @@ funcs.augroup("local_map_nohl", {
 -- Write
 funcs.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "Write all")
 funcs.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
-funcs.set_keynomap("n", "<C-s>", "<cmd>wall<cr>", "Write all")
 
 if not funcs.is_vscode then
   -- Quit
