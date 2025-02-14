@@ -90,7 +90,6 @@ local terminal = "alacritty"
 local vi_focus = false  -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
-local browser = "firefox"
 
 local function s_width()
   return awful.screen.focused().geometry.width
@@ -439,7 +438,9 @@ local globalkeys = gears.table.join(
     { description = "open a terminal", group = "launcher" }),
   awful.key({ modkey, }, "z", function() awful.screen.focused().quake:toggle() end,
     { description = "dropdown application", group = "launcher" }),
-  awful.key({ modkey }, "q", function() awful.spawn(browser) end,
+  awful.key({ modkey }, "q", function() awful.spawn("firefox") end,
+    { description = "run browser", group = "launcher" }),
+  awful.key({ modkey, shift }, "q", function() awful.spawn("firefox -P alternative") end,
     { description = "run browser", group = "launcher" }),
   -- screen locker
   awful.key({ altkey, ctrl }, "l", function() os.execute(scrlocker) end,
