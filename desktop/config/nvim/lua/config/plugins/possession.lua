@@ -23,6 +23,9 @@ local M = {
           return user_data
         end
       },
+      plugins = {
+        delete_hidden_buffers = false,
+      },
       telescope = {
         list = {
           default_action = 'load',
