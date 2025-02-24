@@ -1,7 +1,11 @@
 local M = {
-  'powerman/vim-plugin-AnsiEsc',
+  'Makaze/AnsiEsc',
   event = 'BufRead',
   lazy = false,
+  init = function()
+    vim.g.no_cecutil_maps = 1
+    vim.g.no_ansiesc_menu = 1
+  end,
   config = function()
   end,
   keys = {
