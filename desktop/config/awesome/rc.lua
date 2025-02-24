@@ -470,7 +470,7 @@ local globalkeys = gears.table.join(
   --   { description = "[modkey] view next", group = "tag" }),
 
   -- Previous tab
-  awful.key({ modkey, }, "Escape", awful.tag.history.restore,
+  awful.key({ modkey, }, "Tab", awful.tag.history.restore,
     { description = "open previous tag [modkey]", group = "tag" })
 
 -- Non-empty tag browsing
