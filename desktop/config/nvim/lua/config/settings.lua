@@ -79,7 +79,7 @@ vim.opt.swapfile = false
 -- Session
 -----------------------------------------------------------------------------//
 ---
-vim.o.sessionoptions = "curdir,folds,help,localoptions,tabpages,terminal,winpos,winsize"
+vim.o.sessionoptions = "buffers,curdir,folds,help,localoptions,tabpages,terminal,winpos,winsize"
 -----------------------------------------------------------------------------//
 -- Display
 -----------------------------------------------------------------------------//
