@@ -45,13 +45,13 @@ local M = {
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
-        cachePriming = {
-          enable = false
-        },
-        assist = {
-          importEnforceGranularity = true,
-          importPrefix = 'crate',
-        },
+        -- cachePriming = {
+        --   enable = false
+        -- },
+        -- assist = {
+        --   importEnforceGranularity = true,
+        --   importPrefix = 'crate',
+        -- },
         -- cargo = {
         --   features = "all",
         --   sysrootQueryMetadata = true,
@@ -59,39 +59,39 @@ local M = {
         checkOnSave = {
           command = 'check', -- used clippy, but it is really slow
         },
-        inlayHints = {
-          bindingModeHints = {
-            enable = false,
-          },
-          chainingHints = {
-            enable = true,
-          },
-          closingBraceHints = {
-            enable = true,
-            minLines = 25,
-          },
-          closureReturnTypeHints = {
-            enable = "never",
-          },
-          lifetimeElisionHints = {
-            enable = "never",
-            useParameterNames = false,
-          },
-          maxLength = 25,
-          parameterHints = {
-            enable = true,
-          },
-          reborrowHints = {
-            enable = "never",
-          },
-          renderColons = true,
-          typeHints = {
-            enable = true,
-            hideClosureInitialization = false,
-            hideNamedConstructor = false,
-          },
-          locationLinks = false,
-        },
+        -- inlayHints = {
+        --   bindingModeHints = {
+        --     enable = false,
+        --   },
+        --   chainingHints = {
+        --     enable = true,
+        --   },
+        --   closingBraceHints = {
+        --     enable = true,
+        --     minLines = 25,
+        --   },
+        --   closureReturnTypeHints = {
+        --     enable = "never",
+        --   },
+        --   lifetimeElisionHints = {
+        --     enable = "never",
+        --     useParameterNames = false,
+        --   },
+        --   maxLength = 25,
+        --   parameterHints = {
+        --     enable = true,
+        --   },
+        --   reborrowHints = {
+        --     enable = "never",
+        --   },
+        --   renderColons = true,
+        --   typeHints = {
+        --     enable = true,
+        --     hideClosureInitialization = false,
+        --     hideNamedConstructor = false,
+        --   },
+        --   locationLinks = false,
+        -- },
         diagnostics = {
           enable = true,
           -- experimental = {
