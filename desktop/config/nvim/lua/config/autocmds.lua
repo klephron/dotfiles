@@ -8,6 +8,14 @@ funcs.augroup("local_nasm", {
   }
 })
 
+funcs.augroup("local_jenkinsfile", {
+  {
+    event = { "BufRead", "BufNewFile" },
+    pattern = "jenkinsfile,Jenkinsfile,*.jenkinsfile,*.Jenkinsfile",
+    command = "set filetype=groovy"
+  }
+})
+
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 -- Define the augroup for handling binary files with xxd
