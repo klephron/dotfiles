@@ -14,4 +14,5 @@ end
 
 if config.is_nvim then
   require("presets.nvim-lazy")
+  -- require("presets.nvim-basic")
 end
