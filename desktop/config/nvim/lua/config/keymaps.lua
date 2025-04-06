@@ -165,8 +165,6 @@ funcs.set_keynomap("c", "<C-k>", "<Up>", with_nosilent("History scroll up"))
 
 -- Don't load which-key mappings if this plugin is not loaded
 if not wk_ok then
-  vim.notify("which-key is not istalled. Ignoring some keymaps",
-    vim.log.levels.WARN, { title = "keymaps" })
   return
 end
 

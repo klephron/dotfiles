@@ -16,5 +16,6 @@ cheat = "latest"
 poetry = "latest"
 tmux = "3.4"
 cmake = "latest"
+bun = "latest"
 
 [env]
