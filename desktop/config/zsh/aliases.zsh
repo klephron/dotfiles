@@ -38,6 +38,9 @@ alias chownikit="sudo chown nikit:nikit -R ."
 alias c="clear"
 alias o="xdg-open"
 
+# Clipboard
+alias clip="xclip -sel c"
+
 # alias ls="ls --color -F"
 # alias ll="ls --color -lh"
 alias ls="eza -F"

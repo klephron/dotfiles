@@ -118,6 +118,9 @@ local M = {
   yamlls = {},
   ansiblels = {},
   lemminx = {},
+  terraformls = {
+    filetypes = { "terraform", "terraform-vars", "tf" }
+  },
 }
 
 return M
