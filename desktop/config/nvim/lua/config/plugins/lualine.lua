@@ -43,10 +43,10 @@ local M = {
       -- 2: Absolute path
       -- 3: Absolute path, with tilde as the home directory
       path = 0,
-      shorting_target = 40,  -- Shortens path to leave 40 spaces in the window
+      shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
       symbols = {
-        modified = '[+]',    -- Text to show when the file is modified.
-        readonly = '[-]',    -- Text to show when the file is non-modifiable or readonly.
+        modified = '[+]',      -- Text to show when the file is modified.
+        readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
         unnamed = '[No Name]', -- Text to show for unnamed buffers.
       },
       fmt = function()
@@ -82,15 +82,15 @@ local M = {
     end
 
     local session_name = function()
-        return require('possession.session').get_session_name() or ''
+      return require('possession.session').get_session_name() or ''
     end
 
     local hostname = {
-        function()
+      function()
         return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
-        end,
-        padding = { right = 1, left = 1 },
-        separator = { left = "", right = "" },
+      end,
+      padding = { right = 1, left = 1 },
+      separator = { left = "", right = "" },
     }
 
     lualine.setup({
@@ -107,14 +107,14 @@ local M = {
         lualine_b = { hostname, branch, diagnostics },
         lualine_c = { session_name, filename },
         lualine_x = { "aerial" },
-        lualine_y = { diff, "fileformat", spaces, },
+        lualine_y = { diff, "fileformat", spaces, filetype, },
         lualine_z = { location, lualine_progress }
       },
       inactive_sections = {
         lualine_a = { mode },
         lualine_b = { branch },
         lualine_c = { session_name, filename },
-        lualine_x = { "aerial", "fileformat" },
+        lualine_x = { "aerial", "fileformat", filetype, },
         lualine_y = {},
         lualine_z = { location, lualine_progress },
       },

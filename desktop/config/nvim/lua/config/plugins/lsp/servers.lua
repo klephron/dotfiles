@@ -119,7 +119,7 @@ local M = {
   ansiblels = {},
   lemminx = {},
   terraformls = {
-    filetypes = { "terraform", "terraform-vars", "tf" }
+    filetypes = { "terraform", "terraform-vars" }
   },
 }
 

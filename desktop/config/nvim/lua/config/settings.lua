@@ -166,9 +166,9 @@ vim.opt.clipboard = "unnamedplus"
 ----------------------------------------------------------------------------//
 -- Utilities
 -----------------------------------------------------------------------------//
-vim.opt.autowriteall = true -- automatically :write before running commands and changing files
-vim.opt.gdefault = true -- /g in replace is enabled by default (reversed)
-vim.opt.confirm = false -- make vim prompt me to save before doing destructive things
+vim.opt.autowriteall = true   -- automatically :write before running commands and changing files
+vim.opt.gdefault = true       -- /g in replace is enabled by default (reversed)
+vim.opt.confirm = false       -- make vim prompt me to save before doing destructive things
 vim.opt.virtualedit = 'block' -- allow cursor to move where there is no text in visual block mode
 
 --vim.g.did_load_filetypes = 0 -- deactivate vim based filetype detection
@@ -195,3 +195,16 @@ vim.opt.listchars:append "space:⋅"
 -- Recommended-style
 -----------------------------------------------------------------------------//
 vim.g.rust_recommended_style = 0
+-----------------------------------------------------------------------------//
+-- Filetypes
+-----------------------------------------------------------------------------//
+vim.filetype.add({
+  extension = {
+    tf = "terraform"
+  }
+})
+vim.filetype.add({
+  extension = {
+    tfvars = "terraform-vars"
+  }
+})
