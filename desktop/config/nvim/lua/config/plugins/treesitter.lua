@@ -26,7 +26,8 @@ local M = {
       "make",
       "yaml",
       "verilog",
-      "haskell"
+      "haskell",
+      "terraform"
     }
 
     ts_configs.setup({

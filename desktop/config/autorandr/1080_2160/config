@@ -1,0 +1,31 @@
+output HDMI-A-0
+off
+output DisplayPort-0
+crtc 1
+filter nearest
+mode 3840x2160
+pos 1920x0
+rate 60.00
+transform 0.999878,0.000000,0.000000,0.000000,0.999878,0.000000,0.000000,0.000000,1.000000
+x-prop-colorspace Default
+x-prop-max_bpc 16
+x-prop-non_desktop 0
+x-prop-scaling_mode None
+x-prop-tearfree off
+x-prop-underscan off
+x-prop-underscan_hborder 0
+x-prop-underscan_vborder 0
+output eDP
+crtc 0
+mode 1920x1080
+pos 0x1080
+primary
+rate 60.01
+x-prop-colorspace Default
+x-prop-max_bpc 16
+x-prop-non_desktop 0
+x-prop-scaling_mode None
+x-prop-tearfree off
+x-prop-underscan off
+x-prop-underscan_hborder 0
+x-prop-underscan_vborder 0
