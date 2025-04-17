@@ -59,6 +59,9 @@ exec picom &
 # Greenclip
 exec greenclip daemon &
 
+# Clipmenu
+# exec clipmenud &
+
 # Awesome window manager (with disabled opacity)
 exec awesome --no-argb &
 systemctl --user start graphical-session-manager.target

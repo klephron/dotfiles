@@ -431,6 +431,10 @@ local globalkeys = gears.table.join(
       awful.util.spawn_with_shell("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'", false)
     end,
     { description = "list clipboard", group = "clipboard" }),
+  -- clipmenu
+  -- awful.key({ modkey }, "p", function()
+  --   awful.util.spawn_with_shell("clipmenu", false)
+  -- end, { description = "open clipmenu with rofi", group = "clipboard" }),
 
 
   -- Launch programs
