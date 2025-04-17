@@ -17,5 +17,7 @@ poetry = "latest"
 tmux = "3.4"
 cmake = "latest"
 bun = "latest"
+kubectl = "latest"
+kubectl-convert = "latest"
 
 [env]
