@@ -12,3 +12,4 @@ fi
 
 source $XDG_CONFIG_HOME/zsh/plugins/mise.zsh
 source $XDG_CONFIG_HOME/zsh/plugins/zoxide.zsh
+source $XDG_CONFIG_HOME/zsh/plugins/kubectl.zsh
