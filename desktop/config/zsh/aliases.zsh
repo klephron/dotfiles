@@ -55,3 +55,5 @@ alias jl="lazygit"
 alias jd="lazydocker"
 alias v="nvim"
 alias py="python"
+
+alias k="kubectl"
