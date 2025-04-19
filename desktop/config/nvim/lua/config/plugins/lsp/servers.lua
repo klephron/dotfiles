@@ -115,7 +115,16 @@ local M = {
   cssmodules_ls = {},
   css_variables = {},
   bashls = {},
-  yamlls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+          ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+        },
+      },
+    },
+  },
   ansiblels = {},
   lemminx = {},
   terraformls = {
