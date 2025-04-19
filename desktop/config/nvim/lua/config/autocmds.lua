@@ -138,13 +138,13 @@ funcs.augroup("local_resize_on_window_change", {
   }
 })
 
-funcs.augroup("local_wrap_spell", {
+funcs.augroup("local_text", {
   {
     event = "FileType",
     pattern = { "plaintex", "typst", "gitcommit", "markdown" },
     command = function()
       vim.opt_local.wrap = true
-      vim.opt_local.spell = true
+      -- vim.opt_local.spell = true
     end,
   }
 })
