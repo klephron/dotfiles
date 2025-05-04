@@ -1,0 +1,11 @@
+[Unit]
+Description=Throttle CPU Temperature if exceeds 80
+DefaultDependencies=no
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/temp-throttle
+Type=simple
+
+[Install]
+WantedBy=default.target
