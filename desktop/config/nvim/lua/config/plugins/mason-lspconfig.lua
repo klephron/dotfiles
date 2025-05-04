@@ -1,5 +1,6 @@
 local M = {
   "williamboman/mason-lspconfig.nvim",
+  event = "VeryLazy",
   dependencies = {
     { "williamboman/mason.nvim" },
   },
@@ -15,7 +16,7 @@ local M = {
     local options = plugin_lspconfig.fetch_options()
 
     mason_lsp.setup_handlers({
-      function (server)
+      function(server)
         lspconfig[server].setup(options)
       end
     })
