@@ -1,6 +1,3 @@
-local setup_options
-local fetch_options
-
 local M = {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -8,11 +5,7 @@ local M = {
   },
   _options = nil,
   config = function()
-    local servers = require("config.plugins.lsp.servers")
     local funcs = require("utils.funcs")
-
-    local lspconfig = require("lspconfig")
-    local options = fetch_options()
 
     -- Setup diagnostics
     local diagnostics_icons = require("config.icons").diagnostics
@@ -50,12 +43,6 @@ local M = {
       vim.fn.sign_define(hl, { texthl = hl, text = icon, numhl = "" })
     end
 
-    -- Setup servers
-    for server, opts in pairs(servers) do
-      opts = vim.tbl_deep_extend("force", {}, options, opts or {})
-      lspconfig[server].setup(opts)
-    end
-
     local wk_ok, wk = pcall(require, "which-key")
     if wk_ok then
       wk.add({
@@ -70,9 +57,8 @@ local M = {
   end,
 }
 
-setup_options = function()
+M.setup_options = function()
   local keymaps = require("config.plugins.lsp.keymaps")
-
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
   local handlers = {
@@ -108,13 +94,23 @@ setup_options = function()
 end
 
 ---@return table
-fetch_options = function()
+M.fetch_options = function()
   if M._options == nil then
-    setup_options()
+    M.setup_options()
   end
   return M._options
 end
 
-M.fetch_options = fetch_options
+M.setup_servers = function()
+  local lspconfig = require("lspconfig")
+  local servers = require("config.plugins.lsp.servers")
+  local options = M.fetch_options()
+
+  for server, opts in pairs(servers) do
+    opts = vim.tbl_deep_extend("force", {}, options, opts or {})
+    lspconfig[server].setup(opts)
+  end
+  return lspconfig
+end
 
 return M

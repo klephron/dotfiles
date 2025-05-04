@@ -6,24 +6,8 @@ local M = {
 
     mason.setup({})
 
-    local tools = {
-      "lua-language-server",
-    }
-
-    funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", {desc="Log"})
-    funcs.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", {desc="Info"})
-
-    local registry = require("mason-registry")
-
-    registry.refresh(function ()
-      for _, tool in ipairs(tools) do
-        local p = registry.get_package(tool)
-        if not p:is_installed() then
-          p:install()
-        end
-      end
-    end)
-
+    funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log" })
+    funcs.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info" })
   end,
 }
 

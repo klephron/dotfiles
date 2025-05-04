@@ -38,10 +38,6 @@ local M = {
   pyright = {
     single_file_support = true
   },
-  ruff = {
-    settings = {
-    }
-  },
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -105,16 +101,9 @@ local M = {
       }
     }
   },
-  gopls = {},
   hls = {
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
   },
-  -- denols = {},
-  ts_ls = {},
-  cssls = {},
-  cssmodules_ls = {},
-  css_variables = {},
-  bashls = {},
   yamlls = {
     settings = {
       yaml = {
@@ -125,8 +114,6 @@ local M = {
       },
     },
   },
-  ansiblels = {},
-  lemminx = {},
   terraformls = {
     filetypes = { "terraform", "terraform-vars" }
   },
