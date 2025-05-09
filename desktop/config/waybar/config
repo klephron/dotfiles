@@ -1,7 +1,7 @@
 {
-  "modules-left": ["custom/power", "hyprland/workspaces#workspaces"],
+  "modules-left": ["custom/power", "hyprland/workspaces#workspaces", "tray"],
   "modules-center": [],
-  "modules-right": ["tray", "hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
+  "modules-right": ["hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
   "hyprland/workspaces#workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -28,7 +28,8 @@
     "active-only": true,
   },
   "tray": {
-    "spacing": 5
+    "spacing": 7,
+    "show-passive-items": true
   },
   "hyprlang/language": {
     "format": "{short}"
@@ -46,31 +47,31 @@
       "warning": 10,
       "critical": 5
     },
-    "format": "{capacity}% {icon} ",
+    "format": "{icon}  {capacity}%",
     "format-icons": ["", "", "", "", ""]
   },
   "disk": {
     "interval": 30,
-    "format": "{percentage_used}% 🖴",
+    "format": "🖴 {percentage_used}%",
     "path": "/"
   },
   "memory": {
     "interval": 5,
-    "format": "{used:0.2f}G "
+    "format": "  {used:0.2f}G"
   },
  "temperature": {
     "interval": 5,
-    "format": "{temperatureC}°C ",
+    "format": " {temperatureC}°C",
     "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input"
   },
   "network": {
     "interval": 2,
-    "format": "{ifname} {bandwidthDownBytes}↓ {bandwidthUpBytes}↑",
+    "format": "{ifname} ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
   },
   "clock": {
     "interval": 1,
     "format": "{:%H:%M:%S}",
-    "format-alt": "{:%A, %B %d, %Y :%H:%M:%S}",
+    "format-alt": "{:%A, %B %d, %Y %H:%M:%S}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
@@ -94,8 +95,8 @@
     }
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
     "format-muted": "",
     "format-icons": {
       "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
