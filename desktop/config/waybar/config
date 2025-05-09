@@ -1,4 +1,5 @@
 {
+  "fixed-center": false,
   "modules-left": ["custom/power", "hyprland/workspaces#workspaces", "tray"],
   "modules-center": [],
   "modules-right": ["hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
@@ -47,7 +48,7 @@
       "warning": 10,
       "critical": 5
     },
-    "format": "{icon}  {capacity}%",
+    "format": "{icon}   {capacity}%",
     "format-icons": ["", "", "", "", ""]
   },
   "disk": {

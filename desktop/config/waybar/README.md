@@ -13,3 +13,7 @@ Because of these limitations currently taskbar is disabled (too much icons becau
 ### Optional
 
 - Don't force cursor jump when switching to different window using taskbar
+
+## Waybar
+
+- Configurable tooltip delay: https://github.com/Alexays/Waybar/issues/3271
