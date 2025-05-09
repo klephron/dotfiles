@@ -1,5 +1,5 @@
 {
-  "modules-left": ["hyprland/workspaces#workspaces", "wlr/taskbar"],
+  "modules-left": ["hyprland/workspaces#workspaces"],
   "modules-center": [],
   "modules-right": ["tray", "hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
   "hyprland/workspaces#workspaces": {
