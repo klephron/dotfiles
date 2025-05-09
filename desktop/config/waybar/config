@@ -1,6 +1,6 @@
 {
   "modules-left": ["hyprland/workspaces#workspaces"],
-  "modules-center": [],
+  "modules-center": ["wlr/taskbar"],
   "modules-right": ["tray", "hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
   "hyprland/workspaces#workspaces": {
     "format": "{icon}",
@@ -110,5 +110,22 @@
     "scroll-step": 1,
     "on-click": "pavucontrol",
     "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "wlr/taskbar": {
+    "format": "{icon} {title}",
+    "icon-size": 14,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
   }
 }

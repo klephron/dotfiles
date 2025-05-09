@@ -71,3 +71,8 @@ label:focus {
   color: #ffffff;
   padding: 2px 5px;
 }
+
+#taskbar button.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
