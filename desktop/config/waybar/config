@@ -1,8 +1,8 @@
 {
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["hyprland/window"],
-  "modules-right": ["tray", "network", "hyprland/language", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
-  "hyprland/workspaces": {
+  "modules-left": ["hyprland/workspaces#workspaces"],
+  "modules-center": [],
+  "modules-right": ["tray", "hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
+  "hyprland/workspaces#workspaces": {
     "format": "{icon}",
     "format-icons": {
       "urgent": "",
@@ -15,6 +15,18 @@
     "on-scroll-up": "hyprctl dispatch split-workspace e+1",
     "on-scroll-down": "hyprctl dispatch split-workspace e-1"
   },
+  "hyprland/workspaces#windows": {
+    "format": "{windows}",
+    "format-window-separator": " | ",
+    "window-rewrite-default": "{title}",
+    "window-rewrite": {
+      "class<firefox>": "{title}",
+      "class<kitty>": "{title}",
+      "class<code>": "{title}",
+      "title<.*>": "{title}"
+    },
+    "active-only": true,
+  },
   "tray": {
     "spacing": 5
   },
@@ -26,7 +38,7 @@
   },
   "load": {
     "interval": 5,
-    "format": "{load1} {load5} {load15}"
+    "format": "{load1:2.2f} {load5:2.2f} {load15:2.2f}"
   },
   "battery": {
     "interval": 5,
