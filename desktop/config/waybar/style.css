@@ -52,24 +52,12 @@ label:focus {
 }
 
 
-#window {
-  padding: 2px 4px;
-}
-
-
 #clock, #battery, #language, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #load, #disk, #temperature {
-  padding: 2px 5px;
-}
-
-#clock {
-  font-weight: bold;
+  padding: 2px 8px;
 }
 
 #network {
   /* font-family: "Noto Sans Mono"; */
-  min-width: 120px;
-  color: #ffffff;
-  padding: 2px 5px;
 }
 
 #taskbar button.active {
