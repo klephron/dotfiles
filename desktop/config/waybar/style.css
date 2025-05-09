@@ -33,13 +33,13 @@ label:focus {
 
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.focused {
@@ -75,4 +75,9 @@ label:focus {
 #taskbar button.active {
   opacity: 1;
   background: rgba(255, 255, 255, 0.1);
+}
+
+#custom-power {
+  font-size: 20px;
+  padding: 0 5px 0 10px;
 }
