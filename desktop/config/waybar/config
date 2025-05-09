@@ -1,0 +1,84 @@
+{
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["tray", "network", "hyprland/language", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "visible": "",
+      "default": "",
+      "empty": ""
+    },
+    "all-outputs": false,
+    "on-scroll-up": "hyprctl dispatch split-workspace e+1",
+    "on-scroll-down": "hyprctl dispatch split-workspace e-1"
+  },
+  "tray": {
+    "spacing": 5
+  },
+  "hyprlang/language": {
+    "format": "{short}"
+  },
+  "hyprlang/window": {
+    "separate-outputs": true
+  },
+  "load": {
+    "interval": 5,
+    "format": "{load1} {load5} {load15}"
+  },
+  "battery": {
+    "interval": 5,
+    "states": {
+      "warning": 10,
+      "critical": 5
+    },
+    "format": "{capacity}% {icon} ",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}% 🖴",
+    "path": "/"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "{used:0.1f}G "
+  },
+ "temperature": {
+    "interval": 5,
+    "format": "{temperatureC}°C ",
+    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input"
+  },
+  "network": {
+    "interval": 2,
+    "format": "{ifname} {bandwidthDownBytes}↓ {bandwidthUpBytes}↑",
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "format-alt": "{:%A, %B %d, %Y :%H:%M:%S}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  }
+}
