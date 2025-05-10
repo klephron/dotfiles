@@ -133,7 +133,7 @@
   "custom/power": {
     "format": "⏻",
     "exec": "echo power",
-    "on-click": "/usr/local/bin/power_menu",
+    "on-click": "$XDG_CONFIG_HOME/hypr/scripts/power_menu",
     "tooltip": false
   }
 }

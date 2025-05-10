@@ -1,0 +1,12 @@
+.workspace {
+  font-size: 0;
+  font-weight: lighter;
+
+  background-color: transparent;
+  border: unset;
+}
+
+.monitor {
+  background-color: transparent;
+  border: unset;
+}

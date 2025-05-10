@@ -1,0 +1,10 @@
+#!/bin/bash
+
+choice=$(echo -e "Hibernate\nShutdown\nReboot\nSuspend" | wofi --dmenu --width=200 --height=200 )
+
+case "$choice" in
+  Hibernate) systemctl hibernate ;;
+  Shutdown) systemctl poweroff ;;
+  Reboot) systemctl reboot ;;
+  Suspend) systemctl suspend ;;
+esac
