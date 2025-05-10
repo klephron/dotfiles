@@ -1,8 +1,8 @@
 {
   "fixed-center": false,
-  "modules-left": ["custom/power", "hyprland/workspaces#workspaces", "tray"],
+  "modules-left": ["hyprland/workspaces#workspaces", "tray"],
   "modules-center": [],
-  "modules-right": ["hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock"],
+  "modules-right": ["hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock", "custom/power"],
   "hyprland/workspaces#workspaces": {
     "format": "{icon}",
     "format-icons": {

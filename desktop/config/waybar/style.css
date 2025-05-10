@@ -50,7 +50,7 @@ label:focus {
 }
 
 
-#clock, #battery, #language, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #load, #disk, #temperature {
+#clock, #battery, #language, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #load, #disk, #temperature, #custom-power {
   padding: 0 7px;
 }
 
@@ -69,5 +69,4 @@ label:focus {
 
 #custom-power {
   font-size: 20px;
-  padding: 0 5px 0 10px;
 }
