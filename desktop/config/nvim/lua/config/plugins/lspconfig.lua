@@ -1,4 +1,6 @@
-local M = {
+local M;
+
+M = {
   'neovim/nvim-lspconfig',
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
@@ -7,41 +9,7 @@ local M = {
   config = function()
     local funcs = require("utils.funcs")
 
-    -- Setup diagnostics
-    local diagnostics_icons = require("config.icons").diagnostics
-    local diagnostics_signs = {
-      Error = diagnostics_icons.error,
-      Warn = diagnostics_icons.warn,
-      Hint = diagnostics_icons.hint,
-      Info = diagnostics_icons.info
-    }
-
-    vim.diagnostic.config({
-      underline = true,
-      virtual_text = false,
-      -- virtual_text = { spacing = 2, prefix = "●", format = function(diagnostic)
-      --   local STR_MAX_SIZE = 30
-      --   local mes = string.format("%s", diagnostic.message)
-      --   if mes:len() > STR_MAX_SIZE then
-      --     return mes:sub(1, STR_MAX_SIZE - 3) .. "..."
-      --   end
-      --   return mes
-      -- end
-      -- },
-      signs = true,
-      update_in_insert = false,
-      severity_sort = true,
-      float = {
-        focusable = true,
-        style = "minimal",
-        border = "rounded",
-      }
-    })
-
-    for type, icon in pairs(diagnostics_signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { texthl = hl, text = icon, numhl = "" })
-    end
+    M.config_diagnostics()
 
     local wk_ok, wk = pcall(require, "which-key")
     if wk_ok then
@@ -62,14 +30,6 @@ M.setup_options = function()
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
   local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "single",
-      width = 60,
-    }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = "single",
-      width = 60,
-    })
   }
 
   local function on_attach(client, bufnr)
@@ -101,16 +61,52 @@ M.fetch_options = function()
   return M._options
 end
 
-M.setup_servers = function()
-  local lspconfig = require("lspconfig")
+M.config_diagnostics = function()
+  local diagnostics_icons = require("config.icons").diagnostics
+  local diagnostics_signs = {
+    Error = diagnostics_icons.error,
+    Warn = diagnostics_icons.warn,
+    Hint = diagnostics_icons.hint,
+    Info = diagnostics_icons.info
+  }
+
+  vim.diagnostic.config({
+    underline = true,
+    virtual_text = false,
+    -- virtual_text = { spacing = 2, prefix = "●", format = function(diagnostic)
+    --   local STR_MAX_SIZE = 30
+    --   local mes = string.format("%s", diagnostic.message)
+    --   if mes:len() > STR_MAX_SIZE then
+    --     return mes:sub(1, STR_MAX_SIZE - 3) .. "..."
+    --   end
+    --   return mes
+    -- end
+    -- },
+    signs = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = "minimal",
+      border = "rounded",
+    }
+  })
+
+  for type, icon in pairs(diagnostics_signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { texthl = hl, text = icon, numhl = "" })
+  end
+end
+
+
+M.config_servers = function()
   local servers = require("config.plugins.lsp.servers")
   local options = M.fetch_options()
 
-  for server, opts in pairs(servers) do
-    opts = vim.tbl_deep_extend("force", {}, options, opts or {})
-    lspconfig[server].setup(opts)
+  for server, server_options in pairs(servers) do
+    server_options = vim.tbl_deep_extend("force", {}, options, server_options or {})
+    vim.lsp.config(server, server_options)
   end
-  return lspconfig
 end
 
 return M

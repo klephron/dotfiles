@@ -11,18 +11,13 @@ local M = {
       ensure_installed = { "lua_ls" },
     })
 
-    local lspconfig = require("lspconfig")
     local plugin_lspconfig = require("config.plugins.lspconfig")
-    local options = plugin_lspconfig.fetch_options()
 
-    mason_lsp.setup_handlers({
-      function(server)
-        lspconfig[server].setup(options)
-      end
+    mason_lsp.setup({
     })
 
     -- override
-    plugin_lspconfig.setup_servers()
+    plugin_lspconfig.config_servers()
   end
 }
 

@@ -5,18 +5,19 @@ local KeymapDictionary = require("utils.kmps_dict").KeymapDictionary
 M.keymaps = KeymapDictionary:new({
   -- gf (override file open), gl, go, gp, gq, gs, gy, gz
   g_definition = { "gd" },
-  g_declaration = { "gD" },
+  g_declaration = { "gf" },
   g_hover = { "gl" },
   g_implementation = { "gm" },
   g_references = { "gr" },
   g_open_float = { "gh" },
   g_open_float_cursor = { "gH" },
+  g_type_definition = { "gp" },
 
   goto_prev = { "[d", "Goto previous" },
   goto_next = { "]d", "Goto next" },
 
   definition = { "<leader>kd", "Definition" },
-  declaration = { "<leader>ke", "Declaration" },
+  declaration = { "<leader>kf", "Declaration" },
   hover = { "<leader>kl", "Hover" },
   implementation = { "<leader>ki", "Implementation" },
   signature_help = { "<leader>kk", "Signature help" },
@@ -52,8 +53,10 @@ function M.on_attach(client, bufnr)
   utils.set_keynomap("n", kmps.g_declaration.key, vim.lsp.buf.declaration, with_desc("declaration"))
 
   -- hoverProvider
-  utils.set_keynomap("n", kmps.hover.key, vim.lsp.buf.hover, with_desc("hover"))
-  utils.set_keynomap("n", kmps.g_hover.key, vim.lsp.buf.hover, with_desc("hover"))
+  utils.set_keynomap("n", kmps.hover.key, function() vim.lsp.buf.hover({ border = "single", width = 80 }) end,
+    with_desc("hover"))
+  utils.set_keynomap("n", kmps.g_hover.key, function() vim.lsp.buf.hover({ border = "single", width = 80 }) end,
+    with_desc("hover"))
 
   -- implementationProvider
   utils.set_keynomap("n", kmps.implementation.key, vim.lsp.buf.implementation, with_desc("implementation"))
@@ -76,10 +79,13 @@ function M.on_attach(client, bufnr)
   -- us.set_keynomap("n", kmps.code_action.key, vim.lsp.buf.range_code_action, with_desc("code_action")) deprecated
   --
   -- signatureHelpProvider
-  utils.set_keynomap("n", kmps.signature_help.key, vim.lsp.buf.signature_help, with_desc("signature_help"))
+  utils.set_keynomap("n", kmps.signature_help.key,
+    function() vim.lsp.buf.signature_help({ border = "single", width = 80 }) end,
+    with_desc("signature_help"))
 
   -- typeDefinitionProvider
   utils.set_keynomap("n", kmps.type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
+  utils.set_keynomap("n", kmps.g_type_definition.key, vim.lsp.buf.type_definition, with_desc("type_definition"))
 
   -- codeLensProvider
   utils.set_keynomap("n", kmps.codelens.key, vim.lsp.codelens.run, with_desc("codelens"))
