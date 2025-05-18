@@ -25,7 +25,7 @@ M = {
   end,
 }
 
-M.setup_options = function()
+M.calc_options = function()
   local keymaps = require("config.plugins.lsp.keymaps")
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -56,7 +56,7 @@ end
 ---@return table
 M.fetch_options = function()
   if M._options == nil then
-    M.setup_options()
+    M.calc_options()
   end
   return M._options
 end
