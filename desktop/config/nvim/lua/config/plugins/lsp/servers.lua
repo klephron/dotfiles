@@ -117,6 +117,27 @@ local M = {
   terraformls = {
     filetypes = { "terraform", "terraform-vars" }
   },
+  jdtls = {
+    cmd = {
+      'java',
+      '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+      '-Dosgi.bundles.defaultStartLevel=4',
+      '-Declipse.product=org.eclipse.jdt.ls.core.product',
+      '-Dlog.level=ALL',
+      '-noverify',
+      '-Xmx1G',
+      "-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
+      '--add-modules=ALL-SYSTEM',
+      '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+      '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+      '-jar', vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+      '-configuration', vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux/",
+      '-data', vim.fn.stdpath("cache") .. '/jdtls/workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
+    },
+    on_init = function(client, _)
+      client.server_capabilities.semanticTokensProvider = nil
+    end,
+  }
 }
 
 return M
