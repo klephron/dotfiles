@@ -143,10 +143,23 @@ local M = {
     --     }
     --   }
     -- },
-    root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
+    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', 'mvnw', '.git', '.gitignore' }, { upward = true })[1]),
     on_init = function(client, _)
       -- client.server_capabilities.semanticTokensProvider = nil
     end,
+    on_attach = function()
+      local jdtls_ok, jdtls = pcall(require, "jdtls")
+      if jdtls_ok then
+        jdtls.setup_dap({ hotcodereplace = 'auto' })
+      end
+    end,
+    init_options = {
+      bundles = {
+        vim.fn.glob(
+          vim.fn.stdpath("data") ..
+          "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
+      }
+    }
   },
   lemminx = {}
 }

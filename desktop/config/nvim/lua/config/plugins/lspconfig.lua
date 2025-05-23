@@ -25,26 +25,26 @@ M = {
   end,
 }
 
-M.calc_options = function()
+M.on_attach = function(client, bufnr)
   local keymaps = require("config.plugins.lsp.keymaps")
+
+  keymaps.on_attach(client, bufnr)
+  -- Inlay hints
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr })
+  end
+end
+
+M.calc_options = function()
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
   local handlers = {
   }
 
-  local function on_attach(client, bufnr)
-    keymaps.on_attach(client, bufnr)
-    -- Inlay hints
-    if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true, { bufnr })
-    end
-  end
-
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
   M._options = {
-    on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
@@ -105,6 +105,18 @@ M.config_servers = function()
 
   for server, server_options in pairs(servers) do
     server_options = vim.tbl_deep_extend("force", {}, options, server_options or {})
+
+    local server_on_attach = server_options.on_attach
+
+    if server_on_attach then
+      server_options.on_attach = function(client, bufnr)
+        M.on_attach(client, bufnr)
+        server_on_attach(client, bufnr)
+      end
+    else
+      server_options.on_attach = M.on_attach
+    end
+
     vim.lsp.config(server, server_options)
   end
 end
