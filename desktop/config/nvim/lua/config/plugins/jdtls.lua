@@ -8,8 +8,8 @@ local M = {
     local fetch_options = require("config.plugins.lspconfig").fetch_options
     local on_attach = require("config.plugins.lspconfig").on_attach
 
-    local server_options = require("config.plugins.lsp.servers").jdtls
-    server_options = vim.tbl_deep_extend("force", {}, fetch_options(), server_options or {})
+    local server_options = vim.tbl_deep_extend("force", {}, fetch_options(),
+      require("config.plugins.lsp.servers").jdtls or {})
 
     local server_on_attach = server_options.on_attach
 
@@ -20,13 +20,16 @@ local M = {
 
     funcs.augroup("local_jdtls", {
       {
-        event = { "BufRead", "BufNewFile" },
-        pattern = "*.java",
+        event = { "FileType" },
+        pattern = "java",
         command = function()
           jdtls.start_or_attach(server_options)
         end,
       }
     })
+
+    -- force trigger because plugin is loaded on filetype
+    jdtls.start_or_attach(server_options)
   end
 }
 
