@@ -134,10 +134,20 @@ local M = {
       '-configuration', vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux/",
       '-data', vim.fn.stdpath("cache") .. '/jdtls/workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
     },
+    -- settings = {
+    --   java = {
+    --     format = {
+    --       settings = {
+    --         url = vim.fn.getcwd() .. "/eclipse-java-style.xml",
+    --       }
+    --     }
+    --   }
+    -- },
     on_init = function(client, _)
-      client.server_capabilities.semanticTokensProvider = nil
+      -- client.server_capabilities.semanticTokensProvider = nil
     end,
-  }
+  },
+  lemminx = {}
 }
 
 return M

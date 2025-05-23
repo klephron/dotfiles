@@ -16,6 +16,14 @@ funcs.augroup("local_jenkinsfile", {
   }
 })
 
+funcs.augroup("local_jinja", {
+  {
+    event = { "BufRead", "BufNewFile" },
+    pattern = "*.j2",
+    command = "set filetype=jinja"
+  }
+})
+
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 -- Define the augroup for handling binary files with xxd

@@ -27,7 +27,8 @@ local M = {
       "yaml",
       "verilog",
       "haskell",
-      "terraform"
+      "terraform",
+      "jinja"
     }
 
     ts_configs.setup({
