@@ -143,6 +143,7 @@ local M = {
     --     }
     --   }
     -- },
+    root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
     on_init = function(client, _)
       -- client.server_capabilities.semanticTokensProvider = nil
     end,
