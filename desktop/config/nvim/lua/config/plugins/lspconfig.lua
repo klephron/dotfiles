@@ -103,6 +103,10 @@ M.config_servers = function()
   local servers = require("config.plugins.lsp.servers")
   local options = M.fetch_options()
 
+  -- default
+  vim.lsp.config("*", vim.tbl_deep_extend("force", {}, options, { on_attach = M.on_attach }))
+
+  -- specific server configurations
   for server, server_options in pairs(servers) do
     server_options = vim.tbl_deep_extend("force", {}, options, server_options or {})
 
