@@ -217,7 +217,12 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
   timeout = 5,
   settings = function()
-    widget:set_markup(markup.font(theme.font, " " .. math.floor(coretemp_now) .. "°C "))
+    local num = tonumber(coretemp_now)
+    if num then
+      widget:set_markup(markup.font(theme.font, " " .. math.floor(tonumber(coretemp_now)) .. "°C "))
+    else
+      widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. " "))
+    end
   end,
   tempfile = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input"
 })

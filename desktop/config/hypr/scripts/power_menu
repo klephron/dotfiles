@@ -1,6 +1,6 @@
 #!/bin/bash
 
-choice=$(echo -e "Hibernate\nShutdown\nReboot\nSuspend" | rofi -dmenu --width=200 --height=200 )
+choice=$(echo -e "Suspend\nHibernate\nShutdown\nReboot" | rofi -dmenu --width=200 --height=200 )
 
 case "$choice" in
   Hibernate) systemctl hibernate ;;

@@ -17,5 +17,9 @@ cmake = "latest"
 bun = "latest"
 kubectl = "latest"
 kubectl-convert = "latest"
+helm = "latest"
+poetry = "latest"
+terraform = "latest"
+ansible-core = "latest"
 
 [env]
