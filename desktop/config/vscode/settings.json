@@ -1,6 +1,6 @@
 {
-    "window.newWindowProfile": "zubrailx-neovim",
-    "window.menuBarVisibility": "toggle",
-    "keyboard.dispatch": "keyCode",
-    "security.workspace.trust.untrustedFiles": "open",
+  "window.newWindowProfile": "zubrailx-neovim",
+  "window.menuBarVisibility": "toggle",
+  "keyboard.dispatch": "keyCode",
+  "security.workspace.trust.enabled": false
 }
