@@ -20,7 +20,7 @@ require("lazy").setup({
   require("config.plugins.hop"),
   require("config.plugins.vim-easy-align"),
   require("config.plugins.markdown-preview"),
-  require("config.plugins.nvim-surround"),
+  require("config.plugins.surround"),
   require("config.plugins.which-key"),
   require("config.plugins.comment"),
   require("config.plugins.dial"),

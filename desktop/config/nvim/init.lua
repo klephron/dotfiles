@@ -1,18 +1,18 @@
 require("globals")
 
 if config.is_neovide then
-  require("presets.neovide")
+  require("profiles.neovide")
 end
 
 if config.is_firenvim then
-  require("presets.firenvim")
+  require("profiles.firenvim")
 end
 
 if config.is_vscode then
-  require("presets.vscode-lazy")
+  require("profiles.vscode-lazy")
 end
 
 if config.is_nvim then
-  require("presets.nvim-lazy")
-  -- require("presets.nvim-basic")
+  require("profiles.nvim-lazy")
+  -- require("profiles.nvim-basic")
 end
