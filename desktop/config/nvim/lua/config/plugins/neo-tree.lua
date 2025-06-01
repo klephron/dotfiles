@@ -1,28 +1,23 @@
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
     {
       's1n7ax/nvim-window-picker',
-      version = '2.*',
-      config = function()
-        require 'window-picker'.setup({
-          hint = 'floating-big-letter',
-          filter_rules = {
-            include_current_win = false,
-            autoselect_one = true,
-            bo = {
-              filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-              buftype = { 'terminal', "quickfix" },
-            },
+      opts = {
+        hint = 'floating-big-letter',
+        filter_rules = {
+          include_current_win = false,
+          autoselect_one = true,
+          bo = {
+            filetype = { 'neo-tree', "neo-tree-popup", "notify" },
+            buftype = { 'terminal', "quickfix" },
           },
-        })
-      end,
+        },
+      }
     },
   },
   config = function()
     local neo_tree = require("neo-tree")
-    local com_bjarksen = require("config.plugins.neo-tree.mrbjarksen")
 
     neo_tree.setup({
       filesystem = {
@@ -41,11 +36,10 @@ local M = {
             ["u"] = "focus_parent",
             [";"] = "open",
             ["z"] = "none",
-            ['zo'] = com_bjarksen.open_fold,
-            ['zO'] = com_bjarksen.open_folds_rec,
-            ['zc'] = com_bjarksen.close_fold,
-            ['zC'] = "close_all_subnodes",
-            ['za'] = com_bjarksen.toggle_fold,
+            ['zo'] = "expand_all_subnodes",
+            ['zO'] = "expand_all_nodes",
+            ['zc'] = "close_all_subnodes",
+            ['zC'] = "close_all_nodes",
           }
         },
         commands = {

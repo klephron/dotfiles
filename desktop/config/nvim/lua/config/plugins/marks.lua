@@ -16,8 +16,6 @@ local M = {
       vim.fn.sign_place(id, group, sign_name, bufnr, { lnum = line, priority = priority })
     end
 
-    print(vim.inspect(opts))
-
     require("marks").setup(opts)
   end,
   opts = {
