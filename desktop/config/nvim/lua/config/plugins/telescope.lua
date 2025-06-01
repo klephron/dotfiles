@@ -130,10 +130,16 @@ local M = {
     telescope.load_extension('aerial')
   end,
   keys = {
-    { "<leader>b", "<cmd>Telescope buffers<cr>",                                                                                          desc = "telescope: Buffers" },
-    { "<leader>h", "<cmd>Telescope live_grep<cr>",                                                                                        desc = "telescope: Live grep" },
-    { "<leader>r", "<cmd>Telescope oldfiles<cr>",                                                                                         desc = "telescope: Recent files" },
-    { "<leader>s", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", desc = "telescope: Find files" },
+    { "<leader>b", "<cmd>Telescope buffers<cr>",   desc = "telescope: Buffers" },
+    { "<leader>h", "<cmd>Telescope live_grep<cr>", desc = "telescope: Live grep" },
+    { "<leader>r", "<cmd>Telescope oldfiles<cr>",  desc = "telescope: Recent files" },
+    {
+      "<leader>s",
+      function()
+        require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
+      end,
+      desc = "telescope: Find files"
+    },
   }
 }
 
