@@ -16,9 +16,21 @@ local M = {
       vim.fn.sign_place(id, group, sign_name, bufnr, { lnum = line, priority = priority })
     end
 
+    print(vim.inspect(opts))
+
     require("marks").setup(opts)
   end,
   opts = {
+    default_mappings = false,
+    mappings = {
+      set = "m",
+      set_next = "m,",
+      delete = "dm",
+      delete_line = "dm,",
+      delete_buf = "dm<space>",
+      next = "m]",
+      prev = "m[",
+    }
   }
 }
 

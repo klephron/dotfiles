@@ -16,9 +16,9 @@ local M = {
         end,
       },
       keymaps = {
-        view = { q = '<Cmd>DiffviewClose<CR>' },
-        file_panel = { q = '<Cmd>DiffviewClose<CR>' },
-        file_history_panel = { q = '<Cmd>DiffviewClose<CR>' },
+        view = { q = '<cmd>DiffviewClose<cr>' },
+        file_panel = { q = '<cmd>DiffviewClose<cr>' },
+        file_history_panel = { q = '<cmd>DiffviewClose<cr>' },
       },
     })
   end,
