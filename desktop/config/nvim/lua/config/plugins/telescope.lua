@@ -125,11 +125,9 @@ local M = {
     }
 
     telescope.load_extension("noice")
-    telescope.load_extension("notify")
     telescope.load_extension("possession")
     telescope.load_extension('projects')
     telescope.load_extension('aerial')
-    -- telescope.load_extension('dap')
   end,
   keys = {
     { "<leader>b", "<cmd>Telescope buffers<cr>",                                                                                          desc = "telescope: Buffers" },
