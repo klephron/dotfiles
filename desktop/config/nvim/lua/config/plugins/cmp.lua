@@ -22,28 +22,6 @@ local M = {
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
 
-    local function tab_select(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end
-
-    local function s_tab_select(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end
-
     local function toggle_complete()
       if not cmp.visible() then
         cmp.complete()
@@ -69,10 +47,6 @@ local M = {
     end
 
     local function tab_intellij(fallback)
-      -- file = io.open("~/tmp/lua.log", "w")
-      -- io.output(file)
-      -- io.write(vim.inspect(cmp.get_entries()[1].completion_item))
-      -- file:close()
       if cmp.visible() then
         local is_exact = cmp.get_entries()[1].exact
         local comp_item = cmp.get_entries()[1].completion_item
@@ -94,27 +68,6 @@ local M = {
         open_cmp_menu(fallback)
       end
     end
-
-    -- Mappings
-    local old_mappings = {
-      ["<Tab>"] = cmp.mapping(tab_select, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(s_tab_select, { "i", "s" }),
-
-      ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
-      ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
-
-      ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
-      ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
-
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
-      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
-
-      ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
-      ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
-
-      ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort() },
-      ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
-    }
 
     local intellij_mappings = {
       ["<Tab>"] = cmp.mapping(tab_intellij, { "i", "s" }),

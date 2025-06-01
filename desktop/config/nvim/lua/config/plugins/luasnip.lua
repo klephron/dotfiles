@@ -11,11 +11,15 @@ local M = {
     local utils = require("utils.funcs")
 
     luasnip.setup({
-      history = true,
-      update_events = 'TextChanged,TextChangedI',
       region_check_events = 'CursorMoved,CursorMovedI',
+      update_events = 'TextChanged,TextChangedI',
       delete_check_events = "TextChanged",
+      keep_roots = true,
+      link_roots = true,
+      link_children = true,
+
       enable_autosnippets = true,
+
       ext_opts = {
         [types.choiceNode] = {
           active = {
@@ -30,8 +34,6 @@ local M = {
     -- require("luasnip.loaders.from_snipmate").load({ paths = "~/.config/nvim/snippets/snipmate/" })
     require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
 
-    vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
-
     utils.set_keynomap({ "i", "s" }, "<a-k>", function()
       if luasnip.jumpable(1) then
         luasnip.jump(1)
@@ -43,8 +45,9 @@ local M = {
       end
     end)
 
-    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "luasnip: Edit snippets")
+    vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
 
+    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "luasnip: Edit snippets")
   end,
 }
 

@@ -12,7 +12,6 @@ if config.is_vscode then
   require("profiles.vscode-lazy")
 end
 
-
 if config.is_nvim then
   require("profiles.nvim-lazy")
   -- require("profiles.nvim-basic")
