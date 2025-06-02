@@ -22,11 +22,12 @@ local M = {
       diagnostics.protolint,
     }
 
+
     null_ls.setup({
       debounce = options.flags.debounce,
       save_after_format = false,
       debug = false,
-      on_attach = options.on_attach,
+      on_attach = lspconfig.on_attach,
       diagnostics_format = "[#{c}] #{m} (#{s})",
       sources = sources
     })

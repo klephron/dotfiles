@@ -21,6 +21,8 @@ local M = {
       "rust",
       "sql",
       "go",
+      "gomod",
+      "gosum",
       "java",
       "javascript",
       "make",
@@ -45,7 +47,6 @@ local M = {
       sync_install = false,
       auto_install = false,
     })
-
   end
 }
 

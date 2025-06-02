@@ -21,5 +21,6 @@ helm = "latest"
 poetry = "latest"
 terraform = "latest"
 ansible-core = "latest"
+k9s = "latest"
 
 [env]

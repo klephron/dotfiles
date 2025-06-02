@@ -161,7 +161,7 @@ local M = {
       }
     }
   },
-  lemminx = {}
+  lemminx = {},
 }
 
 return M
