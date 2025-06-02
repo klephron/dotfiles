@@ -14,6 +14,9 @@ local M = {
 
     local luasnip = require("luasnip")
     local lspkind = require('lspkind')
+    local protocol = require("vim.lsp.protocol")
+
+    vim.notify(vim.inspect())
 
 
     -- Function implementations
@@ -50,26 +53,21 @@ local M = {
       if cmp.visible() then
         local entries = cmp.get_entries()
         if #entries > 0 then
-          local first_entry = entries[1]
-          local is_exact = first_entry.exact
-          local comp_item = first_entry.completion_item
+          local first = entries[1]
+          local first_is_exact = first.exact
+          local first_item = first.completion_item
+          local first_kind = first_item.kind
 
-          -- Check if completion item exists and has the required properties
-          if comp_item then
-            local is_simple = comp_item.filterText == comp_item.insertText
-                or comp_item.insertTextFormat == nil
-
-            cmp.confirm({
-              select = true
-            }, function() -- callback
-              if is_exact and is_simple and luasnip.jumpable(1) then
-                luasnip.expand_or_jump()
-              end
-            end)
-          else
-            -- Fallback to simple confirm if no completion item
-            cmp.confirm({ select = true })
-          end
+          cmp.confirm({
+            select = true
+          }, function()
+            if first_is_exact and
+                luasnip.jumpable(1) and
+                first_kind ~= protocol.CompletionItemKind.Snippet
+            then
+              luasnip.expand_or_jump()
+            end
+          end)
         else
           fallback()
         end
