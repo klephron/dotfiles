@@ -82,29 +82,6 @@ local M = {
       end
     end
 
-    -- local function tab_intellij(fallback)
-    --   if cmp.visible() then
-    --     local is_exact = cmp.get_entries()[1].exact
-    --     local comp_item = cmp.get_entries()[1].completion_item
-    --     -- if is not expanded
-    --     local is_simple = comp_item.filterText == comp_item.insertText
-    --         or comp_item.insertTextFormat == nil;
-    --     cmp.confirm({
-    --       select = true
-    --     }, function() -- callback
-    --       if is_exact and is_simple and luasnip.jumpable(1) then
-    --         luasnip.expand_or_jump()
-    --       end
-    --     end)
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   elseif not has_words_before() then
-    --     fallback()
-    --   else
-    --     open_cmp_menu(fallback)
-    --   end
-    -- end
-
     local intellij_mappings = {
       ["<Tab>"] = cmp.mapping(tab_intellij, { "i", "s" }),
       ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
