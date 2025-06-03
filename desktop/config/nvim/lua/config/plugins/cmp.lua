@@ -57,12 +57,13 @@ local M = {
           local first_is_exact = first.exact
           local first_item = first.completion_item
           local first_kind = first_item.kind
+          local is_expand_or_jump = luasnip.expand_or_jumpable()
 
           cmp.confirm({
             select = true
           }, function()
             if first_is_exact and
-                luasnip.jumpable(1) and
+                is_expand_or_jump and
                 first_kind ~= protocol.CompletionItemKind.Snippet
             then
               luasnip.expand_or_jump()

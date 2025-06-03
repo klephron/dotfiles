@@ -11,12 +11,12 @@ local M = {
     local utils = require("utils.funcs")
 
     luasnip.setup({
-      region_check_events = 'CursorMoved,CursorMovedI',
+      keep_roots = false,
+      link_roots = false,
+      link_children = false,
       update_events = 'TextChanged,TextChangedI',
+      region_check_events = 'CursorMoved,CursorMovedI',
       delete_check_events = "TextChanged",
-      keep_roots = true,
-      link_roots = true,
-      link_children = true,
 
       enable_autosnippets = true,
 
