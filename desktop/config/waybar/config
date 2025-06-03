@@ -48,8 +48,11 @@
       "warning": 10,
       "critical": 5
     },
-    "format": "{icon}   {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󱞜 {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   },
   "disk": {
     "interval": 30,
