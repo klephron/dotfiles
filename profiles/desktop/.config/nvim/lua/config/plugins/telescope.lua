@@ -106,7 +106,7 @@ local M = {
         },
         find_files = {
           hidden = true,
-          -- no_ignore = false,
+          no_ignore = false,
         },
         oldfiles = {
           hidden = true,

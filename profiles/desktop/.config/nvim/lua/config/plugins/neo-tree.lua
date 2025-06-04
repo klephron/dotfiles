@@ -22,6 +22,11 @@ local M = {
     neo_tree.setup({
       filesystem = {
         use_libuv_file_watcher = true,
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
         follow_current_file = {
           enabled = true,
           -- leave_dirs_open = false,
