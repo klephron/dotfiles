@@ -1,9 +1,8 @@
 .PHONY: default install install/desktop install/dev install/_current help
 
-DESKTOP_DIR := desktop
-DEV_DIR := dev
+PROFILES_DIR := profiles
+PROFILES_CONFIG_SDIR := config
 SCRIPTS_DIR := scripts
-CONFIG_SDIR := config
 
 
 ifndef HOME
@@ -15,6 +14,9 @@ $(error XDG_CONFIG_HOME is not set)
 endif
 
 
+PROFILES := $(notdir $(wildcard $(PROFILES_DIR)/*))
+
+
 default: help
 
 ### Install default (desktop)
@@ -22,17 +24,7 @@ install: install/desktop
 
 
 ### Install configs for desktop
-install/desktop: export DOTFILES_DIR := $(DESKTOP_DIR)
-install/desktop:
-	@$(MAKE) install/_current
-
-### Install configs for dev
-install/dev: export DOTFILES_DIR := $(DEV_DIR)
-install/dev:
-	@$(MAKE) install/_current
-
-
-install/_current:
+install/%:
 	@for var in `ls -A $(DOTFILES_DIR) | grep "^\."`; do \
 		src=$(abspath $(DOTFILES_DIR)/$$var); \
 		dist=$$HOME/$$var; \
