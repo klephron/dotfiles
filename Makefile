@@ -1,7 +1,7 @@
-.PHONY: default install install/desktop install/dev install/_current help
+.PHONY: default install help
 
 PROFILES_DIR := profiles
-PROFILES_CONFIG_SDIR := config
+PROFILES_CONFIG_SDIR := .config
 SCRIPTS_DIR := scripts
 
 
@@ -19,35 +19,49 @@ PROFILES := $(notdir $(wildcard $(PROFILES_DIR)/*))
 
 default: help
 
-### Install default (desktop)
-install: install/desktop
 
+FORCE:
 
-### Install configs for desktop
-install/%:
-	@for var in `ls -A $(DOTFILES_DIR) | grep "^\."`; do \
-		src=$(abspath $(DOTFILES_DIR)/$$var); \
-		dist=$$HOME/$$var; \
-		if ! [ $$src -ef $$dist ]; then \
-			ln -vsfn $$src $$dist ;\
+define make-profile-rule
+
+install/$(1): FORCE
+	@for var in `ls -A $(PROFILES_DIR)/$(1) | grep "^\."`; do \
+		src=$(abspath $(PROFILES_DIR)/$(1)/$$$$var); \
+		dist=$$$$HOME/$$$$var; \
+		if ! [ $$$$src -ef $$$$dist ]; then \
+			ln -vsfn $$$$src $$$$dist ;\
 		fi \
 	done
 
 	@if ! [ -d $(XDG_CONFIG_HOME) ]; then mkdir -v $(XDG_CONFIG_HOME); fi
 
-	@if [ -d $(DOTFILES_DIR)/$(CONFIG_SDIR) ]; then \
-		for var in `ls -A $(DOTFILES_DIR)/$(CONFIG_SDIR)`; do \
-			src=$(abspath $(DOTFILES_DIR)/$(CONFIG_SDIR)/$$var); \
-			dist=$$XDG_CONFIG_HOME/$$var; \
-			if [ -d $$dist ] && ! [ -L $$dist ]; then \
-				echo "$$dist is not a symlink pointing to a directory." ;\
+	@if [ -d $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR) ]; then \
+		for var in `ls -A $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)`; do \
+			src=$(abspath $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var); \
+			dist=$(XDG_CONFIG_HOME)/$$$$var; \
+			if [ -d $$$$dist ] && ! [ -L $$$$dist ]; then \
+				echo "$$$$dist is not a symlink pointing to a directory." ;\
 			else \
-				if ! [ $$src -ef $$dist ]; then \
-					ln -vsfn $$src $$dist  ;\
+				if ! [ $$$$src -ef $$$$dist ]; then \
+					ln -vsfn $$$$src $$$$dist  ;\
 				fi \
 			fi \
 		done \
 	fi
+
+endef
+
+$(foreach profile, $(PROFILES), $(eval $(call make-profile-rule,$(profile))))
+
+### Install default (desktop)
+install: install/desktop
+
+### List available profiles
+profiles: FORCE
+	@echo "Available profiles:"
+	@for profile in $(PROFILES); do \
+		echo "  - $$profile"; \
+	done
 
 ### Help
 help:
