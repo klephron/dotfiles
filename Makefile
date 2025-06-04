@@ -58,9 +58,8 @@ install: install/desktop
 
 ### List available profiles
 profiles: FORCE
-	@echo "Available profiles:"
 	@for profile in $(PROFILES); do \
-		echo "  - $$profile"; \
+		echo "$$profile"; \
 	done
 
 ### Help
