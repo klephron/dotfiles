@@ -16,3 +16,5 @@ if config.is_nvim then
   require("profiles.nvim-lazy")
   -- require("profiles.nvim-basic")
 end
+
+-- vim.lsp.enable("mals_lsp_adapter")

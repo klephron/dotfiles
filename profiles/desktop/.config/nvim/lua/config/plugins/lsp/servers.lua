@@ -162,6 +162,16 @@ local M = {
     }
   },
   lemminx = {},
+  mals_lsp_adapter = {
+    root_dir = vim.fn.getcwd(),
+    cmd = {
+      "/home/nikit/works/active/university-itmo/external/mals-lsp-adapter/build/adapter",
+      "-l",
+      "/home/nikit/works/active/university-itmo/external/mals-vscode/mals-lsp-adapter.log",
+      "-t",
+      "localhost:9651"
+    },
+  }
 }
 
 return M

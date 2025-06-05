@@ -16,9 +16,6 @@ local M = {
     local lspkind = require('lspkind')
     local protocol = require("vim.lsp.protocol")
 
-    vim.notify(vim.inspect())
-
-
     -- Function implementations
     local function has_words_before()
       local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
