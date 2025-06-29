@@ -18,6 +18,7 @@ local M = {
   },
   config = function()
     local neo_tree = require("neo-tree")
+    local funcs = require("utils.funcs")
 
     neo_tree.setup({
       filesystem = {
@@ -33,7 +34,7 @@ local M = {
         },
         hijack_netrw_behaviour = "open_default",
         window = {
-          position = "right",
+          position = "current",
           mappings = {
             ["<space>"] = "none",
             ["o"] = "system_open",
@@ -63,12 +64,11 @@ local M = {
         },
       }
     })
-  end,
-  keys = {
-    { "<leader>e",      "<cmd>Neotree<cr>",                  desc = "Open neotree" },
-    { "<leader>E",      "<cmd>Neotree toggle<cr>",           desc = "Toggle neotree" },
-    { "<localleader>e", "<cmd>Neotree position=current<cr>", desc = "Open neotree netrw" },
-  }
+
+    funcs.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
+    funcs.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
+    funcs.set_keynomap("n", "<localleader>e", "<cmd>Neotree<cr>", "Open neotree netrw")
+  end
 }
 
 return M
