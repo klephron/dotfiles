@@ -22,5 +22,6 @@ poetry = "latest"
 terraform = "latest"
 ansible-core = "latest"
 k9s = "latest"
+conan = "latest"
 
 [env]
