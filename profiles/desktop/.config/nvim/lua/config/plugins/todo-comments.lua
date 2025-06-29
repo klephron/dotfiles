@@ -13,7 +13,12 @@ local M = {
       },
       colors = {
         ok = { "DiagnosticOk", }
-      }
+      },
+      -- NOTE:
+      -- disable highlighting
+      -- highlight = {
+      --   pattern = [[xkfiqpd]]
+      -- }
     })
   end
 }

@@ -1,6 +1,6 @@
 local M = {
   "folke/trouble.nvim",
-  cmd = { "TroubleToggle" },
+  cmd = { "Trouble" },
   config = function()
     local utils = require("utils.funcs")
     local trouble = require("trouble")
@@ -25,8 +25,8 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>i", "<cmd>Trouble diagnostics focus=true<cr>",  desc = "trouble: diagnostics" },
-    { "<leader>I", "<cmd>Trouble diagnostics toggle focus=true<cr>",  desc = "trouble: diagnostics toggle" },
+    { "<leader>i", "<cmd>Trouble diagnostics focus=true<cr>",        desc = "trouble: diagnostics" },
+    { "<leader>I", "<cmd>Trouble diagnostics toggle focus=true<cr>", desc = "trouble: diagnostics toggle" },
   }
 }
 
