@@ -8,6 +8,9 @@ local M = {
     disable = {
       buftypes = config.is_vscode and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt" } or
           {}
+    },
+    icons = {
+      mappings = false,
     }
   },
   keys = {
