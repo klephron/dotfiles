@@ -2,6 +2,8 @@ local M = {
   "folke/todo-comments.nvim",
   config = function()
     local todo = require("todo-comments")
+    local funcs = require("utils.funcs")
+
     todo.setup({
       signs = false,
       keywords = {
@@ -31,10 +33,9 @@ local M = {
       --   pattern = [[xkfiqpd]]
       -- }
     })
-  end,
-  keys = {
-    { "<leader>I", "<cmd>TodoTelescope<cr>", desc = "List todos" },
-  }
+
+    funcs.set_keynomap("n", "<leader>I", "<cmd>LspInstall<cr>", "Install LSP")
+  end
 }
 
 return M
