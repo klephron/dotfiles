@@ -3,7 +3,9 @@ local M = {
   opts = {
     ft_blocklist = {},
     trim_on_write = true,
-    highlight = false
+    highlight = false,
+    trim_last_line = false,
+    notifications = false,
   }
 }
 
