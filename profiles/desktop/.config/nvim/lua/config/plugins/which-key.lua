@@ -11,7 +11,8 @@ local M = {
     },
     icons = {
       mappings = false,
-    }
+    },
+    sort = { "mod", "alphanum", "order" },
   },
   keys = {
     { "<leader>?", "<cmd>WhichKey<cr>", desc = "Open whichkey" },
