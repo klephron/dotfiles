@@ -10,7 +10,7 @@ local M = {
   config = function()
   end,
   keys = {
-    { "<localleader>t", "<cmd>AnsiEsc<cr>", desc = "ansiesc: Escape Ansi codes" },
+    { "<localleader>t", "<cmd>AnsiEsc<cr>", desc = "Escape Ansi codes" },
   },
   cmd = { "AnsiEsc" },
 }

@@ -9,7 +9,7 @@ M.dap_fn = KeymapDictionary:new({
   run_to_cursor = { "<F4>", "Run to cursor", },
   step_back = { "<F5>", "Step back" },
 
-  hover = { "<F6>", "Hover" },
+  hover = { "<F6>", "Open hover" },
 
   run_last = { "<F7>", "Run last" },
   continue = { "<F8>", "Continue" },
@@ -18,7 +18,7 @@ M.dap_fn = KeymapDictionary:new({
   clear_breakpoints = { "<F33>", "Clear breakpoints" }, -- Ctrl + <F9>
 
   terminate = { "<F10>", "Terminate" },
-}, "dap-fn")
+}, "")
 
 M.dap = KeymapDictionary:new({
   -- Main
@@ -51,7 +51,7 @@ M.dap = KeymapDictionary:new({
   reverse_continue = { "<leader>dr", "Reverse continue" },
   repl_toggle = { "<leader>dg", "Toggle REPL" },
   -- repl_session = { "<leader>dx", "REPL session" },
-}, "dap")
+}, "")
 
 
 function M.setup()

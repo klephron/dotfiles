@@ -19,7 +19,7 @@ local M = {
         hint_offset = 0,
         current_line_only = false,
       })
-    end, "hop: Move multiline included")
+    end, "Hop multiline included")
 
     utils.set_keynomap({ "x", "n", "o" }, 'F', function()
       hop.hint_char1({
@@ -27,7 +27,7 @@ local M = {
         hint_offset = 0,
         current_line_only = true,
       })
-    end, "hop: Move current line before cursor included")
+    end, "Hop current line before cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 'f', function()
       hop.hint_char1({
@@ -35,7 +35,7 @@ local M = {
         hint_offset = 0,
         current_line_only = true,
       })
-    end, "hop: Move current line after cursor included")
+    end, "Hop current line after cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 'T', function()
       hop.hint_char1({
@@ -43,7 +43,7 @@ local M = {
         hint_offset = 1,
         current_line_only = true,
       })
-    end, "hop: Move current line before cursor excluded")
+    end, "Hop current line before cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 't', function()
       hop.hint_char1({
@@ -51,7 +51,7 @@ local M = {
         hint_offset = -1,
         current_line_only = true,
       })
-    end, "hop: Move current line after cursor excluded")
+    end, "Hop current line after cursor")
   end
 }
 

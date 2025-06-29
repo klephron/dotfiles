@@ -31,27 +31,27 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 
 if not config.is_vscode and not config.is_firenvim then
   -- Window movements
-  funcs.set_keynomap("n", "<C-k>", "<C-w>k", "win: Move up")
-  funcs.set_keynomap("n", "<C-l>", "<C-w>l", "win: Move right")
-  funcs.set_keynomap("n", "<C-j>", "<C-w>j", "win: Move down")
-  funcs.set_keynomap("n", "<C-h>", "<C-w>h", "win: Move left")
-  funcs.set_keynomap("n", "<C-s>", "<C-w><C-p>", "win: Move previous")
+  funcs.set_keynomap("n", "<C-k>", "<C-w>k", "Move window up")
+  funcs.set_keynomap("n", "<C-l>", "<C-w>l", "Move window right")
+  funcs.set_keynomap("n", "<C-j>", "<C-w>j", "Move window down")
+  funcs.set_keynomap("n", "<C-h>", "<C-w>h", "Move window left")
+  funcs.set_keynomap("n", "<C-s>", "<C-w><C-p>", "Move window previous")
 
   -- Window resize
-  funcs.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "win: Increase height")
-  funcs.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "win: Increase height")
-  funcs.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "win: Decrease height")
-  funcs.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "win: Decrease height")
+  funcs.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "Increase window height")
+  funcs.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "Increase window height")
+  funcs.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "Decrease window height")
+  funcs.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "Decrease window height")
 
-  funcs.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "win: Increase width")
-  funcs.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "win: Increase width")
-  funcs.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
-  funcs.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "win: Decrease width")
+  funcs.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "Increase window width")
+  funcs.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "Increase window width")
+  funcs.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "Decrease window width")
+  funcs.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "Decrease window width")
 end
 
 -- Buffer move
-funcs.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "buf: Move next")
-funcs.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "buf: Move previous")
+funcs.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "Open next buffer")
+funcs.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "Open previous buffer")
 
 -- Open in browser
 funcs.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
@@ -59,11 +59,11 @@ funcs.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand
 
 if not config.is_vscode and not config.is_firenvim then
   -- Tabs
-  funcs.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "tab: Open previous")
-  funcs.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "tab: Open next")
-  funcs.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "tab: Close")
-  funcs.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "tab: Edit current buffer")
-  funcs.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "tab: Close all except current")
+  funcs.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "Open previous tab")
+  funcs.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "Open next tab")
+  funcs.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "Close tab")
+  funcs.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "Edit current buffer in new tab")
+  funcs.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "Close all tabs except current")
 
   funcs.set_keynomap("n", "<leader>tm", function()
     vim.ui.input({ prompt = "Enter new tab index: ", },
@@ -78,7 +78,7 @@ if not config.is_vscode and not config.is_firenvim then
         end
       end
     )
-  end, { silent = false, desc = "tab: Move current to N" })
+  end, { silent = false, desc = "Move current tab to N" })
 
   -- Bind leader keys to specific tabs
   funcs.set_keynomap("n", "<leader>1", "1gt")
@@ -127,16 +127,16 @@ funcs.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
 
 if not funcs.is_vscode then
   -- Quit
-  funcs.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "win: Close")
-  funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "win: Close all")
+  funcs.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "Close window")
+  funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
 
   -- Splits
-  funcs.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "win: Horizontal split")
-  funcs.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "win: Vertical split")
+  funcs.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "Horizontal split")
+  funcs.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "Vertical split")
 end
 
 -- Other
-funcs.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "print ASCII character")
+funcs.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "Print ASCII character")
 
 -- Makes * and # work on visual mode too.
 vim.cmd([[
@@ -169,17 +169,11 @@ if not wk_ok then
 end
 
 -- Leader mappings
-local leader = {
-  { "<leader>t", group = "tabs" },
-}
-
 local localleader = {
-  { "<localleader>w",  group = "watch" },
-  { "<localleader>wc", "<cmd>WatchCreate<cr>", desc = "watch: create" },
-  { "<localleader>wd", "<cmd>WatchDelete<cr>", desc = "watch: delete" },
-  { "<localleader>wl", "<cmd>WatchList<cr>",   desc = "watch: list" },
-  { "<localleader>z",  "<cmd>Lazy<cr>",        desc = "Lazy" },
+  { "<localleader>wc", "<cmd>WatchCreate<cr>", desc = "Create watch" },
+  { "<localleader>wd", "<cmd>WatchDelete<cr>", desc = "Delete watch" },
+  { "<localleader>wl", "<cmd>WatchList<cr>",   desc = "List watches" },
+  { "<localleader>z",  "<cmd>Lazy<cr>",        desc = "Open lazy menu" },
 }
 
-wk.add(leader)
 wk.add(localleader)

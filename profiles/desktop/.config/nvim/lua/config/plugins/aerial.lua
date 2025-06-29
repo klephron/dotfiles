@@ -36,8 +36,8 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>A", "<cmd>AerialToggle!<cr>", desc = "aerial: Toggle" },
-    { "<leader>a", "<cmd>AerialToggle<cr>",  desc = "aerial: Toggle focus" },
+    { "<leader>A", "<cmd>AerialToggle!<cr>", desc = "Toggle aerial menu" },
+    { "<leader>a", "<cmd>AerialToggle<cr>",  desc = "Toggle aerial focus" },
   }
 }
 

@@ -40,16 +40,16 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>V",  "<cmd>Telescope possession list<cr>", desc = "possession: Search session" },
-    { "<leader>vd", "<cmd>PossessionDelete<cr>",          desc = "possession: Delete current session" },
-    { "<leader>vl", "<cmd>PossessionLoad<cr>",            desc = "possession: Load session" },
-    { "<leader>vr", "<cmd>PossessionRename<cr>",          desc = "possession: Rename session" },
+    { "<leader>V",  "<cmd>Telescope possession list<cr>", desc = "Search session" },
+    { "<leader>vd", "<cmd>PossessionDelete<cr>",          desc = "Delete current session" },
+    { "<leader>vl", "<cmd>PossessionLoad<cr>",            desc = "Load session" },
+    { "<leader>vr", "<cmd>PossessionRename<cr>",          desc = " Rename session" },
     {
       "<leader>vs",
       function()
         vim.cmd("PossessionSave!")
       end,
-      desc = "possession: Save session"
+      desc = "Save session"
     },
     {
       "<leader>vS",
@@ -62,7 +62,7 @@ local M = {
           end
         )
       end,
-      desc = "possession: Save session with name"
+      desc = "Save session with name"
     },
   }
 }

@@ -29,10 +29,10 @@ local M = {
     })
   end,
   keys = {
-    { "<C-a>", "<Plug>(dial-increment)", mode = "n", desc = "dial: Increment" },
-    { "<C-x>", "<Plug>(dial-decrement)", mode = "n", desc = "dial: Decrement" },
-    { "<C-a>", "<Plug>(dial-increment)", mode = "v", desc = "dial: Increment" },
-    { "<C-x>", "<Plug>(dial-decrement)", mode = "v", desc = "dial: Decrement" },
+    { "<C-a>", "<Plug>(dial-increment)", mode = "n", desc = "Increment" },
+    { "<C-x>", "<Plug>(dial-decrement)", mode = "n", desc = "Decrement" },
+    { "<C-a>", "<Plug>(dial-increment)", mode = "v", desc = "Increment" },
+    { "<C-x>", "<Plug>(dial-decrement)", mode = "v", desc = "Decrement" },
   }
 }
 

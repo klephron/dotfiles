@@ -7,11 +7,11 @@ local M = {
     end,
     disable = {
       buftypes = config.is_vscode and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt" } or
-      {}
+          {}
     }
   },
   keys = {
-    { "<leader>?", "<cmd>WhichKey<cr>", desc = "whichkey: Open" },
+    { "<leader>?", "<cmd>WhichKey<cr>", desc = "Open whichkey" },
   }
 }
 

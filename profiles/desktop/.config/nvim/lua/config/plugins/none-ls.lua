@@ -32,15 +32,8 @@ local M = {
       sources = sources
     })
 
-    local wk_ok, wk = pcall(require, "which-key")
-    if wk_ok then
-      wk.add({
-        { "<localleader>u", group = "null-ls" },
-      })
-    end
-
-    funcs.set_keynomap("n", "<localleader>ul", "<cmd>NullLsLog<cr>", "null-ls: Log")
-    funcs.set_keynomap("n", "<localleader>us", "<cmd>NullLsInfo<cr>", "null-ls: Info")
+    funcs.set_keynomap("n", "<localleader>ul", "<cmd>NullLsLog<cr>", "Log null-ls")
+    funcs.set_keynomap("n", "<localleader>us", "<cmd>NullLsInfo<cr>", "Info null-ls")
   end,
 }
 

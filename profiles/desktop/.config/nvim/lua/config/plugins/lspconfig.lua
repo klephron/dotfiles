@@ -11,17 +11,10 @@ M = {
 
     M.config_diagnostics()
 
-    local wk_ok, wk = pcall(require, "which-key")
-    if wk_ok then
-      wk.add({
-        { "<localleader>l", group = "lsp" },
-      })
-    end
-
-    funcs.set_keynomap("n", "<localleader>li", "<cmd>LspInstall<cr>", "Install")
-    funcs.set_keynomap("n", "<localleader>ll", "<cmd>LspLog<cr>", "Install")
-    funcs.set_keynomap("n", "<localleader>lr", "<cmd>LspRestart<cr>", "Install")
-    funcs.set_keynomap("n", "<localleader>ls", "<cmd>LspInfo<cr>", "Install")
+    funcs.set_keynomap("n", "<localleader>li", "<cmd>LspInstall<cr>", "Install LSP")
+    funcs.set_keynomap("n", "<localleader>ll", "<cmd>LspLog<cr>", "Log LSP")
+    funcs.set_keynomap("n", "<localleader>lr", "<cmd>LspRestart<cr>", "Restart LSP")
+    funcs.set_keynomap("n", "<localleader>ls", "<cmd>LspInfo<cr>", "Info LSP")
   end,
 }
 

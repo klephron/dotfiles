@@ -48,14 +48,7 @@ local M = {
       }
     })
 
-    local wk_ok, wk = pcall(require, "which-key")
-    if wk_ok then
-      wk.add({
-        { "<localleader>o", group = "neorg" },
-      })
-    end
-
-    funcs.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "neorg: switch workspace")
+    funcs.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "Switch neorg workspace")
   end,
 }
 

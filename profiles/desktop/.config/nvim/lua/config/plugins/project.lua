@@ -26,8 +26,8 @@ local M = {
     }
   end,
   keys = {
-    { "<leader>P", "<cmd>Telescope projects<cr>", desc = "telescope: Projects" },
-    { "<leader>p", "<cmd>ProjectRoot<cr>",        desc = "project: Update root" },
+    { "<leader>P", "<cmd>Telescope projects<cr>", desc = "List projects" },
+    { "<leader>p", "<cmd>ProjectRoot<cr>",        desc = "Update root" },
   }
 }
 

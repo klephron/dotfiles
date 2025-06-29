@@ -12,15 +12,29 @@ local M = {
         NOTE = { color = "ok", alt = { "INFO" } },
       },
       colors = {
-        ok = { "DiagnosticOk", }
+        ok = { "DiagnosticUnnecessary", }
       },
+      search = {
+        command = "rg",
+        args = {
+          "--hidden",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+        },
+      }
       -- NOTE:
       -- disable highlighting
       -- highlight = {
       --   pattern = [[xkfiqpd]]
       -- }
     })
-  end
+  end,
+  keys = {
+    { "<leader>I", "<cmd>TodoTelescope<cr>", desc = "List todos" },
+  }
 }
 
 return M

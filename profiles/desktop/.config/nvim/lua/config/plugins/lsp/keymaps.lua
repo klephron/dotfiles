@@ -13,26 +13,26 @@ M.keymaps = KeymapDictionary:new({
   g_open_float_cursor = { "gH" },
   g_type_definition = { "gp" },
 
-  goto_prev = { "[d", "Goto previous" },
-  goto_next = { "]d", "Goto next" },
+  goto_prev = { "[d", "Goto previous diagnostics" },
+  goto_next = { "]d", "Goto next diagnostics" },
 
-  definition = { "<leader>kd", "Definition" },
-  declaration = { "<leader>kf", "Declaration" },
-  hover = { "<leader>kl", "Hover" },
-  implementation = { "<leader>ki", "Implementation" },
-  signature_help = { "<leader>kk", "Signature help" },
+  definition = { "<leader>kd", "Goto definition" },
+  declaration = { "<leader>kf", "Goto declaration" },
+  hover = { "<leader>kl", "Open hover" },
+  implementation = { "<leader>ki", "Goto implementation" },
+  signature_help = { "<leader>kk", "Open signature help" },
   rename = { "<leader>kn", "Rename" },
-  references = { "<leader>kr", "References" },
-  code_action = { "<leader>ka", "Code action" },
+  references = { "<leader>kr", "List references" },
+  code_action = { "<leader>ka", "Open code action" },
   open_float = { "<leader>kh", "Open float" },
   open_float_cursor = { "<leader>kH", "Open float under cursor" },
   codelens = { "<leader>km", "Run codelens" },
-  type_definition = { "<leader>kp", "Type definition" },
+  type_definition = { "<leader>kp", "Goto type definition" },
 
-  inlay_hints = { "<leader>kt", "Inlay hints" },
+  inlay_hints = { "<leader>kt", "Open inlay hints" },
 
   format = { "<leader>m", "Format file" },
-}, "lsp")
+}, "")
 
 function M.on_attach(client, bufnr)
   local kmps = M.keymaps

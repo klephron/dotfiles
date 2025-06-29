@@ -6,8 +6,8 @@ local M = {
 
     mason.setup({})
 
-    funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log" })
-    funcs.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info" })
+    funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log mason" })
+    funcs.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info mason" })
   end,
 }
 

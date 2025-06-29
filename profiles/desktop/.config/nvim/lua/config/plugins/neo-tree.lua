@@ -65,9 +65,9 @@ local M = {
     })
   end,
   keys = {
-    { "<leader>e",      "<cmd>Neotree<cr>",                  desc = "neo-tree" },
-    { "<leader>E",      "<cmd>Neotree toggle<cr>",           desc = "neo-tree: Toggle" },
-    { "<localleader>e", "<cmd>Neotree position=current<cr>", desc = "Neotree position=current" },
+    { "<leader>e",      "<cmd>Neotree<cr>",                  desc = "Open neotree" },
+    { "<leader>E",      "<cmd>Neotree toggle<cr>",           desc = "Toggle neotree" },
+    { "<localleader>e", "<cmd>Neotree position=current<cr>", desc = "Open neotree netrw" },
   }
 }
 

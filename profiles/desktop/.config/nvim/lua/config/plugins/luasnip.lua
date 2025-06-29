@@ -47,7 +47,7 @@ local M = {
 
     vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
 
-    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "luasnip: Edit snippets")
+    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "Edit snippets")
   end,
 }
 

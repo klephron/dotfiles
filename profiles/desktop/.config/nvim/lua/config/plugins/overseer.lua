@@ -4,11 +4,6 @@ local M = {
     "mfussenegger/nvim-dap",
   },
   event = "VeryLazy",
-  keys = {
-    { "<leader>o", group = "overseer" },
-    { "<leader>o", "<cmd>OverseerOpen<cr>",   "overseer: open" },
-    { "<leader>O", "<cmd>OverseerToggle<cr>", "overseer: toggle" },
-  },
   config = function()
     local overseer = require("overseer")
     overseer.setup({
@@ -24,7 +19,11 @@ local M = {
         }
       }
     })
-  end
+  end,
+  keys = {
+    { "<leader>o", "<cmd>OverseerOpen<cr>",   desc = "Open overseer" },
+    { "<leader>O", "<cmd>OverseerToggle<cr>", desc = "Toggle overseer" },
+  },
 }
 
 return M

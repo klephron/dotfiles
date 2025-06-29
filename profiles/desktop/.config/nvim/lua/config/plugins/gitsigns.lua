@@ -15,8 +15,8 @@ local M = {
   end,
 
   keys = {
-    { "<leader>gb",      "<cmd>Gitsigns blame_line<cr>",                mode = "n", desc = "gitsigns: Blame line" },
-    { "<localleader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", mode = "n", desc = "gitsigns: Toggle current line blame" },
+    { "<leader>gb",      "<cmd>Gitsigns blame_line<cr>",                mode = "n", desc = "Blame line" },
+    { "<localleader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", mode = "n", desc = "Toggle current line blame" },
   }
 }
 

@@ -31,7 +31,7 @@ function M.KeymapDictionary:desc(element)
   local desc = self[element].desc
   if desc == nil then return "" end
   if self.__prefix then
-    return self.__prefix .. ": " .. desc
+    return self.__prefix .. desc
   else
     return desc
   end

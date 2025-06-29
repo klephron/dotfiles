@@ -97,14 +97,13 @@ local M = {
     end, {})
   end,
   keys = {
-    { "<leader>j",  group = "toggleterm" },
-    { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "toggleterm: Open terminal" },
-    { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>", desc = "toggleterm: Toggle all" },
-    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",     desc = "toggleterm: Float" },
-    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",      desc = "toggleterm: Htop" },
-    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",   desc = "toggleterm: Lazygit" },
-    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>",   desc = "toggleterm: Lazydocker" },
-    { "<leader>jt", "<cmd>ToggleTerm<cr>",          desc = "toggleterm: Toggle" },
+    { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
+    { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "Toggle all terminals" },
+    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Open float terminal" },
+    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Open htop" },
+    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Open lazygit" },
+    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Open lazydocker" },
+    { "<leader>jt", "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
   }
 }
 
