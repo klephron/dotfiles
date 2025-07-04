@@ -26,12 +26,12 @@ M.keymaps = KeymapDictionary:new({
   code_action = { "<leader>ka", "Open code action" },
   open_float = { "<leader>kh", "Open float" },
   open_float_cursor = { "<leader>kH", "Open float under cursor" },
-  codelens = { "<leader>km", "Run codelens" },
+  codelens = { "<leader>kc", "Run codelens" },
   type_definition = { "<leader>kp", "Goto type definition" },
 
-  inlay_hints = { "<leader>kt", "Open inlay hints" },
+  format = { "<leader>km", "Format file" },
 
-  format = { "<leader>m", "Format file" },
+  inlay_hints = { "<localleader>kt", "Toggle inlay hints" },
 }, "")
 
 function M.on_attach(client, bufnr)

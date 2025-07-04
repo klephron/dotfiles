@@ -67,8 +67,8 @@ local M = {
     })
   end,
   keys = {
-    { "<localleader>nh", "<cmd>Noice history<cr>", desc = "Open noice history" },
-    { "<localleader>nl", "<cmd>Noice last<cr>",    desc = "Open noice last" },
+    { "<localleader>lh", "<cmd>Noice history<cr>", desc = "Open noice history" },
+    { "<localleader>ll", "<cmd>Noice last<cr>",    desc = "Open noice last" },
   }
 }
 

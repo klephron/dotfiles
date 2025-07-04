@@ -23,8 +23,8 @@ local M = {
     })
   end,
   keys = {
-    { "<localleader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "Open file history" },
-    { "<localleader>do", "<cmd>DiffviewOpen<cr>",        desc = "Open diffview" },
+    { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Open file history" },
+    { "<leader>go", "<cmd>DiffviewOpen<cr>",        desc = "Open diffview" },
   }
 }
 

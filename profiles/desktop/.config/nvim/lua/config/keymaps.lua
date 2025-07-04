@@ -161,19 +161,3 @@ funcs.set_keynomap("c", "<C-b>", "<Left>", with_nosilent("Move char left"))
 funcs.set_keynomap("c", "<C-f>", "<Right>", with_nosilent("Move char right"))
 funcs.set_keynomap("c", "<C-j>", "<Down>", with_nosilent("History scroll down"))
 funcs.set_keynomap("c", "<C-k>", "<Up>", with_nosilent("History scroll up"))
-
-
--- Don't load which-key mappings if this plugin is not loaded
-if not wk_ok then
-  return
-end
-
--- Leader mappings
-local localleader = {
-  { "<localleader>wc", "<cmd>WatchCreate<cr>", desc = "Create watch" },
-  { "<localleader>wd", "<cmd>WatchDelete<cr>", desc = "Delete watch" },
-  { "<localleader>wl", "<cmd>WatchList<cr>",   desc = "List watches" },
-  { "<localleader>z",  "<cmd>Lazy<cr>",        desc = "Open lazy menu" },
-}
-
-wk.add(localleader)

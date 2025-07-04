@@ -11,10 +11,10 @@ M = {
 
     M.config_diagnostics()
 
-    funcs.set_keynomap("n", "<localleader>li", "<cmd>LspInstall<cr>", "Install LSP")
-    funcs.set_keynomap("n", "<localleader>ll", "<cmd>LspLog<cr>", "Log LSP")
-    funcs.set_keynomap("n", "<localleader>lr", "<cmd>LspRestart<cr>", "Restart LSP")
-    funcs.set_keynomap("n", "<localleader>ls", "<cmd>LspInfo<cr>", "Info LSP")
+    funcs.set_keynomap("n", "<localleader>ki", "<cmd>LspInstall<cr>", "Install LSP")
+    funcs.set_keynomap("n", "<localleader>kl", "<cmd>LspLog<cr>", "Log LSP")
+    funcs.set_keynomap("n", "<localleader>kr", "<cmd>LspRestart<cr>", "Restart LSP")
+    funcs.set_keynomap("n", "<localleader>ks", "<cmd>LspInfo<cr>", "Info LSP")
   end,
 }
 
@@ -24,7 +24,7 @@ M.on_attach = function(client, bufnr)
   keymaps.on_attach(client, bufnr)
   -- Inlay hints
   if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(true, { bufnr })
+    vim.lsp.inlay_hint.enable(false, { bufnr })
   end
 end
 

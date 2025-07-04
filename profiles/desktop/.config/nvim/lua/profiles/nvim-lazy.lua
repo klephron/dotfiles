@@ -1,6 +1,7 @@
 require("config.settings")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local funcs = require("utils.funcs")
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -35,6 +36,8 @@ require("lazy").setup(config.prefix.plugins, {
   },
 
 })
+
+funcs.set_keynomap("n", "<localleader>z", "<cmd>Lazy<cr>", "Open lazy menu")
 
 require("config.colorscheme")
 require("config.keymaps")
