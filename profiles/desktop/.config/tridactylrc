@@ -1,4 +1,7 @@
 set theme dark
+
+unbind <C-f>
+
 bind F hint -t
 bind H tabprev
 bind J back
@@ -6,6 +9,12 @@ bind K forward
 bind L tabnext
 bind ^ buffer #
 bind q unfocus
-unbind <C-f>
 bind ' gobble 1 markjump
 bind O tabopen
+bind gd tabduplicate
+
+autocmd DocStart chatgpt.com               mode ignore
+autocmd DocStart colab.research.google.com mode ignore
+autocmd DocStart figma.com                 mode ignore
+autocmd DocStart localhost                 mode ignore
+autocmd DocStart monkeytype.com            mode ignore
