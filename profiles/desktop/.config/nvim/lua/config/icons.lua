@@ -33,7 +33,7 @@ return {
     Key = "",
     Method = "m",
     Module = "",
-    Namespace = "ﰩ",
+    Namespace = "",
     Null = "n",
     Number = " ",
     Object = " ",
