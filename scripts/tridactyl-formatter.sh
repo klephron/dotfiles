@@ -1,6 +1,10 @@
 #!/bin/bash
 
-DIR=$(dirname "$0")
+# get git repository root
+root=$(git rev-parse --show-toplevel)
 
-# execute only from git root
-python $DIR/json-formatter.py .config/tridactyl.json .config/tridactyl.json
+script="$root/scripts/json-formatter.py"
+source="$root/profiles/desktop/.config/tridactyl.json"
+target=$source
+
+python "$script" "$source" "$target"
