@@ -67,7 +67,7 @@ local M = {
 
     funcs.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
     funcs.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
-    funcs.set_keynomap("n", "<localleader>e", "<cmd>Neotree<cr>", "Open neotree netrw")
+    funcs.set_keynomap("n", "<leader>l", "<cmd>Neotree<cr>", "Open neotree netrw")
   end
 }
 
