@@ -2,8 +2,9 @@ local M = {
   "folke/trouble.nvim",
   cmd = { "Trouble" },
   config = function()
-    local utils = require("utils.funcs")
+    local funcs = require("utils.funcs")
     local trouble = require("trouble")
+
     trouble.setup({
       use_diagnostic_signs = true,
       action_keys = {
@@ -11,12 +12,12 @@ local M = {
       }
     })
 
-    utils.augroup("local_trouble", {
+    funcs.augroup("local_trouble", {
       {
         event = "FileType",
         pattern = "Trouble",
         command = function()
-          utils.set_keynomap("n", "q", function()
+          funcs.set_keynomap("n", "q", function()
             vim.cmd('wincmd p')
             vim.cmd('silent! TroubleClose')
           end, { buffer = 0 })
