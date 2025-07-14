@@ -12,6 +12,8 @@ bind q unfocus
 bind ' gobble 1 markjump
 bind O tabopen
 bind gd tabduplicate
+bind j scrollline 5
+bind k scrollline -5
 
 autocmd DocStart chatgpt.com               mode ignore
 autocmd DocStart colab.research.google.com mode ignore

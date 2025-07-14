@@ -30,7 +30,8 @@ local M = {
       "verilog",
       "haskell",
       "terraform",
-      "jinja"
+      "jinja",
+      "json"
     }
 
     ts_configs.setup({
