@@ -8,7 +8,7 @@ local M = {
     local mason_lsp = require("mason-lspconfig")
 
     mason_lsp.setup({
-      ensure_installed = { "lua_ls" },
+      ensure_installed = {},
     })
 
     local plugin_lspconfig = require("config.plugins.lspconfig")
