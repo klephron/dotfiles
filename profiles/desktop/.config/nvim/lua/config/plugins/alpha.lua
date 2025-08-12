@@ -53,7 +53,7 @@ local M = {
     local footer = {
       type = "text",
       val = {
-        "https://github.com/zubrailx"
+        "https://github.com/klephron"
       },
       opts = {
         position = "center",
