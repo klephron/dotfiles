@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/hooks.zsh
+../../../desktop/.config/zsh/hooks.zsh

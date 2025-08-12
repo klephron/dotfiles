@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/aliases.zsh
+../../../desktop/.config/zsh/aliases.zsh

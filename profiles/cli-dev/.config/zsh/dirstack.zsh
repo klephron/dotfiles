@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/dirstack.zsh
+../../../desktop/.config/zsh/dirstack.zsh

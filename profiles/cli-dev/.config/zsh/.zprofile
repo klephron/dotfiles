@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/.zprofile
+../../../desktop/.config/zsh/.zprofile

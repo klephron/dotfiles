@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/functions.zsh
+../../../desktop/.config/zsh/functions.zsh

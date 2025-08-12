@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/completion.zsh
+../../../desktop/.config/zsh/completion.zsh

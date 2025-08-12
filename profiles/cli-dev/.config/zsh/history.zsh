@@ -1,1 +1,1 @@
-../../../desktop/config/zsh/history.zsh
+../../../desktop/.config/zsh/history.zsh
