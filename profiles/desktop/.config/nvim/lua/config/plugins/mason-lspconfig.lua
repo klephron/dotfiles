@@ -18,6 +18,7 @@ local M = {
 
     -- override
     plugin_lspconfig.config_servers()
+    plugin_lspconfig.enable_servers()
   end
 }
 

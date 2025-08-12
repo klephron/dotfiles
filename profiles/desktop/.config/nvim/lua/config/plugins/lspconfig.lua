@@ -118,4 +118,12 @@ M.config_servers = function()
   end
 end
 
+M.enable_servers = function()
+  local servers = require("config.plugins.lsp.servers")
+
+  for server, _ in pairs(servers) do
+    vim.lsp.enable(server, true)
+  end
+end
+
 return M
