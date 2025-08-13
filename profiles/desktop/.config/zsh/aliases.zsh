@@ -41,7 +41,9 @@ alias info='info --vi-keys'
 
 
 alias o="xdg-open"
-alias clip="xclip -sel c"
+alias c="xclip -sel c"
+alias ci="clipboard-get"
+alias co="clipboard-set"
 
 
 alias ta="tmux attach || tmux"
