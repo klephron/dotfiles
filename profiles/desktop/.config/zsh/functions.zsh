@@ -6,7 +6,7 @@ function venv () {
   source $1/bin/activate
 }
 
-function asdf_latest () {
+function asdf-latest () {
   for tool in $(asdf plugin list); do
     asdf install "${tool}" latest  \
       &&  asdf global "${tool}" latest  \
