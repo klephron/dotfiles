@@ -1,3 +1,5 @@
+source $XDG_CONFIG_HOME/zsh/before.zsh
+
 source $XDG_CONFIG_HOME/zsh/plugins.zsh
 
 source $XDG_CONFIG_HOME/zsh/functions.zsh
