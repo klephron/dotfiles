@@ -1,6 +1,6 @@
 [Unit]
 Description=rclonemount
-AssertPathIsDirectory=%h/clouds/%i
+AssertPathIsDirectory=%h/shared/%i
 After=network-online.target
 
 [Service]
