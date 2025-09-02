@@ -8,8 +8,8 @@ Type=simple
 ExecStart=/usr/bin/rclone mount \
         --config=%h/.config/rclone/rclone.conf \
         --vfs-cache-mode=full \
-        %i: %h/clouds/%i
-ExecStop=/bin/fusermount -u %h/clouds/%i
+        %i: %h/shared/%i
+ExecStop=/bin/fusermount -u %h/shared/%i
 Restart=always
 RestartSec=10
 
