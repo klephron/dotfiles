@@ -1,6 +1,6 @@
 [Unit]
 Description=rclonemount
-AssertPathIsDirectory=%h/shared/%i
+AssertPathIsDirectory=%h/share/%i
 After=network-online.target
 
 [Service]
@@ -8,8 +8,8 @@ Type=simple
 ExecStart=/usr/bin/rclone mount \
         --config=%h/.config/rclone/rclone.conf \
         --vfs-cache-mode=full \
-        %i: %h/shared/%i
-ExecStop=/bin/fusermount -u %h/shared/%i
+        %i: %h/share/%i
+ExecStop=/bin/fusermount -u %h/share/%i
 Restart=always
 RestartSec=10
 
