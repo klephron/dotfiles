@@ -3,6 +3,7 @@
 PROFILES_DIR := profiles
 PROFILES_CONFIG_SDIR := .config
 SCRIPTS_DIR := scripts
+BACKUP_EXT := bak
 
 
 ifndef HOME
@@ -25,27 +26,39 @@ FORCE:
 define make-profile-rule
 
 install/$(1): FORCE
-	@for var in `ls -A $(PROFILES_DIR)/$(1) | grep "^\."`; do \
-		src=$(abspath $(PROFILES_DIR)/$(1)/$$$$var); \
-		dist=$$$$HOME/$$$$var; \
-		if ! [ $$$$src -ef $$$$dist ]; then \
+	@for var in `ls -A $(PROFILES_DIR)/$(1) | grep "^\." | grep -v "$(PROFILES_CONFIG_SDIR)"`; do \
+		src=$(abspath $(PROFILES_DIR)/$(1)/$$$$var) ;\
+		dist=$$$$HOME/$$$$var ;\
+		if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
+			bak=$$$$dist.$(BACKUP_EXT); \
+			if [ -e $$$$bak ]; then \
+				echo "$$$$src: backup $$$$bak already exist" ;\
+			else \
+				mv -v $$$$dist $$$$bak ;\
+			fi ;\
+		fi ;\
+		if ! [ -e $$$$dist ]; then \
 			ln -vsfn $$$$src $$$$dist ;\
-		fi \
+		fi ;\
 	done
 
 	@if ! [ -d $(XDG_CONFIG_HOME) ]; then mkdir -v $(XDG_CONFIG_HOME); fi
 
 	@if [ -d $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR) ]; then \
 		for var in `ls -A $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)`; do \
-			src=$(abspath $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var); \
-			dist=$(XDG_CONFIG_HOME)/$$$$var; \
-			if [ -d $$$$dist ] && ! [ -L $$$$dist ]; then \
-				echo "$$$$dist is not a symlink pointing to a directory." ;\
-			else \
-				if ! [ $$$$src -ef $$$$dist ]; then \
-					ln -vsfn $$$$src $$$$dist  ;\
-				fi \
-			fi \
+			src=$(abspath $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var) ;\
+			dist=$(XDG_CONFIG_HOME)/$$$$var ;\
+			if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
+				bak=$$$$dist.$(BACKUP_EXT); \
+				if [ -e $$$$bak ]; then \
+					echo "$$$$src: backup $$$$bak already exist" ;\
+				else \
+					mv -v $$$$dist $$$$bak ;\
+				fi ;\
+			fi ;\
+			if ! [ -e $$$$dist ]; then \
+				ln -vsfn $$$$src $$$$dist ;\
+			fi ;\
 		done \
 	fi
 
