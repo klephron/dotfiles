@@ -1,4 +1,3 @@
-local wk_ok, wk = pcall(require, "which-key")
 local funcs = require("utils.funcs")
 ---------------------------------------------------------------------------//
 -- TERMINAL BUFFER LOCAL
