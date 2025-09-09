@@ -36,7 +36,8 @@ keybind = ctrl+space>9=goto_tab:9
 keybind = ctrl+space>0=goto_tab:10
 keybind = ctrl+space>q=close_tab
 keybind = ctrl+space>comma=move_tab:-1
-keybind = ctrl+space>period=move_tab:-1
+keybind = ctrl+space>period=move_tab:1
+keybind = ctrl+space>r=reload_config
 
 keybind = ctrl+space>u=new_split:right
 keybind = ctrl+space>y=new_split:down
@@ -45,3 +46,5 @@ keybind = ctrl+space>l=goto_split:right
 keybind = ctrl+space>j=goto_split:down
 keybind = ctrl+space>k=goto_split:up
 keybind = ctrl+space>x=close_surface
+
+macos-titlebar-style = tabs
