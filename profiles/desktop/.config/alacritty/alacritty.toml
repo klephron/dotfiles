@@ -79,6 +79,6 @@ x = 0
 y = 0
 
 [general]
-import = ["/home/nikit/.config/alacritty/themes/kanagawa.toml"]
+import = ["/home/klephron/.config/alacritty/themes/kanagawa.toml"]
 
 [terminal]

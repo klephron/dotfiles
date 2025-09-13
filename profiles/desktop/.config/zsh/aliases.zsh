@@ -54,4 +54,4 @@ alias py="python"
 alias k="kubectl"
 
 
-alias chownikit="sudo chown nikit:nikit -R ."
+alias chownr="sudo chown klephron:klephron -R ."
