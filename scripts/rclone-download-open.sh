@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 drives_path=$HOME/Documents/clouds
 download_path=$HOME/Downloads/rclone

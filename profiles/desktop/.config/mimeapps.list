@@ -1,5 +1,7 @@
 [Added Associations]
 application/octet-stream=neovide.desktop;
+application/vnd.apple.keynote=neovide.desktop;
+application/x-compressed-tar=xarchiver.desktop;
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;
 application/x-extension-shtml=firefox.desktop;
@@ -21,7 +23,9 @@ x-scheme-handler/https=firefox.desktop;
 [Default Applications]
 /* application/pdf=org.pwmt.zathura.desktop */
 application/pdf=firefox.desktop;
+application/vnd.apple.keynote=neovide.desktop
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-startcenter.desktop
+application/x-compressed-tar=xarchiver.desktop
 application/x-extension-htm=firefox.desktop
 application/x-extension-html=firefox.desktop
 application/x-extension-shtml=firefox.desktop
@@ -38,6 +42,7 @@ image/svg+xml=qimgv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
 inode/directory=pcmanfm.desktop
 text/html=firefox.desktop
+text/plain=neovide.desktop
 video/x-matroska=vlc.desktop;
 x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_home_klephron_Apps_stm_.desktop

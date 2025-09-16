@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 DISTRO=$(cat /etc/*-release | grep ^NAME | cut -c 6- | tr -d '"')
 HAS_APT= $([[ -z "$(command -v apt)" ]] && echo 0 || echo 1)
 HAS_CURL=$([[ -z "$(command -v curl)" ]] && echo 0 || echo 1)
