@@ -62,7 +62,7 @@ local M = {
       "<localleader>km",
       "<cmd>ConformToggle!<cr>",
       mode = "n",
-      desc = "Toggle global format-on-save"
+      desc = "Toggle format-on-save"
     },
     {
       "<localleader>kM",
