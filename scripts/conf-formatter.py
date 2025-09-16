@@ -1,4 +1,4 @@
-import json
+import configparser
 import argparse
 
 
@@ -28,26 +28,18 @@ def parse_args():
 
 def main():
     input, output = parse_args()
+    cfg = configparser.ConfigParser(strict=False, delimiters=("="))
+    cfg.read(input)
 
-    if input == output:
-        file = open(input, "r+")
-        ifile = file
-        ofile = file
-    else:
-        ifile = open(input, "r")
-        ofile = open(output, "w")
+    with open(output, "w") as f:
+        for section in cfg.sections():
+            header = f"[{section}]\n"
+            f.write(header)
 
-    obj = json.load(ifile)
-
-    if ifile == ofile:
-        # set pointer to starting pos cuz file will be appened by dump
-        ifile.seek(0)
-        ifile.truncate()
-
-    json.dump(obj, ofile, indent=2, sort_keys=True)
-
-    ifile.close()
-    ofile.close()
+            for key in sorted(cfg[section]):
+                entry = f"{key}={cfg[section][key]}\n"
+                f.write(entry)
+            f.write("\n")
 
 
 if __name__ == "__main__":
