@@ -157,18 +157,6 @@ funcs.augroup("local_text", {
   }
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("local_lspformat", { clear = true }),
-  callback = function(args)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format({ async = false, bufnr = args.buf })
-      end,
-    })
-  end
-})
-
 vim.api.nvim_create_user_command("Pwd", function()
   local reg_cmd = "" ..
       ":redir @+ \n" ..

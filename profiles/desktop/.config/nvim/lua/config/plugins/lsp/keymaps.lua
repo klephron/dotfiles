@@ -29,9 +29,9 @@ M.keymaps = KeymapDictionary:new({
   codelens = { "<leader>kc", "Run codelens" },
   type_definition = { "<leader>kp", "Goto type definition" },
 
-  format = { "<leader>km", "Format file" },
+  format = { "<leader>km", "Format buffer" },
 
-  inlay_hints = { "<localleader>kt", "Toggle inlay hints" },
+  inlay_hint = { "<localleader>kt", "Toggle global inlay hints" },
 }, "")
 
 function M.on_attach(client, bufnr)
@@ -93,8 +93,9 @@ function M.on_attach(client, bufnr)
   -- documentSymbolProvider
 
   -- documentFormattingProvider
+  --[[ -- handled by conform-nvim
   funcs.set_keynomap("n", kmps.format.key, function() vim.lsp.buf.format({ async = true }) end,
-    with_desc(("format")))
+  with_desc(("format"))) ]]
 
   -- Diagnostics
   funcs.set_keynomap("n", kmps.open_float.key, '<cmd>lua vim.diagnostic.open_float()<cr>',
@@ -107,9 +108,13 @@ function M.on_attach(client, bufnr)
     with_desc("goto_prev"))
 
   -- Hints
-  funcs.set_keynomap("n", kmps.inlay_hints.key,
-    '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}), {0})<cr>',
-    with_desc("inlay_hints"))
+  funcs.set_keynomap("n", kmps.inlay_hint.key,
+    function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      vim.notify("inlay hints " ..
+        (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"), vim.log.levels.INFO, { title = "lsp" })
+    end,
+    with_desc("inlay_hint"))
 end
 
 return M

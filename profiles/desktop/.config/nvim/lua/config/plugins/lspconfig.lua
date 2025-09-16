@@ -22,10 +22,6 @@ M.on_attach = function(client, bufnr)
   local keymaps = require("config.plugins.lsp.keymaps")
 
   keymaps.on_attach(client, bufnr)
-  -- Inlay hints
-  if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(false, { bufnr })
-  end
 end
 
 M.calc_options = function()
