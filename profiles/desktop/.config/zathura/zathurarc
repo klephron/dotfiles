@@ -1,13 +1,45 @@
-# set recolor
-set recolor-lightcolor \#2E3440
-set recolor-darkcolor \#E6EAF0
-set default-bg \#3B4252
+# theme kanagawa
+set notification-error-bg       \#1f1f28
+set notification-error-fg       \#ff5d62
+set notification-warning-bg     \#1f1f28
+set notification-warning-fg     \#ffa066
+set notification-bg             \#1f1f28
+set notification-fg             \#dcd7ba
+
+set completion-bg               \#1f1f28
+set completion-fg               \#c8c093
+set completion-group-bg         \#2a2a37
+set completion-group-fg         \#c8c093
+set completion-highlight-bg     \#957fb8
+set completion-highlight-fg     \#1f1f28
+
+set index-bg                    \#1f1f28
+set index-fg                    \#957fb8
+set index-active-bg             \#957fb8
+set index-active-fg             \#1f1f28
+
+set inputbar-bg                 \#1f1f28
+set inputbar-fg                 \#c8c093
+
+set statusbar-bg                \#1f1f28
+set statusbar-fg                \#c8c093
+
+set highlight-color             \#ffa066
+set highlight-active-color      \#ff5d62
+
+set default-bg                  \#1f1f28
+set default-fg                  \#dcd7ba
+set render-loading              true
+set render-loading-bg           \#1f1f28
+set render-loading-fg           \#dcd7ba
+
+set recolor-lightcolor          \#1f1f28
+set recolor-darkcolor           \#dcd7ba
 set recolor-keephue
+set recolor                     false
+
 
 set selection-clipboard clipboard
 
+
 set incremental-search true
-
-
-# Features described: https://wiki.archlinux.org/title/Zathura
-
