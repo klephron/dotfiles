@@ -1,6 +1,12 @@
 local M = {
   "norcalli/nvim-colorizer.lua",
-  opts = {},
+  config = function()
+    require('colorizer').setup({
+    }, {
+      rgb_fn = true,
+      hsl_fn = true,
+    })
+  end,
   keys = {
     {
       "<localleader>c",
