@@ -41,5 +41,7 @@ set recolor                    "false"
 
 set selection-clipboard        "clipboard"
 
-
 set incremental-search         "true"
+
+
+map i set recolor
