@@ -6,12 +6,13 @@ local M = {
     local autopairs_cmp = require('nvim-autopairs.completion.cmp')
 
     autopairs.setup({
-      check_ts = true,
+      check_ts = false,
       fast_wrap = {
         map = "<M-e>",
         chars = { "{", "[", "(", '"', "'" },
-        pattern = [=[[%'%"%>%]%)%}%,]]=],
+        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
         keys = "qwertyuiopzxcvbnmasdfghjkl",
+        check_comma = true,
         highlight = "PmenuSel",
         highlight_grey = "LineNr",
       },
