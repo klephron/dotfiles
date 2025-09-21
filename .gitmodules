@@ -1,6 +1,6 @@
 [submodule "lain"]
   path = profiles/desktop/.config/awesome/plugins/lain
-  url = git@github.com:lcpz/lain.git
+  url = git@github.com:klephron/lain.git
 [submodule "freedesktop"]
   path = profiles/desktop/.config/awesome/plugins/freedesktop
   url = git@github.com:lcpz/awesome-freedesktop.git
