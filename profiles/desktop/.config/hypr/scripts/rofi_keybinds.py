@@ -28,7 +28,8 @@ def mod_to_string(modmask: int) -> str:
     return "_".join(res)
 
 
-def get_rofi_input() -> str:
+def get_rofi_input(align: bool = False) -> str:
+    binds = []
     bindstrs = []
 
     for bind in json.loads(subprocess.check_output(["hyprctl", "binds", "-j"])):
@@ -43,12 +44,24 @@ def get_rofi_input() -> str:
         else:
             modkey = mod + "," + key
 
-        bindstr = (
-            f'<span color="lightgray">{modkey}</span>: '
-            f'<span color="white">{dispatcher}</span> '
-            f'<span color="white">{args_escaped}</span>'
-        )
+        binds.append((modkey, dispatcher, args_escaped))
 
+    modkey_mxlen = -1
+    if align:
+        for bind in binds:
+            modkey_mxlen = max(modkey_mxlen, len(bind[0]))
+
+    for bind in binds:
+        modkey = (
+            bind[0] + " " * (modkey_mxlen - len(bind[0]))
+            if modkey_mxlen != -1
+            else bind[0]
+        )
+        bindstr = (
+            f'<span color="lightgray">{modkey}</span> '
+            f'<span color="white">{bind[1]}</span> '
+            f'<span color="white">{bind[2]}</span>'
+        )
         bindstrs.append(bindstr)
 
     return "\n".join(bindstrs)
@@ -72,7 +85,7 @@ def dispatch(choice: str):
 
 
 def main():
-    rofi_input = get_rofi_input()
+    rofi_input = get_rofi_input(align=True)
 
     choice = subprocess.check_output(
         ["rofi", "-dmenu", "-i", "-markup-rows", "-p", "Hyprland Keybinds:"],
