@@ -4,6 +4,8 @@ import json
 import subprocess
 import re
 import html
+import argparse
+import sys
 
 
 mod_map = {
@@ -84,11 +86,35 @@ def dispatch(choice: str):
         subprocess.run(cmd, shell=True)
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="rofi hyprland binds viewer",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        usage="%(prog)s [options] [-- rofi_cmd...]",
+    )
+    parser.add_argument("-a", "--align", default=True, type=bool, help="Align rows")
+
+    if "--" in sys.argv:
+        idx = sys.argv.index("--")
+        argv, rofi_cmd = sys.argv[1:idx], sys.argv[idx + 1 :]
+    else:
+        argv, rofi_cmd = sys.argv[1:], []
+
+    args = parser.parse_args(argv)
+
+    return (args.align, rofi_cmd)
+
+
 def main():
-    rofi_input = get_rofi_input(align=True)
+    (align, rofi_cmd) = parse_args()
+
+    if len(rofi_cmd) == 0:
+        rofi_cmd = ["rofi", "-dmenu", "-i", "-markup-rows", "-p", "keybinds"]
+
+    rofi_input = get_rofi_input(align=align)
 
     choice = subprocess.check_output(
-        ["rofi", "-dmenu", "-i", "-markup-rows", "-p", "Hyprland Keybinds:"],
+        rofi_cmd,
         input=rofi_input,
         text=True,
     )
