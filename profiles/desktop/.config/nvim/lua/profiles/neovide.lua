@@ -1,4 +1,5 @@
 vim.opt.guifont = "FiraCode Nerd Font Mono:h12"
+vim.g.neovide_scroll_animation_length = 0
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_profiler = false
 vim.g.neovide_input_use_logo = true

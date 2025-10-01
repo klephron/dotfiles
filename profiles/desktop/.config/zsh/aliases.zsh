@@ -33,7 +33,7 @@ alias docker-ips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}
 
 # alias ls="ls --color -F"
 # alias ll="ls --color -lh"
-alias ls="eza -F"
+alias ls="eza -F --sort Name"
 alias ll="ls -l"
 alias lsa="ls -a"
 alias lla="ls -la"
