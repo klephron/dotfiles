@@ -8,7 +8,7 @@ root=$(git rev-parse --show-toplevel)
 
 cd $root
 
-. $root/${PROFILE}/.xdgenv
+. $root/profiles/${PROFILE}/.xdgenv
 
 make install/${PROFILE}
 
