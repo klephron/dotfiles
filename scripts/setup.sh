@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+set -euo pipefail
 
-# Install configuration
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-root_path=$parent_path/..
+PROFILE=cli-dev
 
-cd $root_path
+root=$(git rev-parse --show-toplevel)
 
-. ./dev/.xdgenv
+cd $root
 
-make install/dev
+. $root/${PROFILE}/.xdgenv
+
+make install/${PROFILE}
 
 # Setup zsh for current user
 echo "emulate sh -c 'source /etc/profile'" >> ~/.profile
