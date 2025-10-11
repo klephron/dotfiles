@@ -5,21 +5,18 @@ local M = {
     local funcs = require("utils.funcs")
     local null_ls = require("null-ls")
     local lspconfig = require("config.plugins.lspconfig")
-    local options = lspconfig.fetch_options()
 
-    local code_actions = null_ls.builtins.code_actions
-    local diagnostics = null_ls.builtins.diagnostics
-    local formatting = null_ls.builtins.formatting
-    local completion = null_ls.builtins.completion
-    local hover = null_ls.builtins.hover
+    local options = lspconfig.fetch_options()
+    local builtins = null_ls.builtins
 
     local sources = {
-      formatting.prettier,
-      formatting.black,
+      builtins.formatting.prettier,
+      builtins.formatting.black,
+      builtins.formatting.sql_formatter,
 
-      -- diagnostics.mypy.with { extra_args = { "--strict" } },
-      diagnostics.mypy,
-      diagnostics.protolint,
+      -- builtins.diagnostics.mypy.with { extra_args = { "--strict" } },
+      builtins.diagnostics.mypy,
+      builtins.diagnostics.protolint,
     }
 
 
