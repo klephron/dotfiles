@@ -162,6 +162,8 @@ local M = {
     }
   },
   lemminx = {},
+  sqruff = {},
+
   mals_lsp_adapter = {
     root_dir = vim.fn.getcwd(),
     cmd = {

@@ -12,7 +12,6 @@ local M = {
     local sources = {
       builtins.formatting.prettier,
       builtins.formatting.black,
-      builtins.formatting.sql_formatter,
 
       -- builtins.diagnostics.mypy.with { extra_args = { "--strict" } },
       builtins.diagnostics.mypy,
