@@ -9,7 +9,7 @@ M = {
   config = function()
     local funcs = require("utils.funcs")
 
-    M.config_diagnostics()
+    M.diagnostics_configure()
 
     funcs.set_keynomap("n", "<localleader>ki", "<cmd>LspInstall<cr>", "Install LSP")
     funcs.set_keynomap("n", "<localleader>kl", "<cmd>LspLog<cr>", "Log LSP")
@@ -24,7 +24,7 @@ M.on_attach = function(client, bufnr)
   keymaps.on_attach(client, bufnr)
 end
 
-M.calc_options = function()
+M._options_get = function()
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
   local handlers = {
@@ -33,7 +33,7 @@ M.calc_options = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-  M._options = {
+  return {
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
@@ -43,14 +43,14 @@ M.calc_options = function()
 end
 
 ---@return table
-M.fetch_options = function()
+M.options_fetch = function()
   if M._options == nil then
-    M.calc_options()
+    M._options = M._options_get()
   end
   return M._options
 end
 
-M.config_diagnostics = function()
+M.diagnostics_configure = function()
   local diagnostics_icons = require("config.icons").diagnostics
   local diagnostics_signs = {
     Error = diagnostics_icons.error,
@@ -87,10 +87,8 @@ M.config_diagnostics = function()
   end
 end
 
-
-M.config_servers = function()
-  local servers = require("config.plugins.lsp.servers")
-  local options = M.fetch_options()
+M._servers_config = function(servers)
+  local options = M.options_fetch()
 
   -- default
   vim.lsp.config("*", vim.tbl_deep_extend("force", {}, options, { on_attach = M.on_attach }))
@@ -114,12 +112,20 @@ M.config_servers = function()
   end
 end
 
-M.enable_servers = function()
-  local servers = require("config.plugins.lsp.servers")
+M.servers_config = function()
+  M._servers_config(require("config.plugins.lsp.servers"))
+  M._servers_config(require("config.plugins.lsp.servers-local"))
+end
 
+M._servers_enable = function(servers)
   for server, _ in pairs(servers) do
     vim.lsp.enable(server, true)
   end
+end
+
+M.servers_enable = function()
+  M._servers_enable(require("config.plugins.lsp.servers"))
+  M._servers_enable(require("config.plugins.lsp.servers-local"))
 end
 
 return M

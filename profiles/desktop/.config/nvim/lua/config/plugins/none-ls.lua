@@ -6,7 +6,7 @@ local M = {
     local null_ls = require("null-ls")
     local lspconfig = require("config.plugins.lspconfig")
 
-    local options = lspconfig.fetch_options()
+    local options = lspconfig.options_fetch()
     local builtins = null_ls.builtins
 
     local sources = {

@@ -5,10 +5,10 @@ local M = {
     local funcs = require("utils.funcs")
     local jdtls = require("jdtls")
 
-    local fetch_options = require("config.plugins.lspconfig").fetch_options
+    local options_fetch = require("config.plugins.lspconfig").options_fetch
     local on_attach = require("config.plugins.lspconfig").on_attach
 
-    local server_options = vim.tbl_deep_extend("force", {}, fetch_options(),
+    local server_options = vim.tbl_deep_extend("force", {}, options_fetch(),
       require("config.plugins.lsp.servers").jdtls or {})
 
     local server_on_attach = server_options.on_attach
