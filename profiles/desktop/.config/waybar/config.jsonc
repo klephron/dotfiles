@@ -3,71 +3,51 @@
     "fixed-center": false,
     "modules-left": ["hyprland/workspaces#workspaces", "tray"],
     "modules-center": [],
-    "modules-right": ["hyprland/language", "network", "pulseaudio", "memory", "load", "temperature", "disk", "battery", "clock", "custom/power"],
-    "hyprland/workspaces#workspaces": {
-      "format": "{icon}",
-      "format-icons": {
-        "urgent": "",
-        "active": "",
-        "visible": "",
-        "default": "",
-        "empty": ""
-      },
-      "all-outputs": false,
-      "on-scroll-up": "hyprctl dispatch split-workspace e+1",
-      "on-scroll-down": "hyprctl dispatch split-workspace e-1"
-    },
-    "hyprland/workspaces#windows": {
-      "format": "{windows}",
-      "format-window-separator": " | ",
-      "window-rewrite-default": "{title}",
-      "window-rewrite": {
-        "class<firefox>": "{title}",
-        "class<kitty>": "{title}",
-        "class<code>": "{title}",
-        "title<.*>": "{title}"
-      },
-      "active-only": true,
-    },
+    "modules-right": [
+      "hyprland/language",
+      "network",
+      "pulseaudio",
+      "memory",
+      "load",
+      "temperature",
+      "disk",
+      "battery",
+      "clock",
+      "custom/power",
+    ],
     "tray": {
       "spacing": 7,
-      "show-passive-items": true
-    },
-    "hyprlang/language": {
-      "format": "{short}"
-    },
-    "hyprlang/window": {
-      "separate-outputs": true
+      "show-passive-items": true,
     },
     "load": {
       "interval": 5,
-      "format": "{load1:2.2f} {load5:2.2f} {load15:2.2f}"
+      "format": "{load1:2.2f} {load5:2.2f} {load15:2.2f}",
     },
     "battery": {
       "interval": 5,
       "states": {
         "warning": 10,
-        "critical": 5
+        "critical": 5,
       },
       "format": "{icon} {capacity}%",
       "format-full": "{icon} {capacity}%",
       "format-charging": "󰂄 {capacity}%",
       "format-plugged": "󱞜 {capacity}%",
-      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     },
     "disk": {
       "interval": 30,
       "format": "🖴 {percentage_used}%",
-      "path": "/"
+      "path": "/",
     },
     "memory": {
       "interval": 5,
-      "format": "  {used:0.2f}G"
+      "format": "  {used:0.2f}G",
     },
-   "temperature": {
+    "temperature": {
       "interval": 5,
       "format": " {temperatureC}°C",
-      "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input"
+      "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input",
     },
     "network": {
       "interval": 2,
@@ -88,16 +68,16 @@
           "days": "<span color='#ecc6d9'><b>{}</b></span>",
           "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
           "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-        }
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        },
       },
       "actions": {
         "on-click-right": "mode",
         "on-click-forward": "tz_up",
         "on-click-backward": "tz_down",
         "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
-      }
+        "on-scroll-down": "shift_down",
+      },
     },
     "pulseaudio": {
       "format": "{icon}  {volume}%",
@@ -111,11 +91,42 @@
         "phone": "",
         "phone-muted": "",
         "portable": "",
-        "default": ["", ""]
+        "default": ["", ""],
       },
       "scroll-step": 1,
       "on-click": "pavucontrol",
-      "ignored-sinks": ["Easy Effects Sink"]
+      "ignored-sinks": ["Easy Effects Sink"],
+    },
+    "hyprland/workspaces#workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "urgent": "",
+        "active": "",
+        "visible": "",
+        "default": "",
+        "empty": "",
+      },
+      "all-outputs": false,
+      "on-scroll-up": "hyprctl dispatch split-workspace e+1",
+      "on-scroll-down": "hyprctl dispatch split-workspace e-1",
+    },
+    "hyprland/workspaces#windows": {
+      "format": "{windows}",
+      "format-window-separator": " | ",
+      "window-rewrite-default": "{title}",
+      "window-rewrite": {
+        "class<firefox>": "{title}",
+        "class<kitty>": "{title}",
+        "class<code>": "{title}",
+        "title<.*>": "{title}",
+      },
+      "active-only": true,
+    },
+    "hyprlang/language": {
+      "format": "{short}",
+    },
+    "hyprlang/window": {
+      "separate-outputs": true,
     },
     "wlr/taskbar": {
       "format": "{icon} {title}",
@@ -124,21 +135,20 @@
       "tooltip-format": "{title}",
       "on-click": "activate",
       "on-click-middle": "close",
-      "ignore-list": [
-      ],
+      "ignore-list": [],
       "app_ids-mapping": {
-        "firefoxdeveloperedition": "firefox-developer-edition"
+        "firefoxdeveloperedition": "firefox-developer-edition",
       },
       "rewrite": {
         "Firefox Web Browser": "Firefox",
-        "Foot Server": "Terminal"
-      }
+        "Foot Server": "Terminal",
+      },
     },
     "custom/power": {
       "format": "⏻",
       "exec": "echo power",
       "on-click": "$XDG_CONFIG_HOME/hypr/scripts/power_menu",
-      "tooltip": false
+      "tooltip": false,
     },
   },
 ]
