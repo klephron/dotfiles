@@ -163,6 +163,7 @@ local M = {
   },
   lemminx = {},
   sqruff = {},
+  buf = {},
 }
 
 return M

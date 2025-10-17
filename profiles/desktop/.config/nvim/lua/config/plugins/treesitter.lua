@@ -31,7 +31,8 @@ local M = {
       "haskell",
       "terraform",
       "jinja",
-      "json"
+      "json",
+      "jsonc"
     }
 
     ts_configs.setup({
