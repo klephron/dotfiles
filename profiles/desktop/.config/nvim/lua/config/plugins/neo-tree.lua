@@ -22,6 +22,7 @@ local M = {
 
     local command_up = function(state)
       local node = state.tree:get_node()
+      if not node then return end
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end
 
@@ -32,24 +33,32 @@ local M = {
         return
       end
 
-      if not node:is_expanded() then
-        state.commands.toggle_node(state)
+      local function callback()
+        if node:has_children() then
+          require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+        end
       end
+
+      if node:is_expanded() then
+        callback()
+        return
+      end
+
+      state.commands.toggle_node(state)
 
       local timer = vim.uv.new_timer()
       local start = vim.uv.now()
 
-      timer:start(0, 10, vim.schedule_wrap(function()
-        local refreshed = state.tree:get_node(node:get_id())
-        if refreshed and refreshed:is_expanded() then
-          require("neo-tree.ui.renderer").focus_node(state, refreshed:get_child_ids()[1])
+      timer:start(0, 10, function()
+        if node:is_expanded() then
           timer:stop()
           timer:close()
-        elseif not refreshed or vim.uv.now() - start > 500 then
+          vim.schedule(callback)
+        elseif vim.uv.now() - start > 500 then
           timer:stop()
           timer:close()
         end
-      end))
+      end)
     end
 
     neo_tree.setup({
