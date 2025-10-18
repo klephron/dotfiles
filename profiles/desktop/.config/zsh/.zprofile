@@ -11,5 +11,3 @@ fi
 emulate bash
 . ~/.profile
 emulate zsh
-
-

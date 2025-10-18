@@ -7,9 +7,9 @@ alias gentoo-sysupdateall.emerge="sudo emerge -aDNuv @world"
 alias gentoo-ntp-sync="sudo ntpdate -b -u 0.gentoo.pool.ntp.org"
 
 
-alias pac-update="sudo pacman -Syu"
-alias pac-rmorph="sudo pacman -Rns \$(pacman -Qdtq)"
-alias pac-list="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
+alias pacupdate="sudo pacman -Syu"
+alias pacrmorph="sudo pacman -Rns \$(pacman -Qdtq)"
+alias paclist="LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | LC_ALL=C.UTF-8 sort -h"
 alias yayn="yay --answerdiff none --answerclean none --answeredit none"
 alias yayni="yayn --ignore \$(< /etc/pacman-ignore.txt tr '\\n' ',' | sed 's/,$//')"
 
@@ -23,12 +23,12 @@ alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresourc
 
 
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
-alias ssh-devpod="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
-alias ssh-nc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
+alias sshdev="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
+alias sshnc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
 
 
-alias docker-ip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
-alias docker-ips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
+alias dockerip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
+alias dockerips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
 
 
 # alias ls="ls --color -F"

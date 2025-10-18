@@ -1,16 +1,19 @@
-source $XDG_CONFIG_HOME/zsh/before.zsh
+config=$XDG_CONFIG_HOME/zsh
 
-source $XDG_CONFIG_HOME/zsh/plugins.zsh
+source $config/builtins/completion.zsh
+source $config/builtins/dirstack.zsh
+source $config/builtins/history.zsh
+source $config/builtins/prompt.zsh
 
-source $XDG_CONFIG_HOME/zsh/functions.zsh
-source $XDG_CONFIG_HOME/zsh/hooks.zsh
+source $config/plugins/syntax-highlighting.zsh
+source $config/plugins/autosuggestions.zsh
+source $config/plugins/fzf.zsh
+source $config/plugins/mise.zsh
+source $config/plugins/zoxide.zsh
+source $config/plugins/kubectl.zsh
+source $config/plugins/yazi.zsh
 
-# built-in plugin configuration
-source $XDG_CONFIG_HOME/zsh/completion.zsh
-source $XDG_CONFIG_HOME/zsh/dirstack.zsh
-source $XDG_CONFIG_HOME/zsh/history.zsh
-source $XDG_CONFIG_HOME/zsh/prompt.zsh
-
-# aliases
-source $XDG_CONFIG_HOME/zsh/bindkeys.zsh
-source $XDG_CONFIG_HOME/zsh/aliases.zsh
+source $config/functions.zsh
+source $config/hooks.zsh
+source $config/bindkeys.zsh
+source $config/aliases.zsh
