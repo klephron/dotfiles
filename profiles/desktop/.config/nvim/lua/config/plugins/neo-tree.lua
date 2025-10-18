@@ -20,6 +20,38 @@ local M = {
     local neo_tree = require("neo-tree")
     local funcs = require("utils.funcs")
 
+    local command_up = function(state)
+      local node = state.tree:get_node()
+      require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+    end
+
+    local command_down = function(state)
+      local node = state.tree:get_node()
+
+      if not node or not (node.type == "directory" or node:has_children()) then
+        return
+      end
+
+      if not node:is_expanded() then
+        state.commands.toggle_node(state)
+      end
+
+      local timer = vim.uv.new_timer()
+      local start = vim.uv.now()
+
+      timer:start(0, 10, vim.schedule_wrap(function()
+        local refreshed = state.tree:get_node(node:get_id())
+        if refreshed and refreshed:is_expanded() then
+          require("neo-tree.ui.renderer").focus_node(state, refreshed:get_child_ids()[1])
+          timer:stop()
+          timer:close()
+        elseif not refreshed or vim.uv.now() - start > 500 then
+          timer:stop()
+          timer:close()
+        end
+      end))
+    end
+
     neo_tree.setup({
       filesystem = {
         -- use_libuv_file_watcher = true,
@@ -40,8 +72,10 @@ local M = {
             ["z"] = "none",
             ["o"] = "system_open",
             ["-"] = "navigate_up",
-            ["h"] = "focus_parent",
-            ["l"] = "open",
+            ["u"] = "close_all_subnodes",
+            ["h"] = command_up,
+            ["l"] = command_down,
+            [";"] = "open",
             ['zo'] = "expand_all_subnodes",
             ['zO'] = "expand_all_nodes",
             ['zc'] = "close_all_subnodes",
