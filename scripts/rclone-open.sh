@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-drives_path="$HOME/${XDG_PUBLICSHARE_DIR}"
-download_path="$HOME/${XDG_DOWNLOAD_DIR}/rclone"
+drives_path="$(xdg-user-dir PUBLICSHARE)"
+download_path="$(xdg-user-dir DOWNLOAD)/rclone"
 
 file=$1
 
@@ -14,6 +14,6 @@ mkdir -pv "$download_path"
 
 file_name=$(basename "$drive_file")
 
-rclone copy -P --stats 100ms "$drive:$drive_file" "$download_path/$file_name"
+rclone copy -P --stats 100ms "$drive:$drive_file" "$download_path"
 
 xdg-open "$download_path/$file_name"
