@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-drives_path=$HOME/Documents/clouds
-download_path=$HOME/Downloads/rclone
+set -euo pipefail
+
+drives_path=$HOME/${XDG_PUBLICSHARE_DIR}
+download_path=$HOME/${XDG_DOWNLOAD_DIR}/rclone
 
 file=$1
 

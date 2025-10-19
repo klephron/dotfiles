@@ -2,15 +2,14 @@
 
 set -euo pipefail
 
-PROFILE=cli-dev
-
 root=$(git rev-parse --show-toplevel)
+profile=${1:-"cli-dev"}
 
 cd $root
 
-. $root/profiles/${PROFILE}/.xdgenv
+. $root/profiles/${profile}/.xdgenv
 
-make install/${PROFILE}
+make install/${profile}
 
 # Setup zsh for current user
 echo "emulate sh -c 'source /etc/profile'" >> ~/.profile
