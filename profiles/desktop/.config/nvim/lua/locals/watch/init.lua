@@ -2,7 +2,7 @@ local uv = vim.loop
 local api = vim.api
 local fn = vim.fn
 
-local util = require("local.watch.util")
+local util = require("locals.watch.util")
 local watch_notify = util.watch_notify
 local create_file_if_not_exist = util.create_file_if_not_exist
 local open_buffer = util.open_buffer
@@ -101,8 +101,11 @@ local function execute_multiple(name)
         if watch_config.command.save_after_each then
           api.nvim_buf_call(bufnr, function() vim.cmd("silent w!") end)
         end
-        if watch_config.command.exit_on_error and job_id <= 0 or exit ~= 0 then return
-        else recursive() end
+        if watch_config.command.exit_on_error and job_id <= 0 or exit ~= 0 then
+          return
+        else
+          recursive()
+        end
       end
     })
   end
@@ -220,9 +223,9 @@ api.nvim_create_user_command("WatchCreate", function()
   -- save watch filename in register
   if watch_config.register.save_watch_path then
     local reg_cmd = "" ..
-      ":redir @" .. watch_config.register.reg .. "\n" ..
-      ":echon '" .. name .. "'\n" ..
-      ":redir end"
+        ":redir @" .. watch_config.register.reg .. "\n" ..
+        ":echon '" .. name .. "'\n" ..
+        ":redir end"
     vim.cmd(":echo '' | redraw") -- clear commandline
     vim.cmd(reg_cmd)
   end
@@ -234,8 +237,8 @@ end, {})
 
 api.nvim_create_user_command("WatchDelete", function()
   vim.ui.select(vim.tbl_keys(watch_data), {
-    prompt = "Select file:",
-  },
+      prompt = "Select file:",
+    },
     function(choice)
       if choice == nil then return end
       local name = choice

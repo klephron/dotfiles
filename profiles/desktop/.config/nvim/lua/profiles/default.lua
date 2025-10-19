@@ -26,4 +26,4 @@ require("config.keymaps")
 require("config.aliases")
 require("config.autocmds")
 
-require("local.watch")
+require("locals.watch")

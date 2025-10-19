@@ -1,23 +1,21 @@
 require("globals")
 
-if config.is_scrollback then
+if config.profiles.scrollback then
   require("profiles.scrollback")
-  return
 end
 
-if config.is_firenvim then
+if config.profiles.firenvim then
   require("profiles.firenvim")
-  return
 end
 
-if config.is_neovide then
+if config.profiles.neovide then
   require("profiles.neovide")
-  return
 end
 
-if config.is_vscode then
+if config.profiles.vscode then
   require("profiles.vscode")
-  return
 end
 
-require("profiles.default")
+if config.profiles.default then
+  require("profiles.default")
+end
