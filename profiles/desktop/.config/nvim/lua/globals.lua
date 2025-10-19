@@ -13,7 +13,8 @@ _G.config = {
     vscode = fn.exists("g:vscode") == 1,
     firenvim = fn.exists("g:started_by_firenvim") == 1,
     neovide = fn.exists("g:neovide") == 1,
-    scrollback = env.KITTY_SCROLLBACK_NVIM == 'true'
+    scrollback = env.KITTY_SCROLLBACK_NVIM == 'true',
+    default = nil,
   }
 }
 
@@ -23,6 +24,15 @@ _G.config.profiles.default = not (
   or config.profiles.neovide
   or config.profiles.scrollback
 )
+
+_G.profiles_any = function(...)
+  for i = 1, select('#', ...) do
+    local name = select(i, ...)
+    if _G.config.profiles[name] then
+      return true
+    end
+  end
+end
 
 local active = {}
 for name, is_active in pairs(_G.config.profiles) do
