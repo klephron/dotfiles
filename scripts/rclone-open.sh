@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-drives_path=$HOME/${XDG_PUBLICSHARE_DIR}
-download_path=$HOME/${XDG_DOWNLOAD_DIR}/rclone
+drives_path="$HOME/${XDG_PUBLICSHARE_DIR}"
+download_path="$HOME/${XDG_DOWNLOAD_DIR}/rclone"
 
 file=$1
 

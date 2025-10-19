@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-# get git repository root
-root=$(git rev-parse --show-toplevel)
+set -euo pipefail
 
-script="$root/scripts/json-formatter.py"
-source="$root/profiles/desktop/.config/tridactyl.json"
+root="$(git rev-parse --show-toplevel)"
+profile="desktop"
 
-python "$script" "$source"
+source="$root/profiles/$profile/.config/tridactyl.json"
+
+format_json=(python "$root/scripts/base/format-json.py")
+
+"${format_json[@]}" "$source"
