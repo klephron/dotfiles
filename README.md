@@ -1,14 +1,43 @@
 # dotfiles
 
-## Usage
+The agony of automation and deduplication, multiple profiles included.
 
-Defined with comments in `Makefile`, see:
+## Installation
+
+Clone the repository:
+
+```sh
+git clone --recurse-submodules https://github.com/klephron/dotfiles.git
+```
+
+Apply configuration:
+
+```sh
+make install/<profile>
+```
+
+Run to see more usage details:
 
 ```sh
 make help
 ```
 
-## Updating submodules
+## Profiles
+
+Located at `profiles/`:
+
+- `desktop` - primary, desktop environment (default)
+- `cli-dev` - devcontainers
+
+## Update
+
+### To pinned submodule commits
+
+```sh
+git pull --recurse-submodules
+```
+
+### To latest submodule commits
 
 Initialize or update all submodules (if not done yet):
 
@@ -16,8 +45,7 @@ Initialize or update all submodules (if not done yet):
 git submodule update --init --recursive
 ```
 
-Pull the latest changes:
-
 ```sh
+git pull
 git submodule update --remote
 ```
