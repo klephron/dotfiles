@@ -10,7 +10,15 @@ Clone the repository:
 git clone --recurse-submodules https://github.com/klephron/dotfiles.git
 ```
 
-Apply configuration:
+Run to set symlinks, environment variables in `~/.profile`, login shell:
+
+```sh
+bash -x ./scripts/bootstrap.sh <profile>
+```
+
+> If `<profile>` is omitted, `cli-dev` is used.
+
+Run to only set symlinks:
 
 ```sh
 make install/<profile>
@@ -26,8 +34,8 @@ make help
 
 Located at `profiles/`:
 
-- `desktop` - primary, desktop environment (default)
-- `cli-dev` - devcontainers
+- `desktop` - primary, for desktop environment
+- `cli-dev` - for devcontainers
 
 ## Update
 

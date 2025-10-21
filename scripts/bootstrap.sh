@@ -13,6 +13,7 @@ cd $root
 
 make install/${profile}
 
+# add $cmd to the first line of $HOME/.profile file
 if [[ -h "$HOME/.pprofile" ]]; then
   h_profile="$HOME/.profile"
   cmd='. $HOME/.pprofile'
@@ -24,10 +25,11 @@ if [[ -h "$HOME/.pprofile" ]]; then
   fi
 fi
 
+# set zsh as login shell
 if command -v sudo &> /dev/null; then
   sudo chsh -s $(which zsh) $(whoami)
 else
   chsh -s $(which zsh) $(whoami)
 fi
 
-zsh
+$(which zsh)
