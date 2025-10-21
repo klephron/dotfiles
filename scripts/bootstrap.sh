@@ -18,7 +18,7 @@ if [[ -h "$HOME/.pprofile" ]]; then
   cmd='. $HOME/.pprofile'
 
   if [[ -s "$h_profile" ]]; then
-    [[ grep -qxF "$cmd" ]] || sed -i "1i$cmd" "$h_profile"
+    grep -qxF "$cmd" "$h_profile" || sed -i "1i$cmd" "$h_profile"
   else
     echo "$cmd" > "$h_profile"
   fi
