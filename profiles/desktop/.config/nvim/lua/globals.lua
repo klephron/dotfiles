@@ -41,3 +41,5 @@ for name, is_active in pairs(_G.config.profiles) do
   end
 end
 assert(#active <= 1, string.format("Multiple profiles active: %s", table.concat(active, ", ")))
+
+table.unpack = table.unpack or unpack
