@@ -1,0 +1,6 @@
+# vim: filetype=sh
+
+. ~/.xdgenv
+
+export EDITOR="nvim"
+export VISUAL="nvim"

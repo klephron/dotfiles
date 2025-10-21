@@ -1,0 +1,33 @@
+# vim: filetype=sh
+
+. ~/.xdgenv
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+export BROWSER=firefox
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
+# zsh
+export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
+
+# awesome-wm
+export PATH="$PATH:$XDG_CONFIG_HOME/awesome/scripts/"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+
+# java
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true"
+
+# qt
+export QT_QPA_PLATFORMTHEME=qt6ct
+# export QT_STYLE_OVERRIDE=kvantum
+# export QT_QPA_PLATFORMTHEME=kvantum
+# export QT_AUTO_SCREEN_SCALE_FACTOR=0
+# export QT_XCB_FORCE_SOFTWARE_OPENGL=0
+# export QT_QUICK_BACKEND=opengl
+# export QT_XCB_GL_INTEGRATION=glx
+
+# firefox
+export MOZ_ENABLE_WAYLAND=1
