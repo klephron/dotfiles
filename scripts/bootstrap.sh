@@ -7,8 +7,6 @@ root=$(git rev-parse --show-toplevel)
 profile=${1:-"cli-dev"}
 profile_dir="$root/profiles/${profile}"
 
-cd $root
-
 . $profile_dir/.xdgenv
 
 make install/${profile}
