@@ -13,7 +13,6 @@ source $config/plugins/zoxide.zsh
 source $config/plugins/kubectl.zsh
 source $config/plugins/yazi.zsh
 
-source $config/functions.zsh
 source $config/hooks.zsh
 source $config/bindkeys.zsh
-source $config/aliases.zsh
+source $config/definitions.zsh

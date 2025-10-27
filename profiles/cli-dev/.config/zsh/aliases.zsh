@@ -1,1 +1,0 @@
-../../../desktop/.config/zsh/aliases.zsh
