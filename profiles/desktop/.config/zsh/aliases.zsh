@@ -23,21 +23,25 @@ alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresourc
 
 
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
-alias sshdev="TERM=tmux-256color COLORTERM=truecolor ssh -p 2222 -l root"
 alias sshnc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
+alias sshdev="TERM=tmux-256color COLORTERM=truecolor sshnc -p 2222 -l root"
 
 
 alias dockerip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
 alias dockerips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
 
 
-# alias ls="ls --color -F"
-# alias ll="ls --color -lh"
-alias ls="eza -F --sort Name"
+if [[ -x "$(command -v eza)" ]]; then
+  alias ls="eza -F --sort Name"
+else
+  alias ls="ls --color -Fh"
+fi
+
 alias ll="ls -l"
 alias lsa="ls -a"
 alias lla="ls -la"
 alias info='info --vi-keys'
+alias grep="grep --color=auto"
 
 
 alias o="xdg-open"

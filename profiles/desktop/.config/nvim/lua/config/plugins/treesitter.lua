@@ -32,7 +32,9 @@ local M = {
       "terraform",
       "jinja",
       "json",
-      "jsonc"
+      "jsonc",
+      "ruby",
+      "toml",
     }
 
     ts_configs.setup({
