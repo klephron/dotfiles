@@ -30,12 +30,21 @@ alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresourc
 
 # ssh
 alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
-alias sshnc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null"
+
+function sshnc() {
+  ssh -o StrictHostKeyChecking=no \
+      -o UserKnownHostsFile=/dev/null \
+      -o GlobalKnownHostsFile=/dev/null \
+      "$@"
+}
 
 function sshdev () {
-  remote=$1
-  user=$2
-  sshnc -t -p 2222 "root@$remote" "sudo -i -u $user"
+  local remote=$1
+  local user=$2
+  local root=${3:-root}
+
+  # tried with sshpass, doesn't login as expected
+  sshnc -t -p 2222 "${root}@${remote}" "sudo -i -u ${user}"
 }
 
 # docker
