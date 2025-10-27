@@ -35,7 +35,7 @@ alias sshnc="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o 
 function sshdev () {
   remote=$1
   user=$2
-  sshnc -p 2222 "root@$remote" -t "su - $user -c 'cd /workspaces/* && exec \$SHELL -l'"
+  sshnc -t -p 2222 "root@$remote" "sudo -i -u $user"
 }
 
 # docker
