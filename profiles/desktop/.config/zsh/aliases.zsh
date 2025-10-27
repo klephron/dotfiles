@@ -28,7 +28,8 @@ alias sshdev="TERM=tmux-256color COLORTERM=truecolor sshnc -p 2222 -l root"
 
 
 alias dockerip='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}"'
-alias dockerips='docker inspect -f "{{ .Name}} {{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
+alias dockerips='docker inspect -f "{{.Config.Image}} {{.Name}} {{.NetworkSettings.IPAddress}}" $(docker ps -q) \
+  | awk "{gsub(/^\//, \"\", \$2); print}"'
 
 
 if [[ -x "$(command -v eza)" ]]; then
