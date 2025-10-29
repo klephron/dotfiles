@@ -1,6 +1,6 @@
 local M = {
   "stevearc/aerial.nvim",
-  event = "VeryLazy",
+  cmd    = { "AerialToggle", "AerialOpen", "AerialClose" },
   config = function()
     local aerial = require("aerial")
     aerial.setup({
@@ -35,9 +35,10 @@ local M = {
       },
     })
   end,
-  keys = {
-    { "<leader>A", "<cmd>AerialToggle!<cr>", desc = "Toggle aerial menu" },
-    { "<leader>a", "<cmd>AerialToggle<cr>",  desc = "Toggle aerial focus" },
+  keys   = {
+    { "<leader>at", "<cmd>AerialToggle!<cr>", desc = "Toggle symbol menu" },
+    { "<leader>ao", "<cmd>AerialOpen<cr>",    desc = "Focus symbol focus" },
+    { "<leader>ac", "<cmd>AerialClose<cr>",   desc = "Close symbol menu" }
   }
 }
 

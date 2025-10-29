@@ -1,6 +1,7 @@
 local M = {
   "windwp/nvim-autopairs",
   event  = "InsertEnter",
+  cmd    = { "AutopairsToggle" },
   config = function()
     local autopairs = require("nvim-autopairs")
     local autopairs_cmp = require('nvim-autopairs.completion.cmp')
@@ -24,7 +25,32 @@ local M = {
         autopairs_cmp.on_confirm_done()
       )
     end
-  end
+
+    vim.api.nvim_create_user_command("AutopairsToggle", function(args)
+      autopairs = require("nvim-autopairs")
+      if args.bang then
+        autopairs.toggle()
+        vim.notify(autopairs.state.disabled and "disabled" or "enabled",
+          vim.log.levels.INFO, { title = "autopairs" }
+        )
+      else
+        vim.notify("unsupported",
+          vim.log.levels.INFO, { title = "autopairs" }
+        )
+      end
+    end, {
+      desc = "Toggle autopairs",
+      bang = true,
+    })
+  end,
+  keys   = {
+    {
+      "<localleader>a",
+      "<cmd>AutopairsToggle!<cr>",
+      mode = "n",
+      desc = "Toggle autopairs"
+    },
+  }
 }
 
 return M

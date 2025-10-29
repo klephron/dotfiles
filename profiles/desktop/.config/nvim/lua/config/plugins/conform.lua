@@ -28,14 +28,14 @@ local M = {
       if args.bang then
         vim.g.conform_disabled = not vim.g.conform_disabled
         vim.notify(vim.g.conform_disabled and "disabled" or "enabled",
-          vim.log.levels.INFO,
-          { title = "format-on-save" })
+          vim.log.levels.INFO, { title = "format-on-save" }
+        )
       else
         vim.b.conform_disabled = not vim.b.conform_disabled
         vim.notify("buffer " ..
           (vim.b.conform_disabled and "disabled" or "enabled"),
-          vim.log.levels.INFO,
-          { title = "format-on-save" })
+          vim.log.levels.INFO, { title = "format-on-save" }
+        )
       end
     end, {
       desc = "Toggle format-on-save",
