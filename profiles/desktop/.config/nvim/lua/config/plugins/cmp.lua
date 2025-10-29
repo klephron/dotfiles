@@ -22,7 +22,7 @@ local M = {
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
 
-    local function toggle_complete()
+    local function cmp_complete_toggle()
       if not cmp.visible() then
         cmp.complete()
       else
@@ -30,23 +30,23 @@ local M = {
       end
     end
 
-    local function open_cmp_menu(fallback)
+    local function cmp_open_menu(fallback)
       if not cmp.visible() then
         cmp.complete()
       end
     end
 
-    local function select_next_item(fallback)
-      open_cmp_menu(fallback)
+    local function cmp_select_next(fallback)
+      cmp_open_menu(fallback)
       cmp.select_next_item()
     end
 
-    local function select_prev_item(fallback)
-      open_cmp_menu(fallback)
+    local function cmp_select_prev(fallback)
+      cmp_open_menu(fallback)
       cmp.select_prev_item()
     end
 
-    local function tab_intellij(fallback)
+    local function cmp_complete_intellij(fallback)
       if cmp.visible() then
         local entries = cmp.get_entries()
         if #entries > 0 then
@@ -74,27 +74,9 @@ local M = {
       elseif not has_words_before() then
         fallback()
       else
-        open_cmp_menu(fallback)
+        cmp_open_menu(fallback)
       end
     end
-
-    local intellij_mappings = {
-      ["<Tab>"] = cmp.mapping(tab_intellij, { "i", "s" }),
-      ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
-      ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
-
-      ["<C-n>"] = cmp.mapping(select_next_item, { "i", "s" }),
-      ["<C-p>"] = cmp.mapping(select_prev_item, { "i", "s" }),
-
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
-      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
-
-      ["<C-l>"] = cmp.mapping(toggle_complete, { "i" }),
-      ["<M-l>"] = cmp.mapping(toggle_complete, { "i" }),
-
-      ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort() },
-      ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
-    }
 
     cmp.config.disable = true -- disable default mappings
     cmp.setup({
@@ -104,7 +86,23 @@ local M = {
       snippet = {
         expand = function(args) luasnip.lsp_expand(args.body) end,
       },
-      mapping = intellij_mappings,
+      mapping = {
+        ["<Tab>"] = cmp.mapping(cmp_complete_intellij, { "i", "s" }),
+        ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "s" }),
+        ["<M-Space>"] = cmp.mapping(cmp.mapping.confirm { select = true }, { "i", "s" }),
+
+        ["<C-n>"] = cmp.mapping(cmp_select_next, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(cmp_select_prev, { "i", "s" }),
+
+        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "s" }),
+        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "s" }),
+
+        ["<C-l>"] = cmp.mapping(cmp_complete_toggle, { "i" }),
+        ["<M-l>"] = cmp.mapping(cmp_complete_toggle, { "i" }),
+
+        ["<C-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+        ["<M-q>"] = cmp.mapping { i = cmp.mapping.abort() },
+      },
       completion = {},
       window = {
         completion = cmp.config.window.bordered(),

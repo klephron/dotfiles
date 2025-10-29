@@ -86,7 +86,6 @@ function clipboard-set () {
   fi
 }
 
-alias c="xclip -sel c"
 alias ci="clipboard-get"
 alias co="clipboard-set"
 
@@ -105,7 +104,11 @@ function asdf-latest () {
   done
 }
 
+# awkexercises
+alias awkexercises="$HOME/venvs/awkexercises/bin/awkexercises"
+
 # other
+alias l="clear"
 alias o="xdg-open"
 alias ta="tmux attach || tmux"
 alias jl="lazygit"
