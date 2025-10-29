@@ -1,7 +1,5 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  -- event = "InsertEnter",
-  event = "VeryLazy",
   dependencies = {
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
@@ -9,7 +7,8 @@ local M = {
     "hrsh7th/cmp-path",
     "onsails/lspkind.nvim",
   },
-  config = function()
+  event        = "InsertEnter",
+  config       = function()
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
