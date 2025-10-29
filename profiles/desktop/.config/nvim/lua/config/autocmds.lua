@@ -112,29 +112,6 @@ funcs.augroup("local_open_last_loc", {
   }
 })
 
-funcs.augroup("local_keymap_q_close", {
-  {
-    event = "FileType",
-    pattern = {
-      "qf",
-      "help",
-      "man",
-      "notify",
-      "lspinfo",
-      "gitsigns-blame",
-      "spectre_panel",
-      "startuptime",
-      "tsplayground",
-      "PlenaryTestPopup",
-      "dap-float",
-    },
-    command = function(event)
-      vim.bo[event.buf].buflisted = false
-      vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-    end
-  }
-})
-
 funcs.augroup("local_resize_on_window_change", {
   {
     event = { "VimResized" },

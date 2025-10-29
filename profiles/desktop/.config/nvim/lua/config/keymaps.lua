@@ -85,11 +85,36 @@ end
 funcs.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "Write all")
 funcs.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
 
--- QUIT
+-- CLOSE
 if profiles.default or profiles.neovide or profiles.scrollback then
   funcs.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "Close window")
   funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
 end
+
+funcs.augroup("local_q_close", {
+  {
+    event = "FileType",
+    pattern = {
+      "qf",
+      "help",
+      "man",
+      "notify",
+      "lspinfo",
+      "gitsigns-blame",
+      "spectre_panel",
+      "startuptime",
+      "tsplayground",
+      "PlenaryTestPopup",
+      "dap-float",
+      "vim",
+    },
+    command = function(event)
+      vim.bo[event.buf].buflisted = false
+      vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    end
+  }
+})
+
 
 -- LINE MOVEMENT
 funcs.set_keynomap("n", '<a-k>', '<cmd>move-2<CR>==')

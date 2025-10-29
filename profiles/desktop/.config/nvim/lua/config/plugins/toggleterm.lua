@@ -104,6 +104,24 @@ local M = {
     { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Open lazygit" },
     { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Open lazydocker" },
     { "<leader>jt", "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
+    {
+      "<CR>",
+      function()
+        require("toggleterm")
+            .send_lines_to_terminal("visual_selection", false, { args = vim.v.count })
+      end,
+      mode = "v",
+      desc = "Send lines to terminal"
+    },
+    {
+      "<C-CR>",
+      function()
+        require("toggleterm")
+            .send_lines_to_terminal("single_line", false, { args = vim.v.count })
+      end,
+      mode = "n",
+      desc = "Send current line to terminal"
+    },
   }
 }
 
