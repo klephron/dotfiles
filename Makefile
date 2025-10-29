@@ -3,7 +3,7 @@
 PROFILES_DIR := profiles
 PROFILES_CONFIG_SDIR := .config
 SCRIPTS_DIR := scripts
-BACKUP_EXT := bak
+BACKUP_EXT := bkp
 
 
 ifndef HOME
@@ -30,11 +30,11 @@ install/$(1): FORCE
 		src=$(abspath $(PROFILES_DIR)/$(1)/$$$$var) ;\
 		dist=$$$$HOME/$$$$var ;\
 		if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
-			bak=$$$$dist.$(BACKUP_EXT); \
-			if [ -e $$$$bak ]; then \
-				echo "$$$$src: backup $$$$bak already exist" ;\
+			bkp=$$$$dist.$(BACKUP_EXT); \
+			if [ -e $$$$bkp ]; then \
+				echo "$$$$src: backup $$$$bkp already exist" ;\
 			else \
-				mv -v $$$$dist $$$$bak ;\
+				mv -v $$$$dist $$$$bkp ;\
 			fi ;\
 		fi ;\
 		if ! [ -e $$$$dist ]; then \
@@ -49,11 +49,11 @@ install/$(1): FORCE
 			src=$(abspath $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var) ;\
 			dist=$(XDG_CONFIG_HOME)/$$$$var ;\
 			if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
-				bak=$$$$dist.$(BACKUP_EXT); \
-				if [ -e $$$$bak ]; then \
-					echo "$$$$src: backup $$$$bak already exist" ;\
+				bkp=$$$$dist.$(BACKUP_EXT); \
+				if [ -e $$$$bkp ]; then \
+					echo "$$$$src: backup $$$$bkp already exist" ;\
 				else \
-					mv -v $$$$dist $$$$bak ;\
+					mv -v $$$$dist $$$$bkp ;\
 				fi ;\
 			fi ;\
 			if ! [ -e $$$$dist ]; then \
