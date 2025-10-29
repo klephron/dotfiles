@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Format mimeapps config files
+
 set -euo pipefail
 
 root="$(git rev-parse --show-toplevel)"
@@ -11,12 +13,13 @@ tmp="/tmp/mimeapps.list"
 
 format_conf=("python" "$root/scripts/base/format-conf.py")
 
-# create formatted temporary file
-"${format_conf[@]}" "$target" "$tmp"
+# backup original file
+cp "$target" "$tmp"
 
 # move and create link to mimeapps.list in dotfiles
-mv -v "$source" "$target"
-ln -vsfn "$target" "$source"
+if mv -v "$source" "$target"; then
+  ln -vsfn "$target" "$source"
+fi
 
 "${format_conf[@]}" "$target"
 

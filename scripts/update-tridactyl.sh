@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Format tridactyl config files
+
 set -euo pipefail
 
 root="$(git rev-parse --show-toplevel)"

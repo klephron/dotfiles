@@ -27,6 +27,7 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 [Default Applications]
 /* application/pdf=org.pwmt.zathura.desktop */
 application/json=neovide.desktop
+application/octet-stream=neovide.desktop;
 application/pdf=org.pwmt.zathura.desktop
 application/vnd.apple.keynote=neovide.desktop
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-startcenter.desktop
