@@ -104,8 +104,9 @@ function asdf-latest () {
   done
 }
 
-# awkexercises
+# exercises
 alias awkexercises="$HOME/venvs/awkexercises/bin/awkexercises"
+alias sedexercises="$HOME/venvs/sedexercises/bin/sedexercises"
 
 # other
 alias l="clear"
