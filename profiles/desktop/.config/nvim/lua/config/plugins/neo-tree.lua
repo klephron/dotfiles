@@ -20,13 +20,27 @@ local M = {
     local neo_tree = require("neo-tree")
     local funcs = require("utils.funcs")
 
-    local command_up = function(state)
+    local l_system_open = function(state)
+      local node = state.tree:get_node()
+      local path = node:get_id()
+      -- Mac OSX
+      vim.api.nvim_command("silent !open -g " .. path)
+      -- Linux
+      vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
+    end
+
+    local l_focus_parent = function(state)
+      local node = state.tree:get_node()
+      require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+    end
+
+    local l_up = function(state)
       local node = state.tree:get_node()
       if not node then return end
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end
 
-    local command_down = function(state)
+    local l_down = function(state)
       local node = state.tree:get_node()
 
       if not node or not (node.type == "directory" or node:has_children()) then
@@ -79,11 +93,11 @@ local M = {
           mappings = {
             ["<space>"] = "none",
             ["z"] = "none",
-            ["o"] = "system_open",
+            ["o"] = "l_system_open",
             ["-"] = "navigate_up",
             ["u"] = "close_all_subnodes",
-            ["h"] = command_up,
-            ["l"] = command_down,
+            ["h"] = "l_up",
+            ["l"] = "l_down",
             [";"] = "open",
             ['zo'] = "expand_all_subnodes",
             ['zO'] = "expand_all_nodes",
@@ -92,18 +106,10 @@ local M = {
           }
         },
         commands = {
-          system_open = function(state)
-            local node = state.tree:get_node()
-            local path = node:get_id()
-            -- Mac OSX
-            vim.api.nvim_command("silent !open -g " .. path)
-            -- Linux
-            vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
-          end,
-          focus_parent = function(state)
-            local node = state.tree:get_node()
-            require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
-          end
+          l_system_open = l_system_open,
+          l_focus_parent = l_focus_parent,
+          l_up = l_up,
+          l_down = l_down,
         },
       }
     })
