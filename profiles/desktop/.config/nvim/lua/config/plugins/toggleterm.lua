@@ -2,7 +2,6 @@ local M = {
   "akinsho/toggleterm.nvim",
   config = function()
     local toggleterm = require("toggleterm")
-    local api = vim.api
 
     toggleterm.setup({
       open_mapping = [[<c-\>]],
@@ -28,82 +27,86 @@ local M = {
       end
     })
 
-    -- Custom cmds
-    local Terminal = require('toggleterm.terminal').Terminal
-
-    local function float_keymaps_delete(term)
-      if vim.fn.maparg('<esc>', 't') ~= '' then
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-[>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-j>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-k>')
-      end
-    end
-
-    local opts_prev = {
+    local term_defaults = {
       mouse = vim.opt.mouse
     }
 
-    -- Floating terminals
-    api.nvim_create_user_command("ToggleTermLazygit", function()
-      local lazygit = Terminal:new({
-        cmd = 'lazygit',
-        hidden = true,
-        direction = 'float',
-        on_open = float_keymaps_delete,
-      })
-      lazygit:toggle()
-    end, {})
+    local function term_restore()
+      vim.opt.mouse = term_defaults.mouse
+    end
 
-    api.nvim_create_user_command("ToggleTermLazydocker", function()
-      local lazygit = Terminal:new({
-        cmd = 'lazydocker',
-        hidden = true,
-        direction = 'float',
-        on_open = float_keymaps_delete,
-      })
-      lazygit:toggle()
-    end, {})
+    local function term_del_keymaps(term)
+      if vim.fn.maparg('<esc>', 't') ~= '' then
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-[>')
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-h>')
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-j>')
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-k>')
+        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-l>')
+      end
+    end
 
-    api.nvim_create_user_command("ToggleTermHtop", function()
-      local htop = Terminal:new({
-        cmd = 'htop',
-        direction = 'float',
-        hidden = true,
-        on_open = function(term)
-          float_keymaps_delete(term)
-          vim.opt.mouse = 'a'
-        end,
-        on_close = function(_)
-          vim.opt.mouse = opts_prev["mouse"]
-        end
-      })
-      htop:toggle()
-    end, {})
-
-    api.nvim_create_user_command("ToggleTermFloat", function()
-      local htop = Terminal:new({
+    vim.api.nvim_create_user_command("ToggleTermFloat", function()
+      require('toggleterm.terminal').Terminal:new({
         direction = 'float',
         hidden = false,
         on_open = function(term)
-          float_keymaps_delete(term)
+          term_del_keymaps(term)
           vim.opt.mouse = 'a'
         end,
-        on_close = function(_)
-          vim.opt.mouse = opts_prev["mouse"]
-        end
-      })
-      htop:toggle()
+        on_close = term_restore,
+      }):toggle()
+    end, {})
+
+    vim.api.nvim_create_user_command("ToggleTermHtop", function()
+      require('toggleterm.terminal').Terminal:new({
+        cmd = 'htop',
+        direction = 'float',
+        hidden = true,
+        on_open = term_del_keymaps,
+        on_close = term_restore,
+      }):toggle()
+    end, {})
+
+    vim.api.nvim_create_user_command("ToggleTermLazygit", function()
+      require('toggleterm.terminal').Terminal:new({
+        cmd = 'lazygit',
+        hidden = true,
+        direction = 'float',
+        on_open = term_del_keymaps,
+        on_close = term_restore,
+      }):toggle()
+    end, {})
+
+    vim.api.nvim_create_user_command("ToggleTermLazydocker", function()
+      require('toggleterm.terminal').Terminal:new({
+        cmd = 'lazydocker',
+        hidden = true,
+        direction = 'float',
+        on_open = term_del_keymaps,
+        on_close = term_restore,
+      }):toggle()
+    end, {})
+
+    vim.api.nvim_create_user_command("ToggleTermK9s", function()
+      require('toggleterm.terminal').Terminal:new({
+        cmd = 'k9s',
+        direction = 'float',
+        hidden = true,
+        on_open = term_del_keymaps,
+        on_close = term_restore,
+      }):toggle()
     end, {})
   end,
   keys = {
     { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
+    { "<leader>jt", "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
     { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "Toggle all terminals" },
     { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Open float terminal" },
     { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Open htop" },
     { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Open lazygit" },
     { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Open lazydocker" },
-    { "<leader>jt", "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
+    { "<leader>jk", "<cmd>ToggleTermK9s<cr>",        desc = "Open k9s" },
     {
       "<CR>",
       function()

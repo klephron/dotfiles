@@ -33,3 +33,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 
 # firefox
 export MOZ_ENABLE_WAYLAND=1
+
+# minikube
+export MINIKUBE_IN_STYLE=0
