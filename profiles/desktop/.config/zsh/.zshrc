@@ -9,6 +9,7 @@ source $config/plugins/autosuggestions.zsh
 source $config/plugins/fzf.zsh
 source $config/plugins/kind.zsh
 source $config/plugins/kubectl.zsh
+source $config/plugins/minikube.zsh
 source $config/plugins/mise.zsh
 source $config/plugins/syntax-highlighting.zsh
 source $config/plugins/yazi.zsh
