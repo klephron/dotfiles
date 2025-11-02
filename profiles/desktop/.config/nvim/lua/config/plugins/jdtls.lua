@@ -18,7 +18,7 @@ local M = {
       server_on_attach(client, bufnr)
     end
 
-    funcs.augroup("local_jdtls", {
+    funcs.augroup("l.jdtls", {
       {
         event = { "FileType" },
         pattern = "java",

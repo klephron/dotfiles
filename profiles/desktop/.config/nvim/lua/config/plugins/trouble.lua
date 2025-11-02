@@ -12,7 +12,7 @@ local M = {
       }
     })
 
-    funcs.augroup("local_trouble", {
+    funcs.augroup("l.trouble", {
       {
         event = "FileType",
         pattern = "Trouble",

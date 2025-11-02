@@ -20,7 +20,7 @@ local M = {
     })
 
     -- Manually save session
-    config.augroup("local_save_session", {
+    config.augroup("l.save_session", {
       {
         event = "VimLeave",
         pattern = "*",

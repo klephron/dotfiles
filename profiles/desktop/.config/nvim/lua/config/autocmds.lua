@@ -1,6 +1,6 @@
 local funcs = require("utils.funcs")
 
-funcs.augroup("local_nasm", {
+funcs.augroup("l.nasm", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.inc,*.asm",
@@ -8,7 +8,7 @@ funcs.augroup("local_nasm", {
   }
 })
 
-funcs.augroup("local_jenkinsfile", {
+funcs.augroup("l.jenkinsfile", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "jenkinsfile,Jenkinsfile,*.jenkinsfile,*.Jenkinsfile",
@@ -16,7 +16,7 @@ funcs.augroup("local_jenkinsfile", {
   }
 })
 
-funcs.augroup("local_jinja", {
+funcs.augroup("l.jinja", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.j2",
@@ -27,7 +27,7 @@ funcs.augroup("local_jinja", {
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 -- Define the augroup for handling binary files with xxd
-funcs.augroup("local_binary_xxd", {
+funcs.augroup("l.binary_xxd", {
   {
     event = { "BufReadPre" },
     pattern = "*.bin,*.exe,*.out",
@@ -67,7 +67,7 @@ funcs.augroup("local_binary_xxd", {
 })
 
 -- Create directories when needed, when saving a file
-funcs.augroup("local_create_dir_on_file_write", {
+funcs.augroup("l.create_dir_on_file_write", {
   {
     event = { "BufWritePre" },
     command = function(event)
@@ -82,7 +82,7 @@ funcs.augroup("local_create_dir_on_file_write", {
 })
 
 -- Fix conceallevel for json & help files
-funcs.augroup("local_json_conceal", {
+funcs.augroup("l.json_conceal", {
   {
     event = { "FileType" },
     pattern = { "json", "jsonc" },
@@ -94,7 +94,7 @@ funcs.augroup("local_json_conceal", {
 })
 
 -- Go to last loc when opening a buffer
-funcs.augroup("local_open_last_loc", {
+funcs.augroup("l.open_last_loc", {
   {
     event = "BufReadPre",
     patterm = "*",
@@ -112,7 +112,7 @@ funcs.augroup("local_open_last_loc", {
   }
 })
 
-funcs.augroup("local_resize_on_window_change", {
+funcs.augroup("l.resize_on_window_change", {
   {
     event = { "VimResized" },
     command = function()
@@ -123,7 +123,7 @@ funcs.augroup("local_resize_on_window_change", {
   }
 })
 
-funcs.augroup("local_text", {
+funcs.augroup("l.text", {
   {
     event = "FileType",
     pattern = { "plaintex", "typst", "gitcommit", "markdown" },
@@ -158,7 +158,7 @@ if funcs.is_vscode or funcs.is_firenvim then
   return
 end
 
-funcs.augroup("local_restore_cursor_shape", {
+funcs.augroup("l.restore_cursor_shape", {
   {
     event = "VimLeave",
     pattern = "*",
@@ -171,7 +171,7 @@ funcs.augroup("local_restore_cursor_shape", {
 })
 
 -- Check reload file when changed
-funcs.augroup("local_checktime", {
+funcs.augroup("l.checktime", {
   {
     event = { "FocusGained", "TermClose", "TermLeave" },
     command = function()
@@ -182,7 +182,7 @@ funcs.augroup("local_checktime", {
   }
 })
 
-funcs.augroup("local_reload_file", {
+funcs.augroup("l.reload_file", {
   {
     event = "BufWinEnter",
     pattern = "*",
@@ -192,7 +192,7 @@ funcs.augroup("local_reload_file", {
   }
 })
 
---[[ funcs.augroup("local_save_on_focus_lost", {
+--[[ funcs.augroup("l.save_on_focus_lost", {
   {
     event = "FocusLost",
     pattern = "*",
@@ -209,7 +209,7 @@ funcs.augroup("local_reload_file", {
 }) ]]
 
 -- Autosave after leaving insert mode
---[[ funcs.augroup("local_save_on_insert_leave", {
+--[[ funcs.augroup("l.save_on_insert_leave", {
   {
     event = "InsertLeave",
     command = "silent! update",

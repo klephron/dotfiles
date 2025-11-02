@@ -64,7 +64,7 @@ funcs.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "Open previous buffer")
 
 -- TERMINAL
 if profiles.default or profiles.neovide then
-  funcs.augroup("local_keymap_terminal", {
+  funcs.augroup("l.keymap_terminal", {
     {
       event = { "TermOpen" },
       pattern = { "term://*", '\\[dap-terminal\\]*' },
@@ -91,7 +91,7 @@ if profiles.default or profiles.neovide or profiles.scrollback then
   funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
 end
 
-funcs.augroup("local_q_close", {
+funcs.augroup("l.q_close", {
   {
     event = "FileType",
     pattern = {
@@ -140,7 +140,7 @@ local search_nohl_excluded = {
   "Trouble",
 }
 
-funcs.augroup("local_map_nohl", {
+funcs.augroup("l.map_nohl", {
   {
     event = "FileType",
     pattern = "*",

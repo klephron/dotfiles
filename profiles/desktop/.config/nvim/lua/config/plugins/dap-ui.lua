@@ -61,7 +61,7 @@ local M = {
     dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 
     -- Restore size after VimGained focus
-    funcs.augroup("local_dapui_resize", {
+    funcs.augroup("l.dapui_resize", {
       {
         event = "VimResized",
         pattern = "*",
