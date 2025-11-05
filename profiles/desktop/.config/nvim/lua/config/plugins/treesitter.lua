@@ -1,7 +1,7 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = "UIEnter",
+  event = "VeryLazy",
   config = function()
     local ts_configs = require("nvim-treesitter.configs")
 
