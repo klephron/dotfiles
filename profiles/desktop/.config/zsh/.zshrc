@@ -12,6 +12,7 @@ source $config/plugins/fzf.zsh
 source $config/plugins/kind.zsh
 source $config/plugins/kitty-scrollback.zsh
 source $config/plugins/kubectl.zsh
+source $config/plugins/lxd.zsh
 source $config/plugins/minikube.zsh
 source $config/plugins/mise.zsh
 source $config/plugins/syntax-highlighting.zsh
