@@ -76,18 +76,18 @@ local M = {
     end
 
     local open = function(state)
-      require("neo-tree.sources.filesystem.commands").open(state)
       require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+      require("neo-tree.sources.filesystem.commands").open(state)
     end
 
     local open_split = function(state)
-      require("neo-tree.sources.filesystem.commands").open_split(state)
       require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+      require("neo-tree.sources.filesystem.commands").open_split(state)
     end
 
     local open_vsplit = function(state)
-      require("neo-tree.sources.filesystem.commands").open_vsplit(state)
       require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+      require("neo-tree.sources.filesystem.commands").open_vsplit(state)
     end
 
     neo_tree.setup({
