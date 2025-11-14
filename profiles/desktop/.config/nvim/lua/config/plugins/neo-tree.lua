@@ -20,7 +20,7 @@ local M = {
     local neo_tree = require("neo-tree")
     local funcs = require("utils.funcs")
 
-    local l_system_open = function(state)
+    local system_open = function(state)
       local node = state.tree:get_node()
       local path = node:get_id()
       -- Mac OSX
@@ -29,18 +29,18 @@ local M = {
       vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
     end
 
-    local l_focus_parent = function(state)
+    local focus_parent = function(state)
       local node = state.tree:get_node()
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end
 
-    local l_up = function(state)
+    local up = function(state)
       local node = state.tree:get_node()
       if not node then return end
       require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
     end
 
-    local l_down = function(state)
+    local down = function(state)
       local node = state.tree:get_node()
 
       if not node or not (node.type == "directory" or node:has_children()) then
@@ -75,6 +75,21 @@ local M = {
       end)
     end
 
+    local open = function(state)
+      require("neo-tree.sources.filesystem.commands").open(state)
+      require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+    end
+
+    local open_split = function(state)
+      require("neo-tree.sources.filesystem.commands").open_split(state)
+      require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+    end
+
+    local open_vsplit = function(state)
+      require("neo-tree.sources.filesystem.commands").open_vsplit(state)
+      require("neo-tree.ui.renderer").focus_node(state, state.tree:get_node():get_id())
+    end
+
     neo_tree.setup({
       filesystem = {
         -- use_libuv_file_watcher = true,
@@ -93,11 +108,11 @@ local M = {
           mappings = {
             ["<space>"] = "none",
             ["z"] = "none",
-            ["o"] = "l_system_open",
+            ["o"] = "system_open",
             ["-"] = "navigate_up",
             ["u"] = "close_all_subnodes",
-            ["h"] = "l_up",
-            ["l"] = "l_down",
+            ["h"] = "up",
+            ["l"] = "down",
             [";"] = "open",
             ['zo'] = "expand_all_subnodes",
             ['zO'] = "expand_all_nodes",
@@ -106,10 +121,13 @@ local M = {
           }
         },
         commands = {
-          l_system_open = l_system_open,
-          l_focus_parent = l_focus_parent,
-          l_up = l_up,
-          l_down = l_down,
+          system_open = system_open,
+          focus_parent = focus_parent,
+          up = up,
+          down = down,
+          open = open,
+          open_split = open_split,
+          open_vsplit = open_vsplit,
         },
       }
     })
