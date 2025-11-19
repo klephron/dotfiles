@@ -16,8 +16,6 @@ Run to set symlinks, environment variables in `~/.profile`, login shell:
 bash -x ./scripts/bootstrap.sh <profile>
 ```
 
-> If `<profile>` is omitted, `cli-dev` is used.
-
 Run to only set symlinks:
 
 ```sh
@@ -33,9 +31,6 @@ make help
 ## Profiles
 
 Located at `profiles/`:
-
-- `desktop` - primary, for desktop environment
-- `cli-dev` - for devcontainers
 
 ## Update
 
