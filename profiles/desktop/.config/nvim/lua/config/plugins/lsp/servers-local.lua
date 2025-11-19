@@ -1,12 +1,15 @@
 local M = {
-  mals_lsp_adapter = {
+  -- don't forget to vim.lsp.enable("mals_lsp") when needed
+  mals_lsp = {
     root_dir = vim.fn.getcwd(),
     cmd = {
-      "/home/klephron/works/active/university-itmo/external/mals-lsp-adapter/build/adapter",
+      "mals-lsp",
       "-l",
-      "/home/klephron/works/active/university-itmo/external/mals-vscode/mals-lsp-adapter.log",
+      vim.fn.getcwd() .. "/mals-lsp.log",
       "-t",
-      "localhost:9651"
+      "localhost:9651",
+      "-g",
+      "3",
     },
   }
 }
