@@ -1,0 +1,10 @@
+config=$XDG_CONFIG_HOME/zsh
+
+source $config/bindkeys.zsh
+
+source $config/builtins/completion.zsh
+source $config/builtins/dirstack.zsh
+source $config/builtins/history.zsh
+source $config/builtins/prompt.zsh
+
+source $config/definitions.zsh
