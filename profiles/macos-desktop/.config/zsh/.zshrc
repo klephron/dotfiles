@@ -7,5 +7,7 @@ source $config/builtins/dirstack.zsh
 source $config/builtins/history.zsh
 source $config/builtins/prompt.zsh
 
+source $config/plugins/mise.zsh
+
 source $config/hooks.zsh
 source $config/definitions.zsh
