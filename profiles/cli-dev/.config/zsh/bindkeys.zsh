@@ -1,1 +1,0 @@
-../../../desktop/.config/zsh/bindkeys.zsh

@@ -4,7 +4,7 @@ set -euo pipefail
 
 root=$(git rev-parse --show-toplevel)
 
-profile=${1:-"cli-dev"}
+profile=${1:-"linux-cli"}
 profile_dir="$root/profiles/${profile}"
 
 . $profile_dir/.xdgenv
