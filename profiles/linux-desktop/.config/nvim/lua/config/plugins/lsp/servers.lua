@@ -2,6 +2,7 @@
 local M = {
   lua_ls = {
     single_file_support = true,
+    cmd = { "lua-language-server" },
     settings = {
       Lua = {
         workspace = {
@@ -23,6 +24,7 @@ local M = {
   },
   clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    cmd = { "clangd" },
     clangd = {
       InlayHints = {
         Designators = true,
@@ -36,9 +38,11 @@ local M = {
     }
   },
   pyright = {
-    single_file_support = true
+    single_file_support = true,
+    cmd = { "pyright-langserver", "--stdio" },
   },
   rust_analyzer = {
+    cmd = { "rust-analyzer" },
     settings = {
       ["rust-analyzer"] = {
         -- cachePriming = {
@@ -102,9 +106,11 @@ local M = {
     }
   },
   hls = {
+    cmd = { "haskell-language-server-wrapper", "--lsp" },
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
   },
   yamlls = {
+    cmd = { "yaml-language-server", "--stdio" },
     settings = {
       yaml = {
         schemas = {
@@ -115,7 +121,8 @@ local M = {
     },
   },
   terraformls = {
-    filetypes = { "terraform", "terraform-vars" }
+    cmd = { "terraform-ls", "serve" },
+    filetypes = { "terraform", "terraform-vars" },
   },
   jdtls = {
     cmd = {
@@ -161,9 +168,15 @@ local M = {
       }
     }
   },
-  lemminx = {},
-  sqruff = {},
-  buf = {},
+  lemminx = {
+    cmd = { "lemminx" },
+  },
+  sqruff = {
+    cmd = { "sqruff" },
+  },
+  buf = {
+    cmd = { "buf", "beta", "lsp", "--timeout=0", "--log-format=text" },
+  },
 }
 
 return M
