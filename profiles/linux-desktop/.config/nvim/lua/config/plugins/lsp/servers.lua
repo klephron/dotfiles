@@ -1,8 +1,9 @@
 -- :h lspconfig-all
 local M = {
   lua_ls = {
-    single_file_support = true,
     cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    single_file_support = true,
     settings = {
       Lua = {
         workspace = {
@@ -23,8 +24,8 @@ local M = {
     },
   },
   clangd = {
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     cmd = { "clangd" },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     clangd = {
       InlayHints = {
         Designators = true,
@@ -38,11 +39,13 @@ local M = {
     }
   },
   pyright = {
-    single_file_support = true,
     cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    single_file_support = true,
   },
   rust_analyzer = {
     cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
     settings = {
       ["rust-analyzer"] = {
         -- cachePriming = {
@@ -111,6 +114,7 @@ local M = {
   },
   yamlls = {
     cmd = { "yaml-language-server", "--stdio" },
+    filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
     settings = {
       yaml = {
         schemas = {
@@ -141,6 +145,7 @@ local M = {
       '-configuration', vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux/",
       '-data', vim.fn.stdpath("cache") .. '/jdtls/workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
     },
+    filetypes = { "java" },
     -- settings = {
     --   java = {
     --     format = {
@@ -170,12 +175,15 @@ local M = {
   },
   lemminx = {
     cmd = { "lemminx" },
+    filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },
   sqruff = {
     cmd = { "sqruff" },
+    filetypes = { "sql" },
   },
   buf = {
     cmd = { "buf", "beta", "lsp", "--timeout=0", "--log-format=text" },
+    filetypes = { "proto" },
   },
 }
 
