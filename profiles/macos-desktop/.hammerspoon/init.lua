@@ -1,15 +1,35 @@
 hs.hotkey.bind({ "cmd" }, "return", function()
-  hs.execute('open -na "kitty"')
+  local appName = "Kitty"
+
+  hs.execute("open -na '" .. appName .. "'")
 end)
 
 hs.hotkey.bind({ "cmd", "shift" }, "return", function()
-  hs.execute('open -na "alacritty"')
+  local appName = "Alacritty"
+
+  hs.execute("open -na '" .. appName .. "'")
 end)
 
--- hs.hotkey.bind({ "cmd" }, "c", function()
---   hs.execute('open -na "Firefox"')
--- end)
+hs.hotkey.bind({ "cmd" }, "b", function()
+  local appName = "Firefox"
+  local appMenu = { "File", "New Window" }
 
--- hs.hotkey.bind({ "cmd", "shift" }, "c", function()
---   hs.execute('open -na "Google Chrome"')
--- end)
+  local app = hs.application.find(appName)
+  if app then
+    app:selectMenuItem(appMenu)
+  else
+    hs.application.open(appName)
+  end
+end)
+
+hs.hotkey.bind({ "cmd", "shift" }, "b", function()
+  local appName = "Google Chrome"
+  local appMenu = { "File", "New window" }
+
+  local app = hs.application.find(appName)
+  if app then
+    app:selectMenuItem(appMenu)
+  else
+    hs.application.open(appName)
+  end
+end)
