@@ -52,6 +52,7 @@ hide_when_typing = false
 
 [terminal.shell]
 program = "/bin/zsh"
+args = ["--login"]
 
 [window]
 decorations = "full"
