@@ -1,13 +1,12 @@
-[submodule "lain"]
-  path = profiles/linux-desktop/.config/awesome/plugins/lain
-  url = git@github.com:klephron/lain.git
-[submodule "freedesktop"]
-  path = profiles/linux-desktop/.config/awesome/plugins/freedesktop
-  url = git@github.com:lcpz/awesome-freedesktop.git
-[submodule "awesome-switcher"]
-  path = profiles/linux-desktop/.config/awesome/plugins/awesome-switcher
-  url = git@github.com:klephron/awesome-switcher.git
-[submodule "hyprland-binds-rofi"]
-  path = profiles/linux-desktop/.config/hypr/scripts/hyprland-binds-rofi
-  url = git@github.com:klephron/hyprland-binds-rofi.git
-  branch = main
+[submodule "profiles/linux-desktop/.config/awesome/plugins/lain"]
+	path = profiles/linux-desktop/.config/awesome/plugins/lain
+	url = git@github.com:klephron/lain.git
+[submodule "profiles/linux-desktop/.config/awesome/plugins/awesome-freedesktop"]
+	path = profiles/linux-desktop/.config/awesome/plugins/awesome-freedesktop
+	url = git@github.com:lcpz/awesome-freedesktop.git
+[submodule "profiles/linux-desktop/.config/awesome/plugins/awesome-switcher"]
+	path = profiles/linux-desktop/.config/awesome/plugins/awesome-switcher
+	url = git@github.com:klephron/awesome-switcher.git
+[submodule "profiles/linux-desktop/.config/hypr/scripts/hyprland-binds-rofi"]
+	path = profiles/linux-desktop/.config/hypr/scripts/hyprland-binds-rofi
+	url = git@github.com:klephron/hyprland-binds-rofi.git
