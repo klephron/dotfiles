@@ -33,3 +33,5 @@ hs.hotkey.bind({ "cmd", "shift" }, "b", function()
     hs.application.open(appName)
   end
 end)
+
+require("languagetoggle"):start()
