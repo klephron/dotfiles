@@ -66,9 +66,6 @@ endef
 
 $(foreach profile, $(PROFILES), $(eval $(call make-profile-rule,$(profile))))
 
-### Install default (desktop)
-install: install/desktop
-
 ### List available profiles
 profiles: FORCE
 	@for profile in $(PROFILES); do \
