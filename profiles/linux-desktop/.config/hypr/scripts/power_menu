@@ -1,11 +1,15 @@
 #!/bin/bash
 
-choice=$(echo -e "Hibernate\nSleep\nSuspend\nShutdown\nReboot" | rofi -dmenu --width=200 --height=200 )
+choice=$(echo -e "hibernate\nhibernate-lock\nsuspend\nsuspend-lock\nsleep\nsleep-lock\nshutdown\nreboot\nlock" | rofi -dmenu --width=200 --height=200 )
 
 case "$choice" in
-  Hibernate) systemctl hibernate ;;
-  Sleep) systemctl sleep ;;
-  Shutdown) systemctl poweroff ;;
-  Reboot) systemctl reboot ;;
-  Suspend) systemctl suspend ;;
+  hibernate) systemctl hibernate ;;
+  hibernate-lock) hyprlock & systemctl hibernate ;;
+  suspend) systemctl suspend ;;
+  suspend-lock) hyprlock & systemctl suspend ;;
+  sleep) systemctl sleep ;;
+  sleep-lock) hyprlock & systemctl sleep ;;
+  shutdown) systemctl poweroff ;;
+  reboot) systemctl reboot ;;
+  lock) hyprlock & ;;
 esac
