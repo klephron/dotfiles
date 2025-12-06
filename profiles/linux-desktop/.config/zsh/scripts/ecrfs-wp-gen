@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+local output_file="$1"
+local output_dir=$(dirname "$output_file")
+local password
+
+if [[ -z "$output_file" ]]; then
+  echo "Usage: $0 <path-to-wrapped-passphrase-output>" >&2
+  return 1
+fi
+
+if [[ ! -d "$output_dir" ]]; then
+  mkdir -p "$output_dir" || {
+    echo "Error: Cannot create directory: $output_dir" >&2
+    return 1
+  }
+fi
+
+stty -echo
+printf "Passphrase: " >&2
+read password
+stty echo
+printf "\n" >&2
+
+( head -c 48 /dev/random | base64; echo "$password" ) \
+    | ecryptfs-wrap-passphrase "$output_file" >/dev/null
+
+unset password
