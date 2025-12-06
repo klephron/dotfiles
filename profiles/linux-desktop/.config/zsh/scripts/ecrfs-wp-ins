@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-local wrapped_file="$1"
-local password
+wrapped_file="$1"
+password=
 
 if [[ -z "$wrapped_file" ]]; then
   echo "Usage: $0 <path-to-wrapped-passphrase>" >&2
-  return 1
+  exit 1
 fi
 
 if [[ ! -f "$wrapped_file" ]]; then
   echo "Error: Wrapped-passphrase file not found: $wrapped_file" >&2
-  return 1
+  exit 1
 fi
 
 stty -echo
@@ -24,7 +24,7 @@ sig=$(echo "$output" | sed -n 's/.*\[\([^]]*\)\].*/\1/p')
 
 if [[ -z "$sig" ]]; then
   echo "Error: Could not extract signature" >&2
-  return 1
+  exit 1
 fi
 
 echo "$sig"

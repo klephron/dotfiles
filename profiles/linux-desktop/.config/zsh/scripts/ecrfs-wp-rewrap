@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-local wrapped_file="$1"
+wrapped_file="$1"
 
 if [[ -z "$wrapped_file" ]]; then
   echo "Usage: $0 <path-to-wrapped-passphrase-output>" >&2
-  return 1
+  exit 1
 fi
 
 ecryptfs-rewrap-passphrase "$wrapped_file"
