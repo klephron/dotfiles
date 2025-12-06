@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+wrapped_file=
+password=
+use_wrapped=0
+
+while getopts ":w:" opt; do
+  case $opt in
+    w)
+      wrapped_file="$OPTARG"
+      use_wrapped=1
+      ;;
+    *)
+      echo "Usage: $0 [-w <wrapped-passphrase-file>]" >&2
+      exit 1
+      ;;
+  esac
+done
+
+if (( use_wrapped )); then
+  if [[ ! -f "$wrapped_file" ]]; then
+    echo "Error: Wrapped-passphrase file not found: $wrapped_file" >&2
+    exit 1
+  fi
+fi
+
+stty -echo
+printf "Passphrase: " >&2
+read password
+stty echo
+printf "\n" >&2
+
+if (( use_wrapped )); then
+  output=$(echo "$password" | ecryptfs-insert-wrapped-passphrase-into-keyring "$wrapped_file" - 2>&1)
+else
+  output=$(echo "$password" | ecryptfs-add-passphrase 2>&1)
+fi
+
+sig=$(echo "$output" | sed -n 's/.*\[\([^]]*\)\].*/\1/p')
+
+if [[ -z "$sig" ]]; then
+  echo "Error: Could not extract signature" >&2
+  exit 1
+fi
+
+echo "$sig"
