@@ -9,4 +9,4 @@ hyprpm enable split-monitor-workspaces
 yes | hyprpm add https://github.com/outfoxxed/hy3
 hyprpm enable hy3
 
-hyprpm reload
+hyprpm reload -n
