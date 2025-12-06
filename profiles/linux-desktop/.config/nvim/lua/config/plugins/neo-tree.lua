@@ -93,8 +93,11 @@ local M = {
     local funcs = require("utils.funcs")
 
     neo_tree.setup({
+      clipboard = {
+        sync = "universal",
+      },
       filesystem = {
-        -- use_libuv_file_watcher = true,
+        use_libuv_file_watcher = true,
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
