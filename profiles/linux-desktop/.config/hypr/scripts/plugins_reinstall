@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 hyprpm purge-cache
-hyprpm update
+hyprpm update "$@"
 
 yes | hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
 hyprpm enable split-monitor-workspaces
 
+# 16dae4d8f853b0d3e8434ee9941f9fc0155b8952
 yes | hyprpm add https://github.com/outfoxxed/hy3
 hyprpm enable hy3
 
