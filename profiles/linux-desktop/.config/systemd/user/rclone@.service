@@ -1,5 +1,5 @@
 [Unit]
-Description=rclonemount
+Description=rclone
 AssertPathIsDirectory=%h/share/%i
 After=network-online.target
 
