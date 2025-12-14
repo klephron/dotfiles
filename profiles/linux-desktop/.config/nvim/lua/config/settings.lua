@@ -126,7 +126,7 @@ vim.opt.cursorlineopt = 'screenline,number'
 -----------------------------------------------------------------------------//
 vim.opt.title = true
 vim.opt.titlelen = 85
-vim.opt.titlestring = [[NVIM (%{tabpagenr()} of %{tabpagenr('$')}) %{substitute(getcwd(),$HOME,'~','')}]]
+vim.opt.titlestring = [[nvim:%{substitute(getcwd(),$HOME,'~','')}]]
 -- vim.opt.titleold = ""
 ----------------------------------------------------------------------------//
 -- Wrapping
