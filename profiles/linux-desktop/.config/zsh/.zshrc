@@ -6,7 +6,6 @@ source $config/builtins/completion.zsh
 source $config/builtins/dirstack.zsh
 source $config/builtins/history.zsh
 source $config/builtins/prompt.zsh
-source $config/builtins/title.zsh
 
 source $config/plugins/autosuggestions.zsh
 source $config/plugins/fzf.zsh
