@@ -17,26 +17,23 @@ local M = {
     local themes = require('telescope.themes')
     local builtins = require('telescope.builtin')
 
-    local ignore_patterns = {
-      '%.jpg',
-      '%.jpeg',
-      '%.png',
-      '%.otf',
-      '%.ttf',
-      '^.git/',
-      '^node_modules/',
-      '^site-packages/',
-      '^.yarn/',
-    }
-
     telescope.setup {
       defaults = {
         prompt_prefix = icons.Telescope,
         path_display = {
           "smart",
-          "truncate",
         },
-        file_ignore_patterns = ignore_patterns,
+        file_ignore_patterns = {
+          '%.jpg',
+          '%.jpeg',
+          '%.png',
+          '%.otf',
+          '%.ttf',
+          '^.git/',
+          '^node_modules/',
+          '^site-packages/',
+          '^.yarn/',
+        },
         dynamic_preview_title = true,
         vimgrep_arguments = {
           "rg",
@@ -47,37 +44,6 @@ local M = {
           "--column",
           "--smart-case",
           "--hidden",
-        },
-        layout_strategy = "flex",
-        layout_config = {
-          bottom_pane = {
-            height = 25,
-            preview_cutoff = 120,
-            prompt_position = "top"
-          },
-          center = {
-            height = 0.4,
-            preview_cutoff = 40,
-            prompt_position = "top",
-            width = 0.5
-          },
-          cursor = {
-            height = 0.9,
-            preview_cutoff = 40,
-            width = 0.8
-          },
-          horizontal = {
-            height = 0.9,
-            preview_cutoff = 120,
-            prompt_position = "bottom",
-            width = 0.8
-          },
-          vertical = {
-            height = 0.9,
-            preview_cutoff = 40,
-            prompt_position = "bottom",
-            width = 0.8
-          }
         },
         winblend = 0,
         mappings = {
@@ -117,8 +83,7 @@ local M = {
       },
       extensions = {
         aerial = {
-          -- Display symbols as <root>.<parent>.<symbol>
-          show_nesting = true
+          show_nesting = true -- Display symbols as <root>.<parent>.<symbol>
         }
       }
     }
@@ -129,16 +94,10 @@ local M = {
     telescope.load_extension('aerial')
   end,
   keys = {
-    { "<leader>b", "<cmd>Telescope buffers<cr>",   desc = "List buffers" },
-    { "<leader>h", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-    { "<leader>r", "<cmd>Telescope oldfiles<cr>",  desc = "List recent files" },
-    {
-      "<leader>s",
-      function()
-        require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
-      end,
-      desc = "Find files"
-    },
+    { "<leader>b", "<cmd>Telescope buffers<cr>",    desc = "List buffers" },
+    { "<leader>h", "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
+    { "<leader>r", "<cmd>Telescope oldfiles<cr>",   desc = "List recent files" },
+    { "<leader>s", "<cmd>Telescope find_files<cr>", desc = "Find files" },
   }
 }
 
