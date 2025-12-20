@@ -58,6 +58,7 @@ args = ["--login"]
 decorations = "full"
 dynamic_title = true
 title = "Alacritty"
+option_as_alt = 'Both'
 
 [window.dimensions]
 columns = 80
