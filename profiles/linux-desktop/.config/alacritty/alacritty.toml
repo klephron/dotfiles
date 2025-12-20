@@ -69,6 +69,6 @@ x = 0
 y = 0
 
 [general]
-import = ["/home/klephron/.config/alacritty/themes/kanagawa.toml"]
+import = ["~/.config/alacritty/themes/kanagawa.toml"]
 
 [terminal]
