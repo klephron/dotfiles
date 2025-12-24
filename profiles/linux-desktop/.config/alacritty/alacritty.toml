@@ -69,6 +69,6 @@ x = 0
 y = 0
 
 [general]
-import = ["~/.config/alacritty/themes/kanagawa-dragon.toml"]
+import = ["~/.config/alacritty/themes/kanagawa-black.toml"]
 
 [terminal]
