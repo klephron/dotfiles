@@ -19,5 +19,3 @@ end
 if config.profiles.default then
   require("profiles.default")
 end
-
-vim.lsp.enable("mals")
