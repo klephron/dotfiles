@@ -1,6 +1,6 @@
 local M = {
-  -- don't forget to vim.lsp.enable("mals_adapter") when needed
-  mals_adapter = {
+  -- don't forget to vim.lsp.enable("mals") when needed
+  mals = {
     root_dir = vim.fn.getcwd(),
     cmd = {
       "mals-adapter",

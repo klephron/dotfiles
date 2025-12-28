@@ -93,6 +93,7 @@ local M = {
     local funcs = require("utils.funcs")
 
     neo_tree.setup({
+      log_level = "warn",
       clipboard = {
         sync = "universal",
       },
@@ -139,7 +140,8 @@ local M = {
 
     funcs.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
     funcs.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
-    funcs.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current<cr>", "Open neotree netrw")
+    funcs.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current reveal<cr>", "Open neotree netrw")
+    funcs.set_keynomap("n", "<leader>L", "<cmd>Neotree position=current<cr>", "Open neotree netrw")
   end
 }
 
