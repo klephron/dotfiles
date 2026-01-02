@@ -1,7 +1,0 @@
-[Unit]
-Description=Graphical Session Manager responsible for manual start/stop of graphical-session.target
-Requires=graphical-session.target
-After=graphical-session.target
-
-[Install]
-WantedBy=default.target
