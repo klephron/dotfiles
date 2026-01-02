@@ -44,5 +44,6 @@ if command -v uwsm >/dev/null 2>&1; then
     exec uwsm start hyprland.desktop
   fi
 else
-  exec start-hyprland
+  echo "uwsm not found. Install it to manage Wayland sessions properly." >&2
+  # exec start-hyprland
 fi
