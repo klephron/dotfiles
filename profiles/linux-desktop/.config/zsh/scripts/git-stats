@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+days="${1:-1}"
+STATS_NO_COMMIT="${STATS_NO_COMMIT:-0}"
+
+for i in $(seq 1 $days); do
+  # Calculate the date range for the current iteration
+  after_date=$(date -d "-$(($days + 1 - i)) days" '+%Y-%m-%d')
+  before_date=$(date -d "-$(($days - i)) days" '+%Y-%m-%d')
+
+  echo "Logs from $after_date to $before_date:"
+
+  # Execute the git log command with the calculated dates
+  if [[ $STATS_NO_COMMIT -eq 0 ]]; then
+    git log --stat --oneline --no-decorate \
+      --after="$after_date" \
+      --before="$before_date" \
+      --reverse \
+      --pretty=format:"%h | %ad | %s" \
+      --date=format-local:'%H:%M:%S' \
+      | grep -E '(^[0-f]+\s)|files? changed'
+  fi
+
+  echo "Difference:"
+  git diff --shortstat "@{$(($days + 1 - i)) day ago}" "@{$(($days - i)) day ago}"
+  echo "Cumulative difference:"
+  git diff --shortstat "@{$(($days + 1 - i)) day ago}"
+
+  echo
+done
