@@ -37,3 +37,12 @@ export MOZ_ENABLE_WAYLAND=1
 
 # minikube
 export MINIKUBE_IN_STYLE=0
+
+# Start hyprland
+if command -v uwsm >/dev/null 2>&1; then
+  if uwsm check may-start; then
+    exec uwsm start hyprland.desktop
+  fi
+else
+  exec start-hyprland
+fi
