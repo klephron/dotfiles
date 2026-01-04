@@ -44,13 +44,7 @@ local M = {
     { "<leader>vd", "<cmd>PossessionDelete<cr>",          desc = "Delete current session" },
     { "<leader>vl", "<cmd>PossessionLoad<cr>",            desc = "Load session" },
     { "<leader>vr", "<cmd>PossessionRename<cr>",          desc = " Rename session" },
-    {
-      "<leader>vs",
-      function()
-        vim.cmd("PossessionSave!")
-      end,
-      desc = "Save session"
-    },
+    { "<leader>vs", "<cmd>PossessionSaveCwd<cr>",         desc = "Save session with cwd" },
     {
       "<leader>vS",
       function()
