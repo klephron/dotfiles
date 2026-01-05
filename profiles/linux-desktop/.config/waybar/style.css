@@ -16,8 +16,8 @@ button:hover {
 }
 
 window#waybar {
-  background: rgba(43, 42, 51, 0.8);
-  border-bottom: 0.5px solid rgb(128, 128, 137);
+  background-color: rgba(60, 59, 70, 0.5);
+  border-bottom: 0.5px solid rgba(128, 128, 137, 1);
   color: #ffffff;
 }
 
