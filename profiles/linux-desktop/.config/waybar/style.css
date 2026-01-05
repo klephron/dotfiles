@@ -1,3 +1,5 @@
+/* NOTE: not managed to make blur work, just opacity */
+
 * {
   font-family: "Noto Serif Regular";
   font-size: 13px;
@@ -14,13 +16,9 @@ button:hover {
 }
 
 window#waybar {
-  background-color: rgba(60, 59, 70, 0.8);
-  border-top: 0.5px solid rgba(128, 128, 137, 1);
+  background: rgba(60, 59, 70, 0.8);
+  border-top: 0.5px solid rgb(128, 128, 137);
   color: #ffffff;
-}
-
-window#waybar.hidden {
-  opacity: 0;
 }
 
 label:focus {
@@ -70,7 +68,6 @@ label:focus {
 }
 
 #taskbar button.active {
-  opacity: 1;
   background: rgba(255, 255, 255, 0.1);
 }
 
