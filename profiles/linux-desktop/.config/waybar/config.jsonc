@@ -1,5 +1,6 @@
 [
   {
+    "position": "bottom",
     "fixed-center": false,
     "modules-left": ["hyprland/workspaces#workspaces", "tray"],
     "modules-center": [],
