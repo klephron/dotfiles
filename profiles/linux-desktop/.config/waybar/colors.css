@@ -1,0 +1,9 @@
+@define-color background        rgba(43,42,51,1);
+@define-color background-active rgba(60,59,70,1);
+@define-color background-urgent rgba(255,154,162,1);
+@define-color border            rgba(82,82,94,1);
+@define-color border-active     rgba(128,128,137,1);
+@define-color border-urgent     rgba(128,128,137,1);
+@define-color foreground        rgba(249,249,250,1);
+@define-color foreground-active rgba(251,251,254,1);
+@define-color foreground-urgent rgba(43,42,51,1);
