@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 VARS="
 WAYLAND_DISPLAY
 XDG_CURRENT_DESKTOP

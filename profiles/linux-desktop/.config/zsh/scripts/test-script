@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+exec 19>/tmp/test-env.log
+export BASH_XTRACEFD=19
+exec bash -x "tmux-env"
