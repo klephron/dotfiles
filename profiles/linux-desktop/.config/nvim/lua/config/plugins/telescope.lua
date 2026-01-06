@@ -98,6 +98,7 @@ local M = {
     { "<leader>h", "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
     { "<leader>r", "<cmd>Telescope oldfiles<cr>",   desc = "List recent files" },
     { "<leader>s", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+    { "<leader>;", "<cmd>Telescope resume<cr>",     desc = "Resume telescope search" },
   }
 }
 
