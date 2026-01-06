@@ -31,7 +31,7 @@ M.keymaps = KeymapDictionary:new({
 
   format = { "<leader>km", "Format buffer" },
 
-  inlay_hint = { "<localleader>kt", "Toggle inlay hints" },
+  inlay_hint = { "<localleader>kh", "Toggle inlay hints" },
 }, "")
 
 function M.on_attach(client, bufnr)

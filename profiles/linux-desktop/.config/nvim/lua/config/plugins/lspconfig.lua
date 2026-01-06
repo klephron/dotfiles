@@ -11,10 +11,12 @@ M = {
 
     M.diagnostics_configure()
 
-    funcs.set_keynomap("n", "<localleader>ki", "<cmd>LspInstall<cr>", "Install LSP")
+    funcs.set_keynomap("n", "<localleader>kI", "<cmd>LspInstall<cr>", "Install LSP")
     funcs.set_keynomap("n", "<localleader>kl", "<cmd>LspLog<cr>", "Log LSP")
     funcs.set_keynomap("n", "<localleader>kr", "<cmd>LspRestart<cr>", "Restart LSP")
-    funcs.set_keynomap("n", "<localleader>ks", "<cmd>LspInfo<cr>", "Info LSP")
+    funcs.set_keynomap("n", "<localleader>ki", "<cmd>LspInfo<cr>", "Info LSP")
+    funcs.set_keynomap("n", "<localleader>ks", "<cmd>LspStart<cr>", "Start LSP")
+    funcs.set_keynomap("n", "<localleader>kt", "<cmd>LspStop<cr>", "Stop LSP")
   end,
 }
 
