@@ -1,0 +1,44 @@
+#!/bin/sh
+
+VARS="
+WAYLAND_DISPLAY
+XDG_CURRENT_DESKTOP
+XDG_MENU_PREFIX
+XDG_SESSION_DESKTOP
+XDG_SESSION_ID
+XDG_SESSION_TYPE
+NOTIFY_SOCKET
+HYPRLAND_CMD
+HYPRLAND_INSTANCE_SIGNATURE
+INVOCATION_ID
+DISPLAY
+"
+
+for var in $VARS; do
+    value=$(printenv "$var")
+    if [ -n "$value" ]; then
+        tmux setenv -g "$var" "$value"
+    fi
+done
+
+uwsm_finalize=$(printenv UWSM_FINALIZE_VARNAMES)
+if [ -n "$uwsm_finalize" ]; then
+    tmux setenv -g UWSM_FINALIZE_VARNAMES "$uwsm_finalize"
+    for var in $uwsm_finalize; do
+        value=$(printenv "$var")
+        if [ -n "$value" ]; then
+            tmux setenv -g "$var" "$value"
+        fi
+    done
+fi
+
+uwsm_wait=$(printenv UWSM_WAIT_VARNAMES)
+if [ -n "$uwsm_wait" ]; then
+    tmux setenv -g UWSM_WAIT_VARNAMES "$uwsm_wait"
+    for var in $uwsm_wait; do
+        value=$(printenv "$var")
+        if [ -n "$value" ]; then
+            tmux setenv -g "$var" "$value"
+        fi
+    done
+fi
