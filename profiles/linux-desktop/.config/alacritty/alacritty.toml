@@ -69,6 +69,9 @@ x = 0
 y = 0
 
 [general]
-import = ["~/.config/alacritty/themes/kanagawa-black.toml"]
+import = ["~/.config/alacritty/themes/gruber-darker.toml"]
 
-[terminal]
+# Override default background color
+[colors.primary]
+background = '0x0e1117'
+# foreground = "0xc2c7cc"
