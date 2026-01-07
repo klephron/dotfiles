@@ -5,6 +5,77 @@ local M = {
     local bufferline = require("bufferline")
     local icons = require("config.icons").bufferline
 
+    local highlights = {
+      v1 = {
+        -- without icon (close, modified...)
+        background = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "StatusLine" },
+        },
+        buffer_visible = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+        },
+        buffer_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+        },
+        close_button = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "StatusLine" },
+        },
+        close_button_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+        },
+        close_button_visible = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+        },
+        tab_close = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "StatusLineNC" },
+        },
+        tab = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "StatusLine" },
+        },
+        tab_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+          bold = true,
+        },
+        tab_separator = {
+          fg = { attribute = "bg", highlight = "StatusLine" },
+          bg = { attribute = "bg", highlight = "StatusLine" },
+        },
+        tab_separator_selected = {
+          fg = { attribute = "bg", highlight = "Normal" },
+          bg = { attribute = "bg", highlight = "Normal" },
+        },
+      },
+      v2 = {
+        background = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        buffer_visible = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        buffer_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        close_button = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        close_button_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        close_button_visible = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+      }
+    }
+
     bufferline.setup {
       options = {
         mode = "buffers",
@@ -46,58 +117,7 @@ local M = {
         enforce_regular_tabs = true,
         always_show_bufferline = true,
       },
-      highlights = {
-        -- Buffer (without icon (close, modified...))
-        background = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "StatusLine" },
-        },
-        buffer_visible = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-        },
-        buffer_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-        },
-
-        -- Buffer close button
-        close_button = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "StatusLine" },
-        },
-        close_button_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-        },
-        close_button_visible = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-        },
-
-        -- Tabs
-        tab_close = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "StatusLineNC" },
-        },
-        tab = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "StatusLine" },
-        },
-        tab_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-          bold = true,
-        },
-        tab_separator = {
-          fg = { attribute = "bg", highlight = "StatusLine" },
-          bg = { attribute = "bg", highlight = "StatusLine" },
-        },
-        tab_separator_selected = {
-          fg = { attribute = "bg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
-        },
-      },
+      highlights = highlights.v2,
     }
   end
 }
