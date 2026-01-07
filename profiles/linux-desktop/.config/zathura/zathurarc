@@ -1,4 +1,6 @@
-# theme kanagawa
+# ------------------------------------------------
+# kanagawa
+# ------------------------------------------------
 set notification-error-bg      "#1f1f28"
 set notification-error-fg      "#ff5d62"
 set notification-warning-bg    "#1f1f28"
@@ -24,8 +26,8 @@ set inputbar-fg                "#c8c093"
 set statusbar-bg               "#1f1f28"
 set statusbar-fg               "#c8c093"
 
-set highlight-color            "rgba(255, 160, 102, 0.5)"
-set highlight-active-color     "rgba(255,  93,  98, 0.5)"
+set highlight-color            "#FFDD3380"
+set highlight-active-color     "#73D93680"
 
 set default-bg                 "#1f1f28"
 set default-fg                 "#dcd7ba"
@@ -38,10 +40,50 @@ set recolor-darkcolor          "#dcd7ba"
 set recolor-keephue
 set recolor                    "false"
 
+# ------------------------------------------------
+# gruber-darker
+# ------------------------------------------------
+set notification-error-bg       "#F43841"
+set notification-error-fg       "#181818"
+set notification-warning-bg     "#FFDD33"
+set notification-warning-fg     "#181818"
+set notification-bg             "#282828"
+set notification-fg             "#E4E4E4"
+
+set completion-bg               "#181818"
+set completion-fg               "#E4E4E4"
+set completion-group-bg         "#282828"
+set completion-group-fg         "#95A99F"
+set completion-highlight-bg     "#453D41"
+set completion-highlight-fg     "#F4F4FF"
+
+set index-bg                    "#181818"
+set index-fg                    "#E4E4E4"
+set index-active-bg             "#453D41"
+set index-active-fg             "#F4F4FF"
+
+set inputbar-bg                 "#181818"
+set inputbar-fg                 "#E4E4E4"
+
+set statusbar-bg                "#181818"
+set statusbar-fg                "#E4E4E4"
+
+set highlight-color             "#FFDD3380"
+set highlight-active-color      "#73D93680"
+
+set default-bg                  "#181818"
+set default-fg                  "#E4E4E4"
+set render-loading              true
+set render-loading-bg           "#181818"
+set render-loading-fg           "#E4E4E4"
+
+set recolor-lightcolor          "#181818"
+set recolor-darkcolor           "#E4E4E4"
+set recolor-keephue             true
+set recolor                     false
+# ------------------------------------------------
 
 set selection-clipboard        "clipboard"
-
 set incremental-search         "true"
-
 
 map i set recolor
