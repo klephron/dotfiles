@@ -12,7 +12,7 @@ require("lazy").setup(
     require("config.plugins.which-key"),
     require("config.plugins.treehopper"),
     require("config.plugins.treesitter"),
-    require("config.plugins.vim-easy-align"),
+    require("config.plugins.easy-align"),
   }, {
     install = {},
     concurrency = vim.uv.available_parallelism() * 2,

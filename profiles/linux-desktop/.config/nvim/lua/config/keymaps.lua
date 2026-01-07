@@ -138,6 +138,7 @@ local search_nohl_excluded = {
   "TelescopePrompt",
   "DressingInput",
   "Trouble",
+  "snacks_input",
 }
 
 funcs.augroup("l.map_nohl", {

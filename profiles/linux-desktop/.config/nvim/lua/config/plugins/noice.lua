@@ -5,20 +5,6 @@ local M = {
   config = function()
     require("noice").setup({
       debug = false,
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-        hover = {
-          enabled = false,
-        },
-        signature = {
-          enabled = false
-        }
-      },
       presets = {
         bottom_search = true,
         command_palette = true,
@@ -26,8 +12,15 @@ local M = {
         inc_rename = false,
         lsp_doc_border = false,
       },
+      cmdline = {
+        enabled = true,
+      },
       messages = {
         view = "mini",
+        enabled = true,
+        view_search = "virtualtext",
+      },
+      popupmenu = {
         enabled = true,
       },
       commands = {
@@ -42,12 +35,29 @@ local M = {
           filter = {},
         }
       },
+      notify = {
+        enabled = true,
+      },
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+        hover = {
+          enabled = false,
+        },
+        signature = {
+          enabled = false
+        },
+      },
       routes = {
         {
           view = "notify",
           filter = { event = "msg_showmode" },
         },
-        { -- Mini
+        {
           filter = {
             event = "lsp",
             kind = "progress",
@@ -63,7 +73,7 @@ local M = {
           view = "mini",
           opts = { stop = true }
         }
-      }
+      },
     })
   end,
   keys = {

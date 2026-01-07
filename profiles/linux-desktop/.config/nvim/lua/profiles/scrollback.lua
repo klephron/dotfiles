@@ -17,7 +17,7 @@ require("lazy").setup(
     require("config.plugins.surround"),
     require("config.plugins.treehopper"),
     require("config.plugins.treesitter"),
-    require("config.plugins.vim-easy-align"),
+    require("config.plugins.easy-align"),
     require("config.plugins.which-key"),
   }, {
     install = {},
