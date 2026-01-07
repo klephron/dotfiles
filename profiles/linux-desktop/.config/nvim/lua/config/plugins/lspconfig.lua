@@ -21,7 +21,7 @@ M = {
 }
 
 M.on_attach = function(client, bufnr)
-  local keymaps = require("config.plugins.lsp.keymaps")
+  local keymaps = require("config.lsp.keymaps")
 
   keymaps.on_attach(client, bufnr)
 end
@@ -115,8 +115,8 @@ M._servers_config = function(servers)
 end
 
 M.servers_config = function()
-  M._servers_config(require("config.plugins.lsp.servers"))
-  M._servers_config(require("config.plugins.lsp.servers-local"))
+  M._servers_config(require("config.lsp.servers"))
+  M._servers_config(require("config.lsp.servers-local"))
 end
 
 M._servers_enable = function(servers)
@@ -126,8 +126,8 @@ M._servers_enable = function(servers)
 end
 
 M.servers_enable = function()
-  M._servers_enable(require("config.plugins.lsp.servers"))
-  M._servers_enable(require("config.plugins.lsp.servers-local"))
+  M._servers_enable(require("config.lsp.servers"))
+  M._servers_enable(require("config.lsp.servers-local"))
 end
 
 return M

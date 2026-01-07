@@ -2,9 +2,8 @@ local dap = require('dap')
 local HOME = vim.fn.expand('$HOME')
 
 local M = {}
---[[
+
 -- type to filetype (for processing launch.json)
---]]
 M.ttft = {}
 
 

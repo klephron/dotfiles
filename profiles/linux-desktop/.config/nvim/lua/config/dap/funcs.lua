@@ -2,7 +2,7 @@ local M = {}
 
 local dap = require("dap")
 local widgets = require("dap.ui.widgets")
-local dap_ttft = require("config.plugins.dap.langs").ttft
+local ttft = require("config.dap.langs").ttft
 
 local launchjs_paths = {
   'launch.json',
@@ -41,7 +41,7 @@ local function process_launchjs(opts)
     end
   end
 
-  local ok, result = pcall(require("dap.ext.vscode").load_launchjs, path, dap_ttft)
+  local ok, result = pcall(require("dap.ext.vscode").load_launchjs, path, ttft)
   if ok then
     dap_notify("Resolved launch.json path: " .. path, vim.log.levels.INFO)
   else

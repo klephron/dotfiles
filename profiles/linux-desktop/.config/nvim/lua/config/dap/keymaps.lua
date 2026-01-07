@@ -57,7 +57,7 @@ M.dap = KeymapDictionary:new({
 function M.setup()
   local kmps = M.dap
   local fn_kmps = M.dap_fn
-  local funcs = require("config.plugins.dap.funcs")
+  local funcs = require("config.dap.funcs")
   local utils = require("utils.funcs")
 
   utils.set_keynomap("n", kmps.continue.key, funcs.continue, kmps:desc("continue"))

@@ -9,7 +9,7 @@ local M = {
     local on_attach = require("config.plugins.lspconfig").on_attach
 
     local server_options = vim.tbl_deep_extend("force", {}, options_fetch(),
-      require("config.plugins.lsp.servers").jdtls or {})
+      require("config.lsp.servers").jdtls or {})
 
     local server_on_attach = server_options.on_attach
 
