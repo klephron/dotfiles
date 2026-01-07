@@ -22,16 +22,6 @@ local M = {
     }
   },
   {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    lazy = true,
-    enabled = true,
-    opts = {
-      terminalColors = false,
-      commentStyle = { italic = false },
-    }
-  },
-  {
     'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
@@ -54,7 +44,28 @@ local M = {
     end,
   },
   {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    lazy = true,
+    enabled = true,
+    opts = {
+      terminalColors = false,
+      commentStyle = { italic = false },
+    }
+  },
+  {
     "blazkowolf/gruber-darker.nvim",
+    config = function()
+      local override = function()
+        vim.api.nvim_set_hl(0, "DiagnosticInfo", { link = "GruberDarkerNiagara" })
+        vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "GruberDarkerNiagaraSign" })
+      end
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "gruber-darker",
+        callback = override,
+      })
+    end,
     opts = {
       italic = {
         strings = false,
