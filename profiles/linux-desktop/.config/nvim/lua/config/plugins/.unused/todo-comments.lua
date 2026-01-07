@@ -1,5 +1,6 @@
 local M = {
   "folke/todo-comments.nvim",
+  enabled = false,
   config = function()
     local todo = require("todo-comments")
     local funcs = require("utils.funcs")
