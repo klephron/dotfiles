@@ -1,6 +1,6 @@
 /* NOTE: not managed to make blur work, just opacity */
 
-@import "colors.css";
+@import "themes/gruber-darker.css";
 
 * {
   font-family: "Noto Serif Regular";
