@@ -160,12 +160,11 @@ end
 
 funcs.augroup("l.restore_cursor_shape", {
   {
-    event = "VimLeave",
+    event = "ExitPre",
     pattern = "*",
     command = function()
-      vim.opt.guicursor = {
-        [[a:ver20]],
-      }
+      -- vim.cmd("set guicursor=a:ver20")
+      -- vim.cmd("set guicursor=a:ver90")
     end
   }
 })
