@@ -6,7 +6,7 @@ local M = {
     "rcarriga/nvim-notify",
     "stevearc/aerial.nvim",
     "folke/noice.nvim",
-    "nvim-neorg/neorg",
+    -- "nvim-neorg/neorg",
     "jedrzejboczar/possession.nvim",
     -- "mfussenegger/nvim-dap",
   },
