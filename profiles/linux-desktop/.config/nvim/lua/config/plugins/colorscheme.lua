@@ -56,6 +56,15 @@ local M = {
   {
     "blazkowolf/gruber-darker.nvim",
     config = function()
+      local colorscheme = require("gruber-darker")
+
+      colorscheme.setup({
+        italic = {
+          strings = false,
+          comments = false,
+        },
+      })
+
       local override = function()
         vim.api.nvim_set_hl(0, "DiagnosticInfo", { link = "GruberDarkerNiagara" })
         vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "GruberDarkerNiagaraSign" })
@@ -66,12 +75,6 @@ local M = {
         callback = override,
       })
     end,
-    opts = {
-      italic = {
-        strings = false,
-        comments = false,
-      },
-    },
   }
 }
 
