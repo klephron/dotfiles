@@ -51,6 +51,14 @@ local M = {
       },
       sync_install = false,
       auto_install = false,
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<A-o>",
+          node_incremental = "<A-o>",
+          node_decremental = "<A-i>",
+        },
+      },
     })
   end
 }
