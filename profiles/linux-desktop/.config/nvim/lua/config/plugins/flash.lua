@@ -11,7 +11,7 @@ local M = {
           enabled = false,
         },
         char = {
-          enabled = true,
+          enabled = false,
           autohide = true,
           jump_labels = true,
           multi_line = false,
@@ -43,10 +43,6 @@ local M = {
         enabled = false,
       }
     })
-
-    funcs.set_keynomap({ "x", "n", "o" }, "s", function()
-      flash.jump()
-    end, "Flash multiline")
 
     funcs.set_keynomap({ "x", "n", "o" }, "m", function()
       flash.treesitter()
