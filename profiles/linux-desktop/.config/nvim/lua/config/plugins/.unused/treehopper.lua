@@ -1,5 +1,6 @@
 local M = {
   "mfussenegger/nvim-treehopper",
+  enabled = false,
   dependencies = {
     "phaazon/hop.nvim",
   },
@@ -11,9 +12,6 @@ local M = {
 
     funcs.set_keyremap("o", "m", ":<c-u>lua require('tsht').nodes()<cr>")
     funcs.set_keynomap("x", "m", ":lua require('tsht').nodes()<cr>")
-
-    vim.api.nvim_set_hl(0, "TSNodeUnmatched", { link = "HopUnmatched" })
-    vim.api.nvim_set_hl(0, "TSNodeKey", { link = "HopNextKey" })
   end
 }
 

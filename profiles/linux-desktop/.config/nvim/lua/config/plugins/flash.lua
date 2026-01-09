@@ -1,0 +1,58 @@
+local M = {
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  config = function()
+    local flash = require("flash")
+    local funcs = require("utils.funcs")
+
+    flash.setup({
+      modes = {
+        search = {
+          enabled = false,
+        },
+        char = {
+          enabled = true,
+          autohide = true,
+          jump_labels = true,
+          multiline = false,
+        },
+        treesitter = {
+          label = {
+            style = "overlay"
+          },
+          highlight = {
+            backdrop = true,
+          }
+        },
+        treesitter_search = {
+          label = {
+            style = "overlay",
+          }
+        }
+      },
+      prompt = {
+        enabled = false,
+      }
+    })
+
+    funcs.set_keynomap({ "x", "n", "o" }, "s", function()
+      flash.jump()
+    end, "Flash multiline")
+
+    funcs.set_keynomap({ "x", "n", "o" }, "m", function()
+      flash.treesitter()
+    end, "Flash treesitter")
+
+    funcs.set_keynomap({ "o", "x" }, "M",
+      function()
+        flash.treesitter_search()
+      end, "Treesitter search")
+
+    vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ff007c", bold = true })
+    vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#00dfff", bold = true })
+    vim.api.nvim_set_hl(0, "FlashCurrent", { fg = "#2b8db3" })
+    vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = "#666666" })
+  end,
+}
+
+return M
