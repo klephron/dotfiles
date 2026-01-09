@@ -1,9 +1,9 @@
 local M = {
   "williamboman/mason-lspconfig.nvim",
-  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     { "williamboman/mason.nvim" },
   },
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local mason_lsp = require("mason-lspconfig")
 

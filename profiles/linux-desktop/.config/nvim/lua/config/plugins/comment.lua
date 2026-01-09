@@ -3,14 +3,6 @@ local M = {
   dependencies = config.is_vscode and {} or {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-  keys = {
-    { "gcc",     mode = { "n" } },
-    { "gbc",     mode = { "n" } },
-    { "gc",      mode = { "n", "x", "o" } },
-    { "gb",      mode = { "n", "x", "o" }, },
-    { "<C-/>",   mode = { "n", "x" } },
-    { "<C-S-/>", mode = { "n", "x" } },
-  },
   config = function()
     local comment = require("Comment")
     local funcs = require("utils.funcs")
@@ -47,7 +39,15 @@ local M = {
       return vim.v.count == 0 and toggle_current_line
           or toggle_count_lines
     end, { expr = true })
-  end
+  end,
+  keys = {
+    { "gcc",     mode = { "n" } },
+    { "gbc",     mode = { "n" } },
+    { "gc",      mode = { "n", "x", "o" } },
+    { "gb",      mode = { "n", "x", "o" }, },
+    { "<C-/>",   mode = { "n", "x" } },
+    { "<C-S-/>", mode = { "n", "x" } },
+  },
 }
 
 return M

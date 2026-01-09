@@ -1,7 +1,6 @@
 local M = {
   "ahmedkhalf/project.nvim",
   cmd = { "ProjectRoot" },
-  enable = true,
   config = function()
     local project = require("project_nvim")
 

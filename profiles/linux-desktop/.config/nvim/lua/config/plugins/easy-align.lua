@@ -1,6 +1,6 @@
 local M = {
   "junegunn/vim-easy-align",
-  event = "UIEnter",
+  event = "VeryLazy",
   config = function()
     local funcs = require("utils.funcs")
     funcs.set_keynomap("n", "ga", "<Plug>(EasyAlign)")

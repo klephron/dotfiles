@@ -2,7 +2,6 @@ local M = {
   "jedrzejboczar/possession.nvim",
   cmd = { "PossessionLoad", "PossessionSave", "PossessionRename", "PossessionClose", "PossessionDelete",
     "PossessionShow", "PossessionList", "PossessionMigrate" },
-  enabled = true,
   config = function()
     local possession = require("possession")
     possession.setup({

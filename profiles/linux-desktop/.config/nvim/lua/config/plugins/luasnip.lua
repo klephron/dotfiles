@@ -1,10 +1,9 @@
 local M = {
   "L3MON4D3/LuaSnip",
-  enabled = true,
-  lazy = true,
   dependencies = {
     "rafamadriz/friendly-snippets"
   },
+  lazy = true,
   config = function()
     local luasnip = require("luasnip")
     local types = require("luasnip.util.types")

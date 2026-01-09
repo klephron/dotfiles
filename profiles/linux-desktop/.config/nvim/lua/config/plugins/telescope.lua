@@ -1,6 +1,5 @@
 local M = {
   'nvim-telescope/telescope.nvim',
-  cmd = { "Telescope" },
   dependencies = {
     "ahmedkhalf/project.nvim",
     "rcarriga/nvim-notify",
@@ -8,14 +7,17 @@ local M = {
     "folke/noice.nvim",
     -- "nvim-neorg/neorg",
     "jedrzejboczar/possession.nvim",
+    'nvim-telescope/telescope-ui-select.nvim'
     -- "mfussenegger/nvim-dap",
   },
+  event = "UIEnter",
   config = function()
     local telescope = require("telescope")
     local icons = require("config.icons")
     local actions = require("telescope.actions")
-    local themes = require('telescope.themes')
-    local builtins = require('telescope.builtin')
+    local themes = require("telescope.themes")
+    local builtins = require("telescope.builtin")
+    local funcs = require("utils.funcs")
 
     telescope.setup {
       defaults = {
@@ -82,24 +84,28 @@ local M = {
         },
       },
       extensions = {
-        aerial = {
+        ["aerial"] = {
           show_nesting = true -- Display symbols as <root>.<parent>.<symbol>
-        }
+        },
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown({
+          }),
+        },
       }
     }
 
+    telescope.load_extension("aerial")
     telescope.load_extension("noice")
     telescope.load_extension("possession")
-    telescope.load_extension('projects')
-    telescope.load_extension('aerial')
+    telescope.load_extension("projects")
+    telescope.load_extension("ui-select")
+
+    funcs.set_keynomap("n", "<leader>b", "<cmd>Telescope buffers<cr>", "List buffers")
+    funcs.set_keynomap("n", "<leader>h", "<cmd>Telescope live_grep<cr>", "Live grep")
+    funcs.set_keynomap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", "Live recent files")
+    funcs.set_keynomap("n", "<leader>s", "<cmd>Telescope find_files<cr>", "Find files")
+    funcs.set_keynomap("n", "<leader>;", "<cmd>Telescope resume<cr>", "Resume telescope search")
   end,
-  keys = {
-    { "<leader>b", "<cmd>Telescope buffers<cr>",    desc = "List buffers" },
-    { "<leader>h", "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
-    { "<leader>r", "<cmd>Telescope oldfiles<cr>",   desc = "List recent files" },
-    { "<leader>s", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>;", "<cmd>Telescope resume<cr>",     desc = "Resume telescope search" },
-  }
 }
 
 return M
