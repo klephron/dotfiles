@@ -59,6 +59,7 @@ local M = {
       local colorscheme = require("gruber-darker")
 
       colorscheme.setup({
+        bold = false,
         italic = {
           strings = false,
           comments = false,
