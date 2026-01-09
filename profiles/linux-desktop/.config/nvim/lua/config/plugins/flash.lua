@@ -11,13 +11,13 @@ local M = {
           enabled = false,
         },
         char = {
-          enabled = false,
+          enabled = true,
           autohide = true,
           jump_labels = true,
           multi_line = false,
           highlight = {
-            -- Issue with multi_line = false
             -- https://github.com/folke/flash.nvim/issues/453
+            -- Issue with multi_line = false
             backdrop = false,
           },
         },
@@ -43,6 +43,10 @@ local M = {
         enabled = false,
       }
     })
+
+    funcs.set_keynomap({ "x", "n", "o" }, "s", function()
+      flash.jump()
+    end, "Flash multiline")
 
     funcs.set_keynomap({ "x", "n", "o" }, "m", function()
       flash.treesitter()
