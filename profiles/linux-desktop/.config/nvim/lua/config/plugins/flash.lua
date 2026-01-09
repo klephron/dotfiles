@@ -18,7 +18,9 @@ local M = {
         },
         treesitter = {
           label = {
-            style = "overlay"
+            style = "inline",
+            before = true,
+            after = true,
           },
           highlight = {
             backdrop = true,
@@ -26,7 +28,9 @@ local M = {
         },
         treesitter_search = {
           label = {
-            style = "overlay",
+            style = "inline",
+            before = true,
+            after = true,
           }
         }
       },
