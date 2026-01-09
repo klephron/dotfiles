@@ -14,7 +14,12 @@ local M = {
           enabled = true,
           autohide = true,
           jump_labels = true,
-          multiline = false,
+          multi_line = false,
+          highlight = {
+            -- Issue with multi_line = false
+            -- https://github.com/folke/flash.nvim/issues/453
+            backdrop = false,
+          },
         },
         treesitter = {
           label = {
