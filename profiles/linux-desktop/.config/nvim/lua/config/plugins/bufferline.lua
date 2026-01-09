@@ -73,6 +73,16 @@ local M = {
         close_button_visible = {
           fg = { attribute = "fg", highlight = "Normal" },
         },
+        tab_close = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        tab = {
+          fg = { attribute = "fg", highlight = "Normal" },
+        },
+        tab_selected = {
+          fg = { attribute = "fg", highlight = "Normal" },
+          bold = true,
+        },
       }
     }
 
