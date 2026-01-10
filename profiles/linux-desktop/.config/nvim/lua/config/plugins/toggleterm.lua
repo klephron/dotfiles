@@ -28,7 +28,7 @@ local M = {
       local defaults = { escape = true, window = true, number = false }
       opts = vim.tbl_extend("force", defaults, opts or {})
 
-      vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>bdelete!<cr>", { noremap = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>Bdelete!<cr>", { noremap = true })
 
       if opts.escape then
         pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<esc>')
@@ -61,6 +61,7 @@ local M = {
       local state = term_save()
       terminal.Terminal:new({
         direction = 'tab',
+        display_name = 'tab',
         on_open = function(term)
           term_map(term, { escape = false, number = true })
         end,
