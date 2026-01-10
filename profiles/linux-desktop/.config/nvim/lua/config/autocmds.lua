@@ -1,5 +1,6 @@
 local funcs = require("utils.funcs")
 
+-- FILETYPES
 funcs.augroup("l.nasm", {
   {
     event = { "BufRead", "BufNewFile" },
@@ -27,7 +28,7 @@ funcs.augroup("l.jinja", {
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 -- Define the augroup for handling binary files with xxd
-funcs.augroup("l.binary_xxd", {
+funcs.augroup("l.bin", {
   {
     event = { "BufReadPre" },
     pattern = "*.bin,*.exe,*.out",
@@ -66,6 +67,30 @@ funcs.augroup("l.binary_xxd", {
   },
 })
 
+-- Fix conceallevel for json & help files
+funcs.augroup("l.json_conceal", {
+  {
+    event = { "FileType" },
+    pattern = { "json", "jsonc" },
+    command = function()
+      vim.wo.spell = false
+      vim.wo.conceallevel = 0
+    end
+  }
+})
+
+funcs.augroup("l.text", {
+  {
+    event = "FileType",
+    pattern = { "plaintex", "typst", "gitcommit", "markdown" },
+    command = function()
+      vim.opt_local.wrap = true
+      -- vim.opt_local.spell = true
+    end,
+  }
+})
+
+-- UTILITY
 -- Create directories when needed, when saving a file
 funcs.augroup("l.create_dir_on_file_write", {
   {
@@ -77,18 +102,6 @@ funcs.augroup("l.create_dir_on_file_write", {
       local backup = vim.fn.fnamemodify(file, ":p:~:h")
       backup = backup:gsub("[/\\]", "%%")
       vim.go.backupext = backup
-    end
-  }
-})
-
--- Fix conceallevel for json & help files
-funcs.augroup("l.json_conceal", {
-  {
-    event = { "FileType" },
-    pattern = { "json", "jsonc" },
-    command = function()
-      vim.wo.spell = false
-      vim.wo.conceallevel = 0
     end
   }
 })
@@ -122,37 +135,6 @@ funcs.augroup("l.resize_on_window_change", {
     end
   }
 })
-
-funcs.augroup("l.text", {
-  {
-    event = "FileType",
-    pattern = { "plaintex", "typst", "gitcommit", "markdown" },
-    command = function()
-      vim.opt_local.wrap = true
-      -- vim.opt_local.spell = true
-    end,
-  }
-})
-
-vim.api.nvim_create_user_command("Pwd", function()
-  local reg_cmd = "" ..
-      ":redir @+ \n" ..
-      ":echon getcwd()\n" ..
-      ":redir end"
-  vim.cmd(":echo '' | redraw")
-  vim.cmd(reg_cmd)
-end, { nargs = 0 })
-
-
-vim.api.nvim_create_user_command("Fdir", function()
-  local reg_cmd = "" ..
-      ":redir @+ \n" ..
-      ":echon expand('%:h')\n" ..
-      ":redir end"
-  vim.cmd(":echo '' | redraw")
-  vim.cmd(reg_cmd)
-end, { nargs = 0 })
-
 
 if funcs.is_vscode or funcs.is_firenvim then
   return

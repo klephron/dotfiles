@@ -2,6 +2,7 @@ local M = {
   "akinsho/toggleterm.nvim",
   config = function()
     local toggleterm = require("toggleterm")
+    local terminal = require("toggleterm.terminal")
 
     toggleterm.setup({
       open_mapping = [[<c-\>]],
@@ -18,89 +19,110 @@ local M = {
         end
       end,
       on_open = function()
-        local opts = { noremap = true }
-        vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>bdelete!<cr>", opts)
-        vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-        vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-        vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-        vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+        vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>bdelete!<cr>", { noremap = true })
       end
     })
 
-    local term_defaults = {
-      mouse = vim.opt.mouse
-    }
-
-    local function term_restore()
-      vim.opt.mouse = term_defaults.mouse
+    local function term_save()
+      local state = {
+        mouse = vim.opt.mouse,
+        number = vim.opt.number,
+      }
+      return state
     end
 
-    local function term_del_keymaps(term)
-      if vim.fn.maparg('<esc>', 't') ~= '' then
+    local function term_restore(state)
+      vim.opt.mouse = state.mouse
+      vim.opt.number = state.number
+    end
+
+    local function term_fix(term, opts)
+      local defaults = { escape = true, window = true, number = false }
+      opts = vim.tbl_extend("force", defaults, opts or {})
+      if opts.escape then
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-[>')
+      end
+      if opts.window then
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-h>')
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-j>')
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-k>')
         vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-l>')
       end
+      if opts.number then
+        vim.opt.number = true
+      end
     end
 
-    vim.api.nvim_create_user_command("ToggleTermFloat", function()
-      require('toggleterm.terminal').Terminal:new({
-        direction = 'float',
+    vim.api.nvim_create_user_command("ToggleTermTab", function()
+      local state = term_save()
+      terminal.Terminal:new({
+        direction = 'tab',
         hidden = false,
         on_open = function(term)
-          term_del_keymaps(term)
-          vim.opt.mouse = 'a'
+          term_fix(term, { escape = false, number = true })
         end,
-        on_close = term_restore,
+        on_close = function() term_restore(state) end,
+      }):toggle()
+    end, {})
+
+    vim.api.nvim_create_user_command("ToggleTermFloat", function()
+      local state = term_save()
+      terminal.Terminal:new({
+        direction = 'float',
+        hidden = false,
+        on_open = function(term) term_fix(term) end,
+        on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
 
     vim.api.nvim_create_user_command("ToggleTermHtop", function()
-      require('toggleterm.terminal').Terminal:new({
+      local state = term_save()
+      terminal.Terminal:new({
         cmd = 'htop',
         direction = 'float',
         hidden = true,
-        on_open = term_del_keymaps,
-        on_close = term_restore,
+        on_open = function(term) term_fix(term) end,
+        on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
 
     vim.api.nvim_create_user_command("ToggleTermLazygit", function()
-      require('toggleterm.terminal').Terminal:new({
+      local state = term_save()
+      terminal.Terminal:new({
         cmd = 'lazygit',
         hidden = true,
         direction = 'float',
-        on_open = term_del_keymaps,
-        on_close = term_restore,
+        on_open = function(term) term_fix(term) end,
+        on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
 
     vim.api.nvim_create_user_command("ToggleTermLazydocker", function()
-      require('toggleterm.terminal').Terminal:new({
+      local state = term_save()
+      terminal.Terminal:new({
         cmd = 'lazydocker',
         hidden = true,
         direction = 'float',
-        on_open = term_del_keymaps,
-        on_close = term_restore,
+        on_open = function(term) term_fix(term) end,
+        on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
 
     vim.api.nvim_create_user_command("ToggleTermK9s", function()
-      require('toggleterm.terminal').Terminal:new({
+      local state = term_save()
+      terminal.Terminal:new({
         cmd = 'k9s',
         direction = 'float',
         hidden = true,
-        on_open = term_del_keymaps,
-        on_close = term_restore,
+        on_open = function(term) term_fix(term) end,
+        on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
   end,
   keys = {
     { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
-    { "<leader>jt", "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
+    { "<leader>jt", "<cmd>ToggleTermTab<cr>",        desc = "Toggle terminal in tab" },
     { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "Toggle all terminals" },
     { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Open float terminal" },
     { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Open htop" },
