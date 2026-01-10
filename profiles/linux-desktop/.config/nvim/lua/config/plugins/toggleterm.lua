@@ -7,20 +7,8 @@ local M = {
     toggleterm.setup({
       open_mapping = [[<c-\>]],
       shade_filetypes = { 'none' },
-      direction = 'horizontal',
       insert_mappings = false,
-      start_in_insert = true,
       float_opts = { border = 'rounded', winblend = 0 },
-      size = function(term)
-        if term.direction == 'horizontal' then
-          return 15
-        elseif term.direction == 'vertical' then
-          return math.floor(vim.o.columns * 0.4)
-        end
-      end,
-      on_open = function()
-        vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>bdelete!<cr>", { noremap = true })
-      end
     })
 
     local function term_save()
@@ -36,31 +24,45 @@ local M = {
       vim.opt.number = state.number
     end
 
-    local function term_fix(term, opts)
+    local function term_map(term, opts)
       local defaults = { escape = true, window = true, number = false }
       opts = vim.tbl_extend("force", defaults, opts or {})
+
+      vim.api.nvim_buf_set_keymap(0, 'n', 'q', "<cmd>bdelete!<cr>", { noremap = true })
+
       if opts.escape then
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-[>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<esc>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<C-[>')
       end
       if opts.window then
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-h>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-j>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-k>')
-        vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-l>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<C-h>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<C-j>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<C-k>')
+        pcall(vim.api.nvim_buf_del_keymap, term.bufnr, 't', '<C-l>')
       end
       if opts.number then
         vim.opt.number = true
       end
     end
 
+    vim.api.nvim_create_user_command("ToggleTermHorizontal", function()
+      local state = term_save()
+      terminal.Terminal:new({
+        direction = 'horizontal',
+        on_open = function(term)
+          term_map(term, { escape = false, window = false, number = false })
+        end,
+        on_close = function() term_restore(state) end,
+        size = function() return 15 end,
+      }):toggle()
+    end, {})
+
     vim.api.nvim_create_user_command("ToggleTermTab", function()
       local state = term_save()
       terminal.Terminal:new({
         direction = 'tab',
-        hidden = false,
         on_open = function(term)
-          term_fix(term, { escape = false, number = true })
+          term_map(term, { escape = false, number = true })
         end,
         on_close = function() term_restore(state) end,
       }):toggle()
@@ -71,7 +73,7 @@ local M = {
       terminal.Terminal:new({
         direction = 'float',
         hidden = false,
-        on_open = function(term) term_fix(term) end,
+        on_open = function(term) term_map(term) end,
         on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
@@ -82,7 +84,7 @@ local M = {
         cmd = 'htop',
         direction = 'float',
         hidden = true,
-        on_open = function(term) term_fix(term) end,
+        on_open = function(term) term_map(term) end,
         on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
@@ -91,9 +93,9 @@ local M = {
       local state = term_save()
       terminal.Terminal:new({
         cmd = 'lazygit',
-        hidden = true,
         direction = 'float',
-        on_open = function(term) term_fix(term) end,
+        hidden = true,
+        on_open = function(term) term_map(term) end,
         on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
@@ -102,9 +104,9 @@ local M = {
       local state = term_save()
       terminal.Terminal:new({
         cmd = 'lazydocker',
-        hidden = true,
         direction = 'float',
-        on_open = function(term) term_fix(term) end,
+        hidden = true,
+        on_open = function(term) term_map(term) end,
         on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
@@ -115,20 +117,22 @@ local M = {
         cmd = 'k9s',
         direction = 'float',
         hidden = true,
-        on_open = function(term) term_fix(term) end,
+        on_open = function(term) term_map(term) end,
         on_close = function() term_restore(state) end,
       }):toggle()
     end, {})
   end,
   keys = {
     { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
-    { "<leader>jt", "<cmd>ToggleTermTab<cr>",        desc = "Toggle terminal in tab" },
+    { "<leader>js", "<cmd>TermSelect<cr>",           desc = "Select terminal" },
     { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "Toggle all terminals" },
-    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Open float terminal" },
-    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Open htop" },
-    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Open lazygit" },
-    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Open lazydocker" },
-    { "<leader>jk", "<cmd>ToggleTermK9s<cr>",        desc = "Open k9s" },
+    { "<leader>jy", "<cmd>ToggleTermHorizontal<cr>", desc = "Toggle terminal horizontal" },
+    { "<leader>jt", "<cmd>ToggleTermTab<cr>",        desc = "Toggle terminal in tab" },
+    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Toggle float terminal" },
+    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Toggle htop" },
+    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Toggle lazygit" },
+    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Toggle lazydocker" },
+    { "<leader>jk", "<cmd>ToggleTermK9s<cr>",        desc = "Toggle k9s" },
     {
       "<CR>",
       function()
