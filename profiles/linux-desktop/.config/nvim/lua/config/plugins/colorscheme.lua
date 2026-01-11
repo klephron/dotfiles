@@ -1,60 +1,12 @@
+-- lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+-- priority = 1000, -- make sure to load this before all the other start plugins
+
 local M = {
-  {
-    'Mofiqul/vscode.nvim',
-    priority = 1000,
-    -- enabled = false,
-    lazy = true,
+  --[[ {
+    "blazkowolf/gruber-darker.nvim",
     enabled = false,
-    opts = {
-      transparent = false,
-      group_overrides = {
-        -- Hop
-        HopNextKey = { fg = '#ff007c', bg = 'NONE', bold = true },
-        HopNextKey1 = { fg = '#00dfff', bg = 'NONE', bold = true },
-        HopNextKey2 = { fg = '#2b8db3', bg = 'NONE', bold = true },
-        HopUnmatched = { fg = "#808080", bg = 'NONE' },
-        HopCursor = { link = "Cursor" },
-        HopPreview = { link = "IncSearch" },
-        -- Treehopper
-        TSNodeUnmatched = { link = "HopUnmatched" },
-        TSNodeKey = { link = "HopNextKey" },
-      }
-    }
-  },
-  {
-    'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
-    enabled = false,
-    config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.gruvbox_material_enable_italic = true
-    end
-  },
-  {
-    'projekt0n/github-nvim-theme',
-    name = 'github-theme',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    enabled = false,
-    config = function()
-      require('github-theme').setup({
-      })
-    end,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    lazy = true,
-    enabled = true,
-    opts = {
-      terminalColors = false,
-      commentStyle = { italic = false },
-    }
-  },
-  {
-    "blazkowolf/gruber-darker.nvim",
     config = function()
       local colorscheme = require("gruber-darker")
 
@@ -80,10 +32,76 @@ local M = {
         callback = override,
       })
     end,
+  }, ]]
+  {
+    'Mofiqul/vscode.nvim',
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = false,
+      group_overrides = {
+        -- Hop
+        HopNextKey = { fg = '#ff007c', bg = 'NONE', bold = true },
+        HopNextKey1 = { fg = '#00dfff', bg = 'NONE', bold = true },
+        HopNextKey2 = { fg = '#2b8db3', bg = 'NONE', bold = true },
+        HopUnmatched = { fg = "#808080", bg = 'NONE' },
+        HopCursor = { link = "Cursor" },
+        HopPreview = { link = "IncSearch" },
+        -- Treehopper
+        TSNodeUnmatched = { link = "HopUnmatched" },
+        TSNodeKey = { link = "HopNextKey" },
+      }
+    }
   },
   {
-    dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
+    'sainnhe/gruvbox-material',
+    enabled = false,
+    lazy = false,
+    priority = 1000,
     config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+    end
+  },
+  {
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false,
+    priority = 1000,
+    enabled = false,
+    config = function()
+      require('github-theme').setup({})
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    opts = {
+      terminalColors = false,
+      commentStyle = { italic = false },
+    }
+  },
+  {
+    "klephron/darkplus.nvim",
+    dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
+    dev = false,
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "klephron/gruber-darker.nvim",
+    dir = vim.fn.expand("$HOME/works/gruber-darker.nvim"),
+    dev = true,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local colorscheme = require("gruber-darker")
+      colorscheme.setup({})
     end,
   }
 }

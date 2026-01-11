@@ -14,7 +14,7 @@ local M = {
           enabled = true,
           autohide = true,
           jump_labels = true,
-          multi_line = false,
+          multi_line = true,
           highlight = {
             -- https://github.com/folke/flash.nvim/issues/453
             -- Issue with multi_line = false
