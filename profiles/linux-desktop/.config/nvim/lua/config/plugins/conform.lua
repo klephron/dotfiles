@@ -24,6 +24,8 @@ local M = {
       end,
     })
 
+    vim.g.conform_disabled = false
+
     vim.api.nvim_create_user_command("ConformToggle", function(args)
       if args.bang then
         vim.g.conform_disabled = not vim.g.conform_disabled

@@ -11,11 +11,6 @@ local M = {
         },
         format = {
           enable = true,
-          defaultConfig = {
-            indent_style = "space",
-            indent_size = "2",
-            continuation_indent_size = "2",
-          },
         },
         hint = {
           enable = true,

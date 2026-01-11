@@ -114,20 +114,20 @@ M._servers_config = function(servers)
   end
 end
 
-M.servers_config = function()
-  M._servers_config(require("config.lsp.servers"))
-  M._servers_config(require("config.lsp.servers-local"))
-end
-
 M._servers_enable = function(servers)
   for server, _ in pairs(servers) do
     vim.lsp.enable(server, true)
   end
 end
 
+M.servers_config = function()
+  M._servers_config(require("config.lsp.servers"))
+  M._servers_config(require("config.lsp.servers-local"))
+end
+
 M.servers_enable = function()
   M._servers_enable(require("config.lsp.servers"))
-  M._servers_enable(require("config.lsp.servers-local"))
+  -- M._servers_enable(require("config.lsp.servers-local"))
 end
 
 return M
