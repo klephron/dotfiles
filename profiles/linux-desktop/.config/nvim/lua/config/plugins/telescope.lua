@@ -1,7 +1,7 @@
 local M = {
   'nvim-telescope/telescope.nvim',
   dependencies = {
-    "ahmedkhalf/project.nvim",
+    "DrKJeff16/project.nvim",
     "rcarriga/nvim-notify",
     "stevearc/aerial.nvim",
     "folke/noice.nvim",

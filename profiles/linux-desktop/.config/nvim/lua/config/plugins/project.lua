@@ -1,12 +1,12 @@
 local M = {
-  "ahmedkhalf/project.nvim",
+  "DrKJeff16/project.nvim",
   cmd = { "ProjectRoot" },
   config = function()
-    local project = require("project_nvim")
+    local project = require("project")
 
     project.setup {
       manual_mode = true,
-      detection_methods = { "lsp", "pattern" },
+      use_lsp = true,
       patterns = {
         ".git",
         "_darcs",
@@ -19,6 +19,7 @@ local M = {
       },
       ignore_lsp = {},
       exclude_dirs = {},
+      enable_autochdir = false,
       show_hidden = true,
       silent_chdir = true,
       datapath = vim.fn.expand(vim.fn.stdpath("cache")),
