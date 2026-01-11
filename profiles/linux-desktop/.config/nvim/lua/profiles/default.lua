@@ -25,5 +25,3 @@ require("config.colorscheme")
 require("config.keymaps")
 require("config.aliases")
 require("config.autocmds")
-
-require("locals.watch")

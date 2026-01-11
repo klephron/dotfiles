@@ -68,8 +68,9 @@ local M = {
 
       local override = function()
         vim.api.nvim_set_hl(0, "@property", { link = "@field" })
-        vim.api.nvim_set_hl(0, "@variable.field", { link = "@field" })
-        vim.api.nvim_set_hl(0, "@variable.member", { link = "@field" })
+        vim.api.nvim_set_hl(0, "@variable.field", { link = "@variable" })
+        vim.api.nvim_set_hl(0, "@variable.member", { link = "@variable" })
+        vim.api.nvim_set_hl(0, "@module", { link = "@variable" })
         vim.api.nvim_set_hl(0, "DiagnosticInfo", { link = "GruberDarkerNiagara" })
         vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "GruberDarkerNiagaraSign" })
       end
@@ -78,6 +79,11 @@ local M = {
         pattern = "gruber-darker",
         callback = override,
       })
+    end,
+  },
+  {
+    dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
+    config = function()
     end,
   }
 }
