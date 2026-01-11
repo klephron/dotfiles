@@ -67,11 +67,11 @@ local M = {
       })
 
       local override = function()
-        vim.api.nvim_set_hl(0, "DiagnosticInfo", { link = "GruberDarkerNiagara" })
-        vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "GruberDarkerNiagaraSign" })
+        vim.api.nvim_set_hl(0, "@property", { link = "@field" })
         vim.api.nvim_set_hl(0, "@variable.field", { link = "@field" })
         vim.api.nvim_set_hl(0, "@variable.member", { link = "@field" })
-        vim.api.nvim_set_hl(0, "@property", { link = "@field" })
+        vim.api.nvim_set_hl(0, "DiagnosticInfo", { link = "GruberDarkerNiagara" })
+        vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "GruberDarkerNiagaraSign" })
       end
 
       vim.api.nvim_create_autocmd("ColorScheme", {
