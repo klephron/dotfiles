@@ -14,6 +14,10 @@ local M = {
         },
         hint = {
           enable = true,
+        },
+        semantic = {
+          enable = false,
+          variable = false,
         }
       },
     },
