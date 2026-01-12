@@ -96,13 +96,23 @@ local M = {
   {
     "klephron/gruber-darker.nvim",
     dir = vim.fn.expand("$HOME/works/gruber-darker.nvim"),
-    dev = true,
+    dev = false,
     lazy = false,
     priority = 1000,
-    config = function()
-      local colorscheme = require("gruber-darker")
-      colorscheme.setup({})
-    end,
+    opts = {
+      bold = true,
+      undercurl = true,
+      underline = true,
+      strikethrough = true,
+      italic = {
+        string = false,
+        char = false,
+        comment = false,
+        operator = false,
+        fold = false,
+        text = false,
+      },
+    },
   }
 }
 

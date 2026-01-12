@@ -54,7 +54,7 @@ local M = {
           else
             return par_dir .. '/' .. fname
           end
-        end
+        end,
       },
       filetype = {
         "filetype",

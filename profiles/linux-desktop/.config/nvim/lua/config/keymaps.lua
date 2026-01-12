@@ -183,3 +183,19 @@ funcs.set_keynomap("c", "<C-k>", "<Up>", nosilent("History scroll up"))
 funcs.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "Print ASCII character")
 funcs.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
   "goto: Open link in system browser")
+
+funcs.set_keynomap('n', '<localleader>t', function()
+  print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
+end)
+
+funcs.set_keynomap('n', '<localleader>h', function()
+  local line = vim.fn.line('.')
+  local col = vim.fn.col('.')
+  local stack = vim.fn.synstack(line, col)
+  vim.inspect(stack)
+  for _, id in ipairs(stack) do
+    local name = vim.fn.synIDattr(id, 'name')
+    local trans = vim.fn.synIDattr(vim.fn.synIDtrans(id), 'name')
+    print(name .. ' -> ' .. trans)
+  end
+end)
