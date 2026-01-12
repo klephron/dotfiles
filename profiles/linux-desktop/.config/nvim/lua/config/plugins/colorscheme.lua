@@ -87,16 +87,14 @@ local M = {
   },
   {
     "klephron/darkplus.nvim",
-    dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
-    dev = false,
+    -- dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
     lazy = false,
     priority = 1000,
     opts = {},
   },
   {
     "klephron/gruber-darker.nvim",
-    dir = vim.fn.expand("$HOME/works/gruber-darker.nvim"),
-    dev = false,
+    -- dir = vim.fn.expand("$HOME/works/gruber-darker.nvim"),
     lazy = false,
     priority = 1000,
     opts = {
