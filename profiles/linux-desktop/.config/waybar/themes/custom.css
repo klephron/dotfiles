@@ -1,9 +1,11 @@
-@define-color background        #2b2a33;
 @define-color background-active #3c3b46;
-@define-color background-urgent #ff9aa2;
-@define-color border            #52525e;
 @define-color border-active     #808089;
-@define-color border-urgent     #808089;
-@define-color foreground        #f9f9fa;
 @define-color foreground-active #fbfbfe;
+
+@define-color background        #2b2a33;
+@define-color border            #52525e;
+@define-color foreground        #f9f9fa;
+
+@define-color background-urgent #ff9aa2;
+@define-color border-urgent     #808089;
 @define-color foreground-urgent #2b2a33;
