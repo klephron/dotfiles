@@ -7,7 +7,7 @@ set -euo pipefail
 root="$(git rev-parse --show-toplevel)"
 profile="desktop"
 
-source="$root/profiles/$profile/.config/tridactyl.json"
+source="$root/profiles/$profile/.config/_tridactyl.json"
 
 format_json=(python "$root/scripts/base/format-json.py")
 
