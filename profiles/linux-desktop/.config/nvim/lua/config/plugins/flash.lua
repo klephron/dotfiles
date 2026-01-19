@@ -48,7 +48,7 @@ local M = {
       flash.jump()
     end, "Flash multiline")
 
-    funcs.set_keynomap({ "x", "n", "o" }, "m", function()
+    funcs.set_keynomap({ "o", "x" }, "m", function()
       flash.treesitter()
     end, "Flash treesitter")
 
