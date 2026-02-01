@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+while IFS= read -r line; do
+  [[ -z "$line" ]] && continue
+
+  read -r hostname ip port user options <<< "$line"
+
+  echo "Host $hostname"
+  echo "    HostName $ip"
+  echo "    Port $port"
+  echo "    User $user"
+
+  if [[ -n "$options" ]]; then
+    IFS=';' read -ra opts <<< "$options"
+    for opt in "${opts[@]}"; do
+      opt=$(echo "$opt" | xargs) # trim spaces
+      [[ -n "$opt" ]] && echo "    $opt"
+    done
+  fi
+
+  echo
+done
