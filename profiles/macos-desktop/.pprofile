@@ -7,10 +7,18 @@
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
+export BROWSER=firefox
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 export no_proxy="*"
+
+# zsh
+export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
 
 # (180ms, 40key/sec)
 # defaults write -g InitialKeyRepeat -int 12
