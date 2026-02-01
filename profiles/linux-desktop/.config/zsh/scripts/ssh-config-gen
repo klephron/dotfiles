@@ -6,9 +6,9 @@ while IFS= read -r line; do
   read -r hostname ip port user options <<< "$line"
 
   echo "Host $hostname"
-  echo "    HostName $ip"
-  echo "    Port $port"
-  echo "    User $user"
+  echo "  HostName $ip"
+  echo "  Port $port"
+  echo "  User $user"
 
   if [[ -n "$options" ]]; then
     IFS=';' read -ra opts <<< "$options"
