@@ -14,7 +14,7 @@ while IFS= read -r line; do
     IFS=';' read -ra opts <<< "$options"
     for opt in "${opts[@]}"; do
       opt=$(echo "$opt" | xargs) # trim spaces
-      [[ -n "$opt" ]] && echo "    $opt"
+      [[ -n "$opt" ]] && echo "  $opt"
     done
   fi
 
