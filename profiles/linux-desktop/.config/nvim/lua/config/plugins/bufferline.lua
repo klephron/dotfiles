@@ -55,34 +55,44 @@ local M = {
         },
       },
       v2 = {
-        background = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        buffer_visible = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        buffer_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        close_button = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        close_button_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        close_button_visible = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        tab_close = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        tab = {
-          fg = { attribute = "fg", highlight = "Normal" },
-        },
-        tab_selected = {
-          fg = { attribute = "fg", highlight = "Normal" },
-          bold = true,
-        },
+        -- background = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- buffer_visible = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- buffer_selected = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        -- },
+        -- close_button = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- close_button_selected = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        -- },
+        -- close_button_visible = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- tab_close = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- tab = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- },
+        -- tab_selected = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bold = true,
+        -- },
+        -- trunc_marker = {
+        --   fg = { attribute = "fg", highlight = "Normal" },
+        --   bg = "#0d0d0d",
+        -- }
       }
     }
 
