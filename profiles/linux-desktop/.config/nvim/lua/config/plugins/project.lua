@@ -6,7 +6,10 @@ local M = {
 
     project.setup {
       manual_mode = true,
-      use_lsp = true,
+      lsp =  {
+        enabled = true,
+        ignore = {},
+      },
       patterns = {
         ".git",
         "_darcs",
@@ -17,7 +20,6 @@ local M = {
         "package.json",
         "Cargo.toml",
       },
-      ignore_lsp = {},
       exclude_dirs = {},
       enable_autochdir = false,
       show_hidden = true,

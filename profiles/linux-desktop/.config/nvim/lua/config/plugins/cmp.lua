@@ -109,9 +109,8 @@ local M = {
       },
       preselect = cmp.PreselectMode.None,
       formatting = {
-        fields = { "kind", "abbr", "menu" },
+        fields = { "icon", "abbr", "menu" },
         format = lspkind.cmp_format({
-          mode = 'symbol', -- show only symbol annotations
           maxwidth = {
             abbr = function() return math.floor(0.25 * vim.o.columns) end,
             menu = function() return math.floor(0.30 * vim.o.columns) end,
