@@ -1,7 +1,9 @@
 require("config.settings")
 
 require("profiles.bootstrap.lazy")
-require("lazy").setup(config.paths.plugins, {
+require("lazy").setup({
+  require("config.plugins.snacks"),
+}, {
   install = {},
   concurrency = vim.uv.available_parallelism() * 2,
   performance = {

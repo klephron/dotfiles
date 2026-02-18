@@ -21,7 +21,11 @@ local M = {
     },
     indent = {
       scope = {
-        enabled = false,
+        enabled = true,
+        hl = {
+          "DiagnosticError",
+          "DiagnosticWarn",
+        }
       }
     }
   }
