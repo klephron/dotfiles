@@ -23,48 +23,36 @@ default: help
 
 FORCE:
 
-define make-profile-rule
-
-install/$(1): FORCE
-	@for var in `ls -A $(PROFILES_DIR)/$(1) | grep "^\." | grep -v "$(PROFILES_CONFIG_SDIR)"`; do \
-		src=$(abspath $(PROFILES_DIR)/$(1)/$$$$var) ;\
-		dist=$$$$HOME/$$$$var ;\
-		if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
-			bkp=$$$$dist.$(BACKUP_EXT); \
-			if [ -e $$$$bkp ]; then \
-				echo "$$$$src: backup $$$$bkp already exist" ;\
-			else \
-				mv -v $$$$dist $$$$bkp ;\
-			fi ;\
+define make-link
+	src="$(abspath $(1))" ;\
+	dist="$(2)" ;\
+	if [ -e "$$$$dist" ] && ! [ "$$$$src" -ef "$$$$dist" ]; then \
+		bkp="$$$$dist.$(BACKUP_EXT)" ;\
+		if [ -e "$$$$bkp" ]; then \
+			echo "$$$$src: backup $$$$bkp already exists" ;\
+		else \
+			mv -v "$$$$dist" "$$$$bkp" ;\
 		fi ;\
-		if ! [ -e $$$$dist ]; then \
-			ln -vsfn $$$$src $$$$dist ;\
-		fi ;\
-	done
-
-	@if ! [ -d $(XDG_CONFIG_HOME) ]; then mkdir -v $(XDG_CONFIG_HOME); fi
-
-	@if [ -d $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR) ]; then \
-		for var in `ls -A $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)`; do \
-			src=$(abspath $(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var) ;\
-			dist=$(XDG_CONFIG_HOME)/$$$$var ;\
-			if [ -e $$$$dist ] && ! [ $$$$src -ef $$$$dist ]; then \
-				bkp=$$$$dist.$(BACKUP_EXT); \
-				if [ -e $$$$bkp ]; then \
-					echo "$$$$src: backup $$$$bkp already exist" ;\
-				else \
-					mv -v $$$$dist $$$$bkp ;\
-				fi ;\
-			fi ;\
-			if ! [ -e $$$$dist ]; then \
-				ln -vsfn $$$$src $$$$dist ;\
-			fi ;\
-		done \
+	fi ;\
+	if ! [ -e "$$$$dist" ]; then \
+		ln -vsfn "$$$$src" "$$$$dist" ;\
 	fi
-
 endef
 
-$(foreach profile, $(PROFILES), $(eval $(call make-profile-rule,$(profile))))
+define make-profile
+install/$(1): FORCE
+	@for var in $(shell find "$(PROFILES_DIR)/$(1)" -maxdepth 1 -name '.*' | xargs -I{} basename {} | grep -v '^$(PROFILES_CONFIG_SDIR)$$'); do \
+		$(call make-link,$(PROFILES_DIR)/$(1)/$$$$var,$$$$HOME/$$$$var) ;\
+	done
+	@if ! [ -d "$(XDG_CONFIG_HOME)" ]; then mkdir -v "$(XDG_CONFIG_HOME)"; fi
+	@if [ -d "$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)" ]; then \
+		for var in $(shell find "$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)" -maxdepth 1 -mindepth 1 | xargs -I{} basename {}); do \
+			$(call make-link,$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var,$(XDG_CONFIG_HOME)/$$$$var) ;\
+		done ;\
+	fi
+endef
+
+$(foreach profile, $(PROFILES), $(eval $(call make-profile,$(profile))))
 
 ### List available profiles
 profiles: FORCE
