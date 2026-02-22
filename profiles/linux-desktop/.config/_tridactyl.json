@@ -11,6 +11,8 @@
       "colab.research.google.com": "mode ignore",
       "figma.com": "mode ignore",
       "localhost": "mode ignore",
+      "mangalib.me": "mode ignore",
+      "meet.google.com": "mode ignore",
       "monkeytype.com": "mode ignore"
     },
     "FullscreenChange": {},
@@ -27,12 +29,14 @@
   "blacklistkeys": [
     "/"
   ],
+  "bmarkfoldersearch": "false",
   "bmarkweight": 100,
   "browser": "firefox",
   "browsermaps": {
     "<C-,>": "escapehatch",
     "<C-6>": "tab #"
   },
+  "commandlineterriblewebsitefix": "false",
   "completionfuzziness": 0.3,
   "completions": {
     "Bmark": {
@@ -65,6 +69,7 @@
   "downloadforbiddenreplacement": "_",
   "downloadsskiphistory": "false",
   "editorcmd": "auto",
+  "editorusehtml": "false",
   "escapehatchsidebarhack": "true",
   "exaliases": {
     "!": "exclaim",
@@ -383,7 +388,6 @@
     "`": "gobble 1 markjump",
     "a": "current_url bmark",
     "b": "fillcmdline tab",
-    "d": "tabclose",
     "f": "hint",
     "g!": "jumble",
     "g$": "tablast",
@@ -507,7 +511,7 @@
   "ttsvolume": 1,
   "update": {
     "checkintervalsecs": "86400",
-    "lastchecktime": 1758326604800,
+    "lastchecktime": 1771626845261,
     "lastnaggedversion": "1.24.4",
     "nag": "true",
     "nagwait": "7"

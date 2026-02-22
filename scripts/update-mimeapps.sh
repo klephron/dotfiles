@@ -5,10 +5,11 @@
 set -euo pipefail
 
 root="$(git rev-parse --show-toplevel)"
-profile="desktop"
+profile=${1:-"linux-desktop"}
 
+profile_dir="$root/profiles/${profile}"
 source="${XDG_CONFIG_HOME}/mimeapps.list"
-target="$root/profiles/$profile/.config/mimeapps.list"
+target="$profile_dir/.config/mimeapps.list"
 tmp="/tmp/mimeapps.list"
 
 format_conf=("python" "$root/scripts/base/format-conf.py")

@@ -1,5 +1,3 @@
-.PHONY: default install help
-
 PROFILES_DIR := profiles
 PROFILES_CONFIG_SDIR := .config
 SCRIPTS_DIR := scripts
@@ -17,7 +15,7 @@ endif
 
 PROFILES := $(notdir $(wildcard $(PROFILES_DIR)/*))
 
-
+.PHONY: default
 default: help
 
 
@@ -40,6 +38,8 @@ define make-link
 endef
 
 define make-profile
+.PHONY: install/$(1) tridactyl/$(1) mimeapps/$(1)
+
 install/$(1): FORCE
 	@for var in $(shell find "$(PROFILES_DIR)/$(1)" -maxdepth 1 -name '.*' | xargs -I{} basename {} | grep -v '^$(PROFILES_CONFIG_SDIR)$$'); do \
 		$(call make-link,$(PROFILES_DIR)/$(1)/$$$$var,$$$$HOME/$$$$var) ;\
@@ -50,9 +50,19 @@ install/$(1): FORCE
 			$(call make-link,$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var,$(XDG_CONFIG_HOME)/$$$$var) ;\
 		done ;\
 	fi
+
+tridactyl/$(1): FORCE
+	@./scripts/update-tridactyl.sh "$(1)"
+
+mimeapps/$(1): FORCE
+	@./scripts/update-mimeapps.sh "$(1)"
 endef
 
-$(foreach profile, $(PROFILES), $(eval $(call make-profile,$(profile))))
+
+$(foreach profile,$(PROFILES),$(eval $(call make-profile,$(profile))))
+
+
+.PHONY: profiles help
 
 ### List available profiles
 profiles: FORCE

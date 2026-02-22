@@ -5,9 +5,10 @@
 set -euo pipefail
 
 root="$(git rev-parse --show-toplevel)"
-profile="desktop"
+profile=${1:-"linux-desktop"}
 
-source="$root/profiles/$profile/.config/_tridactyl.json"
+profile_dir="$root/profiles/${profile}"
+source="$profile_dir/.config/_tridactyl.json"
 
 format_json=(python "$root/scripts/base/format-json.py")
 
