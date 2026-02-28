@@ -1,0 +1,14 @@
+android-platform
+android-sdk-build-tools
+android-sdk-cmdline-tools-latest
+android-sdk-platform-tools
+android-studio
+ayugram-desktop-bin
+google-chrome
+hyprland
+linux
+linux-headers
+linux-lts
+linux-lts-headers
+vscodium
+zoom
