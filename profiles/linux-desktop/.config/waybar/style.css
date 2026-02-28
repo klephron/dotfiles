@@ -4,7 +4,7 @@
 
 * {
   font-family: "NotoSansM Nerd Font Mono Medium";
-  font-size: 13px;
+  font-size: 12px;
 }
 
 button {
@@ -28,7 +28,7 @@ label:focus {
 }
 
 #workspaces button {
-  padding: 0 5px;
+  padding: 0 4.5px;
   background-color: transparent;
   color: @foreground;
 }
@@ -39,7 +39,7 @@ label:focus {
 }
 
 #workspaces button label {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -59,7 +59,7 @@ label:focus {
 #disk,
 #temperature,
 #custom-power {
-  padding: 0 7.5px;
+  padding: 0 6.5px;
 }
 
 #disk {
@@ -74,5 +74,5 @@ label:focus {
 }
 
 #custom-power {
-  font-size: 16px;
+  font-size: 15px;
 }
