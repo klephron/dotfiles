@@ -7,11 +7,11 @@
     "modules-right": [
       "hyprland/language",
       "network",
-      "pulseaudio",
-      "memory",
       "load",
       "temperature",
+      "memory",
       "disk",
+      "pulseaudio",
       "battery",
       "clock",
       "custom/power",
