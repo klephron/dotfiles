@@ -3,7 +3,7 @@
 @import "themes/gruber-darker.css";
 
 * {
-  font-family: "Noto Serif Regular";
+  font-family: "JetBrainsMono Nerd Font Mono";
   font-size: 13px;
 }
 
@@ -38,6 +38,10 @@ label:focus {
   box-shadow: inset 0 -3px @foreground-active;
 }
 
+#workspaces button label {
+  font-size: 18px;
+}
+
 .modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
@@ -55,7 +59,7 @@ label:focus {
 #disk,
 #temperature,
 #custom-power {
-  padding: 0 6.5px;
+  padding: 0 7.5px;
 }
 
 #disk {
@@ -70,5 +74,5 @@ label:focus {
 }
 
 #custom-power {
-  font-size: 20px;
+  font-size: 16px;
 }
