@@ -1,0 +1,18 @@
+// #sidebar-main {
+//   background-color: #2e2e32 !important;
+// }
+//
+// #sidebar-launcher-splitter {
+//   background-color: #2e2e32 !important;
+// }
+
+.titlebar-close {
+    display:none !important;
+}
+
+/* Reduce Vertical Tabs Padding */
+#tabbrowser-tabs[orient="vertical"] {
+    & .tabbrowser-tab:not([pinned]) {
+      padding-block: 0px 0px !important;
+    }
+}

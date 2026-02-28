@@ -444,7 +444,7 @@ local globalkeys = gears.table.join(
     { description = "dropdown application", group = "launcher" }),
   awful.key({ modkey }, "q", function() awful.spawn("firefox") end,
     { description = "run browser", group = "launcher" }),
-  awful.key({ modkey, shift }, "q", function() awful.spawn("firefox -P alternative") end,
+  awful.key({ modkey, shift }, "q", function() awful.spawn("firefox -P second") end,
     { description = "run browser", group = "launcher" }),
   -- screen locker
   awful.key({ altkey, ctrl }, "l", function() os.execute(scrlocker) end,
