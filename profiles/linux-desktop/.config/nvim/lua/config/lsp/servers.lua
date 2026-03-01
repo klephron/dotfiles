@@ -184,6 +184,10 @@ local M = {
     cmd = { "buf", "beta", "lsp", "--timeout=0", "--log-format=text" },
     filetypes = { "proto" },
   },
+  tombi = {
+    cmd = { "tombi", "lsp" },
+    filetypes = { "toml" }
+  },
 }
 
 return M
