@@ -101,7 +101,7 @@
     "hyprland/workspaces#workspaces": {
       "format": "{icon}",
       "format-icons": {
-        "urgent": "",
+        "urgent": "",
         "active": "",
         "visible": "",
         "default": "",
