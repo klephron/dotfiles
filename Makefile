@@ -24,7 +24,7 @@ FORCE:
 define make-link
 	src="$(abspath $(1))" ;\
 	dist="$(2)" ;\
-	if [ -e "$$$$dist" ] && ! [ "$$$$src" -ef "$$$$dist" ]; then \
+	if [ -e "$$$$dist" ] && ! [ -L "$$$$dist" ]; then \
 		bkp="$$$$dist.$(BACKUP_EXT)" ;\
 		if [ -e "$$$$bkp" ]; then \
 			echo "$$$$src: backup $$$$bkp already exists" ;\
@@ -32,7 +32,7 @@ define make-link
 			mv -v "$$$$dist" "$$$$bkp" ;\
 		fi ;\
 	fi ;\
-	if ! [ -e "$$$$dist" ]; then \
+	if ! [ "$$$$src" -ef "$$$$dist" ]; then \
 		ln -vsfn "$$$$src" "$$$$dist" ;\
 	fi
 endef
