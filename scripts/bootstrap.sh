@@ -31,3 +31,7 @@ else
 fi
 
 $(which zsh)
+
+if command -v xdg-user-dirs-update >/dev/null 2>&1; then
+  "$root/scripts/xdg-user-dirs-sync.sh"
+fi
