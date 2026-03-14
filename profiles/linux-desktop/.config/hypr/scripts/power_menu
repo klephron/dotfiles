@@ -1,15 +1,21 @@
 #!/bin/bash
 
-choice=$(echo -e "hibernate\nhibernate-lock\nsuspend\nsuspend-lock\nsleep\nsleep-lock\nshutdown\nreboot\nlock" | rofi -dmenu --width=200 --height=200 )
+choice=$(<<EOF sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' | rofi -dmenu --width=200 --height=200
+  suspend
+  suspend-lock
+  shutdown
+  reboot
+  lock
+  hibernate
+  hibernate-lock
+EOF)
 
 case "$choice" in
-  hibernate) systemctl hibernate ;;
   hibernate-lock) hyprlock & systemctl hibernate ;;
-  suspend) systemctl suspend ;;
-  suspend-lock) hyprlock & systemctl suspend ;;
-  sleep) systemctl sleep ;;
-  sleep-lock) hyprlock & systemctl sleep ;;
-  shutdown) systemctl poweroff ;;
-  reboot) systemctl reboot ;;
+  hibernate) systemctl hibernate ;;
   lock) hyprlock & ;;
+  reboot) systemctl reboot ;;
+  shutdown) systemctl poweroff ;;
+  suspend-lock) hyprlock & systemctl suspend ;;
+  suspend) systemctl suspend ;;
 esac
