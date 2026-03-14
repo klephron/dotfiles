@@ -5,12 +5,11 @@ disable_hints = ["registry"]
 [tools]
 usage = "latest"
 neovim = "latest"
-tmux = "3.5a"
 bun = "latest"
 kubectl = "latest"
 kubectl-convert = "latest"
 helm = "latest"
-terraform = "latest"
 k9s = "latest"
+tmux = "latest"
 
 [env]
