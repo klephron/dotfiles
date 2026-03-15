@@ -19,7 +19,7 @@ fi
 
 if [[ -v XDG_DOWNLOAD_DIR ]]; then
   mkdir -p "$XDG_DOWNLOAD_DIR"
-  xdg-user-dirs-update --set DOcNLOAD "$XDG_DOWNLOAD_DIR"
+  xdg-user-dirs-update --set DOWNLOAD "$XDG_DOWNLOAD_DIR"
 fi
 
 if [[ -v XDG_MUSIC_DIR ]]; then
