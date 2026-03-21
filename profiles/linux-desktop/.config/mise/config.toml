@@ -3,13 +3,9 @@ experimental = true
 disable_hints = ["registry"]
 
 [tools]
-usage = "latest"
-neovim = "latest"
 bun = "latest"
 kubectl = "latest"
 kubectl-convert = "latest"
 helm = "latest"
-k9s = "latest"
-tmux = "latest"
 
 [env]
