@@ -1,5 +1,5 @@
 [Unit]
-Description=Bind mount %i via fstab
+Description=Bind mount /mnt/raid/%i mounts found in fstab
 After=default.target
 
 [Service]
