@@ -1,0 +1,13 @@
+[Unit]
+Description=Bind mount %i via fstab
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkdir -p %h/%i
+ExecStart=/usr/bin/mount %h/%i
+ExecStop=/usr/bin/umount %h/%i
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
