@@ -32,6 +32,11 @@ if [[ -v XDG_PICTURES_DIR ]]; then
   xdg-user-dirs-update --set PICTURES "$XDG_PICTURES_DIR"
 fi
 
+if [[ -v XDG_PROJECTS_DIR ]]; then
+  mkdir -p "$XDG_PROJECTS_DIR"
+  xdg-user-dirs-update --set PROJECTS "$XDG_PROJECTS_DIR"
+fi
+
 if [[ -v XDG_PUBLICSHARE_DIR ]]; then
   mkdir -p "$XDG_PUBLICSHARE_DIR"
   xdg-user-dirs-update --set PUBLICSHARE "$XDG_PUBLICSHARE_DIR"
