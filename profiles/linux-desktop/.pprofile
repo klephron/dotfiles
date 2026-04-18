@@ -12,15 +12,16 @@ export BROWSER=firefox
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+# GPU
+export DRI_PRIME=1
+export __GL_SYNC_TO_VBLANK=0
+
 # zsh
 export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
 
 # awesome-wm
 export PATH="$PATH:$XDG_CONFIG_HOME/awesome/scripts/"
 export PATH="$PATH:$HOME/.pub-cache/bin"
-
-# java
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true"
 
 # qt
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -33,14 +34,14 @@ export QT_QPA_PLATFORM=wayland
 # export QT_QUICK_BACKEND=opengl
 # export QT_XCB_GL_INTEGRATION=glx
 
+# java
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true"
+
 # firefox
 export MOZ_ENABLE_WAYLAND=1
 
 # minikube
 export MINIKUBE_IN_STYLE=0
-
-# PRIME (muxless hybrid graphics)
-export DRI_PRIME=1
 
 # Start hyprland
 if command -v uwsm >/dev/null 2>&1; then
