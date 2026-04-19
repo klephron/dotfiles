@@ -57,6 +57,24 @@ local M = {
         flash.treesitter_search()
       end, "Treesitter search")
 
+    funcs.set_keynomap({ "n", "x", "o" }, "<A-o>",
+      function()
+        require("flash").treesitter({
+          label = {
+            after = false,
+            before = false,
+          },
+          highlight = {
+            backdrop = false,
+            matches = false,
+          },
+          actions = {
+            ["<A-o>"] = "next",
+            ["<A-i>"] = "prev"
+          }
+        })
+      end, { desc = "Treesitter incremental selection" })
+
     vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ff007c", bold = true })
     vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#00dfff", bold = true })
     vim.api.nvim_set_hl(0, "FlashCurrent", { fg = "#2b8db3" })
