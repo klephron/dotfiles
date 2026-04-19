@@ -61,8 +61,8 @@ local M = {
       function()
         require("flash").treesitter({
           label = {
-            after = false,
-            before = false,
+            after = true,
+            before = true,
           },
           highlight = {
             backdrop = false,
