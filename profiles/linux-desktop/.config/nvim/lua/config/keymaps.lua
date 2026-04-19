@@ -184,9 +184,9 @@ funcs.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "Print ASCII charact
 funcs.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
   "goto: Open link in system browser")
 
-funcs.set_keynomap('n', '<localleader>t', function()
+funcs.set_keynomap('n', '<localleader>tc', function()
   print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
-end)
+end, "Get treesitter captures at cursor")
 
 funcs.set_keynomap('n', '<localleader>h', function()
   local line = vim.fn.line('.')
