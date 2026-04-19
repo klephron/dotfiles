@@ -24,6 +24,7 @@ x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/tg=org.telegram.desktop.desktop;
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 image/vnd.zbrush.pcx=neovide.desktop;
+audio/flac=mpv.desktop;
 
 [Default Applications]
 /* application/pdf=org.pwmt.zathura.desktop */
@@ -63,3 +64,4 @@ x-scheme-handler/msteams=teams.desktop;
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
+audio/flac=mpv.desktop

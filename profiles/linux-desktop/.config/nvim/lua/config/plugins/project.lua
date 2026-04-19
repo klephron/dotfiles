@@ -6,7 +6,7 @@ local M = {
 
     project.setup {
       manual_mode = true,
-      lsp =  {
+      lsp = {
         enabled = true,
         ignore = {},
       },
@@ -24,7 +24,9 @@ local M = {
       enable_autochdir = false,
       show_hidden = true,
       silent_chdir = true,
-      datapath = vim.fn.expand(vim.fn.stdpath("cache")),
+      history = {
+        save_dir = vim.fn.expand(vim.fn.stdpath('data')),
+      },
     }
   end,
   keys = {
