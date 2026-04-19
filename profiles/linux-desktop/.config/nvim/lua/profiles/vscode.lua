@@ -1,6 +1,7 @@
 require("config.settings")
 
-require("profiles.bootstrap.lazy")
+require("profiles.common.lazy-bootstrap")
+
 require("lazy").setup(
   {
     require("config.plugins.comment"),
