@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+
+import shlex
+import sys
+
+from ansible.parsing.dataloader import DataLoader
+from ansible.inventory.manager import InventoryManager
+from ansible.vars.manager import VariableManager
+
+
+def extract_proxy_jump(common_args: str) -> str | None:
+    args = shlex.split(common_args)
+
+    for i, arg in enumerate(args):
+        if arg == "-J":
+            return args[i + 1] if i + 1 < len(args) else None
+
+        if arg.startswith("-J") and len(arg) > 2:
+            return arg[2:]
+
+        if arg.startswith("ProxyJump="):
+            return arg.split("=", 1)[1]
+
+    return None
+
+
+def main() -> int:
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} inventory.ini", file=sys.stderr)
+        return 1
+
+    inventory_file = sys.argv[1]
+
+    loader = DataLoader()
+    inventory = InventoryManager(loader=loader, sources=[inventory_file])
+    variable_manager = VariableManager(loader=loader, inventory=inventory)
+
+    for host in inventory.get_hosts():
+        vars_ = variable_manager.get_vars(host=host)
+
+        hostname = vars_.get("ansible_host", host.name)
+        port = vars_.get("ansible_port", 22)
+        user = vars_.get("ansible_user", vars_.get("ansible_ssh_user", "root"))
+        common_args = vars_.get("ansible_ssh_common_args", "")
+
+        proxy_jump = extract_proxy_jump(common_args)
+
+        print(f"Host {host.name}")
+        print(f"  HostName {hostname}")
+        print(f"  Port {port}")
+        print(f"  User {user}")
+
+        if proxy_jump:
+            print(f"  ProxyJump {proxy_jump}")
+
+        print("  StrictHostKeyChecking no")
+        print("  UserKnownHostsFile /dev/null")
+        print("  GlobalKnownHostsFile /dev/null")
+        print()
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
