@@ -1,6 +1,11 @@
 [colors]
 draw_bold_text_with_bright_colors = false
 
+# Override default background color
+[colors.primary]
+background = "0x0e1117"
+# foreground = "0xc2c7cc"
+
 [cursor]
 style = "Block"
 
@@ -13,6 +18,18 @@ size = 12
 [font.normal]
 family = "FiraCode Nerd Font Mono"
 style = "Regular"
+
+[font.italic]
+family = "FiraCode Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font Mono"
+style = "Bold"
 
 [font.offset]
 x = 0
@@ -58,7 +75,7 @@ args = ["--login"]
 decorations = "full"
 dynamic_title = true
 title = "Alacritty"
-option_as_alt = 'Both'
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 80
@@ -70,8 +87,3 @@ y = 0
 
 [general]
 import = ["~/.config/alacritty/themes/gruber-darker.toml"]
-
-# Override default background color
-[colors.primary]
-background = '0x0e1117'
-# foreground = "0xc2c7cc"
