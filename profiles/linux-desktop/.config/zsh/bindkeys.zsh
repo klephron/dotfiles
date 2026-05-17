@@ -12,3 +12,7 @@ bindkey "^P" up-line-or-search
 
 bindkey "^[B" backward-word
 bindkey "^[F" forward-word
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line

@@ -23,6 +23,7 @@
   "kanagawa.nvim": { "branch": "master", "commit": "8ad3b4cdcc804b332c32db8f9743667e1bb82b99" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "ecb752f53a0cab8e6aba7073f0ad338620aa564e" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "llm.nvim": { "branch": "main", "commit": "fdc0758187da61612f9d3365f7a1ac45de47471c" },
   "lsp_signature.nvim": { "branch": "master", "commit": "a65b38f260cc3470a05b4afb84c8d868617d476d" },
   "lspkind.nvim": { "branch": "master", "commit": "c7274c48137396526b59d86232eabcdc7fed8a32" },
   "lualine.nvim": { "branch": "master", "commit": "131a558e13f9f28b15cd235557150ccb23f89286" },
