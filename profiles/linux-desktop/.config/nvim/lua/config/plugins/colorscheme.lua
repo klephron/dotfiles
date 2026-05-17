@@ -35,7 +35,7 @@ local M = {
   }, ]]
   {
     'Mofiqul/vscode.nvim',
-    enabled = false,
+    enabled = true,
     lazy = false,
     priority = 1000,
     opts = {
