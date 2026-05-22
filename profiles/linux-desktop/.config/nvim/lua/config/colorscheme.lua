@@ -6,3 +6,5 @@ end
 -- vim.cmd('colorscheme github_dark')
 -- vim.cmd("colorscheme kanagawa-wave")
 vim.cmd("colorscheme gruber-darker")
+-- vim.cmd("colorscheme vscode")
+-- vim.o.background = "light"
