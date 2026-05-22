@@ -13,8 +13,28 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # GPU
-export DRI_PRIME=1
-export __GL_SYNC_TO_VBLANK=0
+__has_nvidia_gpu() {
+  for dev in /sys/bus/pci/devices/*; do
+    [ -r "$dev/vendor" ] || continue
+    [ -r "$dev/class" ] || continue
+
+    vendor="$(cat "$dev/vendor")"
+    class="$(cat "$dev/class")"
+
+    # NVIDIA vendor ID = 0x10de
+    # PCI display classes start with 0x03
+    if [ "$vendor" = "0x10de" ] && [ "${class#0x03}" != "$class" ]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+if __has_nvidia_gpu; then
+  export DRI_PRIME=1
+  export __GL_SYNC_TO_VBLANK=0
+fi
 
 # zsh
 export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
