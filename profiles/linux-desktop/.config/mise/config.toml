@@ -4,8 +4,7 @@ disable_hints = ["registry"]
 
 [tools]
 bun = "latest"
-kubectl = "latest"
-kubectl-convert = "latest"
+fnox = "latest"
 helm = "latest"
 
 [env]
