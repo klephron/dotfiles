@@ -4,7 +4,6 @@ disable_hints = ["registry"]
 
 [tools]
 bun = "latest"
-fnox = "latest"
 helm = "latest"
 
 [env]

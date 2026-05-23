@@ -8,6 +8,7 @@ source $config/builtins/history.zsh
 source $config/builtins/prompt.zsh
 
 source $config/plugins/autosuggestions.zsh
+source $config/plugins/fnox.zsh
 source $config/plugins/fzf.zsh
 source $config/plugins/kind.zsh
 source $config/plugins/kitty-scrollback.zsh
