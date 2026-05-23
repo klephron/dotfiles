@@ -40,7 +40,7 @@ local M = {
       highlight = true,
     })
 
-    funcs.set_keynomap("n", "<localleader>ti", "<cmd>TSManager<cr>", "Open tree-sitter-manager")
+    funcs.set_keynomap("n", "<localleader>ts", "<cmd>TSManager<cr>", "Open tree-sitter-manager")
   end,
 }
 
