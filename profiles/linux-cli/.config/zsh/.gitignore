@@ -1,1 +1,4 @@
-../../../linux-desktop/.config/zsh/.gitignore
+.zcompcache/
+.zcompdump
+.zsh_sessions/
+.zsh_history
