@@ -67,10 +67,6 @@ hide_when_typing = false
 # [mouse.triple_click]
 # threshold = 300
 
-[terminal.shell]
-program = "/bin/zsh"
-args = ["--login"]
-
 [window]
 decorations = "full"
 dynamic_title = true
