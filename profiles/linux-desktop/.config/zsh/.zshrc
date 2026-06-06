@@ -1,13 +1,12 @@
 config=$XDG_CONFIG_HOME/zsh
 
 source $config/bindkeys.zsh
+source $config/completion.zsh
+source $config/dirstack.zsh
+source $config/history.zsh
+source $config/prompt.zsh
 
-source $config/builtins/completion.zsh
-source $config/builtins/dirstack.zsh
-source $config/builtins/history.zsh
-source $config/builtins/prompt.zsh
-
-# Plugins
+# PLUGINS
 if command -v fzf >/dev/null 2>&1; then
   source "$config/plugins/fzf.zsh"
 fi
