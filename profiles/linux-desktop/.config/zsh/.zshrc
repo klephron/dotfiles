@@ -7,18 +7,46 @@ source $config/builtins/dirstack.zsh
 source $config/builtins/history.zsh
 source $config/builtins/prompt.zsh
 
-source $config/plugins/autosuggestions.zsh
-source $config/plugins/fnox.zsh
-source $config/plugins/fzf.zsh
-source $config/plugins/kind.zsh
-source $config/plugins/kitty-scrollback.zsh
-source $config/plugins/kubectl.zsh
-source $config/plugins/lxd.zsh
-source $config/plugins/minikube.zsh
-source $config/plugins/mise.zsh
-source $config/plugins/syntax-highlighting.zsh
-source $config/plugins/yazi.zsh
-source $config/plugins/zoxide.zsh
+# Plugins
+if command -v fzf >/dev/null 2>&1; then
+  source "$config/plugins/fzf.zsh"
+fi
+
+if command -v kind >/dev/null 2>&1; then
+  source "$config/plugins/kind.zsh"
+fi
+
+if command -v kitty >/dev/null 2>&1 && [[ -n "$KITTY_WINDOW_ID" ]]; then
+  source "$config/plugins/kitty-scrollback.zsh"
+fi
+
+if command -v kubectl >/dev/null 2>&1; then
+  source "$config/plugins/kubectl.zsh"
+fi
+
+if command -v lxc >/dev/null 2>&1; then
+  source "$config/plugins/lxd.zsh"
+fi
+
+if command -v minikube >/dev/null 2>&1; then
+  source "$config/plugins/minikube.zsh"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  source "$config/plugins/mise.zsh"
+fi
+
+if command -v yazi >/dev/null 2>&1; then
+  source "$config/plugins/yazi.zsh"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  source "$config/plugins/zoxide.zsh"
+fi
+
+if command -v fnox >/dev/null 2>&1; then
+  source "$config/plugins/fnox.zsh"
+fi
 
 source $config/hooks.zsh
 source $config/definitions.zsh
