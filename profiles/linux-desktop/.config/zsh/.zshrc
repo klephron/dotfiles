@@ -7,6 +7,8 @@ source $config/history.zsh
 source $config/prompt.zsh
 
 # PLUGINS
+source "$config/plugins/autosuggestions.zsh"
+
 if command -v fzf >/dev/null 2>&1; then
   source "$config/plugins/fzf.zsh"
 fi
@@ -34,6 +36,8 @@ fi
 if command -v mise >/dev/null 2>&1; then
   source "$config/plugins/mise.zsh"
 fi
+
+source "$config/plugins/syntax-highlighting.zsh"
 
 if command -v yazi >/dev/null 2>&1; then
   source "$config/plugins/yazi.zsh"
