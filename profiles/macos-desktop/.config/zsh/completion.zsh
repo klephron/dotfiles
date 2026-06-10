@@ -1,0 +1,1 @@
+../../../linux-desktop/.config/zsh/completion.zsh

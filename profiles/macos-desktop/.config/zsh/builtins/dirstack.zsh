@@ -1,1 +1,0 @@
-../../../../linux-desktop/.config/zsh/builtins/dirstack.zsh

@@ -1,1 +1,0 @@
-source <(zoxide init zsh)

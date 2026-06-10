@@ -43,8 +43,8 @@ if command -v zoxide >/dev/null 2>&1; then
   source "$config/plugins/zoxide.zsh"
 fi
 
-if command -v fnox >/dev/null 2>&1; then
-  source "$config/plugins/fnox.zsh"
+if command -v /usr/bin/fnox >/dev/null 2>&1; then
+  source "$config/plugins/usr-bin-fnox.zsh"
 fi
 
 source $config/hooks.zsh
