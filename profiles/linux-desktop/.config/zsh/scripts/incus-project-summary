@@ -1,0 +1,129 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+__require() {
+  command -v "$1" >/dev/null 2>&1 || {
+    echo "Missing command: $1" >&2
+    exit 1
+  }
+}
+
+
+__parse_size_to_bytes() {
+  local value="$1"
+
+  [[ -z "$value" || "$value" == "null" ]] && {
+    echo 0
+    return
+  }
+
+  value="${value// /}"
+
+  # Incus normally uses values like: 10GiB, 512MiB, 20GB, 4096MB.
+  value="${value/B/}"
+  value="${value/i/}"
+
+  numfmt --from=iec "$value" 2>/dev/null || echo 0
+}
+
+
+__format_bytes() {
+  numfmt --to=iec --suffix=B --format="%.2f" "$1"
+}
+
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $0 <project> <remote>"
+  exit 1
+fi
+
+project="$1"
+remote="$2"
+
+__require incus
+__require jq
+__require numfmt
+
+instances="$(incus list "${remote}:" \
+  --project "$project" \
+  --format json | jq -r '.[].name')"
+
+total_cpu=0
+total_ram_bytes=0
+total_disk_bytes=0
+
+printf "%-35s %10s %15s %15s\n" "INSTANCE" "CPU" "RAM" "DISK"
+printf "%-35s %10s %15s %15s\n" "--------" "---" "---" "----"
+
+parallelism="${parallelism:-8}"
+
+export remote project
+export -f __parse_size_to_bytes
+
+rows="$(
+  printf '%s\n' "$instances" | xargs -P "$parallelism" -n 1 -I {} bash -c '
+    set -euo pipefail
+
+    name="$1"
+
+    data="$(incus query "${remote}:/1.0/instances/${name}?project=${project}&recursion=1")"
+
+    cpu="$(jq -r '"'"'.expanded_config["limits.cpu"] // ""'"'"' <<< "$data")"
+    ram="$(jq -r '"'"'.expanded_config["limits.memory"] // ""'"'"' <<< "$data")"
+
+    if [[ "$cpu" =~ ^[0-9]+$ ]]; then
+      cpu_count="$cpu"
+      cpu_total="$cpu"
+    else
+      cpu_count="${cpu:-unknown}"
+      cpu_total=0
+    fi
+
+    ram_bytes="$(__parse_size_to_bytes "$ram")"
+
+    instance_disk_bytes=0
+
+    while IFS= read -r disk_size; do
+      [[ -z "$disk_size" ]] && continue
+
+      disk_bytes="$(__parse_size_to_bytes "$disk_size")"
+      instance_disk_bytes=$((instance_disk_bytes + disk_bytes))
+    done < <(
+      jq -r '"'"'
+        .expanded_devices
+        | to_entries[]
+        | select(.value.type == "disk")
+        | .value.size // empty
+      '"'"' <<< "$data"
+    )
+
+    printf "%s\t%s\t%s\t%s\t%s\n" \
+      "$name" \
+      "$cpu_count" \
+      "$cpu_total" \
+      "$ram_bytes" \
+      "$instance_disk_bytes"
+  ' _ {}
+)"
+
+while IFS=$'\t' read -r name cpu_count cpu_total ram_bytes instance_disk_bytes; do
+  [[ -z "$name" ]] && continue
+
+  total_cpu=$((total_cpu + cpu_total))
+  total_ram_bytes=$((total_ram_bytes + ram_bytes))
+  total_disk_bytes=$((total_disk_bytes + instance_disk_bytes))
+
+  printf "%-35s %10s %15s %15s\n" \
+    "$name" \
+    "$cpu_count" \
+    "$(__format_bytes "$ram_bytes")" \
+    "$(__format_bytes "$instance_disk_bytes")"
+
+done < <(sort <<< "$rows")
+
+printf "%-35s %10s %15s %15s\n" "--------" "---" "---" "----"
+printf "%-35s %10s %15s %15s\n" \
+  "TOTAL" \
+  "$total_cpu" \
+  "$(__format_bytes "$total_ram_bytes")" \
+  "$(__format_bytes "$total_disk_bytes")"
