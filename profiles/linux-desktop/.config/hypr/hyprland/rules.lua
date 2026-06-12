@@ -5,13 +5,12 @@ hl.window_rule({
   },
   border_size = 0,
 })
-
-hl.window_rule({
-  match = {
-    workspace = "w[tv1]",
-  },
-  border_size = 0,
-})
+-- hl.window_rule({
+--   match = {
+--     workspace = "w[tv1]",
+--   },
+--   border_size = 0,
+-- })
 
 -- WINDOW SHARE PICKER
 hl.window_rule({
@@ -31,7 +30,6 @@ hl.window_rule({
   },
   float = true,
 })
-
 hl.window_rule({
   match = {
     class = "Zoom Workplace",
@@ -47,14 +45,12 @@ hl.window_rule({
   },
   float = true,
 })
-
 hl.window_rule({
   match = {
     class = "showmethekey-gtk",
   },
   border_size = 0,
 })
-
 -- hl.window_rule({
 --   match = {
 --     class = "showmethekey-gtk",
