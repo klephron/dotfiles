@@ -1,5 +1,6 @@
 local colors = require("hyprland.colors")
 local smw = require("hyprland.plugins").smw
+local hy3 = require("hyprland.plugins").hy3
 
 -- SYSTEM
 hl.bind("SUPER + CTRL + backspace", hl.dsp.exec_cmd("uwsm stop"))
@@ -89,49 +90,59 @@ if smw.installed() then
 end
 
 -- Windows
--- bind = SUPER, H, hy3:movefocus, l, visible
--- bind = SUPER, J, hy3:movefocus, d, visible
--- bind = SUPER, K, hy3:movefocus, u, visible
--- bind = SUPER, L, hy3:movefocus, r, visible
---
--- bind = SUPER_CTRL, H, hy3:movewindow, l, visible
--- bind = SUPER_CTRL, L, hy3:movewindow, r, visible
--- bind = SUPER_CTRL, K, hy3:movewindow, u, visible
--- bind = SUPER_CTRL, J, hy3:movewindow, d, visible
---
--- # Groups
--- # WARN: crashes when executing hy3:makegroup on root node with toggle, use hy3:changegroup shortcuts instead
--- # related: https://github.com/outfoxxed/hy3/issues/213
--- bind = SUPER, U, hy3:makegroup, h
--- bind = SUPER, Y, hy3:makegroup, v
--- bind = SUPER, I, hy3:makegroup, tab
---
--- bind = SUPER_SHIFT, U, hy3:changegroup, h
--- bind = SUPER_SHIFT, Y, hy3:changegroup, v
--- bind = SUPER_SHIFT, I, hy3:changegroup, toggletab
---
--- bind = SUPER_SHIFT, H, hy3:focustab, l, wrap
--- bind = SUPER_SHIFT, L, hy3:focustab, r, wrap
--- bind = SUPER, A, hy3:focustab, l, wrap
--- bind = SUPER, D, hy3:focustab, r, wrap
---
--- bind = SUPER_SHIFT, 1,     hy3:focustab, index, 1
--- bind = SUPER_SHIFT, 2,     hy3:focustab, index, 2
--- bind = SUPER_SHIFT, 3,     hy3:focustab, index, 3
--- bind = SUPER_SHIFT, 4,     hy3:focustab, index, 4
--- bind = SUPER_SHIFT, 5,     hy3:focustab, index, 5
--- bind = SUPER_SHIFT, 6,     hy3:focustab, index, 6
--- bind = SUPER_SHIFT, 7,     hy3:focustab, index, 7
--- bind = SUPER_SHIFT, 8,     hy3:focustab, index, 8
--- bind = SUPER_SHIFT, 9,     hy3:focustab, index, 9
--- bind = SUPER_SHIFT, 0,     hy3:focustab, index, 10
--- bind = SUPER_SHIFT, minus, hy3:focustab, index, 11
--- bind = SUPER_SHIFT, equal, hy3:focustab, index, 12
---
--- binde = SUPER_SHIFT_CTRL, H, hy3:movewindow, l, once
--- binde = SUPER_SHIFT_CTRL, L, hy3:movewindow, r, once
--- binde = SUPER_CTRL, A, hy3:movewindow, l, once
--- binde = SUPER_CTRL, D, hy3:movewindow, r, once
+if hy3.installed() then
+  hl.bind("SUPER + H", hy3.api.move_focus("l", { visible = true }))
+  hl.bind("SUPER + J", hy3.api.move_focus("d", { visible = true }))
+  hl.bind("SUPER + K", hy3.api.move_focus("u", { visible = true }))
+  hl.bind("SUPER + L", hy3.api.move_focus("r", { visible = true }))
+
+  hl.bind("SUPER + CTRL + H", hy3.api.move_window("l", { visible = true }))
+  hl.bind("SUPER + CTRL + L", hy3.api.move_window("r", { visible = true }))
+  hl.bind("SUPER + CTRL + K", hy3.api.move_window("u", { visible = true }))
+  hl.bind("SUPER + CTRL + J", hy3.api.move_window("d", { visible = true }))
+end
+
+-- Groups
+-- WARN: crashes when executing hy3:makegroup on root node with toggle, use hy3:changegroup shortcuts instead
+-- related: https://github.com/outfoxxed/hy3/issues/213
+if hy3.installed() then
+  hl.bind("SUPER + U", hy3.api.make_group("h"))
+  hl.bind("SUPER + Y", hy3.api.make_group("v"))
+  hl.bind("SUPER + I", hy3.api.make_group("tab"))
+
+  hl.bind("SUPER + SHIFT + U", hy3.api.change_group("h"))
+  hl.bind("SUPER + SHIFT + Y", hy3.api.change_group("v"))
+  hl.bind("SUPER + SHIFT + I", hy3.api.change_group("toggletab"))
+end
+
+if hy3.installed() then
+  hl.bind("SUPER + SHIFT + H", hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
+  hl.bind("SUPER + SHIFT + L", hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
+  hl.bind("SUPER + A", hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
+  hl.bind("SUPER + D", hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
+end
+
+if hy3.installed() then
+  hl.bind("SUPER + SHIFT + 1", hy3.api.focus_tab({ index = 1 }))
+  hl.bind("SUPER + SHIFT + 2", hy3.api.focus_tab({ index = 2 }))
+  hl.bind("SUPER + SHIFT + 3", hy3.api.focus_tab({ index = 3 }))
+  hl.bind("SUPER + SHIFT + 4", hy3.api.focus_tab({ index = 4 }))
+  hl.bind("SUPER + SHIFT + 5", hy3.api.focus_tab({ index = 5 }))
+  hl.bind("SUPER + SHIFT + 6", hy3.api.focus_tab({ index = 6 }))
+  hl.bind("SUPER + SHIFT + 7", hy3.api.focus_tab({ index = 7 }))
+  hl.bind("SUPER + SHIFT + 8", hy3.api.focus_tab({ index = 8 }))
+  hl.bind("SUPER + SHIFT + 9", hy3.api.focus_tab({ index = 9 }))
+  hl.bind("SUPER + SHIFT + 0", hy3.api.focus_tab({ index = 10 }))
+  hl.bind("SUPER + SHIFT + minus", hy3.api.focus_tab({ index = 11 }))
+  hl.bind("SUPER + SHIFT + equal", hy3.api.focus_tab({ index = 12 }))
+end
+
+if hy3.installed() then
+  hl.bind("SUPER + SHIFT + CTRL + H", hy3.api.move_window("l", { once = true }), { repeating = true })
+  hl.bind("SUPER + SHIFT + CTRL + L", hy3.api.move_window("r", { once = true }), { repeating = true })
+  hl.bind("SUPER + CTRL + A", hy3.api.move_window("l", { once = true }), { repeating = true })
+  hl.bind("SUPER + CTRL + D", hy3.api.move_window("r", { once = true }), { repeating = true })
+end
 
 -- Single
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
