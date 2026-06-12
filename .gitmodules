@@ -7,6 +7,9 @@
 [submodule "profiles/linux-desktop/.config/awesome/plugins/awesome-switcher"]
 	path = profiles/linux-desktop/.config/awesome/plugins/awesome-switcher
 	url = git@github.com:klephron/awesome-switcher.git
-[submodule "profiles/linux-desktop/.config/hypr/scripts/hyprland-binds-rofi"]
-	path = profiles/linux-desktop/.config/hypr/scripts/hyprland-binds-rofi
+[submodule "profiles/linux-desktop/.config/hypr/plugins/split-monitor-workspaces"]
+	path = profiles/linux-desktop/.config/hypr/plugins/split-monitor-workspaces
+	url = git@github.com:zjeffer/split-monitor-workspaces.git
+[submodule "profiles/linux-desktop/.config/hypr/plugins/hyprland-binds-rofi"]
+	path = profiles/linux-desktop/.config/hypr/plugins/hyprland-binds-rofi
 	url = git@github.com:klephron/hyprland-binds-rofi.git
