@@ -1,3 +1,5 @@
+local colors = require("hyprland.colors")
+
 -- no border when fullscreen or only one tiled window visible in workspace
 hl.window_rule({
   match = {
@@ -5,12 +7,17 @@ hl.window_rule({
   },
   border_size = 0,
 })
--- hl.window_rule({
---   match = {
---     workspace = "w[tv1]",
---   },
---   border_size = 0,
--- })
+hl.window_rule({
+  match = {
+    workspace = "w[tv1]",
+  },
+  border_color = {
+    colors = {
+      colors.border,
+      colors.border,
+    },
+  },
+})
 
 -- WINDOW SHARE PICKER
 hl.window_rule({
