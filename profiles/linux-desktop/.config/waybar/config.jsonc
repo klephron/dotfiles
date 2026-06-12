@@ -107,9 +107,9 @@
         "default": "",
         "empty": "",
       },
+      "on-scroll-up": "hyprctl dispatch split-cycleworkspaces -1",
+      "on-scroll-down": "hyprctl dispatch split-cycleworkspaces +1",
       "all-outputs": false,
-      "on-scroll-up": "hyprctl dispatch split-workspace e+1",
-      "on-scroll-down": "hyprctl dispatch split-workspace e-1",
     },
     "hyprland/workspaces#windows": {
       "format": "{windows}",
