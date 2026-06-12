@@ -10,7 +10,7 @@ else
 end
 
 if not M.hy3.installed() then
-  hl.notification.create({ text = "[hy3]: not configured", timeout = 2000 })
+  hl.notification.create({ text = "[hy3]: not installed", timeout = 2000 })
 else
   M.hy3.config()
 end
