@@ -82,4 +82,4 @@ x = 0
 y = 0
 
 [general]
-import = ["~/.config/alacritty/themes/gruber-darker.toml"]
+import = ["~/.config/alacritty/themes/klephron-darker.toml"]

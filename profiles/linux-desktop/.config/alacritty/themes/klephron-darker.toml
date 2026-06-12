@@ -1,0 +1,35 @@
+# Gruber Darker for Alacritty
+# Theme author: John Gruber
+# Ported by: blazkowolf & vieitesss
+
+[colors.primary]
+background = "#181818"
+foreground = "#E4E4E4"
+
+[colors.cursor]
+text = "#181818"
+cursor = "#FFDD33"
+
+[colors.selection]
+text = "#F4F4FF"
+background = "#453D41"
+
+[colors.normal]
+black = "#181818"
+red = "#f43841"
+green = "#73c936"
+yellow = "#cc8c3c"
+blue = "#96a6c8"
+magenta = "#9e95c7"
+cyan = "#95a99f"
+white = "#f5f5f5"
+
+[colors.bright]
+black = "#52494e"
+red = "#ff4f58"
+green = "#8ee64a"
+yellow = "#ffdd33"
+blue = "#96a6c8"
+magenta = "#9e95c7"
+cyan = "#95a99f"
+white = "#ffffff"
