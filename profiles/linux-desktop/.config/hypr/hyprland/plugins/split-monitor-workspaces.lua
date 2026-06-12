@@ -1,17 +1,19 @@
-local M = {
-  config = function()
-    local smw = require("plugins.split-monitor-workspaces.")
+local M = {}
 
-    smw.setup({
-      count = 12,
-      keep_focused = 0,
-      enable_notifications = 0,
-      enable_persistent_workspaces = 1,
-    })
-  end,
-  binds = {
+M.api = require("plugins.split-monitor-workspaces")
 
-  }
-}
+M.config = function()
+  M.api.setup({
+    workspace_count = 12,
+    keep_focused = true,
+    enable_notifications = false,
+    enable_persistent_workspaces = true,
+    link_monitors = false,
+  })
+end
+
+M.installed = function()
+  return M.api.setup ~= nil
+end
 
 return M

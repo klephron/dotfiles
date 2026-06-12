@@ -3,7 +3,7 @@ local colors = require("hyprland.colors")
 hl.config({
   debug = {
     disable_logs = false,
-    suppress_errors = true,
+    suppress_errors = false,
     vfr = true,
   }
 })
@@ -35,7 +35,6 @@ hl.config({
     layout = "hy3",
     col = {
       active_border = colors.border_active,
-      border        = colors.border,
     }
   }
 })
