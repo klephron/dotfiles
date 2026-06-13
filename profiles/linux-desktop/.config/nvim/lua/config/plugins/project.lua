@@ -1,6 +1,6 @@
 local M = {
   "DrKJeff16/project.nvim",
-  cmd = { "ProjectRoot" },
+  cmd = { "Project" },
   config = function()
     local project = require("project")
 
@@ -31,7 +31,7 @@ local M = {
   end,
   keys = {
     { "<leader>P", "<cmd>Telescope projects<cr>", desc = "List projects" },
-    { "<leader>p", "<cmd>ProjectRoot<cr>",        desc = "Update root" },
+    { "<leader>p", "<cmd>Project! root<cr>",      desc = "Update project root" },
   }
 }
 
