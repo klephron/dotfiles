@@ -197,15 +197,37 @@ hl.define_submap("move", function()
   hl.bind("SUPER + semicolon", hl.dsp.submap("resize"))
 end)
 
-hl.bind("F11", function()
+hl.bind("SUPER + F4", function()
   hl.notification.create({ text = "[ignore]: entered", timeout = 1000 })
   hl.dispatch(hl.dsp.submap("ignore"))
 end)
 hl.define_submap("ignore", function()
-  hl.bind("F11", function()
+  hl.bind("SUPER + F4", function()
     hl.notification.create({ text = "[ignore]: exited", timeout = 1000 })
     hl.dispatch(hl.dsp.submap("reset"))
   end)
+end)
+
+hl.bind("SUPER + F11", function()
+  hl.notification.create({
+    text = "[keyboard]: locked",
+    timeout = 1000,
+  })
+
+  hl.dispatch(hl.dsp.submap("keyboard_locked"))
+end)
+
+hl.define_submap("keyboard_locked", function()
+  hl.bind("SUPER + F11", function()
+    hl.notification.create({
+      text = "[keyboard]: unlocked",
+      timeout = 1000,
+    })
+
+    hl.dispatch(hl.dsp.submap("reset"))
+  end)
+
+  hl.bind("catchall", function() end)
 end)
 
 -- APPS
