@@ -20,16 +20,17 @@ hl.device({
 })
 
 -- PC
--- hl.monitor({
---   output = "DP-4",
---   mode = "3840x2160@60",
---   position = "0x0",
---   scale = 1.5,
--- })
+hl.monitor({
+  output = "DP-4",
+  -- mode = "3840x2160@60",
+  mode = "2560x1440@60",
+  position = "0x0",
+  -- scale = 1.5,
+  scale = 1,
+})
 
--- hl.monitor({
---   output = "DP-4",
---   mode = "1920x1080@60",
---   position = "0x0",
---   scale = 1,
--- })
+hl.monitor({
+  output = "DP-2",
+  mode = "3840x2160@60",
+  disabled = true,
+})
