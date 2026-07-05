@@ -19,17 +19,17 @@ size = 12
 family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
-[font.italic]
-family = "FiraCode Nerd Font Mono"
-style = "Regular"
+# [font.italic]
+# family = "FiraCode Nerd Font Mono"
+# style = "Regular"
 
 [font.bold]
 family = "FiraCode Nerd Font Mono"
 style = "Bold"
 
-[font.bold_italic]
-family = "FiraCode Nerd Font Mono"
-style = "Bold"
+# [font.bold_italic]
+# family = "FiraCode Nerd Font Mono"
+# style = "Bold"
 
 [font.offset]
 x = 0
