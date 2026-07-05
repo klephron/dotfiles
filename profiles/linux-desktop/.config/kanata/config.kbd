@@ -1,11 +1,47 @@
 (defcfg
-  process-unmapped-keys yes
+  concurrent-tap-hold true
   linux-device-detect-mode keyboard-only
+  movemouse-inherit-accel-state yes
+  movemouse-smooth-diagonals yes
+  process-unmapped-keys yes
 )
 
 (defsrc)
 
-(deflayermap (base)
-  esc caps
+(deftemplate base-maps ()
+  esc  caps
   caps esc
+)
+
+(deflayermap (base)
+  (t! base-maps)
+  ___ _
+)
+
+(deflayermap (mouse)
+  h (movemouse-accel-left  5 700 1 8)
+  j (movemouse-accel-down  5 700 1 8)
+  k (movemouse-accel-up    5 700 1 8)
+  l (movemouse-accel-right 5 700 1 8)
+
+  f   mlft
+  d   mrgt
+  spc mmid
+  c   mbck
+  v   mfwd
+
+  a (mwheel-up   40 60)
+  s (mwheel-down 40 60)
+
+  (t! base-maps)
+  ___ _
+)
+
+(defchordsv2
+  (lmet lalt)
+  (switch
+    ((base-layer mouse)) (layer-switch base)  break
+    ()                   (layer-switch mouse) break
+  )
+  150 all-released ()
 )
