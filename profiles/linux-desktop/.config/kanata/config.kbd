@@ -3,16 +3,9 @@
   linux-device-detect-mode keyboard-only
 )
 
-(defsrc
-  esc
+(defsrc)
 
-
-  caps
-)
-
-(deflayer base
-  caps
-
-
-  esc
+(deflayermap (base)
+  esc caps
+  caps esc
 )
