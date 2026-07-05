@@ -100,6 +100,16 @@ if hy3.installed() then
   hl.bind("SUPER + CTRL + L", hy3.api.move_window("r", { visible = true }))
   hl.bind("SUPER + CTRL + K", hy3.api.move_window("u", { visible = true }))
   hl.bind("SUPER + CTRL + J", hy3.api.move_window("d", { visible = true }))
+else
+  hl.bind("SUPER + H", hl.dsp.focus({ direction = "l" }))
+  hl.bind("SUPER + J", hl.dsp.focus({ direction = "d" }))
+  hl.bind("SUPER + K", hl.dsp.focus({ direction = "u" }))
+  hl.bind("SUPER + L", hl.dsp.focus({ direction = "r" }))
+
+  hl.bind("SUPER + CTRL + H", hl.dsp.window.move({ direction = "l" }))
+  hl.bind("SUPER + CTRL + L", hl.dsp.window.move({ direction = "r" }))
+  hl.bind("SUPER + CTRL + K", hl.dsp.window.move({ direction = "u" }))
+  hl.bind("SUPER + CTRL + J", hl.dsp.window.move({ direction = "d" }))
 end
 
 -- Groups
