@@ -94,7 +94,7 @@ local M = {
   },
   {
     "klephron/klephron-darker.nvim",
-    dir = vim.fn.expand("$HOME/works/klephron-darker.nvim"),
+    dir = vim.fn.expand("$HOME/ws/klephron-darker.nvim"),
     lazy = false,
     priority = 1000,
     opts = {
