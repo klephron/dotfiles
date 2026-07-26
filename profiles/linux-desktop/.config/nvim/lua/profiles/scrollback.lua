@@ -4,16 +4,18 @@ require("profiles.common.lazy-bootstrap")
 
 require("lazy").setup(
   {
+    require("config.plugins.INIT"),
+    require("config.plugins.COLORSCHEME"),
     require("config.plugins.autopairs"),
     require("config.plugins.cmp"),
-    require("config.plugins.COLORSCHEME"),
+    require("config.plugins.colorizer"),
     require("config.plugins.comment"),
     require("config.plugins.dial"),
     require("config.plugins.easy-align"),
     require("config.plugins.flash"),
     require("config.plugins.kitty-scrollback"),
     require("config.plugins.luasnip"),
-    require("config.plugins.markdown-preview"),
+    require("config.plugins.marks"),
     require("config.plugins.noice"),
     require("config.plugins.snacks"),
     require("config.plugins.surround"),
