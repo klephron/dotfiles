@@ -6,7 +6,7 @@ require("lazy").setup(
   {
     require("config.plugins.autopairs"),
     require("config.plugins.cmp"),
-    require("config.plugins.colorscheme"),
+    require("config.plugins.COLORSCHEME"),
     require("config.plugins.comment"),
     require("config.plugins.dial"),
     require("config.plugins.easy-align"),
