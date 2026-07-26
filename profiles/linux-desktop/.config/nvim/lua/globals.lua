@@ -1,45 +1,61 @@
 local fn = vim.fn
 local env = vim.env
 
-_G.config = {
-  paths = {
-    config = "config",
-    plugins = "config.plugins",
-    presets = "presets",
-    utils = "utils",
-    locals = "locals",
-  },
-  profiles = {
-    vscode = fn.exists("g:vscode") == 1,
-    firenvim = fn.exists("g:started_by_firenvim") == 1,
-    neovide = fn.exists("g:neovide") == 1,
-    scrollback = env.KITTY_SCROLLBACK_NVIM == 'true',
-    default = nil,
-  }
+local profiles
+local profile
+local profile_valid
+
+-- Detect profile
+profiles = {
+  'basic',
+  'default',
+  'firenvim',
+  'neovide',
+  'scrollback',
+  'vscode',
 }
 
-_G.config.profiles.default = not (
-  config.profiles.vscode
-  or config.profiles.firenvim
-  or config.profiles.neovide
-  or config.profiles.scrollback
-)
+profile = env.NVIM_PROFILE
+
+if profile == nil or profile == '' then
+  if env.KITTY_SCROLLBACK_NVIM == 'true' then
+    profile = 'scrollback'
+  elseif fn.exists('g:started_by_firenvim') == 1 then
+    profile = 'firenvim'
+  elseif fn.exists('g:neovide') == 1 then
+    profile = 'neovide'
+  elseif fn.exists('g:vscode') == 1 then
+    profile = 'vscode'
+  else
+    profile = 'default'
+  end
+end
+
+profile_valid = false
+
+for _, name in ipairs(profiles) do
+  if profile == name then
+    profile_valid = true
+    break
+  end
+end
+
+assert(profile_valid, string.format('Invalid profile: %s', profile))
+
+-- Globals
+_G.config = {
+  profile = profile,
+}
 
 _G.profiles_any = function(...)
   for i = 1, select('#', ...) do
-    local name = select(i, ...)
-    if _G.config.profiles[name] then
+    if _G.config.profile == select(i, ...) then
       return true
     end
   end
+
+  return false
 end
 
-local active = {}
-for name, is_active in pairs(_G.config.profiles) do
-  if is_active then
-    table.insert(active, name)
-  end
-end
-assert(#active <= 1, string.format("Multiple profiles active: %s", table.concat(active, ", ")))
-
+-- Utilities
 table.unpack = table.unpack or unpack

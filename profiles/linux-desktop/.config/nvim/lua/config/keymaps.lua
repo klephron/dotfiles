@@ -2,7 +2,7 @@ local funcs = require("utils.funcs")
 local profiles = config.profiles
 
 -- TABS
-if profiles.default or profiles.neovide then
+if profiles_any('default', 'neovide') then
   funcs.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "Open previous tab")
   funcs.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "Open next tab")
   funcs.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "Close tab")
@@ -37,7 +37,7 @@ if profiles.default or profiles.neovide then
 end
 
 -- WINDOWS
-if profiles.default or profiles.neovide then
+if profiles_any('default', 'neovide') then
   funcs.set_keynomap("n", "<C-k>", "<C-w>k", "Move window up")
   funcs.set_keynomap("n", "<C-l>", "<C-w>l", "Move window right")
   funcs.set_keynomap("n", "<C-j>", "<C-w>j", "Move window down")
@@ -63,7 +63,7 @@ funcs.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "Open next buffer")
 funcs.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "Open previous buffer")
 
 -- TERMINAL
-if profiles.default or profiles.neovide then
+if profiles_any('default', 'neovide') then
   funcs.augroup("l.keymap_terminal", {
     {
       event = { "TermOpen" },
@@ -86,7 +86,7 @@ funcs.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "Write all")
 funcs.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
 
 -- CLOSE
-if profiles.default or profiles.neovide or profiles.scrollback then
+if profiles_any('default', 'neovide', 'scrollback') then
   funcs.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "Close window")
   funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
 end
