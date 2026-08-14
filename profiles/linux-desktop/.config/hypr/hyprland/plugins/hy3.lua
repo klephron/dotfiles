@@ -7,7 +7,7 @@ M.installed = function()
 end
 
 M.config = function()
-  local colors = require("hyprland.colors")
+  local colors = require("hyprland.settings").colors
 
   hl.config({
     general = {

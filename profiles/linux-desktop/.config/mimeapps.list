@@ -25,6 +25,10 @@ x-scheme-handler/tg=org.telegram.desktop.desktop;
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 image/vnd.zbrush.pcx=neovide.desktop;
 audio/flac=mpv.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-31O9R3.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-31O9R3.desktop;
+message/rfc822=userapp-Thunderbird-31O9R3.desktop;
+x-scheme-handler/net.thunderbird=userapp-Thunderbird-YMP7R3.desktop;
 
 [Default Applications]
 /* application/pdf=org.pwmt.zathura.desktop */
@@ -65,3 +69,8 @@ x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 audio/flac=mpv.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-31O9R3.desktop
+x-scheme-handler/mid=userapp-Thunderbird-31O9R3.desktop
+message/rfc822=userapp-Thunderbird-31O9R3.desktop
+x-scheme-handler/net.thunderbird=userapp-Thunderbird-YMP7R3.desktop
+x-scheme-handler/throne=throne-url-handler.desktop

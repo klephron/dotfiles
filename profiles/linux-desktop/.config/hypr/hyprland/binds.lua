@@ -1,4 +1,5 @@
-local colors = require("hyprland.colors")
+local settings = require("hyprland.settings")
+
 local smw = require("hyprland.plugins").smw
 local hy3 = require("hyprland.plugins").hy3
 
@@ -208,6 +209,7 @@ hl.define_submap("window_move", function()
 end)
 
 hl.bind("SUPER + F4", function()
+  hl.config({ input = { kb_options = "" } })
   hl.notification.create({ text = "[ignore]: entered", timeout = 1000 })
   hl.dispatch(hl.dsp.submap("bind_ignore"))
 end)
@@ -215,6 +217,7 @@ hl.define_submap("bind_ignore", function()
   hl.bind("SUPER + F4", function()
     hl.notification.create({ text = "[ignore]: exited", timeout = 1000 })
     hl.dispatch(hl.dsp.submap("reset"))
+    hl.config({ input = { kb_options = settings.kb_options } })
   end)
 end)
 

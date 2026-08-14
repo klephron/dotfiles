@@ -1,4 +1,4 @@
-local colors = require("hyprland.colors")
+local settings = require("hyprland.settings")
 
 hl.config({
   debug = {
@@ -34,7 +34,7 @@ hl.config({
     gaps_out = 0,
     layout = "dwindle",
     col = {
-      active_border = colors.border_active,
+      active_border = settings.colors.border_active,
     }
   }
 })
@@ -58,8 +58,8 @@ hl.config({
 
 hl.config({
   input = {
-    kb_layout = table.concat({ "us", "ru" }, ","),
-    kb_options = table.concat({ "grp:alt_shift_toggle", "altwin:menu_win" }, ","),
+    kb_layout = settings.kb_layout,
+    kb_options = settings.kb_options,
     follow_mouse = 1,
     accel_profile = "flat",
     sensitivity = 0.0,
