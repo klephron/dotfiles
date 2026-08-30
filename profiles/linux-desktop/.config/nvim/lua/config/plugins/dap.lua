@@ -1,7 +1,5 @@
 local M;
 
-local dap = require("dap")
-local widgets = require("dap.ui.widgets")
 local home = vim.fn.expand('$HOME')
 local kmps_dict = require("utils.kmps_dict").KeymapDictionary
 local utils = require("utils.funcs")
@@ -19,7 +17,7 @@ local langs_setup
 
 M = {
   "mfussenegger/nvim-dap",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   config = function()
     vim.api.nvim_set_hl(0, 'DapBreakpoint',
       { ctermbg = 0, fg = "#e41400", bg = nil }
@@ -132,7 +130,9 @@ ttft = {}
 funcs = {
   continue = function()
     -- Force load dap-ui
-    require("dapui")
+    local dap = require("dap")
+    local _ = require("dapui")
+
     if is_launchjs_ok == nil then
       is_launchjs_ok = process_launchjs({ ask = false })
     end
@@ -140,6 +140,7 @@ funcs = {
   end,
 
   run_last = function()
+    local dap = require("dap")
     return dap.run_last()
   end,
 
@@ -148,72 +149,89 @@ funcs = {
   end,
 
   terminate = function()
+    local dap = require("dap")
     return dap.terminate()
   end,
 
   disconnect = function()
+    local dap = require("dap")
     return dap.disconnect()
   end,
 
   close = function()
+    local dap = require("dap")
     return dap.close()
   end,
 
   set_breakpoint_cond = function()
+    local dap = require("dap")
     return dap.set_breakpoint(vim.fn.input("[Condition]: "))
   end,
 
   set_breakpoint_log = function()
+    local dap = require("dap")
     return dap.set_breakpoint(nil, nil, vim.fn.input('[Log message]: '))
   end,
 
   toggle_breakpoint = function()
+    local dap = require("dap")
     return dap.toggle_breakpoint()
   end,
 
   clear_breakpoints = function()
+    local dap = require("dap")
     return dap.clear_breakpoints()
   end,
 
   step_over = function()
+    local dap = require("dap")
     return dap.step_over()
   end,
 
   step_into = function()
+    local dap = require("dap")
     return dap.step_into()
   end,
 
   step_out = function()
+    local dap = require("dap")
     return dap.step_out()
   end,
 
   step_back = function()
+    local dap = require("dap")
     return dap.step_back()
   end,
 
   reverse_continue = function()
+    local dap = require("dap")
     return dap.reverse_continue()
   end,
 
   up = function()
+    local dap = require("dap")
     return dap.up()
   end,
 
   down = function()
+    local dap = require("dap")
     return dap.down()
   end,
 
   run_to_cursor = function()
+    local dap = require("dap")
     return dap.run_to_cursor()
   end,
 
   repl_toggle = function()
+    local dap = require("dap")
     -- local height = vim.fn.winwidth(vim.fn.win_getid())
     local h = vim.api.nvim_win_get_height(0)
     return dap.repl.toggle({ height = math.floor(h * 0.3) }, "belowright split")
   end,
 
   hover = function()
+    local widgets = require("dap.ui.widgets")
     return widgets.hover()
   end,
 
@@ -309,6 +327,8 @@ keymaps_setup = function()
 end
 
 langs_setup = function()
+  local dap = require("dap")
+
   -- CXX C RUST {{{1
   dap.adapters.cppdbg = {
     type = 'executable',
