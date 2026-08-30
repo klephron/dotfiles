@@ -3,7 +3,6 @@ experimental = true
 disable_hints = ["registry"]
 
 [tools]
-bun = "latest"
 helm = "latest"
 
 [env]
