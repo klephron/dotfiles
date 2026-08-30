@@ -136,64 +136,62 @@ funcs.augroup("l.resize_on_window_change", {
   }
 })
 
-if funcs.is_vscode or funcs.is_firenvim then
-  return
-end
-
-funcs.augroup("l.restore_cursor_shape", {
-  {
-    event = "ExitPre",
-    pattern = "*",
-    command = function()
-      -- vim.cmd("set guicursor=a:ver20")
-      -- vim.cmd("set guicursor=a:ver90")
-    end
-  }
-})
-
--- Check reload file when changed
-funcs.augroup("l.checktime", {
-  {
-    event = { "FocusGained", "TermClose", "TermLeave" },
-    command = function()
-      if vim.o.buftype ~= "nofile" then
-        vim.cmd("checktime")
+if not profiles_any('vscode', 'firenvim') then
+  funcs.augroup("l.restore_cursor_shape", {
+    {
+      event = "ExitPre",
+      pattern = "*",
+      command = function()
+        -- vim.cmd("set guicursor=a:ver20")
+        -- vim.cmd("set guicursor=a:ver90")
       end
-    end
-  }
-})
+    }
+  })
 
-funcs.augroup("l.reload_file", {
-  {
-    event = "BufWinEnter",
-    pattern = "*",
-    command = function()
-      vim.cmd("if mode() != 'c' | checktime | endif")
-    end
-  }
-})
-
---[[ funcs.augroup("l.save_on_focus_lost", {
-  {
-    event = "FocusLost",
-    pattern = "*",
-    command = function()
-      if vim.bo.modifiable == true and vim.bo.readonly == false then
-        if vim.bo.modified == true then
-          vim.cmd("doautocmd BufWritePre")
-          vim.cmd("silent! wall")
-          vim.cmd("doautocmd BufWritePost")
+  -- Check reload file when changed
+  funcs.augroup("l.checktime", {
+    {
+      event = { "FocusGained", "TermClose", "TermLeave" },
+      command = function()
+        if vim.o.buftype ~= "nofile" then
+          vim.cmd("checktime")
         end
       end
-    end
-  }
-}) ]]
+    }
+  })
 
--- Autosave after leaving insert mode
---[[ funcs.augroup("l.save_on_insert_leave", {
-  {
-    event = "InsertLeave",
-    command = "silent! update",
-    nested = true
-  }
-}) ]]
+  funcs.augroup("l.reload_file", {
+    {
+      event = "BufWinEnter",
+      pattern = "*",
+      command = function()
+        vim.cmd("if mode() != 'c' | checktime | endif")
+      end
+    }
+  })
+
+  --[[ funcs.augroup("l.save_on_focus_lost", {
+    {
+      event = "FocusLost",
+      pattern = "*",
+      command = function()
+        if vim.bo.modifiable == true and vim.bo.readonly == false then
+          if vim.bo.modified == true then
+            vim.cmd("doautocmd BufWritePre")
+            vim.cmd("silent! wall")
+            vim.cmd("doautocmd BufWritePost")
+          end
+        end
+      end
+    }
+  }) ]]
+
+  -- Autosave after leaving insert mode
+  --[[ funcs.augroup("l.save_on_insert_leave", {
+    {
+      event = "InsertLeave",
+      command = "silent! update",
+      nested = true
+    }
+  }) ]]
+end
