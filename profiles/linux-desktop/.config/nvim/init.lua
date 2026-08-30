@@ -1,5 +1,5 @@
 require("globals")
 
-require('profiles.' .. config.profile)
+require('profiles.' .. _G.config.profile)
 
 vim.lsp.enable("mals")
