@@ -1,4 +1,24 @@
+-- Default settings, can be overriden later by plugins
 local funcs = require("utils.funcs")
+local keymap_augroups = require("config.keymaps").augroups
+
+-- KEYMAPS
+if keymap_augroups.map_close then
+  funcs.augroup("l.map_close", keymap_augroups.map_close)
+else
+  vim.notify("autocmds: map_close is " .. keymap_augroups.map_close)
+end
+
+if keymap_augroups.map_nohl then
+  funcs.augroup("l.map_nohl", keymap_augroups.map_nohl)
+else
+  vim.notify("autocmds: map_nohl is " .. keymap_augroups.map_nohl)
+end
+
+if keymap_augroups.map_terminal then
+  funcs.augroup("l.map_terminal", keymap_augroups.map_terminal)
+end
+
 
 -- FILETYPES
 funcs.augroup("l.nasm", {
@@ -135,6 +155,7 @@ funcs.augroup("l.resize_on_window_change", {
     end
   }
 })
+
 
 if not profiles_any('vscode', 'firenvim') then
   funcs.augroup("l.restore_cursor_shape", {

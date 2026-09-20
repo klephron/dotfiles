@@ -1,3 +1,4 @@
+-- Default settings, can be overriden later by plugins
 vim.cmd("cnoreabbrev ea EasyAlign")
 
 vim.api.nvim_create_user_command("Pwd", function()

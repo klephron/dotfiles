@@ -1,4 +1,7 @@
 require("config.settings")
+require("config.keymaps")
+require("config.autocmds")
+require("config.aliases")
 
 require("profiles.common.lazy-bootstrap")
 
@@ -31,9 +34,5 @@ require("lazy").setup(
         },
       },
     },
-
-  })
-
-require("config.keymaps")
-require("config.autocmds")
-require("config.aliases")
+  }
+)

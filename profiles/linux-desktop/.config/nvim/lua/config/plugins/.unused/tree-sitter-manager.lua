@@ -2,6 +2,7 @@ local M = {
   "romus204/tree-sitter-manager.nvim",
   dependencies = {}, -- tree-sitter CLI must be installed system-wide
   event = "VeryLazy",
+  enabled = false,
   config = function()
     local treesitter = require("tree-sitter-manager")
     local funcs = require("utils.funcs")

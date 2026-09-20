@@ -1,5 +1,13 @@
+-- Default settings, can be overriden later by plugins
+local M = {
+  augroups = {},
+}
+
 local funcs = require("utils.funcs")
-local profiles = config.profiles
+
+local function nosilent(desc)
+  return { silent = false, desc = desc }
+end
 
 -- TABS
 if profiles_any('default', 'neovide') then
@@ -64,7 +72,7 @@ funcs.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "Open previous buffer")
 
 -- TERMINAL
 if profiles_any('default', 'neovide') then
-  funcs.augroup("l.keymap_terminal", {
+  M.augroups.map_terminal = {
     {
       event = { "TermOpen" },
       pattern = { "term://*", '\\[dap-terminal\\]*' },
@@ -78,7 +86,7 @@ if profiles_any('default', 'neovide') then
         funcs.set_keynomap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
       end
     }
-  })
+  }
 end
 
 -- WRITE
@@ -91,7 +99,7 @@ if profiles_any('default', 'neovide', 'scrollback') then
   funcs.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
 end
 
-funcs.augroup("l.q_close", {
+M.augroups.map_close = {
   {
     event = "FileType",
     pattern = {
@@ -113,7 +121,7 @@ funcs.augroup("l.q_close", {
       vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end
   }
-})
+}
 
 
 -- LINE MOVEMENT
@@ -133,25 +141,23 @@ vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 
-local search_nohl_excluded = {
-  "color-picker",
-  "TelescopePrompt",
-  "DressingInput",
-  "Trouble",
-  "snacks_input",
-}
-
-funcs.augroup("l.map_nohl", {
+M.augroups.map_nohl = {
   {
     event = "FileType",
     pattern = "*",
     command = function()
-      if not vim.tbl_contains(search_nohl_excluded, vim.bo.filetype) then
+      if not vim.tbl_contains({
+            "color-picker",
+            "TelescopePrompt",
+            "DressingInput",
+            "Trouble",
+            "snacks_input",
+          }, vim.bo.filetype) then
         funcs.set_keynomap("n", "<esc>", ":nohl<cr>", { buffer = 0 })
       end
     end
   }
-})
+}
 
 -- makes * and # work in visual mode too
 vim.cmd([[
@@ -166,10 +172,6 @@ vim.cmd([[
 ]])
 
 -- EMACS
-local function nosilent(desc)
-  return { silent = false, desc = desc }
-end
-
 funcs.set_keynomap("c", "<C-a>", "<Home>", nosilent("Move start of line"))
 funcs.set_keynomap("c", "<C-e>", "<End>", nosilent("End of line"))
 funcs.set_keynomap("c", "<C-b>", "<Left>", nosilent("Move back one char"))
@@ -199,3 +201,5 @@ funcs.set_keynomap('n', '<localleader>h', function()
     print(name .. ' -> ' .. trans)
   end
 end)
+
+return M

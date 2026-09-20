@@ -1,4 +1,6 @@
-local M = {
+local M;
+
+M = {
   "rcarriga/nvim-dap-ui",
   dependencies = {
     "https://github.com/nvim-neotest/nvim-nio",
@@ -61,7 +63,7 @@ local M = {
     dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 
     -- Restore size after VimGained focus
-    funcs.augroup("l.dapui_resize", {
+    funcs.augroup("p.dapui_resize", {
       {
         event = "VimResized",
         pattern = "*",
@@ -75,4 +77,5 @@ local M = {
     })
   end
 }
+
 return M

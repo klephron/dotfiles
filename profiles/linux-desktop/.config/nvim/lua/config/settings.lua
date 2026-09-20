@@ -1,3 +1,4 @@
+-- Default settings, can be overriden later by plugins
 local fn = vim.fn
 -----------------------------------------------------------------------------//
 -- Message output on vim actions
