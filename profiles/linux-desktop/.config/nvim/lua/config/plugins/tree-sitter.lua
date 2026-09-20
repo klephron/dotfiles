@@ -6,10 +6,22 @@ M = {
   build = ':TSUpdate',
   config = function()
     local treesitter = require("nvim-treesitter")
+    local funcs = require("utils.funcs")
 
-    vim.opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.opt.foldmethod = 'expr'
+    funcs.augroup("p.treesitter", {
+      {
+        event = "FileType",
+        pattern = M.languages,
+        command = function()
+          vim.treesitter.start()
+          -- folds, provided by Neovim
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo.foldmethod = 'expr'
+          -- indentation, provided by nvim-treesitter
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      }
+    })
 
     treesitter.install(M.languages)
   end
