@@ -1,7 +1,5 @@
-local settings = require("hyprland.settings")
-
-local smw = require("hyprland.plugins").smw
-local hy3 = require("hyprland.plugins").hy3
+local defaults = require("hyprland.defaults")
+local plugins = require("hyprland.plugins")
 
 -- SYSTEM
 hl.bind("SUPER + CTRL + backspace", hl.dsp.exec_cmd("uwsm stop"))
@@ -13,19 +11,19 @@ hl.bind("SUPER + comma", hl.dsp.focus({ monitor = "l" }))
 hl.bind("SUPER + period", hl.dsp.focus({ monitor = "r" }))
 
 -- WORKSPACES
-if smw.installed() then
-  hl.bind("SUPER + 1", smw.api.workspace("1"))
-  hl.bind("SUPER + 2", smw.api.workspace("2"))
-  hl.bind("SUPER + 3", smw.api.workspace("3"))
-  hl.bind("SUPER + 4", smw.api.workspace("4"))
-  hl.bind("SUPER + 5", smw.api.workspace("5"))
-  hl.bind("SUPER + 6", smw.api.workspace("6"))
-  hl.bind("SUPER + 7", smw.api.workspace("7"))
-  hl.bind("SUPER + 8", smw.api.workspace("8"))
-  hl.bind("SUPER + 9", smw.api.workspace("9"))
-  hl.bind("SUPER + 0", smw.api.workspace("10"))
-  hl.bind("SUPER + minus", smw.api.workspace("11"))
-  hl.bind("SUPER + equal", smw.api.workspace("12"))
+if plugins.smw.installed() then
+  hl.bind("SUPER + 1", plugins.smw.api.workspace("1"))
+  hl.bind("SUPER + 2", plugins.smw.api.workspace("2"))
+  hl.bind("SUPER + 3", plugins.smw.api.workspace("3"))
+  hl.bind("SUPER + 4", plugins.smw.api.workspace("4"))
+  hl.bind("SUPER + 5", plugins.smw.api.workspace("5"))
+  hl.bind("SUPER + 6", plugins.smw.api.workspace("6"))
+  hl.bind("SUPER + 7", plugins.smw.api.workspace("7"))
+  hl.bind("SUPER + 8", plugins.smw.api.workspace("8"))
+  hl.bind("SUPER + 9", plugins.smw.api.workspace("9"))
+  hl.bind("SUPER + 0", plugins.smw.api.workspace("10"))
+  hl.bind("SUPER + minus", plugins.smw.api.workspace("11"))
+  hl.bind("SUPER + equal", plugins.smw.api.workspace("12"))
 else
   hl.bind("SUPER + 1", hl.dsp.focus({ workspace = 1 }))
   hl.bind("SUPER + 2", hl.dsp.focus({ workspace = 2 }))
@@ -41,11 +39,11 @@ else
   hl.bind("SUPER + equal", hl.dsp.focus({ workspace = 12 }))
 end
 
-if smw.installed() then
-  hl.bind("SUPER + SHIFT + comma", smw.api.cycle_workspaces("-1"))
-  hl.bind("SUPER + SHIFT + period", smw.api.cycle_workspaces("+1"))
-  hl.bind("SUPER + S", smw.api.cycle_workspaces("-1"))
-  hl.bind("SUPER + W", smw.api.cycle_workspaces("+1"))
+if plugins.smw.installed() then
+  hl.bind("SUPER + SHIFT + comma", plugins.smw.api.cycle_workspaces("-1"))
+  hl.bind("SUPER + SHIFT + period", plugins.smw.api.cycle_workspaces("+1"))
+  hl.bind("SUPER + S", plugins.smw.api.cycle_workspaces("-1"))
+  hl.bind("SUPER + W", plugins.smw.api.cycle_workspaces("+1"))
 end
 
 hl.bind("SUPER + Tab", hl.dsp.focus({ workspace = "previous_per_monitor" }))
@@ -62,45 +60,45 @@ hl.bind("SUPER + CTRL + comma", hl.dsp.window.move({ monitor = "-1", follow = fa
 hl.bind("SUPER + CTRL + period", hl.dsp.window.move({ monitor = "+1", follow = false }), { repeating = true })
 
 
-if smw.installed() then
-  hl.bind("SUPER + CTRL + backslash", smw.api.grab_rogue_windows())
+if plugins.smw.installed() then
+  hl.bind("SUPER + CTRL + backslash", plugins.smw.api.grab_rogue_windows())
 end
 
 -- Workspaces
-if smw.installed() then
-  hl.bind("SUPER + CTRL + 1", smw.api.move_to_workspace_silent("1"))
-  hl.bind("SUPER + CTRL + 2", smw.api.move_to_workspace_silent("2"))
-  hl.bind("SUPER + CTRL + 3", smw.api.move_to_workspace_silent("3"))
-  hl.bind("SUPER + CTRL + 4", smw.api.move_to_workspace_silent("4"))
-  hl.bind("SUPER + CTRL + 5", smw.api.move_to_workspace_silent("5"))
-  hl.bind("SUPER + CTRL + 6", smw.api.move_to_workspace_silent("6"))
-  hl.bind("SUPER + CTRL + 7", smw.api.move_to_workspace_silent("7"))
-  hl.bind("SUPER + CTRL + 8", smw.api.move_to_workspace_silent("8"))
-  hl.bind("SUPER + CTRL + 9", smw.api.move_to_workspace_silent("9"))
-  hl.bind("SUPER + CTRL + 0", smw.api.move_to_workspace_silent("10"))
-  hl.bind("SUPER + CTRL + minus", smw.api.move_to_workspace_silent("11"))
-  hl.bind("SUPER + CTRL + equal", smw.api.move_to_workspace_silent("12"))
+if plugins.smw.installed() then
+  hl.bind("SUPER + CTRL + 1", plugins.smw.api.move_to_workspace_silent("1"))
+  hl.bind("SUPER + CTRL + 2", plugins.smw.api.move_to_workspace_silent("2"))
+  hl.bind("SUPER + CTRL + 3", plugins.smw.api.move_to_workspace_silent("3"))
+  hl.bind("SUPER + CTRL + 4", plugins.smw.api.move_to_workspace_silent("4"))
+  hl.bind("SUPER + CTRL + 5", plugins.smw.api.move_to_workspace_silent("5"))
+  hl.bind("SUPER + CTRL + 6", plugins.smw.api.move_to_workspace_silent("6"))
+  hl.bind("SUPER + CTRL + 7", plugins.smw.api.move_to_workspace_silent("7"))
+  hl.bind("SUPER + CTRL + 8", plugins.smw.api.move_to_workspace_silent("8"))
+  hl.bind("SUPER + CTRL + 9", plugins.smw.api.move_to_workspace_silent("9"))
+  hl.bind("SUPER + CTRL + 0", plugins.smw.api.move_to_workspace_silent("10"))
+  hl.bind("SUPER + CTRL + minus", plugins.smw.api.move_to_workspace_silent("11"))
+  hl.bind("SUPER + CTRL + equal", plugins.smw.api.move_to_workspace_silent("12"))
 end
 
-if smw.installed() then
-  hl.bind("SUPER + SHIFT + CTRL + comma", smw.api.move_to_workspace("-1"), { repeating = true })
-  hl.bind("SUPER + SHIFT + CTRL + period", smw.api.move_to_workspace("+1"), { repeating = true })
+if plugins.smw.installed() then
+  hl.bind("SUPER + SHIFT + CTRL + comma", plugins.smw.api.move_to_workspace("-1"), { repeating = true })
+  hl.bind("SUPER + SHIFT + CTRL + period", plugins.smw.api.move_to_workspace("+1"), { repeating = true })
 
-  hl.bind("SUPER + CTRL + S", smw.api.move_to_workspace("-1"), { repeating = true })
-  hl.bind("SUPER + CTRL + W", smw.api.move_to_workspace("+1"), { repeating = true })
+  hl.bind("SUPER + CTRL + S", plugins.smw.api.move_to_workspace("-1"), { repeating = true })
+  hl.bind("SUPER + CTRL + W", plugins.smw.api.move_to_workspace("+1"), { repeating = true })
 end
 
 -- Windows
-if hy3.installed() then
-  hl.bind("SUPER + H", hy3.api.move_focus("l", { visible = true }))
-  hl.bind("SUPER + J", hy3.api.move_focus("d", { visible = true }))
-  hl.bind("SUPER + K", hy3.api.move_focus("u", { visible = true }))
-  hl.bind("SUPER + L", hy3.api.move_focus("r", { visible = true }))
+if plugins.hy3.installed() then
+  hl.bind("SUPER + H", plugins.hy3.api.move_focus("l", { visible = true }))
+  hl.bind("SUPER + J", plugins.hy3.api.move_focus("d", { visible = true }))
+  hl.bind("SUPER + K", plugins.hy3.api.move_focus("u", { visible = true }))
+  hl.bind("SUPER + L", plugins.hy3.api.move_focus("r", { visible = true }))
 
-  hl.bind("SUPER + CTRL + H", hy3.api.move_window("l", { visible = true }))
-  hl.bind("SUPER + CTRL + L", hy3.api.move_window("r", { visible = true }))
-  hl.bind("SUPER + CTRL + K", hy3.api.move_window("u", { visible = true }))
-  hl.bind("SUPER + CTRL + J", hy3.api.move_window("d", { visible = true }))
+  hl.bind("SUPER + CTRL + H", plugins.hy3.api.move_window("l", { visible = true }))
+  hl.bind("SUPER + CTRL + L", plugins.hy3.api.move_window("r", { visible = true }))
+  hl.bind("SUPER + CTRL + K", plugins.hy3.api.move_window("u", { visible = true }))
+  hl.bind("SUPER + CTRL + J", plugins.hy3.api.move_window("d", { visible = true }))
 else
   hl.bind("SUPER + H", hl.dsp.focus({ direction = "l" }))
   hl.bind("SUPER + J", hl.dsp.focus({ direction = "d" }))
@@ -116,43 +114,43 @@ end
 -- Groups
 -- WARN: crashes when executing hy3:makegroup on root node with toggle, use hy3:changegroup shortcuts instead
 -- related: https://github.com/outfoxxed/hy3/issues/213
-if hy3.installed() then
-  hl.bind("SUPER + U", hy3.api.make_group("h"))
-  hl.bind("SUPER + Y", hy3.api.make_group("v"))
-  hl.bind("SUPER + I", hy3.api.make_group("tab"))
+if plugins.hy3.installed() then
+  hl.bind("SUPER + U", plugins.hy3.api.make_group("h"))
+  hl.bind("SUPER + Y", plugins.hy3.api.make_group("v"))
+  hl.bind("SUPER + I", plugins.hy3.api.make_group("tab"))
 
-  hl.bind("SUPER + SHIFT + U", hy3.api.change_group("h"))
-  hl.bind("SUPER + SHIFT + Y", hy3.api.change_group("v"))
-  hl.bind("SUPER + SHIFT + I", hy3.api.change_group("toggletab"))
+  hl.bind("SUPER + SHIFT + U", plugins.hy3.api.change_group("h"))
+  hl.bind("SUPER + SHIFT + Y", plugins.hy3.api.change_group("v"))
+  hl.bind("SUPER + SHIFT + I", plugins.hy3.api.change_group("toggletab"))
 end
 
-if hy3.installed() then
-  hl.bind("SUPER + SHIFT + H", hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
-  hl.bind("SUPER + SHIFT + L", hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
-  hl.bind("SUPER + A", hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
-  hl.bind("SUPER + D", hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
+if plugins.hy3.installed() then
+  hl.bind("SUPER + SHIFT + H", plugins.hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
+  hl.bind("SUPER + SHIFT + L", plugins.hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
+  hl.bind("SUPER + A", plugins.hy3.api.focus_tab({ direction = "l", wrap = true }), { repeating = true })
+  hl.bind("SUPER + D", plugins.hy3.api.focus_tab({ direction = "r", wrap = true }), { repeating = true })
 end
 
-if hy3.installed() then
-  hl.bind("SUPER + SHIFT + 1", hy3.api.focus_tab({ index = 1 }))
-  hl.bind("SUPER + SHIFT + 2", hy3.api.focus_tab({ index = 2 }))
-  hl.bind("SUPER + SHIFT + 3", hy3.api.focus_tab({ index = 3 }))
-  hl.bind("SUPER + SHIFT + 4", hy3.api.focus_tab({ index = 4 }))
-  hl.bind("SUPER + SHIFT + 5", hy3.api.focus_tab({ index = 5 }))
-  hl.bind("SUPER + SHIFT + 6", hy3.api.focus_tab({ index = 6 }))
-  hl.bind("SUPER + SHIFT + 7", hy3.api.focus_tab({ index = 7 }))
-  hl.bind("SUPER + SHIFT + 8", hy3.api.focus_tab({ index = 8 }))
-  hl.bind("SUPER + SHIFT + 9", hy3.api.focus_tab({ index = 9 }))
-  hl.bind("SUPER + SHIFT + 0", hy3.api.focus_tab({ index = 10 }))
-  hl.bind("SUPER + SHIFT + minus", hy3.api.focus_tab({ index = 11 }))
-  hl.bind("SUPER + SHIFT + equal", hy3.api.focus_tab({ index = 12 }))
+if plugins.hy3.installed() then
+  hl.bind("SUPER + SHIFT + 1", plugins.hy3.api.focus_tab({ index = 1 }))
+  hl.bind("SUPER + SHIFT + 2", plugins.hy3.api.focus_tab({ index = 2 }))
+  hl.bind("SUPER + SHIFT + 3", plugins.hy3.api.focus_tab({ index = 3 }))
+  hl.bind("SUPER + SHIFT + 4", plugins.hy3.api.focus_tab({ index = 4 }))
+  hl.bind("SUPER + SHIFT + 5", plugins.hy3.api.focus_tab({ index = 5 }))
+  hl.bind("SUPER + SHIFT + 6", plugins.hy3.api.focus_tab({ index = 6 }))
+  hl.bind("SUPER + SHIFT + 7", plugins.hy3.api.focus_tab({ index = 7 }))
+  hl.bind("SUPER + SHIFT + 8", plugins.hy3.api.focus_tab({ index = 8 }))
+  hl.bind("SUPER + SHIFT + 9", plugins.hy3.api.focus_tab({ index = 9 }))
+  hl.bind("SUPER + SHIFT + 0", plugins.hy3.api.focus_tab({ index = 10 }))
+  hl.bind("SUPER + SHIFT + minus", plugins.hy3.api.focus_tab({ index = 11 }))
+  hl.bind("SUPER + SHIFT + equal", plugins.hy3.api.focus_tab({ index = 12 }))
 end
 
-if hy3.installed() then
-  hl.bind("SUPER + SHIFT + CTRL + H", hy3.api.move_window("l", { once = true }), { repeating = true })
-  hl.bind("SUPER + SHIFT + CTRL + L", hy3.api.move_window("r", { once = true }), { repeating = true })
-  hl.bind("SUPER + CTRL + A", hy3.api.move_window("l", { once = true }), { repeating = true })
-  hl.bind("SUPER + CTRL + D", hy3.api.move_window("r", { once = true }), { repeating = true })
+if plugins.hy3.installed() then
+  hl.bind("SUPER + SHIFT + CTRL + H", plugins.hy3.api.move_window("l", { once = true }), { repeating = true })
+  hl.bind("SUPER + SHIFT + CTRL + L", plugins.hy3.api.move_window("r", { once = true }), { repeating = true })
+  hl.bind("SUPER + CTRL + A", plugins.hy3.api.move_window("l", { once = true }), { repeating = true })
+  hl.bind("SUPER + CTRL + D", plugins.hy3.api.move_window("r", { once = true }), { repeating = true })
 end
 
 -- Single
@@ -217,7 +215,7 @@ hl.define_submap("bind_ignore", function()
   hl.bind("SUPER + F4", function()
     hl.notification.create({ text = "[ignore]: exited", timeout = 1000 })
     hl.dispatch(hl.dsp.submap("reset"))
-    hl.config({ input = { kb_options = settings.kb_options } })
+    hl.config({ input = { kb_options = defaults.kb_options } })
   end)
 end)
 

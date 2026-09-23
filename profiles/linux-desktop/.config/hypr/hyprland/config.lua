@@ -1,4 +1,5 @@
-local settings = require("hyprland.settings")
+local defaults = require("hyprland.defaults")
+local plugins = require("hyprland.plugins")
 
 hl.config({
   debug = {
@@ -34,7 +35,7 @@ hl.config({
     gaps_out = 0,
     layout = "dwindle",
     col = {
-      active_border = settings.colors.border_active,
+      active_border = defaults.colors.border_active,
     }
   }
 })
@@ -58,8 +59,8 @@ hl.config({
 
 hl.config({
   input = {
-    kb_layout = settings.kb_layout,
-    kb_options = settings.kb_options,
+    kb_layout = defaults.kb_layout,
+    kb_options = defaults.kb_options,
     follow_mouse = 1,
     accel_profile = "flat",
     sensitivity = 0.0,
@@ -67,3 +68,11 @@ hl.config({
     repeat_rate = 45,
   }
 })
+
+if plugins.smw.installed() then
+  plugins.smw.config()
+end
+
+if plugins.hy3.installed() then
+  plugins.hy3.config(defaults.colors)
+end

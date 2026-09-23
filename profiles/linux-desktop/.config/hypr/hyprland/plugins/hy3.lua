@@ -6,9 +6,7 @@ M.installed = function()
   return M.api ~= nil
 end
 
-M.config = function()
-  local colors = require("hyprland.settings").colors
-
+M.config = function(colors)
   hl.config({
     general = {
       layout = "hy3",

@@ -1,4 +1,4 @@
-local colors = require("hyprland.settings").colors
+local defaults = require("hyprland.defaults")
 
 -- no border when fullscreen or only one tiled window visible in workspace
 hl.window_rule({
@@ -13,8 +13,8 @@ hl.window_rule({
   },
   border_color = {
     colors = {
-      colors.border,
-      colors.border,
+      defaults.colors.border,
+      defaults.colors.border,
     },
   },
 })
