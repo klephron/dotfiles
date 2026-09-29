@@ -1,3 +1,3 @@
-require("config.settings")
-require("config.keymaps")
-require("config.aliases")
+require("settings")
+require("keymaps")
+require("aliases")

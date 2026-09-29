@@ -43,11 +43,11 @@ end
 assert(profile_valid, string.format('Invalid profile: %s', profile))
 
 -- Globals
-_G.config = {
-  profile = profile,
-}
+_G.config = {}
 
-_G.profiles_any = function(...)
+_G.config.profile = profile
+
+_G.config.profiles_any = function(...)
   for i = 1, select('#', ...) do
     if _G.config.profile == select(i, ...) then
       return true

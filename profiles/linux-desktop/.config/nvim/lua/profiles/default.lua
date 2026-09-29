@@ -1,11 +1,11 @@
-require("config.settings")
-require("config.keymaps")
-require("config.aliases")
-require("config.autocmds")
+require("settings")
+require("keymaps")
+require("aliases")
+require("autocmds")
 
 require("profiles.common.lazy-bootstrap")
 
-require("lazy").setup("config.plugins", {
+require("lazy").setup("plugins", {
   install = {},
   concurrency = vim.uv.available_parallelism() * 2,
   performance = {
@@ -25,4 +25,4 @@ require("lazy").setup("config.plugins", {
   },
 })
 
-require("config.colorscheme")
+require("colorscheme")

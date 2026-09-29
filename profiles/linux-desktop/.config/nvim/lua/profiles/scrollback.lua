@@ -1,29 +1,29 @@
-require("config.settings")
-require("config.keymaps")
-require("config.aliases")
-require("config.autocmds")
+require("settings")
+require("keymaps")
+require("aliases")
+require("autocmds")
 
 require("profiles.common.lazy-bootstrap")
 
 require("lazy").setup(
   {
-    require("config.plugins.INIT"),
-    require("config.plugins.COLORSCHEME"),
-    require("config.plugins.autopairs"),
-    require("config.plugins.cmp"),
-    require("config.plugins.colorizer"),
-    require("config.plugins.comment"),
-    require("config.plugins.dial"),
-    require("config.plugins.easy-align"),
-    require("config.plugins.flash"),
-    require("config.plugins.kitty-scrollback"),
-    require("config.plugins.luasnip"),
-    require("config.plugins.marks"),
-    require("config.plugins.noice"),
-    require("config.plugins.snacks"),
-    require("config.plugins.surround"),
-    require("config.plugins.tree-sitter-manager"),
-    require("config.plugins.which-key"),
+    require("plugins.INIT"),
+    require("plugins.COLORSCHEME"),
+    require("plugins.autopairs"),
+    require("plugins.cmp"),
+    require("plugins.colorizer"),
+    require("plugins.comment"),
+    require("plugins.dial"),
+    require("plugins.easy-align"),
+    require("plugins.flash"),
+    require("plugins.kitty-scrollback"),
+    require("plugins.luasnip"),
+    require("plugins.marks"),
+    require("plugins.noice"),
+    require("plugins.snacks"),
+    require("plugins.surround"),
+    require("plugins.tree-sitter-manager"),
+    require("plugins.which-key"),
   }, {
     install = {},
     concurrency = vim.uv.available_parallelism() * 2,
@@ -45,4 +45,4 @@ require("lazy").setup(
   }
 )
 
-require("config.colorscheme")
+require("colorscheme")

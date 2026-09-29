@@ -1,21 +1,21 @@
-require("config.settings")
-require("config.keymaps")
-require("config.autocmds")
-require("config.aliases")
+require("settings")
+require("keymaps")
+require("autocmds")
+require("aliases")
 
 require("profiles.common.lazy-bootstrap")
 
 require("lazy").setup(
   {
-    require("config.plugins.comment"),
-    require("config.plugins.dial"),
-    require("config.plugins.easy-align"),
-    require("config.plugins.flash"),
-    require("config.plugins.luasnip"),
-    require("config.plugins.markdown-preview"),
-    require("config.plugins.surround"),
-    require("config.plugins.tree-sitter-manager"),
-    require("config.plugins.which-key"),
+    require("plugins.comment"),
+    require("plugins.dial"),
+    require("plugins.easy-align"),
+    require("plugins.flash"),
+    require("plugins.luasnip"),
+    require("plugins.markdown-preview"),
+    require("plugins.surround"),
+    require("plugins.tree-sitter-manager"),
+    require("plugins.which-key"),
   }, {
     install = {},
     concurrency = vim.uv.available_parallelism() * 2,
