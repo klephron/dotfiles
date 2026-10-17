@@ -22,7 +22,7 @@ require("lazy").setup(
     require("plugins.noice"),
     require("plugins.snacks"),
     require("plugins.surround"),
-    require("plugins.tree-sitter-manager"),
+    require("plugins.tree-sitter"),
     require("plugins.which-key"),
   }, {
     install = {},

@@ -14,7 +14,7 @@ require("lazy").setup(
     require("plugins.luasnip"),
     require("plugins.markdown-preview"),
     require("plugins.surround"),
-    require("plugins.tree-sitter-manager"),
+    require("plugins.tree-sitter"),
     require("plugins.which-key"),
   }, {
     install = {},
