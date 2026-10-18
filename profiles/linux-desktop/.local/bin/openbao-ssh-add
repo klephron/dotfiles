@@ -86,7 +86,7 @@ def main() -> int:
     )
     parser.add_argument(
         "-f", "--field",
-        default="ssh_private_key",
+        default="ssh-private-key",
         help="Secret field containing the SSH private key",
     )
     parser.add_argument(
