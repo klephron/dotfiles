@@ -30,6 +30,16 @@ def bao_run(*args: str, debug: bool) -> str:
 
 
 def bao_list_secrets(mount: str, prefix: str, debug: bool) -> Iterator[str]:
+    try:
+        bao_run(
+            "kv", "get", "-format=json", f"-mount={mount}", prefix,
+            debug=debug,
+        )
+        yield prefix.rstrip("/")
+        return
+    except subprocess.CalledProcessError:
+        pass
+
     output = bao_run(
         "kv", "list", "-format=json", f"-mount={mount}", prefix,
         debug=debug,
