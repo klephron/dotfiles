@@ -99,7 +99,7 @@ def agent_add_key(config: Config, key: str) -> None:
 
 def config_load() -> Config:
     parser = argparse.ArgumentParser(
-        description="Recursively load SSH private keys from OpenBao KV v2 into ssh-agent."
+        description="Recursively load SSH private keys from Vault/OpenBao KV v2 into ssh-agent."
     )
     parser.add_argument(
         "-m", "--mount",
