@@ -5,6 +5,8 @@
 . ~/.xdgenv
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
 export BROWSER=firefox
@@ -16,9 +18,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 export no_proxy="*"
-
-# zsh
-export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
 
 # (180ms, 40key/sec)
 # defaults write -g InitialKeyRepeat -int 12

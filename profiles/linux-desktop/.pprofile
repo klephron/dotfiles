@@ -1,17 +1,5 @@
 # vim: filetype=sh
 
-. ~/.xdgenv
-
-export PATH="$HOME/.local/bin:$PATH"
-
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-export BROWSER=firefox
-
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
-
 # GPU
 __has_nvidia_gpu() {
   for dev in /sys/bus/pci/devices/*; do
@@ -36,8 +24,17 @@ if __has_nvidia_gpu; then
   export __GL_SYNC_TO_VBLANK=0
 fi
 
-# zsh
-export PATH="$XDG_CONFIG_HOME/zsh/scripts/:$PATH"
+. ~/.xdgenv
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+export BROWSER=firefox
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # awesome-wm
 export PATH="$PATH:$XDG_CONFIG_HOME/awesome/scripts/"

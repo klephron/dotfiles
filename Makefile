@@ -1,5 +1,4 @@
 PROFILES_DIR := profiles
-PROFILES_CONFIG_SDIR := .config
 SCRIPTS_DIR := scripts
 BACKUP_EXT := bkp
 
@@ -41,13 +40,24 @@ define make-profile
 .PHONY: install/$(1) tridactyl/$(1) mimeapps/$(1)
 
 install/$(1): FORCE
-	@for var in $(shell find "$(PROFILES_DIR)/$(1)" -maxdepth 1 -name '.*' | xargs -I{} basename {} | grep -v '^$(PROFILES_CONFIG_SDIR)$$'); do \
+	# . excluding .local and .config
+	@for var in $(shell find "$(PROFILES_DIR)/$(1)" -maxdepth 1 -name '.*' | xargs -I{} basename {} | grep -Ev '^(\.config|\.local)$$'); do \
 		$(call make-link,$(PROFILES_DIR)/$(1)/$$$$var,$$$$HOME/$$$$var) ;\
 	done
+
+	# .config
 	@if ! [ -d "$(XDG_CONFIG_HOME)" ]; then mkdir -v "$(XDG_CONFIG_HOME)"; fi
-	@if [ -d "$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)" ]; then \
-		for var in $(shell find "$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)" -maxdepth 1 -mindepth 1 | xargs -I{} basename {}); do \
-			$(call make-link,$(PROFILES_DIR)/$(1)/$(PROFILES_CONFIG_SDIR)/$$$$var,$(XDG_CONFIG_HOME)/$$$$var) ;\
+	@if [ -d "$(PROFILES_DIR)/$(1)/.config" ]; then \
+		for var in $(shell find "$(PROFILES_DIR)/$(1)/.config" -maxdepth 1 -mindepth 1 | xargs -I{} basename {}); do \
+			$(call make-link,$(PROFILES_DIR)/$(1)/.config/$$$$var,$(XDG_CONFIG_HOME)/$$$$var) ;\
+		done ;\
+	fi
+
+  # .local/bin
+	@if [ -d "$(PROFILES_DIR)/$(1)/.local/bin" ]; then \
+		mkdir -pv "$$$$HOME/.local/bin"; \
+		for var in $(shell find "$(PROFILES_DIR)/$(1)/.local/bin" -maxdepth 1 -mindepth 1 | xargs -I{} basename {}); do \
+			$(call make-link,$(PROFILES_DIR)/$(1)/.local/bin/$$$$var,$$$$HOME/.local/bin/$$$$var) ;\
 		done ;\
 	fi
 
