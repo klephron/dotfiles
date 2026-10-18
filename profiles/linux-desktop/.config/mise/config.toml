@@ -4,5 +4,7 @@ disable_hints = ["registry"]
 
 [tools]
 helm = "latest"
+usage = "latest"
+zig = "0.16.0"
 
 [env]
