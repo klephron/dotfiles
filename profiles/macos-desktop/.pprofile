@@ -22,3 +22,4 @@ export no_proxy="*"
 # (180ms, 40key/sec)
 # defaults write -g InitialKeyRepeat -int 12
 # defaults write -g KeyRepeat -float 1.5
+export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
