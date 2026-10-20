@@ -12,11 +12,6 @@ return {
       ensure_installed = {},
     })
 
-
-    mason_lsp.setup({
-    })
-
-    -- override
     lspconfig.servers_configure()
     lspconfig.servers_enable()
   end
