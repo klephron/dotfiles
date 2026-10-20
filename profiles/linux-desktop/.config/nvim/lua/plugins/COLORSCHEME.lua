@@ -87,14 +87,14 @@ return {
   },
   {
     "klephron/darkplus.nvim",
-    -- dir = vim.fn.expand("$HOME/works/darkplus.nvim"),
+    -- dir = vim.fn.expand("$HOME/ws/klephron/darkplus.nvim"),
     lazy = false,
     priority = 1000,
     opts = {},
   },
   {
     "klephron/klephron-darker.nvim",
-    -- dir = vim.fn.expand("$HOME/ws/klephron-darker.nvim"),
+    dir = vim.fn.expand("$HOME/ws/klephron/klephron-darker.nvim"),
     lazy = false,
     priority = 1000,
     opts = {
