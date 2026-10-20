@@ -58,7 +58,7 @@ return {
       }
     }
 
-    bufferline.setup {
+    bufferline.setup({
       options = {
         mode = "buffers",
         numbers = "none",
@@ -100,6 +100,6 @@ return {
         always_show_bufferline = true,
       },
       highlights = highlights.v2,
-    }
+    })
   end
 }

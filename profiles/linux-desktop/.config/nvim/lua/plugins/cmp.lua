@@ -7,8 +7,8 @@ return {
     "hrsh7th/cmp-path",
     "onsails/lspkind.nvim",
   },
-  event        = "InsertEnter",
-  config       = function()
+  event = "InsertEnter",
+  config = function()
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
@@ -59,8 +59,8 @@ return {
             select = true
           }, function()
             if first_is_exact and
-                is_expand_or_jump and
-                first_kind ~= protocol.CompletionItemKind.Snippet
+              is_expand_or_jump and
+              first_kind ~= protocol.CompletionItemKind.Snippet
             then
               luasnip.expand_or_jump()
             end

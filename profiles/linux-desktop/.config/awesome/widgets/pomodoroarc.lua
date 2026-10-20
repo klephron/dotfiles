@@ -19,9 +19,9 @@ local START_pomodoro_CMD = "pomo start"
 local STOP_pomodoro_CMD = "pomo stop"
 
 local text = wibox.widget {
-  id     = "txt",
+  id = "txt",
   --font = "Play 12",
-  font   = "Inconsolata Medium 13",
+  font = "Inconsolata Medium 13",
   widget = wibox.widget.textbox
 }
 -- mirror the text, because the whole widget will be mirrored after
@@ -37,7 +37,7 @@ local pomodoroarc = wibox.widget {
   mirrored_text_with_background,
   max_value = 1,
   thickness = 2,
-  start_angle = 4.71238898,   -- 2pi*3/4
+  start_angle = 4.71238898, -- 2pi*3/4
   forced_height = 32,
   forced_width = 32,
   rounded_edge = true,
@@ -74,19 +74,19 @@ local update_graphic = function(widget, stdout, _, _, _)
     --width = 200,
     --}
 
-    if status == " " then   -- clock ticking
+    if status == " " then -- clock ticking
       if workbreak == "W" then
         widget.value = tonumber(pomodoro / (25 * 60))
-        if tonumber(pomomin) < 5 then   -- last 5 min of pomo
+        if tonumber(pomomin) < 5 then -- last 5 min of pomo
           widget.colors = { beautiful.widget_red }
         else
           widget.colors = { beautiful.widget_blue }
         end
-      elseif workbreak == "B" then   -- color during pause
+      elseif workbreak == "B" then -- color during pause
         widget.colors = { beautiful.widget_green }
         widget.value = tonumber(pomodoro / (5 * 60))
       end
-    elseif status == "P" then   -- paused
+    elseif status == "P" then -- paused
       if workbreak == "W" then
         widget.colors = { beautiful.widget_yellow }
         widget.value = tonumber(pomodoro / (25 * 60))

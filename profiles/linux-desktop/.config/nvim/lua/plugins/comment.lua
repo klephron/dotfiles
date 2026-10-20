@@ -1,9 +1,9 @@
 return {
   'numToStr/Comment.nvim',
   dependencies =
-      _G.config.profiles_any("vscode")
-      and {}
-      or { "JoosepAlviste/nvim-ts-context-commentstring" },
+    _G.config.profiles_any("vscode")
+    and {}
+    or { "JoosepAlviste/nvim-ts-context-commentstring" },
   config = function()
     local comment = require("Comment")
     local funcs = require("utils.funcs")
@@ -32,13 +32,13 @@ return {
       local toggle_current_line = '<Plug>(comment_toggle_linewise_current)j'
       local toggle_count_lines = '<Plug>(comment_toggle_linewise_count)' .. vim.v.count .. 'j'
       return vim.v.count == 0 and toggle_current_line
-          or toggle_count_lines
+        or toggle_count_lines
     end, { expr = true })
     funcs.set_keynomap('n', '<C-S-/>', function()
       local toggle_current_line = '<Plug>(comment_toggle_blockwise_current)j'
       local toggle_count_lines = '<Plug>(comment_toggle_blockwise_count)' .. vim.v.count .. 'j'
       return vim.v.count == 0 and toggle_current_line
-          or toggle_count_lines
+        or toggle_count_lines
     end, { expr = true })
   end,
   keys = {

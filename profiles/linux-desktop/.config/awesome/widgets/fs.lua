@@ -15,7 +15,7 @@ local function factory(args)
   function fs.update()
     helpers.async({ shell, "-c", "df -h / | tail -1 | awk '{print $5}'" }, function(f)
       local percent = tonumber(string.sub(f:gsub("%s+", ""), 1, -2))
-      fs.widget:set_markup(markup.font(theme.font, " " .. percent .. "% " ))
+      fs.widget:set_markup(markup.font(theme.font, " " .. percent .. "% "))
     end)
   end
 

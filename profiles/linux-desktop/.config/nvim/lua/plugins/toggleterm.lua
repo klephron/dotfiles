@@ -138,7 +138,7 @@ return {
       "<CR>",
       function()
         require("toggleterm")
-            .send_lines_to_terminal("visual_selection", false, { args = vim.v.count })
+          .send_lines_to_terminal("visual_selection", false, { args = vim.v.count })
       end,
       mode = "v",
       desc = "Send lines to terminal"
@@ -147,7 +147,7 @@ return {
       "<C-CR>",
       function()
         require("toggleterm")
-            .send_lines_to_terminal("single_line", false, { args = vim.v.count })
+          .send_lines_to_terminal("single_line", false, { args = vim.v.count })
       end,
       mode = "n",
       desc = "Send current line to terminal"

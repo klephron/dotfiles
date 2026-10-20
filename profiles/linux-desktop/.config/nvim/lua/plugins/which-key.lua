@@ -8,8 +8,8 @@ return {
     end,
     disable = {
       buftypes = _G.config.profiles_any("vscode")
-          and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt", }
-          or {}
+        and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt", }
+        or {}
     },
     icons = {
       mappings = false,

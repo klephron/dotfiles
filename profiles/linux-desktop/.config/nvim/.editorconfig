@@ -2,6 +2,7 @@ root = true
 
 [*.lua]
 align_continuous_assign_statement = false
+align_continuous_rect_table_field = false
 indent_style = space
 indent_size = 2
-continuation_indent_size = 2
+continuation_indent = 2

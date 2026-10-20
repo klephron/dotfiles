@@ -1,7 +1,7 @@
 return {
   "windwp/nvim-autopairs",
-  event  = "InsertEnter",
-  cmd    = { "AutopairsToggle" },
+  event = "InsertEnter",
+  cmd = { "AutopairsToggle" },
   config = function()
     local autopairs = require("nvim-autopairs")
     local autopairs_cmp = require('nvim-autopairs.completion.cmp')
@@ -43,7 +43,7 @@ return {
       bang = true,
     })
   end,
-  keys   = {
+  keys = {
     {
       "<localleader>a",
       "<cmd>AutopairsToggle!<cr>",

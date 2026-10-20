@@ -124,8 +124,8 @@ theme.cal = lain.widget.cal({
   attach_to = { clock },
   notification_preset = {
     font = "Droid Sans Mono 10",
-    fg   = theme.fg_normal,
-    bg   = theme.bg_normal
+    fg = theme.fg_normal,
+    bg = theme.bg_normal
   }
 })
 
@@ -366,11 +366,11 @@ function theme.at_screen_connect(s)
     awful.button({}, 5, function() awful.layout.inc(-1) end)))
   -- Create a taglist widget
   s.mytaglist = awful.widget.taglist({
-    screen  = s,
-    filter  = awful.widget.taglist.filter.all,
-    layout  = {
+    screen = s,
+    filter = awful.widget.taglist.filter.all,
+    layout = {
       spacing = 0,
-      layout  = wibox.layout.fixed.horizontal
+      layout = wibox.layout.fixed.horizontal
     },
     -- widget_template = {
     --   {
@@ -400,23 +400,23 @@ function theme.at_screen_connect(s)
       {
         {
           {
-            id     = 'text_margin_role',
+            id = 'text_margin_role',
             widget = wibox.widget {
               forced_width = dpi(4),
-              shape        = gears.shape.circle,
-              widget       = wibox.widget.separator,
+              shape = gears.shape.circle,
+              widget = wibox.widget.separator,
             }
           },
           margins = dpi(4),
-          widget  = wibox.container.margin,
+          widget = wibox.container.margin,
         },
         {
-          id     = 'text_role',
+          id = 'text_role',
           widget = wibox.widget.textbox,
         },
         layout = wibox.layout.fixed.horizontal,
       },
-      id     = 'background_role',
+      id = 'background_role',
       widget = wibox.container.background,
     },
   })

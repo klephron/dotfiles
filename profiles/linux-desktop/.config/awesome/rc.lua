@@ -14,8 +14,8 @@ require("awful.hotkeys_popup.keys.firefox")
 
 -- External dependencies
 package.path = package.path .. ";"
-    .. gears.filesystem.get_configuration_dir() .. "plugins/?.lua;"
-    .. gears.filesystem.get_configuration_dir() .. "plugins/?/init.lua"
+  .. gears.filesystem.get_configuration_dir() .. "plugins/?.lua;"
+  .. gears.filesystem.get_configuration_dir() .. "plugins/?/init.lua"
 
 local lain = require("lain")
 local scrlocker = "betterlockscreen -l --show-layout &"
@@ -280,8 +280,8 @@ local globalkeys = gears.table.join(
   awful.key({ modkey }, "x",
     function()
       awful.prompt.run {
-        prompt       = "Run Lua code: ",
-        textbox      = awful.screen.focused().mypromptbox.widget,
+        prompt = "Run Lua code: ",
+        textbox = awful.screen.focused().mypromptbox.widget,
         exe_callback = awful.util.eval,
         history_path = awful.util.get_cache_dir() .. "/history_eval"
       }
@@ -782,8 +782,8 @@ client.connect_signal("manage", function(c)
   -- if not awesome.startup then awful.client.setslave(c) end
 
   if awesome.startup
-      and not c.size_hints.user_position
-      and not c.size_hints.program_position then
+    and not c.size_hints.user_position
+    and not c.size_hints.program_position then
     -- Prevent clients from being unreachable after screen count changes.
     awful.placement.no_offscreen(c)
   end
@@ -814,11 +814,11 @@ client.connect_signal("request::titlebars", function(c)
     { -- Left
       awful.titlebar.widget.iconwidget(c),
       buttons = buttons,
-      layout  = wibox.layout.fixed.horizontal
+      layout = wibox.layout.fixed.horizontal
     },
     { -- Middle
       buttons = buttons,
-      layout  = wibox.layout.flex.horizontal
+      layout = wibox.layout.flex.horizontal
     },
     { -- Right
       awful.titlebar.widget.floatingbutton(c),

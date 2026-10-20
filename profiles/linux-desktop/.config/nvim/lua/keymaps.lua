@@ -147,12 +147,12 @@ M.augroups.map_nohl = {
     pattern = "*",
     command = function()
       if not vim.tbl_contains({
-            "color-picker",
-            "TelescopePrompt",
-            "DressingInput",
-            "Trouble",
-            "snacks_input",
-          }, vim.bo.filetype) then
+          "color-picker",
+          "TelescopePrompt",
+          "DressingInput",
+          "Trouble",
+          "snacks_input",
+        }, vim.bo.filetype) then
         funcs.set_keynomap("n", "<esc>", ":nohl<cr>", { buffer = 0 })
       end
     end
