@@ -1,5 +1,9 @@
 config=$XDG_CONFIG_HOME/zsh
 
+if [[ -f "$config/env.zsh" ]]; then
+  source $config/env.zsh
+fi
+
 source $config/bindkeys.zsh
 source $config/completion.zsh
 source $config/dirstack.zsh
