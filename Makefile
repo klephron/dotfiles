@@ -56,7 +56,7 @@ install/$(1): FORCE
 	@# .local/bin
 	@if [ -d "$(PROFILES_DIR)/$(1)/.local/bin" ]; then \
 		mkdir -pv "$$$$HOME/.local/bin"; \
-		for var in $$$$(find "$(PROFILES_DIR)/$(1)/.local/bin" -maxdepth 1 -mindepth 1 -printf '%f\n'); do \
+		for var in $$$$(find -H "$(PROFILES_DIR)/$(1)/.local/bin" -maxdepth 1 -mindepth 1 -exec basename {} \;); do \
 			$(call make-link,$(PROFILES_DIR)/$(1)/.local/bin/$$$$var,$$$$HOME/.local/bin/$$$$var) ;\
 		done ;\
 	fi
