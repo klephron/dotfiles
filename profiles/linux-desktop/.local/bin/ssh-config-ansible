@@ -3,10 +3,11 @@
 import argparse
 import os
 import sys
+import tempfile
+import yaml
+
 from pathlib import Path
 from typing import Any
-
-import yaml
 from sshconf import empty_ssh_config_file, read_ssh_config
 
 
@@ -156,15 +157,23 @@ def main():
                 write_key(public_key_path, public_key, 0o644)
                 debug(f"written: {public_key_path}", args.debug)
 
-        if hostname in existing_hosts:
-            ssh_config.remove(hostname)
-            debug(f"removed: {hostname}", args.debug)
+        aliases = [hostname, *variables.get("ansible_hostname_aliases", [])]
 
-        ssh_config.add(hostname, **settings)
-        debug( f"added: {hostname}", args.debug)
+        for alias in aliases:
+            if alias in existing_hosts:
+                ssh_config.remove(alias)
+                debug(f"removed: {alias}", args.debug)
 
-    ssh_config.write(str(config_path))
-    debug( f"written: {config_path}", args.debug)
+            ssh_config.add(alias, **settings)
+            debug(f"added: {alias}", args.debug)
+
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="utf-8") as tmp:
+        ssh_config.write(tmp.name)
+        tmp.seek(0)
+        content = tmp.read().strip() + "\n"
+
+    config_path.write_text(content, encoding="utf-8")
+    debug(f"written: {config_path}", args.debug)
 
 
 if __name__ == "__main__":
