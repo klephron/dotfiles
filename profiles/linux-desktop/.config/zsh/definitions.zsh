@@ -103,9 +103,6 @@ function sshdev () {
   sshnc -t -p 2222 "${root}@${remote}" "sudo -i -u ${user}"
 }
 
-# VAULT
-alias vault="bao"
-
 # XORG
 alias 2160p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:144/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load 1080-1.25_2160 && xrandr --output eDP --filter bilinear && echo 'awesome.restart()' | awesome-client"
 alias 1080p="sed -i --follow-symlinks -E 's/^Xft.dpi:.*/Xft.dpi:96/' ~/.Xresources && xrdb ~/.Xresources && autorandr --load 1080 && xrandr --output eDP --filter bilinear && echo 'awesome.restart()' | awesome-client"
