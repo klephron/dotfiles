@@ -157,7 +157,7 @@ def main():
                 write_key(public_key_path, public_key, 0o644)
                 debug(f"written: {public_key_path}", args.debug)
 
-        aliases = [hostname, *variables.get("ansible_hostname_aliases", [])]
+        aliases = [hostname, *variables.get("ansible_aliases", [])]
 
         for alias in aliases:
             if alias in existing_hosts:
