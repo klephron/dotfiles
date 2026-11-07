@@ -2,23 +2,21 @@ return {
   "mfussenegger/nvim-jdtls",
   ft = { "java" },
   config = function()
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
     local jdtls = require("jdtls")
+    local lspconfig = require("plugins.lspconfig")
 
-    local options_fetch = require("plugins.lspconfig").options_fetch
-    local on_attach = require("plugins.lspconfig").on_attach
-
-    local server_options = vim.tbl_deep_extend("force", {}, options_fetch(),
-      require("plugins.lspconfig").servers_options.jdtls or {})
-
-    local server_on_attach = server_options.on_attach
+    local server_options = vim.tbl_deep_extend("force", {},
+      lspconfig.options_fetch(),
+      lspconfig.servers_options.jdtls or {}
+    )
 
     server_options.on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      server_on_attach(client, bufnr)
+      lspconfig.on_attach(client, bufnr)
+      server_options.on_attach(client, bufnr)
     end
 
-    funcs.augroup("p.jdtls", {
+    utils.augroup("p.jdtls", {
       {
         event = { "FileType" },
         pattern = "java",

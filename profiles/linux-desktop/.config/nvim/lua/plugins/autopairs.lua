@@ -5,6 +5,7 @@ return {
   config = function()
     local autopairs = require("nvim-autopairs")
     local autopairs_cmp = require('nvim-autopairs.completion.cmp')
+    local cmp_status_ok, cmp = pcall(require, "cmp")
 
     autopairs.setup({
       check_ts = false,
@@ -19,7 +20,6 @@ return {
       },
     })
 
-    local cmp_status_ok, cmp = pcall(require, "cmp")
     if cmp_status_ok then
       cmp.event:on("confirm_done",
         autopairs_cmp.on_confirm_done()

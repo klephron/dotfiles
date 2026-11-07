@@ -5,12 +5,13 @@ return {
   enabled = false,
   config = function()
     local ts_configs = require("nvim-treesitter.configs")
+    local config = require("config")
 
     ts_configs.setup({
       ensure_installed = {
       },
       highlight = {
-        enable = config.is_vscode and false or true,
+        enable = config.profile.contains("vscode") and false or true,
         -- enable = false,
       },
       indent = {

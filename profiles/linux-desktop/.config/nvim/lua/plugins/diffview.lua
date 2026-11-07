@@ -3,6 +3,7 @@ return {
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   config = function()
     local dv = require("diffview")
+
     dv.setup({
       enhanced_diff_hl = true,
       default_args = {

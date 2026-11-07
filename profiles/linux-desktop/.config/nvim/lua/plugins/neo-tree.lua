@@ -18,7 +18,7 @@ return {
   },
   config = function()
     local neo_tree = require("neo-tree")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     local cmd = {
       system_open = function(state)
@@ -138,9 +138,9 @@ return {
       }
     })
 
-    funcs.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
-    funcs.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
-    funcs.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current reveal<cr>", "Open neotree netrw")
-    funcs.set_keynomap("n", "<leader>L", "<cmd>Neotree position=current<cr>", "Open neotree netrw")
+    utils.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
+    utils.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
+    utils.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current reveal<cr>", "Open neotree netrw")
+    utils.set_keynomap("n", "<leader>L", "<cmd>Neotree position=current<cr>", "Open neotree netrw")
   end
 }

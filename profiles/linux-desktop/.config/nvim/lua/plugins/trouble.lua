@@ -2,7 +2,7 @@ return {
   "folke/trouble.nvim",
   cmd = { "Trouble" },
   config = function()
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
     local trouble = require("trouble")
 
     trouble.setup({
@@ -12,12 +12,12 @@ return {
       }
     })
 
-    funcs.augroup("p.trouble", {
+    utils.augroup("p.trouble", {
       {
         event = "FileType",
         pattern = "Trouble",
         command = function()
-          funcs.set_keynomap("n", "q", function()
+          utils.set_keynomap("n", "q", function()
             vim.cmd('wincmd p')
             vim.cmd('silent! TroubleClose')
           end, { buffer = 0 })

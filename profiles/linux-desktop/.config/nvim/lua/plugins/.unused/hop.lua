@@ -3,7 +3,7 @@ return {
   enabled = false,
   config = function()
     local hop = require("hop")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     hop.setup({
       quit_key = "<Esc>",
@@ -14,7 +14,7 @@ return {
       create_hl_autocmd = false
     })
 
-    funcs.set_keynomap({ "x", "n", "o" }, 's', function()
+    utils.set_keynomap({ "x", "n", "o" }, 's', function()
       hop.hint_char1({
         direction = nil,
         hint_offset = 0,
@@ -22,7 +22,7 @@ return {
       })
     end, "Hop multiline included")
 
-    funcs.set_keynomap({ "x", "n", "o" }, 'F', function()
+    utils.set_keynomap({ "x", "n", "o" }, 'F', function()
       hop.hint_char1({
         direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
         hint_offset = 0,
@@ -30,7 +30,7 @@ return {
       })
     end, "Hop current line before cursor")
 
-    funcs.set_keynomap({ "x", "n", "o" }, 'f', function()
+    utils.set_keynomap({ "x", "n", "o" }, 'f', function()
       hop.hint_char1({
         direction = require("hop.hint").HintDirection.AFTER_CURSOR,
         hint_offset = 0,
@@ -38,7 +38,7 @@ return {
       })
     end, "Hop current line after cursor")
 
-    funcs.set_keynomap({ "x", "n", "o" }, 'T', function()
+    utils.set_keynomap({ "x", "n", "o" }, 'T', function()
       hop.hint_char1({
         direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
         hint_offset = 1,
@@ -46,7 +46,7 @@ return {
       })
     end, "Hop current line before cursor")
 
-    funcs.set_keynomap({ "x", "n", "o" }, 't', function()
+    utils.set_keynomap({ "x", "n", "o" }, 't', function()
       hop.hint_char1({
         direction = require("hop.hint").HintDirection.AFTER_CURSOR,
         hint_offset = -1,

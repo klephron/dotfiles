@@ -2,12 +2,12 @@ return {
   "williamboman/mason.nvim",
   config = function()
     local mason = require("mason")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     mason.setup({})
 
-    funcs.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log mason" })
-    funcs.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info mason" })
-    funcs.set_keynomap("n", "<localleader>mu", "<cmd>MasonUpdate<cr>", { desc = "Update mason registries" })
+    utils.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log mason" })
+    utils.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info mason" })
+    utils.set_keynomap("n", "<localleader>mu", "<cmd>MasonUpdate<cr>", { desc = "Update mason registries" })
   end,
 }

@@ -4,6 +4,7 @@ return {
     "PossessionShow", "PossessionList", "PossessionMigrate" },
   config = function()
     local possession = require("possession")
+
     possession.setup({
       autosave = {
         current = true,

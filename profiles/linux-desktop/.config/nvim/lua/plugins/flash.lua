@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   config = function()
     local flash = require("flash")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     flash.setup({
       modes = {
@@ -44,20 +44,20 @@ return {
       }
     })
 
-    funcs.set_keynomap({ "x", "n", "o" }, "s", function()
+    utils.set_keynomap({ "x", "n", "o" }, "s", function()
       flash.jump()
     end, "Flash multiline")
 
-    funcs.set_keynomap({ "o", "x" }, "m", function()
+    utils.set_keynomap({ "o", "x" }, "m", function()
       flash.treesitter()
     end, "Flash treesitter")
 
-    funcs.set_keynomap({ "o", "x" }, "M",
+    utils.set_keynomap({ "o", "x" }, "M",
       function()
         flash.treesitter_search()
       end, "Treesitter search")
 
-    funcs.set_keynomap({ "n", "x", "o" }, "<A-o>",
+    utils.set_keynomap({ "n", "x", "o" }, "<A-o>",
       function()
         require("flash").treesitter({
           label = {

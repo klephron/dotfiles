@@ -5,7 +5,9 @@ return {
   event = "UIEnter",
   cond = function() return not config.profile.contains("neovide", "firenvim") end,
   config = function()
-    require("noice").setup({
+    local noice = require("noice")
+
+    noice.setup({
       debug = false,
       presets = {
         bottom_search = true,

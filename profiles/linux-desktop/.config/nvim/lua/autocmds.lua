@@ -1,28 +1,28 @@
 -- Default settings, can be overriden later by plugins
 local config = require("config")
-local funcs = require("utils.funcs")
+local utils = require("utils")
 local keymap_augroups = require("keymaps").augroups
 
 -- KEYMAPS
 if keymap_augroups.map_close then
-  funcs.augroup("l.map_close", keymap_augroups.map_close)
+  utils.augroup("l.map_close", keymap_augroups.map_close)
 else
   vim.notify("autocmds: map_close is " .. keymap_augroups.map_close)
 end
 
 if keymap_augroups.map_nohl then
-  funcs.augroup("l.map_nohl", keymap_augroups.map_nohl)
+  utils.augroup("l.map_nohl", keymap_augroups.map_nohl)
 else
   vim.notify("autocmds: map_nohl is " .. keymap_augroups.map_nohl)
 end
 
 if keymap_augroups.map_terminal then
-  funcs.augroup("l.map_terminal", keymap_augroups.map_terminal)
+  utils.augroup("l.map_terminal", keymap_augroups.map_terminal)
 end
 
 
 -- FILETYPES
-funcs.augroup("l.nasm", {
+utils.augroup("l.nasm", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.inc,*.asm",
@@ -30,7 +30,7 @@ funcs.augroup("l.nasm", {
   }
 })
 
-funcs.augroup("l.jenkinsfile", {
+utils.augroup("l.jenkinsfile", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "jenkinsfile,Jenkinsfile,*.jenkinsfile,*.Jenkinsfile",
@@ -38,7 +38,7 @@ funcs.augroup("l.jenkinsfile", {
   }
 })
 
-funcs.augroup("l.jinja", {
+utils.augroup("l.jinja", {
   {
     event = { "BufRead", "BufNewFile" },
     pattern = "*.j2",
@@ -49,7 +49,7 @@ funcs.augroup("l.jinja", {
 -- :% - entire file; %!xxd - pass the entire content of file inside xxd and write in the same file
 -- same in shell: cat $1 | xxd | tee $1
 -- Define the augroup for handling binary files with xxd
-funcs.augroup("l.bin", {
+utils.augroup("l.bin", {
   {
     event = { "BufReadPre" },
     pattern = "*.bin,*.exe,*.out",
@@ -89,7 +89,7 @@ funcs.augroup("l.bin", {
 })
 
 -- Fix conceallevel for json & help files
-funcs.augroup("l.json_conceal", {
+utils.augroup("l.json_conceal", {
   {
     event = { "FileType" },
     pattern = { "json", "jsonc" },
@@ -100,7 +100,7 @@ funcs.augroup("l.json_conceal", {
   }
 })
 
-funcs.augroup("l.text", {
+utils.augroup("l.text", {
   {
     event = "FileType",
     pattern = { "plaintex", "typst", "gitcommit", "markdown" },
@@ -113,7 +113,7 @@ funcs.augroup("l.text", {
 
 -- UTILITY
 -- Create directories when needed, when saving a file
-funcs.augroup("l.create_dir_on_file_write", {
+utils.augroup("l.create_dir_on_file_write", {
   {
     event = { "BufWritePre" },
     command = function(event)
@@ -128,7 +128,7 @@ funcs.augroup("l.create_dir_on_file_write", {
 })
 
 -- Go to last loc when opening a buffer
-funcs.augroup("l.open_last_loc", {
+utils.augroup("l.open_last_loc", {
   {
     event = "BufReadPre",
     patterm = "*",
@@ -146,7 +146,7 @@ funcs.augroup("l.open_last_loc", {
   }
 })
 
-funcs.augroup("l.resize_on_window_change", {
+utils.augroup("l.resize_on_window_change", {
   {
     event = { "VimResized" },
     command = function()
@@ -159,7 +159,7 @@ funcs.augroup("l.resize_on_window_change", {
 
 
 if not config.profile.contains('vscode', 'firenvim') then
-  funcs.augroup("l.restore_cursor_shape", {
+  utils.augroup("l.restore_cursor_shape", {
     {
       event = "ExitPre",
       pattern = "*",
@@ -171,7 +171,7 @@ if not config.profile.contains('vscode', 'firenvim') then
   })
 
   -- Check reload file when changed
-  funcs.augroup("l.checktime", {
+  utils.augroup("l.checktime", {
     {
       event = { "FocusGained", "TermClose", "TermLeave" },
       command = function()
@@ -182,7 +182,7 @@ if not config.profile.contains('vscode', 'firenvim') then
     }
   })
 
-  funcs.augroup("l.reload_file", {
+  utils.augroup("l.reload_file", {
     {
       event = "BufWinEnter",
       pattern = "*",

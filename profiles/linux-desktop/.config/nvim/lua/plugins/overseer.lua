@@ -6,6 +6,7 @@ return {
   event = "VeryLazy",
   config = function()
     local overseer = require("overseer")
+
     overseer.setup({
       strategy = {
         "toggleterm",

@@ -1,6 +1,8 @@
+local config = require("config")
+
 return {
   "klephron/watch.nvim",
-  dir = vim.env.NVIM_CONFIG_WATCH_DIR or nil,
+  dir = config.plugin.watch_dir,
   config = function()
     local watch = require("watch")
     watch.setup({})

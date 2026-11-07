@@ -1,3 +1,4 @@
+local utils = require("utils")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -13,4 +14,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("utils.funcs").set_keynomap("n", "<localleader>z", "<cmd>Lazy<cr>", "Open lazy menu")
+utils.set_keynomap("n", "<localleader>z", "<cmd>Lazy<cr>", "Open lazy menu")

@@ -7,7 +7,7 @@ return {
   config = function()
     local luasnip = require("luasnip")
     local types = require("luasnip.util.types")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     luasnip.setup({
       keep_roots = false,
@@ -33,12 +33,12 @@ return {
     -- require("luasnip.loaders.from_snipmate").load({ paths = "~/.config/nvim/snippets/snipmate/" })
     require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/luasnip/" })
 
-    funcs.set_keynomap({ "i", "s" }, "<a-k>", function()
+    utils.set_keynomap({ "i", "s" }, "<a-k>", function()
       if luasnip.jumpable(1) then
         luasnip.jump(1)
       end
     end)
-    funcs.set_keynomap({ "i", "s" }, "<a-j>", function()
+    utils.set_keynomap({ "i", "s" }, "<a-j>", function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end
@@ -46,6 +46,6 @@ return {
 
     vim.cmd("command! LuaSnipEdit :lua require('luasnip.loaders').edit_snippet_files()")
 
-    funcs.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "Edit snippets")
+    utils.set_keynomap("n", "<localleader>s", "<cmd>LuaSnipEdit<cr>", "Edit snippets")
   end,
 }

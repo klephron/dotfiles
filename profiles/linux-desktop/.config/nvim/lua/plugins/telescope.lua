@@ -12,12 +12,12 @@ return {
   },
   event = "UIEnter",
   config = function()
+    local utils = require("utils")
     local telescope = require("telescope")
     local icons = require("icons")
     local actions = require("telescope.actions")
     local themes = require("telescope.themes")
     local builtins = require("telescope.builtin")
-    local funcs = require("utils.funcs")
 
     telescope.setup {
       defaults = {
@@ -100,10 +100,10 @@ return {
     telescope.load_extension("projects")
     telescope.load_extension("ui-select")
 
-    funcs.set_keynomap("n", "<leader>b", "<cmd>Telescope buffers<cr>", "List buffers")
-    funcs.set_keynomap("n", "<leader>h", "<cmd>Telescope live_grep<cr>", "Live grep")
-    funcs.set_keynomap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", "Live recent files")
-    funcs.set_keynomap("n", "<leader>s", "<cmd>Telescope find_files<cr>", "Find files")
-    funcs.set_keynomap("n", "<leader>;", "<cmd>Telescope resume<cr>", "Resume telescope search")
+    utils.set_keynomap("n", "<leader>b", "<cmd>Telescope buffers<cr>", "List buffers")
+    utils.set_keynomap("n", "<leader>h", "<cmd>Telescope live_grep<cr>", "Live grep")
+    utils.set_keynomap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", "Live recent files")
+    utils.set_keynomap("n", "<leader>s", "<cmd>Telescope find_files<cr>", "Find files")
+    utils.set_keynomap("n", "<leader>;", "<cmd>Telescope resume<cr>", "Resume telescope search")
   end,
 }

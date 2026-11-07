@@ -5,7 +5,7 @@ return {
   enabled = false,
   config = function()
     local treesitter = require("tree-sitter-manager")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     treesitter.setup({
       ensure_installed = {
@@ -41,6 +41,6 @@ return {
       highlight = true,
     })
 
-    funcs.set_keynomap("n", "<localleader>ts", "<cmd>TSManager<cr>", "Open tree-sitter-manager")
+    utils.set_keynomap("n", "<localleader>ts", "<cmd>TSManager<cr>", "Open tree-sitter-manager")
   end,
 }

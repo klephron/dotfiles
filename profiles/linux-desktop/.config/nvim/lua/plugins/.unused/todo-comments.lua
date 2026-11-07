@@ -3,7 +3,7 @@ return {
   enabled = false,
   config = function()
     local todo = require("todo-comments")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     todo.setup({
       signs = false,
@@ -35,6 +35,6 @@ return {
       -- }
     })
 
-    funcs.set_keynomap("n", "<leader>I", "<cmd>LspInstall<cr>", "Install LSP")
+    utils.set_keynomap("n", "<leader>I", "<cmd>LspInstall<cr>", "Install LSP")
   end
 }

@@ -6,7 +6,7 @@ return {
   event = { 'User KittyScrollbackLaunch' },
   version = '*',
   config = function()
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
     require('kitty-scrollback').setup({
       {

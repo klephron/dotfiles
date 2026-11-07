@@ -3,6 +3,7 @@ return {
   cmd = { "Autosession", "SessionRestore", "SessionSave" },
   enabled = false,
   config = function()
+    local utils = require("utils")
     local close_conflicted = { "tabdo Neotree close", "tabdo AerialCloseAll" }
 
     local auto_session = require("auto-session")
@@ -20,7 +21,7 @@ return {
     })
 
     -- Manually save session
-    config.augroup("p.save_session", {
+    utils.augroup("p.save_session", {
       {
         event = "VimLeave",
         pattern = "*",

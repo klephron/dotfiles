@@ -1,12 +1,10 @@
-local M = {}
-
 -- prototype: KeymapDictionary
-M.KeymapDictionary = {}
+KeymapDictionary = {}
 
 ---KeymapDictionary constructor
 ---@param table table
 ---@param prefix string|nil
-function M.KeymapDictionary:new(table, prefix)
+function KeymapDictionary:new(table, prefix)
   table = table or {}
   setmetatable(table, self)
   self.__index = self
@@ -23,11 +21,11 @@ function M.KeymapDictionary:new(table, prefix)
   return table
 end
 
-function M.KeymapDictionary:key(element)
+function KeymapDictionary:key(element)
   return self[element].key
 end
 
-function M.KeymapDictionary:desc(element)
+function KeymapDictionary:desc(element)
   local desc = self[element].desc
   if desc == nil then return "" end
   if self.__prefix then
@@ -37,7 +35,7 @@ function M.KeymapDictionary:desc(element)
   end
 end
 
-function M.KeymapDictionary:list_keys()
+function KeymapDictionary:list_keys()
   local keys = {}
   for _, v in pairs(self) do
     table.insert(keys, v.key)
@@ -45,14 +43,14 @@ function M.KeymapDictionary:list_keys()
   return keys
 end
 
-function M.KeymapDictionary:add_key(name, key, desc)
+function KeymapDictionary:add_key(name, key, desc)
   self[name] = {}
   self[name].key = key
   self[name].desc = desc
 end
 
-function M.KeymapDictionary:remove_key(name)
+function KeymapDictionary:remove_key(name)
   self[name] = nil
 end
 
-return M
+return KeymapDictionary

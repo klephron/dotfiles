@@ -2,7 +2,7 @@ return {
   'nvimtools/none-ls.nvim',
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
     local null_ls = require("null-ls")
     local lspconfig = require("plugins.lspconfig")
 
@@ -28,7 +28,7 @@ return {
       sources = sources
     })
 
-    funcs.set_keynomap("n", "<localleader>nl", "<cmd>NullLsLog<cr>", "Log null-ls")
-    funcs.set_keynomap("n", "<localleader>ns", "<cmd>NullLsInfo<cr>", "Info null-ls")
+    utils.set_keynomap("n", "<localleader>nl", "<cmd>NullLsLog<cr>", "Log null-ls")
+    utils.set_keynomap("n", "<localleader>ns", "<cmd>NullLsInfo<cr>", "Info null-ls")
   end,
 }

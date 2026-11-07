@@ -1,15 +1,7 @@
+local api = vim.api
 local fmt = string.format
 local fn = vim.fn
-local api = vim.api
 
-local function require_safe(module, opts)
-  opts = opts or { silent = false }
-  local ok, result = pcall(require, module)
-  if not ok and not opts.silent then
-    vim.notify(result, vim.log.levels.ERROR, { title = fmt('Error requiring: %s', module) })
-  end
-  return ok, result
-end
 
 local function map_call(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
@@ -41,6 +33,34 @@ local function map_try_unmap(mode, lhs, buflocal)
     else
       api.nvim_del_keymap(mode, lhs)
     end
+  end
+end
+
+
+local function require_safe(module, opts)
+  opts = opts or { silent = false }
+  local ok, result = pcall(require, module)
+  if not ok and not opts.silent then
+    vim.notify(result, vim.log.levels.ERROR, { title = fmt('Error requiring: %s', module) })
+  end
+  return ok, result
+end
+
+---Reload lua modules
+---@param path string
+---@param recursive boolean
+local function reload(path, recursive)
+  if recursive then
+    for key, value in pairs(package.loaded) do
+      if key ~= '_G' and value and fn.match(key, path) ~= -1 then
+        -- table[key] = value
+        package.loaded[key] = nil
+        require(key)
+      end
+    end
+  else
+    package.loaded[path] = nil
+    require(path)
   end
 end
 
@@ -76,24 +96,6 @@ local function augroup(group, commands)
   return id
 end
 
----Reload lua modules
----@param path string
----@param recursive boolean
-local function reload(path, recursive)
-  if recursive then
-    for key, value in pairs(package.loaded) do
-      if key ~= '_G' and value and fn.match(key, path) ~= -1 then
-        -- table[key] = value
-        package.loaded[key] = nil
-        require(key)
-      end
-    end
-  else
-    package.loaded[path] = nil
-    require(path)
-  end
-end
-
 ---Get color of highlight. Type of color should be table { hi, fg|bg } or HEX string
 local function color(val)
   if type(val) == "string" then
@@ -105,12 +107,13 @@ local function color(val)
   end
 end
 
+
 return {
-  require_safe = require_safe,
-  set_keyremap = map_set_keyremap,
-  set_keynomap = map_set_keynomap,
-  try_unmap = map_try_unmap,
   augroup = augroup,
-  reload = reload,
   color = color,
+  reload = reload,
+  require_safe = require_safe,
+  set_keynomap = map_set_keynomap,
+  set_keyremap = map_set_keyremap,
+  try_unmap = map_try_unmap,
 }

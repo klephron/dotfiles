@@ -8,8 +8,9 @@ return {
   cmd = { "Neorg" },
   build = ":Neorg sync-parsers",
   config = function()
+    local utils = require("utils")
     local neorg = require("neorg")
-    local funcs = require("utils.funcs")
+
     neorg.setup({
       load = {
         ["core.defaults"] = {}, -- https://github.com/nvim-neorg/neorg/wiki#default-modules
@@ -48,6 +49,6 @@ return {
       }
     })
 
-    funcs.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "Switch neorg workspace")
+    utils.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "Switch neorg workspace")
   end,
 }

@@ -1,8 +1,7 @@
 local home = vim.fn.expand('$HOME')
-local kmps_dict = require("utils.kmps_dict").KeymapDictionary
-local utils = require("utils.funcs")
+local utils = require("utils")
 
-local kmps_dap = kmps_dict:new({
+local kmps_dap = utils.kmps_dict:new({
   -- Main
   step_over = { "<leader>dn", "Step over" },
   step_into = { "<leader>di", "Step into" },
@@ -35,7 +34,7 @@ local kmps_dap = kmps_dict:new({
   -- repl_session = { "<leader>dx", "REPL session" },
 }, "")
 
-local kmps_dap_fn = kmps_dict:new({
+local kmps_dap_fn = utils.kmps_dict:new({
   step_into = { "<F1>", "Step into" },
   step_over = { "<F2>", "Step over" },
   step_out = { "<F3>", "Step out" },
@@ -101,8 +100,6 @@ local function process_launchjs(opts)
   end
   return ok
 end
-
-
 
 local funcs = {
   continue = function()

@@ -34,9 +34,9 @@ return {
   build = ':TSUpdate',
   config = function()
     local treesitter = require("nvim-treesitter")
-    local funcs = require("utils.funcs")
+    local utils = require("utils")
 
-    funcs.augroup("p.treesitter", {
+    utils.augroup("p.treesitter", {
       {
         event = "FileType",
         pattern = languages,

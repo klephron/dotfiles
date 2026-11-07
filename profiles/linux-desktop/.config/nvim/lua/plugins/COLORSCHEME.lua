@@ -1,10 +1,11 @@
+local config = require("config")
 -- lazy = false,    -- make sure we load this during startup if it is your main colorscheme
 -- priority = 1000, -- make sure to load this before all the other start plugins
 
 return {
   {
     "klephron/klephron-darker.nvim",
-    dir = vim.env.NVIM_CONFIG_KLEPHRON_DARKER_DIR or nil,
+    dir = config.plugin.klephron_darker_dir,
     lazy = false,
     priority = 1000,
     opts = {
