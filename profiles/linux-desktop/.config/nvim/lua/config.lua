@@ -29,7 +29,7 @@ end
 local function plugin_klephron_darker_dir_get()
   return local_plugin.klephron_darker_dir
     or vim.env.NVIM_CONFIG_KLEPHRON_DARKER_DIR
-    or {}
+    or nil
 end
 
 local function plugin_watch_dir_get()
