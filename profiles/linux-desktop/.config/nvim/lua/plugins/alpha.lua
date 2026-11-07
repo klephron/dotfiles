@@ -30,10 +30,10 @@ return {
         theme.button("l", icons.Text .. " Find text", "<cmd>Telescope live_grep<CR>"),
         theme.button("t", icons.Telescope .. " Open Telescope", "<cmd>Telescope<cr>"),
 
-        theme.button("o", icons.Neorg .. " Neorg workspace",
-          "<cmd>Telescope neorg switch_workspace<cr><cmd>Project! root<cr>"),
-        theme.button("n", icons.Neorg .. " Neorg notes", "<cmd>Neorg workspace notes<cr><cmd>Project! root<cr>"),
-        theme.button("m", icons.Neorg .. " Neorg tasks", "<cmd>Neorg workspace tasks<cr><cmd>Project! root<cr>"),
+        -- theme.button("o", icons.Neorg .. " Neorg workspace",
+        --   "<cmd>Telescope neorg switch_workspace<cr><cmd>Project! root<cr>"),
+        -- theme.button("n", icons.Neorg .. " Neorg notes", "<cmd>Neorg workspace notes<cr><cmd>Project! root<cr>"),
+        -- theme.button("m", icons.Neorg .. " Neorg tasks", "<cmd>Neorg workspace tasks<cr><cmd>Project! root<cr>"),
 
         theme.button("h", icons.Checkhealth .. " Checkhealth", "<cmd>checkhealth<cr>"),
         theme.button("q", icons.Quit .. " Quit nvim", "<cmd>qa<cr>"),
