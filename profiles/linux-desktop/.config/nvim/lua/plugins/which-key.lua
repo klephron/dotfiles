@@ -7,7 +7,7 @@ return {
   opts = {
     show_help = false,
     delay = function(_)
-      return 200
+      return 250
     end,
     disable = {
       buftypes = config.profile.contains("vscode")
