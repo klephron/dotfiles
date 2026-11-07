@@ -85,8 +85,6 @@ function venv () {
 }
 
 # SSH
-alias ssh="TERM=tmux-256color COLORTERM=truecolor ssh"
-
 function sshnc() {
   ssh -o StrictHostKeyChecking=no \
       -o UserKnownHostsFile=/dev/null \
