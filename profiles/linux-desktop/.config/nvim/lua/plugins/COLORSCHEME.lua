@@ -4,7 +4,7 @@ local config = require("config")
 
 return {
   {
-    "klephron/klephron-darker.nvim",
+    "https://git.klephron.xyz/klephron/nvim-klephron-darker",
     dir = config.plugin.klephron_darker_dir,
     lazy = false,
     priority = 1000,
