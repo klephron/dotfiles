@@ -1,4 +1,6 @@
-if not _G.config.profiles_any("vscode") then
+local config = require("config")
+
+if not config.profile.contains("vscode") then
   -- vim.o.background = "light"
   vim.o.background = "dark"
 

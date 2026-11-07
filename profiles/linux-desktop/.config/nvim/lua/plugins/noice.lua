@@ -1,7 +1,9 @@
+local config = require("config")
+
 return {
   "folke/noice.nvim",
   event = "UIEnter",
-  cond = function() return not _G.config.profiles_any("neovide", "firenvim") end,
+  cond = function() return not config.profile.contains("neovide", "firenvim") end,
   config = function()
     require("noice").setup({
       debug = false,

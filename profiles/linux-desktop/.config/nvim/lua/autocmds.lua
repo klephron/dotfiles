@@ -1,4 +1,5 @@
 -- Default settings, can be overriden later by plugins
+local config = require("config")
 local funcs = require("utils.funcs")
 local keymap_augroups = require("keymaps").augroups
 
@@ -157,7 +158,7 @@ funcs.augroup("l.resize_on_window_change", {
 })
 
 
-if not _G.config.profiles_any('vscode', 'firenvim') then
+if not config.profile.contains('vscode', 'firenvim') then
   funcs.augroup("l.restore_cursor_shape", {
     {
       event = "ExitPre",

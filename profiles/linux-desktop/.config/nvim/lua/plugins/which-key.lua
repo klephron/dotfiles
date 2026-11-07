@@ -1,3 +1,5 @@
+local config = require("config")
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
@@ -7,7 +9,7 @@ return {
       return 200
     end,
     disable = {
-      buftypes = _G.config.profiles_any("vscode")
+      buftypes = config.profile.contains("vscode")
         and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt", }
         or {}
     },

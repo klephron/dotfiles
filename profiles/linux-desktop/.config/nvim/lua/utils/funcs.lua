@@ -1,10 +1,8 @@
-local M = {}
-
 local fmt = string.format
 local fn = vim.fn
 local api = vim.api
 
-function M.safe_require(module, opts)
+local function require_safe(module, opts)
   opts = opts or { silent = false }
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
@@ -13,31 +11,30 @@ function M.safe_require(module, opts)
   return ok, result
 end
 
--- MAPPINGS
-local function call_mapping(mode, lhs, rhs, opts)
+local function map_call(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-local function resolve_opts(opts)
+local function map_opts_resolve(opts)
   return type(opts) == 'string' and { desc = opts } or opts or {}
 end
 
-local remap_opts = { silent = true, remap = true }
-local nomap_opts = { silent = true }
+local map_opts_re = { silent = true, remap = true }
+local map_opts_no = { silent = true }
 
-M.set_keyremap = function(mode, lhs, rhs, opts)
-  opts = resolve_opts(opts)
-  opts = vim.tbl_extend('keep', opts, remap_opts)
-  call_mapping(mode, lhs, rhs, opts)
+local function map_set_keyremap(mode, lhs, rhs, opts)
+  opts = map_opts_resolve(opts)
+  opts = vim.tbl_extend('keep', opts, map_opts_re)
+  map_call(mode, lhs, rhs, opts)
 end
 
-M.set_keynomap = function(mode, lhs, rhs, opts)
-  opts = resolve_opts(opts)
-  opts = vim.tbl_extend('keep', opts, nomap_opts)
-  call_mapping(mode, lhs, rhs, opts)
+local function map_set_keynomap(mode, lhs, rhs, opts)
+  opts = map_opts_resolve(opts)
+  opts = vim.tbl_extend('keep', opts, map_opts_no)
+  map_call(mode, lhs, rhs, opts)
 end
 
-M.try_unmap = function(mode, lhs, buflocal)
+local function map_try_unmap(mode, lhs, buflocal)
   if fn.maparg(lhs, mode) ~= '' then
     if buflocal then
       api.nvim_buf_del_keymap(api.nvim_get_current_buf(), mode, lhs)
@@ -61,7 +58,7 @@ end
 ---@param group string
 ---@param commands Autocommand[]
 ---@return number
-M.augroup = function(group, commands)
+local function augroup(group, commands)
   local id = api.nvim_create_augroup(group, { clear = true })
   for _, autocmd in ipairs(commands) do
     local is_callback = type(autocmd.command) == 'function'
@@ -82,7 +79,7 @@ end
 ---Reload lua modules
 ---@param path string
 ---@param recursive boolean
-M.reload = function(path, recursive)
+local function reload(path, recursive)
   if recursive then
     for key, value in pairs(package.loaded) do
       if key ~= '_G' and value and fn.match(key, path) ~= -1 then
@@ -98,7 +95,7 @@ M.reload = function(path, recursive)
 end
 
 ---Get color of highlight. Type of color should be table { hi, fg|bg } or HEX string
-M.color = function(val)
+local function color(val)
   if type(val) == "string" then
     return val
   elseif type(val) == "table" then
@@ -108,4 +105,12 @@ M.color = function(val)
   end
 end
 
-return M
+return {
+  require_safe = require_safe,
+  set_keyremap = map_set_keyremap,
+  set_keynomap = map_set_keynomap,
+  try_unmap = map_try_unmap,
+  augroup = augroup,
+  reload = reload,
+  color = color,
+}
