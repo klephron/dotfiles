@@ -46,7 +46,7 @@ return {
     local footer = {
       type = "text",
       val = {
-        "https://github.com/klephron"
+        "https://git.klephron.xyz/klephron/dotfiles.git"
       },
       opts = {
         position = "center",
