@@ -1,10 +1,10 @@
--- prototype: KeymapDictionary
-KeymapDictionary = {}
+-- prototype: kmps_dict
+local kmps_dict = {}
 
----KeymapDictionary constructor
+---kmps_dict constructor
 ---@param table table
 ---@param prefix string|nil
-function KeymapDictionary:new(table, prefix)
+function kmps_dict:new(table, prefix)
   table = table or {}
   setmetatable(table, self)
   self.__index = self
@@ -21,11 +21,11 @@ function KeymapDictionary:new(table, prefix)
   return table
 end
 
-function KeymapDictionary:key(element)
+function kmps_dict:key(element)
   return self[element].key
 end
 
-function KeymapDictionary:desc(element)
+function kmps_dict:desc(element)
   local desc = self[element].desc
   if desc == nil then return "" end
   if self.__prefix then
@@ -35,7 +35,7 @@ function KeymapDictionary:desc(element)
   end
 end
 
-function KeymapDictionary:list_keys()
+function kmps_dict:list_keys()
   local keys = {}
   for _, v in pairs(self) do
     table.insert(keys, v.key)
@@ -43,14 +43,14 @@ function KeymapDictionary:list_keys()
   return keys
 end
 
-function KeymapDictionary:add_key(name, key, desc)
+function kmps_dict:add_key(name, key, desc)
   self[name] = {}
   self[name].key = key
   self[name].desc = desc
 end
 
-function KeymapDictionary:remove_key(name)
+function kmps_dict:remove_key(name)
   self[name] = nil
 end
 
-return KeymapDictionary
+return kmps_dict

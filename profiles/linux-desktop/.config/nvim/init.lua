@@ -1,7 +1,9 @@
 local config = require("config")
 
-assert(config.profile.valid,
-  string.format('Invalid profile: %s, Expected oneof: %s',
+assert(
+  config.profile.valid,
+  string.format(
+    'Invalid profile: %s, Expected oneof: %s',
     config.profile.name,
     vim.json.encode(config.profile.available)
   )
