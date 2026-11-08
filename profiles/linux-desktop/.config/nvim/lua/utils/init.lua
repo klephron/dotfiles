@@ -14,4 +14,5 @@ return {
   try_unmap = nvim.try_unmap,
 
   contains = std.contains,
+  unpack = std.unpack,
 }
