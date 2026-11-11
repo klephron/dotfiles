@@ -1,0 +1,38 @@
+#!/bin/sh
+
+case "${1-}" in
+    -h|--help)
+        printf '%s\n' \
+            'Usage: . ./mitogen [repository-path]' \
+            '  repository-path  enable mitogen using this repository' \
+            '  No arguments     disable mitogen environment overrides' \
+            '  -h, --help       show usage'
+        return 0
+        ;;
+esac
+
+if [ "$#" -eq 0 ]; then
+    unset ANSIBLE_STRATEGY_PLUGINS ANSIBLE_STRATEGY
+    printf '%s\n' 'mitogen environment overrides removed'
+    return 0
+fi
+
+if [ "$#" -ne 1 ]; then
+    printf '%s\n' 'Usage: . ./mitogen [repository-path]' >&2
+    return 1
+fi
+
+if [ ! -d "$1/ansible_mitogen/plugins/strategy" ]; then
+    printf 'invalid mitogen repository: %s\n' "$1" >&2
+    return 1
+fi
+
+ANSIBLE_STRATEGY_PLUGINS="$(
+    CDPATH='' cd -- "$1/ansible_mitogen/plugins/strategy" && pwd -P
+)" || return 1
+
+export ANSIBLE_STRATEGY_PLUGINS
+export ANSIBLE_STRATEGY=mitogen_linear
+
+printf 'mitogen enabled.\nstrategy: %s\nplugins: %s\n' \
+    "$ANSIBLE_STRATEGY" "$ANSIBLE_STRATEGY_PLUGINS"
