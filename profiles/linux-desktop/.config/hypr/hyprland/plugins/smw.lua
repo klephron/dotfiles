@@ -21,7 +21,7 @@ local function setup()
 end
 
 return {
-  installed = installed,
   api = api,
+  installed = installed,
   setup = setup,
 }

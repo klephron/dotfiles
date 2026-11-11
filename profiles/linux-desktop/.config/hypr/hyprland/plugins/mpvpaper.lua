@@ -1,52 +1,27 @@
-local function path_get()
-  local pipe = io.popen("command -v mpvpaper 2>/dev/null")
-  if not pipe then
-    return nil
-  end
+local c = require("hyprland.config")
 
-  local path = pipe:read("*l")
-  pipe:close()
+local api = require("plugins.mvppaper")
 
-  return path
-end
-
-local path = path_get()
-
-local installed = (path ~= nil)
+local installed = api.installed
 
 if not installed then
   hl.notification.create({ text = "[mpvpaper]: not installed", timeout = 2000 })
 end
 
-local function reload(config)
-  if config.enabled and not installed then
+local function reload()
+  if not installed then
     return
   end
 
-  local stop =
-      "if systemctl --user is-active --quiet mpvpaper.scope; then " ..
-      "systemctl --user stop mpvpaper.scope; " ..
-      "fi"
-
-  if config.enabled then
-    assert(path ~= nil)
-
-    local exec = stop .. " && " ..
-        "uwsm-app -s b -t scope -u mpvpaper.scope -- " ..
-        "'" .. path:gsub("'", "'\\''") .. "' -o '" ..
-        (config.audio and "" or "no-audio ") ..
-        "loop-file=inf' ALL " ..
-        "'" .. config.source:gsub("'", "'\\''") .. "'"
-
-    hl.exec_cmd(exec)
-  else
-    hl.exec_cmd(stop)
-  end
+  api.reload({
+    enabled = c.plugins.mvpaper.ready and true,
+    source = c.plugins.mvpaper.source,
+    audio = true,
+    panscan = 1,
+  })
 end
-
 
 return {
   installed = installed,
   reload = reload,
-  path = path,
 }

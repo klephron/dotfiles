@@ -1,16 +1,10 @@
-local c = require("hyprland.config")
-
 local p = {
   mpvpaper = require("hyprland.plugins.mpvpaper"),
 }
 
 hl.on("config.reloaded", function()
   if p.mpvpaper.installed then
-    p.mpvpaper.reload({
-      enabled = c.wallpaper.video.enabled,
-      audio = c.wallpaper.video.audio,
-      source = c.wallpaper.video.source,
-    })
+    p.mpvpaper.reload()
   end
 end)
 

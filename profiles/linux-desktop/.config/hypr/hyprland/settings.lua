@@ -2,7 +2,7 @@ local c = require("hyprland.config")
 
 local p = {
   hy3 = require("hyprland.plugins.hy3"),
-  smw = require("hyprland.plugins.split-monitor-workspaces"),
+  smw = require("hyprland.plugins.smw"),
 }
 
 hl.config({
@@ -78,5 +78,5 @@ if p.smw.installed then
 end
 
 if p.hy3.installed then
-  p.hy3.setup(c.colors)
+  p.hy3.setup()
 end

@@ -2,7 +2,7 @@ local c = require("hyprland.config")
 
 local p = {
   hy3 = require("hyprland.plugins.hy3"),
-  smw = require("hyprland.plugins.split-monitor-workspaces"),
+  smw = require("hyprland.plugins.smw"),
 }
 
 -- SYSTEM

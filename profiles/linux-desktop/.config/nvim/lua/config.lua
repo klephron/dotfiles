@@ -61,7 +61,7 @@ return {
       return utils.contains({ ... }, profile_name)
     end,
   },
-  plugin = {
+  plugins = {
     klephron_darker_dir = plugin_klephron_darker_dir_get(),
     watch_dir = plugin_watch_dir_get(),
   }
