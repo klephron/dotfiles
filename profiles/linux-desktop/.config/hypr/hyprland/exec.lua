@@ -1,19 +1,16 @@
 local c = require("hyprland.config")
 
+local p = {
+  mpvpaper = require("hyprland.plugins.mpvpaper"),
+}
+
 hl.on("config.reloaded", function()
-  if c.wallpaper.video.enabled then
-    hl.exec_cmd(
-      "systemctl --user is-active --quiet mpvpaper.scope || " ..
-      "uwsm-app -s b -t scope -u mpvpaper.scope -- " ..
-      "mpvpaper -o 'no-audio loop-file=inf' ALL " ..
-      "'" .. c.wallpaper.video.source:gsub("'", "'\\''") .. "'"
-    )
-  else
-    hl.exec_cmd([[
-      if systemctl --user is-active --quiet mpvpaper.scope; then
-        systemctl --user stop mpvpaper.scope
-      fi
-    ]])
+  if p.mpvpaper.installed then
+    p.mpvpaper.reload({
+      enabled = c.wallpaper.video.enabled,
+      audio = c.wallpaper.video.audio,
+      source = c.wallpaper.video.source,
+    })
   end
 end)
 

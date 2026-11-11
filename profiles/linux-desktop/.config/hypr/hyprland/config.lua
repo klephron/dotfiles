@@ -24,6 +24,7 @@ return {
     video = {
       enabled = wallpaper_video_enabled,
       source = wallpaper_video_source,
+      audio = true,
     },
   }
 }

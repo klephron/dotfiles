@@ -1,7 +1,5 @@
 local api = hl.plugin.hy3
 
-local installed = (api ~= nil)
-
 local function setup(colors)
   hl.config({
     general = {
@@ -46,6 +44,8 @@ local function setup(colors)
     }
   })
 end
+
+local installed = (api ~= nil)
 
 if not installed then
   hl.notification.create({ text = "[hy3]: not installed", timeout = 2000 })
