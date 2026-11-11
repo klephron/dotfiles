@@ -1,13 +1,9 @@
-local M = {}
+local api = require("plugins.split-monitor-workspaces")
 
-M.api = require("plugins.split-monitor-workspaces")
+local installed = (api.setup ~= nil)
 
-M.installed = function()
-  return M.api.setup ~= nil
-end
-
-M.config = function()
-  M.api.setup({
+local function setup()
+  api.setup({
     workspace_count = 12,
     keep_focused = true,
     enable_notifications = false,
@@ -16,4 +12,12 @@ M.config = function()
   })
 end
 
-return M
+if not installed then
+  hl.notification.create({ text = "[split-monitor-workspaces]: not installed", timeout = 2000 })
+end
+
+return {
+  installed = installed,
+  api = api,
+  setup = setup,
+}

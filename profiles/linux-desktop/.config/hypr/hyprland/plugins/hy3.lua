@@ -1,12 +1,8 @@
-local M = {}
+local api = hl.plugin.hy3
 
-M.api = hl.plugin.hy3
+local installed = (api ~= nil)
 
-M.installed = function()
-  return M.api ~= nil
-end
-
-M.config = function(colors)
+local function setup(colors)
   hl.config({
     general = {
       layout = "hy3",
@@ -51,4 +47,12 @@ M.config = function(colors)
   })
 end
 
-return M
+if not installed then
+  hl.notification.create({ text = "[hy3]: not installed", timeout = 2000 })
+end
+
+return {
+  installed = installed,
+  api = api,
+  setup = setup,
+}

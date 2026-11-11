@@ -1,78 +1,29 @@
-local defaults = require("hyprland.defaults")
-local plugins = require("hyprland.plugins")
+local local_ok, local_config = pcall(require, "hyprland.local")
 
-hl.config({
-  debug = {
-    disable_logs = false,
-    suppress_errors = false,
-    vfr = true,
-  }
-})
+local function wallpaper_video_source_get()
+  local wallpaper = local_ok and local_config.wallpaper or {}
+  local video = wallpaper.video or {}
+  return video.source
+end
 
-hl.config({
-  ecosystem = {
-    no_update_news = true
-  }
-})
+local function wallpaper_video_enabled_get()
+  local source = wallpaper_video_source_get()
+  return source ~= nil and source ~= "" and true
+end
 
-hl.config({
-  misc = {
-    force_default_wallpaper = 0,
-    disable_hyprland_logo = true,
-    disable_splash_rendering = true,
-  }
-})
+local wallpaper_video_enabled = wallpaper_video_enabled_get()
+local wallpaper_video_source = wallpaper_video_source_get()
 
-hl.config({
-  xwayland = {
-    force_zero_scaling = true,
-  }
-})
-
-hl.config({
-  general = {
-    gaps_in = 0,
-    gaps_out = 0,
-    layout = "dwindle",
-    col = {
-      active_border = defaults.colors.border_active,
-    }
-  }
-})
-
-hl.config({
-  animations = {
-    enabled = false
-  }
-})
-
-hl.config({
-  decoration = {
-    blur = {
-      enabled = false
+return {
+  colors = require("hyprland.colors.custom"),
+  keyboard = {
+    layout = table.concat({ "us", "ru" }, ","),
+    options = table.concat({ "grp:alt_shift_toggle", "altwin:menu_win" }, ","),
+  },
+  wallpaper = {
+    video = {
+      enabled = wallpaper_video_enabled,
+      source = wallpaper_video_source,
     },
-    shadow = {
-      enabled = false
-    }
   }
-})
-
-hl.config({
-  input = {
-    kb_layout = defaults.kb_layout,
-    kb_options = defaults.kb_options,
-    follow_mouse = 1,
-    accel_profile = "flat",
-    sensitivity = 0.0,
-    repeat_delay = 180,
-    repeat_rate = 45,
-  }
-})
-
-if plugins.smw.installed() then
-  plugins.smw.config()
-end
-
-if plugins.hy3.installed() then
-  plugins.hy3.config(defaults.colors)
-end
+}

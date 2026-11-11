@@ -4,7 +4,6 @@ local env = vim.env
 local utils = require("utils")
 
 local local_ok, local_config = pcall(require, "local")
-local local_plugin = local_ok and local_config.plugin or {}
 
 local function profile_get()
   local profile = env.NVIM_PROFILE
@@ -27,13 +26,15 @@ local function profile_get()
 end
 
 local function plugin_klephron_darker_dir_get()
-  return local_plugin.klephron_darker_dir
+  local plugin = local_ok and local_config.plugin or {}
+  return plugin.klephron_darker_dir
     or vim.env.NVIM_CONFIG_KLEPHRON_DARKER_DIR
     or nil
 end
 
 local function plugin_watch_dir_get()
-  return local_plugin.watch_dir
+  local plugin = local_ok and local_config.plugin or {}
+  return plugin.watch_dir
     or vim.env.NVIM_CONFIG_WATCH_DIR
     or nil
 end

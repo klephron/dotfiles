@@ -1,9 +1,7 @@
 package.path = package.path .. ";./?.lua;./?/init.lua"
 
-require("hyprland.plugins")
-
-require("hyprland.hardware")
-require("hyprland.config")
+require("hyprland.settings")
 require("hyprland.rules")
-require("hyprland.exec")
+require("hyprland.hardware")
 require("hyprland.binds")
+require("hyprland.exec")
