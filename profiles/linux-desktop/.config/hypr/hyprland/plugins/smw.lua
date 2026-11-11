@@ -6,7 +6,7 @@ if not installed then
   hl.notification.create({ text = "[split-monitor-workspaces]: not installed", timeout = 2000 })
 end
 
-local function setup()
+local function config()
   if not installed then
     return
   end
@@ -23,5 +23,5 @@ end
 return {
   api = api,
   installed = installed,
-  setup = setup,
+  config = config,
 }

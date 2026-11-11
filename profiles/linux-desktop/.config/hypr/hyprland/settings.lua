@@ -74,9 +74,9 @@ hl.config({
 })
 
 if p.smw.installed then
-  p.smw.setup()
+  p.smw.config()
 end
 
 if p.hy3.installed then
-  p.hy3.setup()
+  p.hy3.config()
 end

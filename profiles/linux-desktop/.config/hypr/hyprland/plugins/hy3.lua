@@ -2,7 +2,17 @@ local c = require("hyprland.config")
 
 local api = hl.plugin.hy3
 
-local function setup()
+local installed = (api ~= nil)
+
+if not installed then
+  hl.notification.create({ text = "[hy3]: not installed", timeout = 2000 })
+end
+
+local function config()
+  if not installed then
+    return
+  end
+
   hl.config({
     general = {
       layout = "hy3",
@@ -47,14 +57,8 @@ local function setup()
   })
 end
 
-local installed = (api ~= nil)
-
-if not installed then
-  hl.notification.create({ text = "[hy3]: not installed", timeout = 2000 })
-end
-
 return {
   api = api,
+  config = config,
   installed = installed,
-  setup = setup,
 }
