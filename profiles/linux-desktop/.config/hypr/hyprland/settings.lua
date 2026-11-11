@@ -73,10 +73,6 @@ hl.config({
   }
 })
 
-if p.smw.installed then
-  p.smw.config()
-end
+p.smw.config()
 
-if p.hy3.installed then
-  p.hy3.config()
-end
+p.hy3.config()

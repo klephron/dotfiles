@@ -14,7 +14,7 @@ local function reload()
   end
 
   api.reload({
-    enabled = c.plugins.mvpaper.ready and true,
+    enabled = c.plugins.mvpaper.ready and false,
     source = c.plugins.mvpaper.source,
     audio = true,
     panscan = 1,
