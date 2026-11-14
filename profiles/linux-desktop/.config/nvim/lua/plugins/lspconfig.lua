@@ -350,8 +350,10 @@ local function keymaps_on_attach(client, bufnr)
   utils.set_keynomap("n", "<localleader>kh",
     function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      vim.notify("[lsp] inlay hints " ..
-        (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"), vim.log.levels.INFO, { title = "lsp" })
+      vim.notify(
+        (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"),
+        vim.log.levels.INFO, { title = "[lsp] inlay hints" }
+      )
     end,
     "[lsp] Toggle inlay hints")
 end

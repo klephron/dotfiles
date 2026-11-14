@@ -185,7 +185,7 @@ utils.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand
   "[nvim] Open link in system browser")
 
 utils.set_keynomap('n', '<localleader>hc', function()
-  print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
+  vim.notify(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
 end, "[treesitter] Get captures at cursor")
 
 utils.set_keynomap('n', '<localleader>hL', function()
@@ -204,12 +204,15 @@ utils.set_keynomap('n', '<localleader>hi', function()
   local line = vim.fn.line('.')
   local col = vim.fn.col('.')
   local stack = vim.fn.synstack(line, col)
-  vim.inspect(stack)
+  local lines = {}
+
   for _, id in ipairs(stack) do
     local name = vim.fn.synIDattr(id, 'name')
     local trans = vim.fn.synIDattr(vim.fn.synIDtrans(id), 'name')
-    print(name .. ' -> ' .. trans)
+    table.insert(lines, name .. ' -> ' .. trans)
   end
+
+  vim.notify(#lines > 0 and table.concat(lines, '\n') or 'No syntax groups')
 end, "[nvim] Inspect syntax highlighting")
 
 return {
