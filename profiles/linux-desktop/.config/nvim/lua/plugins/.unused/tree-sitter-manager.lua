@@ -41,6 +41,6 @@ return {
       highlight = true,
     })
 
-    utils.set_keynomap("n", "<localleader>ts", "<cmd>TSManager<cr>", "Open tree-sitter-manager")
+    utils.set_keynomap("n", "<localleader>ts", "<cmd>TSManager<cr>", "[tree-sitter-manager] Open")
   end,
 }

@@ -1,5 +1,6 @@
 return {
   "cappyzawa/trim.nvim",
+  enabled = false,
   opts = {
     ft_blocklist = {},
     trim_on_write = true,

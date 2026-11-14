@@ -26,6 +26,6 @@ return {
     })
   end,
   keys = {
-    { "<leader>i", "<cmd>Trouble diagnostics toggle focus=true<cr>", desc = "Toggle diagnostics menu" },
+    { "<leader>i", "<cmd>Trouble diagnostics toggle focus=true<cr>", desc = "[trouble] Toggle diagnostics menu" },
   }
 }

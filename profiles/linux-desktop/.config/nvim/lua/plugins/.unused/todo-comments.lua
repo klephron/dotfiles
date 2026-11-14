@@ -34,7 +34,5 @@ return {
       --   pattern = [[xkfiqpd]]
       -- }
     })
-
-    utils.set_keynomap("n", "<leader>I", "<cmd>LspInstall<cr>", "Install LSP")
   end
 }

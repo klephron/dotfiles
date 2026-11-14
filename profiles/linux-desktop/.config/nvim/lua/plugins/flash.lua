@@ -46,16 +46,16 @@ return {
 
     utils.set_keynomap({ "x", "n", "o" }, "s", function()
       flash.jump()
-    end, "Flash multiline")
+    end, "[flash] Multiline")
 
     utils.set_keynomap({ "o", "x" }, "m", function()
       flash.treesitter()
-    end, "Flash treesitter")
+    end, "[flash] Treesitter")
 
     utils.set_keynomap({ "o", "x" }, "M",
       function()
         flash.treesitter_search()
-      end, "Treesitter search")
+      end, "[flash] Treesitter search")
 
     utils.set_keynomap({ "n", "x", "o" }, "<A-o>",
       function()
@@ -73,7 +73,7 @@ return {
             ["<A-i>"] = "prev"
           }
         })
-      end, { desc = "Treesitter incremental selection" })
+      end, { desc = "[flash] Treesitter incr selection" })
 
     vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ff007c", bold = true })
     vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#00dfff", bold = true })

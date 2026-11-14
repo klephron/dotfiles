@@ -100,10 +100,10 @@ return {
     telescope.load_extension("projects")
     telescope.load_extension("ui-select")
 
-    utils.set_keynomap("n", "<leader>b", "<cmd>Telescope buffers<cr>", "List buffers")
-    utils.set_keynomap("n", "<leader>h", "<cmd>Telescope live_grep<cr>", "Live grep")
-    utils.set_keynomap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", "Live recent files")
-    utils.set_keynomap("n", "<leader>s", "<cmd>Telescope find_files<cr>", "Find files")
-    utils.set_keynomap("n", "<leader>;", "<cmd>Telescope resume<cr>", "Resume telescope search")
+    utils.set_keynomap("n", "<leader>b", "<cmd>Telescope buffers<cr>", "[telescope] List buffers")
+    utils.set_keynomap("n", "<leader>h", "<cmd>Telescope live_grep<cr>", "[telescope] Live grep")
+    utils.set_keynomap("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", "[telescope] Live recent files")
+    utils.set_keynomap("n", "<leader>s", "<cmd>Telescope find_files<cr>", "[telescope] Find files")
+    utils.set_keynomap("n", "<leader>;", "<cmd>Telescope resume<cr>", "[telescope] Resume telescope search")
   end,
 }

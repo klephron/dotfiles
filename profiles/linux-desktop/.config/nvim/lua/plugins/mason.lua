@@ -6,8 +6,8 @@ return {
 
     mason.setup({})
 
-    utils.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "Log mason" })
-    utils.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "Info mason" })
-    utils.set_keynomap("n", "<localleader>mu", "<cmd>MasonUpdate<cr>", { desc = "Update mason registries" })
+    utils.set_keynomap("n", "<localleader>ml", "<cmd>MasonLog<cr>", { desc = "[mason] Show logs" })
+    utils.set_keynomap("n", "<localleader>ms", "<cmd>Mason<cr>", { desc = "[mason] Info" })
+    utils.set_keynomap("n", "<localleader>mu", "<cmd>MasonUpdate<cr>", { desc = "[mason] Update registries" })
   end,
 }

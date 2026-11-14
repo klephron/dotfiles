@@ -124,16 +124,16 @@ return {
     end, {})
   end,
   keys = {
-    { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "Toggle terminal" },
-    { "<leader>js", "<cmd>TermSelect<cr>",           desc = "Select terminal" },
-    { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "Toggle all terminals" },
-    { "<leader>jy", "<cmd>ToggleTermHorizontal<cr>", desc = "Toggle terminal horizontal" },
-    { "<leader>jt", "<cmd>ToggleTermTab<cr>",        desc = "Toggle terminal in tab" },
-    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "Toggle float terminal" },
-    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "Toggle htop" },
-    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "Toggle lazygit" },
-    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "Toggle lazydocker" },
-    { "<leader>jk", "<cmd>ToggleTermK9s<cr>",        desc = "Toggle k9s" },
+    { "<C-\\>",     "<cmd>ToggleTerm<cr>",           desc = "[toggleterm] Open terminal" },
+    { "<leader>js", "<cmd>TermSelect<cr>",           desc = "[toggleterm] Select terminal" },
+    { "<leader>ja", "<cmd>ToggleTermToggleAll<cr>",  desc = "[toggleterm] Open all terminals" },
+    { "<leader>jy", "<cmd>ToggleTermHorizontal<cr>", desc = "[toggleterm] Open terminal horizontal" },
+    { "<leader>jt", "<cmd>ToggleTermTab<cr>",        desc = "[toggleterm] Open terminal in tab" },
+    { "<leader>jf", "<cmd>ToggleTermFloat<cr>",      desc = "[toggleterm] Open float terminal" },
+    { "<leader>jh", "<cmd>ToggleTermHtop<cr>",       desc = "[toggleterm] Open htop" },
+    { "<leader>jl", "<cmd>ToggleTermLazygit<cr>",    desc = "[toggleterm] Open lazygit" },
+    { "<leader>jd", "<cmd>ToggleTermLazydocker<cr>", desc = "[toggleterm] Open lazydocker" },
+    { "<leader>jk", "<cmd>ToggleTermK9s<cr>",        desc = "[toggleterm] Open k9s" },
     {
       "<CR>",
       function()
@@ -141,7 +141,7 @@ return {
           .send_lines_to_terminal("visual_selection", false, { args = vim.v.count })
       end,
       mode = "v",
-      desc = "Send lines to terminal"
+      desc = "[toggleterm] Send lines to terminal"
     },
     {
       "<C-CR>",
@@ -150,7 +150,7 @@ return {
           .send_lines_to_terminal("single_line", false, { args = vim.v.count })
       end,
       mode = "n",
-      desc = "Send current line to terminal"
+      desc = "[toggleterm] Send current line to terminal"
     },
   }
 }

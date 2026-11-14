@@ -22,7 +22,7 @@ return {
     })
   end,
   keys = {
-    { "<leader>o", "<cmd>OverseerOpen<cr>",   desc = "Open overseer" },
-    { "<leader>O", "<cmd>OverseerToggle<cr>", desc = "Toggle overseer" },
+    { "<leader>o", "<cmd>OverseerOpen<cr>",   desc = "[overseer] Open" },
+    { "<leader>O", "<cmd>OverseerToggle<cr>", desc = "[overseer] Toggle" },
   },
 }

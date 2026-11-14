@@ -49,6 +49,6 @@ return {
       }
     })
 
-    utils.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "Switch neorg workspace")
+    utils.set_keynomap("n", "<localleader>os", "<cmd>Telescope neorg switch_workspace<cr>", "[neorg] Switch workspace")
   end,
 }

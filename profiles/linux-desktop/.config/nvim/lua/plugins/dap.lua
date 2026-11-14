@@ -3,53 +3,52 @@ local utils = require("utils")
 
 local kmps_dap = utils.kmps_dict:new({
   -- Main
-  step_over = { "<leader>dn", "Step over" },
-  step_into = { "<leader>di", "Step into" },
-  step_out = { "<leader>do", "Step out" },
-  step_back = { "<leader>dd", "Step back" },
-  run_to_cursor = { "<leader>da", "Run to cursor" },
+  step_over = { "<leader>dn", "[dap] Step over" },
+  step_into = { "<leader>di", "[dap] Step into" },
+  step_out = { "<leader>do", "[dap] Step out" },
+  step_back = { "<leader>dd", "[dap] Step back" },
+  run_to_cursor = { "<leader>da", "[dap] Run to cursor" },
 
-  up = { "<leader>d[", "Up" },
-  down = { "<leader>d]", "Down" },
+  up = { "<leader>d[", "[dap] Up" },
+  down = { "<leader>d]", "[dap] Down" },
 
-  continue = { "<leader>dc", "Continue" },
-  run_last = { "<leader>dp", "Run last" },
-  terminate = { "<leader>dt", "Terminate debug session" },
+  continue = { "<leader>dc", "[dap] Continue" },
+  run_last = { "<leader>dp", "[dap] Run last" },
+  terminate = { "<leader>dt", "[dap] Terminate debug session" },
 
-  set_breakpoint_cond = { "<leader>de", "Set conditional break" },
-  set_breakpoint_log = { "<leader>dm", "Set log break" },
-  toggle_breakpoint = { "<leader>ds", "Toggle breakpoint" },
-  clear_breakpoints = { "<leader>dz", "Clear breakpoints" },
+  set_breakpoint_cond = { "<leader>de", "[dap] Set conditional break" },
+  set_breakpoint_log = { "<leader>dm", "[dap] Set log break" },
+  toggle_breakpoint = { "<leader>ds", "[dap] Toggle breakpoint" },
+  clear_breakpoints = { "<leader>dz", "[dap] Clear breakpoints" },
 
-  hover = { "<leader>dh", "Hover" }, -- show variable
-  dapui_toggle = { "<leader>dy", "Toggle dapui" },
+  hover = { "<leader>dh", "[dap] Hover" }, -- show variable
+  dapui_toggle = { "<leader>dy", "[dap] Toggle dapui" },
 
-  -- Optional
-  process_launchjs = { "<leader>dl", "Process launchjs" },
-  disconnect = { "<leader>db", "Disconnect from debuggee and terminate adapter" },
-  -- close = { "<leader>dq", "Close" },
-  -- pause = {"<leader>dp", "Pause"},
-  reverse_continue = { "<leader>dr", "Reverse continue" },
-  repl_toggle = { "<leader>dg", "Toggle REPL" },
-  -- repl_session = { "<leader>dx", "REPL session" },
+  process_launchjs = { "<leader>dl", "[dap] Process launchjs" },
+  disconnect = { "<leader>db", "[dap] Disconnect from debuggee and terminate adapter" },
+  -- close = { "<leader>dq", "[dap] Close" },
+  -- pause = {"<leader>dp", "[dap] Pause"},
+  reverse_continue = { "<leader>dr", "[dap] Reverse continue" },
+  repl_toggle = { "<leader>dg", "[dap] Toggle REPL" },
+  -- repl_session = { "<leader>dx", "[dap] REPL session" },
 }, "")
 
 local kmps_dap_fn = utils.kmps_dict:new({
-  step_into = { "<F1>", "Step into" },
-  step_over = { "<F2>", "Step over" },
-  step_out = { "<F3>", "Step out" },
-  run_to_cursor = { "<F4>", "Run to cursor", },
-  step_back = { "<F5>", "Step back" },
+  step_into = { "<F1>", "[dap] Step into" },
+  step_over = { "<F2>", "[dap] Step over" },
+  step_out = { "<F3>", "[dap] Step out" },
+  run_to_cursor = { "<F4>", "[dap] Run to cursor", },
+  step_back = { "<F5>", "[dap] Step back" },
 
-  hover = { "<F6>", "Open hover" },
+  hover = { "<F6>", "[dap] Hover" },
 
-  run_last = { "<F7>", "Run last" },
-  continue = { "<F8>", "Continue" },
+  run_last = { "<F7>", "[dap] Run last" },
+  continue = { "<F8>", "[dap] Continue" },
 
-  toggle_breakpoint = { "<F9>", "Toggle breakpoint" },
-  clear_breakpoints = { "<F33>", "Clear breakpoints" }, -- Ctrl + <F9>
+  toggle_breakpoint = { "<F9>", "[dap] Toggle breakpoint" },
+  clear_breakpoints = { "<F33>", "[dap] Clear breakpoints" }, -- Ctrl + <F9>
 
-  terminate = { "<F10>", "Terminate" },
+  terminate = { "<F10>", "[dap] Terminate" },
 }, "")
 
 

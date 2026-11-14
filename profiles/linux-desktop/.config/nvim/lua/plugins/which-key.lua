@@ -25,6 +25,6 @@ return {
 
     require("which-key").setup(opts)
 
-    utils.set_keynomap("n", "<leader>?", "<cmd>WhichKey<cr>", "Open which-key")
+    utils.set_keynomap("n", "<leader>?", "<cmd>WhichKey<cr>", "[whichkey] Open menu")
   end,
 }

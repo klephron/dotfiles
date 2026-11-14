@@ -116,7 +116,15 @@ local servers_options = {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
     settings = {
+      redhat = {
+        telemetry = {
+          enabled = false,
+        },
+      },
       yaml = {
+        format = {
+          enable = false,
+        },
         schemas = {
           ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
           ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
@@ -276,48 +284,48 @@ local function keymaps_on_attach(client, bufnr)
   end
 
   -- definitionProvider
-  utils.set_keynomap("n", "<leader>kd", vim.lsp.buf.definition, wrap("Goto definition"))
-  utils.set_keynomap("n", "gd", vim.lsp.buf.definition, wrap("Goto definition"))
+  utils.set_keynomap("n", "<leader>kd", vim.lsp.buf.definition, wrap("[lsp] Goto definition"))
+  utils.set_keynomap("n", "gd", vim.lsp.buf.definition, wrap("[lsp] Goto definition"))
 
   -- declarationProvider
-  utils.set_keynomap("n", "<leader>kf", vim.lsp.buf.declaration, wrap("Goto declaration"))
-  utils.set_keynomap("n", "gf", vim.lsp.buf.declaration, wrap("Goto declaration"))
+  utils.set_keynomap("n", "<leader>kf", vim.lsp.buf.declaration, wrap("[lsp] Goto declaration"))
+  utils.set_keynomap("n", "gf", vim.lsp.buf.declaration, wrap("[lsp] Goto declaration"))
 
   -- hoverProvider
   utils.set_keynomap("n", "<leader>kl", function() vim.lsp.buf.hover({ border = "single", width = 80 }) end,
-    wrap("Open hover"))
+    wrap("[lsp] Hover"))
   utils.set_keynomap("n", "gl", function() vim.lsp.buf.hover({ border = "single", width = 80 }) end,
-    wrap("Open hover"))
+    wrap("[lsp] Hover"))
 
   -- implementationProvider
-  utils.set_keynomap("n", "<leader>ki", vim.lsp.buf.implementation, wrap("Goto implementation"))
-  utils.set_keynomap("n", "gm", vim.lsp.buf.implementation, wrap("Goto implementation"))
+  utils.set_keynomap("n", "<leader>ki", vim.lsp.buf.implementation, wrap("[lsp] Goto implementation"))
+  utils.set_keynomap("n", "gm", vim.lsp.buf.implementation, wrap("[lsp] Goto implementation"))
 
   -- renameProvider
-  utils.set_keynomap("n", "<leader>kn", vim.lsp.buf.rename, wrap("Rename"))
+  utils.set_keynomap("n", "<leader>kn", vim.lsp.buf.rename, wrap("[lsp] Rename"))
 
   -- referencesProvider
-  utils.set_keynomap("n", "<leader>kr", vim.lsp.buf.references, wrap("List references"))
-  utils.set_keynomap("n", "gr", vim.lsp.buf.references, wrap("List references"))
+  utils.set_keynomap("n", "<leader>kr", vim.lsp.buf.references, wrap("[lsp] List references"))
+  utils.set_keynomap("n", "gr", vim.lsp.buf.references, wrap("[lsp] List references"))
 
   -- codeActionProvider
   if lspsaga_ok then
-    utils.set_keynomap("n", "<leader>ka", "<cmd>Lspsaga code_action<cr>", wrap("Open code action"))
+    utils.set_keynomap("n", "<leader>ka", "<cmd>Lspsaga code_action<cr>", wrap("[lspsaga] Open code action"))
   else
-    utils.set_keynomap("n", "<leader>ka", vim.lsp.buf.code_action, wrap("Open code action"))
+    utils.set_keynomap("n", "<leader>ka", vim.lsp.buf.code_action, wrap("[lsp] Open code action"))
   end
 
   -- signatureHelpProvider
   utils.set_keynomap("n", "<leader>kk",
     function() vim.lsp.buf.signature_help({ border = "single", width = 80 }) end,
-    wrap("Open signature help"))
+    wrap("[lsp] Open signature help"))
 
   -- typeDefinitionProvider
-  utils.set_keynomap("n", "<leader>kp", vim.lsp.buf.type_definition, wrap("Goto type definition"))
-  utils.set_keynomap("n", "gp", vim.lsp.buf.type_definition, wrap("Goto type definition"))
+  utils.set_keynomap("n", "<leader>kp", vim.lsp.buf.type_definition, wrap("[lsp] Goto type definition"))
+  utils.set_keynomap("n", "gp", vim.lsp.buf.type_definition, wrap("[lsp] Goto type definition"))
 
   -- codeLensProvider
-  utils.set_keynomap("n", "<leader>kc", vim.lsp.codelens.run, wrap("Run codelens"))
+  utils.set_keynomap("n", "<leader>kc", vim.lsp.codelens.run, wrap("[lsp] Run codelens"))
 
   -- documentSymbolProvider
 
@@ -328,24 +336,24 @@ local function keymaps_on_attach(client, bufnr)
 
   -- selectionRangeProvider
   utils.set_keynomap('x', 'an', function() vim.lsp.buf.selection_range('outer') end,
-    wrap("vim.lsp.buf.selection_range('outer')"))
+    wrap("[lsp] Outer selection_range"))
   utils.set_keynomap('x', 'in', function() vim.lsp.buf.selection_range('inner') end,
-    wrap("vim.lsp.buf.selection_range('inner')"))
+    wrap("[lsp] Inner selection_range"))
 
   -- Diagnostics
-  utils.set_keynomap("n", "<leader>kh", vim.diagnostic.open_float, wrap("Open float"))
-  utils.set_keynomap("n", "gh", vim.diagnostic.open_float, wrap("Open float"))
-  utils.set_keynomap("n", "[d", vim.diagnostic.goto_prev, wrap("Goto previous diagnostics"))
-  utils.set_keynomap("n", "]d", vim.diagnostic.goto_next, wrap("Goto next diagnostics"))
+  utils.set_keynomap("n", "<leader>kh", vim.diagnostic.open_float, wrap("[diagnostic] Open float"))
+  utils.set_keynomap("n", "gh", vim.diagnostic.open_float, wrap("[diagnostic] Open float"))
+  utils.set_keynomap("n", "[d", vim.diagnostic.goto_prev, wrap("[diagnostic] Goto previous"))
+  utils.set_keynomap("n", "]d", vim.diagnostic.goto_next, wrap("[diagnostic] Goto next"))
 
   -- inlayHint
   utils.set_keynomap("n", "<localleader>kh",
     function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      vim.notify("inlay hints " ..
+      vim.notify("[lsp] inlay hints " ..
         (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"), vim.log.levels.INFO, { title = "lsp" })
     end,
-    "Toggle inlay hints")
+    "[lsp] Toggle inlay hints")
 end
 
 local function on_attach(client, bufnr)
@@ -401,12 +409,12 @@ return {
 
     diagnostics_configure()
 
-    utils.set_keynomap("n", "<localleader>kd", "<cmd>lsp disable<cr>", "Disable LSP")
-    utils.set_keynomap("n", "<localleader>ke", "<cmd>lsp enable<cr>", "Enable LSP")
-    utils.set_keynomap("n", "<localleader>ki", "<cmd>LspInstall<cr>", "Install LSP")
-    utils.set_keynomap("n", "<localleader>kr", "<cmd>lsp restart<cr>", "Restart LSP")
-    utils.set_keynomap("n", "<localleader>ks", "<cmd>checkhealth lsp<cr>", "Info LSP")
-    utils.set_keynomap("n", "<localleader>kt", "<cmd>lsp stop<cr>", "Stop LSP")
+    utils.set_keynomap("n", "<localleader>kd", "<cmd>lsp disable<cr>", "[lsp] Disable LSP")
+    utils.set_keynomap("n", "<localleader>ke", "<cmd>lsp enable<cr>", "[lsp] Enable LSP")
+    utils.set_keynomap("n", "<localleader>ki", "<cmd>LspInstall<cr>", "[lspconfig] Install LSP for ft using mason")
+    utils.set_keynomap("n", "<localleader>kr", "<cmd>lsp restart<cr>", "[lsp] Restart LSP")
+    utils.set_keynomap("n", "<localleader>ks", "<cmd>checkhealth lsp<cr>", "[nvim] Checkhealth LSP")
+    utils.set_keynomap("n", "<localleader>kt", "<cmd>lsp stop<cr>", "[lsp] Stop LSP")
   end,
   options_fetch = options_fetch,
   on_attach = on_attach,

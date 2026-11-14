@@ -38,8 +38,8 @@ return {
     })
   end,
   keys   = {
-    { "<leader>at", "<cmd>AerialToggle!<cr>", desc = "Toggle symbol menu" },
-    { "<leader>ao", "<cmd>AerialOpen<cr>",    desc = "Focus symbol focus" },
-    { "<leader>ac", "<cmd>AerialClose<cr>",   desc = "Close symbol menu" }
+    { "<leader>at", "<cmd>AerialToggle!<cr>", desc = "[aerial] Toggle symbol menu" },
+    { "<leader>ao", "<cmd>AerialOpen<cr>",    desc = "[aerial] Focus symbol focus" },
+    { "<leader>ac", "<cmd>AerialClose<cr>",   desc = "[aerial] Close symbol menu" }
   }
 }

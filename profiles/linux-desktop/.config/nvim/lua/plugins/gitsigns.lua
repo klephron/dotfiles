@@ -15,8 +15,8 @@ return {
   end,
 
   keys = {
-    { "<leader>gb",      "<cmd>Gitsigns blame_line<cr>",                mode = "n", desc = "Blame line" },
-    { "<leader>gr",      "<cmd>Gitsigns refresh<cr>",                   mode = "n", desc = "Refresh" },
-    { "<localleader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", mode = "n", desc = "Toggle current line blame" },
+    { "<leader>gb",      "<cmd>Gitsigns blame_line<cr>",                mode = "n", desc = "[gitsigns] Blame line" },
+    { "<leader>gr",      "<cmd>Gitsigns refresh<cr>",                   mode = "n", desc = "[gitsigns] Refresh" },
+    { "<localleader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", mode = "n", desc = "[gitsigns] Toggle current_line_blame" },
   }
 }

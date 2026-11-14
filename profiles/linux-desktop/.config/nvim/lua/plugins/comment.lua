@@ -27,21 +27,21 @@ return {
       ignore = function() return '^$' end,
     })
 
-    utils.set_keynomap('x', '<C-/>', "<Plug>(comment_toggle_linewise_visual)'[gv")
-    utils.set_keynomap('x', '<C-S-/>', "<Plug>(comment_toggle_blockwise_visual)'[gv")
+    utils.set_keynomap('x', '<C-/>', "<Plug>(comment_toggle_linewise_visual)'[gv", "[comment] Toggle linewise visual")
+    utils.set_keynomap('x', '<C-S-/>', "<Plug>(comment_toggle_blockwise_visual)'[gv", "[comment] Toggle blockwise visual")
 
     utils.set_keynomap('n', '<C-/>', function()
       local toggle_current_line = '<Plug>(comment_toggle_linewise_current)j'
       local toggle_count_lines = '<Plug>(comment_toggle_linewise_count)' .. vim.v.count .. 'j'
       return vim.v.count == 0 and toggle_current_line
         or toggle_count_lines
-    end, { expr = true })
+    end, { expr = true, desc = "[comment] Toggle linewise current" })
     utils.set_keynomap('n', '<C-S-/>', function()
       local toggle_current_line = '<Plug>(comment_toggle_blockwise_current)j'
       local toggle_count_lines = '<Plug>(comment_toggle_blockwise_count)' .. vim.v.count .. 'j'
       return vim.v.count == 0 and toggle_current_line
         or toggle_count_lines
-    end, { expr = true })
+    end, { expr = true, desc = "[comment] Toggle blockwise current" })
   end,
   keys = {
     { "gcc",     mode = { "n" } },

@@ -44,11 +44,6 @@ return {
     })
   end,
   keys = {
-    {
-      "<localleader>a",
-      "<cmd>AutopairsToggle!<cr>",
-      mode = "n",
-      desc = "Toggle autopairs"
-    },
+    { "<localleader>a", "<cmd>AutopairsToggle!<cr>", mode = "n", desc = "[autopairs] Toggle" },
   }
 }

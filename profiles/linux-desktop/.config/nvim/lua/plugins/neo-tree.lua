@@ -138,9 +138,9 @@ return {
       }
     })
 
-    utils.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "Open neotree")
-    utils.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "Toggle neotree")
-    utils.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current reveal<cr>", "Open neotree netrw")
-    utils.set_keynomap("n", "<leader>L", "<cmd>Neotree position=current<cr>", "Open neotree netrw")
+    utils.set_keynomap("n", "<leader>e", "<cmd>Neotree position=right<cr>", "[neotree] Open right")
+    utils.set_keynomap("n", "<leader>E", "<cmd>Neotree toggle position=right<cr>", "[neotree] Toggle right")
+    utils.set_keynomap("n", "<leader>l", "<cmd>Neotree position=current reveal<cr>", "[neotree] Open netrw reveal")
+    utils.set_keynomap("n", "<leader>L", "<cmd>Neotree position=current<cr>", "[neotree] Open netrw")
   end
 }

@@ -81,8 +81,8 @@ return {
     })
   end,
   keys = {
-    { "<localleader>lm", "<cmd>messages<cr>",      desc = "Open message history" },
-    { "<localleader>lh", "<cmd>Noice history<cr>", desc = "Open log history" },
-    { "<localleader>ll", "<cmd>Noice last<cr>",    desc = "Open log last" },
+    { "<localleader>lm", "<cmd>messages<cr>",      desc = "[nvim] Messages" },
+    { "<localleader>lh", "<cmd>Noice history<cr>", desc = "[noice] Open log history" },
+    { "<localleader>ll", "<cmd>Noice last<cr>",    desc = "[noice] Open log last" },
   }
 }

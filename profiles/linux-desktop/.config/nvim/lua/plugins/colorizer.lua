@@ -8,11 +8,6 @@ return {
     })
   end,
   keys = {
-    {
-      "<localleader>c",
-      "<cmd>ColorizerToggle<cr>",
-      mode = "n",
-      desc = "Toggle buffer colorizer"
-    },
+    { "<localleader>c", "<cmd>ColorizerToggle<cr>", mode = "n", desc = "[colorizer] Toggle buffer" },
   }
 }

@@ -1,7 +1,4 @@
--- Default settings, can be overriden later by plugins
-local M = {
-  augroups = {},
-}
+local augroups = {}
 
 local config = require("config")
 local utils = require("utils")
@@ -12,11 +9,11 @@ end
 
 -- TABS
 if config.profile.contains("default", "neovide") then
-  utils.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "Open previous tab")
-  utils.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "Open next tab")
-  utils.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "Close tab")
-  utils.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "Edit current buffer in new tab")
-  utils.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "Close all tabs except current")
+  utils.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "[nvim] Open previous tab")
+  utils.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "[nvim] Open next tab")
+  utils.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "[nvim] Close tab")
+  utils.set_keynomap("n", "<leader>tn", "<cmd>tabedit %<cr>", "[nvim] Edit current buffer in new tab")
+  utils.set_keynomap("n", "<leader>to", "<cmd>tabonly<cr>", "[nvim] Close all tabs except current")
 
   utils.set_keynomap("n", "<leader>tm", function()
     vim.ui.input({ prompt = "Enter new tab index: ", },
@@ -31,49 +28,49 @@ if config.profile.contains("default", "neovide") then
         end
       end
     )
-  end, { silent = false, desc = "Move current tab to N" })
+  end, { silent = false, desc = "[nvim] Move current tab to N" })
 
-  utils.set_keynomap("n", "<leader>1", "1gt")
-  utils.set_keynomap("n", "<leader>2", "2gt")
-  utils.set_keynomap("n", "<leader>3", "3gt")
-  utils.set_keynomap("n", "<leader>4", "4gt")
-  utils.set_keynomap("n", "<leader>5", "5gt")
-  utils.set_keynomap("n", "<leader>6", "6gt")
-  utils.set_keynomap("n", "<leader>7", "7gt")
-  utils.set_keynomap("n", "<leader>8", "8gt")
-  utils.set_keynomap("n", "<leader>9", "9gt")
-  utils.set_keynomap("n", "<leader>0", ":tablast<cr>")
+  utils.set_keynomap("n", "<leader>1", "1gt", "[nvim] Open Tab 1")
+  utils.set_keynomap("n", "<leader>2", "2gt", "[nvim] Open Tab 2")
+  utils.set_keynomap("n", "<leader>3", "3gt", "[nvim] Open Tab 3")
+  utils.set_keynomap("n", "<leader>4", "4gt", "[nvim] Open Tab 4")
+  utils.set_keynomap("n", "<leader>5", "5gt", "[nvim] Open Tab 5")
+  utils.set_keynomap("n", "<leader>6", "6gt", "[nvim] Open Tab 6")
+  utils.set_keynomap("n", "<leader>7", "7gt", "[nvim] Open Tab 7")
+  utils.set_keynomap("n", "<leader>8", "8gt", "[nvim] Open Tab 8")
+  utils.set_keynomap("n", "<leader>9", "9gt", "[nvim] Open Tab 9")
+  utils.set_keynomap("n", "<leader>0", ":tablast<cr>", "[nvim] Open Tab Last")
 end
 
 -- WINDOWS
 if config.profile.contains("default", "neovide") then
-  utils.set_keynomap("n", "<C-k>", "<C-w>k", "Move window up")
-  utils.set_keynomap("n", "<C-l>", "<C-w>l", "Move window right")
-  utils.set_keynomap("n", "<C-j>", "<C-w>j", "Move window down")
-  utils.set_keynomap("n", "<C-h>", "<C-w>h", "Move window left")
-  utils.set_keynomap("n", "<C-s>", "<C-w><C-p>", "Move window previous")
+  utils.set_keynomap("n", "<C-k>", "<C-w>k", "[nvim] Move window up")
+  utils.set_keynomap("n", "<C-l>", "<C-w>l", "[nvim] Move window right")
+  utils.set_keynomap("n", "<C-j>", "<C-w>j", "[nvim] Move window down")
+  utils.set_keynomap("n", "<C-h>", "<C-w>h", "[nvim] Move window left")
+  utils.set_keynomap("n", "<C-s>", "<C-w><C-p>", "[nvim] Move window previous")
 
-  utils.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "Increase window height")
-  utils.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "Increase window height")
-  utils.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "Decrease window height")
-  utils.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "Decrease window height")
+  utils.set_keynomap("n", "<C-Up>", "<cmd>resize +1<cr>", "[nvim] Increase window height")
+  utils.set_keynomap("n", "<C-S-k>", "<cmd>resize +1<cr>", "[nvim] Increase window height")
+  utils.set_keynomap("n", "<C-Down>", "<cmd>resize -1<cr>", "[nvim] Decrease window height")
+  utils.set_keynomap("n", "<C-S-j>", "<cmd>resize -1<cr>", "[nvim] Decrease window height")
 
-  utils.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "Increase window width")
-  utils.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "Increase window width")
-  utils.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "Decrease window width")
-  utils.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "Decrease window width")
+  utils.set_keynomap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", "[nvim] Increase window width")
+  utils.set_keynomap("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", "[nvim] Increase window width")
+  utils.set_keynomap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", "[nvim] Decrease window width")
+  utils.set_keynomap("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", "[nvim] Decrease window width")
 
-  utils.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "Horizontal split")
-  utils.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "Vertical split")
+  utils.set_keynomap("n", "<leader>y", "<cmd>split<cr>", "[nvim] Horizontal split")
+  utils.set_keynomap("n", "<leader>u", "<cmd>vsplit<cr>", "[nvim] Vertical split")
 end
 
 -- BUFFERS
-utils.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "Open next buffer")
-utils.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "Open previous buffer")
+utils.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "[nvim] Open next buffer")
+utils.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "[nvim] Open previous buffer")
 
 -- TERMINAL
 if config.profile.contains("default", "neovide") then
-  M.augroups.map_terminal = {
+  augroups.map_terminal = {
     {
       event = { "TermOpen" },
       pattern = { "term://*", '\\[dap-terminal\\]*' },
@@ -91,16 +88,16 @@ if config.profile.contains("default", "neovide") then
 end
 
 -- WRITE
-utils.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "Write all")
-utils.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "Write all")
+utils.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "[nvim] Write all")
+utils.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "[nvim] Write all")
 
 -- CLOSE
 if config.profile.contains("default", "neovide", "scrollback") then
-  utils.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "Close window")
-  utils.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "Close")
+  utils.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "[nvim] Close window")
+  utils.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "[nvim] Close")
 end
 
-M.augroups.map_close = {
+augroups.map_close = {
   {
     event = "FileType",
     pattern = {
@@ -126,12 +123,12 @@ M.augroups.map_close = {
 
 
 -- LINE MOVEMENT
-utils.set_keynomap("n", '<a-k>', '<cmd>move-2<CR>==')
-utils.set_keynomap("n", '<a-j>', '<cmd>move+<CR>==')
-utils.set_keynomap("x", '<a-k>', ":move-2<CR>='[gv")
-utils.set_keynomap("x", '<a-j>', ":move'>+<CR>='[gv")
-utils.set_keynomap("v", "<", "<gv", "Shift leftwards")
-utils.set_keynomap("v", ">", ">gv", "Shift rightwards")
+utils.set_keynomap("n", '<a-k>', '<cmd>move-2<CR>==', "[nvim] Move line up")
+utils.set_keynomap("n", '<a-j>', '<cmd>move+<CR>==', "[nvim] Move line down")
+utils.set_keynomap("x", '<a-k>', ":move-2<CR>='[gv", "[nvim] Move line up")
+utils.set_keynomap("x", '<a-j>', ":move'>+<CR>='[gv", "[nvim] Move line down")
+utils.set_keynomap("v", "<", "<gv", "[nvim] Shift leftwards")
+utils.set_keynomap("v", ">", ">gv", "[nvim] Shift rightwards")
 
 -- SEARCH
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -142,7 +139,7 @@ vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 
-M.augroups.map_nohl = {
+augroups.map_nohl = {
   {
     event = "FileType",
     pattern = "*",
@@ -173,23 +170,23 @@ vim.cmd([[
 ]])
 
 -- EMACS
-utils.set_keynomap("c", "<C-a>", "<Home>", nosilent("Move start of line"))
-utils.set_keynomap("c", "<C-e>", "<End>", nosilent("End of line"))
-utils.set_keynomap("c", "<C-b>", "<Left>", nosilent("Move back one char"))
-utils.set_keynomap("c", "<C-f>", "<Right>", nosilent("Move forward one char"))
-utils.set_keynomap("c", "<C-d>", "<Del>", nosilent("Delete char"))
-utils.set_keynomap("c", "<A-b>", "<S-Left>", nosilent("Move word left"))
-utils.set_keynomap("c", "<A-f>", "<S-Right>", nosilent("Move word right"))
-utils.set_keynomap("c", "<C-k>", "<Up>", nosilent("History scroll up"))
+utils.set_keynomap("c", "<C-a>", "<Home>", nosilent("[nvim] Move start of line"))
+utils.set_keynomap("c", "<C-e>", "<End>", nosilent("[nvim] End of line"))
+utils.set_keynomap("c", "<C-b>", "<Left>", nosilent("[nvim] Move back one char"))
+utils.set_keynomap("c", "<C-f>", "<Right>", nosilent("[nvim] Move forward one char"))
+utils.set_keynomap("c", "<C-d>", "<Del>", nosilent("[nvim] Delete char"))
+utils.set_keynomap("c", "<A-b>", "<S-Left>", nosilent("[nvim] Move word left"))
+utils.set_keynomap("c", "<A-f>", "<S-Right>", nosilent("[nvim] Move word right"))
+utils.set_keynomap("c", "<C-k>", "<Up>", nosilent("[nvim] History scroll up"))
 
 -- OTHER
-utils.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "Print ASCII character")
+utils.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "[nvim] Print ASCII character")
 utils.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
-  "goto: Open link in system browser")
+  "[nvim] Open link in system browser")
 
 utils.set_keynomap('n', '<localleader>tc', function()
   print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
-end, "Get treesitter captures at cursor")
+end, "[treesitter] Get captures at cursor")
 
 utils.set_keynomap('n', '<localleader>h', function()
   local line = vim.fn.line('.')
@@ -201,6 +198,8 @@ utils.set_keynomap('n', '<localleader>h', function()
     local trans = vim.fn.synIDattr(vim.fn.synIDtrans(id), 'name')
     print(name .. ' -> ' .. trans)
   end
-end)
+end, "[nvim] Inspect syntax highlighting")
 
-return M
+return {
+  augroups = augroups,
+}

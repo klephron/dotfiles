@@ -15,6 +15,7 @@ return {
         "_darcs",
         ".hg",
         ".bzr",
+        "makefile",
         "Makefile",
         "CMakeLists.txt",
         "package.json",
@@ -30,7 +31,7 @@ return {
     }
   end,
   keys = {
-    { "<leader>P", "<cmd>Telescope projects<cr>", desc = "List projects" },
-    { "<leader>p", "<cmd>Project! root<cr>",      desc = "Update project root" },
+    { "<leader>P", "<cmd>Telescope projects<cr>", desc = "[project] List projects" },
+    { "<leader>p", "<cmd>Project! root<cr>",      desc = "[project] Update cwd root" },
   }
 }

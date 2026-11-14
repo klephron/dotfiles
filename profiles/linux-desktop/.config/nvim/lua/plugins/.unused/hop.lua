@@ -20,7 +20,7 @@ return {
         hint_offset = 0,
         current_line_only = false,
       })
-    end, "Hop multiline included")
+    end, "[hop] Multiline included")
 
     utils.set_keynomap({ "x", "n", "o" }, 'F', function()
       hop.hint_char1({
@@ -28,7 +28,7 @@ return {
         hint_offset = 0,
         current_line_only = true,
       })
-    end, "Hop current line before cursor")
+    end, "[hop] Current line before cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 'f', function()
       hop.hint_char1({
@@ -36,7 +36,7 @@ return {
         hint_offset = 0,
         current_line_only = true,
       })
-    end, "Hop current line after cursor")
+    end, "[hop] Current line after cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 'T', function()
       hop.hint_char1({
@@ -44,7 +44,7 @@ return {
         hint_offset = 1,
         current_line_only = true,
       })
-    end, "Hop current line before cursor")
+    end, "[hop] Current line before cursor")
 
     utils.set_keynomap({ "x", "n", "o" }, 't', function()
       hop.hint_char1({
@@ -52,6 +52,6 @@ return {
         hint_offset = -1,
         current_line_only = true,
       })
-    end, "Hop current line after cursor")
+    end, "[hop] Current line after cursor")
   end
 }

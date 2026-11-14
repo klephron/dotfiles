@@ -14,4 +14,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-utils.set_keynomap("n", "<localleader>z", "<cmd>Lazy<cr>", "Open lazy menu")
+utils.set_keynomap("n", "<localleader>z", "<cmd>Lazy<cr>", "[lazy] Open lazy menu")
