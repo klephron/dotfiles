@@ -32,14 +32,15 @@ return {
     vim.api.nvim_create_user_command("ConformToggle", function(args)
       if args.bang then
         vim.g.conform_disabled = not vim.g.conform_disabled
-        vim.notify(vim.g.conform_disabled and "disabled" or "enabled",
-          vim.log.levels.INFO, { title = "[conform] format-on-save" }
+        vim.notify(
+          (vim.g.conform_disabled and "disabled" or "enabled"),
+          vim.log.levels.INFO, { title = "[conform] format-on-save global" }
         )
       else
         vim.b.conform_disabled = not vim.b.conform_disabled
-        vim.notify("buffer " ..
+        vim.notify(
           (vim.b.conform_disabled and "disabled" or "enabled"),
-          vim.log.levels.INFO, { title = "[conform] format-on-save" }
+          vim.log.levels.INFO, { title = "[conform] format-on-save buffer" }
         )
       end
     end, {
@@ -84,15 +85,15 @@ return {
     },
     {
       "<localleader>km",
-      "<cmd>ConformToggle!<cr>",
-      mode = "n",
-      desc = "[conform] Toggle format-on-save global"
-    },
-    {
-      "<localleader>kM",
       "<cmd>ConformToggle<cr>",
       mode = "n",
       desc = "[conform] Toggle format-on-save buffer"
+    },
+    {
+      "<localleader>kM",
+      "<cmd>ConformToggle!<cr>",
+      mode = "n",
+      desc = "[conform] Toggle format-on-save global"
     },
   },
 }

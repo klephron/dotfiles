@@ -184,11 +184,23 @@ utils.set_keynomap("n", "<localleader>a", "<cmd>ascii<cr>", "[nvim] Print ASCII 
 utils.set_keynomap("n", "gx", ":silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>",
   "[nvim] Open link in system browser")
 
-utils.set_keynomap('n', '<localleader>tc', function()
+utils.set_keynomap('n', '<localleader>hc', function()
   print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
 end, "[treesitter] Get captures at cursor")
 
-utils.set_keynomap('n', '<localleader>h', function()
+utils.set_keynomap('n', '<localleader>hL', function()
+  local enabled = not vim.wo.list
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    vim.wo[win].list = enabled
+  end
+  vim.opt.list = enabled
+end, "[nvim] Toggle listchars global")
+
+utils.set_keynomap('n', '<localleader>hl', function()
+  vim.wo.list = not vim.wo.list
+end, "[nvim] Toggle listchars buffer")
+
+utils.set_keynomap('n', '<localleader>hi', function()
   local line = vim.fn.line('.')
   local col = vim.fn.col('.')
   local stack = vim.fn.synstack(line, col)
