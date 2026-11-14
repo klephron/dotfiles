@@ -1,5 +1,6 @@
 return {
   "ray-x/lsp_signature.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local signature = require("lsp_signature")
     signature.setup({

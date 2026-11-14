@@ -347,13 +347,13 @@ end
 
 return {
   "mfussenegger/nvim-dap",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     {
       'mfussenegger/nvim-dap-python',
       lazy = true,
     },
   },
-  -- event = "VeryLazy",
   config = function()
     langs_setup()
     keymaps_setup()

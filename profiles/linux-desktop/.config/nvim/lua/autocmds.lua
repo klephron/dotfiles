@@ -24,7 +24,7 @@ end
 -- FILETYPES
 utils.augroup("l.nasm", {
   {
-    event = { "BufRead", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     pattern = "*.inc,*.asm",
     command = "set filetype=nasm",
   }
@@ -32,7 +32,7 @@ utils.augroup("l.nasm", {
 
 utils.augroup("l.jenkinsfile", {
   {
-    event = { "BufRead", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     pattern = "jenkinsfile,Jenkinsfile,*.jenkinsfile,*.Jenkinsfile",
     command = "set filetype=groovy"
   }
@@ -40,7 +40,7 @@ utils.augroup("l.jenkinsfile", {
 
 utils.augroup("l.jinja", {
   {
-    event = { "BufRead", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     pattern = "*.j2",
     command = "set filetype=jinja"
   }

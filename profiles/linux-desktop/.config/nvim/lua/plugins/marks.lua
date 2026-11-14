@@ -1,6 +1,6 @@
 return {
   "chentoast/marks.nvim",
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   config = function(_, opts)
     local marks_utils = require("marks.utils")
 

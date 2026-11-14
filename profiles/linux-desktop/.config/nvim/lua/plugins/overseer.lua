@@ -3,7 +3,7 @@ return {
   dependencies = {
     "mfussenegger/nvim-dap",
   },
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local overseer = require("overseer")
 

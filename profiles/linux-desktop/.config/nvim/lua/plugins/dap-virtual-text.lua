@@ -5,8 +5,7 @@ return {
       'mfussenegger/nvim-dap',
     },
   },
-  enabled = true,
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     require("nvim-dap-virtual-text").setup({})
   end

@@ -86,7 +86,7 @@ set cursorline
 
 " Syntax, theme"{{{
 " -----------------------------------------------------------------------------
-syntax enable 
+syntax enable
 set background=dark
 colorscheme base16-nord_custom
 " colorscheme default
@@ -94,7 +94,7 @@ colorscheme base16-nord_custom
 " -----------------------------------------------------------------------------
 filetype plugin indent on
 
-au BufRead,BufNewFile *.inc,*.asm set filetype=nasm
+au BufReadPost,BufNewFile *.inc,*.asm set filetype=nasm
 
 augroup Binary
   au!

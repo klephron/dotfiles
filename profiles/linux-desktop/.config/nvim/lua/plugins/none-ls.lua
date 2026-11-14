@@ -1,5 +1,5 @@
 return {
-  'nvimtools/none-ls.nvim',
+  "nvimtools/none-ls.nvim",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local utils = require("utils")

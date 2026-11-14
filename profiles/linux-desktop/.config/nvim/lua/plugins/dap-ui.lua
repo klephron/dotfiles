@@ -3,7 +3,7 @@ return {
   dependencies = {
     "https://github.com/nvim-neotest/nvim-nio",
   },
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local utils = require("utils")
     local dapui = require("dapui")
