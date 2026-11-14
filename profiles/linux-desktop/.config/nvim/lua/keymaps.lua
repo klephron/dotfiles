@@ -212,7 +212,7 @@ utils.set_keynomap('n', '<localleader>hi', function()
     table.insert(lines, name .. ' -> ' .. trans)
   end
 
-  vim.notify(#lines > 0 and table.concat(lines, '\n') or 'No syntax groups')
+  vim.notify(#lines > 0 and table.concat(lines, '\n') or 'no syntax groups')
 end, "[nvim] Inspect syntax highlighting")
 
 return {

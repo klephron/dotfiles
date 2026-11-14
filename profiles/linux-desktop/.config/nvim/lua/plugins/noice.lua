@@ -16,6 +16,11 @@ return {
         inc_rename = false,
         lsp_doc_border = false,
       },
+      views = {
+        mini = {
+          format = { "{title} ", "{message}" },
+        },
+      },
       messages = {
         enabled = true,
         view = "mini",
@@ -51,11 +56,11 @@ return {
         {
           filter = {
             event = "notify",
-            kind = "info"
+            kind = { "info", "debug" },
           },
           opts = { stop = true },
           view = "mini",
-        }
+        },
       },
     })
   end,
