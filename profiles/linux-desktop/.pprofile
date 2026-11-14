@@ -1,6 +1,5 @@
-# vim: filetype=sh
+. ~/.xdgenv
 
-# GPU
 __has_nvidia_gpu() {
   for dev in /sys/bus/pci/devices/*; do
     [ -r "$dev/vendor" ] || continue
@@ -23,8 +22,6 @@ if __has_nvidia_gpu; then
   export DRI_PRIME=1
   export __GL_SYNC_TO_VBLANK=0
 fi
-
-. ~/.xdgenv
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -63,6 +60,9 @@ export MINIKUBE_IN_STYLE=0
 # libreoffice
 export SAL_USE_VCLPLUGIN=qt6
 
+# neovide
+export NEOVIDE_STARTUP_MESSAGE_CAPTURE=0
+
 # Start hyprland
 if command -v uwsm >/dev/null 2>&1; then
   if uwsm check may-start; then
@@ -72,3 +72,5 @@ else
   echo "uwsm not found. Install it to manage Wayland sessions properly." >&2
   # exec start-hyprland
 fi
+
+# vim: filetype=sh
