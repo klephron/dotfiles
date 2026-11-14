@@ -74,10 +74,5 @@ return {
           }
         })
       end, { desc = "[flash] Treesitter incr selection" })
-
-    vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ff007c", bold = true })
-    vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#00dfff", bold = true })
-    vim.api.nvim_set_hl(0, "FlashCurrent", { fg = "#2b8db3" })
-    vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = "#666666" })
   end,
 }

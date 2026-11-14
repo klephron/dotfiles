@@ -114,16 +114,18 @@ return {
           mappings = {
             ["<space>"] = "none",
             ["z"] = "none",
-            ["o"] = "system_open",
-            ["-"] = "navigate_up",
-            ["u"] = "close_all_subnodes",
-            ["h"] = "up",
-            ["l"] = "down",
-            [";"] = "open",
-            ['zo'] = "expand_all_subnodes",
-            ['zO'] = "expand_all_nodes",
-            ['zc'] = "close_all_subnodes",
-            ['zC'] = "close_all_nodes",
+
+            ["-"] = { "navigate_up" },
+            [";"] = { "open" },
+            ["n"] = { "quick_jump", config = { jump_labels = "jfkdlsahgnuvrbytmiceoxwpqz", on_jump = "open_or_toggle" } },
+            ["h"] = { "up" },
+            ["l"] = { "down" },
+            ["o"] = { "system_open" },
+            ["u"] = { "close_all_subnodes" },
+            ["zC"] = { "close_all_nodes" },
+            ["zO"] = { "expand_all_nodes" },
+            ["zc"] = { "close_all_subnodes" },
+            ["zo"] = { "expand_all_subnodes" },
           }
         },
         commands = {

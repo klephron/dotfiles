@@ -358,8 +358,6 @@ return {
     langs_setup()
     keymaps_setup()
 
-    vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = "#e41400", bg = nil })
-    vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = nil, bg = "#022e4b" })
     vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointCondition', { text = 'ﳁ', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
