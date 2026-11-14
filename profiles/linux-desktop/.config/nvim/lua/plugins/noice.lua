@@ -16,31 +16,10 @@ return {
         inc_rename = false,
         lsp_doc_border = false,
       },
-      cmdline = {
-        enabled = true,
-      },
       messages = {
+        enabled = true,
         view = "mini",
-        enabled = true,
         view_search = "virtualtext",
-      },
-      popupmenu = {
-        enabled = true,
-      },
-      commands = {
-        history = {
-          filter = {
-            min_length = 1,
-          }
-        },
-        all = {
-          view = "split",
-          opts = { enter = true, format = "details" },
-          filter = {},
-        }
-      },
-      notify = {
-        enabled = true,
       },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -58,31 +37,32 @@ return {
       },
       routes = {
         {
-          view = "notify",
           filter = { event = "msg_showmode" },
+          view = "notify",
         },
         {
           filter = {
             event = "lsp",
             kind = "progress",
           },
-          view = "mini",
           opts = { skip = true, stop = true },
+          view = "mini",
         },
         {
           filter = {
             event = "notify",
             kind = "info"
           },
+          opts = { stop = true },
           view = "mini",
-          opts = { stop = true }
         }
       },
     })
   end,
   keys = {
     { "<localleader>lm", "<cmd>messages<cr>",      desc = "[nvim] Messages" },
-    { "<localleader>lh", "<cmd>Noice history<cr>", desc = "[noice] Open log history" },
-    { "<localleader>ll", "<cmd>Noice last<cr>",    desc = "[noice] Open log last" },
+    { "<localleader>lh", "<cmd>Noice history<cr>", desc = "[noice] Open history" },
+    { "<localleader>la", "<cmd>Noice all<cr>",     desc = "[noice] Open all" },
+    { "<localleader>ll", "<cmd>Noice last<cr>",    desc = "[noice] Open last" },
   }
 }
