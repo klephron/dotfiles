@@ -1,6 +1,7 @@
 local fn = vim.fn
 local env = vim.env
 
+local profiles = require("profiles")
 local utils = require("utils")
 
 local local_ok, local_config = pcall(require, "local")
@@ -10,15 +11,15 @@ local function profile_get()
 
   if profile == nil or profile == '' then
     if env.KITTY_SCROLLBACK_NVIM == 'true' then
-      profile = 'scrollback'
+      profile = profiles.all.scrollback
     elseif fn.exists('g:started_by_firenvim') == 1 then
-      profile = 'firenvim'
+      profile = profiles.all.firenvim
     elseif fn.exists('g:neovide') == 1 then
-      profile = 'neovide'
+      profile = profiles.all.neovide
     elseif fn.exists('g:vscode') == 1 then
-      profile = 'vscode'
+      profile = profiles.all.vscode
     else
-      profile = 'default'
+      profile = profiles.all.default
     end
   end
 
@@ -39,27 +40,15 @@ local function plugin_watch_dir_get()
     or nil
 end
 
-
-local profiles = {
-  'basic',
-  'default',
-  'firenvim',
-  'neovide',
-  'scrollback',
-  'vscode',
-}
-
 local profile_name = profile_get()
 
 
 return {
   profile = {
     name = profile_name,
-    valid = utils.contains(profiles, profile_name),
-    available = profiles,
-    contains = function(...)
+    any = function(...)
       return utils.contains({ ... }, profile_name)
-    end,
+    end
   },
   plugins = {
     klephron_darker_dir = plugin_klephron_darker_dir_get(),

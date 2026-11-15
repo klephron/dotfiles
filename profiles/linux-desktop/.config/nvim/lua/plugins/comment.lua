@@ -1,9 +1,10 @@
 local config = require("config")
+local profiles = require("profiles")
 
 return {
   'numToStr/Comment.nvim',
   dependencies =
-    config.profile.contains("vscode")
+    config.profile.any(profiles.all.vscode)
     and {}
     or { "JoosepAlviste/nvim-ts-context-commentstring" },
   config = function()

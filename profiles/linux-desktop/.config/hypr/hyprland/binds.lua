@@ -11,8 +11,8 @@ hl.bind("SUPER + CTRL + backspace", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind("SUPER + CTRL + R", hl.dsp.exec_cmd("pkill waybar; uwsm-app -s s -- waybar"))
 
 -- MONITORS
-hl.bind("SUPER + comma", hl.dsp.focus({ monitor = "l" }))
-hl.bind("SUPER + period", hl.dsp.focus({ monitor = "r" }))
+hl.bind("SUPER + comma", hl.dsp.focus({ monitor = "-1" }))
+hl.bind("SUPER + period", hl.dsp.focus({ monitor = "+1" }))
 
 -- WORKSPACES
 if p.smw.installed then

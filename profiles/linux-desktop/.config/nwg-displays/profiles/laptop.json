@@ -1,0 +1,63 @@
+{
+  "displays": [
+    {
+      "name": "eDP-1",
+      "description": "Chimei Innolux Corporation 0x15E8",
+      "x": 320,
+      "y": 1440,
+      "physical_width": 1920,
+      "physical_height": 1080,
+      "transform": "normal",
+      "scale": 1.0,
+      "scale_filter": null,
+      "refresh": 60.01,
+      "dpms": true,
+      "adaptive_sync": false,
+      "custom_mode": false,
+      "mirror": "",
+      "ten_bit": false,
+      "color_mode": "",
+      "sdr_brightness": 1.0,
+      "sdr_saturation": 1.0,
+      "primary": false,
+      "hdr_min_lum": 0.0,
+      "hdr_max_lum": 0.0,
+      "hdr_max_avg_lum": 0.0,
+      "active": true
+    },
+    {
+      "name": "DP-1",
+      "description": "LG Electronics LG ULTRAFINE 404NTEPHQ268",
+      "x": 0,
+      "y": 0,
+      "physical_width": 3840,
+      "physical_height": 2160,
+      "transform": "normal",
+      "scale": 1.5,
+      "scale_filter": null,
+      "refresh": 60.0,
+      "dpms": true,
+      "adaptive_sync": false,
+      "custom_mode": false,
+      "mirror": "",
+      "ten_bit": false,
+      "color_mode": "",
+      "sdr_brightness": 1.0,
+      "sdr_saturation": 1.0,
+      "primary": false,
+      "hdr_min_lum": 0.0,
+      "hdr_max_lum": 0.0,
+      "hdr_max_avg_lum": 0.0,
+      "active": true
+    }
+  ],
+  "config": {
+    "view-scale": 0.15,
+    "snap-threshold": 10,
+    "indicator-timeout": 500,
+    "custom-mode": [],
+    "use-desc": false,
+    "confirm-timeout": 10,
+    "profile-bound-wallpapers": true
+  }
+}

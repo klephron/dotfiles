@@ -1,1 +1,6 @@
 hyprland/local.lua
+
+# nwg-display (before using need to select actual profile)
+monitors.conf
+monitors.lua
+workspaces.conf

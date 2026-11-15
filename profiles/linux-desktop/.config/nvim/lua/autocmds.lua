@@ -1,6 +1,7 @@
--- Default settings, can be overriden later by plugins
 local config = require("config")
 local utils = require("utils")
+local profiles = require("profiles")
+
 local keymap_augroups = require("keymaps").augroups
 
 -- KEYMAPS
@@ -158,7 +159,7 @@ utils.augroup("l.resize_on_window_change", {
 })
 
 
-if not config.profile.contains('vscode', 'firenvim') then
+if not config.profile.any(profiles.all.vscode, profiles.all.firenvim) then
   utils.augroup("l.restore_cursor_shape", {
     {
       event = "ExitPre",

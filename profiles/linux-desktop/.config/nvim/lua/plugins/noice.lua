@@ -1,9 +1,10 @@
 local config = require("config")
+local profiles = require("profiles")
 
 return {
   "folke/noice.nvim",
   event = "UIEnter",
-  cond = function() return not config.profile.contains("vscode", "firenvim") end,
+  cond = function() return not config.profile.any(profiles.all.vscode, profiles.all.firenvim) end,
   config = function()
     local noice = require("noice")
 

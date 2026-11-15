@@ -1,4 +1,5 @@
 local config = require("config")
+local profiles = require("profiles")
 
 return {
   "folke/which-key.nvim",
@@ -10,7 +11,7 @@ return {
       return 250
     end,
     disable = {
-      buftypes = config.profile.contains("vscode")
+      buftypes = config.profile.any(profiles.all.vscode)
         and { "", "acwrite", "help", "nofile", "nowrite", "quickfix", "terminal", "prompt", }
         or {}
     },

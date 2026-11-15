@@ -1,6 +1,7 @@
 local augroups = {}
 
 local config = require("config")
+local profiles = require("profiles")
 local utils = require("utils")
 
 local function nosilent(desc)
@@ -8,7 +9,7 @@ local function nosilent(desc)
 end
 
 -- TABS
-if config.profile.contains("default", "neovide") then
+if config.profile.any(profiles.all.default, profiles.all.neovide) then
   utils.set_keynomap("n", "[t", "<cmd>tabprev<cr>", "[nvim] Open previous tab")
   utils.set_keynomap("n", "]t", "<cmd>tabnext<cr>", "[nvim] Open next tab")
   utils.set_keynomap("n", "<leader>td", "<cmd>tabclose<cr>", "[nvim] Close tab")
@@ -43,7 +44,7 @@ if config.profile.contains("default", "neovide") then
 end
 
 -- WINDOWS
-if config.profile.contains("default", "neovide") then
+if config.profile.any(profiles.all.default, profiles.all.neovide) then
   utils.set_keynomap("n", "<C-k>", "<C-w>k", "[nvim] Move window up")
   utils.set_keynomap("n", "<C-l>", "<C-w>l", "[nvim] Move window right")
   utils.set_keynomap("n", "<C-j>", "<C-w>j", "[nvim] Move window down")
@@ -69,7 +70,7 @@ utils.set_keynomap("n", "<S-l>", "<cmd>bnext<cr>", "[nvim] Open next buffer")
 utils.set_keynomap("n", "<S-h>", "<cmd>bprevious<cr>", "[nvim] Open previous buffer")
 
 -- TERMINAL
-if config.profile.contains("default", "neovide") then
+if config.profile.any(profiles.all.default, profiles.all.neovide) then
   augroups.map_terminal = {
     {
       event = { "TermOpen" },
@@ -92,7 +93,7 @@ utils.set_keynomap("n", "<leader>w", "<cmd>wall<cr>", "[nvim] Write all")
 utils.set_keynomap("i", "<C-s>", "<cmd>wall<cr>", "[nvim] Write all")
 
 -- CLOSE
-if config.profile.contains("default", "neovide", "scrollback") then
+if config.profile.any(profiles.all.default, profiles.all.neovide, profiles.all.scrollback) then
   utils.set_keynomap("n", "<leader>q", "<cmd>q<cr>", "[nvim] Close window")
   utils.set_keynomap("n", "<leader>Q", "<cmd>qall<cr>", "[nvim] Close")
 end
