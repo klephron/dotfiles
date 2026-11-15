@@ -73,6 +73,12 @@ hl.config({
   }
 })
 
+hl.exec_cmd(
+  'hyprctl setcursor'
+  .. ' "' .. c.cursor.default.theme .. '"'
+  .. ' ' .. c.cursor.default.size
+)
+
 p.smw.config()
 
 p.hy3.config()
